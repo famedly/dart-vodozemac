@@ -8,6 +8,7 @@ import 'dart:async';
 import 'package:meta/meta.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
 import 'package:uuid/uuid.dart';
+import 'ffi.io.dart' if (dart.library.html) 'ffi.web.dart';
 import 'bridge_generated.io.dart' if (dart.library.html) 'bridge_generated.web.dart';
 
 class VodozemacBindingsDartImpl implements VodozemacBindingsDart {
@@ -1316,43 +1317,73 @@ class VodozemacBindingsDartImpl implements VodozemacBindingsDart {
 // Section: wire2api
 
   Curve25519PublicKey _wire2api_Curve25519PublicKey(dynamic raw) {
-    return Curve25519PublicKey.fromRaw(raw[0], raw[1], this);
+    return Curve25519PublicKey.fromRaw(
+      raw[0],
+      raw[1],
+    );
   }
 
   Ed25519PublicKey _wire2api_Ed25519PublicKey(dynamic raw) {
-    return Ed25519PublicKey.fromRaw(raw[0], raw[1], this);
+    return Ed25519PublicKey.fromRaw(
+      raw[0],
+      raw[1],
+    );
   }
 
   Ed25519Signature _wire2api_Ed25519Signature(dynamic raw) {
-    return Ed25519Signature.fromRaw(raw[0], raw[1], this);
+    return Ed25519Signature.fromRaw(
+      raw[0],
+      raw[1],
+    );
   }
 
   MegolmSessionConfig _wire2api_MegolmSessionConfig(dynamic raw) {
-    return MegolmSessionConfig.fromRaw(raw[0], raw[1], this);
+    return MegolmSessionConfig.fromRaw(
+      raw[0],
+      raw[1],
+    );
   }
 
   OlmMessage _wire2api_OlmMessage(dynamic raw) {
-    return OlmMessage.fromRaw(raw[0], raw[1], this);
+    return OlmMessage.fromRaw(
+      raw[0],
+      raw[1],
+    );
   }
 
   OlmSessionConfig _wire2api_OlmSessionConfig(dynamic raw) {
-    return OlmSessionConfig.fromRaw(raw[0], raw[1], this);
+    return OlmSessionConfig.fromRaw(
+      raw[0],
+      raw[1],
+    );
   }
 
   RwLockGroupSession _wire2api_RwLockGroupSession(dynamic raw) {
-    return RwLockGroupSession.fromRaw(raw[0], raw[1], this);
+    return RwLockGroupSession.fromRaw(
+      raw[0],
+      raw[1],
+    );
   }
 
   RwLockInboundGroupSession _wire2api_RwLockInboundGroupSession(dynamic raw) {
-    return RwLockInboundGroupSession.fromRaw(raw[0], raw[1], this);
+    return RwLockInboundGroupSession.fromRaw(
+      raw[0],
+      raw[1],
+    );
   }
 
   RwLockSession _wire2api_RwLockSession(dynamic raw) {
-    return RwLockSession.fromRaw(raw[0], raw[1], this);
+    return RwLockSession.fromRaw(
+      raw[0],
+      raw[1],
+    );
   }
 
   StdSyncRwLockAccount _wire2api_StdSyncRwLockAccount(dynamic raw) {
-    return StdSyncRwLockAccount.fromRaw(raw[0], raw[1], this);
+    return StdSyncRwLockAccount.fromRaw(
+      raw[0],
+      raw[1],
+    );
   }
 
   String _wire2api_String(dynamic raw) {
@@ -1403,7 +1434,6 @@ class VodozemacBindingsDartImpl implements VodozemacBindingsDart {
     final arr = raw as List<dynamic>;
     if (arr.length != 1) throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return VodozemacAccount(
-      bridge: this,
       account: _wire2api_StdSyncRwLockAccount(arr[0]),
     );
   }
@@ -1412,7 +1442,6 @@ class VodozemacBindingsDartImpl implements VodozemacBindingsDart {
     final arr = raw as List<dynamic>;
     if (arr.length != 1) throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return VodozemacCurve25519PublicKey(
-      bridge: this,
       key: _wire2api_Curve25519PublicKey(arr[0]),
     );
   }
@@ -1421,7 +1450,6 @@ class VodozemacBindingsDartImpl implements VodozemacBindingsDart {
     final arr = raw as List<dynamic>;
     if (arr.length != 1) throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return VodozemacEd25519PublicKey(
-      bridge: this,
       key: _wire2api_Ed25519PublicKey(arr[0]),
     );
   }
@@ -1430,7 +1458,6 @@ class VodozemacBindingsDartImpl implements VodozemacBindingsDart {
     final arr = raw as List<dynamic>;
     if (arr.length != 1) throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return VodozemacEd25519Signature(
-      bridge: this,
       signature: _wire2api_Ed25519Signature(arr[0]),
     );
   }
@@ -1439,7 +1466,6 @@ class VodozemacBindingsDartImpl implements VodozemacBindingsDart {
     final arr = raw as List<dynamic>;
     if (arr.length != 1) throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return VodozemacGroupSession(
-      bridge: this,
       session: _wire2api_RwLockGroupSession(arr[0]),
     );
   }
@@ -1457,7 +1483,6 @@ class VodozemacBindingsDartImpl implements VodozemacBindingsDart {
     final arr = raw as List<dynamic>;
     if (arr.length != 1) throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return VodozemacInboundGroupSession(
-      bridge: this,
       session: _wire2api_RwLockInboundGroupSession(arr[0]),
     );
   }
@@ -1466,7 +1491,6 @@ class VodozemacBindingsDartImpl implements VodozemacBindingsDart {
     final arr = raw as List<dynamic>;
     if (arr.length != 1) throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return VodozemacMegolmSessionConfig(
-      bridge: this,
       config: _wire2api_MegolmSessionConfig(arr[0]),
     );
   }
@@ -1475,7 +1499,6 @@ class VodozemacBindingsDartImpl implements VodozemacBindingsDart {
     final arr = raw as List<dynamic>;
     if (arr.length != 1) throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return VodozemacOlmMessage(
-      bridge: this,
       msg: _wire2api_OlmMessage(arr[0]),
     );
   }
@@ -1484,7 +1507,6 @@ class VodozemacBindingsDartImpl implements VodozemacBindingsDart {
     final arr = raw as List<dynamic>;
     if (arr.length != 1) throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return VodozemacOlmSessionConfig(
-      bridge: this,
       config: _wire2api_OlmSessionConfig(arr[0]),
     );
   }
@@ -1511,7 +1533,6 @@ class VodozemacBindingsDartImpl implements VodozemacBindingsDart {
     final arr = raw as List<dynamic>;
     if (arr.length != 1) throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return VodozemacSession(
-      bridge: this,
       session: _wire2api_RwLockSession(arr[0]),
     );
   }

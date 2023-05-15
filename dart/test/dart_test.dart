@@ -47,7 +47,7 @@ extension AsyncIterableChecks<T> on Subject<Iterable<T>> {
 }
 
 void main() {
-  final api = initializeExternalLibrary(
+  api = initializeExternalLibrary(
       '../rust/target/debug/libvodozemac_bindings_dart.dylib');
 
   group('Account', () {
@@ -56,19 +56,18 @@ void main() {
     });
 
     test('can be created', () async {
-      await check(VodozemacAccount.newVodozemacAccount(bridge: api))
-          .completes();
+      await check(VodozemacAccount.newVodozemacAccount()).completes();
     });
 
     test('has sane max OTKs', () async {
-      final account = await VodozemacAccount.newVodozemacAccount(bridge: api);
+      final account = await VodozemacAccount.newVodozemacAccount();
 
       await check(account.maxNumberOfOneTimeKeys())
           .completes(it()..isGreaterOrEqual(50));
     });
 
     test('can generate OTKs', () async {
-      final account = await VodozemacAccount.newVodozemacAccount(bridge: api);
+      final account = await VodozemacAccount.newVodozemacAccount();
 
       await check(account.generateOneTimeKeys(count: 20)).completes();
 
@@ -80,7 +79,7 @@ void main() {
     });
 
     test('can generate fallback key', () async {
-      final account = await VodozemacAccount.newVodozemacAccount(bridge: api);
+      final account = await VodozemacAccount.newVodozemacAccount();
 
       await check(account.generateFallbackKey()).completes();
 
@@ -92,7 +91,7 @@ void main() {
     });
 
     test('can publish fallback key', () async {
-      final account = await VodozemacAccount.newVodozemacAccount(bridge: api);
+      final account = await VodozemacAccount.newVodozemacAccount();
 
       await check(account.generateFallbackKey()).completes();
 
@@ -110,8 +109,8 @@ void main() {
     });
 
     test('sending olm messages works properly', () async {
-      final account = await VodozemacAccount.newVodozemacAccount(bridge: api);
-      final account2 = await VodozemacAccount.newVodozemacAccount(bridge: api);
+      final account = await VodozemacAccount.newVodozemacAccount();
+      final account2 = await VodozemacAccount.newVodozemacAccount();
 
       await check(account.generateOneTimeKeys(count: 1)).completes();
 
@@ -120,7 +119,7 @@ void main() {
       await check(account.markKeysAsPublished()).completes();
 
       final outboundSession = await account2.createOutboundSession(
-          config: await VodozemacOlmSessionConfig.def(bridge: api),
+          config: await VodozemacOlmSessionConfig.def(),
           identityKey: await account.curve25519Key(),
           oneTimeKey: onetimeKey.key);
       check(outboundSession.hasReceivedMessage()).completes(it()..isFalse());
@@ -145,8 +144,8 @@ void main() {
     });
 
     test('sending olm messages works properly with fallback key', () async {
-      final account = await VodozemacAccount.newVodozemacAccount(bridge: api);
-      final account2 = await VodozemacAccount.newVodozemacAccount(bridge: api);
+      final account = await VodozemacAccount.newVodozemacAccount();
+      final account2 = await VodozemacAccount.newVodozemacAccount();
 
       await check(account.generateFallbackKey()).completes();
 
@@ -155,7 +154,7 @@ void main() {
       await check(account.markKeysAsPublished()).completes();
 
       final outboundSession = await account2.createOutboundSession(
-          config: await VodozemacOlmSessionConfig.def(bridge: api),
+          config: await VodozemacOlmSessionConfig.def(),
           identityKey: await account.curve25519Key(),
           oneTimeKey: onetimeKey.key);
       check(outboundSession.hasReceivedMessage()).completes(it()..isFalse());
@@ -180,7 +179,7 @@ void main() {
     });
 
     test('can sign messages', () async {
-      final account = await VodozemacAccount.newVodozemacAccount(bridge: api);
+      final account = await VodozemacAccount.newVodozemacAccount();
 
       final signature = await account.sign(message: 'Abc');
 
@@ -195,15 +194,13 @@ void main() {
   group('Megolm session can', () {
     test('be created', () async {
       await check(VodozemacGroupSession.newVodozemacGroupSession(
-        bridge: api,
-        config: await VodozemacMegolmSessionConfig.def(bridge: api),
+        config: await VodozemacMegolmSessionConfig.def(),
       )).completes();
     });
 
     test('encrypt and decrypt', () async {
       final groupSession = await VodozemacGroupSession.newVodozemacGroupSession(
-        bridge: api,
-        config: await VodozemacMegolmSessionConfig.def(bridge: api),
+        config: await VodozemacMegolmSessionConfig.def(),
       );
       final inbound = await groupSession.toInbound();
 
@@ -220,20 +217,17 @@ void main() {
 
     test('be imported and exported', () async {
       final groupSession = await VodozemacGroupSession.newVodozemacGroupSession(
-        bridge: api,
-        config: await VodozemacMegolmSessionConfig.def(bridge: api),
+        config: await VodozemacMegolmSessionConfig.def(),
       );
       final inbound = await groupSession.toInbound();
       final reimportedInbound = await inbound.exportAtFirstKnownIndex().then(
           (exported) async => VodozemacInboundGroupSession.import(
-              bridge: api,
               sessionKey: exported,
-              config: await VodozemacMegolmSessionConfig.def(bridge: api)));
+              config: await VodozemacMegolmSessionConfig.def()));
       final laterInbound = await inbound.exportAt(index: 1).then(
           (exported) async => VodozemacInboundGroupSession.import(
-              bridge: api,
               sessionKey: exported!,
-              config: await VodozemacMegolmSessionConfig.def(bridge: api)));
+              config: await VodozemacMegolmSessionConfig.def()));
 
       final encrypted = await groupSession.encrypt(plaintext: 'Test');
       final encrypted2 = await groupSession.encrypt(plaintext: 'Test');

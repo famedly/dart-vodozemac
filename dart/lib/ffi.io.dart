@@ -6,3 +6,5 @@ VodozemacBindingsDartImpl initializeExternalLibrary(String path) =>
     VodozemacBindingsDartImpl(
       loadLibForDart(path),
     );
+
+late VodozemacBindingsDartImpl api;
