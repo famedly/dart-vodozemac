@@ -1,4 +1,4 @@
-import 'package:vodozemac_bindings_dart/vodozemac_bindings_dart.dart';
+import 'package:generic_olm_bindings/generic.dart';
 
 void main() async {
   loadVodozemac();
@@ -32,7 +32,7 @@ void main() async {
   }
 
   try {
-    final session = await VodozemacGroupSession.create();
+    final session = await GroupSession.create();
     final inbound = session.toInbound();
 
     final encrypted = await session.encrypt('This is a test');

@@ -9,7 +9,7 @@ void loadVodozemac({
   String wasmPath = 'pkg/vodozemac-bindings-dart',
   String libraryPath = '../rust/target/debug/libvodozemac_bindings_dart.dylib',
 }) {
-  vodozemac.api = vodozemac.initializeExternalLibrary(
+  vodozemac.api ??= vodozemac.initializeExternalLibrary(
       bool.fromEnvironment('dart.library.html') ? wasmPath : libraryPath);
 }
 
@@ -463,12 +463,12 @@ abstract base class Account {
   Future<Ed25519Signature> sign(String message);
 
   Future<Session> createOutboundSession({
-    required VodozemacCurve25519PublicKey identityKey,
-    required VodozemacCurve25519PublicKey oneTimeKey,
+    required Curve25519PublicKey identityKey,
+    required Curve25519PublicKey oneTimeKey,
   });
 
   Future<({Session session, String plaintext})> createInboundSession({
-    required VodozemacCurve25519PublicKey theirIdentityKey,
+    required Curve25519PublicKey theirIdentityKey,
     required String preKeyMessageBase64,
   });
 
@@ -562,8 +562,8 @@ final class VodozemacAccount implements Account {
 
   @override
   Future<VodozemacSession> createOutboundSession({
-    required VodozemacCurve25519PublicKey identityKey,
-    required VodozemacCurve25519PublicKey oneTimeKey,
+    required covariant VodozemacCurve25519PublicKey identityKey,
+    required covariant VodozemacCurve25519PublicKey oneTimeKey,
   }) async =>
       VodozemacSession._(await _account.createOutboundSession(
           config:
@@ -573,7 +573,7 @@ final class VodozemacAccount implements Account {
 
   @override
   Future<({VodozemacSession session, String plaintext})> createInboundSession({
-    required VodozemacCurve25519PublicKey theirIdentityKey,
+    required covariant VodozemacCurve25519PublicKey theirIdentityKey,
     required String preKeyMessageBase64,
   }) async {
     final inb = await _account.createInboundSession(
