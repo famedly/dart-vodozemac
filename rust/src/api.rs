@@ -34,22 +34,22 @@ impl From<MegolmSessionConfig> for VodozemacMegolmSessionConfig {
 }
 
 impl VodozemacMegolmSessionConfig {
-    pub fn version(&self) -> u8 {
-        self.config.version()
+    pub fn version(&self) -> SyncReturn<u8> {
+        SyncReturn(self.config.version())
     }
 
-    pub fn version_1() -> VodozemacMegolmSessionConfig {
-        MegolmSessionConfig::version_1().into()
+    pub fn version_1() -> SyncReturn<VodozemacMegolmSessionConfig> {
+        SyncReturn(MegolmSessionConfig::version_1().into())
     }
 
-    pub fn version_2() -> VodozemacMegolmSessionConfig {
-        MegolmSessionConfig::version_2().into()
+    pub fn version_2() -> SyncReturn<VodozemacMegolmSessionConfig> {
+        SyncReturn(MegolmSessionConfig::version_2().into())
     }
 
     // can't name this default, because that is a dart keyword and the generator also strips my
     // suffixes!
-    pub fn def() -> VodozemacMegolmSessionConfig {
-        MegolmSessionConfig::default().into()
+    pub fn def() -> SyncReturn<VodozemacMegolmSessionConfig> {
+        SyncReturn(MegolmSessionConfig::default().into())
     }
 }
 
@@ -70,18 +70,18 @@ impl VodozemacGroupSession {
         GroupSession::new(*config.config).into()
     }
 
-    pub fn session_id(&self) -> String {
-        self.session
+    pub fn session_id(&self) -> SyncReturn<String> {
+        SyncReturn(self.session
             .read()
             .expect("Failed to read session")
-            .session_id()
+            .session_id())
     }
 
-    pub fn message_index(&self) -> u32 {
-        self.session
+    pub fn message_index(&self) -> SyncReturn<u32> {
+        SyncReturn(self.session
             .read()
             .expect("Failed to read session")
-            .message_index()
+            .message_index())
     }
 
     pub fn session_config(&self) -> VodozemacMegolmSessionConfig {
@@ -141,11 +141,11 @@ impl VodozemacGroupSession {
         })
     }
 
-    pub fn to_inbound(&self) -> VodozemacInboundGroupSession {
+    pub fn to_inbound(&self) -> SyncReturn<VodozemacInboundGroupSession> {
         let session = self.session
             .read()
             .expect("Failed to read session");
-        InboundGroupSession::from(session.deref()).into()
+        SyncReturn(InboundGroupSession::from(session.deref()).into())
     }
 }
 
@@ -165,26 +165,26 @@ impl VodozemacInboundGroupSession {
     pub fn new(
         session_key: String,
         config: VodozemacMegolmSessionConfig,
-    ) -> anyhow::Result<VodozemacInboundGroupSession> {
-        Ok(InboundGroupSession::new(
+    ) -> anyhow::Result<SyncReturn<VodozemacInboundGroupSession>> {
+        Ok(SyncReturn(InboundGroupSession::new(
             &vodozemac::megolm::SessionKey::from_base64(&session_key)?,
             *config.config,
         )
-        .into())
+        .into()))
     }
 
-    pub fn session_id(&self) -> String {
-        self.session
+    pub fn session_id(&self) -> SyncReturn<String> {
+        SyncReturn(self.session
             .read()
             .expect("Failed to read session")
-            .session_id()
+            .session_id())
     }
 
-    pub fn first_known_index(&self) -> u32 {
-        self.session
+    pub fn first_known_index(&self) -> SyncReturn<u32> {
+        SyncReturn(self.session
             .read()
             .expect("Failed to read session")
-            .first_known_index()
+            .first_known_index())
     }
 
     // In theory we could return more info, but the old olm API does not and currently we don't
@@ -234,28 +234,28 @@ impl VodozemacInboundGroupSession {
     pub fn import(
         session_key: String,
         config: VodozemacMegolmSessionConfig,
-    ) -> anyhow::Result<VodozemacInboundGroupSession> {
-        Ok(InboundGroupSession::import(
+    ) -> anyhow::Result<SyncReturn<VodozemacInboundGroupSession>> {
+        Ok(SyncReturn(InboundGroupSession::import(
             &vodozemac::megolm::ExportedSessionKey::from_base64(&session_key)?,
             *config.config,
         )
-        .into())
+        .into()))
     }
 
-    pub fn export_at_first_known_index(&self) -> String {
-        self.session
+    pub fn export_at_first_known_index(&self) -> SyncReturn<String> {
+        SyncReturn(self.session
             .read()
             .expect("Failed to read session")
             .export_at_first_known_index()
-            .to_base64()
+            .to_base64())
     }
 
-    pub fn export_at(&self, index: u32) -> Option<String> {
-        self.session
+    pub fn export_at(&self, index: u32) -> SyncReturn<Option<String>> {
+        SyncReturn(self.session
             .write()
             .expect("Failed to write session")
             .export_at(index)
-            .map(|s| s.to_base64())
+            .map(|s| s.to_base64()))
     }
 }
 
@@ -272,22 +272,22 @@ impl From<OlmSessionConfig> for VodozemacOlmSessionConfig {
 }
 
 impl VodozemacOlmSessionConfig {
-    pub fn version(&self) -> u8 {
-        self.config.version()
+    pub fn version(&self) -> SyncReturn<u8> {
+        SyncReturn(self.config.version())
     }
 
-    pub fn version_1() -> VodozemacOlmSessionConfig {
-        OlmSessionConfig::version_1().into()
+    pub fn version_1() -> SyncReturn<VodozemacOlmSessionConfig> {
+        SyncReturn(OlmSessionConfig::version_1().into())
     }
 
-    pub fn version_2() -> VodozemacOlmSessionConfig {
-        OlmSessionConfig::version_2().into()
+    pub fn version_2() -> SyncReturn<VodozemacOlmSessionConfig> {
+        SyncReturn(OlmSessionConfig::version_2().into())
     }
 
     // can't name this default, because that is a dart keyword and the generator also strips my
     // suffixes!
-    pub fn def() -> VodozemacOlmSessionConfig {
-        OlmSessionConfig::default().into()
+    pub fn def() -> SyncReturn<VodozemacOlmSessionConfig> {
+        SyncReturn(OlmSessionConfig::default().into())
     }
 }
 
@@ -306,22 +306,22 @@ impl From<Ed25519Signature> for VodozemacEd25519Signature {
 impl VodozemacEd25519Signature {
     pub const LENGTH: usize = 64usize;
 
-    pub fn from_slice(bytes: [u8; 64usize]) -> anyhow::Result<VodozemacEd25519Signature> {
+    pub fn from_slice(bytes: [u8; 64usize]) -> anyhow::Result<SyncReturn<VodozemacEd25519Signature>> {
         let key = Ed25519Signature::from_slice(&bytes)?;
-        Ok(key.into())
+        Ok(SyncReturn(key.into()))
     }
 
-    pub fn from_base64(signature: String) -> anyhow::Result<VodozemacEd25519Signature> {
+    pub fn from_base64(signature: String) -> anyhow::Result<SyncReturn<VodozemacEd25519Signature>> {
         let key = Ed25519Signature::from_base64(&signature)?;
-        Ok(key.into())
+        Ok(SyncReturn(key.into()))
     }
 
-    pub fn to_base64(&self) -> String {
-        self.signature.to_base64()
+    pub fn to_base64(&self) -> SyncReturn<String> {
+        SyncReturn(self.signature.to_base64())
     }
 
-    pub fn to_bytes(&self) -> [u8; 64usize] {
-        self.signature.to_bytes()
+    pub fn to_bytes(&self) -> SyncReturn<[u8; 64usize]> {
+        SyncReturn(self.signature.to_bytes())
     }
 }
 
@@ -332,22 +332,22 @@ pub struct VodozemacEd25519PublicKey {
 impl VodozemacEd25519PublicKey {
     pub const LENGTH: usize = 32usize;
 
-    pub fn from_slice(bytes: [u8; 32usize]) -> anyhow::Result<VodozemacEd25519PublicKey> {
+    pub fn from_slice(bytes: [u8; 32usize]) -> anyhow::Result<SyncReturn<VodozemacEd25519PublicKey>> {
         let key = Ed25519PublicKey::from_slice(&bytes)?;
-        Ok(key.into())
+        Ok(SyncReturn(key.into()))
     }
 
-    pub fn as_bytes(&self) -> [u8; 32usize] {
-        self.key.as_bytes().clone()
+    pub fn as_bytes(&self) -> SyncReturn<[u8; 32usize]> {
+        SyncReturn(self.key.as_bytes().clone())
     }
 
-    pub fn from_base64(base64_key: String) -> anyhow::Result<VodozemacEd25519PublicKey> {
+    pub fn from_base64(base64_key: String) -> anyhow::Result<SyncReturn<VodozemacEd25519PublicKey>> {
         let key = Ed25519PublicKey::from_base64(&base64_key)?;
-        Ok(key.into())
+        Ok(SyncReturn(key.into()))
     }
 
-    pub fn to_base64(&self) -> String {
-        self.key.to_base64()
+    pub fn to_base64(&self) -> SyncReturn<String> {
+        SyncReturn(self.key.to_base64())
     }
 
     /// Throws on mismatched signatures
@@ -384,22 +384,22 @@ impl From<Curve25519PublicKey> for VodozemacCurve25519PublicKey {
 impl VodozemacCurve25519PublicKey {
     pub const LENGTH: usize = 32usize;
 
-    pub fn from_slice(bytes: [u8; 32usize]) -> anyhow::Result<VodozemacCurve25519PublicKey> {
+    pub fn from_slice(bytes: [u8; 32usize]) -> anyhow::Result<SyncReturn<VodozemacCurve25519PublicKey>> {
         let key = Curve25519PublicKey::from_slice(&bytes)?;
-        Ok(key.into())
+    Ok(    SyncReturn(key.into()))
     }
 
-    pub fn as_bytes(&self) -> [u8; 32usize] {
-        self.key.to_bytes()
+    pub fn as_bytes(&self) -> SyncReturn<[u8; 32usize]> {
+        SyncReturn(self.key.to_bytes())
     }
 
-    pub fn from_base64(base64_key: String) -> anyhow::Result<VodozemacCurve25519PublicKey> {
+    pub fn from_base64(base64_key: String) -> anyhow::Result<SyncReturn<VodozemacCurve25519PublicKey>> {
         let key = Curve25519PublicKey::from_base64(&base64_key)?;
-        Ok(key.into())
+Ok(        SyncReturn(key.into()))
     }
 
-    pub fn to_base64(&self) -> String {
-        self.key.to_base64()
+    pub fn to_base64(&self) -> SyncReturn<String> {
+        SyncReturn(self.key.to_base64())
     }
 }
 
@@ -433,22 +433,22 @@ impl From<OlmMessage> for VodozemacOlmMessage {
 }
 
 impl VodozemacOlmMessage {
-    pub fn message_type(&self) -> usize {
-        self.msg.message_type().into()
+    pub fn message_type(&self) -> SyncReturn<usize> {
+        SyncReturn(self.msg.message_type().into())
     }
 
-    pub fn message(&self) -> String {
-        match &*self.msg {
+    pub fn message(&self) -> SyncReturn<String> {
+        SyncReturn(match &*self.msg {
             OlmMessage::Normal(m) => m.to_base64(),
             OlmMessage::PreKey(m) => m.to_base64(),
-        }
+        })
     }
 
     pub fn from_parts(
         message_type: usize,
         ciphertext: String,
-    ) -> anyhow::Result<VodozemacOlmMessage> {
-        Ok(OlmMessage::from_parts(message_type, &ciphertext)?.into())
+    ) -> anyhow::Result<SyncReturn<VodozemacOlmMessage>> {
+        Ok(SyncReturn(OlmMessage::from_parts(message_type, &ciphertext)?.into()))
     }
 }
 
@@ -465,18 +465,18 @@ impl From<Session> for VodozemacSession {
 }
 
 impl VodozemacSession {
-    pub fn session_id(&self) -> String {
-        self.session
+    pub fn session_id(&self) -> SyncReturn<String> {
+        SyncReturn(self.session
             .read()
             .expect("Failed to read session")
-            .session_id()
+            .session_id())
     }
 
-    pub fn has_received_message(&self) -> bool {
-        self.session
+    pub fn has_received_message(&self) -> SyncReturn<bool> {
+        SyncReturn(self.session
             .read()
             .expect("Failed to read session")
-            .has_received_message()
+            .has_received_message())
     }
 
     pub fn encrypt(&self, plaintext: String) -> VodozemacOlmMessage {
@@ -559,11 +559,11 @@ impl VodozemacAccount {
         }
     }
 
-    pub fn max_number_of_one_time_keys(&self) -> usize {
-        self.account
+    pub fn max_number_of_one_time_keys(&self) -> SyncReturn<usize> {
+        SyncReturn(self.account
             .read()
             .expect("Failed to read account")
-            .max_number_of_one_time_keys()
+            .max_number_of_one_time_keys())
     }
 
     pub fn generate_fallback_key(&self) {
@@ -573,11 +573,11 @@ impl VodozemacAccount {
             .generate_fallback_key()
     }
 
-    pub fn forget_fallback_key(&self) -> bool {
-        self.account
+    pub fn forget_fallback_key(&self) -> SyncReturn<bool> {
+        SyncReturn(self.account
             .write()
             .expect("Failed to read account")
-            .forget_fallback_key()
+            .forget_fallback_key())
     }
 
     pub fn generate_one_time_keys(&self, count: usize) {
@@ -587,39 +587,40 @@ impl VodozemacAccount {
             .generate_one_time_keys(count)
     }
 
-    pub fn mark_keys_as_published(&self) {
+    pub fn mark_keys_as_published(&self) -> SyncReturn<()> {
         self.account
             .write()
             .expect("Failed to write account")
-            .mark_keys_as_published()
+            .mark_keys_as_published();
+        SyncReturn(())
     }
 
-    pub fn ed25519_key(&self) -> VodozemacEd25519PublicKey {
-        self.account
+    pub fn ed25519_key(&self) -> SyncReturn<VodozemacEd25519PublicKey> {
+        SyncReturn(self.account
             .read()
             .expect("Failed to read account")
             .ed25519_key()
-            .into()
+            .into())
     }
 
-    pub fn curve25519_key(&self) -> VodozemacCurve25519PublicKey {
-        self.account
+    pub fn curve25519_key(&self) -> SyncReturn<VodozemacCurve25519PublicKey> {
+        SyncReturn(self.account
             .read()
             .expect("Failed to read account")
             .curve25519_key()
-            .into()
+            .into())
     }
 
-    pub fn identity_keys(&self) -> VodozemacIdentityKeys {
-        self.account
+    pub fn identity_keys(&self) -> SyncReturn<VodozemacIdentityKeys> {
+        SyncReturn(self.account
             .read()
             .expect("Failed to read account")
             .identity_keys()
-            .into()
+            .into())
     }
 
-    pub fn one_time_keys(&self) -> Vec<VodozemacOneTimeKey> {
-        self.account
+    pub fn one_time_keys(&self) -> SyncReturn<Vec<VodozemacOneTimeKey>> {
+        SyncReturn(self.account
             .read()
             .expect("Failed to read account")
             .one_time_keys()
@@ -628,11 +629,11 @@ impl VodozemacAccount {
                 keyid: k.to_base64(),
                 key: v.into(),
             })
-            .collect::<Vec<VodozemacOneTimeKey>>()
+            .collect::<Vec<VodozemacOneTimeKey>>())
     }
 
-    pub fn fallback_key(&self) -> Vec<VodozemacOneTimeKey> {
-        self.account
+    pub fn fallback_key(&self) -> SyncReturn<Vec<VodozemacOneTimeKey>> {
+        SyncReturn(self.account
             .read()
             .expect("Failed to read account")
             .fallback_key()
@@ -641,7 +642,7 @@ impl VodozemacAccount {
                 keyid: k.to_base64(),
                 key: v.into(),
             })
-            .collect::<Vec<VodozemacOneTimeKey>>()
+            .collect::<Vec<VodozemacOneTimeKey>>())
     }
 
     pub fn sign(&self, message: String) -> VodozemacEd25519Signature {

@@ -8,24 +8,23 @@ import 'dart:async';
 import 'package:meta/meta.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
 import 'package:uuid/uuid.dart';
-import 'ffi.io.dart' if (dart.library.html) 'ffi.web.dart';
 
 import 'package:collection/collection.dart';
 
 abstract class VodozemacBindingsDart {
-  Future<int> versionMethodVodozemacMegolmSessionConfig({required VodozemacMegolmSessionConfig that, dynamic hint});
+  int versionMethodVodozemacMegolmSessionConfig({required VodozemacMegolmSessionConfig that, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kVersionMethodVodozemacMegolmSessionConfigConstMeta;
 
-  Future<VodozemacMegolmSessionConfig> version1StaticMethodVodozemacMegolmSessionConfig({dynamic hint});
+  VodozemacMegolmSessionConfig version1StaticMethodVodozemacMegolmSessionConfig({dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kVersion1StaticMethodVodozemacMegolmSessionConfigConstMeta;
 
-  Future<VodozemacMegolmSessionConfig> version2StaticMethodVodozemacMegolmSessionConfig({dynamic hint});
+  VodozemacMegolmSessionConfig version2StaticMethodVodozemacMegolmSessionConfig({dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kVersion2StaticMethodVodozemacMegolmSessionConfigConstMeta;
 
-  Future<VodozemacMegolmSessionConfig> defStaticMethodVodozemacMegolmSessionConfig({dynamic hint});
+  VodozemacMegolmSessionConfig defStaticMethodVodozemacMegolmSessionConfig({dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kDefStaticMethodVodozemacMegolmSessionConfigConstMeta;
 
@@ -34,11 +33,11 @@ abstract class VodozemacBindingsDart {
 
   FlutterRustBridgeTaskConstMeta get kNewStaticMethodVodozemacGroupSessionConstMeta;
 
-  Future<String> sessionIdMethodVodozemacGroupSession({required VodozemacGroupSession that, dynamic hint});
+  String sessionIdMethodVodozemacGroupSession({required VodozemacGroupSession that, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kSessionIdMethodVodozemacGroupSessionConstMeta;
 
-  Future<int> messageIndexMethodVodozemacGroupSession({required VodozemacGroupSession that, dynamic hint});
+  int messageIndexMethodVodozemacGroupSession({required VodozemacGroupSession that, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kMessageIndexMethodVodozemacGroupSessionConstMeta;
 
@@ -71,23 +70,21 @@ abstract class VodozemacBindingsDart {
 
   FlutterRustBridgeTaskConstMeta get kFromOlmPickleEncryptedStaticMethodVodozemacGroupSessionConstMeta;
 
-  Future<VodozemacInboundGroupSession> toInboundMethodVodozemacGroupSession(
+  VodozemacInboundGroupSession toInboundMethodVodozemacGroupSession(
       {required VodozemacGroupSession that, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kToInboundMethodVodozemacGroupSessionConstMeta;
 
-  Future<VodozemacInboundGroupSession> newStaticMethodVodozemacInboundGroupSession(
+  VodozemacInboundGroupSession newStaticMethodVodozemacInboundGroupSession(
       {required String sessionKey, required VodozemacMegolmSessionConfig config, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kNewStaticMethodVodozemacInboundGroupSessionConstMeta;
 
-  Future<String> sessionIdMethodVodozemacInboundGroupSession(
-      {required VodozemacInboundGroupSession that, dynamic hint});
+  String sessionIdMethodVodozemacInboundGroupSession({required VodozemacInboundGroupSession that, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kSessionIdMethodVodozemacInboundGroupSessionConstMeta;
 
-  Future<int> firstKnownIndexMethodVodozemacInboundGroupSession(
-      {required VodozemacInboundGroupSession that, dynamic hint});
+  int firstKnownIndexMethodVodozemacInboundGroupSession({required VodozemacInboundGroupSession that, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kFirstKnownIndexMethodVodozemacInboundGroupSessionConstMeta;
 
@@ -111,70 +108,66 @@ abstract class VodozemacBindingsDart {
 
   FlutterRustBridgeTaskConstMeta get kFromOlmPickleEncryptedStaticMethodVodozemacInboundGroupSessionConstMeta;
 
-  Future<VodozemacInboundGroupSession> importStaticMethodVodozemacInboundGroupSession(
+  VodozemacInboundGroupSession importStaticMethodVodozemacInboundGroupSession(
       {required String sessionKey, required VodozemacMegolmSessionConfig config, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kImportStaticMethodVodozemacInboundGroupSessionConstMeta;
 
-  Future<String> exportAtFirstKnownIndexMethodVodozemacInboundGroupSession(
+  String exportAtFirstKnownIndexMethodVodozemacInboundGroupSession(
       {required VodozemacInboundGroupSession that, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kExportAtFirstKnownIndexMethodVodozemacInboundGroupSessionConstMeta;
 
-  Future<String?> exportAtMethodVodozemacInboundGroupSession(
+  String? exportAtMethodVodozemacInboundGroupSession(
       {required VodozemacInboundGroupSession that, required int index, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kExportAtMethodVodozemacInboundGroupSessionConstMeta;
 
-  Future<int> versionMethodVodozemacOlmSessionConfig({required VodozemacOlmSessionConfig that, dynamic hint});
+  int versionMethodVodozemacOlmSessionConfig({required VodozemacOlmSessionConfig that, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kVersionMethodVodozemacOlmSessionConfigConstMeta;
 
-  Future<VodozemacOlmSessionConfig> version1StaticMethodVodozemacOlmSessionConfig({dynamic hint});
+  VodozemacOlmSessionConfig version1StaticMethodVodozemacOlmSessionConfig({dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kVersion1StaticMethodVodozemacOlmSessionConfigConstMeta;
 
-  Future<VodozemacOlmSessionConfig> version2StaticMethodVodozemacOlmSessionConfig({dynamic hint});
+  VodozemacOlmSessionConfig version2StaticMethodVodozemacOlmSessionConfig({dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kVersion2StaticMethodVodozemacOlmSessionConfigConstMeta;
 
-  Future<VodozemacOlmSessionConfig> defStaticMethodVodozemacOlmSessionConfig({dynamic hint});
+  VodozemacOlmSessionConfig defStaticMethodVodozemacOlmSessionConfig({dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kDefStaticMethodVodozemacOlmSessionConfigConstMeta;
 
-  Future<VodozemacEd25519Signature> fromSliceStaticMethodVodozemacEd25519Signature(
-      {required U8Array64 bytes, dynamic hint});
+  VodozemacEd25519Signature fromSliceStaticMethodVodozemacEd25519Signature({required U8Array64 bytes, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kFromSliceStaticMethodVodozemacEd25519SignatureConstMeta;
 
-  Future<VodozemacEd25519Signature> fromBase64StaticMethodVodozemacEd25519Signature(
-      {required String signature, dynamic hint});
+  VodozemacEd25519Signature fromBase64StaticMethodVodozemacEd25519Signature({required String signature, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kFromBase64StaticMethodVodozemacEd25519SignatureConstMeta;
 
-  Future<String> toBase64MethodVodozemacEd25519Signature({required VodozemacEd25519Signature that, dynamic hint});
+  String toBase64MethodVodozemacEd25519Signature({required VodozemacEd25519Signature that, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kToBase64MethodVodozemacEd25519SignatureConstMeta;
 
-  Future<U8Array64> toBytesMethodVodozemacEd25519Signature({required VodozemacEd25519Signature that, dynamic hint});
+  U8Array64 toBytesMethodVodozemacEd25519Signature({required VodozemacEd25519Signature that, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kToBytesMethodVodozemacEd25519SignatureConstMeta;
 
-  Future<VodozemacEd25519PublicKey> fromSliceStaticMethodVodozemacEd25519PublicKey(
-      {required U8Array32 bytes, dynamic hint});
+  VodozemacEd25519PublicKey fromSliceStaticMethodVodozemacEd25519PublicKey({required U8Array32 bytes, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kFromSliceStaticMethodVodozemacEd25519PublicKeyConstMeta;
 
-  Future<U8Array32> asBytesMethodVodozemacEd25519PublicKey({required VodozemacEd25519PublicKey that, dynamic hint});
+  U8Array32 asBytesMethodVodozemacEd25519PublicKey({required VodozemacEd25519PublicKey that, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kAsBytesMethodVodozemacEd25519PublicKeyConstMeta;
 
-  Future<VodozemacEd25519PublicKey> fromBase64StaticMethodVodozemacEd25519PublicKey(
-      {required String base64Key, dynamic hint});
+  VodozemacEd25519PublicKey fromBase64StaticMethodVodozemacEd25519PublicKey({required String base64Key, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kFromBase64StaticMethodVodozemacEd25519PublicKeyConstMeta;
 
-  Future<String> toBase64MethodVodozemacEd25519PublicKey({required VodozemacEd25519PublicKey that, dynamic hint});
+  String toBase64MethodVodozemacEd25519PublicKey({required VodozemacEd25519PublicKey that, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kToBase64MethodVodozemacEd25519PublicKeyConstMeta;
 
@@ -187,43 +180,42 @@ abstract class VodozemacBindingsDart {
 
   FlutterRustBridgeTaskConstMeta get kVerifyMethodVodozemacEd25519PublicKeyConstMeta;
 
-  Future<VodozemacCurve25519PublicKey> fromSliceStaticMethodVodozemacCurve25519PublicKey(
+  VodozemacCurve25519PublicKey fromSliceStaticMethodVodozemacCurve25519PublicKey(
       {required U8Array32 bytes, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kFromSliceStaticMethodVodozemacCurve25519PublicKeyConstMeta;
 
-  Future<U8Array32> asBytesMethodVodozemacCurve25519PublicKey(
-      {required VodozemacCurve25519PublicKey that, dynamic hint});
+  U8Array32 asBytesMethodVodozemacCurve25519PublicKey({required VodozemacCurve25519PublicKey that, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kAsBytesMethodVodozemacCurve25519PublicKeyConstMeta;
 
-  Future<VodozemacCurve25519PublicKey> fromBase64StaticMethodVodozemacCurve25519PublicKey(
+  VodozemacCurve25519PublicKey fromBase64StaticMethodVodozemacCurve25519PublicKey(
       {required String base64Key, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kFromBase64StaticMethodVodozemacCurve25519PublicKeyConstMeta;
 
-  Future<String> toBase64MethodVodozemacCurve25519PublicKey({required VodozemacCurve25519PublicKey that, dynamic hint});
+  String toBase64MethodVodozemacCurve25519PublicKey({required VodozemacCurve25519PublicKey that, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kToBase64MethodVodozemacCurve25519PublicKeyConstMeta;
 
-  Future<int> messageTypeMethodVodozemacOlmMessage({required VodozemacOlmMessage that, dynamic hint});
+  int messageTypeMethodVodozemacOlmMessage({required VodozemacOlmMessage that, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kMessageTypeMethodVodozemacOlmMessageConstMeta;
 
-  Future<String> messageMethodVodozemacOlmMessage({required VodozemacOlmMessage that, dynamic hint});
+  String messageMethodVodozemacOlmMessage({required VodozemacOlmMessage that, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kMessageMethodVodozemacOlmMessageConstMeta;
 
-  Future<VodozemacOlmMessage> fromPartsStaticMethodVodozemacOlmMessage(
+  VodozemacOlmMessage fromPartsStaticMethodVodozemacOlmMessage(
       {required int messageType, required String ciphertext, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kFromPartsStaticMethodVodozemacOlmMessageConstMeta;
 
-  Future<String> sessionIdMethodVodozemacSession({required VodozemacSession that, dynamic hint});
+  String sessionIdMethodVodozemacSession({required VodozemacSession that, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kSessionIdMethodVodozemacSessionConstMeta;
 
-  Future<bool> hasReceivedMessageMethodVodozemacSession({required VodozemacSession that, dynamic hint});
+  bool hasReceivedMessageMethodVodozemacSession({required VodozemacSession that, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kHasReceivedMessageMethodVodozemacSessionConstMeta;
 
@@ -260,7 +252,7 @@ abstract class VodozemacBindingsDart {
 
   FlutterRustBridgeTaskConstMeta get kNewStaticMethodVodozemacAccountConstMeta;
 
-  Future<int> maxNumberOfOneTimeKeysMethodVodozemacAccount({required VodozemacAccount that, dynamic hint});
+  int maxNumberOfOneTimeKeysMethodVodozemacAccount({required VodozemacAccount that, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kMaxNumberOfOneTimeKeysMethodVodozemacAccountConstMeta;
 
@@ -268,7 +260,7 @@ abstract class VodozemacBindingsDart {
 
   FlutterRustBridgeTaskConstMeta get kGenerateFallbackKeyMethodVodozemacAccountConstMeta;
 
-  Future<bool> forgetFallbackKeyMethodVodozemacAccount({required VodozemacAccount that, dynamic hint});
+  bool forgetFallbackKeyMethodVodozemacAccount({required VodozemacAccount that, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kForgetFallbackKeyMethodVodozemacAccountConstMeta;
 
@@ -277,28 +269,27 @@ abstract class VodozemacBindingsDart {
 
   FlutterRustBridgeTaskConstMeta get kGenerateOneTimeKeysMethodVodozemacAccountConstMeta;
 
-  Future<void> markKeysAsPublishedMethodVodozemacAccount({required VodozemacAccount that, dynamic hint});
+  void markKeysAsPublishedMethodVodozemacAccount({required VodozemacAccount that, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kMarkKeysAsPublishedMethodVodozemacAccountConstMeta;
 
-  Future<VodozemacEd25519PublicKey> ed25519KeyMethodVodozemacAccount({required VodozemacAccount that, dynamic hint});
+  VodozemacEd25519PublicKey ed25519KeyMethodVodozemacAccount({required VodozemacAccount that, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kEd25519KeyMethodVodozemacAccountConstMeta;
 
-  Future<VodozemacCurve25519PublicKey> curve25519KeyMethodVodozemacAccount(
-      {required VodozemacAccount that, dynamic hint});
+  VodozemacCurve25519PublicKey curve25519KeyMethodVodozemacAccount({required VodozemacAccount that, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kCurve25519KeyMethodVodozemacAccountConstMeta;
 
-  Future<VodozemacIdentityKeys> identityKeysMethodVodozemacAccount({required VodozemacAccount that, dynamic hint});
+  VodozemacIdentityKeys identityKeysMethodVodozemacAccount({required VodozemacAccount that, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kIdentityKeysMethodVodozemacAccountConstMeta;
 
-  Future<List<VodozemacOneTimeKey>> oneTimeKeysMethodVodozemacAccount({required VodozemacAccount that, dynamic hint});
+  List<VodozemacOneTimeKey> oneTimeKeysMethodVodozemacAccount({required VodozemacAccount that, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kOneTimeKeysMethodVodozemacAccountConstMeta;
 
-  Future<List<VodozemacOneTimeKey>> fallbackKeyMethodVodozemacAccount({required VodozemacAccount that, dynamic hint});
+  List<VodozemacOneTimeKey> fallbackKeyMethodVodozemacAccount({required VodozemacAccount that, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kFallbackKeyMethodVodozemacAccountConstMeta;
 
@@ -382,162 +373,142 @@ abstract class VodozemacBindingsDart {
 
 @sealed
 class Curve25519PublicKey extends FrbOpaque {
-  Curve25519PublicKey.fromRaw(
-    int ptr,
-    int size,
-  ) : super.unsafe(ptr, size);
+  final VodozemacBindingsDart bridge;
+  Curve25519PublicKey.fromRaw(int ptr, int size, this.bridge) : super.unsafe(ptr, size);
   @override
-  DropFnType get dropFn => api.dropOpaqueCurve25519PublicKey;
+  DropFnType get dropFn => bridge.dropOpaqueCurve25519PublicKey;
 
   @override
-  ShareFnType get shareFn => api.shareOpaqueCurve25519PublicKey;
+  ShareFnType get shareFn => bridge.shareOpaqueCurve25519PublicKey;
 
   @override
-  OpaqueTypeFinalizer get staticFinalizer => api.Curve25519PublicKeyFinalizer;
+  OpaqueTypeFinalizer get staticFinalizer => bridge.Curve25519PublicKeyFinalizer;
 }
 
 @sealed
 class Ed25519PublicKey extends FrbOpaque {
-  Ed25519PublicKey.fromRaw(
-    int ptr,
-    int size,
-  ) : super.unsafe(ptr, size);
+  final VodozemacBindingsDart bridge;
+  Ed25519PublicKey.fromRaw(int ptr, int size, this.bridge) : super.unsafe(ptr, size);
   @override
-  DropFnType get dropFn => api.dropOpaqueEd25519PublicKey;
+  DropFnType get dropFn => bridge.dropOpaqueEd25519PublicKey;
 
   @override
-  ShareFnType get shareFn => api.shareOpaqueEd25519PublicKey;
+  ShareFnType get shareFn => bridge.shareOpaqueEd25519PublicKey;
 
   @override
-  OpaqueTypeFinalizer get staticFinalizer => api.Ed25519PublicKeyFinalizer;
+  OpaqueTypeFinalizer get staticFinalizer => bridge.Ed25519PublicKeyFinalizer;
 }
 
 @sealed
 class Ed25519Signature extends FrbOpaque {
-  Ed25519Signature.fromRaw(
-    int ptr,
-    int size,
-  ) : super.unsafe(ptr, size);
+  final VodozemacBindingsDart bridge;
+  Ed25519Signature.fromRaw(int ptr, int size, this.bridge) : super.unsafe(ptr, size);
   @override
-  DropFnType get dropFn => api.dropOpaqueEd25519Signature;
+  DropFnType get dropFn => bridge.dropOpaqueEd25519Signature;
 
   @override
-  ShareFnType get shareFn => api.shareOpaqueEd25519Signature;
+  ShareFnType get shareFn => bridge.shareOpaqueEd25519Signature;
 
   @override
-  OpaqueTypeFinalizer get staticFinalizer => api.Ed25519SignatureFinalizer;
+  OpaqueTypeFinalizer get staticFinalizer => bridge.Ed25519SignatureFinalizer;
 }
 
 @sealed
 class MegolmSessionConfig extends FrbOpaque {
-  MegolmSessionConfig.fromRaw(
-    int ptr,
-    int size,
-  ) : super.unsafe(ptr, size);
+  final VodozemacBindingsDart bridge;
+  MegolmSessionConfig.fromRaw(int ptr, int size, this.bridge) : super.unsafe(ptr, size);
   @override
-  DropFnType get dropFn => api.dropOpaqueMegolmSessionConfig;
+  DropFnType get dropFn => bridge.dropOpaqueMegolmSessionConfig;
 
   @override
-  ShareFnType get shareFn => api.shareOpaqueMegolmSessionConfig;
+  ShareFnType get shareFn => bridge.shareOpaqueMegolmSessionConfig;
 
   @override
-  OpaqueTypeFinalizer get staticFinalizer => api.MegolmSessionConfigFinalizer;
+  OpaqueTypeFinalizer get staticFinalizer => bridge.MegolmSessionConfigFinalizer;
 }
 
 @sealed
 class OlmMessage extends FrbOpaque {
-  OlmMessage.fromRaw(
-    int ptr,
-    int size,
-  ) : super.unsafe(ptr, size);
+  final VodozemacBindingsDart bridge;
+  OlmMessage.fromRaw(int ptr, int size, this.bridge) : super.unsafe(ptr, size);
   @override
-  DropFnType get dropFn => api.dropOpaqueOlmMessage;
+  DropFnType get dropFn => bridge.dropOpaqueOlmMessage;
 
   @override
-  ShareFnType get shareFn => api.shareOpaqueOlmMessage;
+  ShareFnType get shareFn => bridge.shareOpaqueOlmMessage;
 
   @override
-  OpaqueTypeFinalizer get staticFinalizer => api.OlmMessageFinalizer;
+  OpaqueTypeFinalizer get staticFinalizer => bridge.OlmMessageFinalizer;
 }
 
 @sealed
 class OlmSessionConfig extends FrbOpaque {
-  OlmSessionConfig.fromRaw(
-    int ptr,
-    int size,
-  ) : super.unsafe(ptr, size);
+  final VodozemacBindingsDart bridge;
+  OlmSessionConfig.fromRaw(int ptr, int size, this.bridge) : super.unsafe(ptr, size);
   @override
-  DropFnType get dropFn => api.dropOpaqueOlmSessionConfig;
+  DropFnType get dropFn => bridge.dropOpaqueOlmSessionConfig;
 
   @override
-  ShareFnType get shareFn => api.shareOpaqueOlmSessionConfig;
+  ShareFnType get shareFn => bridge.shareOpaqueOlmSessionConfig;
 
   @override
-  OpaqueTypeFinalizer get staticFinalizer => api.OlmSessionConfigFinalizer;
+  OpaqueTypeFinalizer get staticFinalizer => bridge.OlmSessionConfigFinalizer;
 }
 
 @sealed
 class RwLockGroupSession extends FrbOpaque {
-  RwLockGroupSession.fromRaw(
-    int ptr,
-    int size,
-  ) : super.unsafe(ptr, size);
+  final VodozemacBindingsDart bridge;
+  RwLockGroupSession.fromRaw(int ptr, int size, this.bridge) : super.unsafe(ptr, size);
   @override
-  DropFnType get dropFn => api.dropOpaqueRwLockGroupSession;
+  DropFnType get dropFn => bridge.dropOpaqueRwLockGroupSession;
 
   @override
-  ShareFnType get shareFn => api.shareOpaqueRwLockGroupSession;
+  ShareFnType get shareFn => bridge.shareOpaqueRwLockGroupSession;
 
   @override
-  OpaqueTypeFinalizer get staticFinalizer => api.RwLockGroupSessionFinalizer;
+  OpaqueTypeFinalizer get staticFinalizer => bridge.RwLockGroupSessionFinalizer;
 }
 
 @sealed
 class RwLockInboundGroupSession extends FrbOpaque {
-  RwLockInboundGroupSession.fromRaw(
-    int ptr,
-    int size,
-  ) : super.unsafe(ptr, size);
+  final VodozemacBindingsDart bridge;
+  RwLockInboundGroupSession.fromRaw(int ptr, int size, this.bridge) : super.unsafe(ptr, size);
   @override
-  DropFnType get dropFn => api.dropOpaqueRwLockInboundGroupSession;
+  DropFnType get dropFn => bridge.dropOpaqueRwLockInboundGroupSession;
 
   @override
-  ShareFnType get shareFn => api.shareOpaqueRwLockInboundGroupSession;
+  ShareFnType get shareFn => bridge.shareOpaqueRwLockInboundGroupSession;
 
   @override
-  OpaqueTypeFinalizer get staticFinalizer => api.RwLockInboundGroupSessionFinalizer;
+  OpaqueTypeFinalizer get staticFinalizer => bridge.RwLockInboundGroupSessionFinalizer;
 }
 
 @sealed
 class RwLockSession extends FrbOpaque {
-  RwLockSession.fromRaw(
-    int ptr,
-    int size,
-  ) : super.unsafe(ptr, size);
+  final VodozemacBindingsDart bridge;
+  RwLockSession.fromRaw(int ptr, int size, this.bridge) : super.unsafe(ptr, size);
   @override
-  DropFnType get dropFn => api.dropOpaqueRwLockSession;
+  DropFnType get dropFn => bridge.dropOpaqueRwLockSession;
 
   @override
-  ShareFnType get shareFn => api.shareOpaqueRwLockSession;
+  ShareFnType get shareFn => bridge.shareOpaqueRwLockSession;
 
   @override
-  OpaqueTypeFinalizer get staticFinalizer => api.RwLockSessionFinalizer;
+  OpaqueTypeFinalizer get staticFinalizer => bridge.RwLockSessionFinalizer;
 }
 
 @sealed
 class StdSyncRwLockAccount extends FrbOpaque {
-  StdSyncRwLockAccount.fromRaw(
-    int ptr,
-    int size,
-  ) : super.unsafe(ptr, size);
+  final VodozemacBindingsDart bridge;
+  StdSyncRwLockAccount.fromRaw(int ptr, int size, this.bridge) : super.unsafe(ptr, size);
   @override
-  DropFnType get dropFn => api.dropOpaqueStdSyncRwLockAccount;
+  DropFnType get dropFn => bridge.dropOpaqueStdSyncRwLockAccount;
 
   @override
-  ShareFnType get shareFn => api.shareOpaqueStdSyncRwLockAccount;
+  ShareFnType get shareFn => bridge.shareOpaqueStdSyncRwLockAccount;
 
   @override
-  OpaqueTypeFinalizer get staticFinalizer => api.StdSyncRwLockAccountFinalizer;
+  OpaqueTypeFinalizer get staticFinalizer => bridge.StdSyncRwLockAccountFinalizer;
 }
 
 class U8Array32 extends NonGrowableListView<int> {
@@ -559,57 +530,60 @@ class U8Array64 extends NonGrowableListView<int> {
 }
 
 class VodozemacAccount {
+  final VodozemacBindingsDart bridge;
   final StdSyncRwLockAccount account;
 
   const VodozemacAccount({
+    required this.bridge,
     required this.account,
   });
 
-  static Future<VodozemacAccount> newVodozemacAccount({dynamic hint}) =>
-      api.newStaticMethodVodozemacAccount(hint: hint);
+  static Future<VodozemacAccount> newVodozemacAccount({required VodozemacBindingsDart bridge, dynamic hint}) =>
+      bridge.newStaticMethodVodozemacAccount(hint: hint);
 
-  Future<int> maxNumberOfOneTimeKeys({dynamic hint}) => api.maxNumberOfOneTimeKeysMethodVodozemacAccount(
+  int maxNumberOfOneTimeKeys({dynamic hint}) => bridge.maxNumberOfOneTimeKeysMethodVodozemacAccount(
         that: this,
       );
 
-  Future<void> generateFallbackKey({dynamic hint}) => api.generateFallbackKeyMethodVodozemacAccount(
+  Future<void> generateFallbackKey({dynamic hint}) => bridge.generateFallbackKeyMethodVodozemacAccount(
         that: this,
       );
 
-  Future<bool> forgetFallbackKey({dynamic hint}) => api.forgetFallbackKeyMethodVodozemacAccount(
+  bool forgetFallbackKey({dynamic hint}) => bridge.forgetFallbackKeyMethodVodozemacAccount(
         that: this,
       );
 
-  Future<void> generateOneTimeKeys({required int count, dynamic hint}) => api.generateOneTimeKeysMethodVodozemacAccount(
+  Future<void> generateOneTimeKeys({required int count, dynamic hint}) =>
+      bridge.generateOneTimeKeysMethodVodozemacAccount(
         that: this,
         count: count,
       );
 
-  Future<void> markKeysAsPublished({dynamic hint}) => api.markKeysAsPublishedMethodVodozemacAccount(
+  void markKeysAsPublished({dynamic hint}) => bridge.markKeysAsPublishedMethodVodozemacAccount(
         that: this,
       );
 
-  Future<VodozemacEd25519PublicKey> ed25519Key({dynamic hint}) => api.ed25519KeyMethodVodozemacAccount(
+  VodozemacEd25519PublicKey ed25519Key({dynamic hint}) => bridge.ed25519KeyMethodVodozemacAccount(
         that: this,
       );
 
-  Future<VodozemacCurve25519PublicKey> curve25519Key({dynamic hint}) => api.curve25519KeyMethodVodozemacAccount(
+  VodozemacCurve25519PublicKey curve25519Key({dynamic hint}) => bridge.curve25519KeyMethodVodozemacAccount(
         that: this,
       );
 
-  Future<VodozemacIdentityKeys> identityKeys({dynamic hint}) => api.identityKeysMethodVodozemacAccount(
+  VodozemacIdentityKeys identityKeys({dynamic hint}) => bridge.identityKeysMethodVodozemacAccount(
         that: this,
       );
 
-  Future<List<VodozemacOneTimeKey>> oneTimeKeys({dynamic hint}) => api.oneTimeKeysMethodVodozemacAccount(
+  List<VodozemacOneTimeKey> oneTimeKeys({dynamic hint}) => bridge.oneTimeKeysMethodVodozemacAccount(
         that: this,
       );
 
-  Future<List<VodozemacOneTimeKey>> fallbackKey({dynamic hint}) => api.fallbackKeyMethodVodozemacAccount(
+  List<VodozemacOneTimeKey> fallbackKey({dynamic hint}) => bridge.fallbackKeyMethodVodozemacAccount(
         that: this,
       );
 
-  Future<VodozemacEd25519Signature> sign({required String message, dynamic hint}) => api.signMethodVodozemacAccount(
+  Future<VodozemacEd25519Signature> sign({required String message, dynamic hint}) => bridge.signMethodVodozemacAccount(
         that: this,
         message: message,
       );
@@ -619,7 +593,7 @@ class VodozemacAccount {
           required VodozemacCurve25519PublicKey identityKey,
           required VodozemacCurve25519PublicKey oneTimeKey,
           dynamic hint}) =>
-      api.createOutboundSessionMethodVodozemacAccount(
+      bridge.createOutboundSessionMethodVodozemacAccount(
         that: this,
         config: config,
         identityKey: identityKey,
@@ -630,73 +604,87 @@ class VodozemacAccount {
           {required VodozemacCurve25519PublicKey theirIdentityKey,
           required String preKeyMessageBase64,
           dynamic hint}) =>
-      api.createInboundSessionMethodVodozemacAccount(
+      bridge.createInboundSessionMethodVodozemacAccount(
         that: this,
         theirIdentityKey: theirIdentityKey,
         preKeyMessageBase64: preKeyMessageBase64,
       );
 
   Future<String> pickleEncrypted({required U8Array32 pickleKey, dynamic hint}) =>
-      api.pickleEncryptedMethodVodozemacAccount(
+      bridge.pickleEncryptedMethodVodozemacAccount(
         that: this,
         pickleKey: pickleKey,
       );
 
   static Future<VodozemacAccount> fromPickleEncrypted(
-          {required String pickle, required U8Array32 pickleKey, dynamic hint}) =>
-      api.fromPickleEncryptedStaticMethodVodozemacAccount(pickle: pickle, pickleKey: pickleKey, hint: hint);
+          {required VodozemacBindingsDart bridge,
+          required String pickle,
+          required U8Array32 pickleKey,
+          dynamic hint}) =>
+      bridge.fromPickleEncryptedStaticMethodVodozemacAccount(pickle: pickle, pickleKey: pickleKey, hint: hint);
 
   static Future<VodozemacAccount> fromOlmPickleEncrypted(
-          {required String pickle, required Uint8List pickleKey, dynamic hint}) =>
-      api.fromOlmPickleEncryptedStaticMethodVodozemacAccount(pickle: pickle, pickleKey: pickleKey, hint: hint);
+          {required VodozemacBindingsDart bridge,
+          required String pickle,
+          required Uint8List pickleKey,
+          dynamic hint}) =>
+      bridge.fromOlmPickleEncryptedStaticMethodVodozemacAccount(pickle: pickle, pickleKey: pickleKey, hint: hint);
 }
 
 class VodozemacCurve25519PublicKey {
+  final VodozemacBindingsDart bridge;
   final Curve25519PublicKey key;
 
   const VodozemacCurve25519PublicKey({
+    required this.bridge,
     required this.key,
   });
 
-  static Future<VodozemacCurve25519PublicKey> fromSlice({required U8Array32 bytes, dynamic hint}) =>
-      api.fromSliceStaticMethodVodozemacCurve25519PublicKey(bytes: bytes, hint: hint);
+  static VodozemacCurve25519PublicKey fromSlice(
+          {required VodozemacBindingsDart bridge, required U8Array32 bytes, dynamic hint}) =>
+      bridge.fromSliceStaticMethodVodozemacCurve25519PublicKey(bytes: bytes, hint: hint);
 
-  Future<U8Array32> asBytes({dynamic hint}) => api.asBytesMethodVodozemacCurve25519PublicKey(
+  U8Array32 asBytes({dynamic hint}) => bridge.asBytesMethodVodozemacCurve25519PublicKey(
         that: this,
       );
 
-  static Future<VodozemacCurve25519PublicKey> fromBase64({required String base64Key, dynamic hint}) =>
-      api.fromBase64StaticMethodVodozemacCurve25519PublicKey(base64Key: base64Key, hint: hint);
+  static VodozemacCurve25519PublicKey fromBase64(
+          {required VodozemacBindingsDart bridge, required String base64Key, dynamic hint}) =>
+      bridge.fromBase64StaticMethodVodozemacCurve25519PublicKey(base64Key: base64Key, hint: hint);
 
-  Future<String> toBase64({dynamic hint}) => api.toBase64MethodVodozemacCurve25519PublicKey(
+  String toBase64({dynamic hint}) => bridge.toBase64MethodVodozemacCurve25519PublicKey(
         that: this,
       );
 }
 
 class VodozemacEd25519PublicKey {
+  final VodozemacBindingsDart bridge;
   final Ed25519PublicKey key;
 
   const VodozemacEd25519PublicKey({
+    required this.bridge,
     required this.key,
   });
 
-  static Future<VodozemacEd25519PublicKey> fromSlice({required U8Array32 bytes, dynamic hint}) =>
-      api.fromSliceStaticMethodVodozemacEd25519PublicKey(bytes: bytes, hint: hint);
+  static VodozemacEd25519PublicKey fromSlice(
+          {required VodozemacBindingsDart bridge, required U8Array32 bytes, dynamic hint}) =>
+      bridge.fromSliceStaticMethodVodozemacEd25519PublicKey(bytes: bytes, hint: hint);
 
-  Future<U8Array32> asBytes({dynamic hint}) => api.asBytesMethodVodozemacEd25519PublicKey(
+  U8Array32 asBytes({dynamic hint}) => bridge.asBytesMethodVodozemacEd25519PublicKey(
         that: this,
       );
 
-  static Future<VodozemacEd25519PublicKey> fromBase64({required String base64Key, dynamic hint}) =>
-      api.fromBase64StaticMethodVodozemacEd25519PublicKey(base64Key: base64Key, hint: hint);
+  static VodozemacEd25519PublicKey fromBase64(
+          {required VodozemacBindingsDart bridge, required String base64Key, dynamic hint}) =>
+      bridge.fromBase64StaticMethodVodozemacEd25519PublicKey(base64Key: base64Key, hint: hint);
 
-  Future<String> toBase64({dynamic hint}) => api.toBase64MethodVodozemacEd25519PublicKey(
+  String toBase64({dynamic hint}) => bridge.toBase64MethodVodozemacEd25519PublicKey(
         that: this,
       );
 
   /// Throws on mismatched signatures
   Future<void> verify({required String message, required VodozemacEd25519Signature signature, dynamic hint}) =>
-      api.verifyMethodVodozemacEd25519PublicKey(
+      bridge.verifyMethodVodozemacEd25519PublicKey(
         that: this,
         message: message,
         signature: signature,
@@ -704,74 +692,86 @@ class VodozemacEd25519PublicKey {
 }
 
 class VodozemacEd25519Signature {
+  final VodozemacBindingsDart bridge;
   final Ed25519Signature signature;
 
   const VodozemacEd25519Signature({
+    required this.bridge,
     required this.signature,
   });
 
-  static Future<VodozemacEd25519Signature> fromSlice({required U8Array64 bytes, dynamic hint}) =>
-      api.fromSliceStaticMethodVodozemacEd25519Signature(bytes: bytes, hint: hint);
+  static VodozemacEd25519Signature fromSlice(
+          {required VodozemacBindingsDart bridge, required U8Array64 bytes, dynamic hint}) =>
+      bridge.fromSliceStaticMethodVodozemacEd25519Signature(bytes: bytes, hint: hint);
 
-  static Future<VodozemacEd25519Signature> fromBase64({required String signature, dynamic hint}) =>
-      api.fromBase64StaticMethodVodozemacEd25519Signature(signature: signature, hint: hint);
+  static VodozemacEd25519Signature fromBase64(
+          {required VodozemacBindingsDart bridge, required String signature, dynamic hint}) =>
+      bridge.fromBase64StaticMethodVodozemacEd25519Signature(signature: signature, hint: hint);
 
-  Future<String> toBase64({dynamic hint}) => api.toBase64MethodVodozemacEd25519Signature(
+  String toBase64({dynamic hint}) => bridge.toBase64MethodVodozemacEd25519Signature(
         that: this,
       );
 
-  Future<U8Array64> toBytes({dynamic hint}) => api.toBytesMethodVodozemacEd25519Signature(
+  U8Array64 toBytes({dynamic hint}) => bridge.toBytesMethodVodozemacEd25519Signature(
         that: this,
       );
 }
 
 class VodozemacGroupSession {
+  final VodozemacBindingsDart bridge;
   final RwLockGroupSession session;
 
   const VodozemacGroupSession({
+    required this.bridge,
     required this.session,
   });
 
   static Future<VodozemacGroupSession> newVodozemacGroupSession(
-          {required VodozemacMegolmSessionConfig config, dynamic hint}) =>
-      api.newStaticMethodVodozemacGroupSession(config: config, hint: hint);
+          {required VodozemacBindingsDart bridge, required VodozemacMegolmSessionConfig config, dynamic hint}) =>
+      bridge.newStaticMethodVodozemacGroupSession(config: config, hint: hint);
 
-  Future<String> sessionId({dynamic hint}) => api.sessionIdMethodVodozemacGroupSession(
+  String sessionId({dynamic hint}) => bridge.sessionIdMethodVodozemacGroupSession(
         that: this,
       );
 
-  Future<int> messageIndex({dynamic hint}) => api.messageIndexMethodVodozemacGroupSession(
+  int messageIndex({dynamic hint}) => bridge.messageIndexMethodVodozemacGroupSession(
         that: this,
       );
 
-  Future<VodozemacMegolmSessionConfig> sessionConfig({dynamic hint}) => api.sessionConfigMethodVodozemacGroupSession(
+  Future<VodozemacMegolmSessionConfig> sessionConfig({dynamic hint}) => bridge.sessionConfigMethodVodozemacGroupSession(
         that: this,
       );
 
-  Future<String> encrypt({required String plaintext, dynamic hint}) => api.encryptMethodVodozemacGroupSession(
+  Future<String> encrypt({required String plaintext, dynamic hint}) => bridge.encryptMethodVodozemacGroupSession(
         that: this,
         plaintext: plaintext,
       );
 
-  Future<String> sessionKey({dynamic hint}) => api.sessionKeyMethodVodozemacGroupSession(
+  Future<String> sessionKey({dynamic hint}) => bridge.sessionKeyMethodVodozemacGroupSession(
         that: this,
       );
 
   Future<String> pickleEncrypted({required U8Array32 pickleKey, dynamic hint}) =>
-      api.pickleEncryptedMethodVodozemacGroupSession(
+      bridge.pickleEncryptedMethodVodozemacGroupSession(
         that: this,
         pickleKey: pickleKey,
       );
 
   static Future<VodozemacGroupSession> fromPickleEncrypted(
-          {required String pickle, required U8Array32 pickleKey, dynamic hint}) =>
-      api.fromPickleEncryptedStaticMethodVodozemacGroupSession(pickle: pickle, pickleKey: pickleKey, hint: hint);
+          {required VodozemacBindingsDart bridge,
+          required String pickle,
+          required U8Array32 pickleKey,
+          dynamic hint}) =>
+      bridge.fromPickleEncryptedStaticMethodVodozemacGroupSession(pickle: pickle, pickleKey: pickleKey, hint: hint);
 
   static Future<VodozemacGroupSession> fromOlmPickleEncrypted(
-          {required String pickle, required Uint8List pickleKey, dynamic hint}) =>
-      api.fromOlmPickleEncryptedStaticMethodVodozemacGroupSession(pickle: pickle, pickleKey: pickleKey, hint: hint);
+          {required VodozemacBindingsDart bridge,
+          required String pickle,
+          required Uint8List pickleKey,
+          dynamic hint}) =>
+      bridge.fromOlmPickleEncryptedStaticMethodVodozemacGroupSession(pickle: pickle, pickleKey: pickleKey, hint: hint);
 
-  Future<VodozemacInboundGroupSession> toInbound({dynamic hint}) => api.toInboundMethodVodozemacGroupSession(
+  VodozemacInboundGroupSession toInbound({dynamic hint}) => bridge.toInboundMethodVodozemacGroupSession(
         that: this,
       );
 }
@@ -787,118 +787,142 @@ class VodozemacIdentityKeys {
 }
 
 class VodozemacInboundGroupSession {
+  final VodozemacBindingsDart bridge;
   final RwLockInboundGroupSession session;
 
   const VodozemacInboundGroupSession({
+    required this.bridge,
     required this.session,
   });
 
-  static Future<VodozemacInboundGroupSession> newVodozemacInboundGroupSession(
-          {required String sessionKey, required VodozemacMegolmSessionConfig config, dynamic hint}) =>
-      api.newStaticMethodVodozemacInboundGroupSession(sessionKey: sessionKey, config: config, hint: hint);
+  static VodozemacInboundGroupSession newVodozemacInboundGroupSession(
+          {required VodozemacBindingsDart bridge,
+          required String sessionKey,
+          required VodozemacMegolmSessionConfig config,
+          dynamic hint}) =>
+      bridge.newStaticMethodVodozemacInboundGroupSession(sessionKey: sessionKey, config: config, hint: hint);
 
-  Future<String> sessionId({dynamic hint}) => api.sessionIdMethodVodozemacInboundGroupSession(
+  String sessionId({dynamic hint}) => bridge.sessionIdMethodVodozemacInboundGroupSession(
         that: this,
       );
 
-  Future<int> firstKnownIndex({dynamic hint}) => api.firstKnownIndexMethodVodozemacInboundGroupSession(
+  int firstKnownIndex({dynamic hint}) => bridge.firstKnownIndexMethodVodozemacInboundGroupSession(
         that: this,
       );
 
-  Future<String> decrypt({required String encrypted, dynamic hint}) => api.decryptMethodVodozemacInboundGroupSession(
+  Future<String> decrypt({required String encrypted, dynamic hint}) => bridge.decryptMethodVodozemacInboundGroupSession(
         that: this,
         encrypted: encrypted,
       );
 
   Future<String> pickleEncrypted({required U8Array32 pickleKey, dynamic hint}) =>
-      api.pickleEncryptedMethodVodozemacInboundGroupSession(
+      bridge.pickleEncryptedMethodVodozemacInboundGroupSession(
         that: this,
         pickleKey: pickleKey,
       );
 
   static Future<VodozemacInboundGroupSession> fromPickleEncrypted(
-          {required String pickle, required U8Array32 pickleKey, dynamic hint}) =>
-      api.fromPickleEncryptedStaticMethodVodozemacInboundGroupSession(pickle: pickle, pickleKey: pickleKey, hint: hint);
-
-  static Future<VodozemacInboundGroupSession> fromOlmPickleEncrypted(
-          {required String pickle, required Uint8List pickleKey, dynamic hint}) =>
-      api.fromOlmPickleEncryptedStaticMethodVodozemacInboundGroupSession(
+          {required VodozemacBindingsDart bridge,
+          required String pickle,
+          required U8Array32 pickleKey,
+          dynamic hint}) =>
+      bridge.fromPickleEncryptedStaticMethodVodozemacInboundGroupSession(
           pickle: pickle, pickleKey: pickleKey, hint: hint);
 
-  static Future<VodozemacInboundGroupSession> import(
-          {required String sessionKey, required VodozemacMegolmSessionConfig config, dynamic hint}) =>
-      api.importStaticMethodVodozemacInboundGroupSession(sessionKey: sessionKey, config: config, hint: hint);
+  static Future<VodozemacInboundGroupSession> fromOlmPickleEncrypted(
+          {required VodozemacBindingsDart bridge,
+          required String pickle,
+          required Uint8List pickleKey,
+          dynamic hint}) =>
+      bridge.fromOlmPickleEncryptedStaticMethodVodozemacInboundGroupSession(
+          pickle: pickle, pickleKey: pickleKey, hint: hint);
 
-  Future<String> exportAtFirstKnownIndex({dynamic hint}) =>
-      api.exportAtFirstKnownIndexMethodVodozemacInboundGroupSession(
+  static VodozemacInboundGroupSession import(
+          {required VodozemacBindingsDart bridge,
+          required String sessionKey,
+          required VodozemacMegolmSessionConfig config,
+          dynamic hint}) =>
+      bridge.importStaticMethodVodozemacInboundGroupSession(sessionKey: sessionKey, config: config, hint: hint);
+
+  String exportAtFirstKnownIndex({dynamic hint}) => bridge.exportAtFirstKnownIndexMethodVodozemacInboundGroupSession(
         that: this,
       );
 
-  Future<String?> exportAt({required int index, dynamic hint}) => api.exportAtMethodVodozemacInboundGroupSession(
+  String? exportAt({required int index, dynamic hint}) => bridge.exportAtMethodVodozemacInboundGroupSession(
         that: this,
         index: index,
       );
 }
 
 class VodozemacMegolmSessionConfig {
+  final VodozemacBindingsDart bridge;
   final MegolmSessionConfig config;
 
   const VodozemacMegolmSessionConfig({
+    required this.bridge,
     required this.config,
   });
 
-  Future<int> version({dynamic hint}) => api.versionMethodVodozemacMegolmSessionConfig(
+  int version({dynamic hint}) => bridge.versionMethodVodozemacMegolmSessionConfig(
         that: this,
       );
 
-  static Future<VodozemacMegolmSessionConfig> version1({dynamic hint}) =>
-      api.version1StaticMethodVodozemacMegolmSessionConfig(hint: hint);
+  static VodozemacMegolmSessionConfig version1({required VodozemacBindingsDart bridge, dynamic hint}) =>
+      bridge.version1StaticMethodVodozemacMegolmSessionConfig(hint: hint);
 
-  static Future<VodozemacMegolmSessionConfig> version2({dynamic hint}) =>
-      api.version2StaticMethodVodozemacMegolmSessionConfig(hint: hint);
+  static VodozemacMegolmSessionConfig version2({required VodozemacBindingsDart bridge, dynamic hint}) =>
+      bridge.version2StaticMethodVodozemacMegolmSessionConfig(hint: hint);
 
-  static Future<VodozemacMegolmSessionConfig> def({dynamic hint}) =>
-      api.defStaticMethodVodozemacMegolmSessionConfig(hint: hint);
+  static VodozemacMegolmSessionConfig def({required VodozemacBindingsDart bridge, dynamic hint}) =>
+      bridge.defStaticMethodVodozemacMegolmSessionConfig(hint: hint);
 }
 
 class VodozemacOlmMessage {
+  final VodozemacBindingsDart bridge;
   final OlmMessage msg;
 
   const VodozemacOlmMessage({
+    required this.bridge,
     required this.msg,
   });
 
-  Future<int> messageType({dynamic hint}) => api.messageTypeMethodVodozemacOlmMessage(
+  int messageType({dynamic hint}) => bridge.messageTypeMethodVodozemacOlmMessage(
         that: this,
       );
 
-  Future<String> message({dynamic hint}) => api.messageMethodVodozemacOlmMessage(
+  String message({dynamic hint}) => bridge.messageMethodVodozemacOlmMessage(
         that: this,
       );
 
-  static Future<VodozemacOlmMessage> fromParts({required int messageType, required String ciphertext, dynamic hint}) =>
-      api.fromPartsStaticMethodVodozemacOlmMessage(messageType: messageType, ciphertext: ciphertext, hint: hint);
+  static VodozemacOlmMessage fromParts(
+          {required VodozemacBindingsDart bridge,
+          required int messageType,
+          required String ciphertext,
+          dynamic hint}) =>
+      bridge.fromPartsStaticMethodVodozemacOlmMessage(messageType: messageType, ciphertext: ciphertext, hint: hint);
 }
 
 class VodozemacOlmSessionConfig {
+  final VodozemacBindingsDart bridge;
   final OlmSessionConfig config;
 
   const VodozemacOlmSessionConfig({
+    required this.bridge,
     required this.config,
   });
 
-  Future<int> version({dynamic hint}) => api.versionMethodVodozemacOlmSessionConfig(
+  int version({dynamic hint}) => bridge.versionMethodVodozemacOlmSessionConfig(
         that: this,
       );
 
-  static Future<VodozemacOlmSessionConfig> version1({dynamic hint}) =>
-      api.version1StaticMethodVodozemacOlmSessionConfig(hint: hint);
+  static VodozemacOlmSessionConfig version1({required VodozemacBindingsDart bridge, dynamic hint}) =>
+      bridge.version1StaticMethodVodozemacOlmSessionConfig(hint: hint);
 
-  static Future<VodozemacOlmSessionConfig> version2({dynamic hint}) =>
-      api.version2StaticMethodVodozemacOlmSessionConfig(hint: hint);
+  static VodozemacOlmSessionConfig version2({required VodozemacBindingsDart bridge, dynamic hint}) =>
+      bridge.version2StaticMethodVodozemacOlmSessionConfig(hint: hint);
 
-  static Future<VodozemacOlmSessionConfig> def({dynamic hint}) =>
-      api.defStaticMethodVodozemacOlmSessionConfig(hint: hint);
+  static VodozemacOlmSessionConfig def({required VodozemacBindingsDart bridge, dynamic hint}) =>
+      bridge.defStaticMethodVodozemacOlmSessionConfig(hint: hint);
 }
 
 class VodozemacOlmSessionCreationResult {
@@ -922,45 +946,54 @@ class VodozemacOneTimeKey {
 }
 
 class VodozemacSession {
+  final VodozemacBindingsDart bridge;
   final RwLockSession session;
 
   const VodozemacSession({
+    required this.bridge,
     required this.session,
   });
 
-  Future<String> sessionId({dynamic hint}) => api.sessionIdMethodVodozemacSession(
+  String sessionId({dynamic hint}) => bridge.sessionIdMethodVodozemacSession(
         that: this,
       );
 
-  Future<bool> hasReceivedMessage({dynamic hint}) => api.hasReceivedMessageMethodVodozemacSession(
+  bool hasReceivedMessage({dynamic hint}) => bridge.hasReceivedMessageMethodVodozemacSession(
         that: this,
       );
 
-  Future<VodozemacOlmMessage> encrypt({required String plaintext, dynamic hint}) => api.encryptMethodVodozemacSession(
+  Future<VodozemacOlmMessage> encrypt({required String plaintext, dynamic hint}) =>
+      bridge.encryptMethodVodozemacSession(
         that: this,
         plaintext: plaintext,
       );
 
-  Future<String> decrypt({required VodozemacOlmMessage message, dynamic hint}) => api.decryptMethodVodozemacSession(
+  Future<String> decrypt({required VodozemacOlmMessage message, dynamic hint}) => bridge.decryptMethodVodozemacSession(
         that: this,
         message: message,
       );
 
   Future<String> pickleEncrypted({required U8Array32 pickleKey, dynamic hint}) =>
-      api.pickleEncryptedMethodVodozemacSession(
+      bridge.pickleEncryptedMethodVodozemacSession(
         that: this,
         pickleKey: pickleKey,
       );
 
   static Future<VodozemacSession> fromPickleEncrypted(
-          {required String pickle, required U8Array32 pickleKey, dynamic hint}) =>
-      api.fromPickleEncryptedStaticMethodVodozemacSession(pickle: pickle, pickleKey: pickleKey, hint: hint);
+          {required VodozemacBindingsDart bridge,
+          required String pickle,
+          required U8Array32 pickleKey,
+          dynamic hint}) =>
+      bridge.fromPickleEncryptedStaticMethodVodozemacSession(pickle: pickle, pickleKey: pickleKey, hint: hint);
 
   static Future<VodozemacSession> fromOlmPickleEncrypted(
-          {required String pickle, required Uint8List pickleKey, dynamic hint}) =>
-      api.fromOlmPickleEncryptedStaticMethodVodozemacSession(pickle: pickle, pickleKey: pickleKey, hint: hint);
+          {required VodozemacBindingsDart bridge,
+          required String pickle,
+          required Uint8List pickleKey,
+          dynamic hint}) =>
+      bridge.fromOlmPickleEncryptedStaticMethodVodozemacSession(pickle: pickle, pickleKey: pickleKey, hint: hint);
 
-  Future<VodozemacOlmSessionConfig> sessionConfig({dynamic hint}) => api.sessionConfigMethodVodozemacSession(
+  Future<VodozemacOlmSessionConfig> sessionConfig({dynamic hint}) => bridge.sessionConfigMethodVodozemacSession(
         that: this,
       );
 }

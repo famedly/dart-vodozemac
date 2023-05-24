@@ -8,7 +8,6 @@ import 'dart:async';
 import 'package:meta/meta.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
 import 'package:uuid/uuid.dart';
-import 'ffi.io.dart' if (dart.library.html) 'ffi.web.dart';
 import 'bridge_generated.dart';
 export 'bridge_generated.dart';
 
@@ -233,22 +232,20 @@ external VodozemacBindingsDartWasmModule get wasmModule;
 class VodozemacBindingsDartWasmModule implements WasmModule {
   external Object /* Promise */ call([String? moduleName]);
   external VodozemacBindingsDartWasmModule bind(dynamic thisArg, String moduleName);
-  external dynamic /* void */ wire_version__method__VodozemacMegolmSessionConfig(
-      NativePortType port_, List<dynamic> that);
+  external dynamic /* int */ wire_version__method__VodozemacMegolmSessionConfig(List<dynamic> that);
 
-  external dynamic /* void */ wire_version_1__static_method__VodozemacMegolmSessionConfig(NativePortType port_);
+  external dynamic /* List<dynamic> */ wire_version_1__static_method__VodozemacMegolmSessionConfig();
 
-  external dynamic /* void */ wire_version_2__static_method__VodozemacMegolmSessionConfig(NativePortType port_);
+  external dynamic /* List<dynamic> */ wire_version_2__static_method__VodozemacMegolmSessionConfig();
 
-  external dynamic /* void */ wire_def__static_method__VodozemacMegolmSessionConfig(NativePortType port_);
+  external dynamic /* List<dynamic> */ wire_def__static_method__VodozemacMegolmSessionConfig();
 
   external dynamic /* void */ wire_new__static_method__VodozemacGroupSession(
       NativePortType port_, List<dynamic> config);
 
-  external dynamic /* void */ wire_session_id__method__VodozemacGroupSession(NativePortType port_, List<dynamic> that);
+  external dynamic /* String */ wire_session_id__method__VodozemacGroupSession(List<dynamic> that);
 
-  external dynamic /* void */ wire_message_index__method__VodozemacGroupSession(
-      NativePortType port_, List<dynamic> that);
+  external dynamic /* int */ wire_message_index__method__VodozemacGroupSession(List<dynamic> that);
 
   external dynamic /* void */ wire_session_config__method__VodozemacGroupSession(
       NativePortType port_, List<dynamic> that);
@@ -267,16 +264,14 @@ class VodozemacBindingsDartWasmModule implements WasmModule {
   external dynamic /* void */ wire_from_olm_pickle_encrypted__static_method__VodozemacGroupSession(
       NativePortType port_, String pickle, Uint8List pickle_key);
 
-  external dynamic /* void */ wire_to_inbound__method__VodozemacGroupSession(NativePortType port_, List<dynamic> that);
+  external dynamic /* List<dynamic> */ wire_to_inbound__method__VodozemacGroupSession(List<dynamic> that);
 
-  external dynamic /* void */ wire_new__static_method__VodozemacInboundGroupSession(
-      NativePortType port_, String session_key, List<dynamic> config);
+  external dynamic /* List<dynamic> */ wire_new__static_method__VodozemacInboundGroupSession(
+      String session_key, List<dynamic> config);
 
-  external dynamic /* void */ wire_session_id__method__VodozemacInboundGroupSession(
-      NativePortType port_, List<dynamic> that);
+  external dynamic /* String */ wire_session_id__method__VodozemacInboundGroupSession(List<dynamic> that);
 
-  external dynamic /* void */ wire_first_known_index__method__VodozemacInboundGroupSession(
-      NativePortType port_, List<dynamic> that);
+  external dynamic /* int */ wire_first_known_index__method__VodozemacInboundGroupSession(List<dynamic> that);
 
   external dynamic /* void */ wire_decrypt__method__VodozemacInboundGroupSession(
       NativePortType port_, List<dynamic> that, String encrypted);
@@ -290,73 +285,59 @@ class VodozemacBindingsDartWasmModule implements WasmModule {
   external dynamic /* void */ wire_from_olm_pickle_encrypted__static_method__VodozemacInboundGroupSession(
       NativePortType port_, String pickle, Uint8List pickle_key);
 
-  external dynamic /* void */ wire_import__static_method__VodozemacInboundGroupSession(
-      NativePortType port_, String session_key, List<dynamic> config);
+  external dynamic /* List<dynamic> */ wire_import__static_method__VodozemacInboundGroupSession(
+      String session_key, List<dynamic> config);
 
-  external dynamic /* void */ wire_export_at_first_known_index__method__VodozemacInboundGroupSession(
-      NativePortType port_, List<dynamic> that);
+  external dynamic /* String */ wire_export_at_first_known_index__method__VodozemacInboundGroupSession(
+      List<dynamic> that);
 
-  external dynamic /* void */ wire_export_at__method__VodozemacInboundGroupSession(
-      NativePortType port_, List<dynamic> that, int index);
+  external dynamic /* String? */ wire_export_at__method__VodozemacInboundGroupSession(List<dynamic> that, int index);
 
-  external dynamic /* void */ wire_version__method__VodozemacOlmSessionConfig(NativePortType port_, List<dynamic> that);
+  external dynamic /* int */ wire_version__method__VodozemacOlmSessionConfig(List<dynamic> that);
 
-  external dynamic /* void */ wire_version_1__static_method__VodozemacOlmSessionConfig(NativePortType port_);
+  external dynamic /* List<dynamic> */ wire_version_1__static_method__VodozemacOlmSessionConfig();
 
-  external dynamic /* void */ wire_version_2__static_method__VodozemacOlmSessionConfig(NativePortType port_);
+  external dynamic /* List<dynamic> */ wire_version_2__static_method__VodozemacOlmSessionConfig();
 
-  external dynamic /* void */ wire_def__static_method__VodozemacOlmSessionConfig(NativePortType port_);
+  external dynamic /* List<dynamic> */ wire_def__static_method__VodozemacOlmSessionConfig();
 
-  external dynamic /* void */ wire_from_slice__static_method__VodozemacEd25519Signature(
-      NativePortType port_, Uint8List bytes);
+  external dynamic /* List<dynamic> */ wire_from_slice__static_method__VodozemacEd25519Signature(Uint8List bytes);
 
-  external dynamic /* void */ wire_from_base64__static_method__VodozemacEd25519Signature(
-      NativePortType port_, String signature);
+  external dynamic /* List<dynamic> */ wire_from_base64__static_method__VodozemacEd25519Signature(String signature);
 
-  external dynamic /* void */ wire_to_base64__method__VodozemacEd25519Signature(
-      NativePortType port_, List<dynamic> that);
+  external dynamic /* String */ wire_to_base64__method__VodozemacEd25519Signature(List<dynamic> that);
 
-  external dynamic /* void */ wire_to_bytes__method__VodozemacEd25519Signature(
-      NativePortType port_, List<dynamic> that);
+  external dynamic /* Uint8List */ wire_to_bytes__method__VodozemacEd25519Signature(List<dynamic> that);
 
-  external dynamic /* void */ wire_from_slice__static_method__VodozemacEd25519PublicKey(
-      NativePortType port_, Uint8List bytes);
+  external dynamic /* List<dynamic> */ wire_from_slice__static_method__VodozemacEd25519PublicKey(Uint8List bytes);
 
-  external dynamic /* void */ wire_as_bytes__method__VodozemacEd25519PublicKey(
-      NativePortType port_, List<dynamic> that);
+  external dynamic /* Uint8List */ wire_as_bytes__method__VodozemacEd25519PublicKey(List<dynamic> that);
 
-  external dynamic /* void */ wire_from_base64__static_method__VodozemacEd25519PublicKey(
-      NativePortType port_, String base64_key);
+  external dynamic /* List<dynamic> */ wire_from_base64__static_method__VodozemacEd25519PublicKey(String base64_key);
 
-  external dynamic /* void */ wire_to_base64__method__VodozemacEd25519PublicKey(
-      NativePortType port_, List<dynamic> that);
+  external dynamic /* String */ wire_to_base64__method__VodozemacEd25519PublicKey(List<dynamic> that);
 
   external dynamic /* void */ wire_verify__method__VodozemacEd25519PublicKey(
       NativePortType port_, List<dynamic> that, String message, List<dynamic> signature);
 
-  external dynamic /* void */ wire_from_slice__static_method__VodozemacCurve25519PublicKey(
-      NativePortType port_, Uint8List bytes);
+  external dynamic /* List<dynamic> */ wire_from_slice__static_method__VodozemacCurve25519PublicKey(Uint8List bytes);
 
-  external dynamic /* void */ wire_as_bytes__method__VodozemacCurve25519PublicKey(
-      NativePortType port_, List<dynamic> that);
+  external dynamic /* Uint8List */ wire_as_bytes__method__VodozemacCurve25519PublicKey(List<dynamic> that);
 
-  external dynamic /* void */ wire_from_base64__static_method__VodozemacCurve25519PublicKey(
-      NativePortType port_, String base64_key);
+  external dynamic /* List<dynamic> */ wire_from_base64__static_method__VodozemacCurve25519PublicKey(String base64_key);
 
-  external dynamic /* void */ wire_to_base64__method__VodozemacCurve25519PublicKey(
-      NativePortType port_, List<dynamic> that);
+  external dynamic /* String */ wire_to_base64__method__VodozemacCurve25519PublicKey(List<dynamic> that);
 
-  external dynamic /* void */ wire_message_type__method__VodozemacOlmMessage(NativePortType port_, List<dynamic> that);
+  external dynamic /* int */ wire_message_type__method__VodozemacOlmMessage(List<dynamic> that);
 
-  external dynamic /* void */ wire_message__method__VodozemacOlmMessage(NativePortType port_, List<dynamic> that);
+  external dynamic /* String */ wire_message__method__VodozemacOlmMessage(List<dynamic> that);
 
-  external dynamic /* void */ wire_from_parts__static_method__VodozemacOlmMessage(
-      NativePortType port_, int message_type, String ciphertext);
+  external dynamic /* List<dynamic> */ wire_from_parts__static_method__VodozemacOlmMessage(
+      int message_type, String ciphertext);
 
-  external dynamic /* void */ wire_session_id__method__VodozemacSession(NativePortType port_, List<dynamic> that);
+  external dynamic /* String */ wire_session_id__method__VodozemacSession(List<dynamic> that);
 
-  external dynamic /* void */ wire_has_received_message__method__VodozemacSession(
-      NativePortType port_, List<dynamic> that);
+  external dynamic /* bool */ wire_has_received_message__method__VodozemacSession(List<dynamic> that);
 
   external dynamic /* void */ wire_encrypt__method__VodozemacSession(
       NativePortType port_, List<dynamic> that, String plaintext);
@@ -377,30 +358,27 @@ class VodozemacBindingsDartWasmModule implements WasmModule {
 
   external dynamic /* void */ wire_new__static_method__VodozemacAccount(NativePortType port_);
 
-  external dynamic /* void */ wire_max_number_of_one_time_keys__method__VodozemacAccount(
-      NativePortType port_, List<dynamic> that);
+  external dynamic /* int */ wire_max_number_of_one_time_keys__method__VodozemacAccount(List<dynamic> that);
 
   external dynamic /* void */ wire_generate_fallback_key__method__VodozemacAccount(
       NativePortType port_, List<dynamic> that);
 
-  external dynamic /* void */ wire_forget_fallback_key__method__VodozemacAccount(
-      NativePortType port_, List<dynamic> that);
+  external dynamic /* bool */ wire_forget_fallback_key__method__VodozemacAccount(List<dynamic> that);
 
   external dynamic /* void */ wire_generate_one_time_keys__method__VodozemacAccount(
       NativePortType port_, List<dynamic> that, int count);
 
-  external dynamic /* void */ wire_mark_keys_as_published__method__VodozemacAccount(
-      NativePortType port_, List<dynamic> that);
+  external dynamic /* void */ wire_mark_keys_as_published__method__VodozemacAccount(List<dynamic> that);
 
-  external dynamic /* void */ wire_ed25519_key__method__VodozemacAccount(NativePortType port_, List<dynamic> that);
+  external dynamic /* List<dynamic> */ wire_ed25519_key__method__VodozemacAccount(List<dynamic> that);
 
-  external dynamic /* void */ wire_curve25519_key__method__VodozemacAccount(NativePortType port_, List<dynamic> that);
+  external dynamic /* List<dynamic> */ wire_curve25519_key__method__VodozemacAccount(List<dynamic> that);
 
-  external dynamic /* void */ wire_identity_keys__method__VodozemacAccount(NativePortType port_, List<dynamic> that);
+  external dynamic /* List<dynamic> */ wire_identity_keys__method__VodozemacAccount(List<dynamic> that);
 
-  external dynamic /* void */ wire_one_time_keys__method__VodozemacAccount(NativePortType port_, List<dynamic> that);
+  external dynamic /* List<dynamic> */ wire_one_time_keys__method__VodozemacAccount(List<dynamic> that);
 
-  external dynamic /* void */ wire_fallback_key__method__VodozemacAccount(NativePortType port_, List<dynamic> that);
+  external dynamic /* List<dynamic> */ wire_fallback_key__method__VodozemacAccount(List<dynamic> that);
 
   external dynamic /* void */ wire_sign__method__VodozemacAccount(
       NativePortType port_, List<dynamic> that, String message);
@@ -467,26 +445,26 @@ class VodozemacBindingsDartWire extends FlutterRustBridgeWasmWireBase<VodozemacB
   VodozemacBindingsDartWire(FutureOr<WasmModule> module)
       : super(WasmModule.cast<VodozemacBindingsDartWasmModule>(module));
 
-  void wire_version__method__VodozemacMegolmSessionConfig(NativePortType port_, List<dynamic> that) =>
-      wasmModule.wire_version__method__VodozemacMegolmSessionConfig(port_, that);
+  dynamic /* int */ wire_version__method__VodozemacMegolmSessionConfig(List<dynamic> that) =>
+      wasmModule.wire_version__method__VodozemacMegolmSessionConfig(that);
 
-  void wire_version_1__static_method__VodozemacMegolmSessionConfig(NativePortType port_) =>
-      wasmModule.wire_version_1__static_method__VodozemacMegolmSessionConfig(port_);
+  dynamic /* List<dynamic> */ wire_version_1__static_method__VodozemacMegolmSessionConfig() =>
+      wasmModule.wire_version_1__static_method__VodozemacMegolmSessionConfig();
 
-  void wire_version_2__static_method__VodozemacMegolmSessionConfig(NativePortType port_) =>
-      wasmModule.wire_version_2__static_method__VodozemacMegolmSessionConfig(port_);
+  dynamic /* List<dynamic> */ wire_version_2__static_method__VodozemacMegolmSessionConfig() =>
+      wasmModule.wire_version_2__static_method__VodozemacMegolmSessionConfig();
 
-  void wire_def__static_method__VodozemacMegolmSessionConfig(NativePortType port_) =>
-      wasmModule.wire_def__static_method__VodozemacMegolmSessionConfig(port_);
+  dynamic /* List<dynamic> */ wire_def__static_method__VodozemacMegolmSessionConfig() =>
+      wasmModule.wire_def__static_method__VodozemacMegolmSessionConfig();
 
   void wire_new__static_method__VodozemacGroupSession(NativePortType port_, List<dynamic> config) =>
       wasmModule.wire_new__static_method__VodozemacGroupSession(port_, config);
 
-  void wire_session_id__method__VodozemacGroupSession(NativePortType port_, List<dynamic> that) =>
-      wasmModule.wire_session_id__method__VodozemacGroupSession(port_, that);
+  dynamic /* String */ wire_session_id__method__VodozemacGroupSession(List<dynamic> that) =>
+      wasmModule.wire_session_id__method__VodozemacGroupSession(that);
 
-  void wire_message_index__method__VodozemacGroupSession(NativePortType port_, List<dynamic> that) =>
-      wasmModule.wire_message_index__method__VodozemacGroupSession(port_, that);
+  dynamic /* int */ wire_message_index__method__VodozemacGroupSession(List<dynamic> that) =>
+      wasmModule.wire_message_index__method__VodozemacGroupSession(that);
 
   void wire_session_config__method__VodozemacGroupSession(NativePortType port_, List<dynamic> that) =>
       wasmModule.wire_session_config__method__VodozemacGroupSession(port_, that);
@@ -509,18 +487,18 @@ class VodozemacBindingsDartWire extends FlutterRustBridgeWasmWireBase<VodozemacB
           NativePortType port_, String pickle, Uint8List pickle_key) =>
       wasmModule.wire_from_olm_pickle_encrypted__static_method__VodozemacGroupSession(port_, pickle, pickle_key);
 
-  void wire_to_inbound__method__VodozemacGroupSession(NativePortType port_, List<dynamic> that) =>
-      wasmModule.wire_to_inbound__method__VodozemacGroupSession(port_, that);
+  dynamic /* List<dynamic> */ wire_to_inbound__method__VodozemacGroupSession(List<dynamic> that) =>
+      wasmModule.wire_to_inbound__method__VodozemacGroupSession(that);
 
-  void wire_new__static_method__VodozemacInboundGroupSession(
-          NativePortType port_, String session_key, List<dynamic> config) =>
-      wasmModule.wire_new__static_method__VodozemacInboundGroupSession(port_, session_key, config);
+  dynamic /* List<dynamic> */ wire_new__static_method__VodozemacInboundGroupSession(
+          String session_key, List<dynamic> config) =>
+      wasmModule.wire_new__static_method__VodozemacInboundGroupSession(session_key, config);
 
-  void wire_session_id__method__VodozemacInboundGroupSession(NativePortType port_, List<dynamic> that) =>
-      wasmModule.wire_session_id__method__VodozemacInboundGroupSession(port_, that);
+  dynamic /* String */ wire_session_id__method__VodozemacInboundGroupSession(List<dynamic> that) =>
+      wasmModule.wire_session_id__method__VodozemacInboundGroupSession(that);
 
-  void wire_first_known_index__method__VodozemacInboundGroupSession(NativePortType port_, List<dynamic> that) =>
-      wasmModule.wire_first_known_index__method__VodozemacInboundGroupSession(port_, that);
+  dynamic /* int */ wire_first_known_index__method__VodozemacInboundGroupSession(List<dynamic> that) =>
+      wasmModule.wire_first_known_index__method__VodozemacInboundGroupSession(that);
 
   void wire_decrypt__method__VodozemacInboundGroupSession(NativePortType port_, List<dynamic> that, String encrypted) =>
       wasmModule.wire_decrypt__method__VodozemacInboundGroupSession(port_, that, encrypted);
@@ -537,83 +515,83 @@ class VodozemacBindingsDartWire extends FlutterRustBridgeWasmWireBase<VodozemacB
           NativePortType port_, String pickle, Uint8List pickle_key) =>
       wasmModule.wire_from_olm_pickle_encrypted__static_method__VodozemacInboundGroupSession(port_, pickle, pickle_key);
 
-  void wire_import__static_method__VodozemacInboundGroupSession(
-          NativePortType port_, String session_key, List<dynamic> config) =>
-      wasmModule.wire_import__static_method__VodozemacInboundGroupSession(port_, session_key, config);
+  dynamic /* List<dynamic> */ wire_import__static_method__VodozemacInboundGroupSession(
+          String session_key, List<dynamic> config) =>
+      wasmModule.wire_import__static_method__VodozemacInboundGroupSession(session_key, config);
 
-  void wire_export_at_first_known_index__method__VodozemacInboundGroupSession(
-          NativePortType port_, List<dynamic> that) =>
-      wasmModule.wire_export_at_first_known_index__method__VodozemacInboundGroupSession(port_, that);
+  dynamic /* String */ wire_export_at_first_known_index__method__VodozemacInboundGroupSession(List<dynamic> that) =>
+      wasmModule.wire_export_at_first_known_index__method__VodozemacInboundGroupSession(that);
 
-  void wire_export_at__method__VodozemacInboundGroupSession(NativePortType port_, List<dynamic> that, int index) =>
-      wasmModule.wire_export_at__method__VodozemacInboundGroupSession(port_, that, index);
+  dynamic /* String? */ wire_export_at__method__VodozemacInboundGroupSession(List<dynamic> that, int index) =>
+      wasmModule.wire_export_at__method__VodozemacInboundGroupSession(that, index);
 
-  void wire_version__method__VodozemacOlmSessionConfig(NativePortType port_, List<dynamic> that) =>
-      wasmModule.wire_version__method__VodozemacOlmSessionConfig(port_, that);
+  dynamic /* int */ wire_version__method__VodozemacOlmSessionConfig(List<dynamic> that) =>
+      wasmModule.wire_version__method__VodozemacOlmSessionConfig(that);
 
-  void wire_version_1__static_method__VodozemacOlmSessionConfig(NativePortType port_) =>
-      wasmModule.wire_version_1__static_method__VodozemacOlmSessionConfig(port_);
+  dynamic /* List<dynamic> */ wire_version_1__static_method__VodozemacOlmSessionConfig() =>
+      wasmModule.wire_version_1__static_method__VodozemacOlmSessionConfig();
 
-  void wire_version_2__static_method__VodozemacOlmSessionConfig(NativePortType port_) =>
-      wasmModule.wire_version_2__static_method__VodozemacOlmSessionConfig(port_);
+  dynamic /* List<dynamic> */ wire_version_2__static_method__VodozemacOlmSessionConfig() =>
+      wasmModule.wire_version_2__static_method__VodozemacOlmSessionConfig();
 
-  void wire_def__static_method__VodozemacOlmSessionConfig(NativePortType port_) =>
-      wasmModule.wire_def__static_method__VodozemacOlmSessionConfig(port_);
+  dynamic /* List<dynamic> */ wire_def__static_method__VodozemacOlmSessionConfig() =>
+      wasmModule.wire_def__static_method__VodozemacOlmSessionConfig();
 
-  void wire_from_slice__static_method__VodozemacEd25519Signature(NativePortType port_, Uint8List bytes) =>
-      wasmModule.wire_from_slice__static_method__VodozemacEd25519Signature(port_, bytes);
+  dynamic /* List<dynamic> */ wire_from_slice__static_method__VodozemacEd25519Signature(Uint8List bytes) =>
+      wasmModule.wire_from_slice__static_method__VodozemacEd25519Signature(bytes);
 
-  void wire_from_base64__static_method__VodozemacEd25519Signature(NativePortType port_, String signature) =>
-      wasmModule.wire_from_base64__static_method__VodozemacEd25519Signature(port_, signature);
+  dynamic /* List<dynamic> */ wire_from_base64__static_method__VodozemacEd25519Signature(String signature) =>
+      wasmModule.wire_from_base64__static_method__VodozemacEd25519Signature(signature);
 
-  void wire_to_base64__method__VodozemacEd25519Signature(NativePortType port_, List<dynamic> that) =>
-      wasmModule.wire_to_base64__method__VodozemacEd25519Signature(port_, that);
+  dynamic /* String */ wire_to_base64__method__VodozemacEd25519Signature(List<dynamic> that) =>
+      wasmModule.wire_to_base64__method__VodozemacEd25519Signature(that);
 
-  void wire_to_bytes__method__VodozemacEd25519Signature(NativePortType port_, List<dynamic> that) =>
-      wasmModule.wire_to_bytes__method__VodozemacEd25519Signature(port_, that);
+  dynamic /* Uint8List */ wire_to_bytes__method__VodozemacEd25519Signature(List<dynamic> that) =>
+      wasmModule.wire_to_bytes__method__VodozemacEd25519Signature(that);
 
-  void wire_from_slice__static_method__VodozemacEd25519PublicKey(NativePortType port_, Uint8List bytes) =>
-      wasmModule.wire_from_slice__static_method__VodozemacEd25519PublicKey(port_, bytes);
+  dynamic /* List<dynamic> */ wire_from_slice__static_method__VodozemacEd25519PublicKey(Uint8List bytes) =>
+      wasmModule.wire_from_slice__static_method__VodozemacEd25519PublicKey(bytes);
 
-  void wire_as_bytes__method__VodozemacEd25519PublicKey(NativePortType port_, List<dynamic> that) =>
-      wasmModule.wire_as_bytes__method__VodozemacEd25519PublicKey(port_, that);
+  dynamic /* Uint8List */ wire_as_bytes__method__VodozemacEd25519PublicKey(List<dynamic> that) =>
+      wasmModule.wire_as_bytes__method__VodozemacEd25519PublicKey(that);
 
-  void wire_from_base64__static_method__VodozemacEd25519PublicKey(NativePortType port_, String base64_key) =>
-      wasmModule.wire_from_base64__static_method__VodozemacEd25519PublicKey(port_, base64_key);
+  dynamic /* List<dynamic> */ wire_from_base64__static_method__VodozemacEd25519PublicKey(String base64_key) =>
+      wasmModule.wire_from_base64__static_method__VodozemacEd25519PublicKey(base64_key);
 
-  void wire_to_base64__method__VodozemacEd25519PublicKey(NativePortType port_, List<dynamic> that) =>
-      wasmModule.wire_to_base64__method__VodozemacEd25519PublicKey(port_, that);
+  dynamic /* String */ wire_to_base64__method__VodozemacEd25519PublicKey(List<dynamic> that) =>
+      wasmModule.wire_to_base64__method__VodozemacEd25519PublicKey(that);
 
   void wire_verify__method__VodozemacEd25519PublicKey(
           NativePortType port_, List<dynamic> that, String message, List<dynamic> signature) =>
       wasmModule.wire_verify__method__VodozemacEd25519PublicKey(port_, that, message, signature);
 
-  void wire_from_slice__static_method__VodozemacCurve25519PublicKey(NativePortType port_, Uint8List bytes) =>
-      wasmModule.wire_from_slice__static_method__VodozemacCurve25519PublicKey(port_, bytes);
+  dynamic /* List<dynamic> */ wire_from_slice__static_method__VodozemacCurve25519PublicKey(Uint8List bytes) =>
+      wasmModule.wire_from_slice__static_method__VodozemacCurve25519PublicKey(bytes);
 
-  void wire_as_bytes__method__VodozemacCurve25519PublicKey(NativePortType port_, List<dynamic> that) =>
-      wasmModule.wire_as_bytes__method__VodozemacCurve25519PublicKey(port_, that);
+  dynamic /* Uint8List */ wire_as_bytes__method__VodozemacCurve25519PublicKey(List<dynamic> that) =>
+      wasmModule.wire_as_bytes__method__VodozemacCurve25519PublicKey(that);
 
-  void wire_from_base64__static_method__VodozemacCurve25519PublicKey(NativePortType port_, String base64_key) =>
-      wasmModule.wire_from_base64__static_method__VodozemacCurve25519PublicKey(port_, base64_key);
+  dynamic /* List<dynamic> */ wire_from_base64__static_method__VodozemacCurve25519PublicKey(String base64_key) =>
+      wasmModule.wire_from_base64__static_method__VodozemacCurve25519PublicKey(base64_key);
 
-  void wire_to_base64__method__VodozemacCurve25519PublicKey(NativePortType port_, List<dynamic> that) =>
-      wasmModule.wire_to_base64__method__VodozemacCurve25519PublicKey(port_, that);
+  dynamic /* String */ wire_to_base64__method__VodozemacCurve25519PublicKey(List<dynamic> that) =>
+      wasmModule.wire_to_base64__method__VodozemacCurve25519PublicKey(that);
 
-  void wire_message_type__method__VodozemacOlmMessage(NativePortType port_, List<dynamic> that) =>
-      wasmModule.wire_message_type__method__VodozemacOlmMessage(port_, that);
+  dynamic /* int */ wire_message_type__method__VodozemacOlmMessage(List<dynamic> that) =>
+      wasmModule.wire_message_type__method__VodozemacOlmMessage(that);
 
-  void wire_message__method__VodozemacOlmMessage(NativePortType port_, List<dynamic> that) =>
-      wasmModule.wire_message__method__VodozemacOlmMessage(port_, that);
+  dynamic /* String */ wire_message__method__VodozemacOlmMessage(List<dynamic> that) =>
+      wasmModule.wire_message__method__VodozemacOlmMessage(that);
 
-  void wire_from_parts__static_method__VodozemacOlmMessage(NativePortType port_, int message_type, String ciphertext) =>
-      wasmModule.wire_from_parts__static_method__VodozemacOlmMessage(port_, message_type, ciphertext);
+  dynamic /* List<dynamic> */ wire_from_parts__static_method__VodozemacOlmMessage(
+          int message_type, String ciphertext) =>
+      wasmModule.wire_from_parts__static_method__VodozemacOlmMessage(message_type, ciphertext);
 
-  void wire_session_id__method__VodozemacSession(NativePortType port_, List<dynamic> that) =>
-      wasmModule.wire_session_id__method__VodozemacSession(port_, that);
+  dynamic /* String */ wire_session_id__method__VodozemacSession(List<dynamic> that) =>
+      wasmModule.wire_session_id__method__VodozemacSession(that);
 
-  void wire_has_received_message__method__VodozemacSession(NativePortType port_, List<dynamic> that) =>
-      wasmModule.wire_has_received_message__method__VodozemacSession(port_, that);
+  dynamic /* bool */ wire_has_received_message__method__VodozemacSession(List<dynamic> that) =>
+      wasmModule.wire_has_received_message__method__VodozemacSession(that);
 
   void wire_encrypt__method__VodozemacSession(NativePortType port_, List<dynamic> that, String plaintext) =>
       wasmModule.wire_encrypt__method__VodozemacSession(port_, that, plaintext);
@@ -639,35 +617,35 @@ class VodozemacBindingsDartWire extends FlutterRustBridgeWasmWireBase<VodozemacB
   void wire_new__static_method__VodozemacAccount(NativePortType port_) =>
       wasmModule.wire_new__static_method__VodozemacAccount(port_);
 
-  void wire_max_number_of_one_time_keys__method__VodozemacAccount(NativePortType port_, List<dynamic> that) =>
-      wasmModule.wire_max_number_of_one_time_keys__method__VodozemacAccount(port_, that);
+  dynamic /* int */ wire_max_number_of_one_time_keys__method__VodozemacAccount(List<dynamic> that) =>
+      wasmModule.wire_max_number_of_one_time_keys__method__VodozemacAccount(that);
 
   void wire_generate_fallback_key__method__VodozemacAccount(NativePortType port_, List<dynamic> that) =>
       wasmModule.wire_generate_fallback_key__method__VodozemacAccount(port_, that);
 
-  void wire_forget_fallback_key__method__VodozemacAccount(NativePortType port_, List<dynamic> that) =>
-      wasmModule.wire_forget_fallback_key__method__VodozemacAccount(port_, that);
+  dynamic /* bool */ wire_forget_fallback_key__method__VodozemacAccount(List<dynamic> that) =>
+      wasmModule.wire_forget_fallback_key__method__VodozemacAccount(that);
 
   void wire_generate_one_time_keys__method__VodozemacAccount(NativePortType port_, List<dynamic> that, int count) =>
       wasmModule.wire_generate_one_time_keys__method__VodozemacAccount(port_, that, count);
 
-  void wire_mark_keys_as_published__method__VodozemacAccount(NativePortType port_, List<dynamic> that) =>
-      wasmModule.wire_mark_keys_as_published__method__VodozemacAccount(port_, that);
+  dynamic /* void */ wire_mark_keys_as_published__method__VodozemacAccount(List<dynamic> that) =>
+      wasmModule.wire_mark_keys_as_published__method__VodozemacAccount(that);
 
-  void wire_ed25519_key__method__VodozemacAccount(NativePortType port_, List<dynamic> that) =>
-      wasmModule.wire_ed25519_key__method__VodozemacAccount(port_, that);
+  dynamic /* List<dynamic> */ wire_ed25519_key__method__VodozemacAccount(List<dynamic> that) =>
+      wasmModule.wire_ed25519_key__method__VodozemacAccount(that);
 
-  void wire_curve25519_key__method__VodozemacAccount(NativePortType port_, List<dynamic> that) =>
-      wasmModule.wire_curve25519_key__method__VodozemacAccount(port_, that);
+  dynamic /* List<dynamic> */ wire_curve25519_key__method__VodozemacAccount(List<dynamic> that) =>
+      wasmModule.wire_curve25519_key__method__VodozemacAccount(that);
 
-  void wire_identity_keys__method__VodozemacAccount(NativePortType port_, List<dynamic> that) =>
-      wasmModule.wire_identity_keys__method__VodozemacAccount(port_, that);
+  dynamic /* List<dynamic> */ wire_identity_keys__method__VodozemacAccount(List<dynamic> that) =>
+      wasmModule.wire_identity_keys__method__VodozemacAccount(that);
 
-  void wire_one_time_keys__method__VodozemacAccount(NativePortType port_, List<dynamic> that) =>
-      wasmModule.wire_one_time_keys__method__VodozemacAccount(port_, that);
+  dynamic /* List<dynamic> */ wire_one_time_keys__method__VodozemacAccount(List<dynamic> that) =>
+      wasmModule.wire_one_time_keys__method__VodozemacAccount(that);
 
-  void wire_fallback_key__method__VodozemacAccount(NativePortType port_, List<dynamic> that) =>
-      wasmModule.wire_fallback_key__method__VodozemacAccount(port_, that);
+  dynamic /* List<dynamic> */ wire_fallback_key__method__VodozemacAccount(List<dynamic> that) =>
+      wasmModule.wire_fallback_key__method__VodozemacAccount(that);
 
   void wire_sign__method__VodozemacAccount(NativePortType port_, List<dynamic> that, String message) =>
       wasmModule.wire_sign__method__VodozemacAccount(port_, that, message);

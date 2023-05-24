@@ -8,7 +8,6 @@ import 'dart:async';
 import 'package:meta/meta.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
 import 'package:uuid/uuid.dart';
-import 'ffi.io.dart' if (dart.library.html) 'ffi.web.dart';
 import 'bridge_generated.io.dart' if (dart.library.html) 'bridge_generated.web.dart';
 
 class VodozemacBindingsDartImpl implements VodozemacBindingsDart {
@@ -20,10 +19,10 @@ class VodozemacBindingsDartImpl implements VodozemacBindingsDart {
   factory VodozemacBindingsDartImpl.wasm(FutureOr<WasmModule> module) =>
       VodozemacBindingsDartImpl(module as ExternalLibrary);
   VodozemacBindingsDartImpl.raw(this._platform);
-  Future<int> versionMethodVodozemacMegolmSessionConfig({required VodozemacMegolmSessionConfig that, dynamic hint}) {
+  int versionMethodVodozemacMegolmSessionConfig({required VodozemacMegolmSessionConfig that, dynamic hint}) {
     var arg0 = _platform.api2wire_box_autoadd_vodozemac_megolm_session_config(that);
-    return _platform.executeNormal(FlutterRustBridgeTask(
-      callFfi: (port_) => _platform.inner.wire_version__method__VodozemacMegolmSessionConfig(port_, arg0),
+    return _platform.executeSync(FlutterRustBridgeSyncTask(
+      callFfi: () => _platform.inner.wire_version__method__VodozemacMegolmSessionConfig(arg0),
       parseSuccessData: _wire2api_u8,
       constMeta: kVersionMethodVodozemacMegolmSessionConfigConstMeta,
       argValues: [that],
@@ -37,10 +36,10 @@ class VodozemacBindingsDartImpl implements VodozemacBindingsDart {
         argNames: ["that"],
       );
 
-  Future<VodozemacMegolmSessionConfig> version1StaticMethodVodozemacMegolmSessionConfig({dynamic hint}) {
-    return _platform.executeNormal(FlutterRustBridgeTask(
-      callFfi: (port_) => _platform.inner.wire_version_1__static_method__VodozemacMegolmSessionConfig(port_),
-      parseSuccessData: (d) => _wire2api_vodozemac_megolm_session_config(d),
+  VodozemacMegolmSessionConfig version1StaticMethodVodozemacMegolmSessionConfig({dynamic hint}) {
+    return _platform.executeSync(FlutterRustBridgeSyncTask(
+      callFfi: () => _platform.inner.wire_version_1__static_method__VodozemacMegolmSessionConfig(),
+      parseSuccessData: _wire2api_vodozemac_megolm_session_config,
       constMeta: kVersion1StaticMethodVodozemacMegolmSessionConfigConstMeta,
       argValues: [],
       hint: hint,
@@ -53,10 +52,10 @@ class VodozemacBindingsDartImpl implements VodozemacBindingsDart {
         argNames: [],
       );
 
-  Future<VodozemacMegolmSessionConfig> version2StaticMethodVodozemacMegolmSessionConfig({dynamic hint}) {
-    return _platform.executeNormal(FlutterRustBridgeTask(
-      callFfi: (port_) => _platform.inner.wire_version_2__static_method__VodozemacMegolmSessionConfig(port_),
-      parseSuccessData: (d) => _wire2api_vodozemac_megolm_session_config(d),
+  VodozemacMegolmSessionConfig version2StaticMethodVodozemacMegolmSessionConfig({dynamic hint}) {
+    return _platform.executeSync(FlutterRustBridgeSyncTask(
+      callFfi: () => _platform.inner.wire_version_2__static_method__VodozemacMegolmSessionConfig(),
+      parseSuccessData: _wire2api_vodozemac_megolm_session_config,
       constMeta: kVersion2StaticMethodVodozemacMegolmSessionConfigConstMeta,
       argValues: [],
       hint: hint,
@@ -69,10 +68,10 @@ class VodozemacBindingsDartImpl implements VodozemacBindingsDart {
         argNames: [],
       );
 
-  Future<VodozemacMegolmSessionConfig> defStaticMethodVodozemacMegolmSessionConfig({dynamic hint}) {
-    return _platform.executeNormal(FlutterRustBridgeTask(
-      callFfi: (port_) => _platform.inner.wire_def__static_method__VodozemacMegolmSessionConfig(port_),
-      parseSuccessData: (d) => _wire2api_vodozemac_megolm_session_config(d),
+  VodozemacMegolmSessionConfig defStaticMethodVodozemacMegolmSessionConfig({dynamic hint}) {
+    return _platform.executeSync(FlutterRustBridgeSyncTask(
+      callFfi: () => _platform.inner.wire_def__static_method__VodozemacMegolmSessionConfig(),
+      parseSuccessData: _wire2api_vodozemac_megolm_session_config,
       constMeta: kDefStaticMethodVodozemacMegolmSessionConfigConstMeta,
       argValues: [],
       hint: hint,
@@ -103,10 +102,10 @@ class VodozemacBindingsDartImpl implements VodozemacBindingsDart {
         argNames: ["config"],
       );
 
-  Future<String> sessionIdMethodVodozemacGroupSession({required VodozemacGroupSession that, dynamic hint}) {
+  String sessionIdMethodVodozemacGroupSession({required VodozemacGroupSession that, dynamic hint}) {
     var arg0 = _platform.api2wire_box_autoadd_vodozemac_group_session(that);
-    return _platform.executeNormal(FlutterRustBridgeTask(
-      callFfi: (port_) => _platform.inner.wire_session_id__method__VodozemacGroupSession(port_, arg0),
+    return _platform.executeSync(FlutterRustBridgeSyncTask(
+      callFfi: () => _platform.inner.wire_session_id__method__VodozemacGroupSession(arg0),
       parseSuccessData: _wire2api_String,
       constMeta: kSessionIdMethodVodozemacGroupSessionConstMeta,
       argValues: [that],
@@ -120,10 +119,10 @@ class VodozemacBindingsDartImpl implements VodozemacBindingsDart {
         argNames: ["that"],
       );
 
-  Future<int> messageIndexMethodVodozemacGroupSession({required VodozemacGroupSession that, dynamic hint}) {
+  int messageIndexMethodVodozemacGroupSession({required VodozemacGroupSession that, dynamic hint}) {
     var arg0 = _platform.api2wire_box_autoadd_vodozemac_group_session(that);
-    return _platform.executeNormal(FlutterRustBridgeTask(
-      callFfi: (port_) => _platform.inner.wire_message_index__method__VodozemacGroupSession(port_, arg0),
+    return _platform.executeSync(FlutterRustBridgeSyncTask(
+      callFfi: () => _platform.inner.wire_message_index__method__VodozemacGroupSession(arg0),
       parseSuccessData: _wire2api_u32,
       constMeta: kMessageIndexMethodVodozemacGroupSessionConstMeta,
       argValues: [that],
@@ -250,12 +249,12 @@ class VodozemacBindingsDartImpl implements VodozemacBindingsDart {
         argNames: ["pickle", "pickleKey"],
       );
 
-  Future<VodozemacInboundGroupSession> toInboundMethodVodozemacGroupSession(
+  VodozemacInboundGroupSession toInboundMethodVodozemacGroupSession(
       {required VodozemacGroupSession that, dynamic hint}) {
     var arg0 = _platform.api2wire_box_autoadd_vodozemac_group_session(that);
-    return _platform.executeNormal(FlutterRustBridgeTask(
-      callFfi: (port_) => _platform.inner.wire_to_inbound__method__VodozemacGroupSession(port_, arg0),
-      parseSuccessData: (d) => _wire2api_vodozemac_inbound_group_session(d),
+    return _platform.executeSync(FlutterRustBridgeSyncTask(
+      callFfi: () => _platform.inner.wire_to_inbound__method__VodozemacGroupSession(arg0),
+      parseSuccessData: _wire2api_vodozemac_inbound_group_session,
       constMeta: kToInboundMethodVodozemacGroupSessionConstMeta,
       argValues: [that],
       hint: hint,
@@ -268,13 +267,13 @@ class VodozemacBindingsDartImpl implements VodozemacBindingsDart {
         argNames: ["that"],
       );
 
-  Future<VodozemacInboundGroupSession> newStaticMethodVodozemacInboundGroupSession(
+  VodozemacInboundGroupSession newStaticMethodVodozemacInboundGroupSession(
       {required String sessionKey, required VodozemacMegolmSessionConfig config, dynamic hint}) {
     var arg0 = _platform.api2wire_String(sessionKey);
     var arg1 = _platform.api2wire_box_autoadd_vodozemac_megolm_session_config(config);
-    return _platform.executeNormal(FlutterRustBridgeTask(
-      callFfi: (port_) => _platform.inner.wire_new__static_method__VodozemacInboundGroupSession(port_, arg0, arg1),
-      parseSuccessData: (d) => _wire2api_vodozemac_inbound_group_session(d),
+    return _platform.executeSync(FlutterRustBridgeSyncTask(
+      callFfi: () => _platform.inner.wire_new__static_method__VodozemacInboundGroupSession(arg0, arg1),
+      parseSuccessData: _wire2api_vodozemac_inbound_group_session,
       constMeta: kNewStaticMethodVodozemacInboundGroupSessionConstMeta,
       argValues: [sessionKey, config],
       hint: hint,
@@ -287,11 +286,10 @@ class VodozemacBindingsDartImpl implements VodozemacBindingsDart {
         argNames: ["sessionKey", "config"],
       );
 
-  Future<String> sessionIdMethodVodozemacInboundGroupSession(
-      {required VodozemacInboundGroupSession that, dynamic hint}) {
+  String sessionIdMethodVodozemacInboundGroupSession({required VodozemacInboundGroupSession that, dynamic hint}) {
     var arg0 = _platform.api2wire_box_autoadd_vodozemac_inbound_group_session(that);
-    return _platform.executeNormal(FlutterRustBridgeTask(
-      callFfi: (port_) => _platform.inner.wire_session_id__method__VodozemacInboundGroupSession(port_, arg0),
+    return _platform.executeSync(FlutterRustBridgeSyncTask(
+      callFfi: () => _platform.inner.wire_session_id__method__VodozemacInboundGroupSession(arg0),
       parseSuccessData: _wire2api_String,
       constMeta: kSessionIdMethodVodozemacInboundGroupSessionConstMeta,
       argValues: [that],
@@ -305,11 +303,10 @@ class VodozemacBindingsDartImpl implements VodozemacBindingsDart {
         argNames: ["that"],
       );
 
-  Future<int> firstKnownIndexMethodVodozemacInboundGroupSession(
-      {required VodozemacInboundGroupSession that, dynamic hint}) {
+  int firstKnownIndexMethodVodozemacInboundGroupSession({required VodozemacInboundGroupSession that, dynamic hint}) {
     var arg0 = _platform.api2wire_box_autoadd_vodozemac_inbound_group_session(that);
-    return _platform.executeNormal(FlutterRustBridgeTask(
-      callFfi: (port_) => _platform.inner.wire_first_known_index__method__VodozemacInboundGroupSession(port_, arg0),
+    return _platform.executeSync(FlutterRustBridgeSyncTask(
+      callFfi: () => _platform.inner.wire_first_known_index__method__VodozemacInboundGroupSession(arg0),
       parseSuccessData: _wire2api_u32,
       constMeta: kFirstKnownIndexMethodVodozemacInboundGroupSessionConstMeta,
       argValues: [that],
@@ -402,13 +399,13 @@ class VodozemacBindingsDartImpl implements VodozemacBindingsDart {
         argNames: ["pickle", "pickleKey"],
       );
 
-  Future<VodozemacInboundGroupSession> importStaticMethodVodozemacInboundGroupSession(
+  VodozemacInboundGroupSession importStaticMethodVodozemacInboundGroupSession(
       {required String sessionKey, required VodozemacMegolmSessionConfig config, dynamic hint}) {
     var arg0 = _platform.api2wire_String(sessionKey);
     var arg1 = _platform.api2wire_box_autoadd_vodozemac_megolm_session_config(config);
-    return _platform.executeNormal(FlutterRustBridgeTask(
-      callFfi: (port_) => _platform.inner.wire_import__static_method__VodozemacInboundGroupSession(port_, arg0, arg1),
-      parseSuccessData: (d) => _wire2api_vodozemac_inbound_group_session(d),
+    return _platform.executeSync(FlutterRustBridgeSyncTask(
+      callFfi: () => _platform.inner.wire_import__static_method__VodozemacInboundGroupSession(arg0, arg1),
+      parseSuccessData: _wire2api_vodozemac_inbound_group_session,
       constMeta: kImportStaticMethodVodozemacInboundGroupSessionConstMeta,
       argValues: [sessionKey, config],
       hint: hint,
@@ -421,12 +418,11 @@ class VodozemacBindingsDartImpl implements VodozemacBindingsDart {
         argNames: ["sessionKey", "config"],
       );
 
-  Future<String> exportAtFirstKnownIndexMethodVodozemacInboundGroupSession(
+  String exportAtFirstKnownIndexMethodVodozemacInboundGroupSession(
       {required VodozemacInboundGroupSession that, dynamic hint}) {
     var arg0 = _platform.api2wire_box_autoadd_vodozemac_inbound_group_session(that);
-    return _platform.executeNormal(FlutterRustBridgeTask(
-      callFfi: (port_) =>
-          _platform.inner.wire_export_at_first_known_index__method__VodozemacInboundGroupSession(port_, arg0),
+    return _platform.executeSync(FlutterRustBridgeSyncTask(
+      callFfi: () => _platform.inner.wire_export_at_first_known_index__method__VodozemacInboundGroupSession(arg0),
       parseSuccessData: _wire2api_String,
       constMeta: kExportAtFirstKnownIndexMethodVodozemacInboundGroupSessionConstMeta,
       argValues: [that],
@@ -440,12 +436,12 @@ class VodozemacBindingsDartImpl implements VodozemacBindingsDart {
         argNames: ["that"],
       );
 
-  Future<String?> exportAtMethodVodozemacInboundGroupSession(
+  String? exportAtMethodVodozemacInboundGroupSession(
       {required VodozemacInboundGroupSession that, required int index, dynamic hint}) {
     var arg0 = _platform.api2wire_box_autoadd_vodozemac_inbound_group_session(that);
     var arg1 = api2wire_u32(index);
-    return _platform.executeNormal(FlutterRustBridgeTask(
-      callFfi: (port_) => _platform.inner.wire_export_at__method__VodozemacInboundGroupSession(port_, arg0, arg1),
+    return _platform.executeSync(FlutterRustBridgeSyncTask(
+      callFfi: () => _platform.inner.wire_export_at__method__VodozemacInboundGroupSession(arg0, arg1),
       parseSuccessData: _wire2api_opt_String,
       constMeta: kExportAtMethodVodozemacInboundGroupSessionConstMeta,
       argValues: [that, index],
@@ -459,10 +455,10 @@ class VodozemacBindingsDartImpl implements VodozemacBindingsDart {
         argNames: ["that", "index"],
       );
 
-  Future<int> versionMethodVodozemacOlmSessionConfig({required VodozemacOlmSessionConfig that, dynamic hint}) {
+  int versionMethodVodozemacOlmSessionConfig({required VodozemacOlmSessionConfig that, dynamic hint}) {
     var arg0 = _platform.api2wire_box_autoadd_vodozemac_olm_session_config(that);
-    return _platform.executeNormal(FlutterRustBridgeTask(
-      callFfi: (port_) => _platform.inner.wire_version__method__VodozemacOlmSessionConfig(port_, arg0),
+    return _platform.executeSync(FlutterRustBridgeSyncTask(
+      callFfi: () => _platform.inner.wire_version__method__VodozemacOlmSessionConfig(arg0),
       parseSuccessData: _wire2api_u8,
       constMeta: kVersionMethodVodozemacOlmSessionConfigConstMeta,
       argValues: [that],
@@ -476,10 +472,10 @@ class VodozemacBindingsDartImpl implements VodozemacBindingsDart {
         argNames: ["that"],
       );
 
-  Future<VodozemacOlmSessionConfig> version1StaticMethodVodozemacOlmSessionConfig({dynamic hint}) {
-    return _platform.executeNormal(FlutterRustBridgeTask(
-      callFfi: (port_) => _platform.inner.wire_version_1__static_method__VodozemacOlmSessionConfig(port_),
-      parseSuccessData: (d) => _wire2api_vodozemac_olm_session_config(d),
+  VodozemacOlmSessionConfig version1StaticMethodVodozemacOlmSessionConfig({dynamic hint}) {
+    return _platform.executeSync(FlutterRustBridgeSyncTask(
+      callFfi: () => _platform.inner.wire_version_1__static_method__VodozemacOlmSessionConfig(),
+      parseSuccessData: _wire2api_vodozemac_olm_session_config,
       constMeta: kVersion1StaticMethodVodozemacOlmSessionConfigConstMeta,
       argValues: [],
       hint: hint,
@@ -492,10 +488,10 @@ class VodozemacBindingsDartImpl implements VodozemacBindingsDart {
         argNames: [],
       );
 
-  Future<VodozemacOlmSessionConfig> version2StaticMethodVodozemacOlmSessionConfig({dynamic hint}) {
-    return _platform.executeNormal(FlutterRustBridgeTask(
-      callFfi: (port_) => _platform.inner.wire_version_2__static_method__VodozemacOlmSessionConfig(port_),
-      parseSuccessData: (d) => _wire2api_vodozemac_olm_session_config(d),
+  VodozemacOlmSessionConfig version2StaticMethodVodozemacOlmSessionConfig({dynamic hint}) {
+    return _platform.executeSync(FlutterRustBridgeSyncTask(
+      callFfi: () => _platform.inner.wire_version_2__static_method__VodozemacOlmSessionConfig(),
+      parseSuccessData: _wire2api_vodozemac_olm_session_config,
       constMeta: kVersion2StaticMethodVodozemacOlmSessionConfigConstMeta,
       argValues: [],
       hint: hint,
@@ -508,10 +504,10 @@ class VodozemacBindingsDartImpl implements VodozemacBindingsDart {
         argNames: [],
       );
 
-  Future<VodozemacOlmSessionConfig> defStaticMethodVodozemacOlmSessionConfig({dynamic hint}) {
-    return _platform.executeNormal(FlutterRustBridgeTask(
-      callFfi: (port_) => _platform.inner.wire_def__static_method__VodozemacOlmSessionConfig(port_),
-      parseSuccessData: (d) => _wire2api_vodozemac_olm_session_config(d),
+  VodozemacOlmSessionConfig defStaticMethodVodozemacOlmSessionConfig({dynamic hint}) {
+    return _platform.executeSync(FlutterRustBridgeSyncTask(
+      callFfi: () => _platform.inner.wire_def__static_method__VodozemacOlmSessionConfig(),
+      parseSuccessData: _wire2api_vodozemac_olm_session_config,
       constMeta: kDefStaticMethodVodozemacOlmSessionConfigConstMeta,
       argValues: [],
       hint: hint,
@@ -524,12 +520,11 @@ class VodozemacBindingsDartImpl implements VodozemacBindingsDart {
         argNames: [],
       );
 
-  Future<VodozemacEd25519Signature> fromSliceStaticMethodVodozemacEd25519Signature(
-      {required U8Array64 bytes, dynamic hint}) {
+  VodozemacEd25519Signature fromSliceStaticMethodVodozemacEd25519Signature({required U8Array64 bytes, dynamic hint}) {
     var arg0 = _platform.api2wire_u8_array_64(bytes);
-    return _platform.executeNormal(FlutterRustBridgeTask(
-      callFfi: (port_) => _platform.inner.wire_from_slice__static_method__VodozemacEd25519Signature(port_, arg0),
-      parseSuccessData: (d) => _wire2api_vodozemac_ed_25519_signature(d),
+    return _platform.executeSync(FlutterRustBridgeSyncTask(
+      callFfi: () => _platform.inner.wire_from_slice__static_method__VodozemacEd25519Signature(arg0),
+      parseSuccessData: _wire2api_vodozemac_ed_25519_signature,
       constMeta: kFromSliceStaticMethodVodozemacEd25519SignatureConstMeta,
       argValues: [bytes],
       hint: hint,
@@ -542,12 +537,11 @@ class VodozemacBindingsDartImpl implements VodozemacBindingsDart {
         argNames: ["bytes"],
       );
 
-  Future<VodozemacEd25519Signature> fromBase64StaticMethodVodozemacEd25519Signature(
-      {required String signature, dynamic hint}) {
+  VodozemacEd25519Signature fromBase64StaticMethodVodozemacEd25519Signature({required String signature, dynamic hint}) {
     var arg0 = _platform.api2wire_String(signature);
-    return _platform.executeNormal(FlutterRustBridgeTask(
-      callFfi: (port_) => _platform.inner.wire_from_base64__static_method__VodozemacEd25519Signature(port_, arg0),
-      parseSuccessData: (d) => _wire2api_vodozemac_ed_25519_signature(d),
+    return _platform.executeSync(FlutterRustBridgeSyncTask(
+      callFfi: () => _platform.inner.wire_from_base64__static_method__VodozemacEd25519Signature(arg0),
+      parseSuccessData: _wire2api_vodozemac_ed_25519_signature,
       constMeta: kFromBase64StaticMethodVodozemacEd25519SignatureConstMeta,
       argValues: [signature],
       hint: hint,
@@ -560,10 +554,10 @@ class VodozemacBindingsDartImpl implements VodozemacBindingsDart {
         argNames: ["signature"],
       );
 
-  Future<String> toBase64MethodVodozemacEd25519Signature({required VodozemacEd25519Signature that, dynamic hint}) {
+  String toBase64MethodVodozemacEd25519Signature({required VodozemacEd25519Signature that, dynamic hint}) {
     var arg0 = _platform.api2wire_box_autoadd_vodozemac_ed_25519_signature(that);
-    return _platform.executeNormal(FlutterRustBridgeTask(
-      callFfi: (port_) => _platform.inner.wire_to_base64__method__VodozemacEd25519Signature(port_, arg0),
+    return _platform.executeSync(FlutterRustBridgeSyncTask(
+      callFfi: () => _platform.inner.wire_to_base64__method__VodozemacEd25519Signature(arg0),
       parseSuccessData: _wire2api_String,
       constMeta: kToBase64MethodVodozemacEd25519SignatureConstMeta,
       argValues: [that],
@@ -577,10 +571,10 @@ class VodozemacBindingsDartImpl implements VodozemacBindingsDart {
         argNames: ["that"],
       );
 
-  Future<U8Array64> toBytesMethodVodozemacEd25519Signature({required VodozemacEd25519Signature that, dynamic hint}) {
+  U8Array64 toBytesMethodVodozemacEd25519Signature({required VodozemacEd25519Signature that, dynamic hint}) {
     var arg0 = _platform.api2wire_box_autoadd_vodozemac_ed_25519_signature(that);
-    return _platform.executeNormal(FlutterRustBridgeTask(
-      callFfi: (port_) => _platform.inner.wire_to_bytes__method__VodozemacEd25519Signature(port_, arg0),
+    return _platform.executeSync(FlutterRustBridgeSyncTask(
+      callFfi: () => _platform.inner.wire_to_bytes__method__VodozemacEd25519Signature(arg0),
       parseSuccessData: _wire2api_u8_array_64,
       constMeta: kToBytesMethodVodozemacEd25519SignatureConstMeta,
       argValues: [that],
@@ -594,12 +588,11 @@ class VodozemacBindingsDartImpl implements VodozemacBindingsDart {
         argNames: ["that"],
       );
 
-  Future<VodozemacEd25519PublicKey> fromSliceStaticMethodVodozemacEd25519PublicKey(
-      {required U8Array32 bytes, dynamic hint}) {
+  VodozemacEd25519PublicKey fromSliceStaticMethodVodozemacEd25519PublicKey({required U8Array32 bytes, dynamic hint}) {
     var arg0 = _platform.api2wire_u8_array_32(bytes);
-    return _platform.executeNormal(FlutterRustBridgeTask(
-      callFfi: (port_) => _platform.inner.wire_from_slice__static_method__VodozemacEd25519PublicKey(port_, arg0),
-      parseSuccessData: (d) => _wire2api_vodozemac_ed_25519_public_key(d),
+    return _platform.executeSync(FlutterRustBridgeSyncTask(
+      callFfi: () => _platform.inner.wire_from_slice__static_method__VodozemacEd25519PublicKey(arg0),
+      parseSuccessData: _wire2api_vodozemac_ed_25519_public_key,
       constMeta: kFromSliceStaticMethodVodozemacEd25519PublicKeyConstMeta,
       argValues: [bytes],
       hint: hint,
@@ -612,10 +605,10 @@ class VodozemacBindingsDartImpl implements VodozemacBindingsDart {
         argNames: ["bytes"],
       );
 
-  Future<U8Array32> asBytesMethodVodozemacEd25519PublicKey({required VodozemacEd25519PublicKey that, dynamic hint}) {
+  U8Array32 asBytesMethodVodozemacEd25519PublicKey({required VodozemacEd25519PublicKey that, dynamic hint}) {
     var arg0 = _platform.api2wire_box_autoadd_vodozemac_ed_25519_public_key(that);
-    return _platform.executeNormal(FlutterRustBridgeTask(
-      callFfi: (port_) => _platform.inner.wire_as_bytes__method__VodozemacEd25519PublicKey(port_, arg0),
+    return _platform.executeSync(FlutterRustBridgeSyncTask(
+      callFfi: () => _platform.inner.wire_as_bytes__method__VodozemacEd25519PublicKey(arg0),
       parseSuccessData: _wire2api_u8_array_32,
       constMeta: kAsBytesMethodVodozemacEd25519PublicKeyConstMeta,
       argValues: [that],
@@ -629,12 +622,11 @@ class VodozemacBindingsDartImpl implements VodozemacBindingsDart {
         argNames: ["that"],
       );
 
-  Future<VodozemacEd25519PublicKey> fromBase64StaticMethodVodozemacEd25519PublicKey(
-      {required String base64Key, dynamic hint}) {
+  VodozemacEd25519PublicKey fromBase64StaticMethodVodozemacEd25519PublicKey({required String base64Key, dynamic hint}) {
     var arg0 = _platform.api2wire_String(base64Key);
-    return _platform.executeNormal(FlutterRustBridgeTask(
-      callFfi: (port_) => _platform.inner.wire_from_base64__static_method__VodozemacEd25519PublicKey(port_, arg0),
-      parseSuccessData: (d) => _wire2api_vodozemac_ed_25519_public_key(d),
+    return _platform.executeSync(FlutterRustBridgeSyncTask(
+      callFfi: () => _platform.inner.wire_from_base64__static_method__VodozemacEd25519PublicKey(arg0),
+      parseSuccessData: _wire2api_vodozemac_ed_25519_public_key,
       constMeta: kFromBase64StaticMethodVodozemacEd25519PublicKeyConstMeta,
       argValues: [base64Key],
       hint: hint,
@@ -647,10 +639,10 @@ class VodozemacBindingsDartImpl implements VodozemacBindingsDart {
         argNames: ["base64Key"],
       );
 
-  Future<String> toBase64MethodVodozemacEd25519PublicKey({required VodozemacEd25519PublicKey that, dynamic hint}) {
+  String toBase64MethodVodozemacEd25519PublicKey({required VodozemacEd25519PublicKey that, dynamic hint}) {
     var arg0 = _platform.api2wire_box_autoadd_vodozemac_ed_25519_public_key(that);
-    return _platform.executeNormal(FlutterRustBridgeTask(
-      callFfi: (port_) => _platform.inner.wire_to_base64__method__VodozemacEd25519PublicKey(port_, arg0),
+    return _platform.executeSync(FlutterRustBridgeSyncTask(
+      callFfi: () => _platform.inner.wire_to_base64__method__VodozemacEd25519PublicKey(arg0),
       parseSuccessData: _wire2api_String,
       constMeta: kToBase64MethodVodozemacEd25519PublicKeyConstMeta,
       argValues: [that],
@@ -687,12 +679,12 @@ class VodozemacBindingsDartImpl implements VodozemacBindingsDart {
         argNames: ["that", "message", "signature"],
       );
 
-  Future<VodozemacCurve25519PublicKey> fromSliceStaticMethodVodozemacCurve25519PublicKey(
+  VodozemacCurve25519PublicKey fromSliceStaticMethodVodozemacCurve25519PublicKey(
       {required U8Array32 bytes, dynamic hint}) {
     var arg0 = _platform.api2wire_u8_array_32(bytes);
-    return _platform.executeNormal(FlutterRustBridgeTask(
-      callFfi: (port_) => _platform.inner.wire_from_slice__static_method__VodozemacCurve25519PublicKey(port_, arg0),
-      parseSuccessData: (d) => _wire2api_vodozemac_curve_25519_public_key(d),
+    return _platform.executeSync(FlutterRustBridgeSyncTask(
+      callFfi: () => _platform.inner.wire_from_slice__static_method__VodozemacCurve25519PublicKey(arg0),
+      parseSuccessData: _wire2api_vodozemac_curve_25519_public_key,
       constMeta: kFromSliceStaticMethodVodozemacCurve25519PublicKeyConstMeta,
       argValues: [bytes],
       hint: hint,
@@ -705,11 +697,10 @@ class VodozemacBindingsDartImpl implements VodozemacBindingsDart {
         argNames: ["bytes"],
       );
 
-  Future<U8Array32> asBytesMethodVodozemacCurve25519PublicKey(
-      {required VodozemacCurve25519PublicKey that, dynamic hint}) {
+  U8Array32 asBytesMethodVodozemacCurve25519PublicKey({required VodozemacCurve25519PublicKey that, dynamic hint}) {
     var arg0 = _platform.api2wire_box_autoadd_vodozemac_curve_25519_public_key(that);
-    return _platform.executeNormal(FlutterRustBridgeTask(
-      callFfi: (port_) => _platform.inner.wire_as_bytes__method__VodozemacCurve25519PublicKey(port_, arg0),
+    return _platform.executeSync(FlutterRustBridgeSyncTask(
+      callFfi: () => _platform.inner.wire_as_bytes__method__VodozemacCurve25519PublicKey(arg0),
       parseSuccessData: _wire2api_u8_array_32,
       constMeta: kAsBytesMethodVodozemacCurve25519PublicKeyConstMeta,
       argValues: [that],
@@ -723,12 +714,12 @@ class VodozemacBindingsDartImpl implements VodozemacBindingsDart {
         argNames: ["that"],
       );
 
-  Future<VodozemacCurve25519PublicKey> fromBase64StaticMethodVodozemacCurve25519PublicKey(
+  VodozemacCurve25519PublicKey fromBase64StaticMethodVodozemacCurve25519PublicKey(
       {required String base64Key, dynamic hint}) {
     var arg0 = _platform.api2wire_String(base64Key);
-    return _platform.executeNormal(FlutterRustBridgeTask(
-      callFfi: (port_) => _platform.inner.wire_from_base64__static_method__VodozemacCurve25519PublicKey(port_, arg0),
-      parseSuccessData: (d) => _wire2api_vodozemac_curve_25519_public_key(d),
+    return _platform.executeSync(FlutterRustBridgeSyncTask(
+      callFfi: () => _platform.inner.wire_from_base64__static_method__VodozemacCurve25519PublicKey(arg0),
+      parseSuccessData: _wire2api_vodozemac_curve_25519_public_key,
       constMeta: kFromBase64StaticMethodVodozemacCurve25519PublicKeyConstMeta,
       argValues: [base64Key],
       hint: hint,
@@ -741,11 +732,10 @@ class VodozemacBindingsDartImpl implements VodozemacBindingsDart {
         argNames: ["base64Key"],
       );
 
-  Future<String> toBase64MethodVodozemacCurve25519PublicKey(
-      {required VodozemacCurve25519PublicKey that, dynamic hint}) {
+  String toBase64MethodVodozemacCurve25519PublicKey({required VodozemacCurve25519PublicKey that, dynamic hint}) {
     var arg0 = _platform.api2wire_box_autoadd_vodozemac_curve_25519_public_key(that);
-    return _platform.executeNormal(FlutterRustBridgeTask(
-      callFfi: (port_) => _platform.inner.wire_to_base64__method__VodozemacCurve25519PublicKey(port_, arg0),
+    return _platform.executeSync(FlutterRustBridgeSyncTask(
+      callFfi: () => _platform.inner.wire_to_base64__method__VodozemacCurve25519PublicKey(arg0),
       parseSuccessData: _wire2api_String,
       constMeta: kToBase64MethodVodozemacCurve25519PublicKeyConstMeta,
       argValues: [that],
@@ -759,10 +749,10 @@ class VodozemacBindingsDartImpl implements VodozemacBindingsDart {
         argNames: ["that"],
       );
 
-  Future<int> messageTypeMethodVodozemacOlmMessage({required VodozemacOlmMessage that, dynamic hint}) {
+  int messageTypeMethodVodozemacOlmMessage({required VodozemacOlmMessage that, dynamic hint}) {
     var arg0 = _platform.api2wire_box_autoadd_vodozemac_olm_message(that);
-    return _platform.executeNormal(FlutterRustBridgeTask(
-      callFfi: (port_) => _platform.inner.wire_message_type__method__VodozemacOlmMessage(port_, arg0),
+    return _platform.executeSync(FlutterRustBridgeSyncTask(
+      callFfi: () => _platform.inner.wire_message_type__method__VodozemacOlmMessage(arg0),
       parseSuccessData: _wire2api_usize,
       constMeta: kMessageTypeMethodVodozemacOlmMessageConstMeta,
       argValues: [that],
@@ -776,10 +766,10 @@ class VodozemacBindingsDartImpl implements VodozemacBindingsDart {
         argNames: ["that"],
       );
 
-  Future<String> messageMethodVodozemacOlmMessage({required VodozemacOlmMessage that, dynamic hint}) {
+  String messageMethodVodozemacOlmMessage({required VodozemacOlmMessage that, dynamic hint}) {
     var arg0 = _platform.api2wire_box_autoadd_vodozemac_olm_message(that);
-    return _platform.executeNormal(FlutterRustBridgeTask(
-      callFfi: (port_) => _platform.inner.wire_message__method__VodozemacOlmMessage(port_, arg0),
+    return _platform.executeSync(FlutterRustBridgeSyncTask(
+      callFfi: () => _platform.inner.wire_message__method__VodozemacOlmMessage(arg0),
       parseSuccessData: _wire2api_String,
       constMeta: kMessageMethodVodozemacOlmMessageConstMeta,
       argValues: [that],
@@ -792,13 +782,13 @@ class VodozemacBindingsDartImpl implements VodozemacBindingsDart {
         argNames: ["that"],
       );
 
-  Future<VodozemacOlmMessage> fromPartsStaticMethodVodozemacOlmMessage(
+  VodozemacOlmMessage fromPartsStaticMethodVodozemacOlmMessage(
       {required int messageType, required String ciphertext, dynamic hint}) {
     var arg0 = api2wire_usize(messageType);
     var arg1 = _platform.api2wire_String(ciphertext);
-    return _platform.executeNormal(FlutterRustBridgeTask(
-      callFfi: (port_) => _platform.inner.wire_from_parts__static_method__VodozemacOlmMessage(port_, arg0, arg1),
-      parseSuccessData: (d) => _wire2api_vodozemac_olm_message(d),
+    return _platform.executeSync(FlutterRustBridgeSyncTask(
+      callFfi: () => _platform.inner.wire_from_parts__static_method__VodozemacOlmMessage(arg0, arg1),
+      parseSuccessData: _wire2api_vodozemac_olm_message,
       constMeta: kFromPartsStaticMethodVodozemacOlmMessageConstMeta,
       argValues: [messageType, ciphertext],
       hint: hint,
@@ -811,10 +801,10 @@ class VodozemacBindingsDartImpl implements VodozemacBindingsDart {
         argNames: ["messageType", "ciphertext"],
       );
 
-  Future<String> sessionIdMethodVodozemacSession({required VodozemacSession that, dynamic hint}) {
+  String sessionIdMethodVodozemacSession({required VodozemacSession that, dynamic hint}) {
     var arg0 = _platform.api2wire_box_autoadd_vodozemac_session(that);
-    return _platform.executeNormal(FlutterRustBridgeTask(
-      callFfi: (port_) => _platform.inner.wire_session_id__method__VodozemacSession(port_, arg0),
+    return _platform.executeSync(FlutterRustBridgeSyncTask(
+      callFfi: () => _platform.inner.wire_session_id__method__VodozemacSession(arg0),
       parseSuccessData: _wire2api_String,
       constMeta: kSessionIdMethodVodozemacSessionConstMeta,
       argValues: [that],
@@ -827,10 +817,10 @@ class VodozemacBindingsDartImpl implements VodozemacBindingsDart {
         argNames: ["that"],
       );
 
-  Future<bool> hasReceivedMessageMethodVodozemacSession({required VodozemacSession that, dynamic hint}) {
+  bool hasReceivedMessageMethodVodozemacSession({required VodozemacSession that, dynamic hint}) {
     var arg0 = _platform.api2wire_box_autoadd_vodozemac_session(that);
-    return _platform.executeNormal(FlutterRustBridgeTask(
-      callFfi: (port_) => _platform.inner.wire_has_received_message__method__VodozemacSession(port_, arg0),
+    return _platform.executeSync(FlutterRustBridgeSyncTask(
+      callFfi: () => _platform.inner.wire_has_received_message__method__VodozemacSession(arg0),
       parseSuccessData: _wire2api_bool,
       constMeta: kHasReceivedMessageMethodVodozemacSessionConstMeta,
       argValues: [that],
@@ -972,10 +962,10 @@ class VodozemacBindingsDartImpl implements VodozemacBindingsDart {
         argNames: [],
       );
 
-  Future<int> maxNumberOfOneTimeKeysMethodVodozemacAccount({required VodozemacAccount that, dynamic hint}) {
+  int maxNumberOfOneTimeKeysMethodVodozemacAccount({required VodozemacAccount that, dynamic hint}) {
     var arg0 = _platform.api2wire_box_autoadd_vodozemac_account(that);
-    return _platform.executeNormal(FlutterRustBridgeTask(
-      callFfi: (port_) => _platform.inner.wire_max_number_of_one_time_keys__method__VodozemacAccount(port_, arg0),
+    return _platform.executeSync(FlutterRustBridgeSyncTask(
+      callFfi: () => _platform.inner.wire_max_number_of_one_time_keys__method__VodozemacAccount(arg0),
       parseSuccessData: _wire2api_usize,
       constMeta: kMaxNumberOfOneTimeKeysMethodVodozemacAccountConstMeta,
       argValues: [that],
@@ -1006,10 +996,10 @@ class VodozemacBindingsDartImpl implements VodozemacBindingsDart {
         argNames: ["that"],
       );
 
-  Future<bool> forgetFallbackKeyMethodVodozemacAccount({required VodozemacAccount that, dynamic hint}) {
+  bool forgetFallbackKeyMethodVodozemacAccount({required VodozemacAccount that, dynamic hint}) {
     var arg0 = _platform.api2wire_box_autoadd_vodozemac_account(that);
-    return _platform.executeNormal(FlutterRustBridgeTask(
-      callFfi: (port_) => _platform.inner.wire_forget_fallback_key__method__VodozemacAccount(port_, arg0),
+    return _platform.executeSync(FlutterRustBridgeSyncTask(
+      callFfi: () => _platform.inner.wire_forget_fallback_key__method__VodozemacAccount(arg0),
       parseSuccessData: _wire2api_bool,
       constMeta: kForgetFallbackKeyMethodVodozemacAccountConstMeta,
       argValues: [that],
@@ -1042,10 +1032,10 @@ class VodozemacBindingsDartImpl implements VodozemacBindingsDart {
         argNames: ["that", "count"],
       );
 
-  Future<void> markKeysAsPublishedMethodVodozemacAccount({required VodozemacAccount that, dynamic hint}) {
+  void markKeysAsPublishedMethodVodozemacAccount({required VodozemacAccount that, dynamic hint}) {
     var arg0 = _platform.api2wire_box_autoadd_vodozemac_account(that);
-    return _platform.executeNormal(FlutterRustBridgeTask(
-      callFfi: (port_) => _platform.inner.wire_mark_keys_as_published__method__VodozemacAccount(port_, arg0),
+    return _platform.executeSync(FlutterRustBridgeSyncTask(
+      callFfi: () => _platform.inner.wire_mark_keys_as_published__method__VodozemacAccount(arg0),
       parseSuccessData: _wire2api_unit,
       constMeta: kMarkKeysAsPublishedMethodVodozemacAccountConstMeta,
       argValues: [that],
@@ -1059,11 +1049,11 @@ class VodozemacBindingsDartImpl implements VodozemacBindingsDart {
         argNames: ["that"],
       );
 
-  Future<VodozemacEd25519PublicKey> ed25519KeyMethodVodozemacAccount({required VodozemacAccount that, dynamic hint}) {
+  VodozemacEd25519PublicKey ed25519KeyMethodVodozemacAccount({required VodozemacAccount that, dynamic hint}) {
     var arg0 = _platform.api2wire_box_autoadd_vodozemac_account(that);
-    return _platform.executeNormal(FlutterRustBridgeTask(
-      callFfi: (port_) => _platform.inner.wire_ed25519_key__method__VodozemacAccount(port_, arg0),
-      parseSuccessData: (d) => _wire2api_vodozemac_ed_25519_public_key(d),
+    return _platform.executeSync(FlutterRustBridgeSyncTask(
+      callFfi: () => _platform.inner.wire_ed25519_key__method__VodozemacAccount(arg0),
+      parseSuccessData: _wire2api_vodozemac_ed_25519_public_key,
       constMeta: kEd25519KeyMethodVodozemacAccountConstMeta,
       argValues: [that],
       hint: hint,
@@ -1075,12 +1065,11 @@ class VodozemacBindingsDartImpl implements VodozemacBindingsDart {
         argNames: ["that"],
       );
 
-  Future<VodozemacCurve25519PublicKey> curve25519KeyMethodVodozemacAccount(
-      {required VodozemacAccount that, dynamic hint}) {
+  VodozemacCurve25519PublicKey curve25519KeyMethodVodozemacAccount({required VodozemacAccount that, dynamic hint}) {
     var arg0 = _platform.api2wire_box_autoadd_vodozemac_account(that);
-    return _platform.executeNormal(FlutterRustBridgeTask(
-      callFfi: (port_) => _platform.inner.wire_curve25519_key__method__VodozemacAccount(port_, arg0),
-      parseSuccessData: (d) => _wire2api_vodozemac_curve_25519_public_key(d),
+    return _platform.executeSync(FlutterRustBridgeSyncTask(
+      callFfi: () => _platform.inner.wire_curve25519_key__method__VodozemacAccount(arg0),
+      parseSuccessData: _wire2api_vodozemac_curve_25519_public_key,
       constMeta: kCurve25519KeyMethodVodozemacAccountConstMeta,
       argValues: [that],
       hint: hint,
@@ -1093,10 +1082,10 @@ class VodozemacBindingsDartImpl implements VodozemacBindingsDart {
         argNames: ["that"],
       );
 
-  Future<VodozemacIdentityKeys> identityKeysMethodVodozemacAccount({required VodozemacAccount that, dynamic hint}) {
+  VodozemacIdentityKeys identityKeysMethodVodozemacAccount({required VodozemacAccount that, dynamic hint}) {
     var arg0 = _platform.api2wire_box_autoadd_vodozemac_account(that);
-    return _platform.executeNormal(FlutterRustBridgeTask(
-      callFfi: (port_) => _platform.inner.wire_identity_keys__method__VodozemacAccount(port_, arg0),
+    return _platform.executeSync(FlutterRustBridgeSyncTask(
+      callFfi: () => _platform.inner.wire_identity_keys__method__VodozemacAccount(arg0),
       parseSuccessData: _wire2api_vodozemac_identity_keys,
       constMeta: kIdentityKeysMethodVodozemacAccountConstMeta,
       argValues: [that],
@@ -1110,10 +1099,10 @@ class VodozemacBindingsDartImpl implements VodozemacBindingsDart {
         argNames: ["that"],
       );
 
-  Future<List<VodozemacOneTimeKey>> oneTimeKeysMethodVodozemacAccount({required VodozemacAccount that, dynamic hint}) {
+  List<VodozemacOneTimeKey> oneTimeKeysMethodVodozemacAccount({required VodozemacAccount that, dynamic hint}) {
     var arg0 = _platform.api2wire_box_autoadd_vodozemac_account(that);
-    return _platform.executeNormal(FlutterRustBridgeTask(
-      callFfi: (port_) => _platform.inner.wire_one_time_keys__method__VodozemacAccount(port_, arg0),
+    return _platform.executeSync(FlutterRustBridgeSyncTask(
+      callFfi: () => _platform.inner.wire_one_time_keys__method__VodozemacAccount(arg0),
       parseSuccessData: _wire2api_list_vodozemac_one_time_key,
       constMeta: kOneTimeKeysMethodVodozemacAccountConstMeta,
       argValues: [that],
@@ -1127,10 +1116,10 @@ class VodozemacBindingsDartImpl implements VodozemacBindingsDart {
         argNames: ["that"],
       );
 
-  Future<List<VodozemacOneTimeKey>> fallbackKeyMethodVodozemacAccount({required VodozemacAccount that, dynamic hint}) {
+  List<VodozemacOneTimeKey> fallbackKeyMethodVodozemacAccount({required VodozemacAccount that, dynamic hint}) {
     var arg0 = _platform.api2wire_box_autoadd_vodozemac_account(that);
-    return _platform.executeNormal(FlutterRustBridgeTask(
-      callFfi: (port_) => _platform.inner.wire_fallback_key__method__VodozemacAccount(port_, arg0),
+    return _platform.executeSync(FlutterRustBridgeSyncTask(
+      callFfi: () => _platform.inner.wire_fallback_key__method__VodozemacAccount(arg0),
       parseSuccessData: _wire2api_list_vodozemac_one_time_key,
       constMeta: kFallbackKeyMethodVodozemacAccountConstMeta,
       argValues: [that],
@@ -1317,73 +1306,43 @@ class VodozemacBindingsDartImpl implements VodozemacBindingsDart {
 // Section: wire2api
 
   Curve25519PublicKey _wire2api_Curve25519PublicKey(dynamic raw) {
-    return Curve25519PublicKey.fromRaw(
-      raw[0],
-      raw[1],
-    );
+    return Curve25519PublicKey.fromRaw(raw[0], raw[1], this);
   }
 
   Ed25519PublicKey _wire2api_Ed25519PublicKey(dynamic raw) {
-    return Ed25519PublicKey.fromRaw(
-      raw[0],
-      raw[1],
-    );
+    return Ed25519PublicKey.fromRaw(raw[0], raw[1], this);
   }
 
   Ed25519Signature _wire2api_Ed25519Signature(dynamic raw) {
-    return Ed25519Signature.fromRaw(
-      raw[0],
-      raw[1],
-    );
+    return Ed25519Signature.fromRaw(raw[0], raw[1], this);
   }
 
   MegolmSessionConfig _wire2api_MegolmSessionConfig(dynamic raw) {
-    return MegolmSessionConfig.fromRaw(
-      raw[0],
-      raw[1],
-    );
+    return MegolmSessionConfig.fromRaw(raw[0], raw[1], this);
   }
 
   OlmMessage _wire2api_OlmMessage(dynamic raw) {
-    return OlmMessage.fromRaw(
-      raw[0],
-      raw[1],
-    );
+    return OlmMessage.fromRaw(raw[0], raw[1], this);
   }
 
   OlmSessionConfig _wire2api_OlmSessionConfig(dynamic raw) {
-    return OlmSessionConfig.fromRaw(
-      raw[0],
-      raw[1],
-    );
+    return OlmSessionConfig.fromRaw(raw[0], raw[1], this);
   }
 
   RwLockGroupSession _wire2api_RwLockGroupSession(dynamic raw) {
-    return RwLockGroupSession.fromRaw(
-      raw[0],
-      raw[1],
-    );
+    return RwLockGroupSession.fromRaw(raw[0], raw[1], this);
   }
 
   RwLockInboundGroupSession _wire2api_RwLockInboundGroupSession(dynamic raw) {
-    return RwLockInboundGroupSession.fromRaw(
-      raw[0],
-      raw[1],
-    );
+    return RwLockInboundGroupSession.fromRaw(raw[0], raw[1], this);
   }
 
   RwLockSession _wire2api_RwLockSession(dynamic raw) {
-    return RwLockSession.fromRaw(
-      raw[0],
-      raw[1],
-    );
+    return RwLockSession.fromRaw(raw[0], raw[1], this);
   }
 
   StdSyncRwLockAccount _wire2api_StdSyncRwLockAccount(dynamic raw) {
-    return StdSyncRwLockAccount.fromRaw(
-      raw[0],
-      raw[1],
-    );
+    return StdSyncRwLockAccount.fromRaw(raw[0], raw[1], this);
   }
 
   String _wire2api_String(dynamic raw) {
@@ -1434,6 +1393,7 @@ class VodozemacBindingsDartImpl implements VodozemacBindingsDart {
     final arr = raw as List<dynamic>;
     if (arr.length != 1) throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return VodozemacAccount(
+      bridge: this,
       account: _wire2api_StdSyncRwLockAccount(arr[0]),
     );
   }
@@ -1442,6 +1402,7 @@ class VodozemacBindingsDartImpl implements VodozemacBindingsDart {
     final arr = raw as List<dynamic>;
     if (arr.length != 1) throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return VodozemacCurve25519PublicKey(
+      bridge: this,
       key: _wire2api_Curve25519PublicKey(arr[0]),
     );
   }
@@ -1450,6 +1411,7 @@ class VodozemacBindingsDartImpl implements VodozemacBindingsDart {
     final arr = raw as List<dynamic>;
     if (arr.length != 1) throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return VodozemacEd25519PublicKey(
+      bridge: this,
       key: _wire2api_Ed25519PublicKey(arr[0]),
     );
   }
@@ -1458,6 +1420,7 @@ class VodozemacBindingsDartImpl implements VodozemacBindingsDart {
     final arr = raw as List<dynamic>;
     if (arr.length != 1) throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return VodozemacEd25519Signature(
+      bridge: this,
       signature: _wire2api_Ed25519Signature(arr[0]),
     );
   }
@@ -1466,6 +1429,7 @@ class VodozemacBindingsDartImpl implements VodozemacBindingsDart {
     final arr = raw as List<dynamic>;
     if (arr.length != 1) throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return VodozemacGroupSession(
+      bridge: this,
       session: _wire2api_RwLockGroupSession(arr[0]),
     );
   }
@@ -1483,6 +1447,7 @@ class VodozemacBindingsDartImpl implements VodozemacBindingsDart {
     final arr = raw as List<dynamic>;
     if (arr.length != 1) throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return VodozemacInboundGroupSession(
+      bridge: this,
       session: _wire2api_RwLockInboundGroupSession(arr[0]),
     );
   }
@@ -1491,6 +1456,7 @@ class VodozemacBindingsDartImpl implements VodozemacBindingsDart {
     final arr = raw as List<dynamic>;
     if (arr.length != 1) throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return VodozemacMegolmSessionConfig(
+      bridge: this,
       config: _wire2api_MegolmSessionConfig(arr[0]),
     );
   }
@@ -1499,6 +1465,7 @@ class VodozemacBindingsDartImpl implements VodozemacBindingsDart {
     final arr = raw as List<dynamic>;
     if (arr.length != 1) throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return VodozemacOlmMessage(
+      bridge: this,
       msg: _wire2api_OlmMessage(arr[0]),
     );
   }
@@ -1507,6 +1474,7 @@ class VodozemacBindingsDartImpl implements VodozemacBindingsDart {
     final arr = raw as List<dynamic>;
     if (arr.length != 1) throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return VodozemacOlmSessionConfig(
+      bridge: this,
       config: _wire2api_OlmSessionConfig(arr[0]),
     );
   }
@@ -1533,6 +1501,7 @@ class VodozemacBindingsDartImpl implements VodozemacBindingsDart {
     final arr = raw as List<dynamic>;
     if (arr.length != 1) throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return VodozemacSession(
+      bridge: this,
       session: _wire2api_RwLockSession(arr[0]),
     );
   }

@@ -8,7 +8,6 @@ import 'dart:async';
 import 'package:meta/meta.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
 import 'package:uuid/uuid.dart';
-import 'ffi.io.dart' if (dart.library.html) 'ffi.web.dart';
 import 'bridge_generated.dart';
 export 'bridge_generated.dart';
 import 'dart:ffi' as ffi;
@@ -438,64 +437,49 @@ class VodozemacBindingsDartWire implements FlutterRustBridgeWireBase {
       _lookup<ffi.NativeFunction<ffi.IntPtr Function(ffi.Pointer<ffi.Void>)>>('init_frb_dart_api_dl');
   late final _init_frb_dart_api_dl = _init_frb_dart_api_dlPtr.asFunction<int Function(ffi.Pointer<ffi.Void>)>();
 
-  void wire_version__method__VodozemacMegolmSessionConfig(
-    int port_,
+  WireSyncReturn wire_version__method__VodozemacMegolmSessionConfig(
     ffi.Pointer<wire_VodozemacMegolmSessionConfig> that,
   ) {
     return _wire_version__method__VodozemacMegolmSessionConfig(
-      port_,
       that,
     );
   }
 
   late final _wire_version__method__VodozemacMegolmSessionConfigPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_VodozemacMegolmSessionConfig>)>>(
+      _lookup<ffi.NativeFunction<WireSyncReturn Function(ffi.Pointer<wire_VodozemacMegolmSessionConfig>)>>(
           'wire_version__method__VodozemacMegolmSessionConfig');
   late final _wire_version__method__VodozemacMegolmSessionConfig =
       _wire_version__method__VodozemacMegolmSessionConfigPtr
-          .asFunction<void Function(int, ffi.Pointer<wire_VodozemacMegolmSessionConfig>)>();
+          .asFunction<WireSyncReturn Function(ffi.Pointer<wire_VodozemacMegolmSessionConfig>)>();
 
-  void wire_version_1__static_method__VodozemacMegolmSessionConfig(
-    int port_,
-  ) {
-    return _wire_version_1__static_method__VodozemacMegolmSessionConfig(
-      port_,
-    );
+  WireSyncReturn wire_version_1__static_method__VodozemacMegolmSessionConfig() {
+    return _wire_version_1__static_method__VodozemacMegolmSessionConfig();
   }
 
   late final _wire_version_1__static_method__VodozemacMegolmSessionConfigPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+      _lookup<ffi.NativeFunction<WireSyncReturn Function()>>(
           'wire_version_1__static_method__VodozemacMegolmSessionConfig');
   late final _wire_version_1__static_method__VodozemacMegolmSessionConfig =
-      _wire_version_1__static_method__VodozemacMegolmSessionConfigPtr.asFunction<void Function(int)>();
+      _wire_version_1__static_method__VodozemacMegolmSessionConfigPtr.asFunction<WireSyncReturn Function()>();
 
-  void wire_version_2__static_method__VodozemacMegolmSessionConfig(
-    int port_,
-  ) {
-    return _wire_version_2__static_method__VodozemacMegolmSessionConfig(
-      port_,
-    );
+  WireSyncReturn wire_version_2__static_method__VodozemacMegolmSessionConfig() {
+    return _wire_version_2__static_method__VodozemacMegolmSessionConfig();
   }
 
   late final _wire_version_2__static_method__VodozemacMegolmSessionConfigPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+      _lookup<ffi.NativeFunction<WireSyncReturn Function()>>(
           'wire_version_2__static_method__VodozemacMegolmSessionConfig');
   late final _wire_version_2__static_method__VodozemacMegolmSessionConfig =
-      _wire_version_2__static_method__VodozemacMegolmSessionConfigPtr.asFunction<void Function(int)>();
+      _wire_version_2__static_method__VodozemacMegolmSessionConfigPtr.asFunction<WireSyncReturn Function()>();
 
-  void wire_def__static_method__VodozemacMegolmSessionConfig(
-    int port_,
-  ) {
-    return _wire_def__static_method__VodozemacMegolmSessionConfig(
-      port_,
-    );
+  WireSyncReturn wire_def__static_method__VodozemacMegolmSessionConfig() {
+    return _wire_def__static_method__VodozemacMegolmSessionConfig();
   }
 
   late final _wire_def__static_method__VodozemacMegolmSessionConfigPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
-          'wire_def__static_method__VodozemacMegolmSessionConfig');
+      _lookup<ffi.NativeFunction<WireSyncReturn Function()>>('wire_def__static_method__VodozemacMegolmSessionConfig');
   late final _wire_def__static_method__VodozemacMegolmSessionConfig =
-      _wire_def__static_method__VodozemacMegolmSessionConfigPtr.asFunction<void Function(int)>();
+      _wire_def__static_method__VodozemacMegolmSessionConfigPtr.asFunction<WireSyncReturn Function()>();
 
   void wire_new__static_method__VodozemacGroupSession(
     int port_,
@@ -513,37 +497,33 @@ class VodozemacBindingsDartWire implements FlutterRustBridgeWireBase {
   late final _wire_new__static_method__VodozemacGroupSession = _wire_new__static_method__VodozemacGroupSessionPtr
       .asFunction<void Function(int, ffi.Pointer<wire_VodozemacMegolmSessionConfig>)>();
 
-  void wire_session_id__method__VodozemacGroupSession(
-    int port_,
+  WireSyncReturn wire_session_id__method__VodozemacGroupSession(
     ffi.Pointer<wire_VodozemacGroupSession> that,
   ) {
     return _wire_session_id__method__VodozemacGroupSession(
-      port_,
       that,
     );
   }
 
   late final _wire_session_id__method__VodozemacGroupSessionPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_VodozemacGroupSession>)>>(
+      _lookup<ffi.NativeFunction<WireSyncReturn Function(ffi.Pointer<wire_VodozemacGroupSession>)>>(
           'wire_session_id__method__VodozemacGroupSession');
   late final _wire_session_id__method__VodozemacGroupSession = _wire_session_id__method__VodozemacGroupSessionPtr
-      .asFunction<void Function(int, ffi.Pointer<wire_VodozemacGroupSession>)>();
+      .asFunction<WireSyncReturn Function(ffi.Pointer<wire_VodozemacGroupSession>)>();
 
-  void wire_message_index__method__VodozemacGroupSession(
-    int port_,
+  WireSyncReturn wire_message_index__method__VodozemacGroupSession(
     ffi.Pointer<wire_VodozemacGroupSession> that,
   ) {
     return _wire_message_index__method__VodozemacGroupSession(
-      port_,
       that,
     );
   }
 
   late final _wire_message_index__method__VodozemacGroupSessionPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_VodozemacGroupSession>)>>(
+      _lookup<ffi.NativeFunction<WireSyncReturn Function(ffi.Pointer<wire_VodozemacGroupSession>)>>(
           'wire_message_index__method__VodozemacGroupSession');
   late final _wire_message_index__method__VodozemacGroupSession = _wire_message_index__method__VodozemacGroupSessionPtr
-      .asFunction<void Function(int, ffi.Pointer<wire_VodozemacGroupSession>)>();
+      .asFunction<WireSyncReturn Function(ffi.Pointer<wire_VodozemacGroupSession>)>();
 
   void wire_session_config__method__VodozemacGroupSession(
     int port_,
@@ -657,29 +637,25 @@ class VodozemacBindingsDartWire implements FlutterRustBridgeWireBase {
       _wire_from_olm_pickle_encrypted__static_method__VodozemacGroupSessionPtr
           .asFunction<void Function(int, ffi.Pointer<wire_uint_8_list>, ffi.Pointer<wire_uint_8_list>)>();
 
-  void wire_to_inbound__method__VodozemacGroupSession(
-    int port_,
+  WireSyncReturn wire_to_inbound__method__VodozemacGroupSession(
     ffi.Pointer<wire_VodozemacGroupSession> that,
   ) {
     return _wire_to_inbound__method__VodozemacGroupSession(
-      port_,
       that,
     );
   }
 
   late final _wire_to_inbound__method__VodozemacGroupSessionPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_VodozemacGroupSession>)>>(
+      _lookup<ffi.NativeFunction<WireSyncReturn Function(ffi.Pointer<wire_VodozemacGroupSession>)>>(
           'wire_to_inbound__method__VodozemacGroupSession');
   late final _wire_to_inbound__method__VodozemacGroupSession = _wire_to_inbound__method__VodozemacGroupSessionPtr
-      .asFunction<void Function(int, ffi.Pointer<wire_VodozemacGroupSession>)>();
+      .asFunction<WireSyncReturn Function(ffi.Pointer<wire_VodozemacGroupSession>)>();
 
-  void wire_new__static_method__VodozemacInboundGroupSession(
-    int port_,
+  WireSyncReturn wire_new__static_method__VodozemacInboundGroupSession(
     ffi.Pointer<wire_uint_8_list> session_key,
     ffi.Pointer<wire_VodozemacMegolmSessionConfig> config,
   ) {
     return _wire_new__static_method__VodozemacInboundGroupSession(
-      port_,
       session_key,
       config,
     );
@@ -687,46 +663,41 @@ class VodozemacBindingsDartWire implements FlutterRustBridgeWireBase {
 
   late final _wire_new__static_method__VodozemacInboundGroupSessionPtr = _lookup<
           ffi.NativeFunction<
-              ffi.Void Function(
-                  ffi.Int64, ffi.Pointer<wire_uint_8_list>, ffi.Pointer<wire_VodozemacMegolmSessionConfig>)>>(
+              WireSyncReturn Function(ffi.Pointer<wire_uint_8_list>, ffi.Pointer<wire_VodozemacMegolmSessionConfig>)>>(
       'wire_new__static_method__VodozemacInboundGroupSession');
   late final _wire_new__static_method__VodozemacInboundGroupSession =
       _wire_new__static_method__VodozemacInboundGroupSessionPtr.asFunction<
-          void Function(int, ffi.Pointer<wire_uint_8_list>, ffi.Pointer<wire_VodozemacMegolmSessionConfig>)>();
+          WireSyncReturn Function(ffi.Pointer<wire_uint_8_list>, ffi.Pointer<wire_VodozemacMegolmSessionConfig>)>();
 
-  void wire_session_id__method__VodozemacInboundGroupSession(
-    int port_,
+  WireSyncReturn wire_session_id__method__VodozemacInboundGroupSession(
     ffi.Pointer<wire_VodozemacInboundGroupSession> that,
   ) {
     return _wire_session_id__method__VodozemacInboundGroupSession(
-      port_,
       that,
     );
   }
 
   late final _wire_session_id__method__VodozemacInboundGroupSessionPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_VodozemacInboundGroupSession>)>>(
+      _lookup<ffi.NativeFunction<WireSyncReturn Function(ffi.Pointer<wire_VodozemacInboundGroupSession>)>>(
           'wire_session_id__method__VodozemacInboundGroupSession');
   late final _wire_session_id__method__VodozemacInboundGroupSession =
       _wire_session_id__method__VodozemacInboundGroupSessionPtr
-          .asFunction<void Function(int, ffi.Pointer<wire_VodozemacInboundGroupSession>)>();
+          .asFunction<WireSyncReturn Function(ffi.Pointer<wire_VodozemacInboundGroupSession>)>();
 
-  void wire_first_known_index__method__VodozemacInboundGroupSession(
-    int port_,
+  WireSyncReturn wire_first_known_index__method__VodozemacInboundGroupSession(
     ffi.Pointer<wire_VodozemacInboundGroupSession> that,
   ) {
     return _wire_first_known_index__method__VodozemacInboundGroupSession(
-      port_,
       that,
     );
   }
 
   late final _wire_first_known_index__method__VodozemacInboundGroupSessionPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_VodozemacInboundGroupSession>)>>(
+      _lookup<ffi.NativeFunction<WireSyncReturn Function(ffi.Pointer<wire_VodozemacInboundGroupSession>)>>(
           'wire_first_known_index__method__VodozemacInboundGroupSession');
   late final _wire_first_known_index__method__VodozemacInboundGroupSession =
       _wire_first_known_index__method__VodozemacInboundGroupSessionPtr
-          .asFunction<void Function(int, ffi.Pointer<wire_VodozemacInboundGroupSession>)>();
+          .asFunction<WireSyncReturn Function(ffi.Pointer<wire_VodozemacInboundGroupSession>)>();
 
   void wire_decrypt__method__VodozemacInboundGroupSession(
     int port_,
@@ -808,13 +779,11 @@ class VodozemacBindingsDartWire implements FlutterRustBridgeWireBase {
       _wire_from_olm_pickle_encrypted__static_method__VodozemacInboundGroupSessionPtr
           .asFunction<void Function(int, ffi.Pointer<wire_uint_8_list>, ffi.Pointer<wire_uint_8_list>)>();
 
-  void wire_import__static_method__VodozemacInboundGroupSession(
-    int port_,
+  WireSyncReturn wire_import__static_method__VodozemacInboundGroupSession(
     ffi.Pointer<wire_uint_8_list> session_key,
     ffi.Pointer<wire_VodozemacMegolmSessionConfig> config,
   ) {
     return _wire_import__static_method__VodozemacInboundGroupSession(
-      port_,
       session_key,
       config,
     );
@@ -822,237 +791,202 @@ class VodozemacBindingsDartWire implements FlutterRustBridgeWireBase {
 
   late final _wire_import__static_method__VodozemacInboundGroupSessionPtr = _lookup<
           ffi.NativeFunction<
-              ffi.Void Function(
-                  ffi.Int64, ffi.Pointer<wire_uint_8_list>, ffi.Pointer<wire_VodozemacMegolmSessionConfig>)>>(
+              WireSyncReturn Function(ffi.Pointer<wire_uint_8_list>, ffi.Pointer<wire_VodozemacMegolmSessionConfig>)>>(
       'wire_import__static_method__VodozemacInboundGroupSession');
   late final _wire_import__static_method__VodozemacInboundGroupSession =
       _wire_import__static_method__VodozemacInboundGroupSessionPtr.asFunction<
-          void Function(int, ffi.Pointer<wire_uint_8_list>, ffi.Pointer<wire_VodozemacMegolmSessionConfig>)>();
+          WireSyncReturn Function(ffi.Pointer<wire_uint_8_list>, ffi.Pointer<wire_VodozemacMegolmSessionConfig>)>();
 
-  void wire_export_at_first_known_index__method__VodozemacInboundGroupSession(
-    int port_,
+  WireSyncReturn wire_export_at_first_known_index__method__VodozemacInboundGroupSession(
     ffi.Pointer<wire_VodozemacInboundGroupSession> that,
   ) {
     return _wire_export_at_first_known_index__method__VodozemacInboundGroupSession(
-      port_,
       that,
     );
   }
 
   late final _wire_export_at_first_known_index__method__VodozemacInboundGroupSessionPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_VodozemacInboundGroupSession>)>>(
+      _lookup<ffi.NativeFunction<WireSyncReturn Function(ffi.Pointer<wire_VodozemacInboundGroupSession>)>>(
           'wire_export_at_first_known_index__method__VodozemacInboundGroupSession');
   late final _wire_export_at_first_known_index__method__VodozemacInboundGroupSession =
       _wire_export_at_first_known_index__method__VodozemacInboundGroupSessionPtr
-          .asFunction<void Function(int, ffi.Pointer<wire_VodozemacInboundGroupSession>)>();
+          .asFunction<WireSyncReturn Function(ffi.Pointer<wire_VodozemacInboundGroupSession>)>();
 
-  void wire_export_at__method__VodozemacInboundGroupSession(
-    int port_,
+  WireSyncReturn wire_export_at__method__VodozemacInboundGroupSession(
     ffi.Pointer<wire_VodozemacInboundGroupSession> that,
     int index,
   ) {
     return _wire_export_at__method__VodozemacInboundGroupSession(
-      port_,
       that,
       index,
     );
   }
 
-  late final _wire_export_at__method__VodozemacInboundGroupSessionPtr = _lookup<
-          ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_VodozemacInboundGroupSession>, ffi.Uint32)>>(
-      'wire_export_at__method__VodozemacInboundGroupSession');
+  late final _wire_export_at__method__VodozemacInboundGroupSessionPtr =
+      _lookup<ffi.NativeFunction<WireSyncReturn Function(ffi.Pointer<wire_VodozemacInboundGroupSession>, ffi.Uint32)>>(
+          'wire_export_at__method__VodozemacInboundGroupSession');
   late final _wire_export_at__method__VodozemacInboundGroupSession =
       _wire_export_at__method__VodozemacInboundGroupSessionPtr
-          .asFunction<void Function(int, ffi.Pointer<wire_VodozemacInboundGroupSession>, int)>();
+          .asFunction<WireSyncReturn Function(ffi.Pointer<wire_VodozemacInboundGroupSession>, int)>();
 
-  void wire_version__method__VodozemacOlmSessionConfig(
-    int port_,
+  WireSyncReturn wire_version__method__VodozemacOlmSessionConfig(
     ffi.Pointer<wire_VodozemacOlmSessionConfig> that,
   ) {
     return _wire_version__method__VodozemacOlmSessionConfig(
-      port_,
       that,
     );
   }
 
   late final _wire_version__method__VodozemacOlmSessionConfigPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_VodozemacOlmSessionConfig>)>>(
+      _lookup<ffi.NativeFunction<WireSyncReturn Function(ffi.Pointer<wire_VodozemacOlmSessionConfig>)>>(
           'wire_version__method__VodozemacOlmSessionConfig');
   late final _wire_version__method__VodozemacOlmSessionConfig = _wire_version__method__VodozemacOlmSessionConfigPtr
-      .asFunction<void Function(int, ffi.Pointer<wire_VodozemacOlmSessionConfig>)>();
+      .asFunction<WireSyncReturn Function(ffi.Pointer<wire_VodozemacOlmSessionConfig>)>();
 
-  void wire_version_1__static_method__VodozemacOlmSessionConfig(
-    int port_,
-  ) {
-    return _wire_version_1__static_method__VodozemacOlmSessionConfig(
-      port_,
-    );
+  WireSyncReturn wire_version_1__static_method__VodozemacOlmSessionConfig() {
+    return _wire_version_1__static_method__VodozemacOlmSessionConfig();
   }
 
   late final _wire_version_1__static_method__VodozemacOlmSessionConfigPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+      _lookup<ffi.NativeFunction<WireSyncReturn Function()>>(
           'wire_version_1__static_method__VodozemacOlmSessionConfig');
   late final _wire_version_1__static_method__VodozemacOlmSessionConfig =
-      _wire_version_1__static_method__VodozemacOlmSessionConfigPtr.asFunction<void Function(int)>();
+      _wire_version_1__static_method__VodozemacOlmSessionConfigPtr.asFunction<WireSyncReturn Function()>();
 
-  void wire_version_2__static_method__VodozemacOlmSessionConfig(
-    int port_,
-  ) {
-    return _wire_version_2__static_method__VodozemacOlmSessionConfig(
-      port_,
-    );
+  WireSyncReturn wire_version_2__static_method__VodozemacOlmSessionConfig() {
+    return _wire_version_2__static_method__VodozemacOlmSessionConfig();
   }
 
   late final _wire_version_2__static_method__VodozemacOlmSessionConfigPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+      _lookup<ffi.NativeFunction<WireSyncReturn Function()>>(
           'wire_version_2__static_method__VodozemacOlmSessionConfig');
   late final _wire_version_2__static_method__VodozemacOlmSessionConfig =
-      _wire_version_2__static_method__VodozemacOlmSessionConfigPtr.asFunction<void Function(int)>();
+      _wire_version_2__static_method__VodozemacOlmSessionConfigPtr.asFunction<WireSyncReturn Function()>();
 
-  void wire_def__static_method__VodozemacOlmSessionConfig(
-    int port_,
-  ) {
-    return _wire_def__static_method__VodozemacOlmSessionConfig(
-      port_,
-    );
+  WireSyncReturn wire_def__static_method__VodozemacOlmSessionConfig() {
+    return _wire_def__static_method__VodozemacOlmSessionConfig();
   }
 
   late final _wire_def__static_method__VodozemacOlmSessionConfigPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('wire_def__static_method__VodozemacOlmSessionConfig');
+      _lookup<ffi.NativeFunction<WireSyncReturn Function()>>('wire_def__static_method__VodozemacOlmSessionConfig');
   late final _wire_def__static_method__VodozemacOlmSessionConfig =
-      _wire_def__static_method__VodozemacOlmSessionConfigPtr.asFunction<void Function(int)>();
+      _wire_def__static_method__VodozemacOlmSessionConfigPtr.asFunction<WireSyncReturn Function()>();
 
-  void wire_from_slice__static_method__VodozemacEd25519Signature(
-    int port_,
+  WireSyncReturn wire_from_slice__static_method__VodozemacEd25519Signature(
     ffi.Pointer<wire_uint_8_list> bytes,
   ) {
     return _wire_from_slice__static_method__VodozemacEd25519Signature(
-      port_,
       bytes,
     );
   }
 
   late final _wire_from_slice__static_method__VodozemacEd25519SignaturePtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_uint_8_list>)>>(
+      _lookup<ffi.NativeFunction<WireSyncReturn Function(ffi.Pointer<wire_uint_8_list>)>>(
           'wire_from_slice__static_method__VodozemacEd25519Signature');
   late final _wire_from_slice__static_method__VodozemacEd25519Signature =
       _wire_from_slice__static_method__VodozemacEd25519SignaturePtr
-          .asFunction<void Function(int, ffi.Pointer<wire_uint_8_list>)>();
+          .asFunction<WireSyncReturn Function(ffi.Pointer<wire_uint_8_list>)>();
 
-  void wire_from_base64__static_method__VodozemacEd25519Signature(
-    int port_,
+  WireSyncReturn wire_from_base64__static_method__VodozemacEd25519Signature(
     ffi.Pointer<wire_uint_8_list> signature,
   ) {
     return _wire_from_base64__static_method__VodozemacEd25519Signature(
-      port_,
       signature,
     );
   }
 
   late final _wire_from_base64__static_method__VodozemacEd25519SignaturePtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_uint_8_list>)>>(
+      _lookup<ffi.NativeFunction<WireSyncReturn Function(ffi.Pointer<wire_uint_8_list>)>>(
           'wire_from_base64__static_method__VodozemacEd25519Signature');
   late final _wire_from_base64__static_method__VodozemacEd25519Signature =
       _wire_from_base64__static_method__VodozemacEd25519SignaturePtr
-          .asFunction<void Function(int, ffi.Pointer<wire_uint_8_list>)>();
+          .asFunction<WireSyncReturn Function(ffi.Pointer<wire_uint_8_list>)>();
 
-  void wire_to_base64__method__VodozemacEd25519Signature(
-    int port_,
+  WireSyncReturn wire_to_base64__method__VodozemacEd25519Signature(
     ffi.Pointer<wire_VodozemacEd25519Signature> that,
   ) {
     return _wire_to_base64__method__VodozemacEd25519Signature(
-      port_,
       that,
     );
   }
 
   late final _wire_to_base64__method__VodozemacEd25519SignaturePtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_VodozemacEd25519Signature>)>>(
+      _lookup<ffi.NativeFunction<WireSyncReturn Function(ffi.Pointer<wire_VodozemacEd25519Signature>)>>(
           'wire_to_base64__method__VodozemacEd25519Signature');
   late final _wire_to_base64__method__VodozemacEd25519Signature = _wire_to_base64__method__VodozemacEd25519SignaturePtr
-      .asFunction<void Function(int, ffi.Pointer<wire_VodozemacEd25519Signature>)>();
+      .asFunction<WireSyncReturn Function(ffi.Pointer<wire_VodozemacEd25519Signature>)>();
 
-  void wire_to_bytes__method__VodozemacEd25519Signature(
-    int port_,
+  WireSyncReturn wire_to_bytes__method__VodozemacEd25519Signature(
     ffi.Pointer<wire_VodozemacEd25519Signature> that,
   ) {
     return _wire_to_bytes__method__VodozemacEd25519Signature(
-      port_,
       that,
     );
   }
 
   late final _wire_to_bytes__method__VodozemacEd25519SignaturePtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_VodozemacEd25519Signature>)>>(
+      _lookup<ffi.NativeFunction<WireSyncReturn Function(ffi.Pointer<wire_VodozemacEd25519Signature>)>>(
           'wire_to_bytes__method__VodozemacEd25519Signature');
   late final _wire_to_bytes__method__VodozemacEd25519Signature = _wire_to_bytes__method__VodozemacEd25519SignaturePtr
-      .asFunction<void Function(int, ffi.Pointer<wire_VodozemacEd25519Signature>)>();
+      .asFunction<WireSyncReturn Function(ffi.Pointer<wire_VodozemacEd25519Signature>)>();
 
-  void wire_from_slice__static_method__VodozemacEd25519PublicKey(
-    int port_,
+  WireSyncReturn wire_from_slice__static_method__VodozemacEd25519PublicKey(
     ffi.Pointer<wire_uint_8_list> bytes,
   ) {
     return _wire_from_slice__static_method__VodozemacEd25519PublicKey(
-      port_,
       bytes,
     );
   }
 
   late final _wire_from_slice__static_method__VodozemacEd25519PublicKeyPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_uint_8_list>)>>(
+      _lookup<ffi.NativeFunction<WireSyncReturn Function(ffi.Pointer<wire_uint_8_list>)>>(
           'wire_from_slice__static_method__VodozemacEd25519PublicKey');
   late final _wire_from_slice__static_method__VodozemacEd25519PublicKey =
       _wire_from_slice__static_method__VodozemacEd25519PublicKeyPtr
-          .asFunction<void Function(int, ffi.Pointer<wire_uint_8_list>)>();
+          .asFunction<WireSyncReturn Function(ffi.Pointer<wire_uint_8_list>)>();
 
-  void wire_as_bytes__method__VodozemacEd25519PublicKey(
-    int port_,
+  WireSyncReturn wire_as_bytes__method__VodozemacEd25519PublicKey(
     ffi.Pointer<wire_VodozemacEd25519PublicKey> that,
   ) {
     return _wire_as_bytes__method__VodozemacEd25519PublicKey(
-      port_,
       that,
     );
   }
 
   late final _wire_as_bytes__method__VodozemacEd25519PublicKeyPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_VodozemacEd25519PublicKey>)>>(
+      _lookup<ffi.NativeFunction<WireSyncReturn Function(ffi.Pointer<wire_VodozemacEd25519PublicKey>)>>(
           'wire_as_bytes__method__VodozemacEd25519PublicKey');
   late final _wire_as_bytes__method__VodozemacEd25519PublicKey = _wire_as_bytes__method__VodozemacEd25519PublicKeyPtr
-      .asFunction<void Function(int, ffi.Pointer<wire_VodozemacEd25519PublicKey>)>();
+      .asFunction<WireSyncReturn Function(ffi.Pointer<wire_VodozemacEd25519PublicKey>)>();
 
-  void wire_from_base64__static_method__VodozemacEd25519PublicKey(
-    int port_,
+  WireSyncReturn wire_from_base64__static_method__VodozemacEd25519PublicKey(
     ffi.Pointer<wire_uint_8_list> base64_key,
   ) {
     return _wire_from_base64__static_method__VodozemacEd25519PublicKey(
-      port_,
       base64_key,
     );
   }
 
   late final _wire_from_base64__static_method__VodozemacEd25519PublicKeyPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_uint_8_list>)>>(
+      _lookup<ffi.NativeFunction<WireSyncReturn Function(ffi.Pointer<wire_uint_8_list>)>>(
           'wire_from_base64__static_method__VodozemacEd25519PublicKey');
   late final _wire_from_base64__static_method__VodozemacEd25519PublicKey =
       _wire_from_base64__static_method__VodozemacEd25519PublicKeyPtr
-          .asFunction<void Function(int, ffi.Pointer<wire_uint_8_list>)>();
+          .asFunction<WireSyncReturn Function(ffi.Pointer<wire_uint_8_list>)>();
 
-  void wire_to_base64__method__VodozemacEd25519PublicKey(
-    int port_,
+  WireSyncReturn wire_to_base64__method__VodozemacEd25519PublicKey(
     ffi.Pointer<wire_VodozemacEd25519PublicKey> that,
   ) {
     return _wire_to_base64__method__VodozemacEd25519PublicKey(
-      port_,
       that,
     );
   }
 
   late final _wire_to_base64__method__VodozemacEd25519PublicKeyPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_VodozemacEd25519PublicKey>)>>(
+      _lookup<ffi.NativeFunction<WireSyncReturn Function(ffi.Pointer<wire_VodozemacEd25519PublicKey>)>>(
           'wire_to_base64__method__VodozemacEd25519PublicKey');
   late final _wire_to_base64__method__VodozemacEd25519PublicKey = _wire_to_base64__method__VodozemacEd25519PublicKeyPtr
-      .asFunction<void Function(int, ffi.Pointer<wire_VodozemacEd25519PublicKey>)>();
+      .asFunction<WireSyncReturn Function(ffi.Pointer<wire_VodozemacEd25519PublicKey>)>();
 
   void wire_verify__method__VodozemacEd25519PublicKey(
     int port_,
@@ -1077,157 +1011,139 @@ class VodozemacBindingsDartWire implements FlutterRustBridgeWireBase {
           void Function(int, ffi.Pointer<wire_VodozemacEd25519PublicKey>, ffi.Pointer<wire_uint_8_list>,
               ffi.Pointer<wire_VodozemacEd25519Signature>)>();
 
-  void wire_from_slice__static_method__VodozemacCurve25519PublicKey(
-    int port_,
+  WireSyncReturn wire_from_slice__static_method__VodozemacCurve25519PublicKey(
     ffi.Pointer<wire_uint_8_list> bytes,
   ) {
     return _wire_from_slice__static_method__VodozemacCurve25519PublicKey(
-      port_,
       bytes,
     );
   }
 
   late final _wire_from_slice__static_method__VodozemacCurve25519PublicKeyPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_uint_8_list>)>>(
+      _lookup<ffi.NativeFunction<WireSyncReturn Function(ffi.Pointer<wire_uint_8_list>)>>(
           'wire_from_slice__static_method__VodozemacCurve25519PublicKey');
   late final _wire_from_slice__static_method__VodozemacCurve25519PublicKey =
       _wire_from_slice__static_method__VodozemacCurve25519PublicKeyPtr
-          .asFunction<void Function(int, ffi.Pointer<wire_uint_8_list>)>();
+          .asFunction<WireSyncReturn Function(ffi.Pointer<wire_uint_8_list>)>();
 
-  void wire_as_bytes__method__VodozemacCurve25519PublicKey(
-    int port_,
+  WireSyncReturn wire_as_bytes__method__VodozemacCurve25519PublicKey(
     ffi.Pointer<wire_VodozemacCurve25519PublicKey> that,
   ) {
     return _wire_as_bytes__method__VodozemacCurve25519PublicKey(
-      port_,
       that,
     );
   }
 
   late final _wire_as_bytes__method__VodozemacCurve25519PublicKeyPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_VodozemacCurve25519PublicKey>)>>(
+      _lookup<ffi.NativeFunction<WireSyncReturn Function(ffi.Pointer<wire_VodozemacCurve25519PublicKey>)>>(
           'wire_as_bytes__method__VodozemacCurve25519PublicKey');
   late final _wire_as_bytes__method__VodozemacCurve25519PublicKey =
       _wire_as_bytes__method__VodozemacCurve25519PublicKeyPtr
-          .asFunction<void Function(int, ffi.Pointer<wire_VodozemacCurve25519PublicKey>)>();
+          .asFunction<WireSyncReturn Function(ffi.Pointer<wire_VodozemacCurve25519PublicKey>)>();
 
-  void wire_from_base64__static_method__VodozemacCurve25519PublicKey(
-    int port_,
+  WireSyncReturn wire_from_base64__static_method__VodozemacCurve25519PublicKey(
     ffi.Pointer<wire_uint_8_list> base64_key,
   ) {
     return _wire_from_base64__static_method__VodozemacCurve25519PublicKey(
-      port_,
       base64_key,
     );
   }
 
   late final _wire_from_base64__static_method__VodozemacCurve25519PublicKeyPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_uint_8_list>)>>(
+      _lookup<ffi.NativeFunction<WireSyncReturn Function(ffi.Pointer<wire_uint_8_list>)>>(
           'wire_from_base64__static_method__VodozemacCurve25519PublicKey');
   late final _wire_from_base64__static_method__VodozemacCurve25519PublicKey =
       _wire_from_base64__static_method__VodozemacCurve25519PublicKeyPtr
-          .asFunction<void Function(int, ffi.Pointer<wire_uint_8_list>)>();
+          .asFunction<WireSyncReturn Function(ffi.Pointer<wire_uint_8_list>)>();
 
-  void wire_to_base64__method__VodozemacCurve25519PublicKey(
-    int port_,
+  WireSyncReturn wire_to_base64__method__VodozemacCurve25519PublicKey(
     ffi.Pointer<wire_VodozemacCurve25519PublicKey> that,
   ) {
     return _wire_to_base64__method__VodozemacCurve25519PublicKey(
-      port_,
       that,
     );
   }
 
   late final _wire_to_base64__method__VodozemacCurve25519PublicKeyPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_VodozemacCurve25519PublicKey>)>>(
+      _lookup<ffi.NativeFunction<WireSyncReturn Function(ffi.Pointer<wire_VodozemacCurve25519PublicKey>)>>(
           'wire_to_base64__method__VodozemacCurve25519PublicKey');
   late final _wire_to_base64__method__VodozemacCurve25519PublicKey =
       _wire_to_base64__method__VodozemacCurve25519PublicKeyPtr
-          .asFunction<void Function(int, ffi.Pointer<wire_VodozemacCurve25519PublicKey>)>();
+          .asFunction<WireSyncReturn Function(ffi.Pointer<wire_VodozemacCurve25519PublicKey>)>();
 
-  void wire_message_type__method__VodozemacOlmMessage(
-    int port_,
+  WireSyncReturn wire_message_type__method__VodozemacOlmMessage(
     ffi.Pointer<wire_VodozemacOlmMessage> that,
   ) {
     return _wire_message_type__method__VodozemacOlmMessage(
-      port_,
       that,
     );
   }
 
   late final _wire_message_type__method__VodozemacOlmMessagePtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_VodozemacOlmMessage>)>>(
+      _lookup<ffi.NativeFunction<WireSyncReturn Function(ffi.Pointer<wire_VodozemacOlmMessage>)>>(
           'wire_message_type__method__VodozemacOlmMessage');
   late final _wire_message_type__method__VodozemacOlmMessage = _wire_message_type__method__VodozemacOlmMessagePtr
-      .asFunction<void Function(int, ffi.Pointer<wire_VodozemacOlmMessage>)>();
+      .asFunction<WireSyncReturn Function(ffi.Pointer<wire_VodozemacOlmMessage>)>();
 
-  void wire_message__method__VodozemacOlmMessage(
-    int port_,
+  WireSyncReturn wire_message__method__VodozemacOlmMessage(
     ffi.Pointer<wire_VodozemacOlmMessage> that,
   ) {
     return _wire_message__method__VodozemacOlmMessage(
-      port_,
       that,
     );
   }
 
   late final _wire_message__method__VodozemacOlmMessagePtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_VodozemacOlmMessage>)>>(
+      _lookup<ffi.NativeFunction<WireSyncReturn Function(ffi.Pointer<wire_VodozemacOlmMessage>)>>(
           'wire_message__method__VodozemacOlmMessage');
   late final _wire_message__method__VodozemacOlmMessage = _wire_message__method__VodozemacOlmMessagePtr
-      .asFunction<void Function(int, ffi.Pointer<wire_VodozemacOlmMessage>)>();
+      .asFunction<WireSyncReturn Function(ffi.Pointer<wire_VodozemacOlmMessage>)>();
 
-  void wire_from_parts__static_method__VodozemacOlmMessage(
-    int port_,
+  WireSyncReturn wire_from_parts__static_method__VodozemacOlmMessage(
     int message_type,
     ffi.Pointer<wire_uint_8_list> ciphertext,
   ) {
     return _wire_from_parts__static_method__VodozemacOlmMessage(
-      port_,
       message_type,
       ciphertext,
     );
   }
 
   late final _wire_from_parts__static_method__VodozemacOlmMessagePtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.UintPtr, ffi.Pointer<wire_uint_8_list>)>>(
+      _lookup<ffi.NativeFunction<WireSyncReturn Function(ffi.UintPtr, ffi.Pointer<wire_uint_8_list>)>>(
           'wire_from_parts__static_method__VodozemacOlmMessage');
   late final _wire_from_parts__static_method__VodozemacOlmMessage =
       _wire_from_parts__static_method__VodozemacOlmMessagePtr
-          .asFunction<void Function(int, int, ffi.Pointer<wire_uint_8_list>)>();
+          .asFunction<WireSyncReturn Function(int, ffi.Pointer<wire_uint_8_list>)>();
 
-  void wire_session_id__method__VodozemacSession(
-    int port_,
+  WireSyncReturn wire_session_id__method__VodozemacSession(
     ffi.Pointer<wire_VodozemacSession> that,
   ) {
     return _wire_session_id__method__VodozemacSession(
-      port_,
       that,
     );
   }
 
   late final _wire_session_id__method__VodozemacSessionPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_VodozemacSession>)>>(
+      _lookup<ffi.NativeFunction<WireSyncReturn Function(ffi.Pointer<wire_VodozemacSession>)>>(
           'wire_session_id__method__VodozemacSession');
   late final _wire_session_id__method__VodozemacSession = _wire_session_id__method__VodozemacSessionPtr
-      .asFunction<void Function(int, ffi.Pointer<wire_VodozemacSession>)>();
+      .asFunction<WireSyncReturn Function(ffi.Pointer<wire_VodozemacSession>)>();
 
-  void wire_has_received_message__method__VodozemacSession(
-    int port_,
+  WireSyncReturn wire_has_received_message__method__VodozemacSession(
     ffi.Pointer<wire_VodozemacSession> that,
   ) {
     return _wire_has_received_message__method__VodozemacSession(
-      port_,
       that,
     );
   }
 
   late final _wire_has_received_message__method__VodozemacSessionPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_VodozemacSession>)>>(
+      _lookup<ffi.NativeFunction<WireSyncReturn Function(ffi.Pointer<wire_VodozemacSession>)>>(
           'wire_has_received_message__method__VodozemacSession');
   late final _wire_has_received_message__method__VodozemacSession =
       _wire_has_received_message__method__VodozemacSessionPtr
-          .asFunction<void Function(int, ffi.Pointer<wire_VodozemacSession>)>();
+          .asFunction<WireSyncReturn Function(ffi.Pointer<wire_VodozemacSession>)>();
 
   void wire_encrypt__method__VodozemacSession(
     int port_,
@@ -1355,22 +1271,20 @@ class VodozemacBindingsDartWire implements FlutterRustBridgeWireBase {
   late final _wire_new__static_method__VodozemacAccount =
       _wire_new__static_method__VodozemacAccountPtr.asFunction<void Function(int)>();
 
-  void wire_max_number_of_one_time_keys__method__VodozemacAccount(
-    int port_,
+  WireSyncReturn wire_max_number_of_one_time_keys__method__VodozemacAccount(
     ffi.Pointer<wire_VodozemacAccount> that,
   ) {
     return _wire_max_number_of_one_time_keys__method__VodozemacAccount(
-      port_,
       that,
     );
   }
 
   late final _wire_max_number_of_one_time_keys__method__VodozemacAccountPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_VodozemacAccount>)>>(
+      _lookup<ffi.NativeFunction<WireSyncReturn Function(ffi.Pointer<wire_VodozemacAccount>)>>(
           'wire_max_number_of_one_time_keys__method__VodozemacAccount');
   late final _wire_max_number_of_one_time_keys__method__VodozemacAccount =
       _wire_max_number_of_one_time_keys__method__VodozemacAccountPtr
-          .asFunction<void Function(int, ffi.Pointer<wire_VodozemacAccount>)>();
+          .asFunction<WireSyncReturn Function(ffi.Pointer<wire_VodozemacAccount>)>();
 
   void wire_generate_fallback_key__method__VodozemacAccount(
     int port_,
@@ -1389,22 +1303,20 @@ class VodozemacBindingsDartWire implements FlutterRustBridgeWireBase {
       _wire_generate_fallback_key__method__VodozemacAccountPtr
           .asFunction<void Function(int, ffi.Pointer<wire_VodozemacAccount>)>();
 
-  void wire_forget_fallback_key__method__VodozemacAccount(
-    int port_,
+  WireSyncReturn wire_forget_fallback_key__method__VodozemacAccount(
     ffi.Pointer<wire_VodozemacAccount> that,
   ) {
     return _wire_forget_fallback_key__method__VodozemacAccount(
-      port_,
       that,
     );
   }
 
   late final _wire_forget_fallback_key__method__VodozemacAccountPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_VodozemacAccount>)>>(
+      _lookup<ffi.NativeFunction<WireSyncReturn Function(ffi.Pointer<wire_VodozemacAccount>)>>(
           'wire_forget_fallback_key__method__VodozemacAccount');
   late final _wire_forget_fallback_key__method__VodozemacAccount =
       _wire_forget_fallback_key__method__VodozemacAccountPtr
-          .asFunction<void Function(int, ffi.Pointer<wire_VodozemacAccount>)>();
+          .asFunction<WireSyncReturn Function(ffi.Pointer<wire_VodozemacAccount>)>();
 
   void wire_generate_one_time_keys__method__VodozemacAccount(
     int port_,
@@ -1425,102 +1337,90 @@ class VodozemacBindingsDartWire implements FlutterRustBridgeWireBase {
       _wire_generate_one_time_keys__method__VodozemacAccountPtr
           .asFunction<void Function(int, ffi.Pointer<wire_VodozemacAccount>, int)>();
 
-  void wire_mark_keys_as_published__method__VodozemacAccount(
-    int port_,
+  WireSyncReturn wire_mark_keys_as_published__method__VodozemacAccount(
     ffi.Pointer<wire_VodozemacAccount> that,
   ) {
     return _wire_mark_keys_as_published__method__VodozemacAccount(
-      port_,
       that,
     );
   }
 
   late final _wire_mark_keys_as_published__method__VodozemacAccountPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_VodozemacAccount>)>>(
+      _lookup<ffi.NativeFunction<WireSyncReturn Function(ffi.Pointer<wire_VodozemacAccount>)>>(
           'wire_mark_keys_as_published__method__VodozemacAccount');
   late final _wire_mark_keys_as_published__method__VodozemacAccount =
       _wire_mark_keys_as_published__method__VodozemacAccountPtr
-          .asFunction<void Function(int, ffi.Pointer<wire_VodozemacAccount>)>();
+          .asFunction<WireSyncReturn Function(ffi.Pointer<wire_VodozemacAccount>)>();
 
-  void wire_ed25519_key__method__VodozemacAccount(
-    int port_,
+  WireSyncReturn wire_ed25519_key__method__VodozemacAccount(
     ffi.Pointer<wire_VodozemacAccount> that,
   ) {
     return _wire_ed25519_key__method__VodozemacAccount(
-      port_,
       that,
     );
   }
 
   late final _wire_ed25519_key__method__VodozemacAccountPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_VodozemacAccount>)>>(
+      _lookup<ffi.NativeFunction<WireSyncReturn Function(ffi.Pointer<wire_VodozemacAccount>)>>(
           'wire_ed25519_key__method__VodozemacAccount');
   late final _wire_ed25519_key__method__VodozemacAccount = _wire_ed25519_key__method__VodozemacAccountPtr
-      .asFunction<void Function(int, ffi.Pointer<wire_VodozemacAccount>)>();
+      .asFunction<WireSyncReturn Function(ffi.Pointer<wire_VodozemacAccount>)>();
 
-  void wire_curve25519_key__method__VodozemacAccount(
-    int port_,
+  WireSyncReturn wire_curve25519_key__method__VodozemacAccount(
     ffi.Pointer<wire_VodozemacAccount> that,
   ) {
     return _wire_curve25519_key__method__VodozemacAccount(
-      port_,
       that,
     );
   }
 
   late final _wire_curve25519_key__method__VodozemacAccountPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_VodozemacAccount>)>>(
+      _lookup<ffi.NativeFunction<WireSyncReturn Function(ffi.Pointer<wire_VodozemacAccount>)>>(
           'wire_curve25519_key__method__VodozemacAccount');
   late final _wire_curve25519_key__method__VodozemacAccount = _wire_curve25519_key__method__VodozemacAccountPtr
-      .asFunction<void Function(int, ffi.Pointer<wire_VodozemacAccount>)>();
+      .asFunction<WireSyncReturn Function(ffi.Pointer<wire_VodozemacAccount>)>();
 
-  void wire_identity_keys__method__VodozemacAccount(
-    int port_,
+  WireSyncReturn wire_identity_keys__method__VodozemacAccount(
     ffi.Pointer<wire_VodozemacAccount> that,
   ) {
     return _wire_identity_keys__method__VodozemacAccount(
-      port_,
       that,
     );
   }
 
   late final _wire_identity_keys__method__VodozemacAccountPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_VodozemacAccount>)>>(
+      _lookup<ffi.NativeFunction<WireSyncReturn Function(ffi.Pointer<wire_VodozemacAccount>)>>(
           'wire_identity_keys__method__VodozemacAccount');
   late final _wire_identity_keys__method__VodozemacAccount = _wire_identity_keys__method__VodozemacAccountPtr
-      .asFunction<void Function(int, ffi.Pointer<wire_VodozemacAccount>)>();
+      .asFunction<WireSyncReturn Function(ffi.Pointer<wire_VodozemacAccount>)>();
 
-  void wire_one_time_keys__method__VodozemacAccount(
-    int port_,
+  WireSyncReturn wire_one_time_keys__method__VodozemacAccount(
     ffi.Pointer<wire_VodozemacAccount> that,
   ) {
     return _wire_one_time_keys__method__VodozemacAccount(
-      port_,
       that,
     );
   }
 
   late final _wire_one_time_keys__method__VodozemacAccountPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_VodozemacAccount>)>>(
+      _lookup<ffi.NativeFunction<WireSyncReturn Function(ffi.Pointer<wire_VodozemacAccount>)>>(
           'wire_one_time_keys__method__VodozemacAccount');
   late final _wire_one_time_keys__method__VodozemacAccount = _wire_one_time_keys__method__VodozemacAccountPtr
-      .asFunction<void Function(int, ffi.Pointer<wire_VodozemacAccount>)>();
+      .asFunction<WireSyncReturn Function(ffi.Pointer<wire_VodozemacAccount>)>();
 
-  void wire_fallback_key__method__VodozemacAccount(
-    int port_,
+  WireSyncReturn wire_fallback_key__method__VodozemacAccount(
     ffi.Pointer<wire_VodozemacAccount> that,
   ) {
     return _wire_fallback_key__method__VodozemacAccount(
-      port_,
       that,
     );
   }
 
   late final _wire_fallback_key__method__VodozemacAccountPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_VodozemacAccount>)>>(
+      _lookup<ffi.NativeFunction<WireSyncReturn Function(ffi.Pointer<wire_VodozemacAccount>)>>(
           'wire_fallback_key__method__VodozemacAccount');
   late final _wire_fallback_key__method__VodozemacAccount = _wire_fallback_key__method__VodozemacAccountPtr
-      .asFunction<void Function(int, ffi.Pointer<wire_VodozemacAccount>)>();
+      .asFunction<WireSyncReturn Function(ffi.Pointer<wire_VodozemacAccount>)>();
 
   void wire_sign__method__VodozemacAccount(
     int port_,

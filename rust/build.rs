@@ -5,7 +5,7 @@ use lib_flutter_rust_bridge_codegen::{
 /// Path of input Rust code
 const RUST_INPUT: &str = "src/api.rs";
 /// Path of output generated Dart code
-const DART_OUTPUT: &str = "../dart/lib/bridge_generated.dart";
+const DART_OUTPUT: &str = "../dart/lib/src/vodozemac/generated/bridge_generated.dart";
 
 fn main() {
     init_logger("./logs/", true).unwrap();
@@ -19,9 +19,10 @@ fn main() {
         // Path of output generated Dart code
         dart_output: vec![DART_OUTPUT.to_string()],
         wasm: true,
-        dart_decl_output: Some("../dart/lib/bridge_definitions.dart".into()),
+        dart_decl_output: Some("../dart/lib/src/vodozemac/generated/bridge_definitions.dart".into()),
         dart_format_line_length: 120,
-        no_use_bridge_in_method: true,
+        //extra_headers: Some("import '../ffi.io.dart' if (dart.library.html) '../ffi.web.dart';".to_owned()),
+        //no_use_bridge_in_method: true,
         // for other options use defaults
         ..Default::default()
     };
