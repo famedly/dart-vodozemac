@@ -1,3 +1,4 @@
+/// Vodozemac specific bindings. These offer the same functionality as the generic bindings, but won't work with libolm
 library vodozemac_olm_bindings;
 
 export 'src/api.dart'
