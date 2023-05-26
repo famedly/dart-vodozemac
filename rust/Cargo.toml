@@ -10,8 +10,8 @@ crate-type = ["staticlib", "cdylib"]
 
 [dependencies]
 anyhow = "1.0.69"
-flutter_rust_bridge = "1.75.3"
+flutter_rust_bridge = "1.76.0"
 vodozemac = { version = "0.3.0", features = ["libolm-compat", "js"] }
 
 [build-dependencies]
-flutter_rust_bridge_codegen = "1.75.3"
+flutter_rust_bridge_codegen = "1.76.0"

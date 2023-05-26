@@ -1,4 +1,3 @@
-// @dart = 3.0
 import 'vodozemac/generated/bridge_definitions.dart' as vodozemac;
 import 'vodozemac/ffi.io.dart' if (dart.library.html) 'vodozemac/ffi.web.dart'
     as vodozemac;
