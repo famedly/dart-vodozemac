@@ -320,13 +320,13 @@ class VodozemacBindingsDartImpl implements VodozemacBindingsDart {
         argNames: ["that"],
       );
 
-  Future<String> decryptMethodVodozemacInboundGroupSession(
+  Future<DecryptResult> decryptMethodVodozemacInboundGroupSession(
       {required VodozemacInboundGroupSession that, required String encrypted, dynamic hint}) {
     var arg0 = _platform.api2wire_box_autoadd_vodozemac_inbound_group_session(that);
     var arg1 = _platform.api2wire_String(encrypted);
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_decrypt__method__VodozemacInboundGroupSession(port_, arg0, arg1),
-      parseSuccessData: _wire2api_String,
+      parseSuccessData: _wire2api_decrypt_result,
       constMeta: kDecryptMethodVodozemacInboundGroupSessionConstMeta,
       argValues: [that, encrypted],
       hint: hint,
@@ -1351,6 +1351,15 @@ class VodozemacBindingsDartImpl implements VodozemacBindingsDart {
 
   bool _wire2api_bool(dynamic raw) {
     return raw as bool;
+  }
+
+  DecryptResult _wire2api_decrypt_result(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2) throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return DecryptResult(
+      field0: _wire2api_String(arr[0]),
+      field1: _wire2api_u32(arr[1]),
+    );
   }
 
   List<VodozemacOneTimeKey> _wire2api_list_vodozemac_one_time_key(dynamic raw) {

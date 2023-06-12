@@ -196,7 +196,8 @@ void main() {
       final encrypted = await groupSession.encrypt('Test');
 
       check(encrypted).not(it()..contains('Test'));
-      await check(inbound.decrypt(encrypted)).completes(it()..equals('Test'));
+      await check(inbound.decrypt(encrypted)).completes(
+          it()..has((res) => res.plaintext, 'plaintext').equals('Test'));
 
       // ensure that a later exported session does not decrypt the message
       final inboundAfter = groupSession.toInbound();
@@ -216,17 +217,18 @@ void main() {
       check(encrypted).not(it()..equals(encrypted2));
 
       check(encrypted).not(it()..contains('Test'));
-      await check(reimportedInbound.decrypt(encrypted))
-          .completes(it()..equals('Test'));
+      await check(reimportedInbound.decrypt(encrypted)).completes(
+          it()..has((res) => res.plaintext, 'plaintext').equals('Test'));
 
       // ensure that a later exported session does not decrypt the message
       await check(laterInbound.decrypt(encrypted)).throws();
 
       // check if second index decryptes
-      await check(reimportedInbound.decrypt(encrypted2))
-          .completes(it()..equals('Test'));
-      await check(laterInbound.decrypt(encrypted2))
-          .completes(it()..equals('Test'));
+      await check(reimportedInbound.decrypt(encrypted2)).completes(
+          it()..has((res) => res.plaintext, 'plaintext').equals('Test'));
+
+      await check(laterInbound.decrypt(encrypted2)).completes(
+          it()..has((res) => res.plaintext, 'plaintext').equals('Test'));
     });
   });
 }

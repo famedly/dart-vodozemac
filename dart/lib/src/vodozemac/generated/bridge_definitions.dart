@@ -88,7 +88,7 @@ abstract class VodozemacBindingsDart {
 
   FlutterRustBridgeTaskConstMeta get kFirstKnownIndexMethodVodozemacInboundGroupSessionConstMeta;
 
-  Future<String> decryptMethodVodozemacInboundGroupSession(
+  Future<DecryptResult> decryptMethodVodozemacInboundGroupSession(
       {required VodozemacInboundGroupSession that, required String encrypted, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kDecryptMethodVodozemacInboundGroupSessionConstMeta;
@@ -511,6 +511,16 @@ class StdSyncRwLockAccount extends FrbOpaque {
   OpaqueTypeFinalizer get staticFinalizer => bridge.StdSyncRwLockAccountFinalizer;
 }
 
+class DecryptResult {
+  final String field0;
+  final int field1;
+
+  const DecryptResult({
+    required this.field0,
+    required this.field1,
+  });
+}
+
 class U8Array32 extends NonGrowableListView<int> {
   static const arraySize = 32;
   U8Array32(Uint8List inner)
@@ -810,7 +820,8 @@ class VodozemacInboundGroupSession {
         that: this,
       );
 
-  Future<String> decrypt({required String encrypted, dynamic hint}) => bridge.decryptMethodVodozemacInboundGroupSession(
+  Future<DecryptResult> decrypt({required String encrypted, dynamic hint}) =>
+      bridge.decryptMethodVodozemacInboundGroupSession(
         that: this,
         encrypted: encrypted,
       );

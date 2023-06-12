@@ -259,7 +259,7 @@ abstract base class InboundGroupSession {
   String sessionId();
   int firstKnownIndex();
 
-  Future<String> decrypt(String encrypted);
+  Future<({String plaintext, int messageIndex})> decrypt(String encrypted);
 
   Future<String> toPickleEncrypted(Uint8List pickleKey);
   static Future<GroupSession> fromPickleEncrypted({
@@ -316,8 +316,11 @@ final class VodozemacInboundGroupSession implements InboundGroupSession {
   int firstKnownIndex() => _session.firstKnownIndex();
 
   @override
-  Future<String> decrypt(String encrypted) =>
-      _session.decrypt(encrypted: encrypted);
+  Future<({String plaintext, int messageIndex})> decrypt(
+      String encrypted) async {
+    final result = await _session.decrypt(encrypted: encrypted);
+    return (plaintext: result.field0, messageIndex: result.field1);
+  }
 
   @override
   Future<String> toPickleEncrypted(Uint8List pickleKey) =>

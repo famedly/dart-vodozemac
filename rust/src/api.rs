@@ -161,6 +161,8 @@ impl From<InboundGroupSession> for VodozemacInboundGroupSession {
     }
 }
 
+pub struct DecryptResult(pub String, pub u32);
+
 impl VodozemacInboundGroupSession {
     pub fn new(
         session_key: String,
@@ -189,14 +191,13 @@ impl VodozemacInboundGroupSession {
 
     // In theory we could return more info, but the old olm API does not and currently we don't
     // need it.
-    pub fn decrypt(&self, encrypted: String) -> anyhow::Result<String> {
-        Ok(String::from_utf8(
+    pub fn decrypt(&self, encrypted: String) -> anyhow::Result<DecryptResult> {
+        let temp = 
             self.session
                 .write()
                 .expect("Failed to write session")
-                .decrypt(&(vodozemac::megolm::MegolmMessage::from_base64(&encrypted)?))?
-                .plaintext,
-        )?)
+                .decrypt(&(vodozemac::megolm::MegolmMessage::from_base64(&encrypted)?))?;
+        Ok(DecryptResult(String::from_utf8( temp.plaintext)?, temp.message_index))
     }
 
     pub fn pickle_encrypted(&self, pickle_key: [u8; 32usize]) -> String {
