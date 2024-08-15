@@ -7,9 +7,14 @@ environment:
   sdk: ">=3.0.0 <4.0.0"
 
 dependencies:
+  collection: ^1.19.0
   ffi: ^2.0.1
-  flutter_rust_bridge: ^1.76.0
+  flutter_rust_bridge: ^1.82.6
+  import_sorter: ^4.6.0
+  js: ^0.6.7
   meta: ^1.9.0
+  test_core: ^0.5.9
+  uuid: ^4.4.2
 
 dev_dependencies:
   ffigen: ^8.0.0

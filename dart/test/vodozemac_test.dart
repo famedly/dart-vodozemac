@@ -1,7 +1,8 @@
-import 'package:generic_olm_bindings/vodozemac.dart';
-import 'package:test/test.dart';
 import 'package:checks/checks.dart';
 import 'package:checks/context.dart';
+import 'package:test/test.dart';
+
+import 'package:generic_olm_bindings/vodozemac.dart';
 
 extension PublicCurveChecks on Subject<VodozemacCurve25519PublicKey> {
   void isValid() {

@@ -1,7 +1,8 @@
-import 'package:generic_olm_bindings/generic.dart';
-import 'package:test/test.dart';
 import 'package:checks/checks.dart';
 import 'package:checks/context.dart';
+import 'package:test/test.dart';
+
+import 'package:generic_olm_bindings/generic.dart';
 
 extension PublicCurveChecks on Subject<Curve25519PublicKey> {
   void isValid() {
