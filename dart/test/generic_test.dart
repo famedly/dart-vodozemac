@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:checks/checks.dart';
 import 'package:checks/context.dart';
 import 'package:test/test.dart';
@@ -49,7 +51,8 @@ extension AsyncIterableChecks<T> on Subject<Iterable<T>> {
 
 void main() {
   loadVodozemac(
-      libraryPath: '../rust/target/debug/libvodozemac_bindings_dart.dylib');
+      libraryPath: Platform.environment['librarypath'] ??
+          '../rust/target/debug/libvodozemac_bindings_dart.so');
 
   group('Account', () {
     setUp(() {

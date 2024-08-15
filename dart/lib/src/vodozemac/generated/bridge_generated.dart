@@ -10,6 +10,7 @@ import 'package:meta/meta.dart';
 import 'package:uuid/uuid.dart';
 
 import "bridge_definitions.dart";
+
 import 'bridge_generated.io.dart'
     if (dart.library.html) 'bridge_generated.web.dart';
 
