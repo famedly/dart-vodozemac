@@ -1,0 +1,52 @@
+name: Continuous Integration
+
+on:
+  pull_request:
+  merge_group:
+
+concurrency:
+  group: ${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  dart:
+    permissions:
+      contents: read
+    uses: famedly/frontend-ci-templates/.github/workflows/dart.yml@main
+    with:
+      env_file: ".github/workflows/versions.env"
+      directory: dart
+
+  test:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v3
+      - run: cat .github/workflows/versions.env >> $GITHUB_ENV
+      - uses: dart-lang/setup-dart@a57a6c04cf7d4840e88432aad6281d1e125f0d46
+        with:
+          sdk: ${{ env.dart_version }}
+      - uses: famedly/backend-build-workflows/.github/actions/rust-prepare@main
+        with:
+          gitlab_user: ${{ secrets.GITLAB_USER }}
+          gitlab_pass: ${{ secrets.GITLAB_PASS }}
+          gitlab_ssh: ${{ secrets.CI_SSH_PRIVATE_KEY}}
+      - name: Caching
+        uses: Swatinem/rust-cache@b8a6852b4f997182bdea832df3f9e153038b5191
+        with:
+          shared-key: "stable"
+      - name: Fetch dependencies
+        working-directory: dart
+        run: dart pub get
+      - name: Build Rust library
+        working-directory: rust
+        run: cargo build
+      - name: Run Dart Tests
+        working-directory: dart
+        run: dart test
+
+  general:
+    permissions:
+      contents: read
+    uses: famedly/frontend-ci-templates/.github/workflows/general.yml@main

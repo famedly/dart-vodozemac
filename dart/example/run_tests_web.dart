@@ -23,7 +23,7 @@ void main() async {
       printPath: false,
     ),
   );
-  final result_vodozemac = await directRunTests(
+  final resultVodozemac = await directRunTests(
     () => vodozemac_test.main(),
     reporterFactory: (engine) => ExpandedReporter.watch(
       engine,
@@ -33,7 +33,7 @@ void main() async {
       printPath: false,
     ),
   );
-  _close(result && result_vodozemac);
+  _close(result && resultVodozemac);
 }
 
 void _close(bool result) {

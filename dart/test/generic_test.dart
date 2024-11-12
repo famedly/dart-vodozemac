@@ -1,7 +1,10 @@
-import 'package:generic_olm_bindings/generic.dart';
-import 'package:test/test.dart';
+import 'dart:io';
+
 import 'package:checks/checks.dart';
 import 'package:checks/context.dart';
+import 'package:test/test.dart';
+
+import 'package:generic_olm_bindings/generic.dart';
 
 extension PublicCurveChecks on Subject<Curve25519PublicKey> {
   void isValid() {
@@ -48,7 +51,8 @@ extension AsyncIterableChecks<T> on Subject<Iterable<T>> {
 
 void main() {
   loadVodozemac(
-      libraryPath: '../rust/target/debug/libvodozemac_bindings_dart.dylib');
+      libraryPath: Platform.environment['librarypath'] ??
+          '../rust/target/debug/libvodozemac_bindings_dart.so');
 
   group('Account', () {
     setUp(() {

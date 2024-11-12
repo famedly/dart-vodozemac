@@ -1,8 +1,9 @@
+import 'dart:typed_data';
+
 import 'vodozemac/generated/bridge_definitions.dart' as vodozemac;
+
 import 'vodozemac/ffi.io.dart' if (dart.library.html) 'vodozemac/ffi.web.dart'
     as vodozemac;
-
-import 'dart:typed_data';
 
 /// Load the vodozemac backend. Only one backend can be loaded. You can provide the [wasmPath] and [libraryPath] to
 /// specify the location of the wasm and native library respectively.
