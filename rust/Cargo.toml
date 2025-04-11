@@ -10,8 +10,11 @@ crate-type = ["staticlib", "cdylib"]
 
 [dependencies]
 anyhow = "1.0.69"
-flutter_rust_bridge = "1.76.0"
-vodozemac = { version = "0.3.0", features = ["libolm-compat", "js"] }
+flutter_rust_bridge = "=2.9.0"
+vodozemac = { version = "0.9.0", features = ["libolm-compat", "js", "insecure-pk-encryption"] }
 
 [build-dependencies]
-flutter_rust_bridge_codegen = "1.76.0"
+flutter_rust_bridge_codegen = "2.9.0"
+
+[lints.rust]
+unexpected_cfgs = { level = "warn", check-cfg = ['cfg(frb_expand)'] }

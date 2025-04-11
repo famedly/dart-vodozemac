@@ -1,23 +1,31 @@
-import 'dart:typed_data';
+import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
+import 'dart:convert';
 
-import 'vodozemac/generated/bridge_definitions.dart' as vodozemac;
-
-import 'vodozemac/ffi.io.dart' if (dart.library.html) 'vodozemac/ffi.web.dart'
-    as vodozemac;
+import 'vodozemac/generated/frb_generated.dart' as vodozemac show RustLib;
+import 'vodozemac/generated/api.dart' as vodozemac;
 
 /// Load the vodozemac backend. Only one backend can be loaded. You can provide the [wasmPath] and [libraryPath] to
 /// specify the location of the wasm and native library respectively.
-void loadVodozemac({
+Future<void> loadVodozemac({
   String wasmPath = 'pkg/vodozemac-bindings-dart',
   String libraryPath = '../rust/target/debug/libvodozemac_bindings_dart.dylib',
-}) {
-  vodozemac.api ??= vodozemac.initializeExternalLibrary(
-      bool.fromEnvironment('dart.library.html') ? wasmPath : libraryPath);
+}) =>
+    vodozemac.RustLib.init(
+        externalLibrary: ExternalLibrary.open(
+            bool.fromEnvironment('dart.library.html')
+                ? wasmPath
+                : libraryPath));
+
+class Utils {
+  static Uint8List base64decodeUnpadded(String s) {
+    final needEquals = (4 - (s.length % 4)) % 4;
+    return base64.decode(s + ('=' * needEquals));
+  }
 }
 
 abstract base class Curve25519PublicKey {
   factory Curve25519PublicKey.fromBase64(String key) {
-    if (vodozemac.api != null) {
+    if (vodozemac.RustLib.instance.initialized) {
       return VodozemacCurve25519PublicKey.fromBase64(key);
     }
 
@@ -25,7 +33,7 @@ abstract base class Curve25519PublicKey {
   }
 
   factory Curve25519PublicKey.fromBytes(Uint8List key) {
-    if (vodozemac.api != null) {
+    if (vodozemac.RustLib.instance.initialized) {
       return VodozemacCurve25519PublicKey.fromBytes(key);
     }
 
@@ -42,11 +50,11 @@ final class VodozemacCurve25519PublicKey implements Curve25519PublicKey {
   VodozemacCurve25519PublicKey._(this._key);
 
   VodozemacCurve25519PublicKey.fromBase64(String key)
-      : _key = vodozemac.VodozemacCurve25519PublicKey.fromBase64(
-            bridge: vodozemac.api!, base64Key: key);
+      : _key =
+            vodozemac.VodozemacCurve25519PublicKey.fromBase64(base64Key: key);
   VodozemacCurve25519PublicKey.fromBytes(Uint8List key)
       : _key = vodozemac.VodozemacCurve25519PublicKey.fromSlice(
-            bridge: vodozemac.api!, bytes: vodozemac.U8Array32(key));
+            bytes: vodozemac.U8Array32(key));
 
   @override
   String toBase64() => _key.toBase64();
@@ -56,7 +64,7 @@ final class VodozemacCurve25519PublicKey implements Curve25519PublicKey {
 
 abstract base class Ed25519Signature {
   factory Ed25519Signature.fromBase64(String key) {
-    if (vodozemac.api != null) {
+    if (vodozemac.RustLib.instance.initialized) {
       return VodozemacEd25519Signature.fromBase64(key);
     }
 
@@ -64,7 +72,7 @@ abstract base class Ed25519Signature {
   }
 
   factory Ed25519Signature.fromBytes(Uint8List key) {
-    if (vodozemac.api != null) {
+    if (vodozemac.RustLib.instance.initialized) {
       return VodozemacEd25519Signature.fromBytes(key);
     }
 
@@ -80,11 +88,10 @@ final class VodozemacEd25519Signature implements Ed25519Signature {
 
   VodozemacEd25519Signature._(this._key);
   VodozemacEd25519Signature.fromBase64(String key)
-      : _key = vodozemac.VodozemacEd25519Signature.fromBase64(
-            bridge: vodozemac.api!, signature: key);
+      : _key = vodozemac.VodozemacEd25519Signature.fromBase64(signature: key);
   VodozemacEd25519Signature.fromBytes(Uint8List key)
       : _key = vodozemac.VodozemacEd25519Signature.fromSlice(
-            bridge: vodozemac.api!, bytes: vodozemac.U8Array64(key));
+            bytes: vodozemac.U8Array64(key));
 
   @override
   String toBase64() => _key.toBase64();
@@ -94,7 +101,7 @@ final class VodozemacEd25519Signature implements Ed25519Signature {
 
 abstract base class Ed25519PublicKey {
   factory Ed25519PublicKey.fromBase64(String key) {
-    if (vodozemac.api != null) {
+    if (vodozemac.RustLib.instance.initialized) {
       return VodozemacEd25519PublicKey.fromBase64(key);
     }
 
@@ -102,7 +109,7 @@ abstract base class Ed25519PublicKey {
   }
 
   factory Ed25519PublicKey.fromBytes(Uint8List key) {
-    if (vodozemac.api != null) {
+    if (vodozemac.RustLib.instance.initialized) {
       return VodozemacEd25519PublicKey.fromBytes(key);
     }
 
@@ -122,11 +129,10 @@ final class VodozemacEd25519PublicKey implements Ed25519PublicKey {
   VodozemacEd25519PublicKey._(this._key);
 
   VodozemacEd25519PublicKey.fromBase64(String key)
-      : _key = vodozemac.VodozemacEd25519PublicKey.fromBase64(
-            bridge: vodozemac.api!, base64Key: key);
+      : _key = vodozemac.VodozemacEd25519PublicKey.fromBase64(base64Key: key);
   VodozemacEd25519PublicKey.fromBytes(Uint8List key)
       : _key = vodozemac.VodozemacEd25519PublicKey.fromSlice(
-            bridge: vodozemac.api!, bytes: vodozemac.U8Array32(key));
+            bytes: vodozemac.U8Array32(key));
 
   @override
   String toBase64() => _key.toBase64();
@@ -141,7 +147,7 @@ final class VodozemacEd25519PublicKey implements Ed25519PublicKey {
 
 abstract base class GroupSession {
   static Future<GroupSession> create() {
-    if (vodozemac.api != null) {
+    if (vodozemac.RustLib.instance.initialized) {
       return VodozemacGroupSession.create();
     }
 
@@ -160,7 +166,7 @@ abstract base class GroupSession {
     required String pickle,
     required Uint8List pickleKey,
   }) {
-    if (vodozemac.api != null) {
+    if (vodozemac.RustLib.instance.initialized) {
       return VodozemacGroupSession.fromPickleEncrypted(
           pickle: pickle, pickleKey: pickleKey);
     }
@@ -172,7 +178,7 @@ abstract base class GroupSession {
     required String pickle,
     required Uint8List pickleKey,
   }) {
-    if (vodozemac.api != null) {
+    if (vodozemac.RustLib.instance.initialized) {
       return VodozemacGroupSession.fromOlmPickleEncrypted(
           pickle: pickle, pickleKey: pickleKey);
     }
@@ -189,11 +195,8 @@ final class VodozemacGroupSession implements GroupSession {
   VodozemacGroupSession._(this._session);
 
   static Future<VodozemacGroupSession> create() async =>
-      VodozemacGroupSession._(
-          await vodozemac.VodozemacGroupSession.newVodozemacGroupSession(
-        bridge: vodozemac.api!,
-        config:
-            vodozemac.VodozemacMegolmSessionConfig.def(bridge: vodozemac.api!),
+      VodozemacGroupSession._(vodozemac.VodozemacGroupSession(
+        config: vodozemac.VodozemacMegolmSessionConfig.def(),
       ));
 
   @override
@@ -219,7 +222,6 @@ final class VodozemacGroupSession implements GroupSession {
   }) async =>
       VodozemacGroupSession._(
           await vodozemac.VodozemacGroupSession.fromPickleEncrypted(
-        bridge: vodozemac.api!,
         pickle: pickle,
         pickleKey: vodozemac.U8Array32(pickleKey),
       ));
@@ -230,7 +232,6 @@ final class VodozemacGroupSession implements GroupSession {
   }) async =>
       VodozemacGroupSession._(
           await vodozemac.VodozemacGroupSession.fromOlmPickleEncrypted(
-        bridge: vodozemac.api!,
         pickle: pickle,
         pickleKey: pickleKey,
       ));
@@ -242,7 +243,7 @@ final class VodozemacGroupSession implements GroupSession {
 
 abstract base class InboundGroupSession {
   factory InboundGroupSession(String sessionKey) {
-    if (vodozemac.api != null) {
+    if (vodozemac.RustLib.instance.initialized) {
       return VodozemacInboundGroupSession(sessionKey);
     }
 
@@ -250,7 +251,7 @@ abstract base class InboundGroupSession {
   }
 
   factory InboundGroupSession.import(String sessionKey) {
-    if (vodozemac.api != null) {
+    if (vodozemac.RustLib.instance.initialized) {
       return VodozemacInboundGroupSession.import(sessionKey);
     }
 
@@ -267,7 +268,7 @@ abstract base class InboundGroupSession {
     required String pickle,
     required Uint8List pickleKey,
   }) {
-    if (vodozemac.api != null) {
+    if (vodozemac.RustLib.instance.initialized) {
       return VodozemacGroupSession.fromPickleEncrypted(
           pickle: pickle, pickleKey: pickleKey);
     }
@@ -279,7 +280,7 @@ abstract base class InboundGroupSession {
     required String pickle,
     required Uint8List pickleKey,
   }) {
-    if (vodozemac.api != null) {
+    if (vodozemac.RustLib.instance.initialized) {
       return VodozemacGroupSession.fromOlmPickleEncrypted(
           pickle: pickle, pickleKey: pickleKey);
     }
@@ -297,19 +298,14 @@ final class VodozemacInboundGroupSession implements InboundGroupSession {
   VodozemacInboundGroupSession._(this._session);
 
   VodozemacInboundGroupSession(String sessionKey)
-      : _session = vodozemac.VodozemacInboundGroupSession
-            .newVodozemacInboundGroupSession(
-                bridge: vodozemac.api!,
-                sessionKey: sessionKey,
-                config: vodozemac.VodozemacMegolmSessionConfig.def(
-                    bridge: vodozemac.api!));
+      : _session = vodozemac.VodozemacInboundGroupSession(
+            sessionKey: sessionKey,
+            config: vodozemac.VodozemacMegolmSessionConfig.def());
 
   VodozemacInboundGroupSession.import(String sessionKey)
-      : _session = vodozemac.VodozemacInboundGroupSession.import(
-            bridge: vodozemac.api!,
+      : _session = vodozemac.VodozemacInboundGroupSession.import_(
             sessionKey: sessionKey,
-            config: vodozemac.VodozemacMegolmSessionConfig.def(
-                bridge: vodozemac.api!));
+            config: vodozemac.VodozemacMegolmSessionConfig.def());
 
   @override
   String sessionId() => _session.sessionId();
@@ -333,9 +329,7 @@ final class VodozemacInboundGroupSession implements InboundGroupSession {
   }) async =>
       VodozemacInboundGroupSession._(
           await vodozemac.VodozemacInboundGroupSession.fromPickleEncrypted(
-              bridge: vodozemac.api!,
-              pickle: pickle,
-              pickleKey: vodozemac.U8Array32(pickleKey)));
+              pickle: pickle, pickleKey: vodozemac.U8Array32(pickleKey)));
 
   static Future<VodozemacInboundGroupSession> fromOlmPickleEncrypted({
     required String pickle,
@@ -343,7 +337,7 @@ final class VodozemacInboundGroupSession implements InboundGroupSession {
   }) async =>
       VodozemacInboundGroupSession._(
           await vodozemac.VodozemacInboundGroupSession.fromOlmPickleEncrypted(
-              bridge: vodozemac.api!, pickle: pickle, pickleKey: pickleKey));
+              pickle: pickle, pickleKey: pickleKey));
 
   @override
   String? exportAt(int messageIndex) => _session.exportAt(index: messageIndex);
@@ -364,7 +358,7 @@ abstract base class Session {
     required String pickle,
     required Uint8List pickleKey,
   }) {
-    if (vodozemac.api != null) {
+    if (vodozemac.RustLib.instance.initialized) {
       return VodozemacSession.fromPickleEncrypted(
           pickle: pickle, pickleKey: pickleKey);
     }
@@ -376,13 +370,22 @@ abstract base class Session {
     required String pickle,
     required Uint8List pickleKey,
   }) {
-    if (vodozemac.api != null) {
+    if (vodozemac.RustLib.instance.initialized) {
       return VodozemacSession.fromOlmPickleEncrypted(
           pickle: pickle, pickleKey: pickleKey);
     }
 
     throw UnimplementedError('No implemented backend loaded');
   }
+
+  // static int versionFromString({required String ciphertext}) {
+  //   if (vodozemac.RustLib.instance.initialized) {
+  //     return vodozemac.VodozemacOlmMessage.versionFromString(
+  //         ciphertext: ciphertext);
+  //   }
+
+  //   throw UnimplementedError('No implemented backend loaded');
+  // }
 }
 
 final class VodozemacSession implements Session {
@@ -400,8 +403,8 @@ final class VodozemacSession implements Session {
       String plaintext) async {
     final encrypted = await _session.encrypt(plaintext: plaintext);
     return (
-      messageType: encrypted.messageType(),
-      ciphertext: encrypted.message()
+      messageType: encrypted.messageType().toInt(),
+      ciphertext: encrypted.message(),
     );
   }
 
@@ -410,9 +413,8 @@ final class VodozemacSession implements Session {
           {required int messageType, required String ciphertext}) =>
       _session.decrypt(
           message: vodozemac.VodozemacOlmMessage.fromParts(
-              bridge: vodozemac.api!,
-              messageType: messageType,
-              ciphertext: ciphertext));
+              messageType: BigInt.from(messageType),
+              ciphertext: Utils.base64decodeUnpadded(ciphertext)));
 
   @override
   Future<String> toPickleEncrypted(Uint8List pickleKey) =>
@@ -423,9 +425,7 @@ final class VodozemacSession implements Session {
     required Uint8List pickleKey,
   }) async =>
       VodozemacSession._(await vodozemac.VodozemacSession.fromPickleEncrypted(
-          bridge: vodozemac.api!,
-          pickle: pickle,
-          pickleKey: vodozemac.U8Array32(pickleKey)));
+          pickle: pickle, pickleKey: vodozemac.U8Array32(pickleKey)));
 
   static Future<VodozemacSession> fromOlmPickleEncrypted({
     required String pickle,
@@ -433,12 +433,12 @@ final class VodozemacSession implements Session {
   }) async =>
       VodozemacSession._(
           await vodozemac.VodozemacSession.fromOlmPickleEncrypted(
-              bridge: vodozemac.api!, pickle: pickle, pickleKey: pickleKey));
+              pickle: pickle, pickleKey: pickleKey));
 }
 
 abstract base class Account {
   static Future<Account> create() async {
-    if (vodozemac.api != null) {
+    if (vodozemac.RustLib.instance.initialized) {
       return VodozemacAccount.create();
     }
 
@@ -483,7 +483,7 @@ abstract base class Account {
     required String pickle,
     required Uint8List pickleKey,
   }) {
-    if (vodozemac.api != null) {
+    if (vodozemac.RustLib.instance.initialized) {
       return VodozemacAccount.fromPickleEncrypted(
           pickle: pickle, pickleKey: pickleKey);
     }
@@ -495,7 +495,7 @@ abstract base class Account {
     required String pickle,
     required Uint8List pickleKey,
   }) {
-    if (vodozemac.api != null) {
+    if (vodozemac.RustLib.instance.initialized) {
       return VodozemacAccount.fromOlmPickleEncrypted(
           pickle: pickle, pickleKey: pickleKey);
     }
@@ -510,11 +510,10 @@ final class VodozemacAccount implements Account {
   VodozemacAccount._(this._account);
 
   static Future<VodozemacAccount> create() async =>
-      VodozemacAccount._(await vodozemac.VodozemacAccount.newVodozemacAccount(
-          bridge: vodozemac.api!));
+      VodozemacAccount._(vodozemac.VodozemacAccount());
 
   @override
-  int maxNumberOfOneTimeKeys() => _account.maxNumberOfOneTimeKeys();
+  int maxNumberOfOneTimeKeys() => _account.maxNumberOfOneTimeKeys().toInt();
 
   @override
   Future<void> generateFallbackKey() => _account.generateFallbackKey();
@@ -524,7 +523,7 @@ final class VodozemacAccount implements Account {
 
   @override
   Future<void> generateOneTimeKeys(int count) =>
-      _account.generateOneTimeKeys(count: count);
+      _account.generateOneTimeKeys(count: BigInt.from(count));
 
   @override
   void markKeysAsPublished() => _account.markKeysAsPublished();
@@ -571,8 +570,7 @@ final class VodozemacAccount implements Account {
     required covariant VodozemacCurve25519PublicKey oneTimeKey,
   }) async =>
       VodozemacSession._(await _account.createOutboundSession(
-          config:
-              vodozemac.VodozemacOlmSessionConfig.def(bridge: vodozemac.api!),
+          config: vodozemac.VodozemacOlmSessionConfig.def(),
           identityKey: identityKey._key,
           oneTimeKey: oneTimeKey._key));
 
@@ -597,9 +595,7 @@ final class VodozemacAccount implements Account {
     required Uint8List pickleKey,
   }) async =>
       VodozemacAccount._(await vodozemac.VodozemacAccount.fromPickleEncrypted(
-          bridge: vodozemac.api!,
-          pickle: pickle,
-          pickleKey: vodozemac.U8Array32(pickleKey)));
+          pickle: pickle, pickleKey: vodozemac.U8Array32(pickleKey)));
 
   static Future<VodozemacAccount> fromOlmPickleEncrypted({
     required String pickle,
@@ -607,5 +603,5 @@ final class VodozemacAccount implements Account {
   }) async =>
       VodozemacAccount._(
           await vodozemac.VodozemacAccount.fromOlmPickleEncrypted(
-              bridge: vodozemac.api!, pickle: pickle, pickleKey: pickleKey));
+              pickle: pickle, pickleKey: pickleKey));
 }

@@ -4,7 +4,7 @@ import 'package:checks/checks.dart';
 import 'package:checks/context.dart';
 import 'package:test/test.dart';
 
-import 'package:generic_olm_bindings/generic.dart';
+import 'package:generic_olm_bindings/lib.dart';
 
 extension PublicCurveChecks on Subject<Curve25519PublicKey> {
   void isValid() {
@@ -52,7 +52,7 @@ extension AsyncIterableChecks<T> on Subject<Iterable<T>> {
 void main() {
   loadVodozemac(
       libraryPath: Platform.environment['librarypath'] ??
-          '../rust/target/debug/libvodozemac_bindings_dart.so');
+          '../rust/target/debug/libvodozemac_bindings_dart.dylib');
 
   group('Account', () {
     setUp(() {
@@ -76,9 +76,10 @@ void main() {
 
       check(account.oneTimeKeys())
         ..length.equals(20)
-        ..entries.every(it()
-          ..has((val) => val.key, 'keyid').length.equals(11)
-          ..has((val) => val.value, 'key').isValid());
+        ..entries.every((subject) {
+          subject.has((val) => val.key, 'keyid').length.equals(11);
+          subject.has((val) => val.value, 'key').isValid();
+        });
     });
 
     test('can generate fallback key', () async {
@@ -88,9 +89,10 @@ void main() {
 
       check(account.fallbackKey())
         ..length.equals(1)
-        ..entries.every(it()
-          ..has((val) => val.key, 'keyid').length.equals(11)
-          ..has((val) => val.value, 'key').isValid());
+        ..entries.every((subject) {
+          subject.has((val) => val.key, 'keyid').length.equals(11);
+          subject.has((val) => val.value, 'key').isValid();
+        });
     });
 
     test('can publish fallback key', () async {
@@ -139,7 +141,7 @@ void main() {
       await check(outboundSession.decrypt(
               messageType: encrypted2.messageType,
               ciphertext: encrypted2.ciphertext))
-          .completes(it()..equals('Test2'));
+          .completes((subject) => subject.equals('Test2'));
       check(outboundSession.hasReceivedMessage()).isTrue();
     });
 
@@ -171,7 +173,7 @@ void main() {
       await check(outboundSession.decrypt(
               messageType: encrypted2.messageType,
               ciphertext: encrypted2.ciphertext))
-          .completes(it()..equals('Test2'));
+          .completes((subject) => subject.equals('Test2'));
       check(outboundSession.hasReceivedMessage()).isTrue();
     });
 
@@ -199,9 +201,9 @@ void main() {
 
       final encrypted = await groupSession.encrypt('Test');
 
-      check(encrypted).not(it()..contains('Test'));
-      await check(inbound.decrypt(encrypted)).completes(
-          it()..has((res) => res.plaintext, 'plaintext').equals('Test'));
+      check(encrypted).not((subject) => subject.contains('Test'));
+      await check(inbound.decrypt(encrypted)).completes((subject) =>
+          subject.has((res) => res.plaintext, 'plaintext').equals('Test'));
 
       // ensure that a later exported session does not decrypt the message
       final inboundAfter = groupSession.toInbound();
@@ -218,21 +220,21 @@ void main() {
       final encrypted = await groupSession.encrypt('Test');
       final encrypted2 = await groupSession.encrypt('Test');
 
-      check(encrypted).not(it()..equals(encrypted2));
+      check(encrypted).not((subject) => subject.equals(encrypted2));
 
-      check(encrypted).not(it()..contains('Test'));
-      await check(reimportedInbound.decrypt(encrypted)).completes(
-          it()..has((res) => res.plaintext, 'plaintext').equals('Test'));
+      check(encrypted).not((subject) => subject.contains('Test'));
+      await check(reimportedInbound.decrypt(encrypted)).completes((subject) =>
+          subject.has((res) => res.plaintext, 'plaintext').equals('Test'));
 
       // ensure that a later exported session does not decrypt the message
       await check(laterInbound.decrypt(encrypted)).throws();
 
       // check if second index decryptes
-      await check(reimportedInbound.decrypt(encrypted2)).completes(
-          it()..has((res) => res.plaintext, 'plaintext').equals('Test'));
+      await check(reimportedInbound.decrypt(encrypted2)).completes((subject) =>
+          subject.has((res) => res.plaintext, 'plaintext').equals('Test'));
 
-      await check(laterInbound.decrypt(encrypted2)).completes(
-          it()..has((res) => res.plaintext, 'plaintext').equals('Test'));
+      await check(laterInbound.decrypt(encrypted2)).completes((subject) =>
+          subject.has((res) => res.plaintext, 'plaintext').equals('Test'));
     });
   });
 }

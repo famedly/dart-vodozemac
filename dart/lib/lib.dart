@@ -1,6 +1,3 @@
-/// A generic library for libolm bindings
-library generic_olm_bindings;
-
 export 'src/api.dart'
     show
         Curve25519PublicKey,
