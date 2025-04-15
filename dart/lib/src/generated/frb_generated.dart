@@ -3,7 +3,7 @@
 
 // ignore_for_file: unused_import, unused_element, unnecessary_import, duplicate_ignore, invalid_use_of_internal_member, annotate_overrides, non_constant_identifier_names, curly_braces_in_flow_control_structures, prefer_const_literals_to_create_immutables, unused_field
 
-import 'api.dart';
+import 'bindings.dart';
 import 'dart:async';
 import 'dart:convert';
 import 'frb_generated.dart';
@@ -63,7 +63,7 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
   String get codegenVersion => '2.9.0';
 
   @override
-  int get rustContentHash => 1962951366;
+  int get rustContentHash => -1825470410;
 
   static const kDefaultExternalLibraryLoaderConfig = ExternalLibraryLoaderConfig(
     stem: 'vodozemac_bindings_dart',
@@ -73,172 +73,174 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
 }
 
 abstract class RustLibApi extends BaseApi {
-  Future<VodozemacOlmSessionCreationResult> crateApiVodozemacAccountCreateInboundSession(
+  Future<VodozemacOlmSessionCreationResult> crateBindingsVodozemacAccountCreateInboundSession(
       {required VodozemacAccount that,
       required VodozemacCurve25519PublicKey theirIdentityKey,
       required String preKeyMessageBase64});
 
-  Future<VodozemacSession> crateApiVodozemacAccountCreateOutboundSession(
+  Future<VodozemacSession> crateBindingsVodozemacAccountCreateOutboundSession(
       {required VodozemacAccount that,
       required VodozemacOlmSessionConfig config,
       required VodozemacCurve25519PublicKey identityKey,
       required VodozemacCurve25519PublicKey oneTimeKey});
 
-  VodozemacCurve25519PublicKey crateApiVodozemacAccountCurve25519Key({required VodozemacAccount that});
+  VodozemacCurve25519PublicKey crateBindingsVodozemacAccountCurve25519Key({required VodozemacAccount that});
 
-  VodozemacEd25519PublicKey crateApiVodozemacAccountEd25519Key({required VodozemacAccount that});
+  VodozemacEd25519PublicKey crateBindingsVodozemacAccountEd25519Key({required VodozemacAccount that});
 
-  List<VodozemacOneTimeKey> crateApiVodozemacAccountFallbackKey({required VodozemacAccount that});
+  List<VodozemacOneTimeKey> crateBindingsVodozemacAccountFallbackKey({required VodozemacAccount that});
 
-  bool crateApiVodozemacAccountForgetFallbackKey({required VodozemacAccount that});
+  bool crateBindingsVodozemacAccountForgetFallbackKey({required VodozemacAccount that});
 
-  Future<VodozemacAccount> crateApiVodozemacAccountFromOlmPickleEncrypted(
+  Future<VodozemacAccount> crateBindingsVodozemacAccountFromOlmPickleEncrypted(
       {required String pickle, required List<int> pickleKey});
 
-  Future<VodozemacAccount> crateApiVodozemacAccountFromPickleEncrypted(
+  Future<VodozemacAccount> crateBindingsVodozemacAccountFromPickleEncrypted(
       {required String pickle, required U8Array32 pickleKey});
 
-  Future<String?> crateApiVodozemacAccountGenerateFallbackKey({required VodozemacAccount that});
+  Future<String?> crateBindingsVodozemacAccountGenerateFallbackKey({required VodozemacAccount that});
 
-  Future<void> crateApiVodozemacAccountGenerateOneTimeKeys({required VodozemacAccount that, required BigInt count});
+  Future<void> crateBindingsVodozemacAccountGenerateOneTimeKeys(
+      {required VodozemacAccount that, required BigInt count});
 
-  VodozemacIdentityKeys crateApiVodozemacAccountIdentityKeys({required VodozemacAccount that});
+  VodozemacIdentityKeys crateBindingsVodozemacAccountIdentityKeys({required VodozemacAccount that});
 
-  void crateApiVodozemacAccountMarkKeysAsPublished({required VodozemacAccount that});
+  void crateBindingsVodozemacAccountMarkKeysAsPublished({required VodozemacAccount that});
 
-  BigInt crateApiVodozemacAccountMaxNumberOfOneTimeKeys({required VodozemacAccount that});
+  BigInt crateBindingsVodozemacAccountMaxNumberOfOneTimeKeys({required VodozemacAccount that});
 
-  VodozemacAccount crateApiVodozemacAccountNew();
+  VodozemacAccount crateBindingsVodozemacAccountNew();
 
-  List<VodozemacOneTimeKey> crateApiVodozemacAccountOneTimeKeys({required VodozemacAccount that});
+  List<VodozemacOneTimeKey> crateBindingsVodozemacAccountOneTimeKeys({required VodozemacAccount that});
 
-  Future<String> crateApiVodozemacAccountPickleEncrypted(
+  Future<String> crateBindingsVodozemacAccountPickleEncrypted(
       {required VodozemacAccount that, required U8Array32 pickleKey});
 
-  Future<VodozemacEd25519Signature> crateApiVodozemacAccountSign(
+  Future<VodozemacEd25519Signature> crateBindingsVodozemacAccountSign(
       {required VodozemacAccount that, required String message});
 
-  U8Array32 crateApiVodozemacCurve25519PublicKeyAsBytes({required VodozemacCurve25519PublicKey that});
+  U8Array32 crateBindingsVodozemacCurve25519PublicKeyAsBytes({required VodozemacCurve25519PublicKey that});
 
-  VodozemacCurve25519PublicKey crateApiVodozemacCurve25519PublicKeyFromBase64({required String base64Key});
+  VodozemacCurve25519PublicKey crateBindingsVodozemacCurve25519PublicKeyFromBase64({required String base64Key});
 
-  VodozemacCurve25519PublicKey crateApiVodozemacCurve25519PublicKeyFromSlice({required U8Array32 bytes});
+  VodozemacCurve25519PublicKey crateBindingsVodozemacCurve25519PublicKeyFromSlice({required U8Array32 bytes});
 
-  String crateApiVodozemacCurve25519PublicKeyToBase64({required VodozemacCurve25519PublicKey that});
+  String crateBindingsVodozemacCurve25519PublicKeyToBase64({required VodozemacCurve25519PublicKey that});
 
-  U8Array32 crateApiVodozemacEd25519PublicKeyAsBytes({required VodozemacEd25519PublicKey that});
+  U8Array32 crateBindingsVodozemacEd25519PublicKeyAsBytes({required VodozemacEd25519PublicKey that});
 
-  VodozemacEd25519PublicKey crateApiVodozemacEd25519PublicKeyFromBase64({required String base64Key});
+  VodozemacEd25519PublicKey crateBindingsVodozemacEd25519PublicKeyFromBase64({required String base64Key});
 
-  VodozemacEd25519PublicKey crateApiVodozemacEd25519PublicKeyFromSlice({required U8Array32 bytes});
+  VodozemacEd25519PublicKey crateBindingsVodozemacEd25519PublicKeyFromSlice({required U8Array32 bytes});
 
-  String crateApiVodozemacEd25519PublicKeyToBase64({required VodozemacEd25519PublicKey that});
+  String crateBindingsVodozemacEd25519PublicKeyToBase64({required VodozemacEd25519PublicKey that});
 
-  Future<void> crateApiVodozemacEd25519PublicKeyVerify(
+  Future<void> crateBindingsVodozemacEd25519PublicKeyVerify(
       {required VodozemacEd25519PublicKey that, required String message, required VodozemacEd25519Signature signature});
 
-  VodozemacEd25519Signature crateApiVodozemacEd25519SignatureFromBase64({required String signature});
+  VodozemacEd25519Signature crateBindingsVodozemacEd25519SignatureFromBase64({required String signature});
 
-  VodozemacEd25519Signature crateApiVodozemacEd25519SignatureFromSlice({required U8Array64 bytes});
+  VodozemacEd25519Signature crateBindingsVodozemacEd25519SignatureFromSlice({required U8Array64 bytes});
 
-  String crateApiVodozemacEd25519SignatureToBase64({required VodozemacEd25519Signature that});
+  String crateBindingsVodozemacEd25519SignatureToBase64({required VodozemacEd25519Signature that});
 
-  U8Array64 crateApiVodozemacEd25519SignatureToBytes({required VodozemacEd25519Signature that});
+  U8Array64 crateBindingsVodozemacEd25519SignatureToBytes({required VodozemacEd25519Signature that});
 
-  Future<String> crateApiVodozemacGroupSessionEncrypt({required VodozemacGroupSession that, required String plaintext});
+  Future<String> crateBindingsVodozemacGroupSessionEncrypt(
+      {required VodozemacGroupSession that, required String plaintext});
 
-  Future<VodozemacGroupSession> crateApiVodozemacGroupSessionFromOlmPickleEncrypted(
+  Future<VodozemacGroupSession> crateBindingsVodozemacGroupSessionFromOlmPickleEncrypted(
       {required String pickle, required List<int> pickleKey});
 
-  Future<VodozemacGroupSession> crateApiVodozemacGroupSessionFromPickleEncrypted(
+  Future<VodozemacGroupSession> crateBindingsVodozemacGroupSessionFromPickleEncrypted(
       {required String pickle, required U8Array32 pickleKey});
 
-  int crateApiVodozemacGroupSessionMessageIndex({required VodozemacGroupSession that});
+  int crateBindingsVodozemacGroupSessionMessageIndex({required VodozemacGroupSession that});
 
-  VodozemacGroupSession crateApiVodozemacGroupSessionNew({required VodozemacMegolmSessionConfig config});
+  VodozemacGroupSession crateBindingsVodozemacGroupSessionNew({required VodozemacMegolmSessionConfig config});
 
-  Future<String> crateApiVodozemacGroupSessionPickleEncrypted(
+  Future<String> crateBindingsVodozemacGroupSessionPickleEncrypted(
       {required VodozemacGroupSession that, required U8Array32 pickleKey});
 
-  Future<VodozemacMegolmSessionConfig> crateApiVodozemacGroupSessionSessionConfig(
+  Future<VodozemacMegolmSessionConfig> crateBindingsVodozemacGroupSessionSessionConfig(
       {required VodozemacGroupSession that});
 
-  String crateApiVodozemacGroupSessionSessionId({required VodozemacGroupSession that});
+  String crateBindingsVodozemacGroupSessionSessionId({required VodozemacGroupSession that});
 
-  Future<String> crateApiVodozemacGroupSessionSessionKey({required VodozemacGroupSession that});
+  Future<String> crateBindingsVodozemacGroupSessionSessionKey({required VodozemacGroupSession that});
 
-  VodozemacInboundGroupSession crateApiVodozemacGroupSessionToInbound({required VodozemacGroupSession that});
+  VodozemacInboundGroupSession crateBindingsVodozemacGroupSessionToInbound({required VodozemacGroupSession that});
 
-  Future<DecryptResult> crateApiVodozemacInboundGroupSessionDecrypt(
+  Future<DecryptResult> crateBindingsVodozemacInboundGroupSessionDecrypt(
       {required VodozemacInboundGroupSession that, required String encrypted});
 
-  String? crateApiVodozemacInboundGroupSessionExportAt(
+  String? crateBindingsVodozemacInboundGroupSessionExportAt(
       {required VodozemacInboundGroupSession that, required int index});
 
-  String crateApiVodozemacInboundGroupSessionExportAtFirstKnownIndex({required VodozemacInboundGroupSession that});
+  String crateBindingsVodozemacInboundGroupSessionExportAtFirstKnownIndex({required VodozemacInboundGroupSession that});
 
-  int crateApiVodozemacInboundGroupSessionFirstKnownIndex({required VodozemacInboundGroupSession that});
+  int crateBindingsVodozemacInboundGroupSessionFirstKnownIndex({required VodozemacInboundGroupSession that});
 
-  Future<VodozemacInboundGroupSession> crateApiVodozemacInboundGroupSessionFromOlmPickleEncrypted(
+  Future<VodozemacInboundGroupSession> crateBindingsVodozemacInboundGroupSessionFromOlmPickleEncrypted(
       {required String pickle, required List<int> pickleKey});
 
-  Future<VodozemacInboundGroupSession> crateApiVodozemacInboundGroupSessionFromPickleEncrypted(
+  Future<VodozemacInboundGroupSession> crateBindingsVodozemacInboundGroupSessionFromPickleEncrypted(
       {required String pickle, required U8Array32 pickleKey});
 
-  VodozemacInboundGroupSession crateApiVodozemacInboundGroupSessionImport(
+  VodozemacInboundGroupSession crateBindingsVodozemacInboundGroupSessionImport(
       {required String sessionKey, required VodozemacMegolmSessionConfig config});
 
-  VodozemacInboundGroupSession crateApiVodozemacInboundGroupSessionNew(
+  VodozemacInboundGroupSession crateBindingsVodozemacInboundGroupSessionNew(
       {required String sessionKey, required VodozemacMegolmSessionConfig config});
 
-  Future<String> crateApiVodozemacInboundGroupSessionPickleEncrypted(
+  Future<String> crateBindingsVodozemacInboundGroupSessionPickleEncrypted(
       {required VodozemacInboundGroupSession that, required U8Array32 pickleKey});
 
-  String crateApiVodozemacInboundGroupSessionSessionId({required VodozemacInboundGroupSession that});
+  String crateBindingsVodozemacInboundGroupSessionSessionId({required VodozemacInboundGroupSession that});
 
-  VodozemacMegolmSessionConfig crateApiVodozemacMegolmSessionConfigDef();
+  VodozemacMegolmSessionConfig crateBindingsVodozemacMegolmSessionConfigDef();
 
-  int crateApiVodozemacMegolmSessionConfigVersion({required VodozemacMegolmSessionConfig that});
+  int crateBindingsVodozemacMegolmSessionConfigVersion({required VodozemacMegolmSessionConfig that});
 
-  VodozemacMegolmSessionConfig crateApiVodozemacMegolmSessionConfigVersion1();
+  VodozemacMegolmSessionConfig crateBindingsVodozemacMegolmSessionConfigVersion1();
 
-  VodozemacMegolmSessionConfig crateApiVodozemacMegolmSessionConfigVersion2();
+  VodozemacMegolmSessionConfig crateBindingsVodozemacMegolmSessionConfigVersion2();
 
-  VodozemacOlmMessage crateApiVodozemacOlmMessageFromParts(
+  VodozemacOlmMessage crateBindingsVodozemacOlmMessageFromParts(
       {required BigInt messageType, required List<int> ciphertext});
 
-  String crateApiVodozemacOlmMessageMessage({required VodozemacOlmMessage that});
+  String crateBindingsVodozemacOlmMessageMessage({required VodozemacOlmMessage that});
 
-  BigInt crateApiVodozemacOlmMessageMessageType({required VodozemacOlmMessage that});
+  BigInt crateBindingsVodozemacOlmMessageMessageType({required VodozemacOlmMessage that});
 
-  VodozemacOlmSessionConfig crateApiVodozemacOlmSessionConfigDef();
+  VodozemacOlmSessionConfig crateBindingsVodozemacOlmSessionConfigDef();
 
-  int crateApiVodozemacOlmSessionConfigVersion({required VodozemacOlmSessionConfig that});
+  int crateBindingsVodozemacOlmSessionConfigVersion({required VodozemacOlmSessionConfig that});
 
-  VodozemacOlmSessionConfig crateApiVodozemacOlmSessionConfigVersion1();
+  VodozemacOlmSessionConfig crateBindingsVodozemacOlmSessionConfigVersion1();
 
-  VodozemacOlmSessionConfig crateApiVodozemacOlmSessionConfigVersion2();
+  VodozemacOlmSessionConfig crateBindingsVodozemacOlmSessionConfigVersion2();
 
-  Future<String> crateApiVodozemacSessionDecrypt(
+  Future<String> crateBindingsVodozemacSessionDecrypt(
       {required VodozemacSession that, required VodozemacOlmMessage message});
 
-  Future<VodozemacOlmMessage> crateApiVodozemacSessionEncrypt(
+  Future<VodozemacOlmMessage> crateBindingsVodozemacSessionEncrypt(
       {required VodozemacSession that, required String plaintext});
 
-  Future<VodozemacSession> crateApiVodozemacSessionFromOlmPickleEncrypted(
+  Future<VodozemacSession> crateBindingsVodozemacSessionFromOlmPickleEncrypted(
       {required String pickle, required List<int> pickleKey});
 
-  Future<VodozemacSession> crateApiVodozemacSessionFromPickleEncrypted(
+  Future<VodozemacSession> crateBindingsVodozemacSessionFromPickleEncrypted(
       {required String pickle, required U8Array32 pickleKey});
 
-  bool crateApiVodozemacSessionHasReceivedMessage({required VodozemacSession that});
+  bool crateBindingsVodozemacSessionHasReceivedMessage({required VodozemacSession that});
 
-  Future<String> crateApiVodozemacSessionPickleEncrypted(
+  Future<String> crateBindingsVodozemacSessionPickleEncrypted(
       {required VodozemacSession that, required U8Array32 pickleKey});
 
-  Future<VodozemacOlmSessionConfig> crateApiVodozemacSessionSessionConfig({required VodozemacSession that});
+  Future<VodozemacOlmSessionConfig> crateBindingsVodozemacSessionSessionConfig({required VodozemacSession that});
 
-  String crateApiVodozemacSessionSessionId({required VodozemacSession that});
+  String crateBindingsVodozemacSessionSessionId({required VodozemacSession that});
 
   RustArcIncrementStrongCountFnType get rust_arc_increment_strong_count_Curve25519PublicKey;
 
@@ -310,7 +312,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   });
 
   @override
-  Future<VodozemacOlmSessionCreationResult> crateApiVodozemacAccountCreateInboundSession(
+  Future<VodozemacOlmSessionCreationResult> crateBindingsVodozemacAccountCreateInboundSession(
       {required VodozemacAccount that,
       required VodozemacCurve25519PublicKey theirIdentityKey,
       required String preKeyMessageBase64}) {
@@ -319,25 +321,25 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_box_autoadd_vodozemac_account(that);
         var arg1 = cst_encode_box_autoadd_vodozemac_curve_25519_public_key(theirIdentityKey);
         var arg2 = cst_encode_String(preKeyMessageBase64);
-        return wire.wire__crate__api__vodozemac_account_create_inbound_session(port_, arg0, arg1, arg2);
+        return wire.wire__crate__bindings__vodozemac_account_create_inbound_session(port_, arg0, arg1, arg2);
       },
       codec: DcoCodec(
         decodeSuccessData: dco_decode_vodozemac_olm_session_creation_result,
         decodeErrorData: dco_decode_AnyhowException,
       ),
-      constMeta: kCrateApiVodozemacAccountCreateInboundSessionConstMeta,
+      constMeta: kCrateBindingsVodozemacAccountCreateInboundSessionConstMeta,
       argValues: [that, theirIdentityKey, preKeyMessageBase64],
       apiImpl: this,
     ));
   }
 
-  TaskConstMeta get kCrateApiVodozemacAccountCreateInboundSessionConstMeta => const TaskConstMeta(
+  TaskConstMeta get kCrateBindingsVodozemacAccountCreateInboundSessionConstMeta => const TaskConstMeta(
         debugName: "vodozemac_account_create_inbound_session",
         argNames: ["that", "theirIdentityKey", "preKeyMessageBase64"],
       );
 
   @override
-  Future<VodozemacSession> crateApiVodozemacAccountCreateOutboundSession(
+  Future<VodozemacSession> crateBindingsVodozemacAccountCreateOutboundSession(
       {required VodozemacAccount that,
       required VodozemacOlmSessionConfig config,
       required VodozemacCurve25519PublicKey identityKey,
@@ -348,539 +350,540 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg1 = cst_encode_box_autoadd_vodozemac_olm_session_config(config);
         var arg2 = cst_encode_box_autoadd_vodozemac_curve_25519_public_key(identityKey);
         var arg3 = cst_encode_box_autoadd_vodozemac_curve_25519_public_key(oneTimeKey);
-        return wire.wire__crate__api__vodozemac_account_create_outbound_session(port_, arg0, arg1, arg2, arg3);
+        return wire.wire__crate__bindings__vodozemac_account_create_outbound_session(port_, arg0, arg1, arg2, arg3);
       },
       codec: DcoCodec(
         decodeSuccessData: dco_decode_vodozemac_session,
         decodeErrorData: null,
       ),
-      constMeta: kCrateApiVodozemacAccountCreateOutboundSessionConstMeta,
+      constMeta: kCrateBindingsVodozemacAccountCreateOutboundSessionConstMeta,
       argValues: [that, config, identityKey, oneTimeKey],
       apiImpl: this,
     ));
   }
 
-  TaskConstMeta get kCrateApiVodozemacAccountCreateOutboundSessionConstMeta => const TaskConstMeta(
+  TaskConstMeta get kCrateBindingsVodozemacAccountCreateOutboundSessionConstMeta => const TaskConstMeta(
         debugName: "vodozemac_account_create_outbound_session",
         argNames: ["that", "config", "identityKey", "oneTimeKey"],
       );
 
   @override
-  VodozemacCurve25519PublicKey crateApiVodozemacAccountCurve25519Key({required VodozemacAccount that}) {
+  VodozemacCurve25519PublicKey crateBindingsVodozemacAccountCurve25519Key({required VodozemacAccount that}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         var arg0 = cst_encode_box_autoadd_vodozemac_account(that);
-        return wire.wire__crate__api__vodozemac_account_curve25519_key(arg0);
+        return wire.wire__crate__bindings__vodozemac_account_curve25519_key(arg0);
       },
       codec: DcoCodec(
         decodeSuccessData: dco_decode_vodozemac_curve_25519_public_key,
         decodeErrorData: null,
       ),
-      constMeta: kCrateApiVodozemacAccountCurve25519KeyConstMeta,
+      constMeta: kCrateBindingsVodozemacAccountCurve25519KeyConstMeta,
       argValues: [that],
       apiImpl: this,
     ));
   }
 
-  TaskConstMeta get kCrateApiVodozemacAccountCurve25519KeyConstMeta => const TaskConstMeta(
+  TaskConstMeta get kCrateBindingsVodozemacAccountCurve25519KeyConstMeta => const TaskConstMeta(
         debugName: "vodozemac_account_curve25519_key",
         argNames: ["that"],
       );
 
   @override
-  VodozemacEd25519PublicKey crateApiVodozemacAccountEd25519Key({required VodozemacAccount that}) {
+  VodozemacEd25519PublicKey crateBindingsVodozemacAccountEd25519Key({required VodozemacAccount that}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         var arg0 = cst_encode_box_autoadd_vodozemac_account(that);
-        return wire.wire__crate__api__vodozemac_account_ed25519_key(arg0);
+        return wire.wire__crate__bindings__vodozemac_account_ed25519_key(arg0);
       },
       codec: DcoCodec(
         decodeSuccessData: dco_decode_vodozemac_ed_25519_public_key,
         decodeErrorData: null,
       ),
-      constMeta: kCrateApiVodozemacAccountEd25519KeyConstMeta,
+      constMeta: kCrateBindingsVodozemacAccountEd25519KeyConstMeta,
       argValues: [that],
       apiImpl: this,
     ));
   }
 
-  TaskConstMeta get kCrateApiVodozemacAccountEd25519KeyConstMeta => const TaskConstMeta(
+  TaskConstMeta get kCrateBindingsVodozemacAccountEd25519KeyConstMeta => const TaskConstMeta(
         debugName: "vodozemac_account_ed25519_key",
         argNames: ["that"],
       );
 
   @override
-  List<VodozemacOneTimeKey> crateApiVodozemacAccountFallbackKey({required VodozemacAccount that}) {
+  List<VodozemacOneTimeKey> crateBindingsVodozemacAccountFallbackKey({required VodozemacAccount that}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         var arg0 = cst_encode_box_autoadd_vodozemac_account(that);
-        return wire.wire__crate__api__vodozemac_account_fallback_key(arg0);
+        return wire.wire__crate__bindings__vodozemac_account_fallback_key(arg0);
       },
       codec: DcoCodec(
         decodeSuccessData: dco_decode_list_vodozemac_one_time_key,
         decodeErrorData: null,
       ),
-      constMeta: kCrateApiVodozemacAccountFallbackKeyConstMeta,
+      constMeta: kCrateBindingsVodozemacAccountFallbackKeyConstMeta,
       argValues: [that],
       apiImpl: this,
     ));
   }
 
-  TaskConstMeta get kCrateApiVodozemacAccountFallbackKeyConstMeta => const TaskConstMeta(
+  TaskConstMeta get kCrateBindingsVodozemacAccountFallbackKeyConstMeta => const TaskConstMeta(
         debugName: "vodozemac_account_fallback_key",
         argNames: ["that"],
       );
 
   @override
-  bool crateApiVodozemacAccountForgetFallbackKey({required VodozemacAccount that}) {
+  bool crateBindingsVodozemacAccountForgetFallbackKey({required VodozemacAccount that}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         var arg0 = cst_encode_box_autoadd_vodozemac_account(that);
-        return wire.wire__crate__api__vodozemac_account_forget_fallback_key(arg0);
+        return wire.wire__crate__bindings__vodozemac_account_forget_fallback_key(arg0);
       },
       codec: DcoCodec(
         decodeSuccessData: dco_decode_bool,
         decodeErrorData: null,
       ),
-      constMeta: kCrateApiVodozemacAccountForgetFallbackKeyConstMeta,
+      constMeta: kCrateBindingsVodozemacAccountForgetFallbackKeyConstMeta,
       argValues: [that],
       apiImpl: this,
     ));
   }
 
-  TaskConstMeta get kCrateApiVodozemacAccountForgetFallbackKeyConstMeta => const TaskConstMeta(
+  TaskConstMeta get kCrateBindingsVodozemacAccountForgetFallbackKeyConstMeta => const TaskConstMeta(
         debugName: "vodozemac_account_forget_fallback_key",
         argNames: ["that"],
       );
 
   @override
-  Future<VodozemacAccount> crateApiVodozemacAccountFromOlmPickleEncrypted(
+  Future<VodozemacAccount> crateBindingsVodozemacAccountFromOlmPickleEncrypted(
       {required String pickle, required List<int> pickleKey}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         var arg0 = cst_encode_String(pickle);
         var arg1 = cst_encode_list_prim_u_8_loose(pickleKey);
-        return wire.wire__crate__api__vodozemac_account_from_olm_pickle_encrypted(port_, arg0, arg1);
+        return wire.wire__crate__bindings__vodozemac_account_from_olm_pickle_encrypted(port_, arg0, arg1);
       },
       codec: DcoCodec(
         decodeSuccessData: dco_decode_vodozemac_account,
         decodeErrorData: dco_decode_AnyhowException,
       ),
-      constMeta: kCrateApiVodozemacAccountFromOlmPickleEncryptedConstMeta,
+      constMeta: kCrateBindingsVodozemacAccountFromOlmPickleEncryptedConstMeta,
       argValues: [pickle, pickleKey],
       apiImpl: this,
     ));
   }
 
-  TaskConstMeta get kCrateApiVodozemacAccountFromOlmPickleEncryptedConstMeta => const TaskConstMeta(
+  TaskConstMeta get kCrateBindingsVodozemacAccountFromOlmPickleEncryptedConstMeta => const TaskConstMeta(
         debugName: "vodozemac_account_from_olm_pickle_encrypted",
         argNames: ["pickle", "pickleKey"],
       );
 
   @override
-  Future<VodozemacAccount> crateApiVodozemacAccountFromPickleEncrypted(
+  Future<VodozemacAccount> crateBindingsVodozemacAccountFromPickleEncrypted(
       {required String pickle, required U8Array32 pickleKey}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         var arg0 = cst_encode_String(pickle);
         var arg1 = cst_encode_u_8_array_32(pickleKey);
-        return wire.wire__crate__api__vodozemac_account_from_pickle_encrypted(port_, arg0, arg1);
+        return wire.wire__crate__bindings__vodozemac_account_from_pickle_encrypted(port_, arg0, arg1);
       },
       codec: DcoCodec(
         decodeSuccessData: dco_decode_vodozemac_account,
         decodeErrorData: dco_decode_AnyhowException,
       ),
-      constMeta: kCrateApiVodozemacAccountFromPickleEncryptedConstMeta,
+      constMeta: kCrateBindingsVodozemacAccountFromPickleEncryptedConstMeta,
       argValues: [pickle, pickleKey],
       apiImpl: this,
     ));
   }
 
-  TaskConstMeta get kCrateApiVodozemacAccountFromPickleEncryptedConstMeta => const TaskConstMeta(
+  TaskConstMeta get kCrateBindingsVodozemacAccountFromPickleEncryptedConstMeta => const TaskConstMeta(
         debugName: "vodozemac_account_from_pickle_encrypted",
         argNames: ["pickle", "pickleKey"],
       );
 
   @override
-  Future<String?> crateApiVodozemacAccountGenerateFallbackKey({required VodozemacAccount that}) {
+  Future<String?> crateBindingsVodozemacAccountGenerateFallbackKey({required VodozemacAccount that}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         var arg0 = cst_encode_box_autoadd_vodozemac_account(that);
-        return wire.wire__crate__api__vodozemac_account_generate_fallback_key(port_, arg0);
+        return wire.wire__crate__bindings__vodozemac_account_generate_fallback_key(port_, arg0);
       },
       codec: DcoCodec(
         decodeSuccessData: dco_decode_opt_String,
         decodeErrorData: null,
       ),
-      constMeta: kCrateApiVodozemacAccountGenerateFallbackKeyConstMeta,
+      constMeta: kCrateBindingsVodozemacAccountGenerateFallbackKeyConstMeta,
       argValues: [that],
       apiImpl: this,
     ));
   }
 
-  TaskConstMeta get kCrateApiVodozemacAccountGenerateFallbackKeyConstMeta => const TaskConstMeta(
+  TaskConstMeta get kCrateBindingsVodozemacAccountGenerateFallbackKeyConstMeta => const TaskConstMeta(
         debugName: "vodozemac_account_generate_fallback_key",
         argNames: ["that"],
       );
 
   @override
-  Future<void> crateApiVodozemacAccountGenerateOneTimeKeys({required VodozemacAccount that, required BigInt count}) {
+  Future<void> crateBindingsVodozemacAccountGenerateOneTimeKeys(
+      {required VodozemacAccount that, required BigInt count}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         var arg0 = cst_encode_box_autoadd_vodozemac_account(that);
         var arg1 = cst_encode_usize(count);
-        return wire.wire__crate__api__vodozemac_account_generate_one_time_keys(port_, arg0, arg1);
+        return wire.wire__crate__bindings__vodozemac_account_generate_one_time_keys(port_, arg0, arg1);
       },
       codec: DcoCodec(
         decodeSuccessData: dco_decode_unit,
         decodeErrorData: null,
       ),
-      constMeta: kCrateApiVodozemacAccountGenerateOneTimeKeysConstMeta,
+      constMeta: kCrateBindingsVodozemacAccountGenerateOneTimeKeysConstMeta,
       argValues: [that, count],
       apiImpl: this,
     ));
   }
 
-  TaskConstMeta get kCrateApiVodozemacAccountGenerateOneTimeKeysConstMeta => const TaskConstMeta(
+  TaskConstMeta get kCrateBindingsVodozemacAccountGenerateOneTimeKeysConstMeta => const TaskConstMeta(
         debugName: "vodozemac_account_generate_one_time_keys",
         argNames: ["that", "count"],
       );
 
   @override
-  VodozemacIdentityKeys crateApiVodozemacAccountIdentityKeys({required VodozemacAccount that}) {
+  VodozemacIdentityKeys crateBindingsVodozemacAccountIdentityKeys({required VodozemacAccount that}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         var arg0 = cst_encode_box_autoadd_vodozemac_account(that);
-        return wire.wire__crate__api__vodozemac_account_identity_keys(arg0);
+        return wire.wire__crate__bindings__vodozemac_account_identity_keys(arg0);
       },
       codec: DcoCodec(
         decodeSuccessData: dco_decode_vodozemac_identity_keys,
         decodeErrorData: null,
       ),
-      constMeta: kCrateApiVodozemacAccountIdentityKeysConstMeta,
+      constMeta: kCrateBindingsVodozemacAccountIdentityKeysConstMeta,
       argValues: [that],
       apiImpl: this,
     ));
   }
 
-  TaskConstMeta get kCrateApiVodozemacAccountIdentityKeysConstMeta => const TaskConstMeta(
+  TaskConstMeta get kCrateBindingsVodozemacAccountIdentityKeysConstMeta => const TaskConstMeta(
         debugName: "vodozemac_account_identity_keys",
         argNames: ["that"],
       );
 
   @override
-  void crateApiVodozemacAccountMarkKeysAsPublished({required VodozemacAccount that}) {
+  void crateBindingsVodozemacAccountMarkKeysAsPublished({required VodozemacAccount that}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         var arg0 = cst_encode_box_autoadd_vodozemac_account(that);
-        return wire.wire__crate__api__vodozemac_account_mark_keys_as_published(arg0);
+        return wire.wire__crate__bindings__vodozemac_account_mark_keys_as_published(arg0);
       },
       codec: DcoCodec(
         decodeSuccessData: dco_decode_unit,
         decodeErrorData: null,
       ),
-      constMeta: kCrateApiVodozemacAccountMarkKeysAsPublishedConstMeta,
+      constMeta: kCrateBindingsVodozemacAccountMarkKeysAsPublishedConstMeta,
       argValues: [that],
       apiImpl: this,
     ));
   }
 
-  TaskConstMeta get kCrateApiVodozemacAccountMarkKeysAsPublishedConstMeta => const TaskConstMeta(
+  TaskConstMeta get kCrateBindingsVodozemacAccountMarkKeysAsPublishedConstMeta => const TaskConstMeta(
         debugName: "vodozemac_account_mark_keys_as_published",
         argNames: ["that"],
       );
 
   @override
-  BigInt crateApiVodozemacAccountMaxNumberOfOneTimeKeys({required VodozemacAccount that}) {
+  BigInt crateBindingsVodozemacAccountMaxNumberOfOneTimeKeys({required VodozemacAccount that}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         var arg0 = cst_encode_box_autoadd_vodozemac_account(that);
-        return wire.wire__crate__api__vodozemac_account_max_number_of_one_time_keys(arg0);
+        return wire.wire__crate__bindings__vodozemac_account_max_number_of_one_time_keys(arg0);
       },
       codec: DcoCodec(
         decodeSuccessData: dco_decode_usize,
         decodeErrorData: null,
       ),
-      constMeta: kCrateApiVodozemacAccountMaxNumberOfOneTimeKeysConstMeta,
+      constMeta: kCrateBindingsVodozemacAccountMaxNumberOfOneTimeKeysConstMeta,
       argValues: [that],
       apiImpl: this,
     ));
   }
 
-  TaskConstMeta get kCrateApiVodozemacAccountMaxNumberOfOneTimeKeysConstMeta => const TaskConstMeta(
+  TaskConstMeta get kCrateBindingsVodozemacAccountMaxNumberOfOneTimeKeysConstMeta => const TaskConstMeta(
         debugName: "vodozemac_account_max_number_of_one_time_keys",
         argNames: ["that"],
       );
 
   @override
-  VodozemacAccount crateApiVodozemacAccountNew() {
+  VodozemacAccount crateBindingsVodozemacAccountNew() {
     return handler.executeSync(SyncTask(
       callFfi: () {
-        return wire.wire__crate__api__vodozemac_account_new();
+        return wire.wire__crate__bindings__vodozemac_account_new();
       },
       codec: DcoCodec(
         decodeSuccessData: dco_decode_vodozemac_account,
         decodeErrorData: null,
       ),
-      constMeta: kCrateApiVodozemacAccountNewConstMeta,
+      constMeta: kCrateBindingsVodozemacAccountNewConstMeta,
       argValues: [],
       apiImpl: this,
     ));
   }
 
-  TaskConstMeta get kCrateApiVodozemacAccountNewConstMeta => const TaskConstMeta(
+  TaskConstMeta get kCrateBindingsVodozemacAccountNewConstMeta => const TaskConstMeta(
         debugName: "vodozemac_account_new",
         argNames: [],
       );
 
   @override
-  List<VodozemacOneTimeKey> crateApiVodozemacAccountOneTimeKeys({required VodozemacAccount that}) {
+  List<VodozemacOneTimeKey> crateBindingsVodozemacAccountOneTimeKeys({required VodozemacAccount that}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         var arg0 = cst_encode_box_autoadd_vodozemac_account(that);
-        return wire.wire__crate__api__vodozemac_account_one_time_keys(arg0);
+        return wire.wire__crate__bindings__vodozemac_account_one_time_keys(arg0);
       },
       codec: DcoCodec(
         decodeSuccessData: dco_decode_list_vodozemac_one_time_key,
         decodeErrorData: null,
       ),
-      constMeta: kCrateApiVodozemacAccountOneTimeKeysConstMeta,
+      constMeta: kCrateBindingsVodozemacAccountOneTimeKeysConstMeta,
       argValues: [that],
       apiImpl: this,
     ));
   }
 
-  TaskConstMeta get kCrateApiVodozemacAccountOneTimeKeysConstMeta => const TaskConstMeta(
+  TaskConstMeta get kCrateBindingsVodozemacAccountOneTimeKeysConstMeta => const TaskConstMeta(
         debugName: "vodozemac_account_one_time_keys",
         argNames: ["that"],
       );
 
   @override
-  Future<String> crateApiVodozemacAccountPickleEncrypted(
+  Future<String> crateBindingsVodozemacAccountPickleEncrypted(
       {required VodozemacAccount that, required U8Array32 pickleKey}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         var arg0 = cst_encode_box_autoadd_vodozemac_account(that);
         var arg1 = cst_encode_u_8_array_32(pickleKey);
-        return wire.wire__crate__api__vodozemac_account_pickle_encrypted(port_, arg0, arg1);
+        return wire.wire__crate__bindings__vodozemac_account_pickle_encrypted(port_, arg0, arg1);
       },
       codec: DcoCodec(
         decodeSuccessData: dco_decode_String,
         decodeErrorData: null,
       ),
-      constMeta: kCrateApiVodozemacAccountPickleEncryptedConstMeta,
+      constMeta: kCrateBindingsVodozemacAccountPickleEncryptedConstMeta,
       argValues: [that, pickleKey],
       apiImpl: this,
     ));
   }
 
-  TaskConstMeta get kCrateApiVodozemacAccountPickleEncryptedConstMeta => const TaskConstMeta(
+  TaskConstMeta get kCrateBindingsVodozemacAccountPickleEncryptedConstMeta => const TaskConstMeta(
         debugName: "vodozemac_account_pickle_encrypted",
         argNames: ["that", "pickleKey"],
       );
 
   @override
-  Future<VodozemacEd25519Signature> crateApiVodozemacAccountSign(
+  Future<VodozemacEd25519Signature> crateBindingsVodozemacAccountSign(
       {required VodozemacAccount that, required String message}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         var arg0 = cst_encode_box_autoadd_vodozemac_account(that);
         var arg1 = cst_encode_String(message);
-        return wire.wire__crate__api__vodozemac_account_sign(port_, arg0, arg1);
+        return wire.wire__crate__bindings__vodozemac_account_sign(port_, arg0, arg1);
       },
       codec: DcoCodec(
         decodeSuccessData: dco_decode_vodozemac_ed_25519_signature,
         decodeErrorData: null,
       ),
-      constMeta: kCrateApiVodozemacAccountSignConstMeta,
+      constMeta: kCrateBindingsVodozemacAccountSignConstMeta,
       argValues: [that, message],
       apiImpl: this,
     ));
   }
 
-  TaskConstMeta get kCrateApiVodozemacAccountSignConstMeta => const TaskConstMeta(
+  TaskConstMeta get kCrateBindingsVodozemacAccountSignConstMeta => const TaskConstMeta(
         debugName: "vodozemac_account_sign",
         argNames: ["that", "message"],
       );
 
   @override
-  U8Array32 crateApiVodozemacCurve25519PublicKeyAsBytes({required VodozemacCurve25519PublicKey that}) {
+  U8Array32 crateBindingsVodozemacCurve25519PublicKeyAsBytes({required VodozemacCurve25519PublicKey that}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         var arg0 = cst_encode_box_autoadd_vodozemac_curve_25519_public_key(that);
-        return wire.wire__crate__api__vodozemac_curve_25519_public_key_as_bytes(arg0);
+        return wire.wire__crate__bindings__vodozemac_curve_25519_public_key_as_bytes(arg0);
       },
       codec: DcoCodec(
         decodeSuccessData: dco_decode_u_8_array_32,
         decodeErrorData: null,
       ),
-      constMeta: kCrateApiVodozemacCurve25519PublicKeyAsBytesConstMeta,
+      constMeta: kCrateBindingsVodozemacCurve25519PublicKeyAsBytesConstMeta,
       argValues: [that],
       apiImpl: this,
     ));
   }
 
-  TaskConstMeta get kCrateApiVodozemacCurve25519PublicKeyAsBytesConstMeta => const TaskConstMeta(
+  TaskConstMeta get kCrateBindingsVodozemacCurve25519PublicKeyAsBytesConstMeta => const TaskConstMeta(
         debugName: "vodozemac_curve_25519_public_key_as_bytes",
         argNames: ["that"],
       );
 
   @override
-  VodozemacCurve25519PublicKey crateApiVodozemacCurve25519PublicKeyFromBase64({required String base64Key}) {
+  VodozemacCurve25519PublicKey crateBindingsVodozemacCurve25519PublicKeyFromBase64({required String base64Key}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         var arg0 = cst_encode_String(base64Key);
-        return wire.wire__crate__api__vodozemac_curve_25519_public_key_from_base64(arg0);
+        return wire.wire__crate__bindings__vodozemac_curve_25519_public_key_from_base64(arg0);
       },
       codec: DcoCodec(
         decodeSuccessData: dco_decode_vodozemac_curve_25519_public_key,
         decodeErrorData: dco_decode_AnyhowException,
       ),
-      constMeta: kCrateApiVodozemacCurve25519PublicKeyFromBase64ConstMeta,
+      constMeta: kCrateBindingsVodozemacCurve25519PublicKeyFromBase64ConstMeta,
       argValues: [base64Key],
       apiImpl: this,
     ));
   }
 
-  TaskConstMeta get kCrateApiVodozemacCurve25519PublicKeyFromBase64ConstMeta => const TaskConstMeta(
+  TaskConstMeta get kCrateBindingsVodozemacCurve25519PublicKeyFromBase64ConstMeta => const TaskConstMeta(
         debugName: "vodozemac_curve_25519_public_key_from_base64",
         argNames: ["base64Key"],
       );
 
   @override
-  VodozemacCurve25519PublicKey crateApiVodozemacCurve25519PublicKeyFromSlice({required U8Array32 bytes}) {
+  VodozemacCurve25519PublicKey crateBindingsVodozemacCurve25519PublicKeyFromSlice({required U8Array32 bytes}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         var arg0 = cst_encode_u_8_array_32(bytes);
-        return wire.wire__crate__api__vodozemac_curve_25519_public_key_from_slice(arg0);
+        return wire.wire__crate__bindings__vodozemac_curve_25519_public_key_from_slice(arg0);
       },
       codec: DcoCodec(
         decodeSuccessData: dco_decode_vodozemac_curve_25519_public_key,
         decodeErrorData: dco_decode_AnyhowException,
       ),
-      constMeta: kCrateApiVodozemacCurve25519PublicKeyFromSliceConstMeta,
+      constMeta: kCrateBindingsVodozemacCurve25519PublicKeyFromSliceConstMeta,
       argValues: [bytes],
       apiImpl: this,
     ));
   }
 
-  TaskConstMeta get kCrateApiVodozemacCurve25519PublicKeyFromSliceConstMeta => const TaskConstMeta(
+  TaskConstMeta get kCrateBindingsVodozemacCurve25519PublicKeyFromSliceConstMeta => const TaskConstMeta(
         debugName: "vodozemac_curve_25519_public_key_from_slice",
         argNames: ["bytes"],
       );
 
   @override
-  String crateApiVodozemacCurve25519PublicKeyToBase64({required VodozemacCurve25519PublicKey that}) {
+  String crateBindingsVodozemacCurve25519PublicKeyToBase64({required VodozemacCurve25519PublicKey that}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         var arg0 = cst_encode_box_autoadd_vodozemac_curve_25519_public_key(that);
-        return wire.wire__crate__api__vodozemac_curve_25519_public_key_to_base64(arg0);
+        return wire.wire__crate__bindings__vodozemac_curve_25519_public_key_to_base64(arg0);
       },
       codec: DcoCodec(
         decodeSuccessData: dco_decode_String,
         decodeErrorData: null,
       ),
-      constMeta: kCrateApiVodozemacCurve25519PublicKeyToBase64ConstMeta,
+      constMeta: kCrateBindingsVodozemacCurve25519PublicKeyToBase64ConstMeta,
       argValues: [that],
       apiImpl: this,
     ));
   }
 
-  TaskConstMeta get kCrateApiVodozemacCurve25519PublicKeyToBase64ConstMeta => const TaskConstMeta(
+  TaskConstMeta get kCrateBindingsVodozemacCurve25519PublicKeyToBase64ConstMeta => const TaskConstMeta(
         debugName: "vodozemac_curve_25519_public_key_to_base64",
         argNames: ["that"],
       );
 
   @override
-  U8Array32 crateApiVodozemacEd25519PublicKeyAsBytes({required VodozemacEd25519PublicKey that}) {
+  U8Array32 crateBindingsVodozemacEd25519PublicKeyAsBytes({required VodozemacEd25519PublicKey that}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         var arg0 = cst_encode_box_autoadd_vodozemac_ed_25519_public_key(that);
-        return wire.wire__crate__api__vodozemac_ed_25519_public_key_as_bytes(arg0);
+        return wire.wire__crate__bindings__vodozemac_ed_25519_public_key_as_bytes(arg0);
       },
       codec: DcoCodec(
         decodeSuccessData: dco_decode_u_8_array_32,
         decodeErrorData: null,
       ),
-      constMeta: kCrateApiVodozemacEd25519PublicKeyAsBytesConstMeta,
+      constMeta: kCrateBindingsVodozemacEd25519PublicKeyAsBytesConstMeta,
       argValues: [that],
       apiImpl: this,
     ));
   }
 
-  TaskConstMeta get kCrateApiVodozemacEd25519PublicKeyAsBytesConstMeta => const TaskConstMeta(
+  TaskConstMeta get kCrateBindingsVodozemacEd25519PublicKeyAsBytesConstMeta => const TaskConstMeta(
         debugName: "vodozemac_ed_25519_public_key_as_bytes",
         argNames: ["that"],
       );
 
   @override
-  VodozemacEd25519PublicKey crateApiVodozemacEd25519PublicKeyFromBase64({required String base64Key}) {
+  VodozemacEd25519PublicKey crateBindingsVodozemacEd25519PublicKeyFromBase64({required String base64Key}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         var arg0 = cst_encode_String(base64Key);
-        return wire.wire__crate__api__vodozemac_ed_25519_public_key_from_base64(arg0);
+        return wire.wire__crate__bindings__vodozemac_ed_25519_public_key_from_base64(arg0);
       },
       codec: DcoCodec(
         decodeSuccessData: dco_decode_vodozemac_ed_25519_public_key,
         decodeErrorData: dco_decode_AnyhowException,
       ),
-      constMeta: kCrateApiVodozemacEd25519PublicKeyFromBase64ConstMeta,
+      constMeta: kCrateBindingsVodozemacEd25519PublicKeyFromBase64ConstMeta,
       argValues: [base64Key],
       apiImpl: this,
     ));
   }
 
-  TaskConstMeta get kCrateApiVodozemacEd25519PublicKeyFromBase64ConstMeta => const TaskConstMeta(
+  TaskConstMeta get kCrateBindingsVodozemacEd25519PublicKeyFromBase64ConstMeta => const TaskConstMeta(
         debugName: "vodozemac_ed_25519_public_key_from_base64",
         argNames: ["base64Key"],
       );
 
   @override
-  VodozemacEd25519PublicKey crateApiVodozemacEd25519PublicKeyFromSlice({required U8Array32 bytes}) {
+  VodozemacEd25519PublicKey crateBindingsVodozemacEd25519PublicKeyFromSlice({required U8Array32 bytes}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         var arg0 = cst_encode_u_8_array_32(bytes);
-        return wire.wire__crate__api__vodozemac_ed_25519_public_key_from_slice(arg0);
+        return wire.wire__crate__bindings__vodozemac_ed_25519_public_key_from_slice(arg0);
       },
       codec: DcoCodec(
         decodeSuccessData: dco_decode_vodozemac_ed_25519_public_key,
         decodeErrorData: dco_decode_AnyhowException,
       ),
-      constMeta: kCrateApiVodozemacEd25519PublicKeyFromSliceConstMeta,
+      constMeta: kCrateBindingsVodozemacEd25519PublicKeyFromSliceConstMeta,
       argValues: [bytes],
       apiImpl: this,
     ));
   }
 
-  TaskConstMeta get kCrateApiVodozemacEd25519PublicKeyFromSliceConstMeta => const TaskConstMeta(
+  TaskConstMeta get kCrateBindingsVodozemacEd25519PublicKeyFromSliceConstMeta => const TaskConstMeta(
         debugName: "vodozemac_ed_25519_public_key_from_slice",
         argNames: ["bytes"],
       );
 
   @override
-  String crateApiVodozemacEd25519PublicKeyToBase64({required VodozemacEd25519PublicKey that}) {
+  String crateBindingsVodozemacEd25519PublicKeyToBase64({required VodozemacEd25519PublicKey that}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         var arg0 = cst_encode_box_autoadd_vodozemac_ed_25519_public_key(that);
-        return wire.wire__crate__api__vodozemac_ed_25519_public_key_to_base64(arg0);
+        return wire.wire__crate__bindings__vodozemac_ed_25519_public_key_to_base64(arg0);
       },
       codec: DcoCodec(
         decodeSuccessData: dco_decode_String,
         decodeErrorData: null,
       ),
-      constMeta: kCrateApiVodozemacEd25519PublicKeyToBase64ConstMeta,
+      constMeta: kCrateBindingsVodozemacEd25519PublicKeyToBase64ConstMeta,
       argValues: [that],
       apiImpl: this,
     ));
   }
 
-  TaskConstMeta get kCrateApiVodozemacEd25519PublicKeyToBase64ConstMeta => const TaskConstMeta(
+  TaskConstMeta get kCrateBindingsVodozemacEd25519PublicKeyToBase64ConstMeta => const TaskConstMeta(
         debugName: "vodozemac_ed_25519_public_key_to_base64",
         argNames: ["that"],
       );
 
   @override
-  Future<void> crateApiVodozemacEd25519PublicKeyVerify(
+  Future<void> crateBindingsVodozemacEd25519PublicKeyVerify(
       {required VodozemacEd25519PublicKey that,
       required String message,
       required VodozemacEd25519Signature signature}) {
@@ -889,994 +892,995 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_box_autoadd_vodozemac_ed_25519_public_key(that);
         var arg1 = cst_encode_String(message);
         var arg2 = cst_encode_box_autoadd_vodozemac_ed_25519_signature(signature);
-        return wire.wire__crate__api__vodozemac_ed_25519_public_key_verify(port_, arg0, arg1, arg2);
+        return wire.wire__crate__bindings__vodozemac_ed_25519_public_key_verify(port_, arg0, arg1, arg2);
       },
       codec: DcoCodec(
         decodeSuccessData: dco_decode_unit,
         decodeErrorData: dco_decode_AnyhowException,
       ),
-      constMeta: kCrateApiVodozemacEd25519PublicKeyVerifyConstMeta,
+      constMeta: kCrateBindingsVodozemacEd25519PublicKeyVerifyConstMeta,
       argValues: [that, message, signature],
       apiImpl: this,
     ));
   }
 
-  TaskConstMeta get kCrateApiVodozemacEd25519PublicKeyVerifyConstMeta => const TaskConstMeta(
+  TaskConstMeta get kCrateBindingsVodozemacEd25519PublicKeyVerifyConstMeta => const TaskConstMeta(
         debugName: "vodozemac_ed_25519_public_key_verify",
         argNames: ["that", "message", "signature"],
       );
 
   @override
-  VodozemacEd25519Signature crateApiVodozemacEd25519SignatureFromBase64({required String signature}) {
+  VodozemacEd25519Signature crateBindingsVodozemacEd25519SignatureFromBase64({required String signature}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         var arg0 = cst_encode_String(signature);
-        return wire.wire__crate__api__vodozemac_ed_25519_signature_from_base64(arg0);
+        return wire.wire__crate__bindings__vodozemac_ed_25519_signature_from_base64(arg0);
       },
       codec: DcoCodec(
         decodeSuccessData: dco_decode_vodozemac_ed_25519_signature,
         decodeErrorData: dco_decode_AnyhowException,
       ),
-      constMeta: kCrateApiVodozemacEd25519SignatureFromBase64ConstMeta,
+      constMeta: kCrateBindingsVodozemacEd25519SignatureFromBase64ConstMeta,
       argValues: [signature],
       apiImpl: this,
     ));
   }
 
-  TaskConstMeta get kCrateApiVodozemacEd25519SignatureFromBase64ConstMeta => const TaskConstMeta(
+  TaskConstMeta get kCrateBindingsVodozemacEd25519SignatureFromBase64ConstMeta => const TaskConstMeta(
         debugName: "vodozemac_ed_25519_signature_from_base64",
         argNames: ["signature"],
       );
 
   @override
-  VodozemacEd25519Signature crateApiVodozemacEd25519SignatureFromSlice({required U8Array64 bytes}) {
+  VodozemacEd25519Signature crateBindingsVodozemacEd25519SignatureFromSlice({required U8Array64 bytes}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         var arg0 = cst_encode_u_8_array_64(bytes);
-        return wire.wire__crate__api__vodozemac_ed_25519_signature_from_slice(arg0);
+        return wire.wire__crate__bindings__vodozemac_ed_25519_signature_from_slice(arg0);
       },
       codec: DcoCodec(
         decodeSuccessData: dco_decode_vodozemac_ed_25519_signature,
         decodeErrorData: dco_decode_AnyhowException,
       ),
-      constMeta: kCrateApiVodozemacEd25519SignatureFromSliceConstMeta,
+      constMeta: kCrateBindingsVodozemacEd25519SignatureFromSliceConstMeta,
       argValues: [bytes],
       apiImpl: this,
     ));
   }
 
-  TaskConstMeta get kCrateApiVodozemacEd25519SignatureFromSliceConstMeta => const TaskConstMeta(
+  TaskConstMeta get kCrateBindingsVodozemacEd25519SignatureFromSliceConstMeta => const TaskConstMeta(
         debugName: "vodozemac_ed_25519_signature_from_slice",
         argNames: ["bytes"],
       );
 
   @override
-  String crateApiVodozemacEd25519SignatureToBase64({required VodozemacEd25519Signature that}) {
+  String crateBindingsVodozemacEd25519SignatureToBase64({required VodozemacEd25519Signature that}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         var arg0 = cst_encode_box_autoadd_vodozemac_ed_25519_signature(that);
-        return wire.wire__crate__api__vodozemac_ed_25519_signature_to_base64(arg0);
+        return wire.wire__crate__bindings__vodozemac_ed_25519_signature_to_base64(arg0);
       },
       codec: DcoCodec(
         decodeSuccessData: dco_decode_String,
         decodeErrorData: null,
       ),
-      constMeta: kCrateApiVodozemacEd25519SignatureToBase64ConstMeta,
+      constMeta: kCrateBindingsVodozemacEd25519SignatureToBase64ConstMeta,
       argValues: [that],
       apiImpl: this,
     ));
   }
 
-  TaskConstMeta get kCrateApiVodozemacEd25519SignatureToBase64ConstMeta => const TaskConstMeta(
+  TaskConstMeta get kCrateBindingsVodozemacEd25519SignatureToBase64ConstMeta => const TaskConstMeta(
         debugName: "vodozemac_ed_25519_signature_to_base64",
         argNames: ["that"],
       );
 
   @override
-  U8Array64 crateApiVodozemacEd25519SignatureToBytes({required VodozemacEd25519Signature that}) {
+  U8Array64 crateBindingsVodozemacEd25519SignatureToBytes({required VodozemacEd25519Signature that}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         var arg0 = cst_encode_box_autoadd_vodozemac_ed_25519_signature(that);
-        return wire.wire__crate__api__vodozemac_ed_25519_signature_to_bytes(arg0);
+        return wire.wire__crate__bindings__vodozemac_ed_25519_signature_to_bytes(arg0);
       },
       codec: DcoCodec(
         decodeSuccessData: dco_decode_u_8_array_64,
         decodeErrorData: null,
       ),
-      constMeta: kCrateApiVodozemacEd25519SignatureToBytesConstMeta,
+      constMeta: kCrateBindingsVodozemacEd25519SignatureToBytesConstMeta,
       argValues: [that],
       apiImpl: this,
     ));
   }
 
-  TaskConstMeta get kCrateApiVodozemacEd25519SignatureToBytesConstMeta => const TaskConstMeta(
+  TaskConstMeta get kCrateBindingsVodozemacEd25519SignatureToBytesConstMeta => const TaskConstMeta(
         debugName: "vodozemac_ed_25519_signature_to_bytes",
         argNames: ["that"],
       );
 
   @override
-  Future<String> crateApiVodozemacGroupSessionEncrypt(
+  Future<String> crateBindingsVodozemacGroupSessionEncrypt(
       {required VodozemacGroupSession that, required String plaintext}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         var arg0 = cst_encode_box_autoadd_vodozemac_group_session(that);
         var arg1 = cst_encode_String(plaintext);
-        return wire.wire__crate__api__vodozemac_group_session_encrypt(port_, arg0, arg1);
+        return wire.wire__crate__bindings__vodozemac_group_session_encrypt(port_, arg0, arg1);
       },
       codec: DcoCodec(
         decodeSuccessData: dco_decode_String,
         decodeErrorData: null,
       ),
-      constMeta: kCrateApiVodozemacGroupSessionEncryptConstMeta,
+      constMeta: kCrateBindingsVodozemacGroupSessionEncryptConstMeta,
       argValues: [that, plaintext],
       apiImpl: this,
     ));
   }
 
-  TaskConstMeta get kCrateApiVodozemacGroupSessionEncryptConstMeta => const TaskConstMeta(
+  TaskConstMeta get kCrateBindingsVodozemacGroupSessionEncryptConstMeta => const TaskConstMeta(
         debugName: "vodozemac_group_session_encrypt",
         argNames: ["that", "plaintext"],
       );
 
   @override
-  Future<VodozemacGroupSession> crateApiVodozemacGroupSessionFromOlmPickleEncrypted(
+  Future<VodozemacGroupSession> crateBindingsVodozemacGroupSessionFromOlmPickleEncrypted(
       {required String pickle, required List<int> pickleKey}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         var arg0 = cst_encode_String(pickle);
         var arg1 = cst_encode_list_prim_u_8_loose(pickleKey);
-        return wire.wire__crate__api__vodozemac_group_session_from_olm_pickle_encrypted(port_, arg0, arg1);
+        return wire.wire__crate__bindings__vodozemac_group_session_from_olm_pickle_encrypted(port_, arg0, arg1);
       },
       codec: DcoCodec(
         decodeSuccessData: dco_decode_vodozemac_group_session,
         decodeErrorData: dco_decode_AnyhowException,
       ),
-      constMeta: kCrateApiVodozemacGroupSessionFromOlmPickleEncryptedConstMeta,
+      constMeta: kCrateBindingsVodozemacGroupSessionFromOlmPickleEncryptedConstMeta,
       argValues: [pickle, pickleKey],
       apiImpl: this,
     ));
   }
 
-  TaskConstMeta get kCrateApiVodozemacGroupSessionFromOlmPickleEncryptedConstMeta => const TaskConstMeta(
+  TaskConstMeta get kCrateBindingsVodozemacGroupSessionFromOlmPickleEncryptedConstMeta => const TaskConstMeta(
         debugName: "vodozemac_group_session_from_olm_pickle_encrypted",
         argNames: ["pickle", "pickleKey"],
       );
 
   @override
-  Future<VodozemacGroupSession> crateApiVodozemacGroupSessionFromPickleEncrypted(
+  Future<VodozemacGroupSession> crateBindingsVodozemacGroupSessionFromPickleEncrypted(
       {required String pickle, required U8Array32 pickleKey}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         var arg0 = cst_encode_String(pickle);
         var arg1 = cst_encode_u_8_array_32(pickleKey);
-        return wire.wire__crate__api__vodozemac_group_session_from_pickle_encrypted(port_, arg0, arg1);
+        return wire.wire__crate__bindings__vodozemac_group_session_from_pickle_encrypted(port_, arg0, arg1);
       },
       codec: DcoCodec(
         decodeSuccessData: dco_decode_vodozemac_group_session,
         decodeErrorData: dco_decode_AnyhowException,
       ),
-      constMeta: kCrateApiVodozemacGroupSessionFromPickleEncryptedConstMeta,
+      constMeta: kCrateBindingsVodozemacGroupSessionFromPickleEncryptedConstMeta,
       argValues: [pickle, pickleKey],
       apiImpl: this,
     ));
   }
 
-  TaskConstMeta get kCrateApiVodozemacGroupSessionFromPickleEncryptedConstMeta => const TaskConstMeta(
+  TaskConstMeta get kCrateBindingsVodozemacGroupSessionFromPickleEncryptedConstMeta => const TaskConstMeta(
         debugName: "vodozemac_group_session_from_pickle_encrypted",
         argNames: ["pickle", "pickleKey"],
       );
 
   @override
-  int crateApiVodozemacGroupSessionMessageIndex({required VodozemacGroupSession that}) {
+  int crateBindingsVodozemacGroupSessionMessageIndex({required VodozemacGroupSession that}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         var arg0 = cst_encode_box_autoadd_vodozemac_group_session(that);
-        return wire.wire__crate__api__vodozemac_group_session_message_index(arg0);
+        return wire.wire__crate__bindings__vodozemac_group_session_message_index(arg0);
       },
       codec: DcoCodec(
         decodeSuccessData: dco_decode_u_32,
         decodeErrorData: null,
       ),
-      constMeta: kCrateApiVodozemacGroupSessionMessageIndexConstMeta,
+      constMeta: kCrateBindingsVodozemacGroupSessionMessageIndexConstMeta,
       argValues: [that],
       apiImpl: this,
     ));
   }
 
-  TaskConstMeta get kCrateApiVodozemacGroupSessionMessageIndexConstMeta => const TaskConstMeta(
+  TaskConstMeta get kCrateBindingsVodozemacGroupSessionMessageIndexConstMeta => const TaskConstMeta(
         debugName: "vodozemac_group_session_message_index",
         argNames: ["that"],
       );
 
   @override
-  VodozemacGroupSession crateApiVodozemacGroupSessionNew({required VodozemacMegolmSessionConfig config}) {
+  VodozemacGroupSession crateBindingsVodozemacGroupSessionNew({required VodozemacMegolmSessionConfig config}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         var arg0 = cst_encode_box_autoadd_vodozemac_megolm_session_config(config);
-        return wire.wire__crate__api__vodozemac_group_session_new(arg0);
+        return wire.wire__crate__bindings__vodozemac_group_session_new(arg0);
       },
       codec: DcoCodec(
         decodeSuccessData: dco_decode_vodozemac_group_session,
         decodeErrorData: null,
       ),
-      constMeta: kCrateApiVodozemacGroupSessionNewConstMeta,
+      constMeta: kCrateBindingsVodozemacGroupSessionNewConstMeta,
       argValues: [config],
       apiImpl: this,
     ));
   }
 
-  TaskConstMeta get kCrateApiVodozemacGroupSessionNewConstMeta => const TaskConstMeta(
+  TaskConstMeta get kCrateBindingsVodozemacGroupSessionNewConstMeta => const TaskConstMeta(
         debugName: "vodozemac_group_session_new",
         argNames: ["config"],
       );
 
   @override
-  Future<String> crateApiVodozemacGroupSessionPickleEncrypted(
+  Future<String> crateBindingsVodozemacGroupSessionPickleEncrypted(
       {required VodozemacGroupSession that, required U8Array32 pickleKey}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         var arg0 = cst_encode_box_autoadd_vodozemac_group_session(that);
         var arg1 = cst_encode_u_8_array_32(pickleKey);
-        return wire.wire__crate__api__vodozemac_group_session_pickle_encrypted(port_, arg0, arg1);
+        return wire.wire__crate__bindings__vodozemac_group_session_pickle_encrypted(port_, arg0, arg1);
       },
       codec: DcoCodec(
         decodeSuccessData: dco_decode_String,
         decodeErrorData: null,
       ),
-      constMeta: kCrateApiVodozemacGroupSessionPickleEncryptedConstMeta,
+      constMeta: kCrateBindingsVodozemacGroupSessionPickleEncryptedConstMeta,
       argValues: [that, pickleKey],
       apiImpl: this,
     ));
   }
 
-  TaskConstMeta get kCrateApiVodozemacGroupSessionPickleEncryptedConstMeta => const TaskConstMeta(
+  TaskConstMeta get kCrateBindingsVodozemacGroupSessionPickleEncryptedConstMeta => const TaskConstMeta(
         debugName: "vodozemac_group_session_pickle_encrypted",
         argNames: ["that", "pickleKey"],
       );
 
   @override
-  Future<VodozemacMegolmSessionConfig> crateApiVodozemacGroupSessionSessionConfig(
+  Future<VodozemacMegolmSessionConfig> crateBindingsVodozemacGroupSessionSessionConfig(
       {required VodozemacGroupSession that}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         var arg0 = cst_encode_box_autoadd_vodozemac_group_session(that);
-        return wire.wire__crate__api__vodozemac_group_session_session_config(port_, arg0);
+        return wire.wire__crate__bindings__vodozemac_group_session_session_config(port_, arg0);
       },
       codec: DcoCodec(
         decodeSuccessData: dco_decode_vodozemac_megolm_session_config,
         decodeErrorData: null,
       ),
-      constMeta: kCrateApiVodozemacGroupSessionSessionConfigConstMeta,
+      constMeta: kCrateBindingsVodozemacGroupSessionSessionConfigConstMeta,
       argValues: [that],
       apiImpl: this,
     ));
   }
 
-  TaskConstMeta get kCrateApiVodozemacGroupSessionSessionConfigConstMeta => const TaskConstMeta(
+  TaskConstMeta get kCrateBindingsVodozemacGroupSessionSessionConfigConstMeta => const TaskConstMeta(
         debugName: "vodozemac_group_session_session_config",
         argNames: ["that"],
       );
 
   @override
-  String crateApiVodozemacGroupSessionSessionId({required VodozemacGroupSession that}) {
+  String crateBindingsVodozemacGroupSessionSessionId({required VodozemacGroupSession that}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         var arg0 = cst_encode_box_autoadd_vodozemac_group_session(that);
-        return wire.wire__crate__api__vodozemac_group_session_session_id(arg0);
+        return wire.wire__crate__bindings__vodozemac_group_session_session_id(arg0);
       },
       codec: DcoCodec(
         decodeSuccessData: dco_decode_String,
         decodeErrorData: null,
       ),
-      constMeta: kCrateApiVodozemacGroupSessionSessionIdConstMeta,
+      constMeta: kCrateBindingsVodozemacGroupSessionSessionIdConstMeta,
       argValues: [that],
       apiImpl: this,
     ));
   }
 
-  TaskConstMeta get kCrateApiVodozemacGroupSessionSessionIdConstMeta => const TaskConstMeta(
+  TaskConstMeta get kCrateBindingsVodozemacGroupSessionSessionIdConstMeta => const TaskConstMeta(
         debugName: "vodozemac_group_session_session_id",
         argNames: ["that"],
       );
 
   @override
-  Future<String> crateApiVodozemacGroupSessionSessionKey({required VodozemacGroupSession that}) {
+  Future<String> crateBindingsVodozemacGroupSessionSessionKey({required VodozemacGroupSession that}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         var arg0 = cst_encode_box_autoadd_vodozemac_group_session(that);
-        return wire.wire__crate__api__vodozemac_group_session_session_key(port_, arg0);
+        return wire.wire__crate__bindings__vodozemac_group_session_session_key(port_, arg0);
       },
       codec: DcoCodec(
         decodeSuccessData: dco_decode_String,
         decodeErrorData: null,
       ),
-      constMeta: kCrateApiVodozemacGroupSessionSessionKeyConstMeta,
+      constMeta: kCrateBindingsVodozemacGroupSessionSessionKeyConstMeta,
       argValues: [that],
       apiImpl: this,
     ));
   }
 
-  TaskConstMeta get kCrateApiVodozemacGroupSessionSessionKeyConstMeta => const TaskConstMeta(
+  TaskConstMeta get kCrateBindingsVodozemacGroupSessionSessionKeyConstMeta => const TaskConstMeta(
         debugName: "vodozemac_group_session_session_key",
         argNames: ["that"],
       );
 
   @override
-  VodozemacInboundGroupSession crateApiVodozemacGroupSessionToInbound({required VodozemacGroupSession that}) {
+  VodozemacInboundGroupSession crateBindingsVodozemacGroupSessionToInbound({required VodozemacGroupSession that}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         var arg0 = cst_encode_box_autoadd_vodozemac_group_session(that);
-        return wire.wire__crate__api__vodozemac_group_session_to_inbound(arg0);
+        return wire.wire__crate__bindings__vodozemac_group_session_to_inbound(arg0);
       },
       codec: DcoCodec(
         decodeSuccessData: dco_decode_vodozemac_inbound_group_session,
         decodeErrorData: null,
       ),
-      constMeta: kCrateApiVodozemacGroupSessionToInboundConstMeta,
+      constMeta: kCrateBindingsVodozemacGroupSessionToInboundConstMeta,
       argValues: [that],
       apiImpl: this,
     ));
   }
 
-  TaskConstMeta get kCrateApiVodozemacGroupSessionToInboundConstMeta => const TaskConstMeta(
+  TaskConstMeta get kCrateBindingsVodozemacGroupSessionToInboundConstMeta => const TaskConstMeta(
         debugName: "vodozemac_group_session_to_inbound",
         argNames: ["that"],
       );
 
   @override
-  Future<DecryptResult> crateApiVodozemacInboundGroupSessionDecrypt(
+  Future<DecryptResult> crateBindingsVodozemacInboundGroupSessionDecrypt(
       {required VodozemacInboundGroupSession that, required String encrypted}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         var arg0 = cst_encode_box_autoadd_vodozemac_inbound_group_session(that);
         var arg1 = cst_encode_String(encrypted);
-        return wire.wire__crate__api__vodozemac_inbound_group_session_decrypt(port_, arg0, arg1);
+        return wire.wire__crate__bindings__vodozemac_inbound_group_session_decrypt(port_, arg0, arg1);
       },
       codec: DcoCodec(
         decodeSuccessData: dco_decode_decrypt_result,
         decodeErrorData: dco_decode_AnyhowException,
       ),
-      constMeta: kCrateApiVodozemacInboundGroupSessionDecryptConstMeta,
+      constMeta: kCrateBindingsVodozemacInboundGroupSessionDecryptConstMeta,
       argValues: [that, encrypted],
       apiImpl: this,
     ));
   }
 
-  TaskConstMeta get kCrateApiVodozemacInboundGroupSessionDecryptConstMeta => const TaskConstMeta(
+  TaskConstMeta get kCrateBindingsVodozemacInboundGroupSessionDecryptConstMeta => const TaskConstMeta(
         debugName: "vodozemac_inbound_group_session_decrypt",
         argNames: ["that", "encrypted"],
       );
 
   @override
-  String? crateApiVodozemacInboundGroupSessionExportAt(
+  String? crateBindingsVodozemacInboundGroupSessionExportAt(
       {required VodozemacInboundGroupSession that, required int index}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         var arg0 = cst_encode_box_autoadd_vodozemac_inbound_group_session(that);
         var arg1 = cst_encode_u_32(index);
-        return wire.wire__crate__api__vodozemac_inbound_group_session_export_at(arg0, arg1);
+        return wire.wire__crate__bindings__vodozemac_inbound_group_session_export_at(arg0, arg1);
       },
       codec: DcoCodec(
         decodeSuccessData: dco_decode_opt_String,
         decodeErrorData: null,
       ),
-      constMeta: kCrateApiVodozemacInboundGroupSessionExportAtConstMeta,
+      constMeta: kCrateBindingsVodozemacInboundGroupSessionExportAtConstMeta,
       argValues: [that, index],
       apiImpl: this,
     ));
   }
 
-  TaskConstMeta get kCrateApiVodozemacInboundGroupSessionExportAtConstMeta => const TaskConstMeta(
+  TaskConstMeta get kCrateBindingsVodozemacInboundGroupSessionExportAtConstMeta => const TaskConstMeta(
         debugName: "vodozemac_inbound_group_session_export_at",
         argNames: ["that", "index"],
       );
 
   @override
-  String crateApiVodozemacInboundGroupSessionExportAtFirstKnownIndex({required VodozemacInboundGroupSession that}) {
+  String crateBindingsVodozemacInboundGroupSessionExportAtFirstKnownIndex(
+      {required VodozemacInboundGroupSession that}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         var arg0 = cst_encode_box_autoadd_vodozemac_inbound_group_session(that);
-        return wire.wire__crate__api__vodozemac_inbound_group_session_export_at_first_known_index(arg0);
+        return wire.wire__crate__bindings__vodozemac_inbound_group_session_export_at_first_known_index(arg0);
       },
       codec: DcoCodec(
         decodeSuccessData: dco_decode_String,
         decodeErrorData: null,
       ),
-      constMeta: kCrateApiVodozemacInboundGroupSessionExportAtFirstKnownIndexConstMeta,
+      constMeta: kCrateBindingsVodozemacInboundGroupSessionExportAtFirstKnownIndexConstMeta,
       argValues: [that],
       apiImpl: this,
     ));
   }
 
-  TaskConstMeta get kCrateApiVodozemacInboundGroupSessionExportAtFirstKnownIndexConstMeta => const TaskConstMeta(
+  TaskConstMeta get kCrateBindingsVodozemacInboundGroupSessionExportAtFirstKnownIndexConstMeta => const TaskConstMeta(
         debugName: "vodozemac_inbound_group_session_export_at_first_known_index",
         argNames: ["that"],
       );
 
   @override
-  int crateApiVodozemacInboundGroupSessionFirstKnownIndex({required VodozemacInboundGroupSession that}) {
+  int crateBindingsVodozemacInboundGroupSessionFirstKnownIndex({required VodozemacInboundGroupSession that}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         var arg0 = cst_encode_box_autoadd_vodozemac_inbound_group_session(that);
-        return wire.wire__crate__api__vodozemac_inbound_group_session_first_known_index(arg0);
+        return wire.wire__crate__bindings__vodozemac_inbound_group_session_first_known_index(arg0);
       },
       codec: DcoCodec(
         decodeSuccessData: dco_decode_u_32,
         decodeErrorData: null,
       ),
-      constMeta: kCrateApiVodozemacInboundGroupSessionFirstKnownIndexConstMeta,
+      constMeta: kCrateBindingsVodozemacInboundGroupSessionFirstKnownIndexConstMeta,
       argValues: [that],
       apiImpl: this,
     ));
   }
 
-  TaskConstMeta get kCrateApiVodozemacInboundGroupSessionFirstKnownIndexConstMeta => const TaskConstMeta(
+  TaskConstMeta get kCrateBindingsVodozemacInboundGroupSessionFirstKnownIndexConstMeta => const TaskConstMeta(
         debugName: "vodozemac_inbound_group_session_first_known_index",
         argNames: ["that"],
       );
 
   @override
-  Future<VodozemacInboundGroupSession> crateApiVodozemacInboundGroupSessionFromOlmPickleEncrypted(
+  Future<VodozemacInboundGroupSession> crateBindingsVodozemacInboundGroupSessionFromOlmPickleEncrypted(
       {required String pickle, required List<int> pickleKey}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         var arg0 = cst_encode_String(pickle);
         var arg1 = cst_encode_list_prim_u_8_loose(pickleKey);
-        return wire.wire__crate__api__vodozemac_inbound_group_session_from_olm_pickle_encrypted(port_, arg0, arg1);
+        return wire.wire__crate__bindings__vodozemac_inbound_group_session_from_olm_pickle_encrypted(port_, arg0, arg1);
       },
       codec: DcoCodec(
         decodeSuccessData: dco_decode_vodozemac_inbound_group_session,
         decodeErrorData: dco_decode_AnyhowException,
       ),
-      constMeta: kCrateApiVodozemacInboundGroupSessionFromOlmPickleEncryptedConstMeta,
+      constMeta: kCrateBindingsVodozemacInboundGroupSessionFromOlmPickleEncryptedConstMeta,
       argValues: [pickle, pickleKey],
       apiImpl: this,
     ));
   }
 
-  TaskConstMeta get kCrateApiVodozemacInboundGroupSessionFromOlmPickleEncryptedConstMeta => const TaskConstMeta(
+  TaskConstMeta get kCrateBindingsVodozemacInboundGroupSessionFromOlmPickleEncryptedConstMeta => const TaskConstMeta(
         debugName: "vodozemac_inbound_group_session_from_olm_pickle_encrypted",
         argNames: ["pickle", "pickleKey"],
       );
 
   @override
-  Future<VodozemacInboundGroupSession> crateApiVodozemacInboundGroupSessionFromPickleEncrypted(
+  Future<VodozemacInboundGroupSession> crateBindingsVodozemacInboundGroupSessionFromPickleEncrypted(
       {required String pickle, required U8Array32 pickleKey}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         var arg0 = cst_encode_String(pickle);
         var arg1 = cst_encode_u_8_array_32(pickleKey);
-        return wire.wire__crate__api__vodozemac_inbound_group_session_from_pickle_encrypted(port_, arg0, arg1);
+        return wire.wire__crate__bindings__vodozemac_inbound_group_session_from_pickle_encrypted(port_, arg0, arg1);
       },
       codec: DcoCodec(
         decodeSuccessData: dco_decode_vodozemac_inbound_group_session,
         decodeErrorData: dco_decode_AnyhowException,
       ),
-      constMeta: kCrateApiVodozemacInboundGroupSessionFromPickleEncryptedConstMeta,
+      constMeta: kCrateBindingsVodozemacInboundGroupSessionFromPickleEncryptedConstMeta,
       argValues: [pickle, pickleKey],
       apiImpl: this,
     ));
   }
 
-  TaskConstMeta get kCrateApiVodozemacInboundGroupSessionFromPickleEncryptedConstMeta => const TaskConstMeta(
+  TaskConstMeta get kCrateBindingsVodozemacInboundGroupSessionFromPickleEncryptedConstMeta => const TaskConstMeta(
         debugName: "vodozemac_inbound_group_session_from_pickle_encrypted",
         argNames: ["pickle", "pickleKey"],
       );
 
   @override
-  VodozemacInboundGroupSession crateApiVodozemacInboundGroupSessionImport(
+  VodozemacInboundGroupSession crateBindingsVodozemacInboundGroupSessionImport(
       {required String sessionKey, required VodozemacMegolmSessionConfig config}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         var arg0 = cst_encode_String(sessionKey);
         var arg1 = cst_encode_box_autoadd_vodozemac_megolm_session_config(config);
-        return wire.wire__crate__api__vodozemac_inbound_group_session_import(arg0, arg1);
+        return wire.wire__crate__bindings__vodozemac_inbound_group_session_import(arg0, arg1);
       },
       codec: DcoCodec(
         decodeSuccessData: dco_decode_vodozemac_inbound_group_session,
         decodeErrorData: dco_decode_AnyhowException,
       ),
-      constMeta: kCrateApiVodozemacInboundGroupSessionImportConstMeta,
+      constMeta: kCrateBindingsVodozemacInboundGroupSessionImportConstMeta,
       argValues: [sessionKey, config],
       apiImpl: this,
     ));
   }
 
-  TaskConstMeta get kCrateApiVodozemacInboundGroupSessionImportConstMeta => const TaskConstMeta(
+  TaskConstMeta get kCrateBindingsVodozemacInboundGroupSessionImportConstMeta => const TaskConstMeta(
         debugName: "vodozemac_inbound_group_session_import",
         argNames: ["sessionKey", "config"],
       );
 
   @override
-  VodozemacInboundGroupSession crateApiVodozemacInboundGroupSessionNew(
+  VodozemacInboundGroupSession crateBindingsVodozemacInboundGroupSessionNew(
       {required String sessionKey, required VodozemacMegolmSessionConfig config}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         var arg0 = cst_encode_String(sessionKey);
         var arg1 = cst_encode_box_autoadd_vodozemac_megolm_session_config(config);
-        return wire.wire__crate__api__vodozemac_inbound_group_session_new(arg0, arg1);
+        return wire.wire__crate__bindings__vodozemac_inbound_group_session_new(arg0, arg1);
       },
       codec: DcoCodec(
         decodeSuccessData: dco_decode_vodozemac_inbound_group_session,
         decodeErrorData: dco_decode_AnyhowException,
       ),
-      constMeta: kCrateApiVodozemacInboundGroupSessionNewConstMeta,
+      constMeta: kCrateBindingsVodozemacInboundGroupSessionNewConstMeta,
       argValues: [sessionKey, config],
       apiImpl: this,
     ));
   }
 
-  TaskConstMeta get kCrateApiVodozemacInboundGroupSessionNewConstMeta => const TaskConstMeta(
+  TaskConstMeta get kCrateBindingsVodozemacInboundGroupSessionNewConstMeta => const TaskConstMeta(
         debugName: "vodozemac_inbound_group_session_new",
         argNames: ["sessionKey", "config"],
       );
 
   @override
-  Future<String> crateApiVodozemacInboundGroupSessionPickleEncrypted(
+  Future<String> crateBindingsVodozemacInboundGroupSessionPickleEncrypted(
       {required VodozemacInboundGroupSession that, required U8Array32 pickleKey}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         var arg0 = cst_encode_box_autoadd_vodozemac_inbound_group_session(that);
         var arg1 = cst_encode_u_8_array_32(pickleKey);
-        return wire.wire__crate__api__vodozemac_inbound_group_session_pickle_encrypted(port_, arg0, arg1);
+        return wire.wire__crate__bindings__vodozemac_inbound_group_session_pickle_encrypted(port_, arg0, arg1);
       },
       codec: DcoCodec(
         decodeSuccessData: dco_decode_String,
         decodeErrorData: null,
       ),
-      constMeta: kCrateApiVodozemacInboundGroupSessionPickleEncryptedConstMeta,
+      constMeta: kCrateBindingsVodozemacInboundGroupSessionPickleEncryptedConstMeta,
       argValues: [that, pickleKey],
       apiImpl: this,
     ));
   }
 
-  TaskConstMeta get kCrateApiVodozemacInboundGroupSessionPickleEncryptedConstMeta => const TaskConstMeta(
+  TaskConstMeta get kCrateBindingsVodozemacInboundGroupSessionPickleEncryptedConstMeta => const TaskConstMeta(
         debugName: "vodozemac_inbound_group_session_pickle_encrypted",
         argNames: ["that", "pickleKey"],
       );
 
   @override
-  String crateApiVodozemacInboundGroupSessionSessionId({required VodozemacInboundGroupSession that}) {
+  String crateBindingsVodozemacInboundGroupSessionSessionId({required VodozemacInboundGroupSession that}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         var arg0 = cst_encode_box_autoadd_vodozemac_inbound_group_session(that);
-        return wire.wire__crate__api__vodozemac_inbound_group_session_session_id(arg0);
+        return wire.wire__crate__bindings__vodozemac_inbound_group_session_session_id(arg0);
       },
       codec: DcoCodec(
         decodeSuccessData: dco_decode_String,
         decodeErrorData: null,
       ),
-      constMeta: kCrateApiVodozemacInboundGroupSessionSessionIdConstMeta,
+      constMeta: kCrateBindingsVodozemacInboundGroupSessionSessionIdConstMeta,
       argValues: [that],
       apiImpl: this,
     ));
   }
 
-  TaskConstMeta get kCrateApiVodozemacInboundGroupSessionSessionIdConstMeta => const TaskConstMeta(
+  TaskConstMeta get kCrateBindingsVodozemacInboundGroupSessionSessionIdConstMeta => const TaskConstMeta(
         debugName: "vodozemac_inbound_group_session_session_id",
         argNames: ["that"],
       );
 
   @override
-  VodozemacMegolmSessionConfig crateApiVodozemacMegolmSessionConfigDef() {
+  VodozemacMegolmSessionConfig crateBindingsVodozemacMegolmSessionConfigDef() {
     return handler.executeSync(SyncTask(
       callFfi: () {
-        return wire.wire__crate__api__vodozemac_megolm_session_config_def();
+        return wire.wire__crate__bindings__vodozemac_megolm_session_config_def();
       },
       codec: DcoCodec(
         decodeSuccessData: dco_decode_vodozemac_megolm_session_config,
         decodeErrorData: null,
       ),
-      constMeta: kCrateApiVodozemacMegolmSessionConfigDefConstMeta,
+      constMeta: kCrateBindingsVodozemacMegolmSessionConfigDefConstMeta,
       argValues: [],
       apiImpl: this,
     ));
   }
 
-  TaskConstMeta get kCrateApiVodozemacMegolmSessionConfigDefConstMeta => const TaskConstMeta(
+  TaskConstMeta get kCrateBindingsVodozemacMegolmSessionConfigDefConstMeta => const TaskConstMeta(
         debugName: "vodozemac_megolm_session_config_def",
         argNames: [],
       );
 
   @override
-  int crateApiVodozemacMegolmSessionConfigVersion({required VodozemacMegolmSessionConfig that}) {
+  int crateBindingsVodozemacMegolmSessionConfigVersion({required VodozemacMegolmSessionConfig that}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         var arg0 = cst_encode_box_autoadd_vodozemac_megolm_session_config(that);
-        return wire.wire__crate__api__vodozemac_megolm_session_config_version(arg0);
+        return wire.wire__crate__bindings__vodozemac_megolm_session_config_version(arg0);
       },
       codec: DcoCodec(
         decodeSuccessData: dco_decode_u_8,
         decodeErrorData: null,
       ),
-      constMeta: kCrateApiVodozemacMegolmSessionConfigVersionConstMeta,
+      constMeta: kCrateBindingsVodozemacMegolmSessionConfigVersionConstMeta,
       argValues: [that],
       apiImpl: this,
     ));
   }
 
-  TaskConstMeta get kCrateApiVodozemacMegolmSessionConfigVersionConstMeta => const TaskConstMeta(
+  TaskConstMeta get kCrateBindingsVodozemacMegolmSessionConfigVersionConstMeta => const TaskConstMeta(
         debugName: "vodozemac_megolm_session_config_version",
         argNames: ["that"],
       );
 
   @override
-  VodozemacMegolmSessionConfig crateApiVodozemacMegolmSessionConfigVersion1() {
+  VodozemacMegolmSessionConfig crateBindingsVodozemacMegolmSessionConfigVersion1() {
     return handler.executeSync(SyncTask(
       callFfi: () {
-        return wire.wire__crate__api__vodozemac_megolm_session_config_version_1();
+        return wire.wire__crate__bindings__vodozemac_megolm_session_config_version_1();
       },
       codec: DcoCodec(
         decodeSuccessData: dco_decode_vodozemac_megolm_session_config,
         decodeErrorData: null,
       ),
-      constMeta: kCrateApiVodozemacMegolmSessionConfigVersion1ConstMeta,
+      constMeta: kCrateBindingsVodozemacMegolmSessionConfigVersion1ConstMeta,
       argValues: [],
       apiImpl: this,
     ));
   }
 
-  TaskConstMeta get kCrateApiVodozemacMegolmSessionConfigVersion1ConstMeta => const TaskConstMeta(
+  TaskConstMeta get kCrateBindingsVodozemacMegolmSessionConfigVersion1ConstMeta => const TaskConstMeta(
         debugName: "vodozemac_megolm_session_config_version_1",
         argNames: [],
       );
 
   @override
-  VodozemacMegolmSessionConfig crateApiVodozemacMegolmSessionConfigVersion2() {
+  VodozemacMegolmSessionConfig crateBindingsVodozemacMegolmSessionConfigVersion2() {
     return handler.executeSync(SyncTask(
       callFfi: () {
-        return wire.wire__crate__api__vodozemac_megolm_session_config_version_2();
+        return wire.wire__crate__bindings__vodozemac_megolm_session_config_version_2();
       },
       codec: DcoCodec(
         decodeSuccessData: dco_decode_vodozemac_megolm_session_config,
         decodeErrorData: null,
       ),
-      constMeta: kCrateApiVodozemacMegolmSessionConfigVersion2ConstMeta,
+      constMeta: kCrateBindingsVodozemacMegolmSessionConfigVersion2ConstMeta,
       argValues: [],
       apiImpl: this,
     ));
   }
 
-  TaskConstMeta get kCrateApiVodozemacMegolmSessionConfigVersion2ConstMeta => const TaskConstMeta(
+  TaskConstMeta get kCrateBindingsVodozemacMegolmSessionConfigVersion2ConstMeta => const TaskConstMeta(
         debugName: "vodozemac_megolm_session_config_version_2",
         argNames: [],
       );
 
   @override
-  VodozemacOlmMessage crateApiVodozemacOlmMessageFromParts(
+  VodozemacOlmMessage crateBindingsVodozemacOlmMessageFromParts(
       {required BigInt messageType, required List<int> ciphertext}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         var arg0 = cst_encode_usize(messageType);
         var arg1 = cst_encode_list_prim_u_8_loose(ciphertext);
-        return wire.wire__crate__api__vodozemac_olm_message_from_parts(arg0, arg1);
+        return wire.wire__crate__bindings__vodozemac_olm_message_from_parts(arg0, arg1);
       },
       codec: DcoCodec(
         decodeSuccessData: dco_decode_vodozemac_olm_message,
         decodeErrorData: dco_decode_AnyhowException,
       ),
-      constMeta: kCrateApiVodozemacOlmMessageFromPartsConstMeta,
+      constMeta: kCrateBindingsVodozemacOlmMessageFromPartsConstMeta,
       argValues: [messageType, ciphertext],
       apiImpl: this,
     ));
   }
 
-  TaskConstMeta get kCrateApiVodozemacOlmMessageFromPartsConstMeta => const TaskConstMeta(
+  TaskConstMeta get kCrateBindingsVodozemacOlmMessageFromPartsConstMeta => const TaskConstMeta(
         debugName: "vodozemac_olm_message_from_parts",
         argNames: ["messageType", "ciphertext"],
       );
 
   @override
-  String crateApiVodozemacOlmMessageMessage({required VodozemacOlmMessage that}) {
+  String crateBindingsVodozemacOlmMessageMessage({required VodozemacOlmMessage that}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         var arg0 = cst_encode_box_autoadd_vodozemac_olm_message(that);
-        return wire.wire__crate__api__vodozemac_olm_message_message(arg0);
+        return wire.wire__crate__bindings__vodozemac_olm_message_message(arg0);
       },
       codec: DcoCodec(
         decodeSuccessData: dco_decode_String,
         decodeErrorData: null,
       ),
-      constMeta: kCrateApiVodozemacOlmMessageMessageConstMeta,
+      constMeta: kCrateBindingsVodozemacOlmMessageMessageConstMeta,
       argValues: [that],
       apiImpl: this,
     ));
   }
 
-  TaskConstMeta get kCrateApiVodozemacOlmMessageMessageConstMeta => const TaskConstMeta(
+  TaskConstMeta get kCrateBindingsVodozemacOlmMessageMessageConstMeta => const TaskConstMeta(
         debugName: "vodozemac_olm_message_message",
         argNames: ["that"],
       );
 
   @override
-  BigInt crateApiVodozemacOlmMessageMessageType({required VodozemacOlmMessage that}) {
+  BigInt crateBindingsVodozemacOlmMessageMessageType({required VodozemacOlmMessage that}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         var arg0 = cst_encode_box_autoadd_vodozemac_olm_message(that);
-        return wire.wire__crate__api__vodozemac_olm_message_message_type(arg0);
+        return wire.wire__crate__bindings__vodozemac_olm_message_message_type(arg0);
       },
       codec: DcoCodec(
         decodeSuccessData: dco_decode_usize,
         decodeErrorData: null,
       ),
-      constMeta: kCrateApiVodozemacOlmMessageMessageTypeConstMeta,
+      constMeta: kCrateBindingsVodozemacOlmMessageMessageTypeConstMeta,
       argValues: [that],
       apiImpl: this,
     ));
   }
 
-  TaskConstMeta get kCrateApiVodozemacOlmMessageMessageTypeConstMeta => const TaskConstMeta(
+  TaskConstMeta get kCrateBindingsVodozemacOlmMessageMessageTypeConstMeta => const TaskConstMeta(
         debugName: "vodozemac_olm_message_message_type",
         argNames: ["that"],
       );
 
   @override
-  VodozemacOlmSessionConfig crateApiVodozemacOlmSessionConfigDef() {
+  VodozemacOlmSessionConfig crateBindingsVodozemacOlmSessionConfigDef() {
     return handler.executeSync(SyncTask(
       callFfi: () {
-        return wire.wire__crate__api__vodozemac_olm_session_config_def();
+        return wire.wire__crate__bindings__vodozemac_olm_session_config_def();
       },
       codec: DcoCodec(
         decodeSuccessData: dco_decode_vodozemac_olm_session_config,
         decodeErrorData: null,
       ),
-      constMeta: kCrateApiVodozemacOlmSessionConfigDefConstMeta,
+      constMeta: kCrateBindingsVodozemacOlmSessionConfigDefConstMeta,
       argValues: [],
       apiImpl: this,
     ));
   }
 
-  TaskConstMeta get kCrateApiVodozemacOlmSessionConfigDefConstMeta => const TaskConstMeta(
+  TaskConstMeta get kCrateBindingsVodozemacOlmSessionConfigDefConstMeta => const TaskConstMeta(
         debugName: "vodozemac_olm_session_config_def",
         argNames: [],
       );
 
   @override
-  int crateApiVodozemacOlmSessionConfigVersion({required VodozemacOlmSessionConfig that}) {
+  int crateBindingsVodozemacOlmSessionConfigVersion({required VodozemacOlmSessionConfig that}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         var arg0 = cst_encode_box_autoadd_vodozemac_olm_session_config(that);
-        return wire.wire__crate__api__vodozemac_olm_session_config_version(arg0);
+        return wire.wire__crate__bindings__vodozemac_olm_session_config_version(arg0);
       },
       codec: DcoCodec(
         decodeSuccessData: dco_decode_u_8,
         decodeErrorData: null,
       ),
-      constMeta: kCrateApiVodozemacOlmSessionConfigVersionConstMeta,
+      constMeta: kCrateBindingsVodozemacOlmSessionConfigVersionConstMeta,
       argValues: [that],
       apiImpl: this,
     ));
   }
 
-  TaskConstMeta get kCrateApiVodozemacOlmSessionConfigVersionConstMeta => const TaskConstMeta(
+  TaskConstMeta get kCrateBindingsVodozemacOlmSessionConfigVersionConstMeta => const TaskConstMeta(
         debugName: "vodozemac_olm_session_config_version",
         argNames: ["that"],
       );
 
   @override
-  VodozemacOlmSessionConfig crateApiVodozemacOlmSessionConfigVersion1() {
+  VodozemacOlmSessionConfig crateBindingsVodozemacOlmSessionConfigVersion1() {
     return handler.executeSync(SyncTask(
       callFfi: () {
-        return wire.wire__crate__api__vodozemac_olm_session_config_version_1();
+        return wire.wire__crate__bindings__vodozemac_olm_session_config_version_1();
       },
       codec: DcoCodec(
         decodeSuccessData: dco_decode_vodozemac_olm_session_config,
         decodeErrorData: null,
       ),
-      constMeta: kCrateApiVodozemacOlmSessionConfigVersion1ConstMeta,
+      constMeta: kCrateBindingsVodozemacOlmSessionConfigVersion1ConstMeta,
       argValues: [],
       apiImpl: this,
     ));
   }
 
-  TaskConstMeta get kCrateApiVodozemacOlmSessionConfigVersion1ConstMeta => const TaskConstMeta(
+  TaskConstMeta get kCrateBindingsVodozemacOlmSessionConfigVersion1ConstMeta => const TaskConstMeta(
         debugName: "vodozemac_olm_session_config_version_1",
         argNames: [],
       );
 
   @override
-  VodozemacOlmSessionConfig crateApiVodozemacOlmSessionConfigVersion2() {
+  VodozemacOlmSessionConfig crateBindingsVodozemacOlmSessionConfigVersion2() {
     return handler.executeSync(SyncTask(
       callFfi: () {
-        return wire.wire__crate__api__vodozemac_olm_session_config_version_2();
+        return wire.wire__crate__bindings__vodozemac_olm_session_config_version_2();
       },
       codec: DcoCodec(
         decodeSuccessData: dco_decode_vodozemac_olm_session_config,
         decodeErrorData: null,
       ),
-      constMeta: kCrateApiVodozemacOlmSessionConfigVersion2ConstMeta,
+      constMeta: kCrateBindingsVodozemacOlmSessionConfigVersion2ConstMeta,
       argValues: [],
       apiImpl: this,
     ));
   }
 
-  TaskConstMeta get kCrateApiVodozemacOlmSessionConfigVersion2ConstMeta => const TaskConstMeta(
+  TaskConstMeta get kCrateBindingsVodozemacOlmSessionConfigVersion2ConstMeta => const TaskConstMeta(
         debugName: "vodozemac_olm_session_config_version_2",
         argNames: [],
       );
 
   @override
-  Future<String> crateApiVodozemacSessionDecrypt(
+  Future<String> crateBindingsVodozemacSessionDecrypt(
       {required VodozemacSession that, required VodozemacOlmMessage message}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         var arg0 = cst_encode_box_autoadd_vodozemac_session(that);
         var arg1 = cst_encode_box_autoadd_vodozemac_olm_message(message);
-        return wire.wire__crate__api__vodozemac_session_decrypt(port_, arg0, arg1);
+        return wire.wire__crate__bindings__vodozemac_session_decrypt(port_, arg0, arg1);
       },
       codec: DcoCodec(
         decodeSuccessData: dco_decode_String,
         decodeErrorData: dco_decode_AnyhowException,
       ),
-      constMeta: kCrateApiVodozemacSessionDecryptConstMeta,
+      constMeta: kCrateBindingsVodozemacSessionDecryptConstMeta,
       argValues: [that, message],
       apiImpl: this,
     ));
   }
 
-  TaskConstMeta get kCrateApiVodozemacSessionDecryptConstMeta => const TaskConstMeta(
+  TaskConstMeta get kCrateBindingsVodozemacSessionDecryptConstMeta => const TaskConstMeta(
         debugName: "vodozemac_session_decrypt",
         argNames: ["that", "message"],
       );
 
   @override
-  Future<VodozemacOlmMessage> crateApiVodozemacSessionEncrypt(
+  Future<VodozemacOlmMessage> crateBindingsVodozemacSessionEncrypt(
       {required VodozemacSession that, required String plaintext}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         var arg0 = cst_encode_box_autoadd_vodozemac_session(that);
         var arg1 = cst_encode_String(plaintext);
-        return wire.wire__crate__api__vodozemac_session_encrypt(port_, arg0, arg1);
+        return wire.wire__crate__bindings__vodozemac_session_encrypt(port_, arg0, arg1);
       },
       codec: DcoCodec(
         decodeSuccessData: dco_decode_vodozemac_olm_message,
         decodeErrorData: null,
       ),
-      constMeta: kCrateApiVodozemacSessionEncryptConstMeta,
+      constMeta: kCrateBindingsVodozemacSessionEncryptConstMeta,
       argValues: [that, plaintext],
       apiImpl: this,
     ));
   }
 
-  TaskConstMeta get kCrateApiVodozemacSessionEncryptConstMeta => const TaskConstMeta(
+  TaskConstMeta get kCrateBindingsVodozemacSessionEncryptConstMeta => const TaskConstMeta(
         debugName: "vodozemac_session_encrypt",
         argNames: ["that", "plaintext"],
       );
 
   @override
-  Future<VodozemacSession> crateApiVodozemacSessionFromOlmPickleEncrypted(
+  Future<VodozemacSession> crateBindingsVodozemacSessionFromOlmPickleEncrypted(
       {required String pickle, required List<int> pickleKey}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         var arg0 = cst_encode_String(pickle);
         var arg1 = cst_encode_list_prim_u_8_loose(pickleKey);
-        return wire.wire__crate__api__vodozemac_session_from_olm_pickle_encrypted(port_, arg0, arg1);
+        return wire.wire__crate__bindings__vodozemac_session_from_olm_pickle_encrypted(port_, arg0, arg1);
       },
       codec: DcoCodec(
         decodeSuccessData: dco_decode_vodozemac_session,
         decodeErrorData: dco_decode_AnyhowException,
       ),
-      constMeta: kCrateApiVodozemacSessionFromOlmPickleEncryptedConstMeta,
+      constMeta: kCrateBindingsVodozemacSessionFromOlmPickleEncryptedConstMeta,
       argValues: [pickle, pickleKey],
       apiImpl: this,
     ));
   }
 
-  TaskConstMeta get kCrateApiVodozemacSessionFromOlmPickleEncryptedConstMeta => const TaskConstMeta(
+  TaskConstMeta get kCrateBindingsVodozemacSessionFromOlmPickleEncryptedConstMeta => const TaskConstMeta(
         debugName: "vodozemac_session_from_olm_pickle_encrypted",
         argNames: ["pickle", "pickleKey"],
       );
 
   @override
-  Future<VodozemacSession> crateApiVodozemacSessionFromPickleEncrypted(
+  Future<VodozemacSession> crateBindingsVodozemacSessionFromPickleEncrypted(
       {required String pickle, required U8Array32 pickleKey}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         var arg0 = cst_encode_String(pickle);
         var arg1 = cst_encode_u_8_array_32(pickleKey);
-        return wire.wire__crate__api__vodozemac_session_from_pickle_encrypted(port_, arg0, arg1);
+        return wire.wire__crate__bindings__vodozemac_session_from_pickle_encrypted(port_, arg0, arg1);
       },
       codec: DcoCodec(
         decodeSuccessData: dco_decode_vodozemac_session,
         decodeErrorData: dco_decode_AnyhowException,
       ),
-      constMeta: kCrateApiVodozemacSessionFromPickleEncryptedConstMeta,
+      constMeta: kCrateBindingsVodozemacSessionFromPickleEncryptedConstMeta,
       argValues: [pickle, pickleKey],
       apiImpl: this,
     ));
   }
 
-  TaskConstMeta get kCrateApiVodozemacSessionFromPickleEncryptedConstMeta => const TaskConstMeta(
+  TaskConstMeta get kCrateBindingsVodozemacSessionFromPickleEncryptedConstMeta => const TaskConstMeta(
         debugName: "vodozemac_session_from_pickle_encrypted",
         argNames: ["pickle", "pickleKey"],
       );
 
   @override
-  bool crateApiVodozemacSessionHasReceivedMessage({required VodozemacSession that}) {
+  bool crateBindingsVodozemacSessionHasReceivedMessage({required VodozemacSession that}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         var arg0 = cst_encode_box_autoadd_vodozemac_session(that);
-        return wire.wire__crate__api__vodozemac_session_has_received_message(arg0);
+        return wire.wire__crate__bindings__vodozemac_session_has_received_message(arg0);
       },
       codec: DcoCodec(
         decodeSuccessData: dco_decode_bool,
         decodeErrorData: null,
       ),
-      constMeta: kCrateApiVodozemacSessionHasReceivedMessageConstMeta,
+      constMeta: kCrateBindingsVodozemacSessionHasReceivedMessageConstMeta,
       argValues: [that],
       apiImpl: this,
     ));
   }
 
-  TaskConstMeta get kCrateApiVodozemacSessionHasReceivedMessageConstMeta => const TaskConstMeta(
+  TaskConstMeta get kCrateBindingsVodozemacSessionHasReceivedMessageConstMeta => const TaskConstMeta(
         debugName: "vodozemac_session_has_received_message",
         argNames: ["that"],
       );
 
   @override
-  Future<String> crateApiVodozemacSessionPickleEncrypted(
+  Future<String> crateBindingsVodozemacSessionPickleEncrypted(
       {required VodozemacSession that, required U8Array32 pickleKey}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         var arg0 = cst_encode_box_autoadd_vodozemac_session(that);
         var arg1 = cst_encode_u_8_array_32(pickleKey);
-        return wire.wire__crate__api__vodozemac_session_pickle_encrypted(port_, arg0, arg1);
+        return wire.wire__crate__bindings__vodozemac_session_pickle_encrypted(port_, arg0, arg1);
       },
       codec: DcoCodec(
         decodeSuccessData: dco_decode_String,
         decodeErrorData: null,
       ),
-      constMeta: kCrateApiVodozemacSessionPickleEncryptedConstMeta,
+      constMeta: kCrateBindingsVodozemacSessionPickleEncryptedConstMeta,
       argValues: [that, pickleKey],
       apiImpl: this,
     ));
   }
 
-  TaskConstMeta get kCrateApiVodozemacSessionPickleEncryptedConstMeta => const TaskConstMeta(
+  TaskConstMeta get kCrateBindingsVodozemacSessionPickleEncryptedConstMeta => const TaskConstMeta(
         debugName: "vodozemac_session_pickle_encrypted",
         argNames: ["that", "pickleKey"],
       );
 
   @override
-  Future<VodozemacOlmSessionConfig> crateApiVodozemacSessionSessionConfig({required VodozemacSession that}) {
+  Future<VodozemacOlmSessionConfig> crateBindingsVodozemacSessionSessionConfig({required VodozemacSession that}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         var arg0 = cst_encode_box_autoadd_vodozemac_session(that);
-        return wire.wire__crate__api__vodozemac_session_session_config(port_, arg0);
+        return wire.wire__crate__bindings__vodozemac_session_session_config(port_, arg0);
       },
       codec: DcoCodec(
         decodeSuccessData: dco_decode_vodozemac_olm_session_config,
         decodeErrorData: null,
       ),
-      constMeta: kCrateApiVodozemacSessionSessionConfigConstMeta,
+      constMeta: kCrateBindingsVodozemacSessionSessionConfigConstMeta,
       argValues: [that],
       apiImpl: this,
     ));
   }
 
-  TaskConstMeta get kCrateApiVodozemacSessionSessionConfigConstMeta => const TaskConstMeta(
+  TaskConstMeta get kCrateBindingsVodozemacSessionSessionConfigConstMeta => const TaskConstMeta(
         debugName: "vodozemac_session_session_config",
         argNames: ["that"],
       );
 
   @override
-  String crateApiVodozemacSessionSessionId({required VodozemacSession that}) {
+  String crateBindingsVodozemacSessionSessionId({required VodozemacSession that}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         var arg0 = cst_encode_box_autoadd_vodozemac_session(that);
-        return wire.wire__crate__api__vodozemac_session_session_id(arg0);
+        return wire.wire__crate__bindings__vodozemac_session_session_id(arg0);
       },
       codec: DcoCodec(
         decodeSuccessData: dco_decode_String,
         decodeErrorData: null,
       ),
-      constMeta: kCrateApiVodozemacSessionSessionIdConstMeta,
+      constMeta: kCrateBindingsVodozemacSessionSessionIdConstMeta,
       argValues: [that],
       apiImpl: this,
     ));
   }
 
-  TaskConstMeta get kCrateApiVodozemacSessionSessionIdConstMeta => const TaskConstMeta(
+  TaskConstMeta get kCrateBindingsVodozemacSessionSessionIdConstMeta => const TaskConstMeta(
         debugName: "vodozemac_session_session_id",
         argNames: ["that"],
       );

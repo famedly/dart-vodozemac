@@ -3,7 +3,7 @@
 
 // ignore_for_file: unused_import, unused_element, unnecessary_import, duplicate_ignore, invalid_use_of_internal_member, annotate_overrides, non_constant_identifier_names, curly_braces_in_flow_control_structures, prefer_const_literals_to_create_immutables, unused_field
 
-import 'api.dart';
+import 'bindings.dart';
 import 'dart:async';
 import 'dart:convert';
 import 'dart:ffi' as ffi;
@@ -857,13 +857,13 @@ class RustLibWire implements BaseWire {
       _lookup<ffi.NativeFunction<ffi.Void Function(DartPostCObjectFnType)>>('store_dart_post_cobject');
   late final _store_dart_post_cobject = _store_dart_post_cobjectPtr.asFunction<void Function(DartPostCObjectFnType)>();
 
-  void wire__crate__api__vodozemac_account_create_inbound_session(
+  void wire__crate__bindings__vodozemac_account_create_inbound_session(
     int port_,
     ffi.Pointer<wire_cst_vodozemac_account> that,
     ffi.Pointer<wire_cst_vodozemac_curve_25519_public_key> their_identity_key,
     ffi.Pointer<wire_cst_list_prim_u_8_strict> pre_key_message_base64,
   ) {
-    return _wire__crate__api__vodozemac_account_create_inbound_session(
+    return _wire__crate__bindings__vodozemac_account_create_inbound_session(
       port_,
       that,
       their_identity_key,
@@ -871,24 +871,24 @@ class RustLibWire implements BaseWire {
     );
   }
 
-  late final _wire__crate__api__vodozemac_account_create_inbound_sessionPtr = _lookup<
+  late final _wire__crate__bindings__vodozemac_account_create_inbound_sessionPtr = _lookup<
           ffi.NativeFunction<
               ffi.Void Function(ffi.Int64, ffi.Pointer<wire_cst_vodozemac_account>,
                   ffi.Pointer<wire_cst_vodozemac_curve_25519_public_key>, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
-      'frbgen_generic_olm_bindings_wire__crate__api__vodozemac_account_create_inbound_session');
-  late final _wire__crate__api__vodozemac_account_create_inbound_session =
-      _wire__crate__api__vodozemac_account_create_inbound_sessionPtr.asFunction<
+      'frbgen_vodozemac_wire__crate__bindings__vodozemac_account_create_inbound_session');
+  late final _wire__crate__bindings__vodozemac_account_create_inbound_session =
+      _wire__crate__bindings__vodozemac_account_create_inbound_sessionPtr.asFunction<
           void Function(int, ffi.Pointer<wire_cst_vodozemac_account>,
               ffi.Pointer<wire_cst_vodozemac_curve_25519_public_key>, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
 
-  void wire__crate__api__vodozemac_account_create_outbound_session(
+  void wire__crate__bindings__vodozemac_account_create_outbound_session(
     int port_,
     ffi.Pointer<wire_cst_vodozemac_account> that,
     ffi.Pointer<wire_cst_vodozemac_olm_session_config> config,
     ffi.Pointer<wire_cst_vodozemac_curve_25519_public_key> identity_key,
     ffi.Pointer<wire_cst_vodozemac_curve_25519_public_key> one_time_key,
   ) {
-    return _wire__crate__api__vodozemac_account_create_outbound_session(
+    return _wire__crate__bindings__vodozemac_account_create_outbound_session(
       port_,
       that,
       config,
@@ -897,7 +897,7 @@ class RustLibWire implements BaseWire {
     );
   }
 
-  late final _wire__crate__api__vodozemac_account_create_outbound_sessionPtr = _lookup<
+  late final _wire__crate__bindings__vodozemac_account_create_outbound_sessionPtr = _lookup<
           ffi.NativeFunction<
               ffi.Void Function(
                   ffi.Int64,
@@ -905,9 +905,9 @@ class RustLibWire implements BaseWire {
                   ffi.Pointer<wire_cst_vodozemac_olm_session_config>,
                   ffi.Pointer<wire_cst_vodozemac_curve_25519_public_key>,
                   ffi.Pointer<wire_cst_vodozemac_curve_25519_public_key>)>>(
-      'frbgen_generic_olm_bindings_wire__crate__api__vodozemac_account_create_outbound_session');
-  late final _wire__crate__api__vodozemac_account_create_outbound_session =
-      _wire__crate__api__vodozemac_account_create_outbound_sessionPtr.asFunction<
+      'frbgen_vodozemac_wire__crate__bindings__vodozemac_account_create_outbound_session');
+  late final _wire__crate__bindings__vodozemac_account_create_outbound_session =
+      _wire__crate__bindings__vodozemac_account_create_outbound_sessionPtr.asFunction<
           void Function(
               int,
               ffi.Pointer<wire_cst_vodozemac_account>,
@@ -915,377 +915,383 @@ class RustLibWire implements BaseWire {
               ffi.Pointer<wire_cst_vodozemac_curve_25519_public_key>,
               ffi.Pointer<wire_cst_vodozemac_curve_25519_public_key>)>();
 
-  WireSyncRust2DartDco wire__crate__api__vodozemac_account_curve25519_key(
+  WireSyncRust2DartDco wire__crate__bindings__vodozemac_account_curve25519_key(
     ffi.Pointer<wire_cst_vodozemac_account> that,
   ) {
-    return _wire__crate__api__vodozemac_account_curve25519_key(
+    return _wire__crate__bindings__vodozemac_account_curve25519_key(
       that,
     );
   }
 
-  late final _wire__crate__api__vodozemac_account_curve25519_keyPtr =
+  late final _wire__crate__bindings__vodozemac_account_curve25519_keyPtr =
       _lookup<ffi.NativeFunction<WireSyncRust2DartDco Function(ffi.Pointer<wire_cst_vodozemac_account>)>>(
-          'frbgen_generic_olm_bindings_wire__crate__api__vodozemac_account_curve25519_key');
-  late final _wire__crate__api__vodozemac_account_curve25519_key =
-      _wire__crate__api__vodozemac_account_curve25519_keyPtr
+          'frbgen_vodozemac_wire__crate__bindings__vodozemac_account_curve25519_key');
+  late final _wire__crate__bindings__vodozemac_account_curve25519_key =
+      _wire__crate__bindings__vodozemac_account_curve25519_keyPtr
           .asFunction<WireSyncRust2DartDco Function(ffi.Pointer<wire_cst_vodozemac_account>)>();
 
-  WireSyncRust2DartDco wire__crate__api__vodozemac_account_ed25519_key(
+  WireSyncRust2DartDco wire__crate__bindings__vodozemac_account_ed25519_key(
     ffi.Pointer<wire_cst_vodozemac_account> that,
   ) {
-    return _wire__crate__api__vodozemac_account_ed25519_key(
+    return _wire__crate__bindings__vodozemac_account_ed25519_key(
       that,
     );
   }
 
-  late final _wire__crate__api__vodozemac_account_ed25519_keyPtr =
+  late final _wire__crate__bindings__vodozemac_account_ed25519_keyPtr =
       _lookup<ffi.NativeFunction<WireSyncRust2DartDco Function(ffi.Pointer<wire_cst_vodozemac_account>)>>(
-          'frbgen_generic_olm_bindings_wire__crate__api__vodozemac_account_ed25519_key');
-  late final _wire__crate__api__vodozemac_account_ed25519_key = _wire__crate__api__vodozemac_account_ed25519_keyPtr
-      .asFunction<WireSyncRust2DartDco Function(ffi.Pointer<wire_cst_vodozemac_account>)>();
-
-  WireSyncRust2DartDco wire__crate__api__vodozemac_account_fallback_key(
-    ffi.Pointer<wire_cst_vodozemac_account> that,
-  ) {
-    return _wire__crate__api__vodozemac_account_fallback_key(
-      that,
-    );
-  }
-
-  late final _wire__crate__api__vodozemac_account_fallback_keyPtr =
-      _lookup<ffi.NativeFunction<WireSyncRust2DartDco Function(ffi.Pointer<wire_cst_vodozemac_account>)>>(
-          'frbgen_generic_olm_bindings_wire__crate__api__vodozemac_account_fallback_key');
-  late final _wire__crate__api__vodozemac_account_fallback_key = _wire__crate__api__vodozemac_account_fallback_keyPtr
-      .asFunction<WireSyncRust2DartDco Function(ffi.Pointer<wire_cst_vodozemac_account>)>();
-
-  WireSyncRust2DartDco wire__crate__api__vodozemac_account_forget_fallback_key(
-    ffi.Pointer<wire_cst_vodozemac_account> that,
-  ) {
-    return _wire__crate__api__vodozemac_account_forget_fallback_key(
-      that,
-    );
-  }
-
-  late final _wire__crate__api__vodozemac_account_forget_fallback_keyPtr =
-      _lookup<ffi.NativeFunction<WireSyncRust2DartDco Function(ffi.Pointer<wire_cst_vodozemac_account>)>>(
-          'frbgen_generic_olm_bindings_wire__crate__api__vodozemac_account_forget_fallback_key');
-  late final _wire__crate__api__vodozemac_account_forget_fallback_key =
-      _wire__crate__api__vodozemac_account_forget_fallback_keyPtr
+          'frbgen_vodozemac_wire__crate__bindings__vodozemac_account_ed25519_key');
+  late final _wire__crate__bindings__vodozemac_account_ed25519_key =
+      _wire__crate__bindings__vodozemac_account_ed25519_keyPtr
           .asFunction<WireSyncRust2DartDco Function(ffi.Pointer<wire_cst_vodozemac_account>)>();
 
-  void wire__crate__api__vodozemac_account_from_olm_pickle_encrypted(
+  WireSyncRust2DartDco wire__crate__bindings__vodozemac_account_fallback_key(
+    ffi.Pointer<wire_cst_vodozemac_account> that,
+  ) {
+    return _wire__crate__bindings__vodozemac_account_fallback_key(
+      that,
+    );
+  }
+
+  late final _wire__crate__bindings__vodozemac_account_fallback_keyPtr =
+      _lookup<ffi.NativeFunction<WireSyncRust2DartDco Function(ffi.Pointer<wire_cst_vodozemac_account>)>>(
+          'frbgen_vodozemac_wire__crate__bindings__vodozemac_account_fallback_key');
+  late final _wire__crate__bindings__vodozemac_account_fallback_key =
+      _wire__crate__bindings__vodozemac_account_fallback_keyPtr
+          .asFunction<WireSyncRust2DartDco Function(ffi.Pointer<wire_cst_vodozemac_account>)>();
+
+  WireSyncRust2DartDco wire__crate__bindings__vodozemac_account_forget_fallback_key(
+    ffi.Pointer<wire_cst_vodozemac_account> that,
+  ) {
+    return _wire__crate__bindings__vodozemac_account_forget_fallback_key(
+      that,
+    );
+  }
+
+  late final _wire__crate__bindings__vodozemac_account_forget_fallback_keyPtr =
+      _lookup<ffi.NativeFunction<WireSyncRust2DartDco Function(ffi.Pointer<wire_cst_vodozemac_account>)>>(
+          'frbgen_vodozemac_wire__crate__bindings__vodozemac_account_forget_fallback_key');
+  late final _wire__crate__bindings__vodozemac_account_forget_fallback_key =
+      _wire__crate__bindings__vodozemac_account_forget_fallback_keyPtr
+          .asFunction<WireSyncRust2DartDco Function(ffi.Pointer<wire_cst_vodozemac_account>)>();
+
+  void wire__crate__bindings__vodozemac_account_from_olm_pickle_encrypted(
     int port_,
     ffi.Pointer<wire_cst_list_prim_u_8_strict> pickle,
     ffi.Pointer<wire_cst_list_prim_u_8_loose> pickle_key,
   ) {
-    return _wire__crate__api__vodozemac_account_from_olm_pickle_encrypted(
+    return _wire__crate__bindings__vodozemac_account_from_olm_pickle_encrypted(
       port_,
       pickle,
       pickle_key,
     );
   }
 
-  late final _wire__crate__api__vodozemac_account_from_olm_pickle_encryptedPtr = _lookup<
+  late final _wire__crate__bindings__vodozemac_account_from_olm_pickle_encryptedPtr = _lookup<
           ffi.NativeFunction<
               ffi.Void Function(
                   ffi.Int64, ffi.Pointer<wire_cst_list_prim_u_8_strict>, ffi.Pointer<wire_cst_list_prim_u_8_loose>)>>(
-      'frbgen_generic_olm_bindings_wire__crate__api__vodozemac_account_from_olm_pickle_encrypted');
-  late final _wire__crate__api__vodozemac_account_from_olm_pickle_encrypted =
-      _wire__crate__api__vodozemac_account_from_olm_pickle_encryptedPtr.asFunction<
+      'frbgen_vodozemac_wire__crate__bindings__vodozemac_account_from_olm_pickle_encrypted');
+  late final _wire__crate__bindings__vodozemac_account_from_olm_pickle_encrypted =
+      _wire__crate__bindings__vodozemac_account_from_olm_pickle_encryptedPtr.asFunction<
           void Function(int, ffi.Pointer<wire_cst_list_prim_u_8_strict>, ffi.Pointer<wire_cst_list_prim_u_8_loose>)>();
 
-  void wire__crate__api__vodozemac_account_from_pickle_encrypted(
+  void wire__crate__bindings__vodozemac_account_from_pickle_encrypted(
     int port_,
     ffi.Pointer<wire_cst_list_prim_u_8_strict> pickle,
     ffi.Pointer<wire_cst_list_prim_u_8_strict> pickle_key,
   ) {
-    return _wire__crate__api__vodozemac_account_from_pickle_encrypted(
+    return _wire__crate__bindings__vodozemac_account_from_pickle_encrypted(
       port_,
       pickle,
       pickle_key,
     );
   }
 
-  late final _wire__crate__api__vodozemac_account_from_pickle_encryptedPtr = _lookup<
+  late final _wire__crate__bindings__vodozemac_account_from_pickle_encryptedPtr = _lookup<
           ffi.NativeFunction<
               ffi.Void Function(
                   ffi.Int64, ffi.Pointer<wire_cst_list_prim_u_8_strict>, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
-      'frbgen_generic_olm_bindings_wire__crate__api__vodozemac_account_from_pickle_encrypted');
-  late final _wire__crate__api__vodozemac_account_from_pickle_encrypted =
-      _wire__crate__api__vodozemac_account_from_pickle_encryptedPtr.asFunction<
+      'frbgen_vodozemac_wire__crate__bindings__vodozemac_account_from_pickle_encrypted');
+  late final _wire__crate__bindings__vodozemac_account_from_pickle_encrypted =
+      _wire__crate__bindings__vodozemac_account_from_pickle_encryptedPtr.asFunction<
           void Function(int, ffi.Pointer<wire_cst_list_prim_u_8_strict>, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
 
-  void wire__crate__api__vodozemac_account_generate_fallback_key(
+  void wire__crate__bindings__vodozemac_account_generate_fallback_key(
     int port_,
     ffi.Pointer<wire_cst_vodozemac_account> that,
   ) {
-    return _wire__crate__api__vodozemac_account_generate_fallback_key(
+    return _wire__crate__bindings__vodozemac_account_generate_fallback_key(
       port_,
       that,
     );
   }
 
-  late final _wire__crate__api__vodozemac_account_generate_fallback_keyPtr =
+  late final _wire__crate__bindings__vodozemac_account_generate_fallback_keyPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_cst_vodozemac_account>)>>(
-          'frbgen_generic_olm_bindings_wire__crate__api__vodozemac_account_generate_fallback_key');
-  late final _wire__crate__api__vodozemac_account_generate_fallback_key =
-      _wire__crate__api__vodozemac_account_generate_fallback_keyPtr
+          'frbgen_vodozemac_wire__crate__bindings__vodozemac_account_generate_fallback_key');
+  late final _wire__crate__bindings__vodozemac_account_generate_fallback_key =
+      _wire__crate__bindings__vodozemac_account_generate_fallback_keyPtr
           .asFunction<void Function(int, ffi.Pointer<wire_cst_vodozemac_account>)>();
 
-  void wire__crate__api__vodozemac_account_generate_one_time_keys(
+  void wire__crate__bindings__vodozemac_account_generate_one_time_keys(
     int port_,
     ffi.Pointer<wire_cst_vodozemac_account> that,
     int count,
   ) {
-    return _wire__crate__api__vodozemac_account_generate_one_time_keys(
+    return _wire__crate__bindings__vodozemac_account_generate_one_time_keys(
       port_,
       that,
       count,
     );
   }
 
-  late final _wire__crate__api__vodozemac_account_generate_one_time_keysPtr =
+  late final _wire__crate__bindings__vodozemac_account_generate_one_time_keysPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_cst_vodozemac_account>, ffi.UintPtr)>>(
-          'frbgen_generic_olm_bindings_wire__crate__api__vodozemac_account_generate_one_time_keys');
-  late final _wire__crate__api__vodozemac_account_generate_one_time_keys =
-      _wire__crate__api__vodozemac_account_generate_one_time_keysPtr
+          'frbgen_vodozemac_wire__crate__bindings__vodozemac_account_generate_one_time_keys');
+  late final _wire__crate__bindings__vodozemac_account_generate_one_time_keys =
+      _wire__crate__bindings__vodozemac_account_generate_one_time_keysPtr
           .asFunction<void Function(int, ffi.Pointer<wire_cst_vodozemac_account>, int)>();
 
-  WireSyncRust2DartDco wire__crate__api__vodozemac_account_identity_keys(
+  WireSyncRust2DartDco wire__crate__bindings__vodozemac_account_identity_keys(
     ffi.Pointer<wire_cst_vodozemac_account> that,
   ) {
-    return _wire__crate__api__vodozemac_account_identity_keys(
+    return _wire__crate__bindings__vodozemac_account_identity_keys(
       that,
     );
   }
 
-  late final _wire__crate__api__vodozemac_account_identity_keysPtr =
+  late final _wire__crate__bindings__vodozemac_account_identity_keysPtr =
       _lookup<ffi.NativeFunction<WireSyncRust2DartDco Function(ffi.Pointer<wire_cst_vodozemac_account>)>>(
-          'frbgen_generic_olm_bindings_wire__crate__api__vodozemac_account_identity_keys');
-  late final _wire__crate__api__vodozemac_account_identity_keys = _wire__crate__api__vodozemac_account_identity_keysPtr
-      .asFunction<WireSyncRust2DartDco Function(ffi.Pointer<wire_cst_vodozemac_account>)>();
-
-  WireSyncRust2DartDco wire__crate__api__vodozemac_account_mark_keys_as_published(
-    ffi.Pointer<wire_cst_vodozemac_account> that,
-  ) {
-    return _wire__crate__api__vodozemac_account_mark_keys_as_published(
-      that,
-    );
-  }
-
-  late final _wire__crate__api__vodozemac_account_mark_keys_as_publishedPtr =
-      _lookup<ffi.NativeFunction<WireSyncRust2DartDco Function(ffi.Pointer<wire_cst_vodozemac_account>)>>(
-          'frbgen_generic_olm_bindings_wire__crate__api__vodozemac_account_mark_keys_as_published');
-  late final _wire__crate__api__vodozemac_account_mark_keys_as_published =
-      _wire__crate__api__vodozemac_account_mark_keys_as_publishedPtr
+          'frbgen_vodozemac_wire__crate__bindings__vodozemac_account_identity_keys');
+  late final _wire__crate__bindings__vodozemac_account_identity_keys =
+      _wire__crate__bindings__vodozemac_account_identity_keysPtr
           .asFunction<WireSyncRust2DartDco Function(ffi.Pointer<wire_cst_vodozemac_account>)>();
 
-  WireSyncRust2DartDco wire__crate__api__vodozemac_account_max_number_of_one_time_keys(
+  WireSyncRust2DartDco wire__crate__bindings__vodozemac_account_mark_keys_as_published(
     ffi.Pointer<wire_cst_vodozemac_account> that,
   ) {
-    return _wire__crate__api__vodozemac_account_max_number_of_one_time_keys(
+    return _wire__crate__bindings__vodozemac_account_mark_keys_as_published(
       that,
     );
   }
 
-  late final _wire__crate__api__vodozemac_account_max_number_of_one_time_keysPtr =
+  late final _wire__crate__bindings__vodozemac_account_mark_keys_as_publishedPtr =
       _lookup<ffi.NativeFunction<WireSyncRust2DartDco Function(ffi.Pointer<wire_cst_vodozemac_account>)>>(
-          'frbgen_generic_olm_bindings_wire__crate__api__vodozemac_account_max_number_of_one_time_keys');
-  late final _wire__crate__api__vodozemac_account_max_number_of_one_time_keys =
-      _wire__crate__api__vodozemac_account_max_number_of_one_time_keysPtr
+          'frbgen_vodozemac_wire__crate__bindings__vodozemac_account_mark_keys_as_published');
+  late final _wire__crate__bindings__vodozemac_account_mark_keys_as_published =
+      _wire__crate__bindings__vodozemac_account_mark_keys_as_publishedPtr
           .asFunction<WireSyncRust2DartDco Function(ffi.Pointer<wire_cst_vodozemac_account>)>();
 
-  WireSyncRust2DartDco wire__crate__api__vodozemac_account_new() {
-    return _wire__crate__api__vodozemac_account_new();
-  }
-
-  late final _wire__crate__api__vodozemac_account_newPtr = _lookup<ffi.NativeFunction<WireSyncRust2DartDco Function()>>(
-      'frbgen_generic_olm_bindings_wire__crate__api__vodozemac_account_new');
-  late final _wire__crate__api__vodozemac_account_new =
-      _wire__crate__api__vodozemac_account_newPtr.asFunction<WireSyncRust2DartDco Function()>();
-
-  WireSyncRust2DartDco wire__crate__api__vodozemac_account_one_time_keys(
+  WireSyncRust2DartDco wire__crate__bindings__vodozemac_account_max_number_of_one_time_keys(
     ffi.Pointer<wire_cst_vodozemac_account> that,
   ) {
-    return _wire__crate__api__vodozemac_account_one_time_keys(
+    return _wire__crate__bindings__vodozemac_account_max_number_of_one_time_keys(
       that,
     );
   }
 
-  late final _wire__crate__api__vodozemac_account_one_time_keysPtr =
+  late final _wire__crate__bindings__vodozemac_account_max_number_of_one_time_keysPtr =
       _lookup<ffi.NativeFunction<WireSyncRust2DartDco Function(ffi.Pointer<wire_cst_vodozemac_account>)>>(
-          'frbgen_generic_olm_bindings_wire__crate__api__vodozemac_account_one_time_keys');
-  late final _wire__crate__api__vodozemac_account_one_time_keys = _wire__crate__api__vodozemac_account_one_time_keysPtr
-      .asFunction<WireSyncRust2DartDco Function(ffi.Pointer<wire_cst_vodozemac_account>)>();
+          'frbgen_vodozemac_wire__crate__bindings__vodozemac_account_max_number_of_one_time_keys');
+  late final _wire__crate__bindings__vodozemac_account_max_number_of_one_time_keys =
+      _wire__crate__bindings__vodozemac_account_max_number_of_one_time_keysPtr
+          .asFunction<WireSyncRust2DartDco Function(ffi.Pointer<wire_cst_vodozemac_account>)>();
 
-  void wire__crate__api__vodozemac_account_pickle_encrypted(
+  WireSyncRust2DartDco wire__crate__bindings__vodozemac_account_new() {
+    return _wire__crate__bindings__vodozemac_account_new();
+  }
+
+  late final _wire__crate__bindings__vodozemac_account_newPtr =
+      _lookup<ffi.NativeFunction<WireSyncRust2DartDco Function()>>(
+          'frbgen_vodozemac_wire__crate__bindings__vodozemac_account_new');
+  late final _wire__crate__bindings__vodozemac_account_new =
+      _wire__crate__bindings__vodozemac_account_newPtr.asFunction<WireSyncRust2DartDco Function()>();
+
+  WireSyncRust2DartDco wire__crate__bindings__vodozemac_account_one_time_keys(
+    ffi.Pointer<wire_cst_vodozemac_account> that,
+  ) {
+    return _wire__crate__bindings__vodozemac_account_one_time_keys(
+      that,
+    );
+  }
+
+  late final _wire__crate__bindings__vodozemac_account_one_time_keysPtr =
+      _lookup<ffi.NativeFunction<WireSyncRust2DartDco Function(ffi.Pointer<wire_cst_vodozemac_account>)>>(
+          'frbgen_vodozemac_wire__crate__bindings__vodozemac_account_one_time_keys');
+  late final _wire__crate__bindings__vodozemac_account_one_time_keys =
+      _wire__crate__bindings__vodozemac_account_one_time_keysPtr
+          .asFunction<WireSyncRust2DartDco Function(ffi.Pointer<wire_cst_vodozemac_account>)>();
+
+  void wire__crate__bindings__vodozemac_account_pickle_encrypted(
     int port_,
     ffi.Pointer<wire_cst_vodozemac_account> that,
     ffi.Pointer<wire_cst_list_prim_u_8_strict> pickle_key,
   ) {
-    return _wire__crate__api__vodozemac_account_pickle_encrypted(
+    return _wire__crate__bindings__vodozemac_account_pickle_encrypted(
       port_,
       that,
       pickle_key,
     );
   }
 
-  late final _wire__crate__api__vodozemac_account_pickle_encryptedPtr = _lookup<
+  late final _wire__crate__bindings__vodozemac_account_pickle_encryptedPtr = _lookup<
           ffi.NativeFunction<
               ffi.Void Function(
                   ffi.Int64, ffi.Pointer<wire_cst_vodozemac_account>, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
-      'frbgen_generic_olm_bindings_wire__crate__api__vodozemac_account_pickle_encrypted');
-  late final _wire__crate__api__vodozemac_account_pickle_encrypted =
-      _wire__crate__api__vodozemac_account_pickle_encryptedPtr.asFunction<
+      'frbgen_vodozemac_wire__crate__bindings__vodozemac_account_pickle_encrypted');
+  late final _wire__crate__bindings__vodozemac_account_pickle_encrypted =
+      _wire__crate__bindings__vodozemac_account_pickle_encryptedPtr.asFunction<
           void Function(int, ffi.Pointer<wire_cst_vodozemac_account>, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
 
-  void wire__crate__api__vodozemac_account_sign(
+  void wire__crate__bindings__vodozemac_account_sign(
     int port_,
     ffi.Pointer<wire_cst_vodozemac_account> that,
     ffi.Pointer<wire_cst_list_prim_u_8_strict> message,
   ) {
-    return _wire__crate__api__vodozemac_account_sign(
+    return _wire__crate__bindings__vodozemac_account_sign(
       port_,
       that,
       message,
     );
   }
 
-  late final _wire__crate__api__vodozemac_account_signPtr = _lookup<
+  late final _wire__crate__bindings__vodozemac_account_signPtr = _lookup<
           ffi.NativeFunction<
               ffi.Void Function(
                   ffi.Int64, ffi.Pointer<wire_cst_vodozemac_account>, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
-      'frbgen_generic_olm_bindings_wire__crate__api__vodozemac_account_sign');
-  late final _wire__crate__api__vodozemac_account_sign = _wire__crate__api__vodozemac_account_signPtr.asFunction<
-      void Function(int, ffi.Pointer<wire_cst_vodozemac_account>, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
+      'frbgen_vodozemac_wire__crate__bindings__vodozemac_account_sign');
+  late final _wire__crate__bindings__vodozemac_account_sign =
+      _wire__crate__bindings__vodozemac_account_signPtr.asFunction<
+          void Function(int, ffi.Pointer<wire_cst_vodozemac_account>, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
 
-  WireSyncRust2DartDco wire__crate__api__vodozemac_curve_25519_public_key_as_bytes(
+  WireSyncRust2DartDco wire__crate__bindings__vodozemac_curve_25519_public_key_as_bytes(
     ffi.Pointer<wire_cst_vodozemac_curve_25519_public_key> that,
   ) {
-    return _wire__crate__api__vodozemac_curve_25519_public_key_as_bytes(
+    return _wire__crate__bindings__vodozemac_curve_25519_public_key_as_bytes(
       that,
     );
   }
 
-  late final _wire__crate__api__vodozemac_curve_25519_public_key_as_bytesPtr = _lookup<
+  late final _wire__crate__bindings__vodozemac_curve_25519_public_key_as_bytesPtr = _lookup<
           ffi.NativeFunction<WireSyncRust2DartDco Function(ffi.Pointer<wire_cst_vodozemac_curve_25519_public_key>)>>(
-      'frbgen_generic_olm_bindings_wire__crate__api__vodozemac_curve_25519_public_key_as_bytes');
-  late final _wire__crate__api__vodozemac_curve_25519_public_key_as_bytes =
-      _wire__crate__api__vodozemac_curve_25519_public_key_as_bytesPtr
+      'frbgen_vodozemac_wire__crate__bindings__vodozemac_curve_25519_public_key_as_bytes');
+  late final _wire__crate__bindings__vodozemac_curve_25519_public_key_as_bytes =
+      _wire__crate__bindings__vodozemac_curve_25519_public_key_as_bytesPtr
           .asFunction<WireSyncRust2DartDco Function(ffi.Pointer<wire_cst_vodozemac_curve_25519_public_key>)>();
 
-  WireSyncRust2DartDco wire__crate__api__vodozemac_curve_25519_public_key_from_base64(
+  WireSyncRust2DartDco wire__crate__bindings__vodozemac_curve_25519_public_key_from_base64(
     ffi.Pointer<wire_cst_list_prim_u_8_strict> base64_key,
   ) {
-    return _wire__crate__api__vodozemac_curve_25519_public_key_from_base64(
+    return _wire__crate__bindings__vodozemac_curve_25519_public_key_from_base64(
       base64_key,
     );
   }
 
-  late final _wire__crate__api__vodozemac_curve_25519_public_key_from_base64Ptr =
+  late final _wire__crate__bindings__vodozemac_curve_25519_public_key_from_base64Ptr =
       _lookup<ffi.NativeFunction<WireSyncRust2DartDco Function(ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
-          'frbgen_generic_olm_bindings_wire__crate__api__vodozemac_curve_25519_public_key_from_base64');
-  late final _wire__crate__api__vodozemac_curve_25519_public_key_from_base64 =
-      _wire__crate__api__vodozemac_curve_25519_public_key_from_base64Ptr
+          'frbgen_vodozemac_wire__crate__bindings__vodozemac_curve_25519_public_key_from_base64');
+  late final _wire__crate__bindings__vodozemac_curve_25519_public_key_from_base64 =
+      _wire__crate__bindings__vodozemac_curve_25519_public_key_from_base64Ptr
           .asFunction<WireSyncRust2DartDco Function(ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
 
-  WireSyncRust2DartDco wire__crate__api__vodozemac_curve_25519_public_key_from_slice(
+  WireSyncRust2DartDco wire__crate__bindings__vodozemac_curve_25519_public_key_from_slice(
     ffi.Pointer<wire_cst_list_prim_u_8_strict> bytes,
   ) {
-    return _wire__crate__api__vodozemac_curve_25519_public_key_from_slice(
+    return _wire__crate__bindings__vodozemac_curve_25519_public_key_from_slice(
       bytes,
     );
   }
 
-  late final _wire__crate__api__vodozemac_curve_25519_public_key_from_slicePtr =
+  late final _wire__crate__bindings__vodozemac_curve_25519_public_key_from_slicePtr =
       _lookup<ffi.NativeFunction<WireSyncRust2DartDco Function(ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
-          'frbgen_generic_olm_bindings_wire__crate__api__vodozemac_curve_25519_public_key_from_slice');
-  late final _wire__crate__api__vodozemac_curve_25519_public_key_from_slice =
-      _wire__crate__api__vodozemac_curve_25519_public_key_from_slicePtr
+          'frbgen_vodozemac_wire__crate__bindings__vodozemac_curve_25519_public_key_from_slice');
+  late final _wire__crate__bindings__vodozemac_curve_25519_public_key_from_slice =
+      _wire__crate__bindings__vodozemac_curve_25519_public_key_from_slicePtr
           .asFunction<WireSyncRust2DartDco Function(ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
 
-  WireSyncRust2DartDco wire__crate__api__vodozemac_curve_25519_public_key_to_base64(
+  WireSyncRust2DartDco wire__crate__bindings__vodozemac_curve_25519_public_key_to_base64(
     ffi.Pointer<wire_cst_vodozemac_curve_25519_public_key> that,
   ) {
-    return _wire__crate__api__vodozemac_curve_25519_public_key_to_base64(
+    return _wire__crate__bindings__vodozemac_curve_25519_public_key_to_base64(
       that,
     );
   }
 
-  late final _wire__crate__api__vodozemac_curve_25519_public_key_to_base64Ptr = _lookup<
+  late final _wire__crate__bindings__vodozemac_curve_25519_public_key_to_base64Ptr = _lookup<
           ffi.NativeFunction<WireSyncRust2DartDco Function(ffi.Pointer<wire_cst_vodozemac_curve_25519_public_key>)>>(
-      'frbgen_generic_olm_bindings_wire__crate__api__vodozemac_curve_25519_public_key_to_base64');
-  late final _wire__crate__api__vodozemac_curve_25519_public_key_to_base64 =
-      _wire__crate__api__vodozemac_curve_25519_public_key_to_base64Ptr
+      'frbgen_vodozemac_wire__crate__bindings__vodozemac_curve_25519_public_key_to_base64');
+  late final _wire__crate__bindings__vodozemac_curve_25519_public_key_to_base64 =
+      _wire__crate__bindings__vodozemac_curve_25519_public_key_to_base64Ptr
           .asFunction<WireSyncRust2DartDco Function(ffi.Pointer<wire_cst_vodozemac_curve_25519_public_key>)>();
 
-  WireSyncRust2DartDco wire__crate__api__vodozemac_ed_25519_public_key_as_bytes(
+  WireSyncRust2DartDco wire__crate__bindings__vodozemac_ed_25519_public_key_as_bytes(
     ffi.Pointer<wire_cst_vodozemac_ed_25519_public_key> that,
   ) {
-    return _wire__crate__api__vodozemac_ed_25519_public_key_as_bytes(
+    return _wire__crate__bindings__vodozemac_ed_25519_public_key_as_bytes(
       that,
     );
   }
 
-  late final _wire__crate__api__vodozemac_ed_25519_public_key_as_bytesPtr =
+  late final _wire__crate__bindings__vodozemac_ed_25519_public_key_as_bytesPtr =
       _lookup<ffi.NativeFunction<WireSyncRust2DartDco Function(ffi.Pointer<wire_cst_vodozemac_ed_25519_public_key>)>>(
-          'frbgen_generic_olm_bindings_wire__crate__api__vodozemac_ed_25519_public_key_as_bytes');
-  late final _wire__crate__api__vodozemac_ed_25519_public_key_as_bytes =
-      _wire__crate__api__vodozemac_ed_25519_public_key_as_bytesPtr
+          'frbgen_vodozemac_wire__crate__bindings__vodozemac_ed_25519_public_key_as_bytes');
+  late final _wire__crate__bindings__vodozemac_ed_25519_public_key_as_bytes =
+      _wire__crate__bindings__vodozemac_ed_25519_public_key_as_bytesPtr
           .asFunction<WireSyncRust2DartDco Function(ffi.Pointer<wire_cst_vodozemac_ed_25519_public_key>)>();
 
-  WireSyncRust2DartDco wire__crate__api__vodozemac_ed_25519_public_key_from_base64(
+  WireSyncRust2DartDco wire__crate__bindings__vodozemac_ed_25519_public_key_from_base64(
     ffi.Pointer<wire_cst_list_prim_u_8_strict> base64_key,
   ) {
-    return _wire__crate__api__vodozemac_ed_25519_public_key_from_base64(
+    return _wire__crate__bindings__vodozemac_ed_25519_public_key_from_base64(
       base64_key,
     );
   }
 
-  late final _wire__crate__api__vodozemac_ed_25519_public_key_from_base64Ptr =
+  late final _wire__crate__bindings__vodozemac_ed_25519_public_key_from_base64Ptr =
       _lookup<ffi.NativeFunction<WireSyncRust2DartDco Function(ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
-          'frbgen_generic_olm_bindings_wire__crate__api__vodozemac_ed_25519_public_key_from_base64');
-  late final _wire__crate__api__vodozemac_ed_25519_public_key_from_base64 =
-      _wire__crate__api__vodozemac_ed_25519_public_key_from_base64Ptr
+          'frbgen_vodozemac_wire__crate__bindings__vodozemac_ed_25519_public_key_from_base64');
+  late final _wire__crate__bindings__vodozemac_ed_25519_public_key_from_base64 =
+      _wire__crate__bindings__vodozemac_ed_25519_public_key_from_base64Ptr
           .asFunction<WireSyncRust2DartDco Function(ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
 
-  WireSyncRust2DartDco wire__crate__api__vodozemac_ed_25519_public_key_from_slice(
+  WireSyncRust2DartDco wire__crate__bindings__vodozemac_ed_25519_public_key_from_slice(
     ffi.Pointer<wire_cst_list_prim_u_8_strict> bytes,
   ) {
-    return _wire__crate__api__vodozemac_ed_25519_public_key_from_slice(
+    return _wire__crate__bindings__vodozemac_ed_25519_public_key_from_slice(
       bytes,
     );
   }
 
-  late final _wire__crate__api__vodozemac_ed_25519_public_key_from_slicePtr =
+  late final _wire__crate__bindings__vodozemac_ed_25519_public_key_from_slicePtr =
       _lookup<ffi.NativeFunction<WireSyncRust2DartDco Function(ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
-          'frbgen_generic_olm_bindings_wire__crate__api__vodozemac_ed_25519_public_key_from_slice');
-  late final _wire__crate__api__vodozemac_ed_25519_public_key_from_slice =
-      _wire__crate__api__vodozemac_ed_25519_public_key_from_slicePtr
+          'frbgen_vodozemac_wire__crate__bindings__vodozemac_ed_25519_public_key_from_slice');
+  late final _wire__crate__bindings__vodozemac_ed_25519_public_key_from_slice =
+      _wire__crate__bindings__vodozemac_ed_25519_public_key_from_slicePtr
           .asFunction<WireSyncRust2DartDco Function(ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
 
-  WireSyncRust2DartDco wire__crate__api__vodozemac_ed_25519_public_key_to_base64(
+  WireSyncRust2DartDco wire__crate__bindings__vodozemac_ed_25519_public_key_to_base64(
     ffi.Pointer<wire_cst_vodozemac_ed_25519_public_key> that,
   ) {
-    return _wire__crate__api__vodozemac_ed_25519_public_key_to_base64(
+    return _wire__crate__bindings__vodozemac_ed_25519_public_key_to_base64(
       that,
     );
   }
 
-  late final _wire__crate__api__vodozemac_ed_25519_public_key_to_base64Ptr =
+  late final _wire__crate__bindings__vodozemac_ed_25519_public_key_to_base64Ptr =
       _lookup<ffi.NativeFunction<WireSyncRust2DartDco Function(ffi.Pointer<wire_cst_vodozemac_ed_25519_public_key>)>>(
-          'frbgen_generic_olm_bindings_wire__crate__api__vodozemac_ed_25519_public_key_to_base64');
-  late final _wire__crate__api__vodozemac_ed_25519_public_key_to_base64 =
-      _wire__crate__api__vodozemac_ed_25519_public_key_to_base64Ptr
+          'frbgen_vodozemac_wire__crate__bindings__vodozemac_ed_25519_public_key_to_base64');
+  late final _wire__crate__bindings__vodozemac_ed_25519_public_key_to_base64 =
+      _wire__crate__bindings__vodozemac_ed_25519_public_key_to_base64Ptr
           .asFunction<WireSyncRust2DartDco Function(ffi.Pointer<wire_cst_vodozemac_ed_25519_public_key>)>();
 
-  void wire__crate__api__vodozemac_ed_25519_public_key_verify(
+  void wire__crate__bindings__vodozemac_ed_25519_public_key_verify(
     int port_,
     ffi.Pointer<wire_cst_vodozemac_ed_25519_public_key> that,
     ffi.Pointer<wire_cst_list_prim_u_8_strict> message,
     ffi.Pointer<wire_cst_vodozemac_ed_25519_signature> signature,
   ) {
-    return _wire__crate__api__vodozemac_ed_25519_public_key_verify(
+    return _wire__crate__bindings__vodozemac_ed_25519_public_key_verify(
       port_,
       that,
       message,
@@ -1293,728 +1299,735 @@ class RustLibWire implements BaseWire {
     );
   }
 
-  late final _wire__crate__api__vodozemac_ed_25519_public_key_verifyPtr = _lookup<
+  late final _wire__crate__bindings__vodozemac_ed_25519_public_key_verifyPtr = _lookup<
           ffi.NativeFunction<
               ffi.Void Function(ffi.Int64, ffi.Pointer<wire_cst_vodozemac_ed_25519_public_key>,
                   ffi.Pointer<wire_cst_list_prim_u_8_strict>, ffi.Pointer<wire_cst_vodozemac_ed_25519_signature>)>>(
-      'frbgen_generic_olm_bindings_wire__crate__api__vodozemac_ed_25519_public_key_verify');
-  late final _wire__crate__api__vodozemac_ed_25519_public_key_verify =
-      _wire__crate__api__vodozemac_ed_25519_public_key_verifyPtr.asFunction<
+      'frbgen_vodozemac_wire__crate__bindings__vodozemac_ed_25519_public_key_verify');
+  late final _wire__crate__bindings__vodozemac_ed_25519_public_key_verify =
+      _wire__crate__bindings__vodozemac_ed_25519_public_key_verifyPtr.asFunction<
           void Function(int, ffi.Pointer<wire_cst_vodozemac_ed_25519_public_key>,
               ffi.Pointer<wire_cst_list_prim_u_8_strict>, ffi.Pointer<wire_cst_vodozemac_ed_25519_signature>)>();
 
-  WireSyncRust2DartDco wire__crate__api__vodozemac_ed_25519_signature_from_base64(
+  WireSyncRust2DartDco wire__crate__bindings__vodozemac_ed_25519_signature_from_base64(
     ffi.Pointer<wire_cst_list_prim_u_8_strict> signature,
   ) {
-    return _wire__crate__api__vodozemac_ed_25519_signature_from_base64(
+    return _wire__crate__bindings__vodozemac_ed_25519_signature_from_base64(
       signature,
     );
   }
 
-  late final _wire__crate__api__vodozemac_ed_25519_signature_from_base64Ptr =
+  late final _wire__crate__bindings__vodozemac_ed_25519_signature_from_base64Ptr =
       _lookup<ffi.NativeFunction<WireSyncRust2DartDco Function(ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
-          'frbgen_generic_olm_bindings_wire__crate__api__vodozemac_ed_25519_signature_from_base64');
-  late final _wire__crate__api__vodozemac_ed_25519_signature_from_base64 =
-      _wire__crate__api__vodozemac_ed_25519_signature_from_base64Ptr
+          'frbgen_vodozemac_wire__crate__bindings__vodozemac_ed_25519_signature_from_base64');
+  late final _wire__crate__bindings__vodozemac_ed_25519_signature_from_base64 =
+      _wire__crate__bindings__vodozemac_ed_25519_signature_from_base64Ptr
           .asFunction<WireSyncRust2DartDco Function(ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
 
-  WireSyncRust2DartDco wire__crate__api__vodozemac_ed_25519_signature_from_slice(
+  WireSyncRust2DartDco wire__crate__bindings__vodozemac_ed_25519_signature_from_slice(
     ffi.Pointer<wire_cst_list_prim_u_8_strict> bytes,
   ) {
-    return _wire__crate__api__vodozemac_ed_25519_signature_from_slice(
+    return _wire__crate__bindings__vodozemac_ed_25519_signature_from_slice(
       bytes,
     );
   }
 
-  late final _wire__crate__api__vodozemac_ed_25519_signature_from_slicePtr =
+  late final _wire__crate__bindings__vodozemac_ed_25519_signature_from_slicePtr =
       _lookup<ffi.NativeFunction<WireSyncRust2DartDco Function(ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
-          'frbgen_generic_olm_bindings_wire__crate__api__vodozemac_ed_25519_signature_from_slice');
-  late final _wire__crate__api__vodozemac_ed_25519_signature_from_slice =
-      _wire__crate__api__vodozemac_ed_25519_signature_from_slicePtr
+          'frbgen_vodozemac_wire__crate__bindings__vodozemac_ed_25519_signature_from_slice');
+  late final _wire__crate__bindings__vodozemac_ed_25519_signature_from_slice =
+      _wire__crate__bindings__vodozemac_ed_25519_signature_from_slicePtr
           .asFunction<WireSyncRust2DartDco Function(ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
 
-  WireSyncRust2DartDco wire__crate__api__vodozemac_ed_25519_signature_to_base64(
+  WireSyncRust2DartDco wire__crate__bindings__vodozemac_ed_25519_signature_to_base64(
     ffi.Pointer<wire_cst_vodozemac_ed_25519_signature> that,
   ) {
-    return _wire__crate__api__vodozemac_ed_25519_signature_to_base64(
+    return _wire__crate__bindings__vodozemac_ed_25519_signature_to_base64(
       that,
     );
   }
 
-  late final _wire__crate__api__vodozemac_ed_25519_signature_to_base64Ptr =
+  late final _wire__crate__bindings__vodozemac_ed_25519_signature_to_base64Ptr =
       _lookup<ffi.NativeFunction<WireSyncRust2DartDco Function(ffi.Pointer<wire_cst_vodozemac_ed_25519_signature>)>>(
-          'frbgen_generic_olm_bindings_wire__crate__api__vodozemac_ed_25519_signature_to_base64');
-  late final _wire__crate__api__vodozemac_ed_25519_signature_to_base64 =
-      _wire__crate__api__vodozemac_ed_25519_signature_to_base64Ptr
+          'frbgen_vodozemac_wire__crate__bindings__vodozemac_ed_25519_signature_to_base64');
+  late final _wire__crate__bindings__vodozemac_ed_25519_signature_to_base64 =
+      _wire__crate__bindings__vodozemac_ed_25519_signature_to_base64Ptr
           .asFunction<WireSyncRust2DartDco Function(ffi.Pointer<wire_cst_vodozemac_ed_25519_signature>)>();
 
-  WireSyncRust2DartDco wire__crate__api__vodozemac_ed_25519_signature_to_bytes(
+  WireSyncRust2DartDco wire__crate__bindings__vodozemac_ed_25519_signature_to_bytes(
     ffi.Pointer<wire_cst_vodozemac_ed_25519_signature> that,
   ) {
-    return _wire__crate__api__vodozemac_ed_25519_signature_to_bytes(
+    return _wire__crate__bindings__vodozemac_ed_25519_signature_to_bytes(
       that,
     );
   }
 
-  late final _wire__crate__api__vodozemac_ed_25519_signature_to_bytesPtr =
+  late final _wire__crate__bindings__vodozemac_ed_25519_signature_to_bytesPtr =
       _lookup<ffi.NativeFunction<WireSyncRust2DartDco Function(ffi.Pointer<wire_cst_vodozemac_ed_25519_signature>)>>(
-          'frbgen_generic_olm_bindings_wire__crate__api__vodozemac_ed_25519_signature_to_bytes');
-  late final _wire__crate__api__vodozemac_ed_25519_signature_to_bytes =
-      _wire__crate__api__vodozemac_ed_25519_signature_to_bytesPtr
+          'frbgen_vodozemac_wire__crate__bindings__vodozemac_ed_25519_signature_to_bytes');
+  late final _wire__crate__bindings__vodozemac_ed_25519_signature_to_bytes =
+      _wire__crate__bindings__vodozemac_ed_25519_signature_to_bytesPtr
           .asFunction<WireSyncRust2DartDco Function(ffi.Pointer<wire_cst_vodozemac_ed_25519_signature>)>();
 
-  void wire__crate__api__vodozemac_group_session_encrypt(
+  void wire__crate__bindings__vodozemac_group_session_encrypt(
     int port_,
     ffi.Pointer<wire_cst_vodozemac_group_session> that,
     ffi.Pointer<wire_cst_list_prim_u_8_strict> plaintext,
   ) {
-    return _wire__crate__api__vodozemac_group_session_encrypt(
+    return _wire__crate__bindings__vodozemac_group_session_encrypt(
       port_,
       that,
       plaintext,
     );
   }
 
-  late final _wire__crate__api__vodozemac_group_session_encryptPtr = _lookup<
+  late final _wire__crate__bindings__vodozemac_group_session_encryptPtr = _lookup<
           ffi.NativeFunction<
               ffi.Void Function(ffi.Int64, ffi.Pointer<wire_cst_vodozemac_group_session>,
                   ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
-      'frbgen_generic_olm_bindings_wire__crate__api__vodozemac_group_session_encrypt');
-  late final _wire__crate__api__vodozemac_group_session_encrypt =
-      _wire__crate__api__vodozemac_group_session_encryptPtr.asFunction<
+      'frbgen_vodozemac_wire__crate__bindings__vodozemac_group_session_encrypt');
+  late final _wire__crate__bindings__vodozemac_group_session_encrypt =
+      _wire__crate__bindings__vodozemac_group_session_encryptPtr.asFunction<
           void Function(
               int, ffi.Pointer<wire_cst_vodozemac_group_session>, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
 
-  void wire__crate__api__vodozemac_group_session_from_olm_pickle_encrypted(
+  void wire__crate__bindings__vodozemac_group_session_from_olm_pickle_encrypted(
     int port_,
     ffi.Pointer<wire_cst_list_prim_u_8_strict> pickle,
     ffi.Pointer<wire_cst_list_prim_u_8_loose> pickle_key,
   ) {
-    return _wire__crate__api__vodozemac_group_session_from_olm_pickle_encrypted(
+    return _wire__crate__bindings__vodozemac_group_session_from_olm_pickle_encrypted(
       port_,
       pickle,
       pickle_key,
     );
   }
 
-  late final _wire__crate__api__vodozemac_group_session_from_olm_pickle_encryptedPtr = _lookup<
+  late final _wire__crate__bindings__vodozemac_group_session_from_olm_pickle_encryptedPtr = _lookup<
           ffi.NativeFunction<
               ffi.Void Function(
                   ffi.Int64, ffi.Pointer<wire_cst_list_prim_u_8_strict>, ffi.Pointer<wire_cst_list_prim_u_8_loose>)>>(
-      'frbgen_generic_olm_bindings_wire__crate__api__vodozemac_group_session_from_olm_pickle_encrypted');
-  late final _wire__crate__api__vodozemac_group_session_from_olm_pickle_encrypted =
-      _wire__crate__api__vodozemac_group_session_from_olm_pickle_encryptedPtr.asFunction<
+      'frbgen_vodozemac_wire__crate__bindings__vodozemac_group_session_from_olm_pickle_encrypted');
+  late final _wire__crate__bindings__vodozemac_group_session_from_olm_pickle_encrypted =
+      _wire__crate__bindings__vodozemac_group_session_from_olm_pickle_encryptedPtr.asFunction<
           void Function(int, ffi.Pointer<wire_cst_list_prim_u_8_strict>, ffi.Pointer<wire_cst_list_prim_u_8_loose>)>();
 
-  void wire__crate__api__vodozemac_group_session_from_pickle_encrypted(
+  void wire__crate__bindings__vodozemac_group_session_from_pickle_encrypted(
     int port_,
     ffi.Pointer<wire_cst_list_prim_u_8_strict> pickle,
     ffi.Pointer<wire_cst_list_prim_u_8_strict> pickle_key,
   ) {
-    return _wire__crate__api__vodozemac_group_session_from_pickle_encrypted(
+    return _wire__crate__bindings__vodozemac_group_session_from_pickle_encrypted(
       port_,
       pickle,
       pickle_key,
     );
   }
 
-  late final _wire__crate__api__vodozemac_group_session_from_pickle_encryptedPtr = _lookup<
+  late final _wire__crate__bindings__vodozemac_group_session_from_pickle_encryptedPtr = _lookup<
           ffi.NativeFunction<
               ffi.Void Function(
                   ffi.Int64, ffi.Pointer<wire_cst_list_prim_u_8_strict>, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
-      'frbgen_generic_olm_bindings_wire__crate__api__vodozemac_group_session_from_pickle_encrypted');
-  late final _wire__crate__api__vodozemac_group_session_from_pickle_encrypted =
-      _wire__crate__api__vodozemac_group_session_from_pickle_encryptedPtr.asFunction<
+      'frbgen_vodozemac_wire__crate__bindings__vodozemac_group_session_from_pickle_encrypted');
+  late final _wire__crate__bindings__vodozemac_group_session_from_pickle_encrypted =
+      _wire__crate__bindings__vodozemac_group_session_from_pickle_encryptedPtr.asFunction<
           void Function(int, ffi.Pointer<wire_cst_list_prim_u_8_strict>, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
 
-  WireSyncRust2DartDco wire__crate__api__vodozemac_group_session_message_index(
+  WireSyncRust2DartDco wire__crate__bindings__vodozemac_group_session_message_index(
     ffi.Pointer<wire_cst_vodozemac_group_session> that,
   ) {
-    return _wire__crate__api__vodozemac_group_session_message_index(
+    return _wire__crate__bindings__vodozemac_group_session_message_index(
       that,
     );
   }
 
-  late final _wire__crate__api__vodozemac_group_session_message_indexPtr =
+  late final _wire__crate__bindings__vodozemac_group_session_message_indexPtr =
       _lookup<ffi.NativeFunction<WireSyncRust2DartDco Function(ffi.Pointer<wire_cst_vodozemac_group_session>)>>(
-          'frbgen_generic_olm_bindings_wire__crate__api__vodozemac_group_session_message_index');
-  late final _wire__crate__api__vodozemac_group_session_message_index =
-      _wire__crate__api__vodozemac_group_session_message_indexPtr
+          'frbgen_vodozemac_wire__crate__bindings__vodozemac_group_session_message_index');
+  late final _wire__crate__bindings__vodozemac_group_session_message_index =
+      _wire__crate__bindings__vodozemac_group_session_message_indexPtr
           .asFunction<WireSyncRust2DartDco Function(ffi.Pointer<wire_cst_vodozemac_group_session>)>();
 
-  WireSyncRust2DartDco wire__crate__api__vodozemac_group_session_new(
+  WireSyncRust2DartDco wire__crate__bindings__vodozemac_group_session_new(
     ffi.Pointer<wire_cst_vodozemac_megolm_session_config> config,
   ) {
-    return _wire__crate__api__vodozemac_group_session_new(
+    return _wire__crate__bindings__vodozemac_group_session_new(
       config,
     );
   }
 
-  late final _wire__crate__api__vodozemac_group_session_newPtr =
+  late final _wire__crate__bindings__vodozemac_group_session_newPtr =
       _lookup<ffi.NativeFunction<WireSyncRust2DartDco Function(ffi.Pointer<wire_cst_vodozemac_megolm_session_config>)>>(
-          'frbgen_generic_olm_bindings_wire__crate__api__vodozemac_group_session_new');
-  late final _wire__crate__api__vodozemac_group_session_new = _wire__crate__api__vodozemac_group_session_newPtr
-      .asFunction<WireSyncRust2DartDco Function(ffi.Pointer<wire_cst_vodozemac_megolm_session_config>)>();
+          'frbgen_vodozemac_wire__crate__bindings__vodozemac_group_session_new');
+  late final _wire__crate__bindings__vodozemac_group_session_new =
+      _wire__crate__bindings__vodozemac_group_session_newPtr
+          .asFunction<WireSyncRust2DartDco Function(ffi.Pointer<wire_cst_vodozemac_megolm_session_config>)>();
 
-  void wire__crate__api__vodozemac_group_session_pickle_encrypted(
+  void wire__crate__bindings__vodozemac_group_session_pickle_encrypted(
     int port_,
     ffi.Pointer<wire_cst_vodozemac_group_session> that,
     ffi.Pointer<wire_cst_list_prim_u_8_strict> pickle_key,
   ) {
-    return _wire__crate__api__vodozemac_group_session_pickle_encrypted(
+    return _wire__crate__bindings__vodozemac_group_session_pickle_encrypted(
       port_,
       that,
       pickle_key,
     );
   }
 
-  late final _wire__crate__api__vodozemac_group_session_pickle_encryptedPtr = _lookup<
+  late final _wire__crate__bindings__vodozemac_group_session_pickle_encryptedPtr = _lookup<
           ffi.NativeFunction<
               ffi.Void Function(ffi.Int64, ffi.Pointer<wire_cst_vodozemac_group_session>,
                   ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
-      'frbgen_generic_olm_bindings_wire__crate__api__vodozemac_group_session_pickle_encrypted');
-  late final _wire__crate__api__vodozemac_group_session_pickle_encrypted =
-      _wire__crate__api__vodozemac_group_session_pickle_encryptedPtr.asFunction<
+      'frbgen_vodozemac_wire__crate__bindings__vodozemac_group_session_pickle_encrypted');
+  late final _wire__crate__bindings__vodozemac_group_session_pickle_encrypted =
+      _wire__crate__bindings__vodozemac_group_session_pickle_encryptedPtr.asFunction<
           void Function(
               int, ffi.Pointer<wire_cst_vodozemac_group_session>, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
 
-  void wire__crate__api__vodozemac_group_session_session_config(
+  void wire__crate__bindings__vodozemac_group_session_session_config(
     int port_,
     ffi.Pointer<wire_cst_vodozemac_group_session> that,
   ) {
-    return _wire__crate__api__vodozemac_group_session_session_config(
+    return _wire__crate__bindings__vodozemac_group_session_session_config(
       port_,
       that,
     );
   }
 
-  late final _wire__crate__api__vodozemac_group_session_session_configPtr =
+  late final _wire__crate__bindings__vodozemac_group_session_session_configPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_cst_vodozemac_group_session>)>>(
-          'frbgen_generic_olm_bindings_wire__crate__api__vodozemac_group_session_session_config');
-  late final _wire__crate__api__vodozemac_group_session_session_config =
-      _wire__crate__api__vodozemac_group_session_session_configPtr
+          'frbgen_vodozemac_wire__crate__bindings__vodozemac_group_session_session_config');
+  late final _wire__crate__bindings__vodozemac_group_session_session_config =
+      _wire__crate__bindings__vodozemac_group_session_session_configPtr
           .asFunction<void Function(int, ffi.Pointer<wire_cst_vodozemac_group_session>)>();
 
-  WireSyncRust2DartDco wire__crate__api__vodozemac_group_session_session_id(
+  WireSyncRust2DartDco wire__crate__bindings__vodozemac_group_session_session_id(
     ffi.Pointer<wire_cst_vodozemac_group_session> that,
   ) {
-    return _wire__crate__api__vodozemac_group_session_session_id(
+    return _wire__crate__bindings__vodozemac_group_session_session_id(
       that,
     );
   }
 
-  late final _wire__crate__api__vodozemac_group_session_session_idPtr =
+  late final _wire__crate__bindings__vodozemac_group_session_session_idPtr =
       _lookup<ffi.NativeFunction<WireSyncRust2DartDco Function(ffi.Pointer<wire_cst_vodozemac_group_session>)>>(
-          'frbgen_generic_olm_bindings_wire__crate__api__vodozemac_group_session_session_id');
-  late final _wire__crate__api__vodozemac_group_session_session_id =
-      _wire__crate__api__vodozemac_group_session_session_idPtr
+          'frbgen_vodozemac_wire__crate__bindings__vodozemac_group_session_session_id');
+  late final _wire__crate__bindings__vodozemac_group_session_session_id =
+      _wire__crate__bindings__vodozemac_group_session_session_idPtr
           .asFunction<WireSyncRust2DartDco Function(ffi.Pointer<wire_cst_vodozemac_group_session>)>();
 
-  void wire__crate__api__vodozemac_group_session_session_key(
+  void wire__crate__bindings__vodozemac_group_session_session_key(
     int port_,
     ffi.Pointer<wire_cst_vodozemac_group_session> that,
   ) {
-    return _wire__crate__api__vodozemac_group_session_session_key(
+    return _wire__crate__bindings__vodozemac_group_session_session_key(
       port_,
       that,
     );
   }
 
-  late final _wire__crate__api__vodozemac_group_session_session_keyPtr =
+  late final _wire__crate__bindings__vodozemac_group_session_session_keyPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_cst_vodozemac_group_session>)>>(
-          'frbgen_generic_olm_bindings_wire__crate__api__vodozemac_group_session_session_key');
-  late final _wire__crate__api__vodozemac_group_session_session_key =
-      _wire__crate__api__vodozemac_group_session_session_keyPtr
+          'frbgen_vodozemac_wire__crate__bindings__vodozemac_group_session_session_key');
+  late final _wire__crate__bindings__vodozemac_group_session_session_key =
+      _wire__crate__bindings__vodozemac_group_session_session_keyPtr
           .asFunction<void Function(int, ffi.Pointer<wire_cst_vodozemac_group_session>)>();
 
-  WireSyncRust2DartDco wire__crate__api__vodozemac_group_session_to_inbound(
+  WireSyncRust2DartDco wire__crate__bindings__vodozemac_group_session_to_inbound(
     ffi.Pointer<wire_cst_vodozemac_group_session> that,
   ) {
-    return _wire__crate__api__vodozemac_group_session_to_inbound(
+    return _wire__crate__bindings__vodozemac_group_session_to_inbound(
       that,
     );
   }
 
-  late final _wire__crate__api__vodozemac_group_session_to_inboundPtr =
+  late final _wire__crate__bindings__vodozemac_group_session_to_inboundPtr =
       _lookup<ffi.NativeFunction<WireSyncRust2DartDco Function(ffi.Pointer<wire_cst_vodozemac_group_session>)>>(
-          'frbgen_generic_olm_bindings_wire__crate__api__vodozemac_group_session_to_inbound');
-  late final _wire__crate__api__vodozemac_group_session_to_inbound =
-      _wire__crate__api__vodozemac_group_session_to_inboundPtr
+          'frbgen_vodozemac_wire__crate__bindings__vodozemac_group_session_to_inbound');
+  late final _wire__crate__bindings__vodozemac_group_session_to_inbound =
+      _wire__crate__bindings__vodozemac_group_session_to_inboundPtr
           .asFunction<WireSyncRust2DartDco Function(ffi.Pointer<wire_cst_vodozemac_group_session>)>();
 
-  void wire__crate__api__vodozemac_inbound_group_session_decrypt(
+  void wire__crate__bindings__vodozemac_inbound_group_session_decrypt(
     int port_,
     ffi.Pointer<wire_cst_vodozemac_inbound_group_session> that,
     ffi.Pointer<wire_cst_list_prim_u_8_strict> encrypted,
   ) {
-    return _wire__crate__api__vodozemac_inbound_group_session_decrypt(
+    return _wire__crate__bindings__vodozemac_inbound_group_session_decrypt(
       port_,
       that,
       encrypted,
     );
   }
 
-  late final _wire__crate__api__vodozemac_inbound_group_session_decryptPtr = _lookup<
+  late final _wire__crate__bindings__vodozemac_inbound_group_session_decryptPtr = _lookup<
           ffi.NativeFunction<
               ffi.Void Function(ffi.Int64, ffi.Pointer<wire_cst_vodozemac_inbound_group_session>,
                   ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
-      'frbgen_generic_olm_bindings_wire__crate__api__vodozemac_inbound_group_session_decrypt');
-  late final _wire__crate__api__vodozemac_inbound_group_session_decrypt =
-      _wire__crate__api__vodozemac_inbound_group_session_decryptPtr.asFunction<
+      'frbgen_vodozemac_wire__crate__bindings__vodozemac_inbound_group_session_decrypt');
+  late final _wire__crate__bindings__vodozemac_inbound_group_session_decrypt =
+      _wire__crate__bindings__vodozemac_inbound_group_session_decryptPtr.asFunction<
           void Function(int, ffi.Pointer<wire_cst_vodozemac_inbound_group_session>,
               ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
 
-  WireSyncRust2DartDco wire__crate__api__vodozemac_inbound_group_session_export_at(
+  WireSyncRust2DartDco wire__crate__bindings__vodozemac_inbound_group_session_export_at(
     ffi.Pointer<wire_cst_vodozemac_inbound_group_session> that,
     int index,
   ) {
-    return _wire__crate__api__vodozemac_inbound_group_session_export_at(
+    return _wire__crate__bindings__vodozemac_inbound_group_session_export_at(
       that,
       index,
     );
   }
 
-  late final _wire__crate__api__vodozemac_inbound_group_session_export_atPtr = _lookup<
+  late final _wire__crate__bindings__vodozemac_inbound_group_session_export_atPtr = _lookup<
       ffi.NativeFunction<
           WireSyncRust2DartDco Function(ffi.Pointer<wire_cst_vodozemac_inbound_group_session>,
-              ffi.Uint32)>>('frbgen_generic_olm_bindings_wire__crate__api__vodozemac_inbound_group_session_export_at');
-  late final _wire__crate__api__vodozemac_inbound_group_session_export_at =
-      _wire__crate__api__vodozemac_inbound_group_session_export_atPtr
+              ffi.Uint32)>>('frbgen_vodozemac_wire__crate__bindings__vodozemac_inbound_group_session_export_at');
+  late final _wire__crate__bindings__vodozemac_inbound_group_session_export_at =
+      _wire__crate__bindings__vodozemac_inbound_group_session_export_atPtr
           .asFunction<WireSyncRust2DartDco Function(ffi.Pointer<wire_cst_vodozemac_inbound_group_session>, int)>();
 
-  WireSyncRust2DartDco wire__crate__api__vodozemac_inbound_group_session_export_at_first_known_index(
+  WireSyncRust2DartDco wire__crate__bindings__vodozemac_inbound_group_session_export_at_first_known_index(
     ffi.Pointer<wire_cst_vodozemac_inbound_group_session> that,
   ) {
-    return _wire__crate__api__vodozemac_inbound_group_session_export_at_first_known_index(
+    return _wire__crate__bindings__vodozemac_inbound_group_session_export_at_first_known_index(
       that,
     );
   }
 
-  late final _wire__crate__api__vodozemac_inbound_group_session_export_at_first_known_indexPtr =
+  late final _wire__crate__bindings__vodozemac_inbound_group_session_export_at_first_known_indexPtr =
       _lookup<ffi.NativeFunction<WireSyncRust2DartDco Function(ffi.Pointer<wire_cst_vodozemac_inbound_group_session>)>>(
-          'frbgen_generic_olm_bindings_wire__crate__api__vodozemac_inbound_group_session_export_at_first_known_index');
-  late final _wire__crate__api__vodozemac_inbound_group_session_export_at_first_known_index =
-      _wire__crate__api__vodozemac_inbound_group_session_export_at_first_known_indexPtr
+          'frbgen_vodozemac_wire__crate__bindings__vodozemac_inbound_group_session_export_at_first_known_index');
+  late final _wire__crate__bindings__vodozemac_inbound_group_session_export_at_first_known_index =
+      _wire__crate__bindings__vodozemac_inbound_group_session_export_at_first_known_indexPtr
           .asFunction<WireSyncRust2DartDco Function(ffi.Pointer<wire_cst_vodozemac_inbound_group_session>)>();
 
-  WireSyncRust2DartDco wire__crate__api__vodozemac_inbound_group_session_first_known_index(
+  WireSyncRust2DartDco wire__crate__bindings__vodozemac_inbound_group_session_first_known_index(
     ffi.Pointer<wire_cst_vodozemac_inbound_group_session> that,
   ) {
-    return _wire__crate__api__vodozemac_inbound_group_session_first_known_index(
+    return _wire__crate__bindings__vodozemac_inbound_group_session_first_known_index(
       that,
     );
   }
 
-  late final _wire__crate__api__vodozemac_inbound_group_session_first_known_indexPtr =
+  late final _wire__crate__bindings__vodozemac_inbound_group_session_first_known_indexPtr =
       _lookup<ffi.NativeFunction<WireSyncRust2DartDco Function(ffi.Pointer<wire_cst_vodozemac_inbound_group_session>)>>(
-          'frbgen_generic_olm_bindings_wire__crate__api__vodozemac_inbound_group_session_first_known_index');
-  late final _wire__crate__api__vodozemac_inbound_group_session_first_known_index =
-      _wire__crate__api__vodozemac_inbound_group_session_first_known_indexPtr
+          'frbgen_vodozemac_wire__crate__bindings__vodozemac_inbound_group_session_first_known_index');
+  late final _wire__crate__bindings__vodozemac_inbound_group_session_first_known_index =
+      _wire__crate__bindings__vodozemac_inbound_group_session_first_known_indexPtr
           .asFunction<WireSyncRust2DartDco Function(ffi.Pointer<wire_cst_vodozemac_inbound_group_session>)>();
 
-  void wire__crate__api__vodozemac_inbound_group_session_from_olm_pickle_encrypted(
+  void wire__crate__bindings__vodozemac_inbound_group_session_from_olm_pickle_encrypted(
     int port_,
     ffi.Pointer<wire_cst_list_prim_u_8_strict> pickle,
     ffi.Pointer<wire_cst_list_prim_u_8_loose> pickle_key,
   ) {
-    return _wire__crate__api__vodozemac_inbound_group_session_from_olm_pickle_encrypted(
+    return _wire__crate__bindings__vodozemac_inbound_group_session_from_olm_pickle_encrypted(
       port_,
       pickle,
       pickle_key,
     );
   }
 
-  late final _wire__crate__api__vodozemac_inbound_group_session_from_olm_pickle_encryptedPtr = _lookup<
+  late final _wire__crate__bindings__vodozemac_inbound_group_session_from_olm_pickle_encryptedPtr = _lookup<
           ffi.NativeFunction<
               ffi.Void Function(
                   ffi.Int64, ffi.Pointer<wire_cst_list_prim_u_8_strict>, ffi.Pointer<wire_cst_list_prim_u_8_loose>)>>(
-      'frbgen_generic_olm_bindings_wire__crate__api__vodozemac_inbound_group_session_from_olm_pickle_encrypted');
-  late final _wire__crate__api__vodozemac_inbound_group_session_from_olm_pickle_encrypted =
-      _wire__crate__api__vodozemac_inbound_group_session_from_olm_pickle_encryptedPtr.asFunction<
+      'frbgen_vodozemac_wire__crate__bindings__vodozemac_inbound_group_session_from_olm_pickle_encrypted');
+  late final _wire__crate__bindings__vodozemac_inbound_group_session_from_olm_pickle_encrypted =
+      _wire__crate__bindings__vodozemac_inbound_group_session_from_olm_pickle_encryptedPtr.asFunction<
           void Function(int, ffi.Pointer<wire_cst_list_prim_u_8_strict>, ffi.Pointer<wire_cst_list_prim_u_8_loose>)>();
 
-  void wire__crate__api__vodozemac_inbound_group_session_from_pickle_encrypted(
+  void wire__crate__bindings__vodozemac_inbound_group_session_from_pickle_encrypted(
     int port_,
     ffi.Pointer<wire_cst_list_prim_u_8_strict> pickle,
     ffi.Pointer<wire_cst_list_prim_u_8_strict> pickle_key,
   ) {
-    return _wire__crate__api__vodozemac_inbound_group_session_from_pickle_encrypted(
+    return _wire__crate__bindings__vodozemac_inbound_group_session_from_pickle_encrypted(
       port_,
       pickle,
       pickle_key,
     );
   }
 
-  late final _wire__crate__api__vodozemac_inbound_group_session_from_pickle_encryptedPtr = _lookup<
+  late final _wire__crate__bindings__vodozemac_inbound_group_session_from_pickle_encryptedPtr = _lookup<
           ffi.NativeFunction<
               ffi.Void Function(
                   ffi.Int64, ffi.Pointer<wire_cst_list_prim_u_8_strict>, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
-      'frbgen_generic_olm_bindings_wire__crate__api__vodozemac_inbound_group_session_from_pickle_encrypted');
-  late final _wire__crate__api__vodozemac_inbound_group_session_from_pickle_encrypted =
-      _wire__crate__api__vodozemac_inbound_group_session_from_pickle_encryptedPtr.asFunction<
+      'frbgen_vodozemac_wire__crate__bindings__vodozemac_inbound_group_session_from_pickle_encrypted');
+  late final _wire__crate__bindings__vodozemac_inbound_group_session_from_pickle_encrypted =
+      _wire__crate__bindings__vodozemac_inbound_group_session_from_pickle_encryptedPtr.asFunction<
           void Function(int, ffi.Pointer<wire_cst_list_prim_u_8_strict>, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
 
-  WireSyncRust2DartDco wire__crate__api__vodozemac_inbound_group_session_import(
+  WireSyncRust2DartDco wire__crate__bindings__vodozemac_inbound_group_session_import(
     ffi.Pointer<wire_cst_list_prim_u_8_strict> session_key,
     ffi.Pointer<wire_cst_vodozemac_megolm_session_config> config,
   ) {
-    return _wire__crate__api__vodozemac_inbound_group_session_import(
+    return _wire__crate__bindings__vodozemac_inbound_group_session_import(
       session_key,
       config,
     );
   }
 
-  late final _wire__crate__api__vodozemac_inbound_group_session_importPtr = _lookup<
+  late final _wire__crate__bindings__vodozemac_inbound_group_session_importPtr = _lookup<
           ffi.NativeFunction<
               WireSyncRust2DartDco Function(
                   ffi.Pointer<wire_cst_list_prim_u_8_strict>, ffi.Pointer<wire_cst_vodozemac_megolm_session_config>)>>(
-      'frbgen_generic_olm_bindings_wire__crate__api__vodozemac_inbound_group_session_import');
-  late final _wire__crate__api__vodozemac_inbound_group_session_import =
-      _wire__crate__api__vodozemac_inbound_group_session_importPtr.asFunction<
+      'frbgen_vodozemac_wire__crate__bindings__vodozemac_inbound_group_session_import');
+  late final _wire__crate__bindings__vodozemac_inbound_group_session_import =
+      _wire__crate__bindings__vodozemac_inbound_group_session_importPtr.asFunction<
           WireSyncRust2DartDco Function(
               ffi.Pointer<wire_cst_list_prim_u_8_strict>, ffi.Pointer<wire_cst_vodozemac_megolm_session_config>)>();
 
-  WireSyncRust2DartDco wire__crate__api__vodozemac_inbound_group_session_new(
+  WireSyncRust2DartDco wire__crate__bindings__vodozemac_inbound_group_session_new(
     ffi.Pointer<wire_cst_list_prim_u_8_strict> session_key,
     ffi.Pointer<wire_cst_vodozemac_megolm_session_config> config,
   ) {
-    return _wire__crate__api__vodozemac_inbound_group_session_new(
+    return _wire__crate__bindings__vodozemac_inbound_group_session_new(
       session_key,
       config,
     );
   }
 
-  late final _wire__crate__api__vodozemac_inbound_group_session_newPtr = _lookup<
+  late final _wire__crate__bindings__vodozemac_inbound_group_session_newPtr = _lookup<
           ffi.NativeFunction<
               WireSyncRust2DartDco Function(
                   ffi.Pointer<wire_cst_list_prim_u_8_strict>, ffi.Pointer<wire_cst_vodozemac_megolm_session_config>)>>(
-      'frbgen_generic_olm_bindings_wire__crate__api__vodozemac_inbound_group_session_new');
-  late final _wire__crate__api__vodozemac_inbound_group_session_new =
-      _wire__crate__api__vodozemac_inbound_group_session_newPtr.asFunction<
+      'frbgen_vodozemac_wire__crate__bindings__vodozemac_inbound_group_session_new');
+  late final _wire__crate__bindings__vodozemac_inbound_group_session_new =
+      _wire__crate__bindings__vodozemac_inbound_group_session_newPtr.asFunction<
           WireSyncRust2DartDco Function(
               ffi.Pointer<wire_cst_list_prim_u_8_strict>, ffi.Pointer<wire_cst_vodozemac_megolm_session_config>)>();
 
-  void wire__crate__api__vodozemac_inbound_group_session_pickle_encrypted(
+  void wire__crate__bindings__vodozemac_inbound_group_session_pickle_encrypted(
     int port_,
     ffi.Pointer<wire_cst_vodozemac_inbound_group_session> that,
     ffi.Pointer<wire_cst_list_prim_u_8_strict> pickle_key,
   ) {
-    return _wire__crate__api__vodozemac_inbound_group_session_pickle_encrypted(
+    return _wire__crate__bindings__vodozemac_inbound_group_session_pickle_encrypted(
       port_,
       that,
       pickle_key,
     );
   }
 
-  late final _wire__crate__api__vodozemac_inbound_group_session_pickle_encryptedPtr = _lookup<
+  late final _wire__crate__bindings__vodozemac_inbound_group_session_pickle_encryptedPtr = _lookup<
           ffi.NativeFunction<
               ffi.Void Function(ffi.Int64, ffi.Pointer<wire_cst_vodozemac_inbound_group_session>,
                   ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
-      'frbgen_generic_olm_bindings_wire__crate__api__vodozemac_inbound_group_session_pickle_encrypted');
-  late final _wire__crate__api__vodozemac_inbound_group_session_pickle_encrypted =
-      _wire__crate__api__vodozemac_inbound_group_session_pickle_encryptedPtr.asFunction<
+      'frbgen_vodozemac_wire__crate__bindings__vodozemac_inbound_group_session_pickle_encrypted');
+  late final _wire__crate__bindings__vodozemac_inbound_group_session_pickle_encrypted =
+      _wire__crate__bindings__vodozemac_inbound_group_session_pickle_encryptedPtr.asFunction<
           void Function(int, ffi.Pointer<wire_cst_vodozemac_inbound_group_session>,
               ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
 
-  WireSyncRust2DartDco wire__crate__api__vodozemac_inbound_group_session_session_id(
+  WireSyncRust2DartDco wire__crate__bindings__vodozemac_inbound_group_session_session_id(
     ffi.Pointer<wire_cst_vodozemac_inbound_group_session> that,
   ) {
-    return _wire__crate__api__vodozemac_inbound_group_session_session_id(
+    return _wire__crate__bindings__vodozemac_inbound_group_session_session_id(
       that,
     );
   }
 
-  late final _wire__crate__api__vodozemac_inbound_group_session_session_idPtr =
+  late final _wire__crate__bindings__vodozemac_inbound_group_session_session_idPtr =
       _lookup<ffi.NativeFunction<WireSyncRust2DartDco Function(ffi.Pointer<wire_cst_vodozemac_inbound_group_session>)>>(
-          'frbgen_generic_olm_bindings_wire__crate__api__vodozemac_inbound_group_session_session_id');
-  late final _wire__crate__api__vodozemac_inbound_group_session_session_id =
-      _wire__crate__api__vodozemac_inbound_group_session_session_idPtr
+          'frbgen_vodozemac_wire__crate__bindings__vodozemac_inbound_group_session_session_id');
+  late final _wire__crate__bindings__vodozemac_inbound_group_session_session_id =
+      _wire__crate__bindings__vodozemac_inbound_group_session_session_idPtr
           .asFunction<WireSyncRust2DartDco Function(ffi.Pointer<wire_cst_vodozemac_inbound_group_session>)>();
 
-  WireSyncRust2DartDco wire__crate__api__vodozemac_megolm_session_config_def() {
-    return _wire__crate__api__vodozemac_megolm_session_config_def();
+  WireSyncRust2DartDco wire__crate__bindings__vodozemac_megolm_session_config_def() {
+    return _wire__crate__bindings__vodozemac_megolm_session_config_def();
   }
 
-  late final _wire__crate__api__vodozemac_megolm_session_config_defPtr =
+  late final _wire__crate__bindings__vodozemac_megolm_session_config_defPtr =
       _lookup<ffi.NativeFunction<WireSyncRust2DartDco Function()>>(
-          'frbgen_generic_olm_bindings_wire__crate__api__vodozemac_megolm_session_config_def');
-  late final _wire__crate__api__vodozemac_megolm_session_config_def =
-      _wire__crate__api__vodozemac_megolm_session_config_defPtr.asFunction<WireSyncRust2DartDco Function()>();
+          'frbgen_vodozemac_wire__crate__bindings__vodozemac_megolm_session_config_def');
+  late final _wire__crate__bindings__vodozemac_megolm_session_config_def =
+      _wire__crate__bindings__vodozemac_megolm_session_config_defPtr.asFunction<WireSyncRust2DartDco Function()>();
 
-  WireSyncRust2DartDco wire__crate__api__vodozemac_megolm_session_config_version(
+  WireSyncRust2DartDco wire__crate__bindings__vodozemac_megolm_session_config_version(
     ffi.Pointer<wire_cst_vodozemac_megolm_session_config> that,
   ) {
-    return _wire__crate__api__vodozemac_megolm_session_config_version(
+    return _wire__crate__bindings__vodozemac_megolm_session_config_version(
       that,
     );
   }
 
-  late final _wire__crate__api__vodozemac_megolm_session_config_versionPtr =
+  late final _wire__crate__bindings__vodozemac_megolm_session_config_versionPtr =
       _lookup<ffi.NativeFunction<WireSyncRust2DartDco Function(ffi.Pointer<wire_cst_vodozemac_megolm_session_config>)>>(
-          'frbgen_generic_olm_bindings_wire__crate__api__vodozemac_megolm_session_config_version');
-  late final _wire__crate__api__vodozemac_megolm_session_config_version =
-      _wire__crate__api__vodozemac_megolm_session_config_versionPtr
+          'frbgen_vodozemac_wire__crate__bindings__vodozemac_megolm_session_config_version');
+  late final _wire__crate__bindings__vodozemac_megolm_session_config_version =
+      _wire__crate__bindings__vodozemac_megolm_session_config_versionPtr
           .asFunction<WireSyncRust2DartDco Function(ffi.Pointer<wire_cst_vodozemac_megolm_session_config>)>();
 
-  WireSyncRust2DartDco wire__crate__api__vodozemac_megolm_session_config_version_1() {
-    return _wire__crate__api__vodozemac_megolm_session_config_version_1();
+  WireSyncRust2DartDco wire__crate__bindings__vodozemac_megolm_session_config_version_1() {
+    return _wire__crate__bindings__vodozemac_megolm_session_config_version_1();
   }
 
-  late final _wire__crate__api__vodozemac_megolm_session_config_version_1Ptr =
+  late final _wire__crate__bindings__vodozemac_megolm_session_config_version_1Ptr =
       _lookup<ffi.NativeFunction<WireSyncRust2DartDco Function()>>(
-          'frbgen_generic_olm_bindings_wire__crate__api__vodozemac_megolm_session_config_version_1');
-  late final _wire__crate__api__vodozemac_megolm_session_config_version_1 =
-      _wire__crate__api__vodozemac_megolm_session_config_version_1Ptr.asFunction<WireSyncRust2DartDco Function()>();
+          'frbgen_vodozemac_wire__crate__bindings__vodozemac_megolm_session_config_version_1');
+  late final _wire__crate__bindings__vodozemac_megolm_session_config_version_1 =
+      _wire__crate__bindings__vodozemac_megolm_session_config_version_1Ptr
+          .asFunction<WireSyncRust2DartDco Function()>();
 
-  WireSyncRust2DartDco wire__crate__api__vodozemac_megolm_session_config_version_2() {
-    return _wire__crate__api__vodozemac_megolm_session_config_version_2();
+  WireSyncRust2DartDco wire__crate__bindings__vodozemac_megolm_session_config_version_2() {
+    return _wire__crate__bindings__vodozemac_megolm_session_config_version_2();
   }
 
-  late final _wire__crate__api__vodozemac_megolm_session_config_version_2Ptr =
+  late final _wire__crate__bindings__vodozemac_megolm_session_config_version_2Ptr =
       _lookup<ffi.NativeFunction<WireSyncRust2DartDco Function()>>(
-          'frbgen_generic_olm_bindings_wire__crate__api__vodozemac_megolm_session_config_version_2');
-  late final _wire__crate__api__vodozemac_megolm_session_config_version_2 =
-      _wire__crate__api__vodozemac_megolm_session_config_version_2Ptr.asFunction<WireSyncRust2DartDco Function()>();
+          'frbgen_vodozemac_wire__crate__bindings__vodozemac_megolm_session_config_version_2');
+  late final _wire__crate__bindings__vodozemac_megolm_session_config_version_2 =
+      _wire__crate__bindings__vodozemac_megolm_session_config_version_2Ptr
+          .asFunction<WireSyncRust2DartDco Function()>();
 
-  WireSyncRust2DartDco wire__crate__api__vodozemac_olm_message_from_parts(
+  WireSyncRust2DartDco wire__crate__bindings__vodozemac_olm_message_from_parts(
     int message_type,
     ffi.Pointer<wire_cst_list_prim_u_8_loose> ciphertext,
   ) {
-    return _wire__crate__api__vodozemac_olm_message_from_parts(
+    return _wire__crate__bindings__vodozemac_olm_message_from_parts(
       message_type,
       ciphertext,
     );
   }
 
-  late final _wire__crate__api__vodozemac_olm_message_from_partsPtr = _lookup<
+  late final _wire__crate__bindings__vodozemac_olm_message_from_partsPtr = _lookup<
           ffi.NativeFunction<WireSyncRust2DartDco Function(ffi.UintPtr, ffi.Pointer<wire_cst_list_prim_u_8_loose>)>>(
-      'frbgen_generic_olm_bindings_wire__crate__api__vodozemac_olm_message_from_parts');
-  late final _wire__crate__api__vodozemac_olm_message_from_parts =
-      _wire__crate__api__vodozemac_olm_message_from_partsPtr
+      'frbgen_vodozemac_wire__crate__bindings__vodozemac_olm_message_from_parts');
+  late final _wire__crate__bindings__vodozemac_olm_message_from_parts =
+      _wire__crate__bindings__vodozemac_olm_message_from_partsPtr
           .asFunction<WireSyncRust2DartDco Function(int, ffi.Pointer<wire_cst_list_prim_u_8_loose>)>();
 
-  WireSyncRust2DartDco wire__crate__api__vodozemac_olm_message_message(
+  WireSyncRust2DartDco wire__crate__bindings__vodozemac_olm_message_message(
     ffi.Pointer<wire_cst_vodozemac_olm_message> that,
   ) {
-    return _wire__crate__api__vodozemac_olm_message_message(
+    return _wire__crate__bindings__vodozemac_olm_message_message(
       that,
     );
   }
 
-  late final _wire__crate__api__vodozemac_olm_message_messagePtr =
+  late final _wire__crate__bindings__vodozemac_olm_message_messagePtr =
       _lookup<ffi.NativeFunction<WireSyncRust2DartDco Function(ffi.Pointer<wire_cst_vodozemac_olm_message>)>>(
-          'frbgen_generic_olm_bindings_wire__crate__api__vodozemac_olm_message_message');
-  late final _wire__crate__api__vodozemac_olm_message_message = _wire__crate__api__vodozemac_olm_message_messagePtr
-      .asFunction<WireSyncRust2DartDco Function(ffi.Pointer<wire_cst_vodozemac_olm_message>)>();
-
-  WireSyncRust2DartDco wire__crate__api__vodozemac_olm_message_message_type(
-    ffi.Pointer<wire_cst_vodozemac_olm_message> that,
-  ) {
-    return _wire__crate__api__vodozemac_olm_message_message_type(
-      that,
-    );
-  }
-
-  late final _wire__crate__api__vodozemac_olm_message_message_typePtr =
-      _lookup<ffi.NativeFunction<WireSyncRust2DartDco Function(ffi.Pointer<wire_cst_vodozemac_olm_message>)>>(
-          'frbgen_generic_olm_bindings_wire__crate__api__vodozemac_olm_message_message_type');
-  late final _wire__crate__api__vodozemac_olm_message_message_type =
-      _wire__crate__api__vodozemac_olm_message_message_typePtr
+          'frbgen_vodozemac_wire__crate__bindings__vodozemac_olm_message_message');
+  late final _wire__crate__bindings__vodozemac_olm_message_message =
+      _wire__crate__bindings__vodozemac_olm_message_messagePtr
           .asFunction<WireSyncRust2DartDco Function(ffi.Pointer<wire_cst_vodozemac_olm_message>)>();
 
-  WireSyncRust2DartDco wire__crate__api__vodozemac_olm_session_config_def() {
-    return _wire__crate__api__vodozemac_olm_session_config_def();
-  }
-
-  late final _wire__crate__api__vodozemac_olm_session_config_defPtr =
-      _lookup<ffi.NativeFunction<WireSyncRust2DartDco Function()>>(
-          'frbgen_generic_olm_bindings_wire__crate__api__vodozemac_olm_session_config_def');
-  late final _wire__crate__api__vodozemac_olm_session_config_def =
-      _wire__crate__api__vodozemac_olm_session_config_defPtr.asFunction<WireSyncRust2DartDco Function()>();
-
-  WireSyncRust2DartDco wire__crate__api__vodozemac_olm_session_config_version(
-    ffi.Pointer<wire_cst_vodozemac_olm_session_config> that,
+  WireSyncRust2DartDco wire__crate__bindings__vodozemac_olm_message_message_type(
+    ffi.Pointer<wire_cst_vodozemac_olm_message> that,
   ) {
-    return _wire__crate__api__vodozemac_olm_session_config_version(
+    return _wire__crate__bindings__vodozemac_olm_message_message_type(
       that,
     );
   }
 
-  late final _wire__crate__api__vodozemac_olm_session_config_versionPtr =
+  late final _wire__crate__bindings__vodozemac_olm_message_message_typePtr =
+      _lookup<ffi.NativeFunction<WireSyncRust2DartDco Function(ffi.Pointer<wire_cst_vodozemac_olm_message>)>>(
+          'frbgen_vodozemac_wire__crate__bindings__vodozemac_olm_message_message_type');
+  late final _wire__crate__bindings__vodozemac_olm_message_message_type =
+      _wire__crate__bindings__vodozemac_olm_message_message_typePtr
+          .asFunction<WireSyncRust2DartDco Function(ffi.Pointer<wire_cst_vodozemac_olm_message>)>();
+
+  WireSyncRust2DartDco wire__crate__bindings__vodozemac_olm_session_config_def() {
+    return _wire__crate__bindings__vodozemac_olm_session_config_def();
+  }
+
+  late final _wire__crate__bindings__vodozemac_olm_session_config_defPtr =
+      _lookup<ffi.NativeFunction<WireSyncRust2DartDco Function()>>(
+          'frbgen_vodozemac_wire__crate__bindings__vodozemac_olm_session_config_def');
+  late final _wire__crate__bindings__vodozemac_olm_session_config_def =
+      _wire__crate__bindings__vodozemac_olm_session_config_defPtr.asFunction<WireSyncRust2DartDco Function()>();
+
+  WireSyncRust2DartDco wire__crate__bindings__vodozemac_olm_session_config_version(
+    ffi.Pointer<wire_cst_vodozemac_olm_session_config> that,
+  ) {
+    return _wire__crate__bindings__vodozemac_olm_session_config_version(
+      that,
+    );
+  }
+
+  late final _wire__crate__bindings__vodozemac_olm_session_config_versionPtr =
       _lookup<ffi.NativeFunction<WireSyncRust2DartDco Function(ffi.Pointer<wire_cst_vodozemac_olm_session_config>)>>(
-          'frbgen_generic_olm_bindings_wire__crate__api__vodozemac_olm_session_config_version');
-  late final _wire__crate__api__vodozemac_olm_session_config_version =
-      _wire__crate__api__vodozemac_olm_session_config_versionPtr
+          'frbgen_vodozemac_wire__crate__bindings__vodozemac_olm_session_config_version');
+  late final _wire__crate__bindings__vodozemac_olm_session_config_version =
+      _wire__crate__bindings__vodozemac_olm_session_config_versionPtr
           .asFunction<WireSyncRust2DartDco Function(ffi.Pointer<wire_cst_vodozemac_olm_session_config>)>();
 
-  WireSyncRust2DartDco wire__crate__api__vodozemac_olm_session_config_version_1() {
-    return _wire__crate__api__vodozemac_olm_session_config_version_1();
+  WireSyncRust2DartDco wire__crate__bindings__vodozemac_olm_session_config_version_1() {
+    return _wire__crate__bindings__vodozemac_olm_session_config_version_1();
   }
 
-  late final _wire__crate__api__vodozemac_olm_session_config_version_1Ptr =
+  late final _wire__crate__bindings__vodozemac_olm_session_config_version_1Ptr =
       _lookup<ffi.NativeFunction<WireSyncRust2DartDco Function()>>(
-          'frbgen_generic_olm_bindings_wire__crate__api__vodozemac_olm_session_config_version_1');
-  late final _wire__crate__api__vodozemac_olm_session_config_version_1 =
-      _wire__crate__api__vodozemac_olm_session_config_version_1Ptr.asFunction<WireSyncRust2DartDco Function()>();
+          'frbgen_vodozemac_wire__crate__bindings__vodozemac_olm_session_config_version_1');
+  late final _wire__crate__bindings__vodozemac_olm_session_config_version_1 =
+      _wire__crate__bindings__vodozemac_olm_session_config_version_1Ptr.asFunction<WireSyncRust2DartDco Function()>();
 
-  WireSyncRust2DartDco wire__crate__api__vodozemac_olm_session_config_version_2() {
-    return _wire__crate__api__vodozemac_olm_session_config_version_2();
+  WireSyncRust2DartDco wire__crate__bindings__vodozemac_olm_session_config_version_2() {
+    return _wire__crate__bindings__vodozemac_olm_session_config_version_2();
   }
 
-  late final _wire__crate__api__vodozemac_olm_session_config_version_2Ptr =
+  late final _wire__crate__bindings__vodozemac_olm_session_config_version_2Ptr =
       _lookup<ffi.NativeFunction<WireSyncRust2DartDco Function()>>(
-          'frbgen_generic_olm_bindings_wire__crate__api__vodozemac_olm_session_config_version_2');
-  late final _wire__crate__api__vodozemac_olm_session_config_version_2 =
-      _wire__crate__api__vodozemac_olm_session_config_version_2Ptr.asFunction<WireSyncRust2DartDco Function()>();
+          'frbgen_vodozemac_wire__crate__bindings__vodozemac_olm_session_config_version_2');
+  late final _wire__crate__bindings__vodozemac_olm_session_config_version_2 =
+      _wire__crate__bindings__vodozemac_olm_session_config_version_2Ptr.asFunction<WireSyncRust2DartDco Function()>();
 
-  void wire__crate__api__vodozemac_session_decrypt(
+  void wire__crate__bindings__vodozemac_session_decrypt(
     int port_,
     ffi.Pointer<wire_cst_vodozemac_session> that,
     ffi.Pointer<wire_cst_vodozemac_olm_message> message,
   ) {
-    return _wire__crate__api__vodozemac_session_decrypt(
+    return _wire__crate__bindings__vodozemac_session_decrypt(
       port_,
       that,
       message,
     );
   }
 
-  late final _wire__crate__api__vodozemac_session_decryptPtr = _lookup<
+  late final _wire__crate__bindings__vodozemac_session_decryptPtr = _lookup<
           ffi.NativeFunction<
               ffi.Void Function(
                   ffi.Int64, ffi.Pointer<wire_cst_vodozemac_session>, ffi.Pointer<wire_cst_vodozemac_olm_message>)>>(
-      'frbgen_generic_olm_bindings_wire__crate__api__vodozemac_session_decrypt');
-  late final _wire__crate__api__vodozemac_session_decrypt = _wire__crate__api__vodozemac_session_decryptPtr.asFunction<
-      void Function(int, ffi.Pointer<wire_cst_vodozemac_session>, ffi.Pointer<wire_cst_vodozemac_olm_message>)>();
+      'frbgen_vodozemac_wire__crate__bindings__vodozemac_session_decrypt');
+  late final _wire__crate__bindings__vodozemac_session_decrypt =
+      _wire__crate__bindings__vodozemac_session_decryptPtr.asFunction<
+          void Function(int, ffi.Pointer<wire_cst_vodozemac_session>, ffi.Pointer<wire_cst_vodozemac_olm_message>)>();
 
-  void wire__crate__api__vodozemac_session_encrypt(
+  void wire__crate__bindings__vodozemac_session_encrypt(
     int port_,
     ffi.Pointer<wire_cst_vodozemac_session> that,
     ffi.Pointer<wire_cst_list_prim_u_8_strict> plaintext,
   ) {
-    return _wire__crate__api__vodozemac_session_encrypt(
+    return _wire__crate__bindings__vodozemac_session_encrypt(
       port_,
       that,
       plaintext,
     );
   }
 
-  late final _wire__crate__api__vodozemac_session_encryptPtr = _lookup<
+  late final _wire__crate__bindings__vodozemac_session_encryptPtr = _lookup<
           ffi.NativeFunction<
               ffi.Void Function(
                   ffi.Int64, ffi.Pointer<wire_cst_vodozemac_session>, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
-      'frbgen_generic_olm_bindings_wire__crate__api__vodozemac_session_encrypt');
-  late final _wire__crate__api__vodozemac_session_encrypt = _wire__crate__api__vodozemac_session_encryptPtr.asFunction<
-      void Function(int, ffi.Pointer<wire_cst_vodozemac_session>, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
+      'frbgen_vodozemac_wire__crate__bindings__vodozemac_session_encrypt');
+  late final _wire__crate__bindings__vodozemac_session_encrypt =
+      _wire__crate__bindings__vodozemac_session_encryptPtr.asFunction<
+          void Function(int, ffi.Pointer<wire_cst_vodozemac_session>, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
 
-  void wire__crate__api__vodozemac_session_from_olm_pickle_encrypted(
+  void wire__crate__bindings__vodozemac_session_from_olm_pickle_encrypted(
     int port_,
     ffi.Pointer<wire_cst_list_prim_u_8_strict> pickle,
     ffi.Pointer<wire_cst_list_prim_u_8_loose> pickle_key,
   ) {
-    return _wire__crate__api__vodozemac_session_from_olm_pickle_encrypted(
+    return _wire__crate__bindings__vodozemac_session_from_olm_pickle_encrypted(
       port_,
       pickle,
       pickle_key,
     );
   }
 
-  late final _wire__crate__api__vodozemac_session_from_olm_pickle_encryptedPtr = _lookup<
+  late final _wire__crate__bindings__vodozemac_session_from_olm_pickle_encryptedPtr = _lookup<
           ffi.NativeFunction<
               ffi.Void Function(
                   ffi.Int64, ffi.Pointer<wire_cst_list_prim_u_8_strict>, ffi.Pointer<wire_cst_list_prim_u_8_loose>)>>(
-      'frbgen_generic_olm_bindings_wire__crate__api__vodozemac_session_from_olm_pickle_encrypted');
-  late final _wire__crate__api__vodozemac_session_from_olm_pickle_encrypted =
-      _wire__crate__api__vodozemac_session_from_olm_pickle_encryptedPtr.asFunction<
+      'frbgen_vodozemac_wire__crate__bindings__vodozemac_session_from_olm_pickle_encrypted');
+  late final _wire__crate__bindings__vodozemac_session_from_olm_pickle_encrypted =
+      _wire__crate__bindings__vodozemac_session_from_olm_pickle_encryptedPtr.asFunction<
           void Function(int, ffi.Pointer<wire_cst_list_prim_u_8_strict>, ffi.Pointer<wire_cst_list_prim_u_8_loose>)>();
 
-  void wire__crate__api__vodozemac_session_from_pickle_encrypted(
+  void wire__crate__bindings__vodozemac_session_from_pickle_encrypted(
     int port_,
     ffi.Pointer<wire_cst_list_prim_u_8_strict> pickle,
     ffi.Pointer<wire_cst_list_prim_u_8_strict> pickle_key,
   ) {
-    return _wire__crate__api__vodozemac_session_from_pickle_encrypted(
+    return _wire__crate__bindings__vodozemac_session_from_pickle_encrypted(
       port_,
       pickle,
       pickle_key,
     );
   }
 
-  late final _wire__crate__api__vodozemac_session_from_pickle_encryptedPtr = _lookup<
+  late final _wire__crate__bindings__vodozemac_session_from_pickle_encryptedPtr = _lookup<
           ffi.NativeFunction<
               ffi.Void Function(
                   ffi.Int64, ffi.Pointer<wire_cst_list_prim_u_8_strict>, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
-      'frbgen_generic_olm_bindings_wire__crate__api__vodozemac_session_from_pickle_encrypted');
-  late final _wire__crate__api__vodozemac_session_from_pickle_encrypted =
-      _wire__crate__api__vodozemac_session_from_pickle_encryptedPtr.asFunction<
+      'frbgen_vodozemac_wire__crate__bindings__vodozemac_session_from_pickle_encrypted');
+  late final _wire__crate__bindings__vodozemac_session_from_pickle_encrypted =
+      _wire__crate__bindings__vodozemac_session_from_pickle_encryptedPtr.asFunction<
           void Function(int, ffi.Pointer<wire_cst_list_prim_u_8_strict>, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
 
-  WireSyncRust2DartDco wire__crate__api__vodozemac_session_has_received_message(
+  WireSyncRust2DartDco wire__crate__bindings__vodozemac_session_has_received_message(
     ffi.Pointer<wire_cst_vodozemac_session> that,
   ) {
-    return _wire__crate__api__vodozemac_session_has_received_message(
+    return _wire__crate__bindings__vodozemac_session_has_received_message(
       that,
     );
   }
 
-  late final _wire__crate__api__vodozemac_session_has_received_messagePtr =
+  late final _wire__crate__bindings__vodozemac_session_has_received_messagePtr =
       _lookup<ffi.NativeFunction<WireSyncRust2DartDco Function(ffi.Pointer<wire_cst_vodozemac_session>)>>(
-          'frbgen_generic_olm_bindings_wire__crate__api__vodozemac_session_has_received_message');
-  late final _wire__crate__api__vodozemac_session_has_received_message =
-      _wire__crate__api__vodozemac_session_has_received_messagePtr
+          'frbgen_vodozemac_wire__crate__bindings__vodozemac_session_has_received_message');
+  late final _wire__crate__bindings__vodozemac_session_has_received_message =
+      _wire__crate__bindings__vodozemac_session_has_received_messagePtr
           .asFunction<WireSyncRust2DartDco Function(ffi.Pointer<wire_cst_vodozemac_session>)>();
 
-  void wire__crate__api__vodozemac_session_pickle_encrypted(
+  void wire__crate__bindings__vodozemac_session_pickle_encrypted(
     int port_,
     ffi.Pointer<wire_cst_vodozemac_session> that,
     ffi.Pointer<wire_cst_list_prim_u_8_strict> pickle_key,
   ) {
-    return _wire__crate__api__vodozemac_session_pickle_encrypted(
+    return _wire__crate__bindings__vodozemac_session_pickle_encrypted(
       port_,
       that,
       pickle_key,
     );
   }
 
-  late final _wire__crate__api__vodozemac_session_pickle_encryptedPtr = _lookup<
+  late final _wire__crate__bindings__vodozemac_session_pickle_encryptedPtr = _lookup<
           ffi.NativeFunction<
               ffi.Void Function(
                   ffi.Int64, ffi.Pointer<wire_cst_vodozemac_session>, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
-      'frbgen_generic_olm_bindings_wire__crate__api__vodozemac_session_pickle_encrypted');
-  late final _wire__crate__api__vodozemac_session_pickle_encrypted =
-      _wire__crate__api__vodozemac_session_pickle_encryptedPtr.asFunction<
+      'frbgen_vodozemac_wire__crate__bindings__vodozemac_session_pickle_encrypted');
+  late final _wire__crate__bindings__vodozemac_session_pickle_encrypted =
+      _wire__crate__bindings__vodozemac_session_pickle_encryptedPtr.asFunction<
           void Function(int, ffi.Pointer<wire_cst_vodozemac_session>, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
 
-  void wire__crate__api__vodozemac_session_session_config(
+  void wire__crate__bindings__vodozemac_session_session_config(
     int port_,
     ffi.Pointer<wire_cst_vodozemac_session> that,
   ) {
-    return _wire__crate__api__vodozemac_session_session_config(
+    return _wire__crate__bindings__vodozemac_session_session_config(
       port_,
       that,
     );
   }
 
-  late final _wire__crate__api__vodozemac_session_session_configPtr =
+  late final _wire__crate__bindings__vodozemac_session_session_configPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_cst_vodozemac_session>)>>(
-          'frbgen_generic_olm_bindings_wire__crate__api__vodozemac_session_session_config');
-  late final _wire__crate__api__vodozemac_session_session_config =
-      _wire__crate__api__vodozemac_session_session_configPtr
+          'frbgen_vodozemac_wire__crate__bindings__vodozemac_session_session_config');
+  late final _wire__crate__bindings__vodozemac_session_session_config =
+      _wire__crate__bindings__vodozemac_session_session_configPtr
           .asFunction<void Function(int, ffi.Pointer<wire_cst_vodozemac_session>)>();
 
-  WireSyncRust2DartDco wire__crate__api__vodozemac_session_session_id(
+  WireSyncRust2DartDco wire__crate__bindings__vodozemac_session_session_id(
     ffi.Pointer<wire_cst_vodozemac_session> that,
   ) {
-    return _wire__crate__api__vodozemac_session_session_id(
+    return _wire__crate__bindings__vodozemac_session_session_id(
       that,
     );
   }
 
-  late final _wire__crate__api__vodozemac_session_session_idPtr =
+  late final _wire__crate__bindings__vodozemac_session_session_idPtr =
       _lookup<ffi.NativeFunction<WireSyncRust2DartDco Function(ffi.Pointer<wire_cst_vodozemac_session>)>>(
-          'frbgen_generic_olm_bindings_wire__crate__api__vodozemac_session_session_id');
-  late final _wire__crate__api__vodozemac_session_session_id = _wire__crate__api__vodozemac_session_session_idPtr
-      .asFunction<WireSyncRust2DartDco Function(ffi.Pointer<wire_cst_vodozemac_session>)>();
+          'frbgen_vodozemac_wire__crate__bindings__vodozemac_session_session_id');
+  late final _wire__crate__bindings__vodozemac_session_session_id =
+      _wire__crate__bindings__vodozemac_session_session_idPtr
+          .asFunction<WireSyncRust2DartDco Function(ffi.Pointer<wire_cst_vodozemac_session>)>();
 
   void rust_arc_increment_strong_count_RustOpaque_Curve25519PublicKey(
     ffi.Pointer<ffi.Void> ptr,
@@ -2026,7 +2039,7 @@ class RustLibWire implements BaseWire {
 
   late final _rust_arc_increment_strong_count_RustOpaque_Curve25519PublicKeyPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-          'frbgen_generic_olm_bindings_rust_arc_increment_strong_count_RustOpaque_Curve25519PublicKey');
+          'frbgen_vodozemac_rust_arc_increment_strong_count_RustOpaque_Curve25519PublicKey');
   late final _rust_arc_increment_strong_count_RustOpaque_Curve25519PublicKey =
       _rust_arc_increment_strong_count_RustOpaque_Curve25519PublicKeyPtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
@@ -2041,7 +2054,7 @@ class RustLibWire implements BaseWire {
 
   late final _rust_arc_decrement_strong_count_RustOpaque_Curve25519PublicKeyPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-          'frbgen_generic_olm_bindings_rust_arc_decrement_strong_count_RustOpaque_Curve25519PublicKey');
+          'frbgen_vodozemac_rust_arc_decrement_strong_count_RustOpaque_Curve25519PublicKey');
   late final _rust_arc_decrement_strong_count_RustOpaque_Curve25519PublicKey =
       _rust_arc_decrement_strong_count_RustOpaque_Curve25519PublicKeyPtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
@@ -2056,7 +2069,7 @@ class RustLibWire implements BaseWire {
 
   late final _rust_arc_increment_strong_count_RustOpaque_Ed25519PublicKeyPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-          'frbgen_generic_olm_bindings_rust_arc_increment_strong_count_RustOpaque_Ed25519PublicKey');
+          'frbgen_vodozemac_rust_arc_increment_strong_count_RustOpaque_Ed25519PublicKey');
   late final _rust_arc_increment_strong_count_RustOpaque_Ed25519PublicKey =
       _rust_arc_increment_strong_count_RustOpaque_Ed25519PublicKeyPtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
@@ -2071,7 +2084,7 @@ class RustLibWire implements BaseWire {
 
   late final _rust_arc_decrement_strong_count_RustOpaque_Ed25519PublicKeyPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-          'frbgen_generic_olm_bindings_rust_arc_decrement_strong_count_RustOpaque_Ed25519PublicKey');
+          'frbgen_vodozemac_rust_arc_decrement_strong_count_RustOpaque_Ed25519PublicKey');
   late final _rust_arc_decrement_strong_count_RustOpaque_Ed25519PublicKey =
       _rust_arc_decrement_strong_count_RustOpaque_Ed25519PublicKeyPtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
@@ -2086,7 +2099,7 @@ class RustLibWire implements BaseWire {
 
   late final _rust_arc_increment_strong_count_RustOpaque_Ed25519SignaturePtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-          'frbgen_generic_olm_bindings_rust_arc_increment_strong_count_RustOpaque_Ed25519Signature');
+          'frbgen_vodozemac_rust_arc_increment_strong_count_RustOpaque_Ed25519Signature');
   late final _rust_arc_increment_strong_count_RustOpaque_Ed25519Signature =
       _rust_arc_increment_strong_count_RustOpaque_Ed25519SignaturePtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
@@ -2101,7 +2114,7 @@ class RustLibWire implements BaseWire {
 
   late final _rust_arc_decrement_strong_count_RustOpaque_Ed25519SignaturePtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-          'frbgen_generic_olm_bindings_rust_arc_decrement_strong_count_RustOpaque_Ed25519Signature');
+          'frbgen_vodozemac_rust_arc_decrement_strong_count_RustOpaque_Ed25519Signature');
   late final _rust_arc_decrement_strong_count_RustOpaque_Ed25519Signature =
       _rust_arc_decrement_strong_count_RustOpaque_Ed25519SignaturePtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
@@ -2116,7 +2129,7 @@ class RustLibWire implements BaseWire {
 
   late final _rust_arc_increment_strong_count_RustOpaque_MegolmSessionConfigPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-          'frbgen_generic_olm_bindings_rust_arc_increment_strong_count_RustOpaque_MegolmSessionConfig');
+          'frbgen_vodozemac_rust_arc_increment_strong_count_RustOpaque_MegolmSessionConfig');
   late final _rust_arc_increment_strong_count_RustOpaque_MegolmSessionConfig =
       _rust_arc_increment_strong_count_RustOpaque_MegolmSessionConfigPtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
@@ -2131,7 +2144,7 @@ class RustLibWire implements BaseWire {
 
   late final _rust_arc_decrement_strong_count_RustOpaque_MegolmSessionConfigPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-          'frbgen_generic_olm_bindings_rust_arc_decrement_strong_count_RustOpaque_MegolmSessionConfig');
+          'frbgen_vodozemac_rust_arc_decrement_strong_count_RustOpaque_MegolmSessionConfig');
   late final _rust_arc_decrement_strong_count_RustOpaque_MegolmSessionConfig =
       _rust_arc_decrement_strong_count_RustOpaque_MegolmSessionConfigPtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
@@ -2146,7 +2159,7 @@ class RustLibWire implements BaseWire {
 
   late final _rust_arc_increment_strong_count_RustOpaque_OlmMessagePtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-          'frbgen_generic_olm_bindings_rust_arc_increment_strong_count_RustOpaque_OlmMessage');
+          'frbgen_vodozemac_rust_arc_increment_strong_count_RustOpaque_OlmMessage');
   late final _rust_arc_increment_strong_count_RustOpaque_OlmMessage =
       _rust_arc_increment_strong_count_RustOpaque_OlmMessagePtr.asFunction<void Function(ffi.Pointer<ffi.Void>)>();
 
@@ -2160,7 +2173,7 @@ class RustLibWire implements BaseWire {
 
   late final _rust_arc_decrement_strong_count_RustOpaque_OlmMessagePtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-          'frbgen_generic_olm_bindings_rust_arc_decrement_strong_count_RustOpaque_OlmMessage');
+          'frbgen_vodozemac_rust_arc_decrement_strong_count_RustOpaque_OlmMessage');
   late final _rust_arc_decrement_strong_count_RustOpaque_OlmMessage =
       _rust_arc_decrement_strong_count_RustOpaque_OlmMessagePtr.asFunction<void Function(ffi.Pointer<ffi.Void>)>();
 
@@ -2174,7 +2187,7 @@ class RustLibWire implements BaseWire {
 
   late final _rust_arc_increment_strong_count_RustOpaque_OlmSessionConfigPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-          'frbgen_generic_olm_bindings_rust_arc_increment_strong_count_RustOpaque_OlmSessionConfig');
+          'frbgen_vodozemac_rust_arc_increment_strong_count_RustOpaque_OlmSessionConfig');
   late final _rust_arc_increment_strong_count_RustOpaque_OlmSessionConfig =
       _rust_arc_increment_strong_count_RustOpaque_OlmSessionConfigPtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
@@ -2189,7 +2202,7 @@ class RustLibWire implements BaseWire {
 
   late final _rust_arc_decrement_strong_count_RustOpaque_OlmSessionConfigPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-          'frbgen_generic_olm_bindings_rust_arc_decrement_strong_count_RustOpaque_OlmSessionConfig');
+          'frbgen_vodozemac_rust_arc_decrement_strong_count_RustOpaque_OlmSessionConfig');
   late final _rust_arc_decrement_strong_count_RustOpaque_OlmSessionConfig =
       _rust_arc_decrement_strong_count_RustOpaque_OlmSessionConfigPtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
@@ -2204,7 +2217,7 @@ class RustLibWire implements BaseWire {
 
   late final _rust_arc_increment_strong_count_RustOpaque_RwLockGroupSessionPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-          'frbgen_generic_olm_bindings_rust_arc_increment_strong_count_RustOpaque_RwLockGroupSession');
+          'frbgen_vodozemac_rust_arc_increment_strong_count_RustOpaque_RwLockGroupSession');
   late final _rust_arc_increment_strong_count_RustOpaque_RwLockGroupSession =
       _rust_arc_increment_strong_count_RustOpaque_RwLockGroupSessionPtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
@@ -2219,7 +2232,7 @@ class RustLibWire implements BaseWire {
 
   late final _rust_arc_decrement_strong_count_RustOpaque_RwLockGroupSessionPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-          'frbgen_generic_olm_bindings_rust_arc_decrement_strong_count_RustOpaque_RwLockGroupSession');
+          'frbgen_vodozemac_rust_arc_decrement_strong_count_RustOpaque_RwLockGroupSession');
   late final _rust_arc_decrement_strong_count_RustOpaque_RwLockGroupSession =
       _rust_arc_decrement_strong_count_RustOpaque_RwLockGroupSessionPtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
@@ -2234,7 +2247,7 @@ class RustLibWire implements BaseWire {
 
   late final _rust_arc_increment_strong_count_RustOpaque_RwLockInboundGroupSessionPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-          'frbgen_generic_olm_bindings_rust_arc_increment_strong_count_RustOpaque_RwLockInboundGroupSession');
+          'frbgen_vodozemac_rust_arc_increment_strong_count_RustOpaque_RwLockInboundGroupSession');
   late final _rust_arc_increment_strong_count_RustOpaque_RwLockInboundGroupSession =
       _rust_arc_increment_strong_count_RustOpaque_RwLockInboundGroupSessionPtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
@@ -2249,7 +2262,7 @@ class RustLibWire implements BaseWire {
 
   late final _rust_arc_decrement_strong_count_RustOpaque_RwLockInboundGroupSessionPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-          'frbgen_generic_olm_bindings_rust_arc_decrement_strong_count_RustOpaque_RwLockInboundGroupSession');
+          'frbgen_vodozemac_rust_arc_decrement_strong_count_RustOpaque_RwLockInboundGroupSession');
   late final _rust_arc_decrement_strong_count_RustOpaque_RwLockInboundGroupSession =
       _rust_arc_decrement_strong_count_RustOpaque_RwLockInboundGroupSessionPtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
@@ -2264,7 +2277,7 @@ class RustLibWire implements BaseWire {
 
   late final _rust_arc_increment_strong_count_RustOpaque_RwLockSessionPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-          'frbgen_generic_olm_bindings_rust_arc_increment_strong_count_RustOpaque_RwLockSession');
+          'frbgen_vodozemac_rust_arc_increment_strong_count_RustOpaque_RwLockSession');
   late final _rust_arc_increment_strong_count_RustOpaque_RwLockSession =
       _rust_arc_increment_strong_count_RustOpaque_RwLockSessionPtr.asFunction<void Function(ffi.Pointer<ffi.Void>)>();
 
@@ -2278,7 +2291,7 @@ class RustLibWire implements BaseWire {
 
   late final _rust_arc_decrement_strong_count_RustOpaque_RwLockSessionPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-          'frbgen_generic_olm_bindings_rust_arc_decrement_strong_count_RustOpaque_RwLockSession');
+          'frbgen_vodozemac_rust_arc_decrement_strong_count_RustOpaque_RwLockSession');
   late final _rust_arc_decrement_strong_count_RustOpaque_RwLockSession =
       _rust_arc_decrement_strong_count_RustOpaque_RwLockSessionPtr.asFunction<void Function(ffi.Pointer<ffi.Void>)>();
 
@@ -2292,7 +2305,7 @@ class RustLibWire implements BaseWire {
 
   late final _rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockAccountPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-          'frbgen_generic_olm_bindings_rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockAccount');
+          'frbgen_vodozemac_rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockAccount');
   late final _rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockAccount =
       _rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockAccountPtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
@@ -2307,7 +2320,7 @@ class RustLibWire implements BaseWire {
 
   late final _rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockAccountPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-          'frbgen_generic_olm_bindings_rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockAccount');
+          'frbgen_vodozemac_rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockAccount');
   late final _rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockAccount =
       _rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockAccountPtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
@@ -2318,7 +2331,7 @@ class RustLibWire implements BaseWire {
 
   late final _cst_new_box_autoadd_vodozemac_accountPtr =
       _lookup<ffi.NativeFunction<ffi.Pointer<wire_cst_vodozemac_account> Function()>>(
-          'frbgen_generic_olm_bindings_cst_new_box_autoadd_vodozemac_account');
+          'frbgen_vodozemac_cst_new_box_autoadd_vodozemac_account');
   late final _cst_new_box_autoadd_vodozemac_account =
       _cst_new_box_autoadd_vodozemac_accountPtr.asFunction<ffi.Pointer<wire_cst_vodozemac_account> Function()>();
 
@@ -2328,7 +2341,7 @@ class RustLibWire implements BaseWire {
 
   late final _cst_new_box_autoadd_vodozemac_curve_25519_public_keyPtr =
       _lookup<ffi.NativeFunction<ffi.Pointer<wire_cst_vodozemac_curve_25519_public_key> Function()>>(
-          'frbgen_generic_olm_bindings_cst_new_box_autoadd_vodozemac_curve_25519_public_key');
+          'frbgen_vodozemac_cst_new_box_autoadd_vodozemac_curve_25519_public_key');
   late final _cst_new_box_autoadd_vodozemac_curve_25519_public_key =
       _cst_new_box_autoadd_vodozemac_curve_25519_public_keyPtr
           .asFunction<ffi.Pointer<wire_cst_vodozemac_curve_25519_public_key> Function()>();
@@ -2339,7 +2352,7 @@ class RustLibWire implements BaseWire {
 
   late final _cst_new_box_autoadd_vodozemac_ed_25519_public_keyPtr =
       _lookup<ffi.NativeFunction<ffi.Pointer<wire_cst_vodozemac_ed_25519_public_key> Function()>>(
-          'frbgen_generic_olm_bindings_cst_new_box_autoadd_vodozemac_ed_25519_public_key');
+          'frbgen_vodozemac_cst_new_box_autoadd_vodozemac_ed_25519_public_key');
   late final _cst_new_box_autoadd_vodozemac_ed_25519_public_key = _cst_new_box_autoadd_vodozemac_ed_25519_public_keyPtr
       .asFunction<ffi.Pointer<wire_cst_vodozemac_ed_25519_public_key> Function()>();
 
@@ -2349,7 +2362,7 @@ class RustLibWire implements BaseWire {
 
   late final _cst_new_box_autoadd_vodozemac_ed_25519_signaturePtr =
       _lookup<ffi.NativeFunction<ffi.Pointer<wire_cst_vodozemac_ed_25519_signature> Function()>>(
-          'frbgen_generic_olm_bindings_cst_new_box_autoadd_vodozemac_ed_25519_signature');
+          'frbgen_vodozemac_cst_new_box_autoadd_vodozemac_ed_25519_signature');
   late final _cst_new_box_autoadd_vodozemac_ed_25519_signature = _cst_new_box_autoadd_vodozemac_ed_25519_signaturePtr
       .asFunction<ffi.Pointer<wire_cst_vodozemac_ed_25519_signature> Function()>();
 
@@ -2359,7 +2372,7 @@ class RustLibWire implements BaseWire {
 
   late final _cst_new_box_autoadd_vodozemac_group_sessionPtr =
       _lookup<ffi.NativeFunction<ffi.Pointer<wire_cst_vodozemac_group_session> Function()>>(
-          'frbgen_generic_olm_bindings_cst_new_box_autoadd_vodozemac_group_session');
+          'frbgen_vodozemac_cst_new_box_autoadd_vodozemac_group_session');
   late final _cst_new_box_autoadd_vodozemac_group_session = _cst_new_box_autoadd_vodozemac_group_sessionPtr
       .asFunction<ffi.Pointer<wire_cst_vodozemac_group_session> Function()>();
 
@@ -2369,7 +2382,7 @@ class RustLibWire implements BaseWire {
 
   late final _cst_new_box_autoadd_vodozemac_inbound_group_sessionPtr =
       _lookup<ffi.NativeFunction<ffi.Pointer<wire_cst_vodozemac_inbound_group_session> Function()>>(
-          'frbgen_generic_olm_bindings_cst_new_box_autoadd_vodozemac_inbound_group_session');
+          'frbgen_vodozemac_cst_new_box_autoadd_vodozemac_inbound_group_session');
   late final _cst_new_box_autoadd_vodozemac_inbound_group_session =
       _cst_new_box_autoadd_vodozemac_inbound_group_sessionPtr
           .asFunction<ffi.Pointer<wire_cst_vodozemac_inbound_group_session> Function()>();
@@ -2380,7 +2393,7 @@ class RustLibWire implements BaseWire {
 
   late final _cst_new_box_autoadd_vodozemac_megolm_session_configPtr =
       _lookup<ffi.NativeFunction<ffi.Pointer<wire_cst_vodozemac_megolm_session_config> Function()>>(
-          'frbgen_generic_olm_bindings_cst_new_box_autoadd_vodozemac_megolm_session_config');
+          'frbgen_vodozemac_cst_new_box_autoadd_vodozemac_megolm_session_config');
   late final _cst_new_box_autoadd_vodozemac_megolm_session_config =
       _cst_new_box_autoadd_vodozemac_megolm_session_configPtr
           .asFunction<ffi.Pointer<wire_cst_vodozemac_megolm_session_config> Function()>();
@@ -2391,7 +2404,7 @@ class RustLibWire implements BaseWire {
 
   late final _cst_new_box_autoadd_vodozemac_olm_messagePtr =
       _lookup<ffi.NativeFunction<ffi.Pointer<wire_cst_vodozemac_olm_message> Function()>>(
-          'frbgen_generic_olm_bindings_cst_new_box_autoadd_vodozemac_olm_message');
+          'frbgen_vodozemac_cst_new_box_autoadd_vodozemac_olm_message');
   late final _cst_new_box_autoadd_vodozemac_olm_message = _cst_new_box_autoadd_vodozemac_olm_messagePtr
       .asFunction<ffi.Pointer<wire_cst_vodozemac_olm_message> Function()>();
 
@@ -2401,7 +2414,7 @@ class RustLibWire implements BaseWire {
 
   late final _cst_new_box_autoadd_vodozemac_olm_session_configPtr =
       _lookup<ffi.NativeFunction<ffi.Pointer<wire_cst_vodozemac_olm_session_config> Function()>>(
-          'frbgen_generic_olm_bindings_cst_new_box_autoadd_vodozemac_olm_session_config');
+          'frbgen_vodozemac_cst_new_box_autoadd_vodozemac_olm_session_config');
   late final _cst_new_box_autoadd_vodozemac_olm_session_config = _cst_new_box_autoadd_vodozemac_olm_session_configPtr
       .asFunction<ffi.Pointer<wire_cst_vodozemac_olm_session_config> Function()>();
 
@@ -2411,7 +2424,7 @@ class RustLibWire implements BaseWire {
 
   late final _cst_new_box_autoadd_vodozemac_sessionPtr =
       _lookup<ffi.NativeFunction<ffi.Pointer<wire_cst_vodozemac_session> Function()>>(
-          'frbgen_generic_olm_bindings_cst_new_box_autoadd_vodozemac_session');
+          'frbgen_vodozemac_cst_new_box_autoadd_vodozemac_session');
   late final _cst_new_box_autoadd_vodozemac_session =
       _cst_new_box_autoadd_vodozemac_sessionPtr.asFunction<ffi.Pointer<wire_cst_vodozemac_session> Function()>();
 
@@ -2425,7 +2438,7 @@ class RustLibWire implements BaseWire {
 
   late final _cst_new_list_prim_u_8_loosePtr =
       _lookup<ffi.NativeFunction<ffi.Pointer<wire_cst_list_prim_u_8_loose> Function(ffi.Int32)>>(
-          'frbgen_generic_olm_bindings_cst_new_list_prim_u_8_loose');
+          'frbgen_vodozemac_cst_new_list_prim_u_8_loose');
   late final _cst_new_list_prim_u_8_loose =
       _cst_new_list_prim_u_8_loosePtr.asFunction<ffi.Pointer<wire_cst_list_prim_u_8_loose> Function(int)>();
 
@@ -2439,7 +2452,7 @@ class RustLibWire implements BaseWire {
 
   late final _cst_new_list_prim_u_8_strictPtr =
       _lookup<ffi.NativeFunction<ffi.Pointer<wire_cst_list_prim_u_8_strict> Function(ffi.Int32)>>(
-          'frbgen_generic_olm_bindings_cst_new_list_prim_u_8_strict');
+          'frbgen_vodozemac_cst_new_list_prim_u_8_strict');
   late final _cst_new_list_prim_u_8_strict =
       _cst_new_list_prim_u_8_strictPtr.asFunction<ffi.Pointer<wire_cst_list_prim_u_8_strict> Function(int)>();
 
@@ -2453,7 +2466,7 @@ class RustLibWire implements BaseWire {
 
   late final _cst_new_list_vodozemac_one_time_keyPtr =
       _lookup<ffi.NativeFunction<ffi.Pointer<wire_cst_list_vodozemac_one_time_key> Function(ffi.Int32)>>(
-          'frbgen_generic_olm_bindings_cst_new_list_vodozemac_one_time_key');
+          'frbgen_vodozemac_cst_new_list_vodozemac_one_time_key');
   late final _cst_new_list_vodozemac_one_time_key = _cst_new_list_vodozemac_one_time_keyPtr
       .asFunction<ffi.Pointer<wire_cst_list_vodozemac_one_time_key> Function(int)>();
 

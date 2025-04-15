@@ -4,7 +4,7 @@ import 'package:checks/checks.dart';
 import 'package:checks/context.dart';
 import 'package:test/test.dart';
 
-import 'package:generic_olm_bindings/lib.dart';
+import 'package:vodozemac/lib.dart';
 
 extension PublicCurveChecks on Subject<Curve25519PublicKey> {
   void isValid() {

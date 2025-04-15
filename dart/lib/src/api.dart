@@ -1,8 +1,8 @@
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'dart:convert';
 
-import 'vodozemac/generated/frb_generated.dart' as vodozemac show RustLib;
-import 'vodozemac/generated/api.dart' as vodozemac;
+import 'generated/frb_generated.dart' as vodozemac show RustLib;
+import 'generated/bindings.dart' as vodozemac;
 
 /// Load the vodozemac backend. Only one backend can be loaded. You can provide the [wasmPath] and [libraryPath] to
 /// specify the location of the wasm and native library respectively.

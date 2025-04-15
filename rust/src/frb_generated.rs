@@ -25,7 +25,7 @@
 
 // Section: imports
 
-use crate::api::*;
+use crate::bindings::*;
 use crate::*;
 use flutter_rust_bridge::for_generated::byteorder::{NativeEndian, ReadBytesExt, WriteBytesExt};
 use flutter_rust_bridge::for_generated::{transform_result_dco, Lifetimeable, Lockable};
@@ -39,7 +39,7 @@ flutter_rust_bridge::frb_generated_boilerplate!(
     default_rust_auto_opaque = RustAutoOpaqueNom,
 );
 pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_VERSION: &str = "2.9.0";
-pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_CONTENT_HASH: i32 = 1962951366;
+pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_CONTENT_HASH: i32 = -1825470410;
 
 // Section: executor
 
@@ -47,10 +47,10 @@ flutter_rust_bridge::frb_generated_default_handler!();
 
 // Section: wire_funcs
 
-fn wire__crate__api__vodozemac_account_create_inbound_session_impl(
+fn wire__crate__bindings__vodozemac_account_create_inbound_session_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    that: impl CstDecode<crate::api::VodozemacAccount>,
-    their_identity_key: impl CstDecode<crate::api::VodozemacCurve25519PublicKey>,
+    that: impl CstDecode<crate::bindings::VodozemacAccount>,
+    their_identity_key: impl CstDecode<crate::bindings::VodozemacCurve25519PublicKey>,
     pre_key_message_base64: impl CstDecode<String>,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _>(
@@ -66,7 +66,7 @@ fn wire__crate__api__vodozemac_account_create_inbound_session_impl(
             move |context| {
                 transform_result_dco::<_, _, flutter_rust_bridge::for_generated::anyhow::Error>(
                     (move || {
-                        let output_ok = crate::api::VodozemacAccount::create_inbound_session(
+                        let output_ok = crate::bindings::VodozemacAccount::create_inbound_session(
                             &api_that,
                             api_their_identity_key,
                             api_pre_key_message_base64,
@@ -78,12 +78,12 @@ fn wire__crate__api__vodozemac_account_create_inbound_session_impl(
         },
     )
 }
-fn wire__crate__api__vodozemac_account_create_outbound_session_impl(
+fn wire__crate__bindings__vodozemac_account_create_outbound_session_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    that: impl CstDecode<crate::api::VodozemacAccount>,
-    config: impl CstDecode<crate::api::VodozemacOlmSessionConfig>,
-    identity_key: impl CstDecode<crate::api::VodozemacCurve25519PublicKey>,
-    one_time_key: impl CstDecode<crate::api::VodozemacCurve25519PublicKey>,
+    that: impl CstDecode<crate::bindings::VodozemacAccount>,
+    config: impl CstDecode<crate::bindings::VodozemacOlmSessionConfig>,
+    identity_key: impl CstDecode<crate::bindings::VodozemacCurve25519PublicKey>,
+    one_time_key: impl CstDecode<crate::bindings::VodozemacCurve25519PublicKey>,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
@@ -99,7 +99,7 @@ fn wire__crate__api__vodozemac_account_create_outbound_session_impl(
             move |context| {
                 transform_result_dco::<_, _, ()>((move || {
                     let output_ok = Result::<_, ()>::Ok(
-                        crate::api::VodozemacAccount::create_outbound_session(
+                        crate::bindings::VodozemacAccount::create_outbound_session(
                             &api_that,
                             api_config,
                             api_identity_key,
@@ -112,8 +112,8 @@ fn wire__crate__api__vodozemac_account_create_outbound_session_impl(
         },
     )
 }
-fn wire__crate__api__vodozemac_account_curve25519_key_impl(
-    that: impl CstDecode<crate::api::VodozemacAccount>,
+fn wire__crate__bindings__vodozemac_account_curve25519_key_impl(
+    that: impl CstDecode<crate::bindings::VodozemacAccount>,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
@@ -124,15 +124,16 @@ fn wire__crate__api__vodozemac_account_curve25519_key_impl(
         move || {
             let api_that = that.cst_decode();
             transform_result_dco::<_, _, ()>((move || {
-                let output_ok =
-                    Result::<_, ()>::Ok(crate::api::VodozemacAccount::curve25519_key(&api_that))?;
+                let output_ok = Result::<_, ()>::Ok(
+                    crate::bindings::VodozemacAccount::curve25519_key(&api_that),
+                )?;
                 Ok(output_ok)
             })())
         },
     )
 }
-fn wire__crate__api__vodozemac_account_ed25519_key_impl(
-    that: impl CstDecode<crate::api::VodozemacAccount>,
+fn wire__crate__bindings__vodozemac_account_ed25519_key_impl(
+    that: impl CstDecode<crate::bindings::VodozemacAccount>,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
@@ -144,14 +145,14 @@ fn wire__crate__api__vodozemac_account_ed25519_key_impl(
             let api_that = that.cst_decode();
             transform_result_dco::<_, _, ()>((move || {
                 let output_ok =
-                    Result::<_, ()>::Ok(crate::api::VodozemacAccount::ed25519_key(&api_that))?;
+                    Result::<_, ()>::Ok(crate::bindings::VodozemacAccount::ed25519_key(&api_that))?;
                 Ok(output_ok)
             })())
         },
     )
 }
-fn wire__crate__api__vodozemac_account_fallback_key_impl(
-    that: impl CstDecode<crate::api::VodozemacAccount>,
+fn wire__crate__bindings__vodozemac_account_fallback_key_impl(
+    that: impl CstDecode<crate::bindings::VodozemacAccount>,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
@@ -162,15 +163,16 @@ fn wire__crate__api__vodozemac_account_fallback_key_impl(
         move || {
             let api_that = that.cst_decode();
             transform_result_dco::<_, _, ()>((move || {
-                let output_ok =
-                    Result::<_, ()>::Ok(crate::api::VodozemacAccount::fallback_key(&api_that))?;
+                let output_ok = Result::<_, ()>::Ok(
+                    crate::bindings::VodozemacAccount::fallback_key(&api_that),
+                )?;
                 Ok(output_ok)
             })())
         },
     )
 }
-fn wire__crate__api__vodozemac_account_forget_fallback_key_impl(
-    that: impl CstDecode<crate::api::VodozemacAccount>,
+fn wire__crate__bindings__vodozemac_account_forget_fallback_key_impl(
+    that: impl CstDecode<crate::bindings::VodozemacAccount>,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
@@ -182,14 +184,14 @@ fn wire__crate__api__vodozemac_account_forget_fallback_key_impl(
             let api_that = that.cst_decode();
             transform_result_dco::<_, _, ()>((move || {
                 let output_ok = Result::<_, ()>::Ok(
-                    crate::api::VodozemacAccount::forget_fallback_key(&api_that),
+                    crate::bindings::VodozemacAccount::forget_fallback_key(&api_that),
                 )?;
                 Ok(output_ok)
             })())
         },
     )
 }
-fn wire__crate__api__vodozemac_account_from_olm_pickle_encrypted_impl(
+fn wire__crate__bindings__vodozemac_account_from_olm_pickle_encrypted_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     pickle: impl CstDecode<String>,
     pickle_key: impl CstDecode<Vec<u8>>,
@@ -206,10 +208,11 @@ fn wire__crate__api__vodozemac_account_from_olm_pickle_encrypted_impl(
             move |context| {
                 transform_result_dco::<_, _, flutter_rust_bridge::for_generated::anyhow::Error>(
                     (move || {
-                        let output_ok = crate::api::VodozemacAccount::from_olm_pickle_encrypted(
-                            api_pickle,
-                            api_pickle_key,
-                        )?;
+                        let output_ok =
+                            crate::bindings::VodozemacAccount::from_olm_pickle_encrypted(
+                                api_pickle,
+                                api_pickle_key,
+                            )?;
                         Ok(output_ok)
                     })(),
                 )
@@ -217,7 +220,7 @@ fn wire__crate__api__vodozemac_account_from_olm_pickle_encrypted_impl(
         },
     )
 }
-fn wire__crate__api__vodozemac_account_from_pickle_encrypted_impl(
+fn wire__crate__bindings__vodozemac_account_from_pickle_encrypted_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     pickle: impl CstDecode<String>,
     pickle_key: impl CstDecode<[u8; 32]>,
@@ -234,7 +237,7 @@ fn wire__crate__api__vodozemac_account_from_pickle_encrypted_impl(
             move |context| {
                 transform_result_dco::<_, _, flutter_rust_bridge::for_generated::anyhow::Error>(
                     (move || {
-                        let output_ok = crate::api::VodozemacAccount::from_pickle_encrypted(
+                        let output_ok = crate::bindings::VodozemacAccount::from_pickle_encrypted(
                             api_pickle,
                             api_pickle_key,
                         )?;
@@ -245,9 +248,9 @@ fn wire__crate__api__vodozemac_account_from_pickle_encrypted_impl(
         },
     )
 }
-fn wire__crate__api__vodozemac_account_generate_fallback_key_impl(
+fn wire__crate__bindings__vodozemac_account_generate_fallback_key_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    that: impl CstDecode<crate::api::VodozemacAccount>,
+    that: impl CstDecode<crate::bindings::VodozemacAccount>,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
@@ -260,7 +263,7 @@ fn wire__crate__api__vodozemac_account_generate_fallback_key_impl(
             move |context| {
                 transform_result_dco::<_, _, ()>((move || {
                     let output_ok = Result::<_, ()>::Ok(
-                        crate::api::VodozemacAccount::generate_fallback_key(&api_that),
+                        crate::bindings::VodozemacAccount::generate_fallback_key(&api_that),
                     )?;
                     Ok(output_ok)
                 })())
@@ -268,9 +271,9 @@ fn wire__crate__api__vodozemac_account_generate_fallback_key_impl(
         },
     )
 }
-fn wire__crate__api__vodozemac_account_generate_one_time_keys_impl(
+fn wire__crate__bindings__vodozemac_account_generate_one_time_keys_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    that: impl CstDecode<crate::api::VodozemacAccount>,
+    that: impl CstDecode<crate::bindings::VodozemacAccount>,
     count: impl CstDecode<usize>,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _>(
@@ -285,7 +288,9 @@ fn wire__crate__api__vodozemac_account_generate_one_time_keys_impl(
             move |context| {
                 transform_result_dco::<_, _, ()>((move || {
                     let output_ok = Result::<_, ()>::Ok({
-                        crate::api::VodozemacAccount::generate_one_time_keys(&api_that, api_count);
+                        crate::bindings::VodozemacAccount::generate_one_time_keys(
+                            &api_that, api_count,
+                        );
                     })?;
                     Ok(output_ok)
                 })())
@@ -293,8 +298,8 @@ fn wire__crate__api__vodozemac_account_generate_one_time_keys_impl(
         },
     )
 }
-fn wire__crate__api__vodozemac_account_identity_keys_impl(
-    that: impl CstDecode<crate::api::VodozemacAccount>,
+fn wire__crate__bindings__vodozemac_account_identity_keys_impl(
+    that: impl CstDecode<crate::bindings::VodozemacAccount>,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
@@ -305,15 +310,16 @@ fn wire__crate__api__vodozemac_account_identity_keys_impl(
         move || {
             let api_that = that.cst_decode();
             transform_result_dco::<_, _, ()>((move || {
-                let output_ok =
-                    Result::<_, ()>::Ok(crate::api::VodozemacAccount::identity_keys(&api_that))?;
+                let output_ok = Result::<_, ()>::Ok(
+                    crate::bindings::VodozemacAccount::identity_keys(&api_that),
+                )?;
                 Ok(output_ok)
             })())
         },
     )
 }
-fn wire__crate__api__vodozemac_account_mark_keys_as_published_impl(
-    that: impl CstDecode<crate::api::VodozemacAccount>,
+fn wire__crate__bindings__vodozemac_account_mark_keys_as_published_impl(
+    that: impl CstDecode<crate::bindings::VodozemacAccount>,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
@@ -325,15 +331,15 @@ fn wire__crate__api__vodozemac_account_mark_keys_as_published_impl(
             let api_that = that.cst_decode();
             transform_result_dco::<_, _, ()>((move || {
                 let output_ok = Result::<_, ()>::Ok({
-                    crate::api::VodozemacAccount::mark_keys_as_published(&api_that);
+                    crate::bindings::VodozemacAccount::mark_keys_as_published(&api_that);
                 })?;
                 Ok(output_ok)
             })())
         },
     )
 }
-fn wire__crate__api__vodozemac_account_max_number_of_one_time_keys_impl(
-    that: impl CstDecode<crate::api::VodozemacAccount>,
+fn wire__crate__bindings__vodozemac_account_max_number_of_one_time_keys_impl(
+    that: impl CstDecode<crate::bindings::VodozemacAccount>,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
@@ -345,14 +351,14 @@ fn wire__crate__api__vodozemac_account_max_number_of_one_time_keys_impl(
             let api_that = that.cst_decode();
             transform_result_dco::<_, _, ()>((move || {
                 let output_ok = Result::<_, ()>::Ok(
-                    crate::api::VodozemacAccount::max_number_of_one_time_keys(&api_that),
+                    crate::bindings::VodozemacAccount::max_number_of_one_time_keys(&api_that),
                 )?;
                 Ok(output_ok)
             })())
         },
     )
 }
-fn wire__crate__api__vodozemac_account_new_impl(
+fn wire__crate__bindings__vodozemac_account_new_impl(
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
@@ -362,14 +368,14 @@ fn wire__crate__api__vodozemac_account_new_impl(
         },
         move || {
             transform_result_dco::<_, _, ()>((move || {
-                let output_ok = Result::<_, ()>::Ok(crate::api::VodozemacAccount::new())?;
+                let output_ok = Result::<_, ()>::Ok(crate::bindings::VodozemacAccount::new())?;
                 Ok(output_ok)
             })())
         },
     )
 }
-fn wire__crate__api__vodozemac_account_one_time_keys_impl(
-    that: impl CstDecode<crate::api::VodozemacAccount>,
+fn wire__crate__bindings__vodozemac_account_one_time_keys_impl(
+    that: impl CstDecode<crate::bindings::VodozemacAccount>,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
@@ -380,16 +386,17 @@ fn wire__crate__api__vodozemac_account_one_time_keys_impl(
         move || {
             let api_that = that.cst_decode();
             transform_result_dco::<_, _, ()>((move || {
-                let output_ok =
-                    Result::<_, ()>::Ok(crate::api::VodozemacAccount::one_time_keys(&api_that))?;
+                let output_ok = Result::<_, ()>::Ok(
+                    crate::bindings::VodozemacAccount::one_time_keys(&api_that),
+                )?;
                 Ok(output_ok)
             })())
         },
     )
 }
-fn wire__crate__api__vodozemac_account_pickle_encrypted_impl(
+fn wire__crate__bindings__vodozemac_account_pickle_encrypted_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    that: impl CstDecode<crate::api::VodozemacAccount>,
+    that: impl CstDecode<crate::bindings::VodozemacAccount>,
     pickle_key: impl CstDecode<[u8; 32]>,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _>(
@@ -403,18 +410,20 @@ fn wire__crate__api__vodozemac_account_pickle_encrypted_impl(
             let api_pickle_key = pickle_key.cst_decode();
             move |context| {
                 transform_result_dco::<_, _, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
-                        crate::api::VodozemacAccount::pickle_encrypted(&api_that, api_pickle_key),
-                    )?;
+                    let output_ok =
+                        Result::<_, ()>::Ok(crate::bindings::VodozemacAccount::pickle_encrypted(
+                            &api_that,
+                            api_pickle_key,
+                        ))?;
                     Ok(output_ok)
                 })())
             }
         },
     )
 }
-fn wire__crate__api__vodozemac_account_sign_impl(
+fn wire__crate__bindings__vodozemac_account_sign_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    that: impl CstDecode<crate::api::VodozemacAccount>,
+    that: impl CstDecode<crate::bindings::VodozemacAccount>,
     message: impl CstDecode<String>,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _>(
@@ -428,7 +437,7 @@ fn wire__crate__api__vodozemac_account_sign_impl(
             let api_message = message.cst_decode();
             move |context| {
                 transform_result_dco::<_, _, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(crate::api::VodozemacAccount::sign(
+                    let output_ok = Result::<_, ()>::Ok(crate::bindings::VodozemacAccount::sign(
                         &api_that,
                         api_message,
                     ))?;
@@ -438,8 +447,8 @@ fn wire__crate__api__vodozemac_account_sign_impl(
         },
     )
 }
-fn wire__crate__api__vodozemac_curve_25519_public_key_as_bytes_impl(
-    that: impl CstDecode<crate::api::VodozemacCurve25519PublicKey>,
+fn wire__crate__bindings__vodozemac_curve_25519_public_key_as_bytes_impl(
+    that: impl CstDecode<crate::bindings::VodozemacCurve25519PublicKey>,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
@@ -451,14 +460,14 @@ fn wire__crate__api__vodozemac_curve_25519_public_key_as_bytes_impl(
             let api_that = that.cst_decode();
             transform_result_dco::<_, _, ()>((move || {
                 let output_ok = Result::<_, ()>::Ok(
-                    crate::api::VodozemacCurve25519PublicKey::as_bytes(&api_that),
+                    crate::bindings::VodozemacCurve25519PublicKey::as_bytes(&api_that),
                 )?;
                 Ok(output_ok)
             })())
         },
     )
 }
-fn wire__crate__api__vodozemac_curve_25519_public_key_from_base64_impl(
+fn wire__crate__bindings__vodozemac_curve_25519_public_key_from_base64_impl(
     base64_key: impl CstDecode<String>,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
@@ -472,14 +481,14 @@ fn wire__crate__api__vodozemac_curve_25519_public_key_from_base64_impl(
             transform_result_dco::<_, _, flutter_rust_bridge::for_generated::anyhow::Error>(
                 (move || {
                     let output_ok =
-                        crate::api::VodozemacCurve25519PublicKey::from_base64(api_base64_key)?;
+                        crate::bindings::VodozemacCurve25519PublicKey::from_base64(api_base64_key)?;
                     Ok(output_ok)
                 })(),
             )
         },
     )
 }
-fn wire__crate__api__vodozemac_curve_25519_public_key_from_slice_impl(
+fn wire__crate__bindings__vodozemac_curve_25519_public_key_from_slice_impl(
     bytes: impl CstDecode<[u8; 32]>,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
@@ -493,15 +502,15 @@ fn wire__crate__api__vodozemac_curve_25519_public_key_from_slice_impl(
             transform_result_dco::<_, _, flutter_rust_bridge::for_generated::anyhow::Error>(
                 (move || {
                     let output_ok =
-                        crate::api::VodozemacCurve25519PublicKey::from_slice(api_bytes)?;
+                        crate::bindings::VodozemacCurve25519PublicKey::from_slice(api_bytes)?;
                     Ok(output_ok)
                 })(),
             )
         },
     )
 }
-fn wire__crate__api__vodozemac_curve_25519_public_key_to_base64_impl(
-    that: impl CstDecode<crate::api::VodozemacCurve25519PublicKey>,
+fn wire__crate__bindings__vodozemac_curve_25519_public_key_to_base64_impl(
+    that: impl CstDecode<crate::bindings::VodozemacCurve25519PublicKey>,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
@@ -513,15 +522,15 @@ fn wire__crate__api__vodozemac_curve_25519_public_key_to_base64_impl(
             let api_that = that.cst_decode();
             transform_result_dco::<_, _, ()>((move || {
                 let output_ok = Result::<_, ()>::Ok(
-                    crate::api::VodozemacCurve25519PublicKey::to_base64(&api_that),
+                    crate::bindings::VodozemacCurve25519PublicKey::to_base64(&api_that),
                 )?;
                 Ok(output_ok)
             })())
         },
     )
 }
-fn wire__crate__api__vodozemac_ed_25519_public_key_as_bytes_impl(
-    that: impl CstDecode<crate::api::VodozemacEd25519PublicKey>,
+fn wire__crate__bindings__vodozemac_ed_25519_public_key_as_bytes_impl(
+    that: impl CstDecode<crate::bindings::VodozemacEd25519PublicKey>,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
@@ -533,14 +542,14 @@ fn wire__crate__api__vodozemac_ed_25519_public_key_as_bytes_impl(
             let api_that = that.cst_decode();
             transform_result_dco::<_, _, ()>((move || {
                 let output_ok = Result::<_, ()>::Ok(
-                    crate::api::VodozemacEd25519PublicKey::as_bytes(&api_that),
+                    crate::bindings::VodozemacEd25519PublicKey::as_bytes(&api_that),
                 )?;
                 Ok(output_ok)
             })())
         },
     )
 }
-fn wire__crate__api__vodozemac_ed_25519_public_key_from_base64_impl(
+fn wire__crate__bindings__vodozemac_ed_25519_public_key_from_base64_impl(
     base64_key: impl CstDecode<String>,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
@@ -554,14 +563,14 @@ fn wire__crate__api__vodozemac_ed_25519_public_key_from_base64_impl(
             transform_result_dco::<_, _, flutter_rust_bridge::for_generated::anyhow::Error>(
                 (move || {
                     let output_ok =
-                        crate::api::VodozemacEd25519PublicKey::from_base64(api_base64_key)?;
+                        crate::bindings::VodozemacEd25519PublicKey::from_base64(api_base64_key)?;
                     Ok(output_ok)
                 })(),
             )
         },
     )
 }
-fn wire__crate__api__vodozemac_ed_25519_public_key_from_slice_impl(
+fn wire__crate__bindings__vodozemac_ed_25519_public_key_from_slice_impl(
     bytes: impl CstDecode<[u8; 32]>,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
@@ -574,15 +583,16 @@ fn wire__crate__api__vodozemac_ed_25519_public_key_from_slice_impl(
             let api_bytes = bytes.cst_decode();
             transform_result_dco::<_, _, flutter_rust_bridge::for_generated::anyhow::Error>(
                 (move || {
-                    let output_ok = crate::api::VodozemacEd25519PublicKey::from_slice(api_bytes)?;
+                    let output_ok =
+                        crate::bindings::VodozemacEd25519PublicKey::from_slice(api_bytes)?;
                     Ok(output_ok)
                 })(),
             )
         },
     )
 }
-fn wire__crate__api__vodozemac_ed_25519_public_key_to_base64_impl(
-    that: impl CstDecode<crate::api::VodozemacEd25519PublicKey>,
+fn wire__crate__bindings__vodozemac_ed_25519_public_key_to_base64_impl(
+    that: impl CstDecode<crate::bindings::VodozemacEd25519PublicKey>,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
@@ -594,18 +604,18 @@ fn wire__crate__api__vodozemac_ed_25519_public_key_to_base64_impl(
             let api_that = that.cst_decode();
             transform_result_dco::<_, _, ()>((move || {
                 let output_ok = Result::<_, ()>::Ok(
-                    crate::api::VodozemacEd25519PublicKey::to_base64(&api_that),
+                    crate::bindings::VodozemacEd25519PublicKey::to_base64(&api_that),
                 )?;
                 Ok(output_ok)
             })())
         },
     )
 }
-fn wire__crate__api__vodozemac_ed_25519_public_key_verify_impl(
+fn wire__crate__bindings__vodozemac_ed_25519_public_key_verify_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    that: impl CstDecode<crate::api::VodozemacEd25519PublicKey>,
+    that: impl CstDecode<crate::bindings::VodozemacEd25519PublicKey>,
     message: impl CstDecode<String>,
-    signature: impl CstDecode<crate::api::VodozemacEd25519Signature>,
+    signature: impl CstDecode<crate::bindings::VodozemacEd25519Signature>,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
@@ -620,7 +630,7 @@ fn wire__crate__api__vodozemac_ed_25519_public_key_verify_impl(
             move |context| {
                 transform_result_dco::<_, _, flutter_rust_bridge::for_generated::anyhow::Error>(
                     (move || {
-                        let output_ok = crate::api::VodozemacEd25519PublicKey::verify(
+                        let output_ok = crate::bindings::VodozemacEd25519PublicKey::verify(
                             &api_that,
                             api_message,
                             api_signature,
@@ -632,7 +642,7 @@ fn wire__crate__api__vodozemac_ed_25519_public_key_verify_impl(
         },
     )
 }
-fn wire__crate__api__vodozemac_ed_25519_signature_from_base64_impl(
+fn wire__crate__bindings__vodozemac_ed_25519_signature_from_base64_impl(
     signature: impl CstDecode<String>,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
@@ -646,14 +656,14 @@ fn wire__crate__api__vodozemac_ed_25519_signature_from_base64_impl(
             transform_result_dco::<_, _, flutter_rust_bridge::for_generated::anyhow::Error>(
                 (move || {
                     let output_ok =
-                        crate::api::VodozemacEd25519Signature::from_base64(api_signature)?;
+                        crate::bindings::VodozemacEd25519Signature::from_base64(api_signature)?;
                     Ok(output_ok)
                 })(),
             )
         },
     )
 }
-fn wire__crate__api__vodozemac_ed_25519_signature_from_slice_impl(
+fn wire__crate__bindings__vodozemac_ed_25519_signature_from_slice_impl(
     bytes: impl CstDecode<[u8; 64]>,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
@@ -666,15 +676,16 @@ fn wire__crate__api__vodozemac_ed_25519_signature_from_slice_impl(
             let api_bytes = bytes.cst_decode();
             transform_result_dco::<_, _, flutter_rust_bridge::for_generated::anyhow::Error>(
                 (move || {
-                    let output_ok = crate::api::VodozemacEd25519Signature::from_slice(api_bytes)?;
+                    let output_ok =
+                        crate::bindings::VodozemacEd25519Signature::from_slice(api_bytes)?;
                     Ok(output_ok)
                 })(),
             )
         },
     )
 }
-fn wire__crate__api__vodozemac_ed_25519_signature_to_base64_impl(
-    that: impl CstDecode<crate::api::VodozemacEd25519Signature>,
+fn wire__crate__bindings__vodozemac_ed_25519_signature_to_base64_impl(
+    that: impl CstDecode<crate::bindings::VodozemacEd25519Signature>,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
@@ -686,15 +697,15 @@ fn wire__crate__api__vodozemac_ed_25519_signature_to_base64_impl(
             let api_that = that.cst_decode();
             transform_result_dco::<_, _, ()>((move || {
                 let output_ok = Result::<_, ()>::Ok(
-                    crate::api::VodozemacEd25519Signature::to_base64(&api_that),
+                    crate::bindings::VodozemacEd25519Signature::to_base64(&api_that),
                 )?;
                 Ok(output_ok)
             })())
         },
     )
 }
-fn wire__crate__api__vodozemac_ed_25519_signature_to_bytes_impl(
-    that: impl CstDecode<crate::api::VodozemacEd25519Signature>,
+fn wire__crate__bindings__vodozemac_ed_25519_signature_to_bytes_impl(
+    that: impl CstDecode<crate::bindings::VodozemacEd25519Signature>,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
@@ -706,16 +717,16 @@ fn wire__crate__api__vodozemac_ed_25519_signature_to_bytes_impl(
             let api_that = that.cst_decode();
             transform_result_dco::<_, _, ()>((move || {
                 let output_ok = Result::<_, ()>::Ok(
-                    crate::api::VodozemacEd25519Signature::to_bytes(&api_that),
+                    crate::bindings::VodozemacEd25519Signature::to_bytes(&api_that),
                 )?;
                 Ok(output_ok)
             })())
         },
     )
 }
-fn wire__crate__api__vodozemac_group_session_encrypt_impl(
+fn wire__crate__bindings__vodozemac_group_session_encrypt_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    that: impl CstDecode<crate::api::VodozemacGroupSession>,
+    that: impl CstDecode<crate::bindings::VodozemacGroupSession>,
     plaintext: impl CstDecode<String>,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _>(
@@ -730,7 +741,7 @@ fn wire__crate__api__vodozemac_group_session_encrypt_impl(
             move |context| {
                 transform_result_dco::<_, _, ()>((move || {
                     let output_ok = Result::<_, ()>::Ok(
-                        crate::api::VodozemacGroupSession::encrypt(&api_that, api_plaintext),
+                        crate::bindings::VodozemacGroupSession::encrypt(&api_that, api_plaintext),
                     )?;
                     Ok(output_ok)
                 })())
@@ -738,7 +749,7 @@ fn wire__crate__api__vodozemac_group_session_encrypt_impl(
         },
     )
 }
-fn wire__crate__api__vodozemac_group_session_from_olm_pickle_encrypted_impl(
+fn wire__crate__bindings__vodozemac_group_session_from_olm_pickle_encrypted_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     pickle: impl CstDecode<String>,
     pickle_key: impl CstDecode<Vec<u8>>,
@@ -756,7 +767,7 @@ fn wire__crate__api__vodozemac_group_session_from_olm_pickle_encrypted_impl(
                 transform_result_dco::<_, _, flutter_rust_bridge::for_generated::anyhow::Error>(
                     (move || {
                         let output_ok =
-                            crate::api::VodozemacGroupSession::from_olm_pickle_encrypted(
+                            crate::bindings::VodozemacGroupSession::from_olm_pickle_encrypted(
                                 api_pickle,
                                 api_pickle_key,
                             )?;
@@ -767,7 +778,7 @@ fn wire__crate__api__vodozemac_group_session_from_olm_pickle_encrypted_impl(
         },
     )
 }
-fn wire__crate__api__vodozemac_group_session_from_pickle_encrypted_impl(
+fn wire__crate__bindings__vodozemac_group_session_from_pickle_encrypted_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     pickle: impl CstDecode<String>,
     pickle_key: impl CstDecode<[u8; 32]>,
@@ -784,10 +795,11 @@ fn wire__crate__api__vodozemac_group_session_from_pickle_encrypted_impl(
             move |context| {
                 transform_result_dco::<_, _, flutter_rust_bridge::for_generated::anyhow::Error>(
                     (move || {
-                        let output_ok = crate::api::VodozemacGroupSession::from_pickle_encrypted(
-                            api_pickle,
-                            api_pickle_key,
-                        )?;
+                        let output_ok =
+                            crate::bindings::VodozemacGroupSession::from_pickle_encrypted(
+                                api_pickle,
+                                api_pickle_key,
+                            )?;
                         Ok(output_ok)
                     })(),
                 )
@@ -795,8 +807,8 @@ fn wire__crate__api__vodozemac_group_session_from_pickle_encrypted_impl(
         },
     )
 }
-fn wire__crate__api__vodozemac_group_session_message_index_impl(
-    that: impl CstDecode<crate::api::VodozemacGroupSession>,
+fn wire__crate__bindings__vodozemac_group_session_message_index_impl(
+    that: impl CstDecode<crate::bindings::VodozemacGroupSession>,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
@@ -808,15 +820,15 @@ fn wire__crate__api__vodozemac_group_session_message_index_impl(
             let api_that = that.cst_decode();
             transform_result_dco::<_, _, ()>((move || {
                 let output_ok = Result::<_, ()>::Ok(
-                    crate::api::VodozemacGroupSession::message_index(&api_that),
+                    crate::bindings::VodozemacGroupSession::message_index(&api_that),
                 )?;
                 Ok(output_ok)
             })())
         },
     )
 }
-fn wire__crate__api__vodozemac_group_session_new_impl(
-    config: impl CstDecode<crate::api::VodozemacMegolmSessionConfig>,
+fn wire__crate__bindings__vodozemac_group_session_new_impl(
+    config: impl CstDecode<crate::bindings::VodozemacMegolmSessionConfig>,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
@@ -828,15 +840,15 @@ fn wire__crate__api__vodozemac_group_session_new_impl(
             let api_config = config.cst_decode();
             transform_result_dco::<_, _, ()>((move || {
                 let output_ok =
-                    Result::<_, ()>::Ok(crate::api::VodozemacGroupSession::new(api_config))?;
+                    Result::<_, ()>::Ok(crate::bindings::VodozemacGroupSession::new(api_config))?;
                 Ok(output_ok)
             })())
         },
     )
 }
-fn wire__crate__api__vodozemac_group_session_pickle_encrypted_impl(
+fn wire__crate__bindings__vodozemac_group_session_pickle_encrypted_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    that: impl CstDecode<crate::api::VodozemacGroupSession>,
+    that: impl CstDecode<crate::bindings::VodozemacGroupSession>,
     pickle_key: impl CstDecode<[u8; 32]>,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _>(
@@ -850,20 +862,21 @@ fn wire__crate__api__vodozemac_group_session_pickle_encrypted_impl(
             let api_pickle_key = pickle_key.cst_decode();
             move |context| {
                 transform_result_dco::<_, _, ()>((move || {
-                    let output_ok =
-                        Result::<_, ()>::Ok(crate::api::VodozemacGroupSession::pickle_encrypted(
+                    let output_ok = Result::<_, ()>::Ok(
+                        crate::bindings::VodozemacGroupSession::pickle_encrypted(
                             &api_that,
                             api_pickle_key,
-                        ))?;
+                        ),
+                    )?;
                     Ok(output_ok)
                 })())
             }
         },
     )
 }
-fn wire__crate__api__vodozemac_group_session_session_config_impl(
+fn wire__crate__bindings__vodozemac_group_session_session_config_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    that: impl CstDecode<crate::api::VodozemacGroupSession>,
+    that: impl CstDecode<crate::bindings::VodozemacGroupSession>,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
@@ -876,7 +889,7 @@ fn wire__crate__api__vodozemac_group_session_session_config_impl(
             move |context| {
                 transform_result_dco::<_, _, ()>((move || {
                     let output_ok = Result::<_, ()>::Ok(
-                        crate::api::VodozemacGroupSession::session_config(&api_that),
+                        crate::bindings::VodozemacGroupSession::session_config(&api_that),
                     )?;
                     Ok(output_ok)
                 })())
@@ -884,8 +897,8 @@ fn wire__crate__api__vodozemac_group_session_session_config_impl(
         },
     )
 }
-fn wire__crate__api__vodozemac_group_session_session_id_impl(
-    that: impl CstDecode<crate::api::VodozemacGroupSession>,
+fn wire__crate__bindings__vodozemac_group_session_session_id_impl(
+    that: impl CstDecode<crate::bindings::VodozemacGroupSession>,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
@@ -896,16 +909,17 @@ fn wire__crate__api__vodozemac_group_session_session_id_impl(
         move || {
             let api_that = that.cst_decode();
             transform_result_dco::<_, _, ()>((move || {
-                let output_ok =
-                    Result::<_, ()>::Ok(crate::api::VodozemacGroupSession::session_id(&api_that))?;
+                let output_ok = Result::<_, ()>::Ok(
+                    crate::bindings::VodozemacGroupSession::session_id(&api_that),
+                )?;
                 Ok(output_ok)
             })())
         },
     )
 }
-fn wire__crate__api__vodozemac_group_session_session_key_impl(
+fn wire__crate__bindings__vodozemac_group_session_session_key_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    that: impl CstDecode<crate::api::VodozemacGroupSession>,
+    that: impl CstDecode<crate::bindings::VodozemacGroupSession>,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
@@ -918,7 +932,7 @@ fn wire__crate__api__vodozemac_group_session_session_key_impl(
             move |context| {
                 transform_result_dco::<_, _, ()>((move || {
                     let output_ok = Result::<_, ()>::Ok(
-                        crate::api::VodozemacGroupSession::session_key(&api_that),
+                        crate::bindings::VodozemacGroupSession::session_key(&api_that),
                     )?;
                     Ok(output_ok)
                 })())
@@ -926,8 +940,8 @@ fn wire__crate__api__vodozemac_group_session_session_key_impl(
         },
     )
 }
-fn wire__crate__api__vodozemac_group_session_to_inbound_impl(
-    that: impl CstDecode<crate::api::VodozemacGroupSession>,
+fn wire__crate__bindings__vodozemac_group_session_to_inbound_impl(
+    that: impl CstDecode<crate::bindings::VodozemacGroupSession>,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
@@ -938,16 +952,17 @@ fn wire__crate__api__vodozemac_group_session_to_inbound_impl(
         move || {
             let api_that = that.cst_decode();
             transform_result_dco::<_, _, ()>((move || {
-                let output_ok =
-                    Result::<_, ()>::Ok(crate::api::VodozemacGroupSession::to_inbound(&api_that))?;
+                let output_ok = Result::<_, ()>::Ok(
+                    crate::bindings::VodozemacGroupSession::to_inbound(&api_that),
+                )?;
                 Ok(output_ok)
             })())
         },
     )
 }
-fn wire__crate__api__vodozemac_inbound_group_session_decrypt_impl(
+fn wire__crate__bindings__vodozemac_inbound_group_session_decrypt_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    that: impl CstDecode<crate::api::VodozemacInboundGroupSession>,
+    that: impl CstDecode<crate::bindings::VodozemacInboundGroupSession>,
     encrypted: impl CstDecode<String>,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _>(
@@ -962,7 +977,7 @@ fn wire__crate__api__vodozemac_inbound_group_session_decrypt_impl(
             move |context| {
                 transform_result_dco::<_, _, flutter_rust_bridge::for_generated::anyhow::Error>(
                     (move || {
-                        let output_ok = crate::api::VodozemacInboundGroupSession::decrypt(
+                        let output_ok = crate::bindings::VodozemacInboundGroupSession::decrypt(
                             &api_that,
                             api_encrypted,
                         )?;
@@ -973,8 +988,8 @@ fn wire__crate__api__vodozemac_inbound_group_session_decrypt_impl(
         },
     )
 }
-fn wire__crate__api__vodozemac_inbound_group_session_export_at_impl(
-    that: impl CstDecode<crate::api::VodozemacInboundGroupSession>,
+fn wire__crate__bindings__vodozemac_inbound_group_session_export_at_impl(
+    that: impl CstDecode<crate::bindings::VodozemacInboundGroupSession>,
     index: impl CstDecode<u32>,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
@@ -988,15 +1003,15 @@ fn wire__crate__api__vodozemac_inbound_group_session_export_at_impl(
             let api_index = index.cst_decode();
             transform_result_dco::<_, _, ()>((move || {
                 let output_ok = Result::<_, ()>::Ok(
-                    crate::api::VodozemacInboundGroupSession::export_at(&api_that, api_index),
+                    crate::bindings::VodozemacInboundGroupSession::export_at(&api_that, api_index),
                 )?;
                 Ok(output_ok)
             })())
         },
     )
 }
-fn wire__crate__api__vodozemac_inbound_group_session_export_at_first_known_index_impl(
-    that: impl CstDecode<crate::api::VodozemacInboundGroupSession>,
+fn wire__crate__bindings__vodozemac_inbound_group_session_export_at_first_known_index_impl(
+    that: impl CstDecode<crate::bindings::VodozemacInboundGroupSession>,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
@@ -1008,7 +1023,7 @@ fn wire__crate__api__vodozemac_inbound_group_session_export_at_first_known_index
             let api_that = that.cst_decode();
             transform_result_dco::<_, _, ()>((move || {
                 let output_ok = Result::<_, ()>::Ok(
-                    crate::api::VodozemacInboundGroupSession::export_at_first_known_index(
+                    crate::bindings::VodozemacInboundGroupSession::export_at_first_known_index(
                         &api_that,
                     ),
                 )?;
@@ -1017,8 +1032,8 @@ fn wire__crate__api__vodozemac_inbound_group_session_export_at_first_known_index
         },
     )
 }
-fn wire__crate__api__vodozemac_inbound_group_session_first_known_index_impl(
-    that: impl CstDecode<crate::api::VodozemacInboundGroupSession>,
+fn wire__crate__bindings__vodozemac_inbound_group_session_first_known_index_impl(
+    that: impl CstDecode<crate::bindings::VodozemacInboundGroupSession>,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
@@ -1030,43 +1045,25 @@ fn wire__crate__api__vodozemac_inbound_group_session_first_known_index_impl(
             let api_that = that.cst_decode();
             transform_result_dco::<_, _, ()>((move || {
                 let output_ok = Result::<_, ()>::Ok(
-                    crate::api::VodozemacInboundGroupSession::first_known_index(&api_that),
+                    crate::bindings::VodozemacInboundGroupSession::first_known_index(&api_that),
                 )?;
                 Ok(output_ok)
             })())
         },
     )
 }
-fn wire__crate__api__vodozemac_inbound_group_session_from_olm_pickle_encrypted_impl(
+fn wire__crate__bindings__vodozemac_inbound_group_session_from_olm_pickle_encrypted_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     pickle: impl CstDecode<String>,
     pickle_key: impl CstDecode<Vec<u8>>,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _>(
-        flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "vodozemac_inbound_group_session_from_olm_pickle_encrypted",
-            port: Some(port_),
-            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
-        },
-        move || {
-            let api_pickle = pickle.cst_decode();
-            let api_pickle_key = pickle_key.cst_decode();
-            move |context| {
-                transform_result_dco::<_, _, flutter_rust_bridge::for_generated::anyhow::Error>(
-                    (move || {
-                        let output_ok =
-                            crate::api::VodozemacInboundGroupSession::from_olm_pickle_encrypted(
-                                api_pickle,
-                                api_pickle_key,
-                            )?;
-                        Ok(output_ok)
-                    })(),
-                )
-            }
-        },
-    )
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "vodozemac_inbound_group_session_from_olm_pickle_encrypted", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_pickle = pickle.cst_decode();let api_pickle_key = pickle_key.cst_decode(); move |context|  {
+                    transform_result_dco::<_, _, flutter_rust_bridge::for_generated::anyhow::Error>((move ||  {
+                         let output_ok = crate::bindings::VodozemacInboundGroupSession::from_olm_pickle_encrypted(api_pickle, api_pickle_key)?;   Ok(output_ok)
+                    })())
+                } })
 }
-fn wire__crate__api__vodozemac_inbound_group_session_from_pickle_encrypted_impl(
+fn wire__crate__bindings__vodozemac_inbound_group_session_from_pickle_encrypted_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     pickle: impl CstDecode<String>,
     pickle_key: impl CstDecode<[u8; 32]>,
@@ -1084,7 +1081,7 @@ fn wire__crate__api__vodozemac_inbound_group_session_from_pickle_encrypted_impl(
                 transform_result_dco::<_, _, flutter_rust_bridge::for_generated::anyhow::Error>(
                     (move || {
                         let output_ok =
-                            crate::api::VodozemacInboundGroupSession::from_pickle_encrypted(
+                            crate::bindings::VodozemacInboundGroupSession::from_pickle_encrypted(
                                 api_pickle,
                                 api_pickle_key,
                             )?;
@@ -1095,9 +1092,9 @@ fn wire__crate__api__vodozemac_inbound_group_session_from_pickle_encrypted_impl(
         },
     )
 }
-fn wire__crate__api__vodozemac_inbound_group_session_import_impl(
+fn wire__crate__bindings__vodozemac_inbound_group_session_import_impl(
     session_key: impl CstDecode<String>,
-    config: impl CstDecode<crate::api::VodozemacMegolmSessionConfig>,
+    config: impl CstDecode<crate::bindings::VodozemacMegolmSessionConfig>,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
@@ -1110,7 +1107,7 @@ fn wire__crate__api__vodozemac_inbound_group_session_import_impl(
             let api_config = config.cst_decode();
             transform_result_dco::<_, _, flutter_rust_bridge::for_generated::anyhow::Error>(
                 (move || {
-                    let output_ok = crate::api::VodozemacInboundGroupSession::import(
+                    let output_ok = crate::bindings::VodozemacInboundGroupSession::import(
                         api_session_key,
                         api_config,
                     )?;
@@ -1120,9 +1117,9 @@ fn wire__crate__api__vodozemac_inbound_group_session_import_impl(
         },
     )
 }
-fn wire__crate__api__vodozemac_inbound_group_session_new_impl(
+fn wire__crate__bindings__vodozemac_inbound_group_session_new_impl(
     session_key: impl CstDecode<String>,
-    config: impl CstDecode<crate::api::VodozemacMegolmSessionConfig>,
+    config: impl CstDecode<crate::bindings::VodozemacMegolmSessionConfig>,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
@@ -1135,17 +1132,19 @@ fn wire__crate__api__vodozemac_inbound_group_session_new_impl(
             let api_config = config.cst_decode();
             transform_result_dco::<_, _, flutter_rust_bridge::for_generated::anyhow::Error>(
                 (move || {
-                    let output_ok =
-                        crate::api::VodozemacInboundGroupSession::new(api_session_key, api_config)?;
+                    let output_ok = crate::bindings::VodozemacInboundGroupSession::new(
+                        api_session_key,
+                        api_config,
+                    )?;
                     Ok(output_ok)
                 })(),
             )
         },
     )
 }
-fn wire__crate__api__vodozemac_inbound_group_session_pickle_encrypted_impl(
+fn wire__crate__bindings__vodozemac_inbound_group_session_pickle_encrypted_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    that: impl CstDecode<crate::api::VodozemacInboundGroupSession>,
+    that: impl CstDecode<crate::bindings::VodozemacInboundGroupSession>,
     pickle_key: impl CstDecode<[u8; 32]>,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _>(
@@ -1160,7 +1159,7 @@ fn wire__crate__api__vodozemac_inbound_group_session_pickle_encrypted_impl(
             move |context| {
                 transform_result_dco::<_, _, ()>((move || {
                     let output_ok = Result::<_, ()>::Ok(
-                        crate::api::VodozemacInboundGroupSession::pickle_encrypted(
+                        crate::bindings::VodozemacInboundGroupSession::pickle_encrypted(
                             &api_that,
                             api_pickle_key,
                         ),
@@ -1171,8 +1170,8 @@ fn wire__crate__api__vodozemac_inbound_group_session_pickle_encrypted_impl(
         },
     )
 }
-fn wire__crate__api__vodozemac_inbound_group_session_session_id_impl(
-    that: impl CstDecode<crate::api::VodozemacInboundGroupSession>,
+fn wire__crate__bindings__vodozemac_inbound_group_session_session_id_impl(
+    that: impl CstDecode<crate::bindings::VodozemacInboundGroupSession>,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
@@ -1184,14 +1183,14 @@ fn wire__crate__api__vodozemac_inbound_group_session_session_id_impl(
             let api_that = that.cst_decode();
             transform_result_dco::<_, _, ()>((move || {
                 let output_ok = Result::<_, ()>::Ok(
-                    crate::api::VodozemacInboundGroupSession::session_id(&api_that),
+                    crate::bindings::VodozemacInboundGroupSession::session_id(&api_that),
                 )?;
                 Ok(output_ok)
             })())
         },
     )
 }
-fn wire__crate__api__vodozemac_megolm_session_config_def_impl(
+fn wire__crate__bindings__vodozemac_megolm_session_config_def_impl(
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
@@ -1202,14 +1201,14 @@ fn wire__crate__api__vodozemac_megolm_session_config_def_impl(
         move || {
             transform_result_dco::<_, _, ()>((move || {
                 let output_ok =
-                    Result::<_, ()>::Ok(crate::api::VodozemacMegolmSessionConfig::def())?;
+                    Result::<_, ()>::Ok(crate::bindings::VodozemacMegolmSessionConfig::def())?;
                 Ok(output_ok)
             })())
         },
     )
 }
-fn wire__crate__api__vodozemac_megolm_session_config_version_impl(
-    that: impl CstDecode<crate::api::VodozemacMegolmSessionConfig>,
+fn wire__crate__bindings__vodozemac_megolm_session_config_version_impl(
+    that: impl CstDecode<crate::bindings::VodozemacMegolmSessionConfig>,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
@@ -1221,14 +1220,14 @@ fn wire__crate__api__vodozemac_megolm_session_config_version_impl(
             let api_that = that.cst_decode();
             transform_result_dco::<_, _, ()>((move || {
                 let output_ok = Result::<_, ()>::Ok(
-                    crate::api::VodozemacMegolmSessionConfig::version(&api_that),
+                    crate::bindings::VodozemacMegolmSessionConfig::version(&api_that),
                 )?;
                 Ok(output_ok)
             })())
         },
     )
 }
-fn wire__crate__api__vodozemac_megolm_session_config_version_1_impl(
+fn wire__crate__bindings__vodozemac_megolm_session_config_version_1_impl(
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
@@ -1238,14 +1237,15 @@ fn wire__crate__api__vodozemac_megolm_session_config_version_1_impl(
         },
         move || {
             transform_result_dco::<_, _, ()>((move || {
-                let output_ok =
-                    Result::<_, ()>::Ok(crate::api::VodozemacMegolmSessionConfig::version_1())?;
+                let output_ok = Result::<_, ()>::Ok(
+                    crate::bindings::VodozemacMegolmSessionConfig::version_1(),
+                )?;
                 Ok(output_ok)
             })())
         },
     )
 }
-fn wire__crate__api__vodozemac_megolm_session_config_version_2_impl(
+fn wire__crate__bindings__vodozemac_megolm_session_config_version_2_impl(
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
@@ -1255,14 +1255,15 @@ fn wire__crate__api__vodozemac_megolm_session_config_version_2_impl(
         },
         move || {
             transform_result_dco::<_, _, ()>((move || {
-                let output_ok =
-                    Result::<_, ()>::Ok(crate::api::VodozemacMegolmSessionConfig::version_2())?;
+                let output_ok = Result::<_, ()>::Ok(
+                    crate::bindings::VodozemacMegolmSessionConfig::version_2(),
+                )?;
                 Ok(output_ok)
             })())
         },
     )
 }
-fn wire__crate__api__vodozemac_olm_message_from_parts_impl(
+fn wire__crate__bindings__vodozemac_olm_message_from_parts_impl(
     message_type: impl CstDecode<usize>,
     ciphertext: impl CstDecode<Vec<u8>>,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
@@ -1277,7 +1278,7 @@ fn wire__crate__api__vodozemac_olm_message_from_parts_impl(
             let api_ciphertext = ciphertext.cst_decode();
             transform_result_dco::<_, _, flutter_rust_bridge::for_generated::anyhow::Error>(
                 (move || {
-                    let output_ok = crate::api::VodozemacOlmMessage::from_parts(
+                    let output_ok = crate::bindings::VodozemacOlmMessage::from_parts(
                         api_message_type,
                         api_ciphertext,
                     )?;
@@ -1287,8 +1288,8 @@ fn wire__crate__api__vodozemac_olm_message_from_parts_impl(
         },
     )
 }
-fn wire__crate__api__vodozemac_olm_message_message_impl(
-    that: impl CstDecode<crate::api::VodozemacOlmMessage>,
+fn wire__crate__bindings__vodozemac_olm_message_message_impl(
+    that: impl CstDecode<crate::bindings::VodozemacOlmMessage>,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
@@ -1300,14 +1301,14 @@ fn wire__crate__api__vodozemac_olm_message_message_impl(
             let api_that = that.cst_decode();
             transform_result_dco::<_, _, ()>((move || {
                 let output_ok =
-                    Result::<_, ()>::Ok(crate::api::VodozemacOlmMessage::message(&api_that))?;
+                    Result::<_, ()>::Ok(crate::bindings::VodozemacOlmMessage::message(&api_that))?;
                 Ok(output_ok)
             })())
         },
     )
 }
-fn wire__crate__api__vodozemac_olm_message_message_type_impl(
-    that: impl CstDecode<crate::api::VodozemacOlmMessage>,
+fn wire__crate__bindings__vodozemac_olm_message_message_type_impl(
+    that: impl CstDecode<crate::bindings::VodozemacOlmMessage>,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
@@ -1318,14 +1319,15 @@ fn wire__crate__api__vodozemac_olm_message_message_type_impl(
         move || {
             let api_that = that.cst_decode();
             transform_result_dco::<_, _, ()>((move || {
-                let output_ok =
-                    Result::<_, ()>::Ok(crate::api::VodozemacOlmMessage::message_type(&api_that))?;
+                let output_ok = Result::<_, ()>::Ok(
+                    crate::bindings::VodozemacOlmMessage::message_type(&api_that),
+                )?;
                 Ok(output_ok)
             })())
         },
     )
 }
-fn wire__crate__api__vodozemac_olm_session_config_def_impl(
+fn wire__crate__bindings__vodozemac_olm_session_config_def_impl(
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
@@ -1335,14 +1337,15 @@ fn wire__crate__api__vodozemac_olm_session_config_def_impl(
         },
         move || {
             transform_result_dco::<_, _, ()>((move || {
-                let output_ok = Result::<_, ()>::Ok(crate::api::VodozemacOlmSessionConfig::def())?;
+                let output_ok =
+                    Result::<_, ()>::Ok(crate::bindings::VodozemacOlmSessionConfig::def())?;
                 Ok(output_ok)
             })())
         },
     )
 }
-fn wire__crate__api__vodozemac_olm_session_config_version_impl(
-    that: impl CstDecode<crate::api::VodozemacOlmSessionConfig>,
+fn wire__crate__bindings__vodozemac_olm_session_config_version_impl(
+    that: impl CstDecode<crate::bindings::VodozemacOlmSessionConfig>,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
@@ -1353,14 +1356,15 @@ fn wire__crate__api__vodozemac_olm_session_config_version_impl(
         move || {
             let api_that = that.cst_decode();
             transform_result_dco::<_, _, ()>((move || {
-                let output_ok =
-                    Result::<_, ()>::Ok(crate::api::VodozemacOlmSessionConfig::version(&api_that))?;
+                let output_ok = Result::<_, ()>::Ok(
+                    crate::bindings::VodozemacOlmSessionConfig::version(&api_that),
+                )?;
                 Ok(output_ok)
             })())
         },
     )
 }
-fn wire__crate__api__vodozemac_olm_session_config_version_1_impl(
+fn wire__crate__bindings__vodozemac_olm_session_config_version_1_impl(
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
@@ -1371,13 +1375,13 @@ fn wire__crate__api__vodozemac_olm_session_config_version_1_impl(
         move || {
             transform_result_dco::<_, _, ()>((move || {
                 let output_ok =
-                    Result::<_, ()>::Ok(crate::api::VodozemacOlmSessionConfig::version_1())?;
+                    Result::<_, ()>::Ok(crate::bindings::VodozemacOlmSessionConfig::version_1())?;
                 Ok(output_ok)
             })())
         },
     )
 }
-fn wire__crate__api__vodozemac_olm_session_config_version_2_impl(
+fn wire__crate__bindings__vodozemac_olm_session_config_version_2_impl(
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
@@ -1388,16 +1392,16 @@ fn wire__crate__api__vodozemac_olm_session_config_version_2_impl(
         move || {
             transform_result_dco::<_, _, ()>((move || {
                 let output_ok =
-                    Result::<_, ()>::Ok(crate::api::VodozemacOlmSessionConfig::version_2())?;
+                    Result::<_, ()>::Ok(crate::bindings::VodozemacOlmSessionConfig::version_2())?;
                 Ok(output_ok)
             })())
         },
     )
 }
-fn wire__crate__api__vodozemac_session_decrypt_impl(
+fn wire__crate__bindings__vodozemac_session_decrypt_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    that: impl CstDecode<crate::api::VodozemacSession>,
-    message: impl CstDecode<crate::api::VodozemacOlmMessage>,
+    that: impl CstDecode<crate::bindings::VodozemacSession>,
+    message: impl CstDecode<crate::bindings::VodozemacOlmMessage>,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
@@ -1412,7 +1416,7 @@ fn wire__crate__api__vodozemac_session_decrypt_impl(
                 transform_result_dco::<_, _, flutter_rust_bridge::for_generated::anyhow::Error>(
                     (move || {
                         let output_ok =
-                            crate::api::VodozemacSession::decrypt(&api_that, api_message)?;
+                            crate::bindings::VodozemacSession::decrypt(&api_that, api_message)?;
                         Ok(output_ok)
                     })(),
                 )
@@ -1420,9 +1424,9 @@ fn wire__crate__api__vodozemac_session_decrypt_impl(
         },
     )
 }
-fn wire__crate__api__vodozemac_session_encrypt_impl(
+fn wire__crate__bindings__vodozemac_session_encrypt_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    that: impl CstDecode<crate::api::VodozemacSession>,
+    that: impl CstDecode<crate::bindings::VodozemacSession>,
     plaintext: impl CstDecode<String>,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _>(
@@ -1436,17 +1440,16 @@ fn wire__crate__api__vodozemac_session_encrypt_impl(
             let api_plaintext = plaintext.cst_decode();
             move |context| {
                 transform_result_dco::<_, _, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(crate::api::VodozemacSession::encrypt(
-                        &api_that,
-                        api_plaintext,
-                    ))?;
+                    let output_ok = Result::<_, ()>::Ok(
+                        crate::bindings::VodozemacSession::encrypt(&api_that, api_plaintext),
+                    )?;
                     Ok(output_ok)
                 })())
             }
         },
     )
 }
-fn wire__crate__api__vodozemac_session_from_olm_pickle_encrypted_impl(
+fn wire__crate__bindings__vodozemac_session_from_olm_pickle_encrypted_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     pickle: impl CstDecode<String>,
     pickle_key: impl CstDecode<Vec<u8>>,
@@ -1463,10 +1466,11 @@ fn wire__crate__api__vodozemac_session_from_olm_pickle_encrypted_impl(
             move |context| {
                 transform_result_dco::<_, _, flutter_rust_bridge::for_generated::anyhow::Error>(
                     (move || {
-                        let output_ok = crate::api::VodozemacSession::from_olm_pickle_encrypted(
-                            api_pickle,
-                            api_pickle_key,
-                        )?;
+                        let output_ok =
+                            crate::bindings::VodozemacSession::from_olm_pickle_encrypted(
+                                api_pickle,
+                                api_pickle_key,
+                            )?;
                         Ok(output_ok)
                     })(),
                 )
@@ -1474,7 +1478,7 @@ fn wire__crate__api__vodozemac_session_from_olm_pickle_encrypted_impl(
         },
     )
 }
-fn wire__crate__api__vodozemac_session_from_pickle_encrypted_impl(
+fn wire__crate__bindings__vodozemac_session_from_pickle_encrypted_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     pickle: impl CstDecode<String>,
     pickle_key: impl CstDecode<[u8; 32]>,
@@ -1491,7 +1495,7 @@ fn wire__crate__api__vodozemac_session_from_pickle_encrypted_impl(
             move |context| {
                 transform_result_dco::<_, _, flutter_rust_bridge::for_generated::anyhow::Error>(
                     (move || {
-                        let output_ok = crate::api::VodozemacSession::from_pickle_encrypted(
+                        let output_ok = crate::bindings::VodozemacSession::from_pickle_encrypted(
                             api_pickle,
                             api_pickle_key,
                         )?;
@@ -1502,8 +1506,8 @@ fn wire__crate__api__vodozemac_session_from_pickle_encrypted_impl(
         },
     )
 }
-fn wire__crate__api__vodozemac_session_has_received_message_impl(
-    that: impl CstDecode<crate::api::VodozemacSession>,
+fn wire__crate__bindings__vodozemac_session_has_received_message_impl(
+    that: impl CstDecode<crate::bindings::VodozemacSession>,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
@@ -1515,16 +1519,16 @@ fn wire__crate__api__vodozemac_session_has_received_message_impl(
             let api_that = that.cst_decode();
             transform_result_dco::<_, _, ()>((move || {
                 let output_ok = Result::<_, ()>::Ok(
-                    crate::api::VodozemacSession::has_received_message(&api_that),
+                    crate::bindings::VodozemacSession::has_received_message(&api_that),
                 )?;
                 Ok(output_ok)
             })())
         },
     )
 }
-fn wire__crate__api__vodozemac_session_pickle_encrypted_impl(
+fn wire__crate__bindings__vodozemac_session_pickle_encrypted_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    that: impl CstDecode<crate::api::VodozemacSession>,
+    that: impl CstDecode<crate::bindings::VodozemacSession>,
     pickle_key: impl CstDecode<[u8; 32]>,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _>(
@@ -1538,18 +1542,20 @@ fn wire__crate__api__vodozemac_session_pickle_encrypted_impl(
             let api_pickle_key = pickle_key.cst_decode();
             move |context| {
                 transform_result_dco::<_, _, ()>((move || {
-                    let output_ok = Result::<_, ()>::Ok(
-                        crate::api::VodozemacSession::pickle_encrypted(&api_that, api_pickle_key),
-                    )?;
+                    let output_ok =
+                        Result::<_, ()>::Ok(crate::bindings::VodozemacSession::pickle_encrypted(
+                            &api_that,
+                            api_pickle_key,
+                        ))?;
                     Ok(output_ok)
                 })())
             }
         },
     )
 }
-fn wire__crate__api__vodozemac_session_session_config_impl(
+fn wire__crate__bindings__vodozemac_session_session_config_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    that: impl CstDecode<crate::api::VodozemacSession>,
+    that: impl CstDecode<crate::bindings::VodozemacSession>,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
@@ -1562,7 +1568,7 @@ fn wire__crate__api__vodozemac_session_session_config_impl(
             move |context| {
                 transform_result_dco::<_, _, ()>((move || {
                     let output_ok = Result::<_, ()>::Ok(
-                        crate::api::VodozemacSession::session_config(&api_that),
+                        crate::bindings::VodozemacSession::session_config(&api_that),
                     )?;
                     Ok(output_ok)
                 })())
@@ -1570,8 +1576,8 @@ fn wire__crate__api__vodozemac_session_session_config_impl(
         },
     )
 }
-fn wire__crate__api__vodozemac_session_session_id_impl(
-    that: impl CstDecode<crate::api::VodozemacSession>,
+fn wire__crate__bindings__vodozemac_session_session_id_impl(
+    that: impl CstDecode<crate::bindings::VodozemacSession>,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
@@ -1583,7 +1589,7 @@ fn wire__crate__api__vodozemac_session_session_id_impl(
             let api_that = that.cst_decode();
             transform_result_dco::<_, _, ()>((move || {
                 let output_ok =
-                    Result::<_, ()>::Ok(crate::api::VodozemacSession::session_id(&api_that))?;
+                    Result::<_, ()>::Ok(crate::bindings::VodozemacSession::session_id(&api_that))?;
                 Ok(output_ok)
             })())
         },
@@ -1719,12 +1725,12 @@ impl SseDecode for bool {
     }
 }
 
-impl SseDecode for crate::api::DecryptResult {
+impl SseDecode for crate::bindings::DecryptResult {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut var_field0 = <String>::sse_decode(deserializer);
         let mut var_field1 = <u32>::sse_decode(deserializer);
-        return crate::api::DecryptResult(var_field0, var_field1);
+        return crate::bindings::DecryptResult(var_field0, var_field1);
     }
 }
 
@@ -1740,13 +1746,15 @@ impl SseDecode for Vec<u8> {
     }
 }
 
-impl SseDecode for Vec<crate::api::VodozemacOneTimeKey> {
+impl SseDecode for Vec<crate::bindings::VodozemacOneTimeKey> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
         let mut ans_ = vec![];
         for idx_ in 0..len_ {
-            ans_.push(<crate::api::VodozemacOneTimeKey>::sse_decode(deserializer));
+            ans_.push(<crate::bindings::VodozemacOneTimeKey>::sse_decode(
+                deserializer,
+            ));
         }
         return ans_;
     }
@@ -1805,129 +1813,130 @@ impl SseDecode for usize {
     }
 }
 
-impl SseDecode for crate::api::VodozemacAccount {
+impl SseDecode for crate::bindings::VodozemacAccount {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut var_account = <RustOpaqueNom<std::sync::RwLock<Account>>>::sse_decode(deserializer);
-        return crate::api::VodozemacAccount {
+        return crate::bindings::VodozemacAccount {
             account: var_account,
         };
     }
 }
 
-impl SseDecode for crate::api::VodozemacCurve25519PublicKey {
+impl SseDecode for crate::bindings::VodozemacCurve25519PublicKey {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut var_key = <RustOpaqueNom<Curve25519PublicKey>>::sse_decode(deserializer);
-        return crate::api::VodozemacCurve25519PublicKey { key: var_key };
+        return crate::bindings::VodozemacCurve25519PublicKey { key: var_key };
     }
 }
 
-impl SseDecode for crate::api::VodozemacEd25519PublicKey {
+impl SseDecode for crate::bindings::VodozemacEd25519PublicKey {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut var_key = <RustOpaqueNom<Ed25519PublicKey>>::sse_decode(deserializer);
-        return crate::api::VodozemacEd25519PublicKey { key: var_key };
+        return crate::bindings::VodozemacEd25519PublicKey { key: var_key };
     }
 }
 
-impl SseDecode for crate::api::VodozemacEd25519Signature {
+impl SseDecode for crate::bindings::VodozemacEd25519Signature {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut var_signature = <RustOpaqueNom<Ed25519Signature>>::sse_decode(deserializer);
-        return crate::api::VodozemacEd25519Signature {
+        return crate::bindings::VodozemacEd25519Signature {
             signature: var_signature,
         };
     }
 }
 
-impl SseDecode for crate::api::VodozemacGroupSession {
+impl SseDecode for crate::bindings::VodozemacGroupSession {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut var_session = <RustOpaqueNom<RwLock<GroupSession>>>::sse_decode(deserializer);
-        return crate::api::VodozemacGroupSession {
+        return crate::bindings::VodozemacGroupSession {
             session: var_session,
         };
     }
 }
 
-impl SseDecode for crate::api::VodozemacIdentityKeys {
+impl SseDecode for crate::bindings::VodozemacIdentityKeys {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        let mut var_ed25519 = <crate::api::VodozemacEd25519PublicKey>::sse_decode(deserializer);
+        let mut var_ed25519 =
+            <crate::bindings::VodozemacEd25519PublicKey>::sse_decode(deserializer);
         let mut var_curve25519 =
-            <crate::api::VodozemacCurve25519PublicKey>::sse_decode(deserializer);
-        return crate::api::VodozemacIdentityKeys {
+            <crate::bindings::VodozemacCurve25519PublicKey>::sse_decode(deserializer);
+        return crate::bindings::VodozemacIdentityKeys {
             ed25519: var_ed25519,
             curve25519: var_curve25519,
         };
     }
 }
 
-impl SseDecode for crate::api::VodozemacInboundGroupSession {
+impl SseDecode for crate::bindings::VodozemacInboundGroupSession {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut var_session =
             <RustOpaqueNom<RwLock<InboundGroupSession>>>::sse_decode(deserializer);
-        return crate::api::VodozemacInboundGroupSession {
+        return crate::bindings::VodozemacInboundGroupSession {
             session: var_session,
         };
     }
 }
 
-impl SseDecode for crate::api::VodozemacMegolmSessionConfig {
+impl SseDecode for crate::bindings::VodozemacMegolmSessionConfig {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut var_config = <RustOpaqueNom<MegolmSessionConfig>>::sse_decode(deserializer);
-        return crate::api::VodozemacMegolmSessionConfig { config: var_config };
+        return crate::bindings::VodozemacMegolmSessionConfig { config: var_config };
     }
 }
 
-impl SseDecode for crate::api::VodozemacOlmMessage {
+impl SseDecode for crate::bindings::VodozemacOlmMessage {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut var_msg = <RustOpaqueNom<OlmMessage>>::sse_decode(deserializer);
-        return crate::api::VodozemacOlmMessage { msg: var_msg };
+        return crate::bindings::VodozemacOlmMessage { msg: var_msg };
     }
 }
 
-impl SseDecode for crate::api::VodozemacOlmSessionConfig {
+impl SseDecode for crate::bindings::VodozemacOlmSessionConfig {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut var_config = <RustOpaqueNom<OlmSessionConfig>>::sse_decode(deserializer);
-        return crate::api::VodozemacOlmSessionConfig { config: var_config };
+        return crate::bindings::VodozemacOlmSessionConfig { config: var_config };
     }
 }
 
-impl SseDecode for crate::api::VodozemacOlmSessionCreationResult {
+impl SseDecode for crate::bindings::VodozemacOlmSessionCreationResult {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        let mut var_session = <crate::api::VodozemacSession>::sse_decode(deserializer);
+        let mut var_session = <crate::bindings::VodozemacSession>::sse_decode(deserializer);
         let mut var_plaintext = <String>::sse_decode(deserializer);
-        return crate::api::VodozemacOlmSessionCreationResult {
+        return crate::bindings::VodozemacOlmSessionCreationResult {
             session: var_session,
             plaintext: var_plaintext,
         };
     }
 }
 
-impl SseDecode for crate::api::VodozemacOneTimeKey {
+impl SseDecode for crate::bindings::VodozemacOneTimeKey {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut var_keyid = <String>::sse_decode(deserializer);
-        let mut var_key = <crate::api::VodozemacCurve25519PublicKey>::sse_decode(deserializer);
-        return crate::api::VodozemacOneTimeKey {
+        let mut var_key = <crate::bindings::VodozemacCurve25519PublicKey>::sse_decode(deserializer);
+        return crate::bindings::VodozemacOneTimeKey {
             keyid: var_keyid,
             key: var_key,
         };
     }
 }
 
-impl SseDecode for crate::api::VodozemacSession {
+impl SseDecode for crate::bindings::VodozemacSession {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut var_session = <RustOpaqueNom<RwLock<Session>>>::sse_decode(deserializer);
-        return crate::api::VodozemacSession {
+        return crate::bindings::VodozemacSession {
             session: var_session,
         };
     }
@@ -1968,7 +1977,7 @@ fn pde_ffi_dispatcher_sync_impl(
 // Section: rust2dart
 
 // Codec=Dco (DartCObject based), see doc to use other codecs
-impl flutter_rust_bridge::IntoDart for crate::api::DecryptResult {
+impl flutter_rust_bridge::IntoDart for crate::bindings::DecryptResult {
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         [
             self.0.into_into_dart().into_dart(),
@@ -1977,96 +1986,104 @@ impl flutter_rust_bridge::IntoDart for crate::api::DecryptResult {
         .into_dart()
     }
 }
-impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for crate::api::DecryptResult {}
-impl flutter_rust_bridge::IntoIntoDart<crate::api::DecryptResult> for crate::api::DecryptResult {
-    fn into_into_dart(self) -> crate::api::DecryptResult {
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for crate::bindings::DecryptResult
+{
+}
+impl flutter_rust_bridge::IntoIntoDart<crate::bindings::DecryptResult>
+    for crate::bindings::DecryptResult
+{
+    fn into_into_dart(self) -> crate::bindings::DecryptResult {
         self
     }
 }
 // Codec=Dco (DartCObject based), see doc to use other codecs
-impl flutter_rust_bridge::IntoDart for crate::api::VodozemacAccount {
+impl flutter_rust_bridge::IntoDart for crate::bindings::VodozemacAccount {
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         [self.account.into_into_dart().into_dart()].into_dart()
     }
 }
-impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for crate::api::VodozemacAccount {}
-impl flutter_rust_bridge::IntoIntoDart<crate::api::VodozemacAccount>
-    for crate::api::VodozemacAccount
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for crate::bindings::VodozemacAccount
 {
-    fn into_into_dart(self) -> crate::api::VodozemacAccount {
+}
+impl flutter_rust_bridge::IntoIntoDart<crate::bindings::VodozemacAccount>
+    for crate::bindings::VodozemacAccount
+{
+    fn into_into_dart(self) -> crate::bindings::VodozemacAccount {
         self
     }
 }
 // Codec=Dco (DartCObject based), see doc to use other codecs
-impl flutter_rust_bridge::IntoDart for crate::api::VodozemacCurve25519PublicKey {
+impl flutter_rust_bridge::IntoDart for crate::bindings::VodozemacCurve25519PublicKey {
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         [self.key.into_into_dart().into_dart()].into_dart()
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
-    for crate::api::VodozemacCurve25519PublicKey
+    for crate::bindings::VodozemacCurve25519PublicKey
 {
 }
-impl flutter_rust_bridge::IntoIntoDart<crate::api::VodozemacCurve25519PublicKey>
-    for crate::api::VodozemacCurve25519PublicKey
+impl flutter_rust_bridge::IntoIntoDart<crate::bindings::VodozemacCurve25519PublicKey>
+    for crate::bindings::VodozemacCurve25519PublicKey
 {
-    fn into_into_dart(self) -> crate::api::VodozemacCurve25519PublicKey {
+    fn into_into_dart(self) -> crate::bindings::VodozemacCurve25519PublicKey {
         self
     }
 }
 // Codec=Dco (DartCObject based), see doc to use other codecs
-impl flutter_rust_bridge::IntoDart for crate::api::VodozemacEd25519PublicKey {
+impl flutter_rust_bridge::IntoDart for crate::bindings::VodozemacEd25519PublicKey {
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         [self.key.into_into_dart().into_dart()].into_dart()
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
-    for crate::api::VodozemacEd25519PublicKey
+    for crate::bindings::VodozemacEd25519PublicKey
 {
 }
-impl flutter_rust_bridge::IntoIntoDart<crate::api::VodozemacEd25519PublicKey>
-    for crate::api::VodozemacEd25519PublicKey
+impl flutter_rust_bridge::IntoIntoDart<crate::bindings::VodozemacEd25519PublicKey>
+    for crate::bindings::VodozemacEd25519PublicKey
 {
-    fn into_into_dart(self) -> crate::api::VodozemacEd25519PublicKey {
+    fn into_into_dart(self) -> crate::bindings::VodozemacEd25519PublicKey {
         self
     }
 }
 // Codec=Dco (DartCObject based), see doc to use other codecs
-impl flutter_rust_bridge::IntoDart for crate::api::VodozemacEd25519Signature {
+impl flutter_rust_bridge::IntoDart for crate::bindings::VodozemacEd25519Signature {
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         [self.signature.into_into_dart().into_dart()].into_dart()
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
-    for crate::api::VodozemacEd25519Signature
+    for crate::bindings::VodozemacEd25519Signature
 {
 }
-impl flutter_rust_bridge::IntoIntoDart<crate::api::VodozemacEd25519Signature>
-    for crate::api::VodozemacEd25519Signature
+impl flutter_rust_bridge::IntoIntoDart<crate::bindings::VodozemacEd25519Signature>
+    for crate::bindings::VodozemacEd25519Signature
 {
-    fn into_into_dart(self) -> crate::api::VodozemacEd25519Signature {
+    fn into_into_dart(self) -> crate::bindings::VodozemacEd25519Signature {
         self
     }
 }
 // Codec=Dco (DartCObject based), see doc to use other codecs
-impl flutter_rust_bridge::IntoDart for crate::api::VodozemacGroupSession {
+impl flutter_rust_bridge::IntoDart for crate::bindings::VodozemacGroupSession {
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         [self.session.into_into_dart().into_dart()].into_dart()
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
-    for crate::api::VodozemacGroupSession
+    for crate::bindings::VodozemacGroupSession
 {
 }
-impl flutter_rust_bridge::IntoIntoDart<crate::api::VodozemacGroupSession>
-    for crate::api::VodozemacGroupSession
+impl flutter_rust_bridge::IntoIntoDart<crate::bindings::VodozemacGroupSession>
+    for crate::bindings::VodozemacGroupSession
 {
-    fn into_into_dart(self) -> crate::api::VodozemacGroupSession {
+    fn into_into_dart(self) -> crate::bindings::VodozemacGroupSession {
         self
     }
 }
 // Codec=Dco (DartCObject based), see doc to use other codecs
-impl flutter_rust_bridge::IntoDart for crate::api::VodozemacIdentityKeys {
+impl flutter_rust_bridge::IntoDart for crate::bindings::VodozemacIdentityKeys {
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         [
             self.ed25519.into_into_dart().into_dart(),
@@ -2076,86 +2093,86 @@ impl flutter_rust_bridge::IntoDart for crate::api::VodozemacIdentityKeys {
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
-    for crate::api::VodozemacIdentityKeys
+    for crate::bindings::VodozemacIdentityKeys
 {
 }
-impl flutter_rust_bridge::IntoIntoDart<crate::api::VodozemacIdentityKeys>
-    for crate::api::VodozemacIdentityKeys
+impl flutter_rust_bridge::IntoIntoDart<crate::bindings::VodozemacIdentityKeys>
+    for crate::bindings::VodozemacIdentityKeys
 {
-    fn into_into_dart(self) -> crate::api::VodozemacIdentityKeys {
+    fn into_into_dart(self) -> crate::bindings::VodozemacIdentityKeys {
         self
     }
 }
 // Codec=Dco (DartCObject based), see doc to use other codecs
-impl flutter_rust_bridge::IntoDart for crate::api::VodozemacInboundGroupSession {
+impl flutter_rust_bridge::IntoDart for crate::bindings::VodozemacInboundGroupSession {
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         [self.session.into_into_dart().into_dart()].into_dart()
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
-    for crate::api::VodozemacInboundGroupSession
+    for crate::bindings::VodozemacInboundGroupSession
 {
 }
-impl flutter_rust_bridge::IntoIntoDart<crate::api::VodozemacInboundGroupSession>
-    for crate::api::VodozemacInboundGroupSession
+impl flutter_rust_bridge::IntoIntoDart<crate::bindings::VodozemacInboundGroupSession>
+    for crate::bindings::VodozemacInboundGroupSession
 {
-    fn into_into_dart(self) -> crate::api::VodozemacInboundGroupSession {
+    fn into_into_dart(self) -> crate::bindings::VodozemacInboundGroupSession {
         self
     }
 }
 // Codec=Dco (DartCObject based), see doc to use other codecs
-impl flutter_rust_bridge::IntoDart for crate::api::VodozemacMegolmSessionConfig {
+impl flutter_rust_bridge::IntoDart for crate::bindings::VodozemacMegolmSessionConfig {
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         [self.config.into_into_dart().into_dart()].into_dart()
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
-    for crate::api::VodozemacMegolmSessionConfig
+    for crate::bindings::VodozemacMegolmSessionConfig
 {
 }
-impl flutter_rust_bridge::IntoIntoDart<crate::api::VodozemacMegolmSessionConfig>
-    for crate::api::VodozemacMegolmSessionConfig
+impl flutter_rust_bridge::IntoIntoDart<crate::bindings::VodozemacMegolmSessionConfig>
+    for crate::bindings::VodozemacMegolmSessionConfig
 {
-    fn into_into_dart(self) -> crate::api::VodozemacMegolmSessionConfig {
+    fn into_into_dart(self) -> crate::bindings::VodozemacMegolmSessionConfig {
         self
     }
 }
 // Codec=Dco (DartCObject based), see doc to use other codecs
-impl flutter_rust_bridge::IntoDart for crate::api::VodozemacOlmMessage {
+impl flutter_rust_bridge::IntoDart for crate::bindings::VodozemacOlmMessage {
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         [self.msg.into_into_dart().into_dart()].into_dart()
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
-    for crate::api::VodozemacOlmMessage
+    for crate::bindings::VodozemacOlmMessage
 {
 }
-impl flutter_rust_bridge::IntoIntoDart<crate::api::VodozemacOlmMessage>
-    for crate::api::VodozemacOlmMessage
+impl flutter_rust_bridge::IntoIntoDart<crate::bindings::VodozemacOlmMessage>
+    for crate::bindings::VodozemacOlmMessage
 {
-    fn into_into_dart(self) -> crate::api::VodozemacOlmMessage {
+    fn into_into_dart(self) -> crate::bindings::VodozemacOlmMessage {
         self
     }
 }
 // Codec=Dco (DartCObject based), see doc to use other codecs
-impl flutter_rust_bridge::IntoDart for crate::api::VodozemacOlmSessionConfig {
+impl flutter_rust_bridge::IntoDart for crate::bindings::VodozemacOlmSessionConfig {
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         [self.config.into_into_dart().into_dart()].into_dart()
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
-    for crate::api::VodozemacOlmSessionConfig
+    for crate::bindings::VodozemacOlmSessionConfig
 {
 }
-impl flutter_rust_bridge::IntoIntoDart<crate::api::VodozemacOlmSessionConfig>
-    for crate::api::VodozemacOlmSessionConfig
+impl flutter_rust_bridge::IntoIntoDart<crate::bindings::VodozemacOlmSessionConfig>
+    for crate::bindings::VodozemacOlmSessionConfig
 {
-    fn into_into_dart(self) -> crate::api::VodozemacOlmSessionConfig {
+    fn into_into_dart(self) -> crate::bindings::VodozemacOlmSessionConfig {
         self
     }
 }
 // Codec=Dco (DartCObject based), see doc to use other codecs
-impl flutter_rust_bridge::IntoDart for crate::api::VodozemacOlmSessionCreationResult {
+impl flutter_rust_bridge::IntoDart for crate::bindings::VodozemacOlmSessionCreationResult {
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         [
             self.session.into_into_dart().into_dart(),
@@ -2165,18 +2182,18 @@ impl flutter_rust_bridge::IntoDart for crate::api::VodozemacOlmSessionCreationRe
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
-    for crate::api::VodozemacOlmSessionCreationResult
+    for crate::bindings::VodozemacOlmSessionCreationResult
 {
 }
-impl flutter_rust_bridge::IntoIntoDart<crate::api::VodozemacOlmSessionCreationResult>
-    for crate::api::VodozemacOlmSessionCreationResult
+impl flutter_rust_bridge::IntoIntoDart<crate::bindings::VodozemacOlmSessionCreationResult>
+    for crate::bindings::VodozemacOlmSessionCreationResult
 {
-    fn into_into_dart(self) -> crate::api::VodozemacOlmSessionCreationResult {
+    fn into_into_dart(self) -> crate::bindings::VodozemacOlmSessionCreationResult {
         self
     }
 }
 // Codec=Dco (DartCObject based), see doc to use other codecs
-impl flutter_rust_bridge::IntoDart for crate::api::VodozemacOneTimeKey {
+impl flutter_rust_bridge::IntoDart for crate::bindings::VodozemacOneTimeKey {
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         [
             self.keyid.into_into_dart().into_dart(),
@@ -2186,27 +2203,30 @@ impl flutter_rust_bridge::IntoDart for crate::api::VodozemacOneTimeKey {
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
-    for crate::api::VodozemacOneTimeKey
+    for crate::bindings::VodozemacOneTimeKey
 {
 }
-impl flutter_rust_bridge::IntoIntoDart<crate::api::VodozemacOneTimeKey>
-    for crate::api::VodozemacOneTimeKey
+impl flutter_rust_bridge::IntoIntoDart<crate::bindings::VodozemacOneTimeKey>
+    for crate::bindings::VodozemacOneTimeKey
 {
-    fn into_into_dart(self) -> crate::api::VodozemacOneTimeKey {
+    fn into_into_dart(self) -> crate::bindings::VodozemacOneTimeKey {
         self
     }
 }
 // Codec=Dco (DartCObject based), see doc to use other codecs
-impl flutter_rust_bridge::IntoDart for crate::api::VodozemacSession {
+impl flutter_rust_bridge::IntoDart for crate::bindings::VodozemacSession {
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         [self.session.into_into_dart().into_dart()].into_dart()
     }
 }
-impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for crate::api::VodozemacSession {}
-impl flutter_rust_bridge::IntoIntoDart<crate::api::VodozemacSession>
-    for crate::api::VodozemacSession
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for crate::bindings::VodozemacSession
 {
-    fn into_into_dart(self) -> crate::api::VodozemacSession {
+}
+impl flutter_rust_bridge::IntoIntoDart<crate::bindings::VodozemacSession>
+    for crate::bindings::VodozemacSession
+{
+    fn into_into_dart(self) -> crate::bindings::VodozemacSession {
         self
     }
 }
@@ -2322,7 +2342,7 @@ impl SseEncode for bool {
     }
 }
 
-impl SseEncode for crate::api::DecryptResult {
+impl SseEncode for crate::bindings::DecryptResult {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
         <String>::sse_encode(self.0, serializer);
@@ -2340,12 +2360,12 @@ impl SseEncode for Vec<u8> {
     }
 }
 
-impl SseEncode for Vec<crate::api::VodozemacOneTimeKey> {
+impl SseEncode for Vec<crate::bindings::VodozemacOneTimeKey> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
         <i32>::sse_encode(self.len() as _, serializer);
         for item in self {
-            <crate::api::VodozemacOneTimeKey>::sse_encode(item, serializer);
+            <crate::bindings::VodozemacOneTimeKey>::sse_encode(item, serializer);
         }
     }
 }
@@ -2415,94 +2435,94 @@ impl SseEncode for usize {
     }
 }
 
-impl SseEncode for crate::api::VodozemacAccount {
+impl SseEncode for crate::bindings::VodozemacAccount {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
         <RustOpaqueNom<std::sync::RwLock<Account>>>::sse_encode(self.account, serializer);
     }
 }
 
-impl SseEncode for crate::api::VodozemacCurve25519PublicKey {
+impl SseEncode for crate::bindings::VodozemacCurve25519PublicKey {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
         <RustOpaqueNom<Curve25519PublicKey>>::sse_encode(self.key, serializer);
     }
 }
 
-impl SseEncode for crate::api::VodozemacEd25519PublicKey {
+impl SseEncode for crate::bindings::VodozemacEd25519PublicKey {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
         <RustOpaqueNom<Ed25519PublicKey>>::sse_encode(self.key, serializer);
     }
 }
 
-impl SseEncode for crate::api::VodozemacEd25519Signature {
+impl SseEncode for crate::bindings::VodozemacEd25519Signature {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
         <RustOpaqueNom<Ed25519Signature>>::sse_encode(self.signature, serializer);
     }
 }
 
-impl SseEncode for crate::api::VodozemacGroupSession {
+impl SseEncode for crate::bindings::VodozemacGroupSession {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
         <RustOpaqueNom<RwLock<GroupSession>>>::sse_encode(self.session, serializer);
     }
 }
 
-impl SseEncode for crate::api::VodozemacIdentityKeys {
+impl SseEncode for crate::bindings::VodozemacIdentityKeys {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <crate::api::VodozemacEd25519PublicKey>::sse_encode(self.ed25519, serializer);
-        <crate::api::VodozemacCurve25519PublicKey>::sse_encode(self.curve25519, serializer);
+        <crate::bindings::VodozemacEd25519PublicKey>::sse_encode(self.ed25519, serializer);
+        <crate::bindings::VodozemacCurve25519PublicKey>::sse_encode(self.curve25519, serializer);
     }
 }
 
-impl SseEncode for crate::api::VodozemacInboundGroupSession {
+impl SseEncode for crate::bindings::VodozemacInboundGroupSession {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
         <RustOpaqueNom<RwLock<InboundGroupSession>>>::sse_encode(self.session, serializer);
     }
 }
 
-impl SseEncode for crate::api::VodozemacMegolmSessionConfig {
+impl SseEncode for crate::bindings::VodozemacMegolmSessionConfig {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
         <RustOpaqueNom<MegolmSessionConfig>>::sse_encode(self.config, serializer);
     }
 }
 
-impl SseEncode for crate::api::VodozemacOlmMessage {
+impl SseEncode for crate::bindings::VodozemacOlmMessage {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
         <RustOpaqueNom<OlmMessage>>::sse_encode(self.msg, serializer);
     }
 }
 
-impl SseEncode for crate::api::VodozemacOlmSessionConfig {
+impl SseEncode for crate::bindings::VodozemacOlmSessionConfig {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
         <RustOpaqueNom<OlmSessionConfig>>::sse_encode(self.config, serializer);
     }
 }
 
-impl SseEncode for crate::api::VodozemacOlmSessionCreationResult {
+impl SseEncode for crate::bindings::VodozemacOlmSessionCreationResult {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <crate::api::VodozemacSession>::sse_encode(self.session, serializer);
+        <crate::bindings::VodozemacSession>::sse_encode(self.session, serializer);
         <String>::sse_encode(self.plaintext, serializer);
     }
 }
 
-impl SseEncode for crate::api::VodozemacOneTimeKey {
+impl SseEncode for crate::bindings::VodozemacOneTimeKey {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
         <String>::sse_encode(self.keyid, serializer);
-        <crate::api::VodozemacCurve25519PublicKey>::sse_encode(self.key, serializer);
+        <crate::bindings::VodozemacCurve25519PublicKey>::sse_encode(self.key, serializer);
     }
 }
 
-impl SseEncode for crate::api::VodozemacSession {
+impl SseEncode for crate::bindings::VodozemacSession {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
         <RustOpaqueNom<RwLock<Session>>>::sse_encode(self.session, serializer);
@@ -2524,7 +2544,7 @@ mod io {
     // Section: imports
 
     use super::*;
-    use crate::api::*;
+    use crate::bindings::*;
     use crate::*;
     use flutter_rust_bridge::for_generated::byteorder::{
         NativeEndian, ReadBytesExt, WriteBytesExt,
@@ -2613,92 +2633,92 @@ mod io {
             String::from_utf8(vec).unwrap()
         }
     }
-    impl CstDecode<crate::api::VodozemacAccount> for *mut wire_cst_vodozemac_account {
+    impl CstDecode<crate::bindings::VodozemacAccount> for *mut wire_cst_vodozemac_account {
         // Codec=Cst (C-struct based), see doc to use other codecs
-        fn cst_decode(self) -> crate::api::VodozemacAccount {
+        fn cst_decode(self) -> crate::bindings::VodozemacAccount {
             let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
-            CstDecode::<crate::api::VodozemacAccount>::cst_decode(*wrap).into()
+            CstDecode::<crate::bindings::VodozemacAccount>::cst_decode(*wrap).into()
         }
     }
-    impl CstDecode<crate::api::VodozemacCurve25519PublicKey>
+    impl CstDecode<crate::bindings::VodozemacCurve25519PublicKey>
         for *mut wire_cst_vodozemac_curve_25519_public_key
     {
         // Codec=Cst (C-struct based), see doc to use other codecs
-        fn cst_decode(self) -> crate::api::VodozemacCurve25519PublicKey {
+        fn cst_decode(self) -> crate::bindings::VodozemacCurve25519PublicKey {
             let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
-            CstDecode::<crate::api::VodozemacCurve25519PublicKey>::cst_decode(*wrap).into()
+            CstDecode::<crate::bindings::VodozemacCurve25519PublicKey>::cst_decode(*wrap).into()
         }
     }
-    impl CstDecode<crate::api::VodozemacEd25519PublicKey>
+    impl CstDecode<crate::bindings::VodozemacEd25519PublicKey>
         for *mut wire_cst_vodozemac_ed_25519_public_key
     {
         // Codec=Cst (C-struct based), see doc to use other codecs
-        fn cst_decode(self) -> crate::api::VodozemacEd25519PublicKey {
+        fn cst_decode(self) -> crate::bindings::VodozemacEd25519PublicKey {
             let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
-            CstDecode::<crate::api::VodozemacEd25519PublicKey>::cst_decode(*wrap).into()
+            CstDecode::<crate::bindings::VodozemacEd25519PublicKey>::cst_decode(*wrap).into()
         }
     }
-    impl CstDecode<crate::api::VodozemacEd25519Signature>
+    impl CstDecode<crate::bindings::VodozemacEd25519Signature>
         for *mut wire_cst_vodozemac_ed_25519_signature
     {
         // Codec=Cst (C-struct based), see doc to use other codecs
-        fn cst_decode(self) -> crate::api::VodozemacEd25519Signature {
+        fn cst_decode(self) -> crate::bindings::VodozemacEd25519Signature {
             let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
-            CstDecode::<crate::api::VodozemacEd25519Signature>::cst_decode(*wrap).into()
+            CstDecode::<crate::bindings::VodozemacEd25519Signature>::cst_decode(*wrap).into()
         }
     }
-    impl CstDecode<crate::api::VodozemacGroupSession> for *mut wire_cst_vodozemac_group_session {
+    impl CstDecode<crate::bindings::VodozemacGroupSession> for *mut wire_cst_vodozemac_group_session {
         // Codec=Cst (C-struct based), see doc to use other codecs
-        fn cst_decode(self) -> crate::api::VodozemacGroupSession {
+        fn cst_decode(self) -> crate::bindings::VodozemacGroupSession {
             let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
-            CstDecode::<crate::api::VodozemacGroupSession>::cst_decode(*wrap).into()
+            CstDecode::<crate::bindings::VodozemacGroupSession>::cst_decode(*wrap).into()
         }
     }
-    impl CstDecode<crate::api::VodozemacInboundGroupSession>
+    impl CstDecode<crate::bindings::VodozemacInboundGroupSession>
         for *mut wire_cst_vodozemac_inbound_group_session
     {
         // Codec=Cst (C-struct based), see doc to use other codecs
-        fn cst_decode(self) -> crate::api::VodozemacInboundGroupSession {
+        fn cst_decode(self) -> crate::bindings::VodozemacInboundGroupSession {
             let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
-            CstDecode::<crate::api::VodozemacInboundGroupSession>::cst_decode(*wrap).into()
+            CstDecode::<crate::bindings::VodozemacInboundGroupSession>::cst_decode(*wrap).into()
         }
     }
-    impl CstDecode<crate::api::VodozemacMegolmSessionConfig>
+    impl CstDecode<crate::bindings::VodozemacMegolmSessionConfig>
         for *mut wire_cst_vodozemac_megolm_session_config
     {
         // Codec=Cst (C-struct based), see doc to use other codecs
-        fn cst_decode(self) -> crate::api::VodozemacMegolmSessionConfig {
+        fn cst_decode(self) -> crate::bindings::VodozemacMegolmSessionConfig {
             let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
-            CstDecode::<crate::api::VodozemacMegolmSessionConfig>::cst_decode(*wrap).into()
+            CstDecode::<crate::bindings::VodozemacMegolmSessionConfig>::cst_decode(*wrap).into()
         }
     }
-    impl CstDecode<crate::api::VodozemacOlmMessage> for *mut wire_cst_vodozemac_olm_message {
+    impl CstDecode<crate::bindings::VodozemacOlmMessage> for *mut wire_cst_vodozemac_olm_message {
         // Codec=Cst (C-struct based), see doc to use other codecs
-        fn cst_decode(self) -> crate::api::VodozemacOlmMessage {
+        fn cst_decode(self) -> crate::bindings::VodozemacOlmMessage {
             let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
-            CstDecode::<crate::api::VodozemacOlmMessage>::cst_decode(*wrap).into()
+            CstDecode::<crate::bindings::VodozemacOlmMessage>::cst_decode(*wrap).into()
         }
     }
-    impl CstDecode<crate::api::VodozemacOlmSessionConfig>
+    impl CstDecode<crate::bindings::VodozemacOlmSessionConfig>
         for *mut wire_cst_vodozemac_olm_session_config
     {
         // Codec=Cst (C-struct based), see doc to use other codecs
-        fn cst_decode(self) -> crate::api::VodozemacOlmSessionConfig {
+        fn cst_decode(self) -> crate::bindings::VodozemacOlmSessionConfig {
             let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
-            CstDecode::<crate::api::VodozemacOlmSessionConfig>::cst_decode(*wrap).into()
+            CstDecode::<crate::bindings::VodozemacOlmSessionConfig>::cst_decode(*wrap).into()
         }
     }
-    impl CstDecode<crate::api::VodozemacSession> for *mut wire_cst_vodozemac_session {
+    impl CstDecode<crate::bindings::VodozemacSession> for *mut wire_cst_vodozemac_session {
         // Codec=Cst (C-struct based), see doc to use other codecs
-        fn cst_decode(self) -> crate::api::VodozemacSession {
+        fn cst_decode(self) -> crate::bindings::VodozemacSession {
             let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
-            CstDecode::<crate::api::VodozemacSession>::cst_decode(*wrap).into()
+            CstDecode::<crate::bindings::VodozemacSession>::cst_decode(*wrap).into()
         }
     }
-    impl CstDecode<crate::api::DecryptResult> for wire_cst_decrypt_result {
+    impl CstDecode<crate::bindings::DecryptResult> for wire_cst_decrypt_result {
         // Codec=Cst (C-struct based), see doc to use other codecs
-        fn cst_decode(self) -> crate::api::DecryptResult {
-            crate::api::DecryptResult(self.field0.cst_decode(), self.field1.cst_decode())
+        fn cst_decode(self) -> crate::bindings::DecryptResult {
+            crate::bindings::DecryptResult(self.field0.cst_decode(), self.field1.cst_decode())
         }
     }
     impl CstDecode<Vec<u8>> for *mut wire_cst_list_prim_u_8_loose {
@@ -2719,9 +2739,11 @@ mod io {
             }
         }
     }
-    impl CstDecode<Vec<crate::api::VodozemacOneTimeKey>> for *mut wire_cst_list_vodozemac_one_time_key {
+    impl CstDecode<Vec<crate::bindings::VodozemacOneTimeKey>>
+        for *mut wire_cst_list_vodozemac_one_time_key
+    {
         // Codec=Cst (C-struct based), see doc to use other codecs
-        fn cst_decode(self) -> Vec<crate::api::VodozemacOneTimeKey> {
+        fn cst_decode(self) -> Vec<crate::bindings::VodozemacOneTimeKey> {
             let vec = unsafe {
                 let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
                 flutter_rust_bridge::for_generated::vec_from_leak_ptr(wrap.ptr, wrap.len)
@@ -2743,117 +2765,123 @@ mod io {
             flutter_rust_bridge::for_generated::from_vec_to_array(vec)
         }
     }
-    impl CstDecode<crate::api::VodozemacAccount> for wire_cst_vodozemac_account {
+    impl CstDecode<crate::bindings::VodozemacAccount> for wire_cst_vodozemac_account {
         // Codec=Cst (C-struct based), see doc to use other codecs
-        fn cst_decode(self) -> crate::api::VodozemacAccount {
-            crate::api::VodozemacAccount {
+        fn cst_decode(self) -> crate::bindings::VodozemacAccount {
+            crate::bindings::VodozemacAccount {
                 account: self.account.cst_decode(),
             }
         }
     }
-    impl CstDecode<crate::api::VodozemacCurve25519PublicKey>
+    impl CstDecode<crate::bindings::VodozemacCurve25519PublicKey>
         for wire_cst_vodozemac_curve_25519_public_key
     {
         // Codec=Cst (C-struct based), see doc to use other codecs
-        fn cst_decode(self) -> crate::api::VodozemacCurve25519PublicKey {
-            crate::api::VodozemacCurve25519PublicKey {
+        fn cst_decode(self) -> crate::bindings::VodozemacCurve25519PublicKey {
+            crate::bindings::VodozemacCurve25519PublicKey {
                 key: self.key.cst_decode(),
             }
         }
     }
-    impl CstDecode<crate::api::VodozemacEd25519PublicKey> for wire_cst_vodozemac_ed_25519_public_key {
+    impl CstDecode<crate::bindings::VodozemacEd25519PublicKey>
+        for wire_cst_vodozemac_ed_25519_public_key
+    {
         // Codec=Cst (C-struct based), see doc to use other codecs
-        fn cst_decode(self) -> crate::api::VodozemacEd25519PublicKey {
-            crate::api::VodozemacEd25519PublicKey {
+        fn cst_decode(self) -> crate::bindings::VodozemacEd25519PublicKey {
+            crate::bindings::VodozemacEd25519PublicKey {
                 key: self.key.cst_decode(),
             }
         }
     }
-    impl CstDecode<crate::api::VodozemacEd25519Signature> for wire_cst_vodozemac_ed_25519_signature {
+    impl CstDecode<crate::bindings::VodozemacEd25519Signature>
+        for wire_cst_vodozemac_ed_25519_signature
+    {
         // Codec=Cst (C-struct based), see doc to use other codecs
-        fn cst_decode(self) -> crate::api::VodozemacEd25519Signature {
-            crate::api::VodozemacEd25519Signature {
+        fn cst_decode(self) -> crate::bindings::VodozemacEd25519Signature {
+            crate::bindings::VodozemacEd25519Signature {
                 signature: self.signature.cst_decode(),
             }
         }
     }
-    impl CstDecode<crate::api::VodozemacGroupSession> for wire_cst_vodozemac_group_session {
+    impl CstDecode<crate::bindings::VodozemacGroupSession> for wire_cst_vodozemac_group_session {
         // Codec=Cst (C-struct based), see doc to use other codecs
-        fn cst_decode(self) -> crate::api::VodozemacGroupSession {
-            crate::api::VodozemacGroupSession {
+        fn cst_decode(self) -> crate::bindings::VodozemacGroupSession {
+            crate::bindings::VodozemacGroupSession {
                 session: self.session.cst_decode(),
             }
         }
     }
-    impl CstDecode<crate::api::VodozemacIdentityKeys> for wire_cst_vodozemac_identity_keys {
+    impl CstDecode<crate::bindings::VodozemacIdentityKeys> for wire_cst_vodozemac_identity_keys {
         // Codec=Cst (C-struct based), see doc to use other codecs
-        fn cst_decode(self) -> crate::api::VodozemacIdentityKeys {
-            crate::api::VodozemacIdentityKeys {
+        fn cst_decode(self) -> crate::bindings::VodozemacIdentityKeys {
+            crate::bindings::VodozemacIdentityKeys {
                 ed25519: self.ed25519.cst_decode(),
                 curve25519: self.curve25519.cst_decode(),
             }
         }
     }
-    impl CstDecode<crate::api::VodozemacInboundGroupSession>
+    impl CstDecode<crate::bindings::VodozemacInboundGroupSession>
         for wire_cst_vodozemac_inbound_group_session
     {
         // Codec=Cst (C-struct based), see doc to use other codecs
-        fn cst_decode(self) -> crate::api::VodozemacInboundGroupSession {
-            crate::api::VodozemacInboundGroupSession {
+        fn cst_decode(self) -> crate::bindings::VodozemacInboundGroupSession {
+            crate::bindings::VodozemacInboundGroupSession {
                 session: self.session.cst_decode(),
             }
         }
     }
-    impl CstDecode<crate::api::VodozemacMegolmSessionConfig>
+    impl CstDecode<crate::bindings::VodozemacMegolmSessionConfig>
         for wire_cst_vodozemac_megolm_session_config
     {
         // Codec=Cst (C-struct based), see doc to use other codecs
-        fn cst_decode(self) -> crate::api::VodozemacMegolmSessionConfig {
-            crate::api::VodozemacMegolmSessionConfig {
+        fn cst_decode(self) -> crate::bindings::VodozemacMegolmSessionConfig {
+            crate::bindings::VodozemacMegolmSessionConfig {
                 config: self.config.cst_decode(),
             }
         }
     }
-    impl CstDecode<crate::api::VodozemacOlmMessage> for wire_cst_vodozemac_olm_message {
+    impl CstDecode<crate::bindings::VodozemacOlmMessage> for wire_cst_vodozemac_olm_message {
         // Codec=Cst (C-struct based), see doc to use other codecs
-        fn cst_decode(self) -> crate::api::VodozemacOlmMessage {
-            crate::api::VodozemacOlmMessage {
+        fn cst_decode(self) -> crate::bindings::VodozemacOlmMessage {
+            crate::bindings::VodozemacOlmMessage {
                 msg: self.msg.cst_decode(),
             }
         }
     }
-    impl CstDecode<crate::api::VodozemacOlmSessionConfig> for wire_cst_vodozemac_olm_session_config {
+    impl CstDecode<crate::bindings::VodozemacOlmSessionConfig>
+        for wire_cst_vodozemac_olm_session_config
+    {
         // Codec=Cst (C-struct based), see doc to use other codecs
-        fn cst_decode(self) -> crate::api::VodozemacOlmSessionConfig {
-            crate::api::VodozemacOlmSessionConfig {
+        fn cst_decode(self) -> crate::bindings::VodozemacOlmSessionConfig {
+            crate::bindings::VodozemacOlmSessionConfig {
                 config: self.config.cst_decode(),
             }
         }
     }
-    impl CstDecode<crate::api::VodozemacOlmSessionCreationResult>
+    impl CstDecode<crate::bindings::VodozemacOlmSessionCreationResult>
         for wire_cst_vodozemac_olm_session_creation_result
     {
         // Codec=Cst (C-struct based), see doc to use other codecs
-        fn cst_decode(self) -> crate::api::VodozemacOlmSessionCreationResult {
-            crate::api::VodozemacOlmSessionCreationResult {
+        fn cst_decode(self) -> crate::bindings::VodozemacOlmSessionCreationResult {
+            crate::bindings::VodozemacOlmSessionCreationResult {
                 session: self.session.cst_decode(),
                 plaintext: self.plaintext.cst_decode(),
             }
         }
     }
-    impl CstDecode<crate::api::VodozemacOneTimeKey> for wire_cst_vodozemac_one_time_key {
+    impl CstDecode<crate::bindings::VodozemacOneTimeKey> for wire_cst_vodozemac_one_time_key {
         // Codec=Cst (C-struct based), see doc to use other codecs
-        fn cst_decode(self) -> crate::api::VodozemacOneTimeKey {
-            crate::api::VodozemacOneTimeKey {
+        fn cst_decode(self) -> crate::bindings::VodozemacOneTimeKey {
+            crate::bindings::VodozemacOneTimeKey {
                 keyid: self.keyid.cst_decode(),
                 key: self.key.cst_decode(),
             }
         }
     }
-    impl CstDecode<crate::api::VodozemacSession> for wire_cst_vodozemac_session {
+    impl CstDecode<crate::bindings::VodozemacSession> for wire_cst_vodozemac_session {
         // Codec=Cst (C-struct based), see doc to use other codecs
-        fn cst_decode(self) -> crate::api::VodozemacSession {
-            crate::api::VodozemacSession {
+        fn cst_decode(self) -> crate::bindings::VodozemacSession {
+            crate::bindings::VodozemacSession {
                 session: self.session.cst_decode(),
             }
         }
@@ -3032,13 +3060,13 @@ mod io {
     }
 
     #[unsafe(no_mangle)]
-    pub extern "C" fn frbgen_generic_olm_bindings_wire__crate__api__vodozemac_account_create_inbound_session(
+    pub extern "C" fn frbgen_vodozemac_wire__crate__bindings__vodozemac_account_create_inbound_session(
         port_: i64,
         that: *mut wire_cst_vodozemac_account,
         their_identity_key: *mut wire_cst_vodozemac_curve_25519_public_key,
         pre_key_message_base64: *mut wire_cst_list_prim_u_8_strict,
     ) {
-        wire__crate__api__vodozemac_account_create_inbound_session_impl(
+        wire__crate__bindings__vodozemac_account_create_inbound_session_impl(
             port_,
             that,
             their_identity_key,
@@ -3047,14 +3075,14 @@ mod io {
     }
 
     #[unsafe(no_mangle)]
-    pub extern "C" fn frbgen_generic_olm_bindings_wire__crate__api__vodozemac_account_create_outbound_session(
+    pub extern "C" fn frbgen_vodozemac_wire__crate__bindings__vodozemac_account_create_outbound_session(
         port_: i64,
         that: *mut wire_cst_vodozemac_account,
         config: *mut wire_cst_vodozemac_olm_session_config,
         identity_key: *mut wire_cst_vodozemac_curve_25519_public_key,
         one_time_key: *mut wire_cst_vodozemac_curve_25519_public_key,
     ) {
-        wire__crate__api__vodozemac_account_create_outbound_session_impl(
+        wire__crate__bindings__vodozemac_account_create_outbound_session_impl(
             port_,
             that,
             config,
@@ -3064,530 +3092,540 @@ mod io {
     }
 
     #[unsafe(no_mangle)]
-    pub extern "C" fn frbgen_generic_olm_bindings_wire__crate__api__vodozemac_account_curve25519_key(
+    pub extern "C" fn frbgen_vodozemac_wire__crate__bindings__vodozemac_account_curve25519_key(
         that: *mut wire_cst_vodozemac_account,
     ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-        wire__crate__api__vodozemac_account_curve25519_key_impl(that)
+        wire__crate__bindings__vodozemac_account_curve25519_key_impl(that)
     }
 
     #[unsafe(no_mangle)]
-    pub extern "C" fn frbgen_generic_olm_bindings_wire__crate__api__vodozemac_account_ed25519_key(
+    pub extern "C" fn frbgen_vodozemac_wire__crate__bindings__vodozemac_account_ed25519_key(
         that: *mut wire_cst_vodozemac_account,
     ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-        wire__crate__api__vodozemac_account_ed25519_key_impl(that)
+        wire__crate__bindings__vodozemac_account_ed25519_key_impl(that)
     }
 
     #[unsafe(no_mangle)]
-    pub extern "C" fn frbgen_generic_olm_bindings_wire__crate__api__vodozemac_account_fallback_key(
+    pub extern "C" fn frbgen_vodozemac_wire__crate__bindings__vodozemac_account_fallback_key(
         that: *mut wire_cst_vodozemac_account,
     ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-        wire__crate__api__vodozemac_account_fallback_key_impl(that)
+        wire__crate__bindings__vodozemac_account_fallback_key_impl(that)
     }
 
     #[unsafe(no_mangle)]
-    pub extern "C" fn frbgen_generic_olm_bindings_wire__crate__api__vodozemac_account_forget_fallback_key(
+    pub extern "C" fn frbgen_vodozemac_wire__crate__bindings__vodozemac_account_forget_fallback_key(
         that: *mut wire_cst_vodozemac_account,
     ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-        wire__crate__api__vodozemac_account_forget_fallback_key_impl(that)
+        wire__crate__bindings__vodozemac_account_forget_fallback_key_impl(that)
     }
 
     #[unsafe(no_mangle)]
-    pub extern "C" fn frbgen_generic_olm_bindings_wire__crate__api__vodozemac_account_from_olm_pickle_encrypted(
+    pub extern "C" fn frbgen_vodozemac_wire__crate__bindings__vodozemac_account_from_olm_pickle_encrypted(
         port_: i64,
         pickle: *mut wire_cst_list_prim_u_8_strict,
         pickle_key: *mut wire_cst_list_prim_u_8_loose,
     ) {
-        wire__crate__api__vodozemac_account_from_olm_pickle_encrypted_impl(
+        wire__crate__bindings__vodozemac_account_from_olm_pickle_encrypted_impl(
             port_, pickle, pickle_key,
         )
     }
 
     #[unsafe(no_mangle)]
-    pub extern "C" fn frbgen_generic_olm_bindings_wire__crate__api__vodozemac_account_from_pickle_encrypted(
+    pub extern "C" fn frbgen_vodozemac_wire__crate__bindings__vodozemac_account_from_pickle_encrypted(
         port_: i64,
         pickle: *mut wire_cst_list_prim_u_8_strict,
         pickle_key: *mut wire_cst_list_prim_u_8_strict,
     ) {
-        wire__crate__api__vodozemac_account_from_pickle_encrypted_impl(port_, pickle, pickle_key)
+        wire__crate__bindings__vodozemac_account_from_pickle_encrypted_impl(
+            port_, pickle, pickle_key,
+        )
     }
 
     #[unsafe(no_mangle)]
-    pub extern "C" fn frbgen_generic_olm_bindings_wire__crate__api__vodozemac_account_generate_fallback_key(
+    pub extern "C" fn frbgen_vodozemac_wire__crate__bindings__vodozemac_account_generate_fallback_key(
         port_: i64,
         that: *mut wire_cst_vodozemac_account,
     ) {
-        wire__crate__api__vodozemac_account_generate_fallback_key_impl(port_, that)
+        wire__crate__bindings__vodozemac_account_generate_fallback_key_impl(port_, that)
     }
 
     #[unsafe(no_mangle)]
-    pub extern "C" fn frbgen_generic_olm_bindings_wire__crate__api__vodozemac_account_generate_one_time_keys(
+    pub extern "C" fn frbgen_vodozemac_wire__crate__bindings__vodozemac_account_generate_one_time_keys(
         port_: i64,
         that: *mut wire_cst_vodozemac_account,
         count: usize,
     ) {
-        wire__crate__api__vodozemac_account_generate_one_time_keys_impl(port_, that, count)
+        wire__crate__bindings__vodozemac_account_generate_one_time_keys_impl(port_, that, count)
     }
 
     #[unsafe(no_mangle)]
-    pub extern "C" fn frbgen_generic_olm_bindings_wire__crate__api__vodozemac_account_identity_keys(
+    pub extern "C" fn frbgen_vodozemac_wire__crate__bindings__vodozemac_account_identity_keys(
         that: *mut wire_cst_vodozemac_account,
     ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-        wire__crate__api__vodozemac_account_identity_keys_impl(that)
+        wire__crate__bindings__vodozemac_account_identity_keys_impl(that)
     }
 
     #[unsafe(no_mangle)]
-    pub extern "C" fn frbgen_generic_olm_bindings_wire__crate__api__vodozemac_account_mark_keys_as_published(
+    pub extern "C" fn frbgen_vodozemac_wire__crate__bindings__vodozemac_account_mark_keys_as_published(
         that: *mut wire_cst_vodozemac_account,
     ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-        wire__crate__api__vodozemac_account_mark_keys_as_published_impl(that)
+        wire__crate__bindings__vodozemac_account_mark_keys_as_published_impl(that)
     }
 
     #[unsafe(no_mangle)]
-    pub extern "C" fn frbgen_generic_olm_bindings_wire__crate__api__vodozemac_account_max_number_of_one_time_keys(
+    pub extern "C" fn frbgen_vodozemac_wire__crate__bindings__vodozemac_account_max_number_of_one_time_keys(
         that: *mut wire_cst_vodozemac_account,
     ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-        wire__crate__api__vodozemac_account_max_number_of_one_time_keys_impl(that)
+        wire__crate__bindings__vodozemac_account_max_number_of_one_time_keys_impl(that)
     }
 
     #[unsafe(no_mangle)]
-    pub extern "C" fn frbgen_generic_olm_bindings_wire__crate__api__vodozemac_account_new(
+    pub extern "C" fn frbgen_vodozemac_wire__crate__bindings__vodozemac_account_new(
     ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-        wire__crate__api__vodozemac_account_new_impl()
+        wire__crate__bindings__vodozemac_account_new_impl()
     }
 
     #[unsafe(no_mangle)]
-    pub extern "C" fn frbgen_generic_olm_bindings_wire__crate__api__vodozemac_account_one_time_keys(
+    pub extern "C" fn frbgen_vodozemac_wire__crate__bindings__vodozemac_account_one_time_keys(
         that: *mut wire_cst_vodozemac_account,
     ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-        wire__crate__api__vodozemac_account_one_time_keys_impl(that)
+        wire__crate__bindings__vodozemac_account_one_time_keys_impl(that)
     }
 
     #[unsafe(no_mangle)]
-    pub extern "C" fn frbgen_generic_olm_bindings_wire__crate__api__vodozemac_account_pickle_encrypted(
+    pub extern "C" fn frbgen_vodozemac_wire__crate__bindings__vodozemac_account_pickle_encrypted(
         port_: i64,
         that: *mut wire_cst_vodozemac_account,
         pickle_key: *mut wire_cst_list_prim_u_8_strict,
     ) {
-        wire__crate__api__vodozemac_account_pickle_encrypted_impl(port_, that, pickle_key)
+        wire__crate__bindings__vodozemac_account_pickle_encrypted_impl(port_, that, pickle_key)
     }
 
     #[unsafe(no_mangle)]
-    pub extern "C" fn frbgen_generic_olm_bindings_wire__crate__api__vodozemac_account_sign(
+    pub extern "C" fn frbgen_vodozemac_wire__crate__bindings__vodozemac_account_sign(
         port_: i64,
         that: *mut wire_cst_vodozemac_account,
         message: *mut wire_cst_list_prim_u_8_strict,
     ) {
-        wire__crate__api__vodozemac_account_sign_impl(port_, that, message)
+        wire__crate__bindings__vodozemac_account_sign_impl(port_, that, message)
     }
 
     #[unsafe(no_mangle)]
-    pub extern "C" fn frbgen_generic_olm_bindings_wire__crate__api__vodozemac_curve_25519_public_key_as_bytes(
+    pub extern "C" fn frbgen_vodozemac_wire__crate__bindings__vodozemac_curve_25519_public_key_as_bytes(
         that: *mut wire_cst_vodozemac_curve_25519_public_key,
     ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-        wire__crate__api__vodozemac_curve_25519_public_key_as_bytes_impl(that)
+        wire__crate__bindings__vodozemac_curve_25519_public_key_as_bytes_impl(that)
     }
 
     #[unsafe(no_mangle)]
-    pub extern "C" fn frbgen_generic_olm_bindings_wire__crate__api__vodozemac_curve_25519_public_key_from_base64(
+    pub extern "C" fn frbgen_vodozemac_wire__crate__bindings__vodozemac_curve_25519_public_key_from_base64(
         base64_key: *mut wire_cst_list_prim_u_8_strict,
     ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-        wire__crate__api__vodozemac_curve_25519_public_key_from_base64_impl(base64_key)
+        wire__crate__bindings__vodozemac_curve_25519_public_key_from_base64_impl(base64_key)
     }
 
     #[unsafe(no_mangle)]
-    pub extern "C" fn frbgen_generic_olm_bindings_wire__crate__api__vodozemac_curve_25519_public_key_from_slice(
+    pub extern "C" fn frbgen_vodozemac_wire__crate__bindings__vodozemac_curve_25519_public_key_from_slice(
         bytes: *mut wire_cst_list_prim_u_8_strict,
     ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-        wire__crate__api__vodozemac_curve_25519_public_key_from_slice_impl(bytes)
+        wire__crate__bindings__vodozemac_curve_25519_public_key_from_slice_impl(bytes)
     }
 
     #[unsafe(no_mangle)]
-    pub extern "C" fn frbgen_generic_olm_bindings_wire__crate__api__vodozemac_curve_25519_public_key_to_base64(
+    pub extern "C" fn frbgen_vodozemac_wire__crate__bindings__vodozemac_curve_25519_public_key_to_base64(
         that: *mut wire_cst_vodozemac_curve_25519_public_key,
     ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-        wire__crate__api__vodozemac_curve_25519_public_key_to_base64_impl(that)
+        wire__crate__bindings__vodozemac_curve_25519_public_key_to_base64_impl(that)
     }
 
     #[unsafe(no_mangle)]
-    pub extern "C" fn frbgen_generic_olm_bindings_wire__crate__api__vodozemac_ed_25519_public_key_as_bytes(
+    pub extern "C" fn frbgen_vodozemac_wire__crate__bindings__vodozemac_ed_25519_public_key_as_bytes(
         that: *mut wire_cst_vodozemac_ed_25519_public_key,
     ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-        wire__crate__api__vodozemac_ed_25519_public_key_as_bytes_impl(that)
+        wire__crate__bindings__vodozemac_ed_25519_public_key_as_bytes_impl(that)
     }
 
     #[unsafe(no_mangle)]
-    pub extern "C" fn frbgen_generic_olm_bindings_wire__crate__api__vodozemac_ed_25519_public_key_from_base64(
+    pub extern "C" fn frbgen_vodozemac_wire__crate__bindings__vodozemac_ed_25519_public_key_from_base64(
         base64_key: *mut wire_cst_list_prim_u_8_strict,
     ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-        wire__crate__api__vodozemac_ed_25519_public_key_from_base64_impl(base64_key)
+        wire__crate__bindings__vodozemac_ed_25519_public_key_from_base64_impl(base64_key)
     }
 
     #[unsafe(no_mangle)]
-    pub extern "C" fn frbgen_generic_olm_bindings_wire__crate__api__vodozemac_ed_25519_public_key_from_slice(
+    pub extern "C" fn frbgen_vodozemac_wire__crate__bindings__vodozemac_ed_25519_public_key_from_slice(
         bytes: *mut wire_cst_list_prim_u_8_strict,
     ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-        wire__crate__api__vodozemac_ed_25519_public_key_from_slice_impl(bytes)
+        wire__crate__bindings__vodozemac_ed_25519_public_key_from_slice_impl(bytes)
     }
 
     #[unsafe(no_mangle)]
-    pub extern "C" fn frbgen_generic_olm_bindings_wire__crate__api__vodozemac_ed_25519_public_key_to_base64(
+    pub extern "C" fn frbgen_vodozemac_wire__crate__bindings__vodozemac_ed_25519_public_key_to_base64(
         that: *mut wire_cst_vodozemac_ed_25519_public_key,
     ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-        wire__crate__api__vodozemac_ed_25519_public_key_to_base64_impl(that)
+        wire__crate__bindings__vodozemac_ed_25519_public_key_to_base64_impl(that)
     }
 
     #[unsafe(no_mangle)]
-    pub extern "C" fn frbgen_generic_olm_bindings_wire__crate__api__vodozemac_ed_25519_public_key_verify(
+    pub extern "C" fn frbgen_vodozemac_wire__crate__bindings__vodozemac_ed_25519_public_key_verify(
         port_: i64,
         that: *mut wire_cst_vodozemac_ed_25519_public_key,
         message: *mut wire_cst_list_prim_u_8_strict,
         signature: *mut wire_cst_vodozemac_ed_25519_signature,
     ) {
-        wire__crate__api__vodozemac_ed_25519_public_key_verify_impl(port_, that, message, signature)
+        wire__crate__bindings__vodozemac_ed_25519_public_key_verify_impl(
+            port_, that, message, signature,
+        )
     }
 
     #[unsafe(no_mangle)]
-    pub extern "C" fn frbgen_generic_olm_bindings_wire__crate__api__vodozemac_ed_25519_signature_from_base64(
+    pub extern "C" fn frbgen_vodozemac_wire__crate__bindings__vodozemac_ed_25519_signature_from_base64(
         signature: *mut wire_cst_list_prim_u_8_strict,
     ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-        wire__crate__api__vodozemac_ed_25519_signature_from_base64_impl(signature)
+        wire__crate__bindings__vodozemac_ed_25519_signature_from_base64_impl(signature)
     }
 
     #[unsafe(no_mangle)]
-    pub extern "C" fn frbgen_generic_olm_bindings_wire__crate__api__vodozemac_ed_25519_signature_from_slice(
+    pub extern "C" fn frbgen_vodozemac_wire__crate__bindings__vodozemac_ed_25519_signature_from_slice(
         bytes: *mut wire_cst_list_prim_u_8_strict,
     ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-        wire__crate__api__vodozemac_ed_25519_signature_from_slice_impl(bytes)
+        wire__crate__bindings__vodozemac_ed_25519_signature_from_slice_impl(bytes)
     }
 
     #[unsafe(no_mangle)]
-    pub extern "C" fn frbgen_generic_olm_bindings_wire__crate__api__vodozemac_ed_25519_signature_to_base64(
+    pub extern "C" fn frbgen_vodozemac_wire__crate__bindings__vodozemac_ed_25519_signature_to_base64(
         that: *mut wire_cst_vodozemac_ed_25519_signature,
     ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-        wire__crate__api__vodozemac_ed_25519_signature_to_base64_impl(that)
+        wire__crate__bindings__vodozemac_ed_25519_signature_to_base64_impl(that)
     }
 
     #[unsafe(no_mangle)]
-    pub extern "C" fn frbgen_generic_olm_bindings_wire__crate__api__vodozemac_ed_25519_signature_to_bytes(
+    pub extern "C" fn frbgen_vodozemac_wire__crate__bindings__vodozemac_ed_25519_signature_to_bytes(
         that: *mut wire_cst_vodozemac_ed_25519_signature,
     ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-        wire__crate__api__vodozemac_ed_25519_signature_to_bytes_impl(that)
+        wire__crate__bindings__vodozemac_ed_25519_signature_to_bytes_impl(that)
     }
 
     #[unsafe(no_mangle)]
-    pub extern "C" fn frbgen_generic_olm_bindings_wire__crate__api__vodozemac_group_session_encrypt(
+    pub extern "C" fn frbgen_vodozemac_wire__crate__bindings__vodozemac_group_session_encrypt(
         port_: i64,
         that: *mut wire_cst_vodozemac_group_session,
         plaintext: *mut wire_cst_list_prim_u_8_strict,
     ) {
-        wire__crate__api__vodozemac_group_session_encrypt_impl(port_, that, plaintext)
+        wire__crate__bindings__vodozemac_group_session_encrypt_impl(port_, that, plaintext)
     }
 
     #[unsafe(no_mangle)]
-    pub extern "C" fn frbgen_generic_olm_bindings_wire__crate__api__vodozemac_group_session_from_olm_pickle_encrypted(
+    pub extern "C" fn frbgen_vodozemac_wire__crate__bindings__vodozemac_group_session_from_olm_pickle_encrypted(
         port_: i64,
         pickle: *mut wire_cst_list_prim_u_8_strict,
         pickle_key: *mut wire_cst_list_prim_u_8_loose,
     ) {
-        wire__crate__api__vodozemac_group_session_from_olm_pickle_encrypted_impl(
+        wire__crate__bindings__vodozemac_group_session_from_olm_pickle_encrypted_impl(
             port_, pickle, pickle_key,
         )
     }
 
     #[unsafe(no_mangle)]
-    pub extern "C" fn frbgen_generic_olm_bindings_wire__crate__api__vodozemac_group_session_from_pickle_encrypted(
+    pub extern "C" fn frbgen_vodozemac_wire__crate__bindings__vodozemac_group_session_from_pickle_encrypted(
         port_: i64,
         pickle: *mut wire_cst_list_prim_u_8_strict,
         pickle_key: *mut wire_cst_list_prim_u_8_strict,
     ) {
-        wire__crate__api__vodozemac_group_session_from_pickle_encrypted_impl(
+        wire__crate__bindings__vodozemac_group_session_from_pickle_encrypted_impl(
             port_, pickle, pickle_key,
         )
     }
 
     #[unsafe(no_mangle)]
-    pub extern "C" fn frbgen_generic_olm_bindings_wire__crate__api__vodozemac_group_session_message_index(
+    pub extern "C" fn frbgen_vodozemac_wire__crate__bindings__vodozemac_group_session_message_index(
         that: *mut wire_cst_vodozemac_group_session,
     ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-        wire__crate__api__vodozemac_group_session_message_index_impl(that)
+        wire__crate__bindings__vodozemac_group_session_message_index_impl(that)
     }
 
     #[unsafe(no_mangle)]
-    pub extern "C" fn frbgen_generic_olm_bindings_wire__crate__api__vodozemac_group_session_new(
+    pub extern "C" fn frbgen_vodozemac_wire__crate__bindings__vodozemac_group_session_new(
         config: *mut wire_cst_vodozemac_megolm_session_config,
     ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-        wire__crate__api__vodozemac_group_session_new_impl(config)
+        wire__crate__bindings__vodozemac_group_session_new_impl(config)
     }
 
     #[unsafe(no_mangle)]
-    pub extern "C" fn frbgen_generic_olm_bindings_wire__crate__api__vodozemac_group_session_pickle_encrypted(
+    pub extern "C" fn frbgen_vodozemac_wire__crate__bindings__vodozemac_group_session_pickle_encrypted(
         port_: i64,
         that: *mut wire_cst_vodozemac_group_session,
         pickle_key: *mut wire_cst_list_prim_u_8_strict,
     ) {
-        wire__crate__api__vodozemac_group_session_pickle_encrypted_impl(port_, that, pickle_key)
-    }
-
-    #[unsafe(no_mangle)]
-    pub extern "C" fn frbgen_generic_olm_bindings_wire__crate__api__vodozemac_group_session_session_config(
-        port_: i64,
-        that: *mut wire_cst_vodozemac_group_session,
-    ) {
-        wire__crate__api__vodozemac_group_session_session_config_impl(port_, that)
-    }
-
-    #[unsafe(no_mangle)]
-    pub extern "C" fn frbgen_generic_olm_bindings_wire__crate__api__vodozemac_group_session_session_id(
-        that: *mut wire_cst_vodozemac_group_session,
-    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-        wire__crate__api__vodozemac_group_session_session_id_impl(that)
-    }
-
-    #[unsafe(no_mangle)]
-    pub extern "C" fn frbgen_generic_olm_bindings_wire__crate__api__vodozemac_group_session_session_key(
-        port_: i64,
-        that: *mut wire_cst_vodozemac_group_session,
-    ) {
-        wire__crate__api__vodozemac_group_session_session_key_impl(port_, that)
-    }
-
-    #[unsafe(no_mangle)]
-    pub extern "C" fn frbgen_generic_olm_bindings_wire__crate__api__vodozemac_group_session_to_inbound(
-        that: *mut wire_cst_vodozemac_group_session,
-    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-        wire__crate__api__vodozemac_group_session_to_inbound_impl(that)
-    }
-
-    #[unsafe(no_mangle)]
-    pub extern "C" fn frbgen_generic_olm_bindings_wire__crate__api__vodozemac_inbound_group_session_decrypt(
-        port_: i64,
-        that: *mut wire_cst_vodozemac_inbound_group_session,
-        encrypted: *mut wire_cst_list_prim_u_8_strict,
-    ) {
-        wire__crate__api__vodozemac_inbound_group_session_decrypt_impl(port_, that, encrypted)
-    }
-
-    #[unsafe(no_mangle)]
-    pub extern "C" fn frbgen_generic_olm_bindings_wire__crate__api__vodozemac_inbound_group_session_export_at(
-        that: *mut wire_cst_vodozemac_inbound_group_session,
-        index: u32,
-    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-        wire__crate__api__vodozemac_inbound_group_session_export_at_impl(that, index)
-    }
-
-    #[unsafe(no_mangle)]
-    pub extern "C" fn frbgen_generic_olm_bindings_wire__crate__api__vodozemac_inbound_group_session_export_at_first_known_index(
-        that: *mut wire_cst_vodozemac_inbound_group_session,
-    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-        wire__crate__api__vodozemac_inbound_group_session_export_at_first_known_index_impl(that)
-    }
-
-    #[unsafe(no_mangle)]
-    pub extern "C" fn frbgen_generic_olm_bindings_wire__crate__api__vodozemac_inbound_group_session_first_known_index(
-        that: *mut wire_cst_vodozemac_inbound_group_session,
-    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-        wire__crate__api__vodozemac_inbound_group_session_first_known_index_impl(that)
-    }
-
-    #[unsafe(no_mangle)]
-    pub extern "C" fn frbgen_generic_olm_bindings_wire__crate__api__vodozemac_inbound_group_session_from_olm_pickle_encrypted(
-        port_: i64,
-        pickle: *mut wire_cst_list_prim_u_8_strict,
-        pickle_key: *mut wire_cst_list_prim_u_8_loose,
-    ) {
-        wire__crate__api__vodozemac_inbound_group_session_from_olm_pickle_encrypted_impl(
-            port_, pickle, pickle_key,
-        )
-    }
-
-    #[unsafe(no_mangle)]
-    pub extern "C" fn frbgen_generic_olm_bindings_wire__crate__api__vodozemac_inbound_group_session_from_pickle_encrypted(
-        port_: i64,
-        pickle: *mut wire_cst_list_prim_u_8_strict,
-        pickle_key: *mut wire_cst_list_prim_u_8_strict,
-    ) {
-        wire__crate__api__vodozemac_inbound_group_session_from_pickle_encrypted_impl(
-            port_, pickle, pickle_key,
-        )
-    }
-
-    #[unsafe(no_mangle)]
-    pub extern "C" fn frbgen_generic_olm_bindings_wire__crate__api__vodozemac_inbound_group_session_import(
-        session_key: *mut wire_cst_list_prim_u_8_strict,
-        config: *mut wire_cst_vodozemac_megolm_session_config,
-    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-        wire__crate__api__vodozemac_inbound_group_session_import_impl(session_key, config)
-    }
-
-    #[unsafe(no_mangle)]
-    pub extern "C" fn frbgen_generic_olm_bindings_wire__crate__api__vodozemac_inbound_group_session_new(
-        session_key: *mut wire_cst_list_prim_u_8_strict,
-        config: *mut wire_cst_vodozemac_megolm_session_config,
-    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-        wire__crate__api__vodozemac_inbound_group_session_new_impl(session_key, config)
-    }
-
-    #[unsafe(no_mangle)]
-    pub extern "C" fn frbgen_generic_olm_bindings_wire__crate__api__vodozemac_inbound_group_session_pickle_encrypted(
-        port_: i64,
-        that: *mut wire_cst_vodozemac_inbound_group_session,
-        pickle_key: *mut wire_cst_list_prim_u_8_strict,
-    ) {
-        wire__crate__api__vodozemac_inbound_group_session_pickle_encrypted_impl(
+        wire__crate__bindings__vodozemac_group_session_pickle_encrypted_impl(
             port_, that, pickle_key,
         )
     }
 
     #[unsafe(no_mangle)]
-    pub extern "C" fn frbgen_generic_olm_bindings_wire__crate__api__vodozemac_inbound_group_session_session_id(
+    pub extern "C" fn frbgen_vodozemac_wire__crate__bindings__vodozemac_group_session_session_config(
+        port_: i64,
+        that: *mut wire_cst_vodozemac_group_session,
+    ) {
+        wire__crate__bindings__vodozemac_group_session_session_config_impl(port_, that)
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_vodozemac_wire__crate__bindings__vodozemac_group_session_session_id(
+        that: *mut wire_cst_vodozemac_group_session,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__bindings__vodozemac_group_session_session_id_impl(that)
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_vodozemac_wire__crate__bindings__vodozemac_group_session_session_key(
+        port_: i64,
+        that: *mut wire_cst_vodozemac_group_session,
+    ) {
+        wire__crate__bindings__vodozemac_group_session_session_key_impl(port_, that)
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_vodozemac_wire__crate__bindings__vodozemac_group_session_to_inbound(
+        that: *mut wire_cst_vodozemac_group_session,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__bindings__vodozemac_group_session_to_inbound_impl(that)
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_vodozemac_wire__crate__bindings__vodozemac_inbound_group_session_decrypt(
+        port_: i64,
+        that: *mut wire_cst_vodozemac_inbound_group_session,
+        encrypted: *mut wire_cst_list_prim_u_8_strict,
+    ) {
+        wire__crate__bindings__vodozemac_inbound_group_session_decrypt_impl(port_, that, encrypted)
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_vodozemac_wire__crate__bindings__vodozemac_inbound_group_session_export_at(
+        that: *mut wire_cst_vodozemac_inbound_group_session,
+        index: u32,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__bindings__vodozemac_inbound_group_session_export_at_impl(that, index)
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_vodozemac_wire__crate__bindings__vodozemac_inbound_group_session_export_at_first_known_index(
         that: *mut wire_cst_vodozemac_inbound_group_session,
     ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-        wire__crate__api__vodozemac_inbound_group_session_session_id_impl(that)
+        wire__crate__bindings__vodozemac_inbound_group_session_export_at_first_known_index_impl(
+            that,
+        )
     }
 
     #[unsafe(no_mangle)]
-    pub extern "C" fn frbgen_generic_olm_bindings_wire__crate__api__vodozemac_megolm_session_config_def(
+    pub extern "C" fn frbgen_vodozemac_wire__crate__bindings__vodozemac_inbound_group_session_first_known_index(
+        that: *mut wire_cst_vodozemac_inbound_group_session,
     ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-        wire__crate__api__vodozemac_megolm_session_config_def_impl()
+        wire__crate__bindings__vodozemac_inbound_group_session_first_known_index_impl(that)
     }
 
     #[unsafe(no_mangle)]
-    pub extern "C" fn frbgen_generic_olm_bindings_wire__crate__api__vodozemac_megolm_session_config_version(
-        that: *mut wire_cst_vodozemac_megolm_session_config,
-    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-        wire__crate__api__vodozemac_megolm_session_config_version_impl(that)
-    }
-
-    #[unsafe(no_mangle)]
-    pub extern "C" fn frbgen_generic_olm_bindings_wire__crate__api__vodozemac_megolm_session_config_version_1(
-    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-        wire__crate__api__vodozemac_megolm_session_config_version_1_impl()
-    }
-
-    #[unsafe(no_mangle)]
-    pub extern "C" fn frbgen_generic_olm_bindings_wire__crate__api__vodozemac_megolm_session_config_version_2(
-    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-        wire__crate__api__vodozemac_megolm_session_config_version_2_impl()
-    }
-
-    #[unsafe(no_mangle)]
-    pub extern "C" fn frbgen_generic_olm_bindings_wire__crate__api__vodozemac_olm_message_from_parts(
-        message_type: usize,
-        ciphertext: *mut wire_cst_list_prim_u_8_loose,
-    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-        wire__crate__api__vodozemac_olm_message_from_parts_impl(message_type, ciphertext)
-    }
-
-    #[unsafe(no_mangle)]
-    pub extern "C" fn frbgen_generic_olm_bindings_wire__crate__api__vodozemac_olm_message_message(
-        that: *mut wire_cst_vodozemac_olm_message,
-    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-        wire__crate__api__vodozemac_olm_message_message_impl(that)
-    }
-
-    #[unsafe(no_mangle)]
-    pub extern "C" fn frbgen_generic_olm_bindings_wire__crate__api__vodozemac_olm_message_message_type(
-        that: *mut wire_cst_vodozemac_olm_message,
-    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-        wire__crate__api__vodozemac_olm_message_message_type_impl(that)
-    }
-
-    #[unsafe(no_mangle)]
-    pub extern "C" fn frbgen_generic_olm_bindings_wire__crate__api__vodozemac_olm_session_config_def(
-    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-        wire__crate__api__vodozemac_olm_session_config_def_impl()
-    }
-
-    #[unsafe(no_mangle)]
-    pub extern "C" fn frbgen_generic_olm_bindings_wire__crate__api__vodozemac_olm_session_config_version(
-        that: *mut wire_cst_vodozemac_olm_session_config,
-    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-        wire__crate__api__vodozemac_olm_session_config_version_impl(that)
-    }
-
-    #[unsafe(no_mangle)]
-    pub extern "C" fn frbgen_generic_olm_bindings_wire__crate__api__vodozemac_olm_session_config_version_1(
-    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-        wire__crate__api__vodozemac_olm_session_config_version_1_impl()
-    }
-
-    #[unsafe(no_mangle)]
-    pub extern "C" fn frbgen_generic_olm_bindings_wire__crate__api__vodozemac_olm_session_config_version_2(
-    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-        wire__crate__api__vodozemac_olm_session_config_version_2_impl()
-    }
-
-    #[unsafe(no_mangle)]
-    pub extern "C" fn frbgen_generic_olm_bindings_wire__crate__api__vodozemac_session_decrypt(
-        port_: i64,
-        that: *mut wire_cst_vodozemac_session,
-        message: *mut wire_cst_vodozemac_olm_message,
-    ) {
-        wire__crate__api__vodozemac_session_decrypt_impl(port_, that, message)
-    }
-
-    #[unsafe(no_mangle)]
-    pub extern "C" fn frbgen_generic_olm_bindings_wire__crate__api__vodozemac_session_encrypt(
-        port_: i64,
-        that: *mut wire_cst_vodozemac_session,
-        plaintext: *mut wire_cst_list_prim_u_8_strict,
-    ) {
-        wire__crate__api__vodozemac_session_encrypt_impl(port_, that, plaintext)
-    }
-
-    #[unsafe(no_mangle)]
-    pub extern "C" fn frbgen_generic_olm_bindings_wire__crate__api__vodozemac_session_from_olm_pickle_encrypted(
+    pub extern "C" fn frbgen_vodozemac_wire__crate__bindings__vodozemac_inbound_group_session_from_olm_pickle_encrypted(
         port_: i64,
         pickle: *mut wire_cst_list_prim_u_8_strict,
         pickle_key: *mut wire_cst_list_prim_u_8_loose,
     ) {
-        wire__crate__api__vodozemac_session_from_olm_pickle_encrypted_impl(
+        wire__crate__bindings__vodozemac_inbound_group_session_from_olm_pickle_encrypted_impl(
             port_, pickle, pickle_key,
         )
     }
 
     #[unsafe(no_mangle)]
-    pub extern "C" fn frbgen_generic_olm_bindings_wire__crate__api__vodozemac_session_from_pickle_encrypted(
+    pub extern "C" fn frbgen_vodozemac_wire__crate__bindings__vodozemac_inbound_group_session_from_pickle_encrypted(
         port_: i64,
         pickle: *mut wire_cst_list_prim_u_8_strict,
         pickle_key: *mut wire_cst_list_prim_u_8_strict,
     ) {
-        wire__crate__api__vodozemac_session_from_pickle_encrypted_impl(port_, pickle, pickle_key)
+        wire__crate__bindings__vodozemac_inbound_group_session_from_pickle_encrypted_impl(
+            port_, pickle, pickle_key,
+        )
     }
 
     #[unsafe(no_mangle)]
-    pub extern "C" fn frbgen_generic_olm_bindings_wire__crate__api__vodozemac_session_has_received_message(
+    pub extern "C" fn frbgen_vodozemac_wire__crate__bindings__vodozemac_inbound_group_session_import(
+        session_key: *mut wire_cst_list_prim_u_8_strict,
+        config: *mut wire_cst_vodozemac_megolm_session_config,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__bindings__vodozemac_inbound_group_session_import_impl(session_key, config)
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_vodozemac_wire__crate__bindings__vodozemac_inbound_group_session_new(
+        session_key: *mut wire_cst_list_prim_u_8_strict,
+        config: *mut wire_cst_vodozemac_megolm_session_config,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__bindings__vodozemac_inbound_group_session_new_impl(session_key, config)
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_vodozemac_wire__crate__bindings__vodozemac_inbound_group_session_pickle_encrypted(
+        port_: i64,
+        that: *mut wire_cst_vodozemac_inbound_group_session,
+        pickle_key: *mut wire_cst_list_prim_u_8_strict,
+    ) {
+        wire__crate__bindings__vodozemac_inbound_group_session_pickle_encrypted_impl(
+            port_, that, pickle_key,
+        )
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_vodozemac_wire__crate__bindings__vodozemac_inbound_group_session_session_id(
+        that: *mut wire_cst_vodozemac_inbound_group_session,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__bindings__vodozemac_inbound_group_session_session_id_impl(that)
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_vodozemac_wire__crate__bindings__vodozemac_megolm_session_config_def(
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__bindings__vodozemac_megolm_session_config_def_impl()
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_vodozemac_wire__crate__bindings__vodozemac_megolm_session_config_version(
+        that: *mut wire_cst_vodozemac_megolm_session_config,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__bindings__vodozemac_megolm_session_config_version_impl(that)
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_vodozemac_wire__crate__bindings__vodozemac_megolm_session_config_version_1(
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__bindings__vodozemac_megolm_session_config_version_1_impl()
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_vodozemac_wire__crate__bindings__vodozemac_megolm_session_config_version_2(
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__bindings__vodozemac_megolm_session_config_version_2_impl()
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_vodozemac_wire__crate__bindings__vodozemac_olm_message_from_parts(
+        message_type: usize,
+        ciphertext: *mut wire_cst_list_prim_u_8_loose,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__bindings__vodozemac_olm_message_from_parts_impl(message_type, ciphertext)
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_vodozemac_wire__crate__bindings__vodozemac_olm_message_message(
+        that: *mut wire_cst_vodozemac_olm_message,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__bindings__vodozemac_olm_message_message_impl(that)
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_vodozemac_wire__crate__bindings__vodozemac_olm_message_message_type(
+        that: *mut wire_cst_vodozemac_olm_message,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__bindings__vodozemac_olm_message_message_type_impl(that)
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_vodozemac_wire__crate__bindings__vodozemac_olm_session_config_def(
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__bindings__vodozemac_olm_session_config_def_impl()
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_vodozemac_wire__crate__bindings__vodozemac_olm_session_config_version(
+        that: *mut wire_cst_vodozemac_olm_session_config,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__bindings__vodozemac_olm_session_config_version_impl(that)
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_vodozemac_wire__crate__bindings__vodozemac_olm_session_config_version_1(
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__bindings__vodozemac_olm_session_config_version_1_impl()
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_vodozemac_wire__crate__bindings__vodozemac_olm_session_config_version_2(
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__bindings__vodozemac_olm_session_config_version_2_impl()
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_vodozemac_wire__crate__bindings__vodozemac_session_decrypt(
+        port_: i64,
+        that: *mut wire_cst_vodozemac_session,
+        message: *mut wire_cst_vodozemac_olm_message,
+    ) {
+        wire__crate__bindings__vodozemac_session_decrypt_impl(port_, that, message)
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_vodozemac_wire__crate__bindings__vodozemac_session_encrypt(
+        port_: i64,
+        that: *mut wire_cst_vodozemac_session,
+        plaintext: *mut wire_cst_list_prim_u_8_strict,
+    ) {
+        wire__crate__bindings__vodozemac_session_encrypt_impl(port_, that, plaintext)
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_vodozemac_wire__crate__bindings__vodozemac_session_from_olm_pickle_encrypted(
+        port_: i64,
+        pickle: *mut wire_cst_list_prim_u_8_strict,
+        pickle_key: *mut wire_cst_list_prim_u_8_loose,
+    ) {
+        wire__crate__bindings__vodozemac_session_from_olm_pickle_encrypted_impl(
+            port_, pickle, pickle_key,
+        )
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_vodozemac_wire__crate__bindings__vodozemac_session_from_pickle_encrypted(
+        port_: i64,
+        pickle: *mut wire_cst_list_prim_u_8_strict,
+        pickle_key: *mut wire_cst_list_prim_u_8_strict,
+    ) {
+        wire__crate__bindings__vodozemac_session_from_pickle_encrypted_impl(
+            port_, pickle, pickle_key,
+        )
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_vodozemac_wire__crate__bindings__vodozemac_session_has_received_message(
         that: *mut wire_cst_vodozemac_session,
     ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-        wire__crate__api__vodozemac_session_has_received_message_impl(that)
+        wire__crate__bindings__vodozemac_session_has_received_message_impl(that)
     }
 
     #[unsafe(no_mangle)]
-    pub extern "C" fn frbgen_generic_olm_bindings_wire__crate__api__vodozemac_session_pickle_encrypted(
+    pub extern "C" fn frbgen_vodozemac_wire__crate__bindings__vodozemac_session_pickle_encrypted(
         port_: i64,
         that: *mut wire_cst_vodozemac_session,
         pickle_key: *mut wire_cst_list_prim_u_8_strict,
     ) {
-        wire__crate__api__vodozemac_session_pickle_encrypted_impl(port_, that, pickle_key)
+        wire__crate__bindings__vodozemac_session_pickle_encrypted_impl(port_, that, pickle_key)
     }
 
     #[unsafe(no_mangle)]
-    pub extern "C" fn frbgen_generic_olm_bindings_wire__crate__api__vodozemac_session_session_config(
+    pub extern "C" fn frbgen_vodozemac_wire__crate__bindings__vodozemac_session_session_config(
         port_: i64,
         that: *mut wire_cst_vodozemac_session,
     ) {
-        wire__crate__api__vodozemac_session_session_config_impl(port_, that)
+        wire__crate__bindings__vodozemac_session_session_config_impl(port_, that)
     }
 
     #[unsafe(no_mangle)]
-    pub extern "C" fn frbgen_generic_olm_bindings_wire__crate__api__vodozemac_session_session_id(
+    pub extern "C" fn frbgen_vodozemac_wire__crate__bindings__vodozemac_session_session_id(
         that: *mut wire_cst_vodozemac_session,
     ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-        wire__crate__api__vodozemac_session_session_id_impl(that)
+        wire__crate__bindings__vodozemac_session_session_id_impl(that)
     }
 
     #[unsafe(no_mangle)]
-    pub extern "C" fn frbgen_generic_olm_bindings_rust_arc_increment_strong_count_RustOpaque_Curve25519PublicKey(
+    pub extern "C" fn frbgen_vodozemac_rust_arc_increment_strong_count_RustOpaque_Curve25519PublicKey(
         ptr: *const std::ffi::c_void,
     ) {
         unsafe {
@@ -3596,7 +3634,7 @@ mod io {
     }
 
     #[unsafe(no_mangle)]
-    pub extern "C" fn frbgen_generic_olm_bindings_rust_arc_decrement_strong_count_RustOpaque_Curve25519PublicKey(
+    pub extern "C" fn frbgen_vodozemac_rust_arc_decrement_strong_count_RustOpaque_Curve25519PublicKey(
         ptr: *const std::ffi::c_void,
     ) {
         unsafe {
@@ -3605,7 +3643,7 @@ mod io {
     }
 
     #[unsafe(no_mangle)]
-    pub extern "C" fn frbgen_generic_olm_bindings_rust_arc_increment_strong_count_RustOpaque_Ed25519PublicKey(
+    pub extern "C" fn frbgen_vodozemac_rust_arc_increment_strong_count_RustOpaque_Ed25519PublicKey(
         ptr: *const std::ffi::c_void,
     ) {
         unsafe {
@@ -3614,7 +3652,7 @@ mod io {
     }
 
     #[unsafe(no_mangle)]
-    pub extern "C" fn frbgen_generic_olm_bindings_rust_arc_decrement_strong_count_RustOpaque_Ed25519PublicKey(
+    pub extern "C" fn frbgen_vodozemac_rust_arc_decrement_strong_count_RustOpaque_Ed25519PublicKey(
         ptr: *const std::ffi::c_void,
     ) {
         unsafe {
@@ -3623,7 +3661,7 @@ mod io {
     }
 
     #[unsafe(no_mangle)]
-    pub extern "C" fn frbgen_generic_olm_bindings_rust_arc_increment_strong_count_RustOpaque_Ed25519Signature(
+    pub extern "C" fn frbgen_vodozemac_rust_arc_increment_strong_count_RustOpaque_Ed25519Signature(
         ptr: *const std::ffi::c_void,
     ) {
         unsafe {
@@ -3632,7 +3670,7 @@ mod io {
     }
 
     #[unsafe(no_mangle)]
-    pub extern "C" fn frbgen_generic_olm_bindings_rust_arc_decrement_strong_count_RustOpaque_Ed25519Signature(
+    pub extern "C" fn frbgen_vodozemac_rust_arc_decrement_strong_count_RustOpaque_Ed25519Signature(
         ptr: *const std::ffi::c_void,
     ) {
         unsafe {
@@ -3641,7 +3679,7 @@ mod io {
     }
 
     #[unsafe(no_mangle)]
-    pub extern "C" fn frbgen_generic_olm_bindings_rust_arc_increment_strong_count_RustOpaque_MegolmSessionConfig(
+    pub extern "C" fn frbgen_vodozemac_rust_arc_increment_strong_count_RustOpaque_MegolmSessionConfig(
         ptr: *const std::ffi::c_void,
     ) {
         unsafe {
@@ -3650,7 +3688,7 @@ mod io {
     }
 
     #[unsafe(no_mangle)]
-    pub extern "C" fn frbgen_generic_olm_bindings_rust_arc_decrement_strong_count_RustOpaque_MegolmSessionConfig(
+    pub extern "C" fn frbgen_vodozemac_rust_arc_decrement_strong_count_RustOpaque_MegolmSessionConfig(
         ptr: *const std::ffi::c_void,
     ) {
         unsafe {
@@ -3659,7 +3697,7 @@ mod io {
     }
 
     #[unsafe(no_mangle)]
-    pub extern "C" fn frbgen_generic_olm_bindings_rust_arc_increment_strong_count_RustOpaque_OlmMessage(
+    pub extern "C" fn frbgen_vodozemac_rust_arc_increment_strong_count_RustOpaque_OlmMessage(
         ptr: *const std::ffi::c_void,
     ) {
         unsafe {
@@ -3668,7 +3706,7 @@ mod io {
     }
 
     #[unsafe(no_mangle)]
-    pub extern "C" fn frbgen_generic_olm_bindings_rust_arc_decrement_strong_count_RustOpaque_OlmMessage(
+    pub extern "C" fn frbgen_vodozemac_rust_arc_decrement_strong_count_RustOpaque_OlmMessage(
         ptr: *const std::ffi::c_void,
     ) {
         unsafe {
@@ -3677,7 +3715,7 @@ mod io {
     }
 
     #[unsafe(no_mangle)]
-    pub extern "C" fn frbgen_generic_olm_bindings_rust_arc_increment_strong_count_RustOpaque_OlmSessionConfig(
+    pub extern "C" fn frbgen_vodozemac_rust_arc_increment_strong_count_RustOpaque_OlmSessionConfig(
         ptr: *const std::ffi::c_void,
     ) {
         unsafe {
@@ -3686,7 +3724,7 @@ mod io {
     }
 
     #[unsafe(no_mangle)]
-    pub extern "C" fn frbgen_generic_olm_bindings_rust_arc_decrement_strong_count_RustOpaque_OlmSessionConfig(
+    pub extern "C" fn frbgen_vodozemac_rust_arc_decrement_strong_count_RustOpaque_OlmSessionConfig(
         ptr: *const std::ffi::c_void,
     ) {
         unsafe {
@@ -3695,7 +3733,7 @@ mod io {
     }
 
     #[unsafe(no_mangle)]
-    pub extern "C" fn frbgen_generic_olm_bindings_rust_arc_increment_strong_count_RustOpaque_RwLockGroupSession(
+    pub extern "C" fn frbgen_vodozemac_rust_arc_increment_strong_count_RustOpaque_RwLockGroupSession(
         ptr: *const std::ffi::c_void,
     ) {
         unsafe {
@@ -3704,7 +3742,7 @@ mod io {
     }
 
     #[unsafe(no_mangle)]
-    pub extern "C" fn frbgen_generic_olm_bindings_rust_arc_decrement_strong_count_RustOpaque_RwLockGroupSession(
+    pub extern "C" fn frbgen_vodozemac_rust_arc_decrement_strong_count_RustOpaque_RwLockGroupSession(
         ptr: *const std::ffi::c_void,
     ) {
         unsafe {
@@ -3713,7 +3751,7 @@ mod io {
     }
 
     #[unsafe(no_mangle)]
-    pub extern "C" fn frbgen_generic_olm_bindings_rust_arc_increment_strong_count_RustOpaque_RwLockInboundGroupSession(
+    pub extern "C" fn frbgen_vodozemac_rust_arc_increment_strong_count_RustOpaque_RwLockInboundGroupSession(
         ptr: *const std::ffi::c_void,
     ) {
         unsafe {
@@ -3722,7 +3760,7 @@ mod io {
     }
 
     #[unsafe(no_mangle)]
-    pub extern "C" fn frbgen_generic_olm_bindings_rust_arc_decrement_strong_count_RustOpaque_RwLockInboundGroupSession(
+    pub extern "C" fn frbgen_vodozemac_rust_arc_decrement_strong_count_RustOpaque_RwLockInboundGroupSession(
         ptr: *const std::ffi::c_void,
     ) {
         unsafe {
@@ -3731,7 +3769,7 @@ mod io {
     }
 
     #[unsafe(no_mangle)]
-    pub extern "C" fn frbgen_generic_olm_bindings_rust_arc_increment_strong_count_RustOpaque_RwLockSession(
+    pub extern "C" fn frbgen_vodozemac_rust_arc_increment_strong_count_RustOpaque_RwLockSession(
         ptr: *const std::ffi::c_void,
     ) {
         unsafe {
@@ -3740,7 +3778,7 @@ mod io {
     }
 
     #[unsafe(no_mangle)]
-    pub extern "C" fn frbgen_generic_olm_bindings_rust_arc_decrement_strong_count_RustOpaque_RwLockSession(
+    pub extern "C" fn frbgen_vodozemac_rust_arc_decrement_strong_count_RustOpaque_RwLockSession(
         ptr: *const std::ffi::c_void,
     ) {
         unsafe {
@@ -3749,7 +3787,7 @@ mod io {
     }
 
     #[unsafe(no_mangle)]
-    pub extern "C" fn frbgen_generic_olm_bindings_rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockAccount(
+    pub extern "C" fn frbgen_vodozemac_rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockAccount(
         ptr: *const std::ffi::c_void,
     ) {
         unsafe {
@@ -3758,7 +3796,7 @@ mod io {
     }
 
     #[unsafe(no_mangle)]
-    pub extern "C" fn frbgen_generic_olm_bindings_rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockAccount(
+    pub extern "C" fn frbgen_vodozemac_rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockAccount(
         ptr: *const std::ffi::c_void,
     ) {
         unsafe {
@@ -3767,7 +3805,7 @@ mod io {
     }
 
     #[unsafe(no_mangle)]
-    pub extern "C" fn frbgen_generic_olm_bindings_cst_new_box_autoadd_vodozemac_account(
+    pub extern "C" fn frbgen_vodozemac_cst_new_box_autoadd_vodozemac_account(
     ) -> *mut wire_cst_vodozemac_account {
         flutter_rust_bridge::for_generated::new_leak_box_ptr(
             wire_cst_vodozemac_account::new_with_null_ptr(),
@@ -3775,7 +3813,7 @@ mod io {
     }
 
     #[unsafe(no_mangle)]
-    pub extern "C" fn frbgen_generic_olm_bindings_cst_new_box_autoadd_vodozemac_curve_25519_public_key(
+    pub extern "C" fn frbgen_vodozemac_cst_new_box_autoadd_vodozemac_curve_25519_public_key(
     ) -> *mut wire_cst_vodozemac_curve_25519_public_key {
         flutter_rust_bridge::for_generated::new_leak_box_ptr(
             wire_cst_vodozemac_curve_25519_public_key::new_with_null_ptr(),
@@ -3783,7 +3821,7 @@ mod io {
     }
 
     #[unsafe(no_mangle)]
-    pub extern "C" fn frbgen_generic_olm_bindings_cst_new_box_autoadd_vodozemac_ed_25519_public_key(
+    pub extern "C" fn frbgen_vodozemac_cst_new_box_autoadd_vodozemac_ed_25519_public_key(
     ) -> *mut wire_cst_vodozemac_ed_25519_public_key {
         flutter_rust_bridge::for_generated::new_leak_box_ptr(
             wire_cst_vodozemac_ed_25519_public_key::new_with_null_ptr(),
@@ -3791,7 +3829,7 @@ mod io {
     }
 
     #[unsafe(no_mangle)]
-    pub extern "C" fn frbgen_generic_olm_bindings_cst_new_box_autoadd_vodozemac_ed_25519_signature(
+    pub extern "C" fn frbgen_vodozemac_cst_new_box_autoadd_vodozemac_ed_25519_signature(
     ) -> *mut wire_cst_vodozemac_ed_25519_signature {
         flutter_rust_bridge::for_generated::new_leak_box_ptr(
             wire_cst_vodozemac_ed_25519_signature::new_with_null_ptr(),
@@ -3799,7 +3837,7 @@ mod io {
     }
 
     #[unsafe(no_mangle)]
-    pub extern "C" fn frbgen_generic_olm_bindings_cst_new_box_autoadd_vodozemac_group_session(
+    pub extern "C" fn frbgen_vodozemac_cst_new_box_autoadd_vodozemac_group_session(
     ) -> *mut wire_cst_vodozemac_group_session {
         flutter_rust_bridge::for_generated::new_leak_box_ptr(
             wire_cst_vodozemac_group_session::new_with_null_ptr(),
@@ -3807,7 +3845,7 @@ mod io {
     }
 
     #[unsafe(no_mangle)]
-    pub extern "C" fn frbgen_generic_olm_bindings_cst_new_box_autoadd_vodozemac_inbound_group_session(
+    pub extern "C" fn frbgen_vodozemac_cst_new_box_autoadd_vodozemac_inbound_group_session(
     ) -> *mut wire_cst_vodozemac_inbound_group_session {
         flutter_rust_bridge::for_generated::new_leak_box_ptr(
             wire_cst_vodozemac_inbound_group_session::new_with_null_ptr(),
@@ -3815,7 +3853,7 @@ mod io {
     }
 
     #[unsafe(no_mangle)]
-    pub extern "C" fn frbgen_generic_olm_bindings_cst_new_box_autoadd_vodozemac_megolm_session_config(
+    pub extern "C" fn frbgen_vodozemac_cst_new_box_autoadd_vodozemac_megolm_session_config(
     ) -> *mut wire_cst_vodozemac_megolm_session_config {
         flutter_rust_bridge::for_generated::new_leak_box_ptr(
             wire_cst_vodozemac_megolm_session_config::new_with_null_ptr(),
@@ -3823,7 +3861,7 @@ mod io {
     }
 
     #[unsafe(no_mangle)]
-    pub extern "C" fn frbgen_generic_olm_bindings_cst_new_box_autoadd_vodozemac_olm_message(
+    pub extern "C" fn frbgen_vodozemac_cst_new_box_autoadd_vodozemac_olm_message(
     ) -> *mut wire_cst_vodozemac_olm_message {
         flutter_rust_bridge::for_generated::new_leak_box_ptr(
             wire_cst_vodozemac_olm_message::new_with_null_ptr(),
@@ -3831,7 +3869,7 @@ mod io {
     }
 
     #[unsafe(no_mangle)]
-    pub extern "C" fn frbgen_generic_olm_bindings_cst_new_box_autoadd_vodozemac_olm_session_config(
+    pub extern "C" fn frbgen_vodozemac_cst_new_box_autoadd_vodozemac_olm_session_config(
     ) -> *mut wire_cst_vodozemac_olm_session_config {
         flutter_rust_bridge::for_generated::new_leak_box_ptr(
             wire_cst_vodozemac_olm_session_config::new_with_null_ptr(),
@@ -3839,7 +3877,7 @@ mod io {
     }
 
     #[unsafe(no_mangle)]
-    pub extern "C" fn frbgen_generic_olm_bindings_cst_new_box_autoadd_vodozemac_session(
+    pub extern "C" fn frbgen_vodozemac_cst_new_box_autoadd_vodozemac_session(
     ) -> *mut wire_cst_vodozemac_session {
         flutter_rust_bridge::for_generated::new_leak_box_ptr(
             wire_cst_vodozemac_session::new_with_null_ptr(),
@@ -3847,7 +3885,7 @@ mod io {
     }
 
     #[unsafe(no_mangle)]
-    pub extern "C" fn frbgen_generic_olm_bindings_cst_new_list_prim_u_8_loose(
+    pub extern "C" fn frbgen_vodozemac_cst_new_list_prim_u_8_loose(
         len: i32,
     ) -> *mut wire_cst_list_prim_u_8_loose {
         let ans = wire_cst_list_prim_u_8_loose {
@@ -3858,7 +3896,7 @@ mod io {
     }
 
     #[unsafe(no_mangle)]
-    pub extern "C" fn frbgen_generic_olm_bindings_cst_new_list_prim_u_8_strict(
+    pub extern "C" fn frbgen_vodozemac_cst_new_list_prim_u_8_strict(
         len: i32,
     ) -> *mut wire_cst_list_prim_u_8_strict {
         let ans = wire_cst_list_prim_u_8_strict {
@@ -3869,7 +3907,7 @@ mod io {
     }
 
     #[unsafe(no_mangle)]
-    pub extern "C" fn frbgen_generic_olm_bindings_cst_new_list_vodozemac_one_time_key(
+    pub extern "C" fn frbgen_vodozemac_cst_new_list_vodozemac_one_time_key(
         len: i32,
     ) -> *mut wire_cst_list_vodozemac_one_time_key {
         let wrap = wire_cst_list_vodozemac_one_time_key {
@@ -3987,7 +4025,7 @@ mod web {
     // Section: imports
 
     use super::*;
-    use crate::api::*;
+    use crate::bindings::*;
     use crate::*;
     use flutter_rust_bridge::for_generated::byteorder::{
         NativeEndian, ReadBytesExt, WriteBytesExt,
@@ -4015,11 +4053,11 @@ mod web {
             self
         }
     }
-    impl CstDecode<crate::api::DecryptResult>
+    impl CstDecode<crate::bindings::DecryptResult>
         for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
     {
         // Codec=Cst (C-struct based), see doc to use other codecs
-        fn cst_decode(self) -> crate::api::DecryptResult {
+        fn cst_decode(self) -> crate::bindings::DecryptResult {
             let self_ = self
                 .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
                 .unwrap();
@@ -4029,7 +4067,7 @@ mod web {
                 "Expected 2 elements, got {}",
                 self_.length()
             );
-            crate::api::DecryptResult(self_.get(0).cst_decode(), self_.get(1).cst_decode())
+            crate::bindings::DecryptResult(self_.get(0).cst_decode(), self_.get(1).cst_decode())
         }
     }
     impl CstDecode<Vec<u8>> for Box<[u8]> {
@@ -4038,11 +4076,11 @@ mod web {
             self.into_vec()
         }
     }
-    impl CstDecode<Vec<crate::api::VodozemacOneTimeKey>>
+    impl CstDecode<Vec<crate::bindings::VodozemacOneTimeKey>>
         for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
     {
         // Codec=Cst (C-struct based), see doc to use other codecs
-        fn cst_decode(self) -> Vec<crate::api::VodozemacOneTimeKey> {
+        fn cst_decode(self) -> Vec<crate::bindings::VodozemacOneTimeKey> {
             self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
                 .unwrap()
                 .iter()
@@ -4070,11 +4108,11 @@ mod web {
             flutter_rust_bridge::for_generated::from_vec_to_array(vec)
         }
     }
-    impl CstDecode<crate::api::VodozemacAccount>
+    impl CstDecode<crate::bindings::VodozemacAccount>
         for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
     {
         // Codec=Cst (C-struct based), see doc to use other codecs
-        fn cst_decode(self) -> crate::api::VodozemacAccount {
+        fn cst_decode(self) -> crate::bindings::VodozemacAccount {
             let self_ = self
                 .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
                 .unwrap();
@@ -4084,16 +4122,16 @@ mod web {
                 "Expected 1 elements, got {}",
                 self_.length()
             );
-            crate::api::VodozemacAccount {
+            crate::bindings::VodozemacAccount {
                 account: self_.get(0).cst_decode(),
             }
         }
     }
-    impl CstDecode<crate::api::VodozemacCurve25519PublicKey>
+    impl CstDecode<crate::bindings::VodozemacCurve25519PublicKey>
         for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
     {
         // Codec=Cst (C-struct based), see doc to use other codecs
-        fn cst_decode(self) -> crate::api::VodozemacCurve25519PublicKey {
+        fn cst_decode(self) -> crate::bindings::VodozemacCurve25519PublicKey {
             let self_ = self
                 .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
                 .unwrap();
@@ -4103,16 +4141,16 @@ mod web {
                 "Expected 1 elements, got {}",
                 self_.length()
             );
-            crate::api::VodozemacCurve25519PublicKey {
+            crate::bindings::VodozemacCurve25519PublicKey {
                 key: self_.get(0).cst_decode(),
             }
         }
     }
-    impl CstDecode<crate::api::VodozemacEd25519PublicKey>
+    impl CstDecode<crate::bindings::VodozemacEd25519PublicKey>
         for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
     {
         // Codec=Cst (C-struct based), see doc to use other codecs
-        fn cst_decode(self) -> crate::api::VodozemacEd25519PublicKey {
+        fn cst_decode(self) -> crate::bindings::VodozemacEd25519PublicKey {
             let self_ = self
                 .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
                 .unwrap();
@@ -4122,16 +4160,16 @@ mod web {
                 "Expected 1 elements, got {}",
                 self_.length()
             );
-            crate::api::VodozemacEd25519PublicKey {
+            crate::bindings::VodozemacEd25519PublicKey {
                 key: self_.get(0).cst_decode(),
             }
         }
     }
-    impl CstDecode<crate::api::VodozemacEd25519Signature>
+    impl CstDecode<crate::bindings::VodozemacEd25519Signature>
         for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
     {
         // Codec=Cst (C-struct based), see doc to use other codecs
-        fn cst_decode(self) -> crate::api::VodozemacEd25519Signature {
+        fn cst_decode(self) -> crate::bindings::VodozemacEd25519Signature {
             let self_ = self
                 .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
                 .unwrap();
@@ -4141,16 +4179,16 @@ mod web {
                 "Expected 1 elements, got {}",
                 self_.length()
             );
-            crate::api::VodozemacEd25519Signature {
+            crate::bindings::VodozemacEd25519Signature {
                 signature: self_.get(0).cst_decode(),
             }
         }
     }
-    impl CstDecode<crate::api::VodozemacGroupSession>
+    impl CstDecode<crate::bindings::VodozemacGroupSession>
         for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
     {
         // Codec=Cst (C-struct based), see doc to use other codecs
-        fn cst_decode(self) -> crate::api::VodozemacGroupSession {
+        fn cst_decode(self) -> crate::bindings::VodozemacGroupSession {
             let self_ = self
                 .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
                 .unwrap();
@@ -4160,16 +4198,16 @@ mod web {
                 "Expected 1 elements, got {}",
                 self_.length()
             );
-            crate::api::VodozemacGroupSession {
+            crate::bindings::VodozemacGroupSession {
                 session: self_.get(0).cst_decode(),
             }
         }
     }
-    impl CstDecode<crate::api::VodozemacIdentityKeys>
+    impl CstDecode<crate::bindings::VodozemacIdentityKeys>
         for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
     {
         // Codec=Cst (C-struct based), see doc to use other codecs
-        fn cst_decode(self) -> crate::api::VodozemacIdentityKeys {
+        fn cst_decode(self) -> crate::bindings::VodozemacIdentityKeys {
             let self_ = self
                 .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
                 .unwrap();
@@ -4179,17 +4217,17 @@ mod web {
                 "Expected 2 elements, got {}",
                 self_.length()
             );
-            crate::api::VodozemacIdentityKeys {
+            crate::bindings::VodozemacIdentityKeys {
                 ed25519: self_.get(0).cst_decode(),
                 curve25519: self_.get(1).cst_decode(),
             }
         }
     }
-    impl CstDecode<crate::api::VodozemacInboundGroupSession>
+    impl CstDecode<crate::bindings::VodozemacInboundGroupSession>
         for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
     {
         // Codec=Cst (C-struct based), see doc to use other codecs
-        fn cst_decode(self) -> crate::api::VodozemacInboundGroupSession {
+        fn cst_decode(self) -> crate::bindings::VodozemacInboundGroupSession {
             let self_ = self
                 .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
                 .unwrap();
@@ -4199,16 +4237,16 @@ mod web {
                 "Expected 1 elements, got {}",
                 self_.length()
             );
-            crate::api::VodozemacInboundGroupSession {
+            crate::bindings::VodozemacInboundGroupSession {
                 session: self_.get(0).cst_decode(),
             }
         }
     }
-    impl CstDecode<crate::api::VodozemacMegolmSessionConfig>
+    impl CstDecode<crate::bindings::VodozemacMegolmSessionConfig>
         for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
     {
         // Codec=Cst (C-struct based), see doc to use other codecs
-        fn cst_decode(self) -> crate::api::VodozemacMegolmSessionConfig {
+        fn cst_decode(self) -> crate::bindings::VodozemacMegolmSessionConfig {
             let self_ = self
                 .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
                 .unwrap();
@@ -4218,16 +4256,16 @@ mod web {
                 "Expected 1 elements, got {}",
                 self_.length()
             );
-            crate::api::VodozemacMegolmSessionConfig {
+            crate::bindings::VodozemacMegolmSessionConfig {
                 config: self_.get(0).cst_decode(),
             }
         }
     }
-    impl CstDecode<crate::api::VodozemacOlmMessage>
+    impl CstDecode<crate::bindings::VodozemacOlmMessage>
         for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
     {
         // Codec=Cst (C-struct based), see doc to use other codecs
-        fn cst_decode(self) -> crate::api::VodozemacOlmMessage {
+        fn cst_decode(self) -> crate::bindings::VodozemacOlmMessage {
             let self_ = self
                 .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
                 .unwrap();
@@ -4237,16 +4275,16 @@ mod web {
                 "Expected 1 elements, got {}",
                 self_.length()
             );
-            crate::api::VodozemacOlmMessage {
+            crate::bindings::VodozemacOlmMessage {
                 msg: self_.get(0).cst_decode(),
             }
         }
     }
-    impl CstDecode<crate::api::VodozemacOlmSessionConfig>
+    impl CstDecode<crate::bindings::VodozemacOlmSessionConfig>
         for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
     {
         // Codec=Cst (C-struct based), see doc to use other codecs
-        fn cst_decode(self) -> crate::api::VodozemacOlmSessionConfig {
+        fn cst_decode(self) -> crate::bindings::VodozemacOlmSessionConfig {
             let self_ = self
                 .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
                 .unwrap();
@@ -4256,16 +4294,16 @@ mod web {
                 "Expected 1 elements, got {}",
                 self_.length()
             );
-            crate::api::VodozemacOlmSessionConfig {
+            crate::bindings::VodozemacOlmSessionConfig {
                 config: self_.get(0).cst_decode(),
             }
         }
     }
-    impl CstDecode<crate::api::VodozemacOlmSessionCreationResult>
+    impl CstDecode<crate::bindings::VodozemacOlmSessionCreationResult>
         for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
     {
         // Codec=Cst (C-struct based), see doc to use other codecs
-        fn cst_decode(self) -> crate::api::VodozemacOlmSessionCreationResult {
+        fn cst_decode(self) -> crate::bindings::VodozemacOlmSessionCreationResult {
             let self_ = self
                 .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
                 .unwrap();
@@ -4275,17 +4313,17 @@ mod web {
                 "Expected 2 elements, got {}",
                 self_.length()
             );
-            crate::api::VodozemacOlmSessionCreationResult {
+            crate::bindings::VodozemacOlmSessionCreationResult {
                 session: self_.get(0).cst_decode(),
                 plaintext: self_.get(1).cst_decode(),
             }
         }
     }
-    impl CstDecode<crate::api::VodozemacOneTimeKey>
+    impl CstDecode<crate::bindings::VodozemacOneTimeKey>
         for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
     {
         // Codec=Cst (C-struct based), see doc to use other codecs
-        fn cst_decode(self) -> crate::api::VodozemacOneTimeKey {
+        fn cst_decode(self) -> crate::bindings::VodozemacOneTimeKey {
             let self_ = self
                 .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
                 .unwrap();
@@ -4295,17 +4333,17 @@ mod web {
                 "Expected 2 elements, got {}",
                 self_.length()
             );
-            crate::api::VodozemacOneTimeKey {
+            crate::bindings::VodozemacOneTimeKey {
                 keyid: self_.get(0).cst_decode(),
                 key: self_.get(1).cst_decode(),
             }
         }
     }
-    impl CstDecode<crate::api::VodozemacSession>
+    impl CstDecode<crate::bindings::VodozemacSession>
         for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
     {
         // Codec=Cst (C-struct based), see doc to use other codecs
-        fn cst_decode(self) -> crate::api::VodozemacSession {
+        fn cst_decode(self) -> crate::bindings::VodozemacSession {
             let self_ = self
                 .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
                 .unwrap();
@@ -4315,7 +4353,7 @@ mod web {
                 "Expected 1 elements, got {}",
                 self_.length()
             );
-            crate::api::VodozemacSession {
+            crate::bindings::VodozemacSession {
                 session: self_.get(0).cst_decode(),
             }
         }
@@ -4502,13 +4540,13 @@ mod web {
     }
 
     #[wasm_bindgen]
-    pub fn wire__crate__api__vodozemac_account_create_inbound_session(
+    pub fn wire__crate__bindings__vodozemac_account_create_inbound_session(
         port_: flutter_rust_bridge::for_generated::MessagePort,
         that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
         their_identity_key: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
         pre_key_message_base64: String,
     ) {
-        wire__crate__api__vodozemac_account_create_inbound_session_impl(
+        wire__crate__bindings__vodozemac_account_create_inbound_session_impl(
             port_,
             that,
             their_identity_key,
@@ -4517,14 +4555,14 @@ mod web {
     }
 
     #[wasm_bindgen]
-    pub fn wire__crate__api__vodozemac_account_create_outbound_session(
+    pub fn wire__crate__bindings__vodozemac_account_create_outbound_session(
         port_: flutter_rust_bridge::for_generated::MessagePort,
         that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
         config: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
         identity_key: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
         one_time_key: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     ) {
-        wire__crate__api__vodozemac_account_create_outbound_session_impl(
+        wire__crate__bindings__vodozemac_account_create_outbound_session_impl(
             port_,
             that,
             config,
@@ -4534,526 +4572,536 @@ mod web {
     }
 
     #[wasm_bindgen]
-    pub fn wire__crate__api__vodozemac_account_curve25519_key(
+    pub fn wire__crate__bindings__vodozemac_account_curve25519_key(
         that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-        wire__crate__api__vodozemac_account_curve25519_key_impl(that)
+        wire__crate__bindings__vodozemac_account_curve25519_key_impl(that)
     }
 
     #[wasm_bindgen]
-    pub fn wire__crate__api__vodozemac_account_ed25519_key(
+    pub fn wire__crate__bindings__vodozemac_account_ed25519_key(
         that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-        wire__crate__api__vodozemac_account_ed25519_key_impl(that)
+        wire__crate__bindings__vodozemac_account_ed25519_key_impl(that)
     }
 
     #[wasm_bindgen]
-    pub fn wire__crate__api__vodozemac_account_fallback_key(
+    pub fn wire__crate__bindings__vodozemac_account_fallback_key(
         that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-        wire__crate__api__vodozemac_account_fallback_key_impl(that)
+        wire__crate__bindings__vodozemac_account_fallback_key_impl(that)
     }
 
     #[wasm_bindgen]
-    pub fn wire__crate__api__vodozemac_account_forget_fallback_key(
+    pub fn wire__crate__bindings__vodozemac_account_forget_fallback_key(
         that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-        wire__crate__api__vodozemac_account_forget_fallback_key_impl(that)
+        wire__crate__bindings__vodozemac_account_forget_fallback_key_impl(that)
     }
 
     #[wasm_bindgen]
-    pub fn wire__crate__api__vodozemac_account_from_olm_pickle_encrypted(
+    pub fn wire__crate__bindings__vodozemac_account_from_olm_pickle_encrypted(
         port_: flutter_rust_bridge::for_generated::MessagePort,
         pickle: String,
         pickle_key: Box<[u8]>,
     ) {
-        wire__crate__api__vodozemac_account_from_olm_pickle_encrypted_impl(
+        wire__crate__bindings__vodozemac_account_from_olm_pickle_encrypted_impl(
             port_, pickle, pickle_key,
         )
     }
 
     #[wasm_bindgen]
-    pub fn wire__crate__api__vodozemac_account_from_pickle_encrypted(
+    pub fn wire__crate__bindings__vodozemac_account_from_pickle_encrypted(
         port_: flutter_rust_bridge::for_generated::MessagePort,
         pickle: String,
         pickle_key: Box<[u8]>,
     ) {
-        wire__crate__api__vodozemac_account_from_pickle_encrypted_impl(port_, pickle, pickle_key)
+        wire__crate__bindings__vodozemac_account_from_pickle_encrypted_impl(
+            port_, pickle, pickle_key,
+        )
     }
 
     #[wasm_bindgen]
-    pub fn wire__crate__api__vodozemac_account_generate_fallback_key(
+    pub fn wire__crate__bindings__vodozemac_account_generate_fallback_key(
         port_: flutter_rust_bridge::for_generated::MessagePort,
         that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     ) {
-        wire__crate__api__vodozemac_account_generate_fallback_key_impl(port_, that)
+        wire__crate__bindings__vodozemac_account_generate_fallback_key_impl(port_, that)
     }
 
     #[wasm_bindgen]
-    pub fn wire__crate__api__vodozemac_account_generate_one_time_keys(
+    pub fn wire__crate__bindings__vodozemac_account_generate_one_time_keys(
         port_: flutter_rust_bridge::for_generated::MessagePort,
         that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
         count: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     ) {
-        wire__crate__api__vodozemac_account_generate_one_time_keys_impl(port_, that, count)
+        wire__crate__bindings__vodozemac_account_generate_one_time_keys_impl(port_, that, count)
     }
 
     #[wasm_bindgen]
-    pub fn wire__crate__api__vodozemac_account_identity_keys(
+    pub fn wire__crate__bindings__vodozemac_account_identity_keys(
         that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-        wire__crate__api__vodozemac_account_identity_keys_impl(that)
+        wire__crate__bindings__vodozemac_account_identity_keys_impl(that)
     }
 
     #[wasm_bindgen]
-    pub fn wire__crate__api__vodozemac_account_mark_keys_as_published(
+    pub fn wire__crate__bindings__vodozemac_account_mark_keys_as_published(
         that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-        wire__crate__api__vodozemac_account_mark_keys_as_published_impl(that)
+        wire__crate__bindings__vodozemac_account_mark_keys_as_published_impl(that)
     }
 
     #[wasm_bindgen]
-    pub fn wire__crate__api__vodozemac_account_max_number_of_one_time_keys(
+    pub fn wire__crate__bindings__vodozemac_account_max_number_of_one_time_keys(
         that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-        wire__crate__api__vodozemac_account_max_number_of_one_time_keys_impl(that)
+        wire__crate__bindings__vodozemac_account_max_number_of_one_time_keys_impl(that)
     }
 
     #[wasm_bindgen]
-    pub fn wire__crate__api__vodozemac_account_new(
+    pub fn wire__crate__bindings__vodozemac_account_new(
     ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-        wire__crate__api__vodozemac_account_new_impl()
+        wire__crate__bindings__vodozemac_account_new_impl()
     }
 
     #[wasm_bindgen]
-    pub fn wire__crate__api__vodozemac_account_one_time_keys(
+    pub fn wire__crate__bindings__vodozemac_account_one_time_keys(
         that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-        wire__crate__api__vodozemac_account_one_time_keys_impl(that)
+        wire__crate__bindings__vodozemac_account_one_time_keys_impl(that)
     }
 
     #[wasm_bindgen]
-    pub fn wire__crate__api__vodozemac_account_pickle_encrypted(
+    pub fn wire__crate__bindings__vodozemac_account_pickle_encrypted(
         port_: flutter_rust_bridge::for_generated::MessagePort,
         that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
         pickle_key: Box<[u8]>,
     ) {
-        wire__crate__api__vodozemac_account_pickle_encrypted_impl(port_, that, pickle_key)
+        wire__crate__bindings__vodozemac_account_pickle_encrypted_impl(port_, that, pickle_key)
     }
 
     #[wasm_bindgen]
-    pub fn wire__crate__api__vodozemac_account_sign(
+    pub fn wire__crate__bindings__vodozemac_account_sign(
         port_: flutter_rust_bridge::for_generated::MessagePort,
         that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
         message: String,
     ) {
-        wire__crate__api__vodozemac_account_sign_impl(port_, that, message)
+        wire__crate__bindings__vodozemac_account_sign_impl(port_, that, message)
     }
 
     #[wasm_bindgen]
-    pub fn wire__crate__api__vodozemac_curve_25519_public_key_as_bytes(
+    pub fn wire__crate__bindings__vodozemac_curve_25519_public_key_as_bytes(
         that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-        wire__crate__api__vodozemac_curve_25519_public_key_as_bytes_impl(that)
+        wire__crate__bindings__vodozemac_curve_25519_public_key_as_bytes_impl(that)
     }
 
     #[wasm_bindgen]
-    pub fn wire__crate__api__vodozemac_curve_25519_public_key_from_base64(
+    pub fn wire__crate__bindings__vodozemac_curve_25519_public_key_from_base64(
         base64_key: String,
     ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-        wire__crate__api__vodozemac_curve_25519_public_key_from_base64_impl(base64_key)
+        wire__crate__bindings__vodozemac_curve_25519_public_key_from_base64_impl(base64_key)
     }
 
     #[wasm_bindgen]
-    pub fn wire__crate__api__vodozemac_curve_25519_public_key_from_slice(
+    pub fn wire__crate__bindings__vodozemac_curve_25519_public_key_from_slice(
         bytes: Box<[u8]>,
     ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-        wire__crate__api__vodozemac_curve_25519_public_key_from_slice_impl(bytes)
+        wire__crate__bindings__vodozemac_curve_25519_public_key_from_slice_impl(bytes)
     }
 
     #[wasm_bindgen]
-    pub fn wire__crate__api__vodozemac_curve_25519_public_key_to_base64(
+    pub fn wire__crate__bindings__vodozemac_curve_25519_public_key_to_base64(
         that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-        wire__crate__api__vodozemac_curve_25519_public_key_to_base64_impl(that)
+        wire__crate__bindings__vodozemac_curve_25519_public_key_to_base64_impl(that)
     }
 
     #[wasm_bindgen]
-    pub fn wire__crate__api__vodozemac_ed_25519_public_key_as_bytes(
+    pub fn wire__crate__bindings__vodozemac_ed_25519_public_key_as_bytes(
         that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-        wire__crate__api__vodozemac_ed_25519_public_key_as_bytes_impl(that)
+        wire__crate__bindings__vodozemac_ed_25519_public_key_as_bytes_impl(that)
     }
 
     #[wasm_bindgen]
-    pub fn wire__crate__api__vodozemac_ed_25519_public_key_from_base64(
+    pub fn wire__crate__bindings__vodozemac_ed_25519_public_key_from_base64(
         base64_key: String,
     ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-        wire__crate__api__vodozemac_ed_25519_public_key_from_base64_impl(base64_key)
+        wire__crate__bindings__vodozemac_ed_25519_public_key_from_base64_impl(base64_key)
     }
 
     #[wasm_bindgen]
-    pub fn wire__crate__api__vodozemac_ed_25519_public_key_from_slice(
+    pub fn wire__crate__bindings__vodozemac_ed_25519_public_key_from_slice(
         bytes: Box<[u8]>,
     ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-        wire__crate__api__vodozemac_ed_25519_public_key_from_slice_impl(bytes)
+        wire__crate__bindings__vodozemac_ed_25519_public_key_from_slice_impl(bytes)
     }
 
     #[wasm_bindgen]
-    pub fn wire__crate__api__vodozemac_ed_25519_public_key_to_base64(
+    pub fn wire__crate__bindings__vodozemac_ed_25519_public_key_to_base64(
         that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-        wire__crate__api__vodozemac_ed_25519_public_key_to_base64_impl(that)
+        wire__crate__bindings__vodozemac_ed_25519_public_key_to_base64_impl(that)
     }
 
     #[wasm_bindgen]
-    pub fn wire__crate__api__vodozemac_ed_25519_public_key_verify(
+    pub fn wire__crate__bindings__vodozemac_ed_25519_public_key_verify(
         port_: flutter_rust_bridge::for_generated::MessagePort,
         that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
         message: String,
         signature: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     ) {
-        wire__crate__api__vodozemac_ed_25519_public_key_verify_impl(port_, that, message, signature)
+        wire__crate__bindings__vodozemac_ed_25519_public_key_verify_impl(
+            port_, that, message, signature,
+        )
     }
 
     #[wasm_bindgen]
-    pub fn wire__crate__api__vodozemac_ed_25519_signature_from_base64(
+    pub fn wire__crate__bindings__vodozemac_ed_25519_signature_from_base64(
         signature: String,
     ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-        wire__crate__api__vodozemac_ed_25519_signature_from_base64_impl(signature)
+        wire__crate__bindings__vodozemac_ed_25519_signature_from_base64_impl(signature)
     }
 
     #[wasm_bindgen]
-    pub fn wire__crate__api__vodozemac_ed_25519_signature_from_slice(
+    pub fn wire__crate__bindings__vodozemac_ed_25519_signature_from_slice(
         bytes: Box<[u8]>,
     ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-        wire__crate__api__vodozemac_ed_25519_signature_from_slice_impl(bytes)
+        wire__crate__bindings__vodozemac_ed_25519_signature_from_slice_impl(bytes)
     }
 
     #[wasm_bindgen]
-    pub fn wire__crate__api__vodozemac_ed_25519_signature_to_base64(
+    pub fn wire__crate__bindings__vodozemac_ed_25519_signature_to_base64(
         that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-        wire__crate__api__vodozemac_ed_25519_signature_to_base64_impl(that)
+        wire__crate__bindings__vodozemac_ed_25519_signature_to_base64_impl(that)
     }
 
     #[wasm_bindgen]
-    pub fn wire__crate__api__vodozemac_ed_25519_signature_to_bytes(
+    pub fn wire__crate__bindings__vodozemac_ed_25519_signature_to_bytes(
         that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-        wire__crate__api__vodozemac_ed_25519_signature_to_bytes_impl(that)
+        wire__crate__bindings__vodozemac_ed_25519_signature_to_bytes_impl(that)
     }
 
     #[wasm_bindgen]
-    pub fn wire__crate__api__vodozemac_group_session_encrypt(
+    pub fn wire__crate__bindings__vodozemac_group_session_encrypt(
         port_: flutter_rust_bridge::for_generated::MessagePort,
         that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
         plaintext: String,
     ) {
-        wire__crate__api__vodozemac_group_session_encrypt_impl(port_, that, plaintext)
+        wire__crate__bindings__vodozemac_group_session_encrypt_impl(port_, that, plaintext)
     }
 
     #[wasm_bindgen]
-    pub fn wire__crate__api__vodozemac_group_session_from_olm_pickle_encrypted(
+    pub fn wire__crate__bindings__vodozemac_group_session_from_olm_pickle_encrypted(
         port_: flutter_rust_bridge::for_generated::MessagePort,
         pickle: String,
         pickle_key: Box<[u8]>,
     ) {
-        wire__crate__api__vodozemac_group_session_from_olm_pickle_encrypted_impl(
+        wire__crate__bindings__vodozemac_group_session_from_olm_pickle_encrypted_impl(
             port_, pickle, pickle_key,
         )
     }
 
     #[wasm_bindgen]
-    pub fn wire__crate__api__vodozemac_group_session_from_pickle_encrypted(
+    pub fn wire__crate__bindings__vodozemac_group_session_from_pickle_encrypted(
         port_: flutter_rust_bridge::for_generated::MessagePort,
         pickle: String,
         pickle_key: Box<[u8]>,
     ) {
-        wire__crate__api__vodozemac_group_session_from_pickle_encrypted_impl(
+        wire__crate__bindings__vodozemac_group_session_from_pickle_encrypted_impl(
             port_, pickle, pickle_key,
         )
     }
 
     #[wasm_bindgen]
-    pub fn wire__crate__api__vodozemac_group_session_message_index(
+    pub fn wire__crate__bindings__vodozemac_group_session_message_index(
         that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-        wire__crate__api__vodozemac_group_session_message_index_impl(that)
+        wire__crate__bindings__vodozemac_group_session_message_index_impl(that)
     }
 
     #[wasm_bindgen]
-    pub fn wire__crate__api__vodozemac_group_session_new(
+    pub fn wire__crate__bindings__vodozemac_group_session_new(
         config: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-        wire__crate__api__vodozemac_group_session_new_impl(config)
+        wire__crate__bindings__vodozemac_group_session_new_impl(config)
     }
 
     #[wasm_bindgen]
-    pub fn wire__crate__api__vodozemac_group_session_pickle_encrypted(
+    pub fn wire__crate__bindings__vodozemac_group_session_pickle_encrypted(
         port_: flutter_rust_bridge::for_generated::MessagePort,
         that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
         pickle_key: Box<[u8]>,
     ) {
-        wire__crate__api__vodozemac_group_session_pickle_encrypted_impl(port_, that, pickle_key)
-    }
-
-    #[wasm_bindgen]
-    pub fn wire__crate__api__vodozemac_group_session_session_config(
-        port_: flutter_rust_bridge::for_generated::MessagePort,
-        that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-    ) {
-        wire__crate__api__vodozemac_group_session_session_config_impl(port_, that)
-    }
-
-    #[wasm_bindgen]
-    pub fn wire__crate__api__vodozemac_group_session_session_id(
-        that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-        wire__crate__api__vodozemac_group_session_session_id_impl(that)
-    }
-
-    #[wasm_bindgen]
-    pub fn wire__crate__api__vodozemac_group_session_session_key(
-        port_: flutter_rust_bridge::for_generated::MessagePort,
-        that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-    ) {
-        wire__crate__api__vodozemac_group_session_session_key_impl(port_, that)
-    }
-
-    #[wasm_bindgen]
-    pub fn wire__crate__api__vodozemac_group_session_to_inbound(
-        that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-        wire__crate__api__vodozemac_group_session_to_inbound_impl(that)
-    }
-
-    #[wasm_bindgen]
-    pub fn wire__crate__api__vodozemac_inbound_group_session_decrypt(
-        port_: flutter_rust_bridge::for_generated::MessagePort,
-        that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-        encrypted: String,
-    ) {
-        wire__crate__api__vodozemac_inbound_group_session_decrypt_impl(port_, that, encrypted)
-    }
-
-    #[wasm_bindgen]
-    pub fn wire__crate__api__vodozemac_inbound_group_session_export_at(
-        that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-        index: u32,
-    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-        wire__crate__api__vodozemac_inbound_group_session_export_at_impl(that, index)
-    }
-
-    #[wasm_bindgen]
-    pub fn wire__crate__api__vodozemac_inbound_group_session_export_at_first_known_index(
-        that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-        wire__crate__api__vodozemac_inbound_group_session_export_at_first_known_index_impl(that)
-    }
-
-    #[wasm_bindgen]
-    pub fn wire__crate__api__vodozemac_inbound_group_session_first_known_index(
-        that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-        wire__crate__api__vodozemac_inbound_group_session_first_known_index_impl(that)
-    }
-
-    #[wasm_bindgen]
-    pub fn wire__crate__api__vodozemac_inbound_group_session_from_olm_pickle_encrypted(
-        port_: flutter_rust_bridge::for_generated::MessagePort,
-        pickle: String,
-        pickle_key: Box<[u8]>,
-    ) {
-        wire__crate__api__vodozemac_inbound_group_session_from_olm_pickle_encrypted_impl(
-            port_, pickle, pickle_key,
-        )
-    }
-
-    #[wasm_bindgen]
-    pub fn wire__crate__api__vodozemac_inbound_group_session_from_pickle_encrypted(
-        port_: flutter_rust_bridge::for_generated::MessagePort,
-        pickle: String,
-        pickle_key: Box<[u8]>,
-    ) {
-        wire__crate__api__vodozemac_inbound_group_session_from_pickle_encrypted_impl(
-            port_, pickle, pickle_key,
-        )
-    }
-
-    #[wasm_bindgen]
-    pub fn wire__crate__api__vodozemac_inbound_group_session_import(
-        session_key: String,
-        config: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-        wire__crate__api__vodozemac_inbound_group_session_import_impl(session_key, config)
-    }
-
-    #[wasm_bindgen]
-    pub fn wire__crate__api__vodozemac_inbound_group_session_new(
-        session_key: String,
-        config: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-        wire__crate__api__vodozemac_inbound_group_session_new_impl(session_key, config)
-    }
-
-    #[wasm_bindgen]
-    pub fn wire__crate__api__vodozemac_inbound_group_session_pickle_encrypted(
-        port_: flutter_rust_bridge::for_generated::MessagePort,
-        that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-        pickle_key: Box<[u8]>,
-    ) {
-        wire__crate__api__vodozemac_inbound_group_session_pickle_encrypted_impl(
+        wire__crate__bindings__vodozemac_group_session_pickle_encrypted_impl(
             port_, that, pickle_key,
         )
     }
 
     #[wasm_bindgen]
-    pub fn wire__crate__api__vodozemac_inbound_group_session_session_id(
-        that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-        wire__crate__api__vodozemac_inbound_group_session_session_id_impl(that)
-    }
-
-    #[wasm_bindgen]
-    pub fn wire__crate__api__vodozemac_megolm_session_config_def(
-    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-        wire__crate__api__vodozemac_megolm_session_config_def_impl()
-    }
-
-    #[wasm_bindgen]
-    pub fn wire__crate__api__vodozemac_megolm_session_config_version(
-        that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-        wire__crate__api__vodozemac_megolm_session_config_version_impl(that)
-    }
-
-    #[wasm_bindgen]
-    pub fn wire__crate__api__vodozemac_megolm_session_config_version_1(
-    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-        wire__crate__api__vodozemac_megolm_session_config_version_1_impl()
-    }
-
-    #[wasm_bindgen]
-    pub fn wire__crate__api__vodozemac_megolm_session_config_version_2(
-    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-        wire__crate__api__vodozemac_megolm_session_config_version_2_impl()
-    }
-
-    #[wasm_bindgen]
-    pub fn wire__crate__api__vodozemac_olm_message_from_parts(
-        message_type: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-        ciphertext: Box<[u8]>,
-    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-        wire__crate__api__vodozemac_olm_message_from_parts_impl(message_type, ciphertext)
-    }
-
-    #[wasm_bindgen]
-    pub fn wire__crate__api__vodozemac_olm_message_message(
-        that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-        wire__crate__api__vodozemac_olm_message_message_impl(that)
-    }
-
-    #[wasm_bindgen]
-    pub fn wire__crate__api__vodozemac_olm_message_message_type(
-        that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-        wire__crate__api__vodozemac_olm_message_message_type_impl(that)
-    }
-
-    #[wasm_bindgen]
-    pub fn wire__crate__api__vodozemac_olm_session_config_def(
-    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-        wire__crate__api__vodozemac_olm_session_config_def_impl()
-    }
-
-    #[wasm_bindgen]
-    pub fn wire__crate__api__vodozemac_olm_session_config_version(
-        that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-        wire__crate__api__vodozemac_olm_session_config_version_impl(that)
-    }
-
-    #[wasm_bindgen]
-    pub fn wire__crate__api__vodozemac_olm_session_config_version_1(
-    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-        wire__crate__api__vodozemac_olm_session_config_version_1_impl()
-    }
-
-    #[wasm_bindgen]
-    pub fn wire__crate__api__vodozemac_olm_session_config_version_2(
-    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-        wire__crate__api__vodozemac_olm_session_config_version_2_impl()
-    }
-
-    #[wasm_bindgen]
-    pub fn wire__crate__api__vodozemac_session_decrypt(
+    pub fn wire__crate__bindings__vodozemac_group_session_session_config(
         port_: flutter_rust_bridge::for_generated::MessagePort,
         that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-        message: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     ) {
-        wire__crate__api__vodozemac_session_decrypt_impl(port_, that, message)
+        wire__crate__bindings__vodozemac_group_session_session_config_impl(port_, that)
     }
 
     #[wasm_bindgen]
-    pub fn wire__crate__api__vodozemac_session_encrypt(
+    pub fn wire__crate__bindings__vodozemac_group_session_session_id(
+        that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__bindings__vodozemac_group_session_session_id_impl(that)
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__bindings__vodozemac_group_session_session_key(
         port_: flutter_rust_bridge::for_generated::MessagePort,
         that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-        plaintext: String,
     ) {
-        wire__crate__api__vodozemac_session_encrypt_impl(port_, that, plaintext)
+        wire__crate__bindings__vodozemac_group_session_session_key_impl(port_, that)
     }
 
     #[wasm_bindgen]
-    pub fn wire__crate__api__vodozemac_session_from_olm_pickle_encrypted(
+    pub fn wire__crate__bindings__vodozemac_group_session_to_inbound(
+        that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__bindings__vodozemac_group_session_to_inbound_impl(that)
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__bindings__vodozemac_inbound_group_session_decrypt(
+        port_: flutter_rust_bridge::for_generated::MessagePort,
+        that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+        encrypted: String,
+    ) {
+        wire__crate__bindings__vodozemac_inbound_group_session_decrypt_impl(port_, that, encrypted)
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__bindings__vodozemac_inbound_group_session_export_at(
+        that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+        index: u32,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__bindings__vodozemac_inbound_group_session_export_at_impl(that, index)
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__bindings__vodozemac_inbound_group_session_export_at_first_known_index(
+        that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__bindings__vodozemac_inbound_group_session_export_at_first_known_index_impl(
+            that,
+        )
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__bindings__vodozemac_inbound_group_session_first_known_index(
+        that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__bindings__vodozemac_inbound_group_session_first_known_index_impl(that)
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__bindings__vodozemac_inbound_group_session_from_olm_pickle_encrypted(
         port_: flutter_rust_bridge::for_generated::MessagePort,
         pickle: String,
         pickle_key: Box<[u8]>,
     ) {
-        wire__crate__api__vodozemac_session_from_olm_pickle_encrypted_impl(
+        wire__crate__bindings__vodozemac_inbound_group_session_from_olm_pickle_encrypted_impl(
             port_, pickle, pickle_key,
         )
     }
 
     #[wasm_bindgen]
-    pub fn wire__crate__api__vodozemac_session_from_pickle_encrypted(
+    pub fn wire__crate__bindings__vodozemac_inbound_group_session_from_pickle_encrypted(
         port_: flutter_rust_bridge::for_generated::MessagePort,
         pickle: String,
         pickle_key: Box<[u8]>,
     ) {
-        wire__crate__api__vodozemac_session_from_pickle_encrypted_impl(port_, pickle, pickle_key)
+        wire__crate__bindings__vodozemac_inbound_group_session_from_pickle_encrypted_impl(
+            port_, pickle, pickle_key,
+        )
     }
 
     #[wasm_bindgen]
-    pub fn wire__crate__api__vodozemac_session_has_received_message(
-        that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    pub fn wire__crate__bindings__vodozemac_inbound_group_session_import(
+        session_key: String,
+        config: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-        wire__crate__api__vodozemac_session_has_received_message_impl(that)
+        wire__crate__bindings__vodozemac_inbound_group_session_import_impl(session_key, config)
     }
 
     #[wasm_bindgen]
-    pub fn wire__crate__api__vodozemac_session_pickle_encrypted(
+    pub fn wire__crate__bindings__vodozemac_inbound_group_session_new(
+        session_key: String,
+        config: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__bindings__vodozemac_inbound_group_session_new_impl(session_key, config)
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__bindings__vodozemac_inbound_group_session_pickle_encrypted(
         port_: flutter_rust_bridge::for_generated::MessagePort,
         that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
         pickle_key: Box<[u8]>,
     ) {
-        wire__crate__api__vodozemac_session_pickle_encrypted_impl(port_, that, pickle_key)
+        wire__crate__bindings__vodozemac_inbound_group_session_pickle_encrypted_impl(
+            port_, that, pickle_key,
+        )
     }
 
     #[wasm_bindgen]
-    pub fn wire__crate__api__vodozemac_session_session_config(
+    pub fn wire__crate__bindings__vodozemac_inbound_group_session_session_id(
+        that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__bindings__vodozemac_inbound_group_session_session_id_impl(that)
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__bindings__vodozemac_megolm_session_config_def(
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__bindings__vodozemac_megolm_session_config_def_impl()
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__bindings__vodozemac_megolm_session_config_version(
+        that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__bindings__vodozemac_megolm_session_config_version_impl(that)
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__bindings__vodozemac_megolm_session_config_version_1(
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__bindings__vodozemac_megolm_session_config_version_1_impl()
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__bindings__vodozemac_megolm_session_config_version_2(
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__bindings__vodozemac_megolm_session_config_version_2_impl()
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__bindings__vodozemac_olm_message_from_parts(
+        message_type: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+        ciphertext: Box<[u8]>,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__bindings__vodozemac_olm_message_from_parts_impl(message_type, ciphertext)
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__bindings__vodozemac_olm_message_message(
+        that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__bindings__vodozemac_olm_message_message_impl(that)
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__bindings__vodozemac_olm_message_message_type(
+        that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__bindings__vodozemac_olm_message_message_type_impl(that)
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__bindings__vodozemac_olm_session_config_def(
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__bindings__vodozemac_olm_session_config_def_impl()
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__bindings__vodozemac_olm_session_config_version(
+        that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__bindings__vodozemac_olm_session_config_version_impl(that)
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__bindings__vodozemac_olm_session_config_version_1(
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__bindings__vodozemac_olm_session_config_version_1_impl()
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__bindings__vodozemac_olm_session_config_version_2(
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__bindings__vodozemac_olm_session_config_version_2_impl()
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__bindings__vodozemac_session_decrypt(
+        port_: flutter_rust_bridge::for_generated::MessagePort,
+        that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+        message: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    ) {
+        wire__crate__bindings__vodozemac_session_decrypt_impl(port_, that, message)
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__bindings__vodozemac_session_encrypt(
+        port_: flutter_rust_bridge::for_generated::MessagePort,
+        that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+        plaintext: String,
+    ) {
+        wire__crate__bindings__vodozemac_session_encrypt_impl(port_, that, plaintext)
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__bindings__vodozemac_session_from_olm_pickle_encrypted(
+        port_: flutter_rust_bridge::for_generated::MessagePort,
+        pickle: String,
+        pickle_key: Box<[u8]>,
+    ) {
+        wire__crate__bindings__vodozemac_session_from_olm_pickle_encrypted_impl(
+            port_, pickle, pickle_key,
+        )
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__bindings__vodozemac_session_from_pickle_encrypted(
+        port_: flutter_rust_bridge::for_generated::MessagePort,
+        pickle: String,
+        pickle_key: Box<[u8]>,
+    ) {
+        wire__crate__bindings__vodozemac_session_from_pickle_encrypted_impl(
+            port_, pickle, pickle_key,
+        )
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__bindings__vodozemac_session_has_received_message(
+        that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__bindings__vodozemac_session_has_received_message_impl(that)
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__bindings__vodozemac_session_pickle_encrypted(
+        port_: flutter_rust_bridge::for_generated::MessagePort,
+        that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+        pickle_key: Box<[u8]>,
+    ) {
+        wire__crate__bindings__vodozemac_session_pickle_encrypted_impl(port_, that, pickle_key)
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__bindings__vodozemac_session_session_config(
         port_: flutter_rust_bridge::for_generated::MessagePort,
         that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     ) {
-        wire__crate__api__vodozemac_session_session_config_impl(port_, that)
+        wire__crate__bindings__vodozemac_session_session_config_impl(port_, that)
     }
 
     #[wasm_bindgen]
-    pub fn wire__crate__api__vodozemac_session_session_id(
+    pub fn wire__crate__bindings__vodozemac_session_session_id(
         that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-        wire__crate__api__vodozemac_session_session_id_impl(that)
+        wire__crate__bindings__vodozemac_session_session_id_impl(that)
     }
 
     #[wasm_bindgen]

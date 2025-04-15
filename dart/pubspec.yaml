@@ -1,6 +1,6 @@
-name: generic_olm_bindings
+name: vodozemac
 description: A starting point for Dart libraries or applications.
-version: 1.0.0
+version: 0.0.1
 # repository: https://github.com/my_org/my_repo
 
 environment:
@@ -9,7 +9,7 @@ environment:
 dependencies:
   collection: ^1.19.0
   ffi: ^2.0.1
-  flutter_rust_bridge: 2.9.0
+  flutter_rust_bridge: ^2.9.0
   import_sorter: ^4.6.0
   meta: ^1.9.0
   test_core: ^0.6.8
@@ -23,9 +23,9 @@ dev_dependencies:
   checks: ^0.3.0
 
 flutter_rust_bridge:
-  rust_input: crate::api
+  rust_input: crate::bindings
   rust_root: ../rust
-  dart_output: lib/src/vodozemac/generated
+  dart_output: lib/src/generated
   web: true
   dart_format_line_length: 120
   dart3: false
