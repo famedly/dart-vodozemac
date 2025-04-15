@@ -7,4 +7,5 @@ export 'src/api.dart'
         InboundGroupSession,
         Session,
         Account,
-        loadVodozemac;
+        loadVodozemac,
+        isVodozemacLoaded;

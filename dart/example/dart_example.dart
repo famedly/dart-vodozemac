@@ -1,4 +1,4 @@
-import 'package:vodozemac/lib.dart';
+import 'package:vodozemac/vodozemac.dart';
 
 void main() async {
   loadVodozemac();

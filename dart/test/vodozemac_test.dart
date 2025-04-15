@@ -4,7 +4,7 @@ import 'package:checks/checks.dart';
 import 'package:checks/context.dart';
 import 'package:test/test.dart';
 
-import 'package:vodozemac/lib.dart';
+import 'package:vodozemac/vodozemac.dart';
 
 extension PublicCurveChecks on Subject<Curve25519PublicKey> {
   void isValid() {
@@ -53,6 +53,10 @@ void main() {
   loadVodozemac(
       libraryPath: Platform.environment['librarypath'] ??
           '../rust/target/debug/libvodozemac_bindings_dart.dylib');
+
+  test('vodozemac is loaded', () {
+    check(isVodozemacLoaded).returnsNormally();
+  });
 
   group('Account', () {
     setUp(() {
