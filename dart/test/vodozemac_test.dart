@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'dart:typed_data';
 
 import 'package:checks/checks.dart';
 import 'package:checks/context.dart';
@@ -45,6 +46,15 @@ extension AsyncIterableChecks<T> on Subject<Iterable<T>> {
         ]);
       }
       return null;
+    });
+  }
+}
+
+extension Uint8ListChecks on Subject<Uint8List> {
+  void isNotEmpty() {
+    context.expect(() => ['is not empty'], (actual) {
+      if (actual.isNotEmpty) return null;
+      return Rejection(which: ['is empty']);
     });
   }
 }
@@ -239,6 +249,97 @@ void main() {
 
       await check(laterInbound.decrypt(encrypted2)).completes((subject) =>
           subject.has((res) => res.plaintext, 'plaintext').equals('Test'));
+    });
+  });
+
+  group('PkEncryption and PkDecryption', () {
+    test('encryption roundtrip works', () async {
+      final decryptor = PkDecryption();
+      final publicKey = decryptor.publicKey();
+      final encryptor =
+          PkEncryption.fromPublicKey(Curve25519PublicKey.fromBase64(publicKey));
+
+      final message = "It's a secret to everybody";
+      final encrypted = await encryptor.encrypt(message);
+
+      check(encrypted.ciphertext()).isNotEmpty();
+      check(encrypted.mac()).isNotEmpty();
+      check(encrypted.ephemeralKey()).isValid();
+
+      final decrypted = await decryptor.decrypt(encrypted);
+      check(decrypted).equals(message);
+    });
+
+    test('can create from secret key', () async {
+      final decryptor = PkDecryption();
+      final privateKeyBytes = await decryptor.privateKey();
+      final publicKey = decryptor.publicKey();
+
+      // Create new decryptor from secret key
+      final restoredDecryptor = PkDecryption.fromSecretKey(
+          Curve25519PublicKey.fromBytes(privateKeyBytes));
+
+      // Public keys should match
+      check(restoredDecryptor.publicKey()).equals(publicKey);
+
+      // Test encryption/decryption with restored key
+      final encryptor =
+          PkEncryption.fromPublicKey(Curve25519PublicKey.fromBase64(publicKey));
+      final message = "Test message";
+      final encrypted = await encryptor.encrypt(message);
+      final decrypted = await restoredDecryptor.decrypt(encrypted);
+      check(decrypted).equals(message);
+    });
+
+    test('can pickle and unpickle', () async {
+      final decryptor = PkDecryption();
+      final publicKey = decryptor.publicKey();
+      final pickleKey = Uint8List.fromList(List.generate(32, (i) => i));
+
+      // Create encrypted pickle
+      final pickle = await decryptor.toLibolmPickle(pickleKey);
+
+      // Restore from pickle
+      final restoredDecryptor = await PkDecryption.fromLibolmPickle(
+          pickle: pickle, pickleKey: pickleKey);
+
+      // Public keys should match
+      check(restoredDecryptor.publicKey()).equals(publicKey);
+
+      // Test encryption/decryption with restored key
+      final encryptor =
+          PkEncryption.fromPublicKey(Curve25519PublicKey.fromBase64(publicKey));
+      final message = "Test message";
+      final encrypted = await encryptor.encrypt(message);
+      final decrypted = await restoredDecryptor.decrypt(encrypted);
+      check(decrypted).equals(message);
+    });
+
+    test('different keys produce different ciphertexts', () async {
+      final decryptor1 = PkDecryption();
+      final decryptor2 = PkDecryption();
+      final encryptor1 = PkEncryption.fromPublicKey(
+          Curve25519PublicKey.fromBase64(decryptor1.publicKey()));
+      final encryptor2 = PkEncryption.fromPublicKey(
+          Curve25519PublicKey.fromBase64(decryptor2.publicKey()));
+
+      final message = "Test message";
+      final encrypted1 = await encryptor1.encrypt(message);
+      final encrypted2 = await encryptor2.encrypt(message);
+
+      // Ciphertexts should be different
+      check(encrypted1.ciphertext())
+          .not((subject) => subject.equals(encrypted2.ciphertext()));
+
+      // But both should decrypt correctly with their respective keys
+      final decrypted1 = await decryptor1.decrypt(encrypted1);
+      final decrypted2 = await decryptor2.decrypt(encrypted2);
+      check(decrypted1).equals(message);
+      check(decrypted2).equals(message);
+
+      // Cross-decryption should fail
+      await check(decryptor2.decrypt(encrypted1)).throws();
+      await check(decryptor1.decrypt(encrypted2)).throws();
     });
   });
 }
