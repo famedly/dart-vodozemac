@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 import 'dart:typed_data';
 
@@ -56,6 +57,17 @@ extension Uint8ListChecks on Subject<Uint8List> {
       if (actual.isNotEmpty) return null;
       return Rejection(which: ['is empty']);
     });
+  }
+}
+
+class Utils {
+  static Uint8List base64decodeUnpadded(String s) {
+    final needEquals = (4 - (s.length % 4)) % 4;
+    return base64.decode(s + ('=' * needEquals));
+  }
+
+  static String encodeBase64Unpadded(List<int> s) {
+    return base64Encode(s).replaceAll(RegExp(r'=+$', multiLine: true), '');
   }
 }
 
@@ -340,6 +352,121 @@ void main() {
       // Cross-decryption should fail
       await check(decryptor2.decrypt(encrypted1)).throws();
       await check(decryptor1.decrypt(encrypted2)).throws();
+    });
+  });
+
+  group('PkSigning', () {
+    test('can sign and verify messages', () async {
+      final signing = PkSigning();
+      final message = "Hello, world!";
+      final signature = signing.sign(message);
+      check(signature.toBase64()).isNotEmpty();
+      check(signing.publicKey().verify(message: message, signature: signature))
+          .completes();
+    });
+
+    test('fails to verify modified messages', () async {
+      final signing = PkSigning();
+      final message = "Hello, world!";
+      final signature = signing.sign(message);
+
+      // Should fail for different message
+      await check(signing.publicKey().verify(
+              message: "Hello, World!", // Capital W
+              signature: signature))
+          .throws();
+
+      // Should fail for truncated message
+      await check(signing.publicKey().verify(
+              message: "Hello, world", // removed !
+              signature: signature))
+          .throws();
+    });
+
+    test('different keys produce different signatures', () async {
+      final signing1 = PkSigning();
+      final signing2 = PkSigning();
+      final message = "Hello, world!";
+
+      final signature1 = signing1.sign(message);
+      final signature2 = signing2.sign(message);
+
+      // Signatures should be different
+      check(signature1.toBase64())
+          .not((subject) => subject.equals(signature2.toBase64()));
+
+      // Each signature should verify with its own key
+      await check(signing1
+              .publicKey()
+              .verify(message: message, signature: signature1))
+          .completes();
+      await check(signing2
+              .publicKey()
+              .verify(message: message, signature: signature2))
+          .completes();
+
+      // Cross-verification should fail
+      await check(signing1
+              .publicKey()
+              .verify(message: message, signature: signature2))
+          .throws();
+      await check(signing2
+              .publicKey()
+              .verify(message: message, signature: signature1))
+          .throws();
+    });
+
+    test('can create from seed', () async {
+      final seed = Uint8List.fromList(List.generate(32, (i) => i));
+      final signing1 =
+          PkSigning.fromSecretKey(Utils.encodeBase64Unpadded(seed));
+      final signing2 =
+          PkSigning.fromSecretKey(Utils.encodeBase64Unpadded(seed));
+
+      // Same seed should produce same key pair
+      check(signing1.publicKey().toBase64())
+          .equals(signing2.publicKey().toBase64());
+
+      // Signatures from both instances should be verifiable by either public key
+      final message = "Test message";
+      final signature1 = signing1.sign(message);
+      final signature2 = signing2.sign(message);
+
+      await check(signing1
+              .publicKey()
+              .verify(message: message, signature: signature2))
+          .completes();
+      await check(signing2
+              .publicKey()
+              .verify(message: message, signature: signature1))
+          .completes();
+    });
+
+    test('handles empty and special messages', () async {
+      final signing = PkSigning();
+
+      // Empty message
+      final emptySignature = signing.sign("");
+      await check(signing
+              .publicKey()
+              .verify(message: "", signature: emptySignature))
+          .completes();
+
+      // Message with special characters
+      final specialMessage = "!@#\$%^&*()_+\n\t\r";
+      final specialSignature = signing.sign(specialMessage);
+      await check(signing
+              .publicKey()
+              .verify(message: specialMessage, signature: specialSignature))
+          .completes();
+
+      // Long message
+      final longMessage = "a" * 1000;
+      final longSignature = signing.sign(longMessage);
+      await check(signing
+              .publicKey()
+              .verify(message: longMessage, signature: longSignature))
+          .completes();
     });
   });
 }

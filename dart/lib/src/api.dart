@@ -334,3 +334,21 @@ final class PkDecryption {
 
   Future<Uint8List> privateKey() async => _decryption.privateKey();
 }
+
+final class PkSigning {
+  final vodozemac.PkSigning _signing;
+
+  PkSigning._(this._signing);
+
+  PkSigning() : _signing = vodozemac.PkSigning();
+
+  static PkSigning fromSecretKey(String key) =>
+      PkSigning._(vodozemac.PkSigning.fromSecretKey(key: key));
+
+  String secretKey() => _signing.secretKey();
+
+  Ed25519PublicKey publicKey() => Ed25519PublicKey._(_signing.publicKey());
+
+  Ed25519Signature sign(String message) =>
+      Ed25519Signature._(_signing.sign(message: message));
+}

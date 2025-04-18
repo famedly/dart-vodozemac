@@ -63,7 +63,7 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
   String get codegenVersion => '2.9.0';
 
   @override
-  int get rustContentHash => -130997552;
+  int get rustContentHash => 1382486312;
 
   static const kDefaultExternalLibraryLoaderConfig = ExternalLibraryLoaderConfig(
     stem: 'vodozemac_bindings_dart',
@@ -73,6 +73,16 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
 }
 
 abstract class RustLibApi extends BaseApi {
+  PkSigning crateBindingsPkSigningFromSecretKey({required String key});
+
+  PkSigning crateBindingsPkSigningNew();
+
+  VodozemacEd25519PublicKey crateBindingsPkSigningPublicKey({required PkSigning that});
+
+  String crateBindingsPkSigningSecretKey({required PkSigning that});
+
+  VodozemacEd25519Signature crateBindingsPkSigningSign({required PkSigning that, required String message});
+
   Future<VodozemacOlmSessionCreationResult> crateBindingsVodozemacAccountCreateInboundSession(
       {required VodozemacAccount that,
       required VodozemacCurve25519PublicKey theirIdentityKey,
@@ -330,6 +340,12 @@ abstract class RustLibApi extends BaseApi {
 
   CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_RwLockSessionPtr;
 
+  RustArcIncrementStrongCountFnType get rust_arc_increment_strong_count_PkSigning;
+
+  RustArcDecrementStrongCountFnType get rust_arc_decrement_strong_count_PkSigning;
+
+  CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_PkSigningPtr;
+
   RustArcIncrementStrongCountFnType get rust_arc_increment_strong_count_RwLockAccount;
 
   RustArcDecrementStrongCountFnType get rust_arc_decrement_strong_count_RwLockAccount;
@@ -344,6 +360,118 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     required super.generalizedFrbRustBinding,
     required super.portManager,
   });
+
+  @override
+  PkSigning crateBindingsPkSigningFromSecretKey({required String key}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_String(key);
+        return wire.wire__crate__bindings__PkSigning_from_secret_key(arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData:
+            dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPkSigning,
+        decodeErrorData: dco_decode_AnyhowException,
+      ),
+      constMeta: kCrateBindingsPkSigningFromSecretKeyConstMeta,
+      argValues: [key],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta get kCrateBindingsPkSigningFromSecretKeyConstMeta => const TaskConstMeta(
+        debugName: "PkSigning_from_secret_key",
+        argNames: ["key"],
+      );
+
+  @override
+  PkSigning crateBindingsPkSigningNew() {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        return wire.wire__crate__bindings__PkSigning_new();
+      },
+      codec: DcoCodec(
+        decodeSuccessData:
+            dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPkSigning,
+        decodeErrorData: null,
+      ),
+      constMeta: kCrateBindingsPkSigningNewConstMeta,
+      argValues: [],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta get kCrateBindingsPkSigningNewConstMeta => const TaskConstMeta(
+        debugName: "PkSigning_new",
+        argNames: [],
+      );
+
+  @override
+  VodozemacEd25519PublicKey crateBindingsPkSigningPublicKey({required PkSigning that}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPkSigning(that);
+        return wire.wire__crate__bindings__PkSigning_public_key(arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_vodozemac_ed_25519_public_key,
+        decodeErrorData: null,
+      ),
+      constMeta: kCrateBindingsPkSigningPublicKeyConstMeta,
+      argValues: [that],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta get kCrateBindingsPkSigningPublicKeyConstMeta => const TaskConstMeta(
+        debugName: "PkSigning_public_key",
+        argNames: ["that"],
+      );
+
+  @override
+  String crateBindingsPkSigningSecretKey({required PkSigning that}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPkSigning(that);
+        return wire.wire__crate__bindings__PkSigning_secret_key(arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_String,
+        decodeErrorData: null,
+      ),
+      constMeta: kCrateBindingsPkSigningSecretKeyConstMeta,
+      argValues: [that],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta get kCrateBindingsPkSigningSecretKeyConstMeta => const TaskConstMeta(
+        debugName: "PkSigning_secret_key",
+        argNames: ["that"],
+      );
+
+  @override
+  VodozemacEd25519Signature crateBindingsPkSigningSign({required PkSigning that, required String message}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPkSigning(that);
+        var arg1 = cst_encode_String(message);
+        return wire.wire__crate__bindings__PkSigning_sign(arg0, arg1);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_vodozemac_ed_25519_signature,
+        decodeErrorData: null,
+      ),
+      constMeta: kCrateBindingsPkSigningSignConstMeta,
+      argValues: [that, message],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta get kCrateBindingsPkSigningSignConstMeta => const TaskConstMeta(
+        debugName: "PkSigning_sign",
+        argNames: ["that", "message"],
+      );
 
   @override
   Future<VodozemacOlmSessionCreationResult> crateBindingsVodozemacAccountCreateInboundSession(
@@ -2190,6 +2318,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   RustArcDecrementStrongCountFnType get rust_arc_decrement_strong_count_RwLockSession =>
       wire.rust_arc_decrement_strong_count_RustOpaque_RwLockSession;
 
+  RustArcIncrementStrongCountFnType get rust_arc_increment_strong_count_PkSigning =>
+      wire.rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPkSigning;
+
+  RustArcDecrementStrongCountFnType get rust_arc_decrement_strong_count_PkSigning =>
+      wire.rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPkSigning;
+
   RustArcIncrementStrongCountFnType get rust_arc_increment_strong_count_RwLockAccount =>
       wire.rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockAccount;
 
@@ -2200,6 +2334,18 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   AnyhowException dco_decode_AnyhowException(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return AnyhowException(raw as String);
+  }
+
+  @protected
+  PkSigning dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPkSigning(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return PkSigningImpl.frbInternalDcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  PkSigning dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPkSigning(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return PkSigningImpl.frbInternalDcoDecode(raw as List<dynamic>);
   }
 
   @protected
@@ -2266,6 +2412,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   RwLockSession dco_decode_RustOpaque_RwLockSession(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return RwLockSessionImpl.frbInternalDcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  PkSigning dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPkSigning(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return PkSigningImpl.frbInternalDcoDecode(raw as List<dynamic>);
   }
 
   @protected
@@ -2608,6 +2760,20 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  PkSigning sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPkSigning(
+      SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    return PkSigningImpl.frbInternalSseDecode(sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  PkSigning sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPkSigning(
+      SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    return PkSigningImpl.frbInternalSseDecode(sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
   Curve25519PublicKey sse_decode_RustOpaque_Curve25519PublicKey(SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     return Curve25519PublicKeyImpl.frbInternalSseDecode(sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
@@ -2672,6 +2838,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   RwLockSession sse_decode_RustOpaque_RwLockSession(SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     return RwLockSessionImpl.frbInternalSseDecode(sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  PkSigning sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPkSigning(
+      SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    return PkSigningImpl.frbInternalSseDecode(sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
   @protected
@@ -2977,6 +3150,20 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPkSigning(PkSigning raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+// ignore: invalid_use_of_internal_member
+    return (raw as PkSigningImpl).frbInternalCstEncode(move: true);
+  }
+
+  @protected
+  int cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPkSigning(PkSigning raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+// ignore: invalid_use_of_internal_member
+    return (raw as PkSigningImpl).frbInternalCstEncode(move: false);
+  }
+
+  @protected
   int cst_encode_RustOpaque_Curve25519PublicKey(Curve25519PublicKey raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
 // ignore: invalid_use_of_internal_member
@@ -3054,6 +3241,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPkSigning(PkSigning raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+// ignore: invalid_use_of_internal_member
+    return (raw as PkSigningImpl).frbInternalCstEncode();
+  }
+
+  @protected
   int cst_encode_RustOpaque_stdsyncRwLockAccount(RwLockAccount raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
 // ignore: invalid_use_of_internal_member
@@ -3088,6 +3282,20 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   void sse_encode_AnyhowException(AnyhowException self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_String(self.message, serializer);
+  }
+
+  @protected
+  void sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPkSigning(
+      PkSigning self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_usize((self as PkSigningImpl).frbInternalSseEncode(move: true), serializer);
+  }
+
+  @protected
+  void sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPkSigning(
+      PkSigning self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_usize((self as PkSigningImpl).frbInternalSseEncode(move: false), serializer);
   }
 
   @protected
@@ -3154,6 +3362,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   void sse_encode_RustOpaque_RwLockSession(RwLockSession self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize((self as RwLockSessionImpl).frbInternalSseEncode(move: null), serializer);
+  }
+
+  @protected
+  void sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPkSigning(
+      PkSigning self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_usize((self as PkSigningImpl).frbInternalSseEncode(move: null), serializer);
   }
 
   @protected
@@ -3565,6 +3780,33 @@ class PkEncryptionImpl extends RustOpaque implements PkEncryption {
     rustArcDecrementStrongCount: RustLib.instance.api.rust_arc_decrement_strong_count_PkEncryption,
     rustArcDecrementStrongCountPtr: RustLib.instance.api.rust_arc_decrement_strong_count_PkEncryptionPtr,
   );
+}
+
+@sealed
+class PkSigningImpl extends RustOpaque implements PkSigning {
+  // Not to be used by end users
+  PkSigningImpl.frbInternalDcoDecode(List<dynamic> wire) : super.frbInternalDcoDecode(wire, _kStaticData);
+
+  // Not to be used by end users
+  PkSigningImpl.frbInternalSseDecode(BigInt ptr, int externalSizeOnNative)
+      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount: RustLib.instance.api.rust_arc_increment_strong_count_PkSigning,
+    rustArcDecrementStrongCount: RustLib.instance.api.rust_arc_decrement_strong_count_PkSigning,
+    rustArcDecrementStrongCountPtr: RustLib.instance.api.rust_arc_decrement_strong_count_PkSigningPtr,
+  );
+
+  VodozemacEd25519PublicKey publicKey() => RustLib.instance.api.crateBindingsPkSigningPublicKey(
+        that: this,
+      );
+
+  String secretKey() => RustLib.instance.api.crateBindingsPkSigningSecretKey(
+        that: this,
+      );
+
+  VodozemacEd25519Signature sign({required String message}) =>
+      RustLib.instance.api.crateBindingsPkSigningSign(that: this, message: message);
 }
 
 @sealed

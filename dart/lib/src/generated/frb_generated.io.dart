@@ -52,11 +52,20 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_RwLockSessionPtr =>
       wire._rust_arc_decrement_strong_count_RustOpaque_RwLockSessionPtr;
 
+  CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_PkSigningPtr =>
+      wire._rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPkSigningPtr;
+
   CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_RwLockAccountPtr =>
       wire._rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockAccountPtr;
 
   @protected
   AnyhowException dco_decode_AnyhowException(dynamic raw);
+
+  @protected
+  PkSigning dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPkSigning(dynamic raw);
+
+  @protected
+  PkSigning dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPkSigning(dynamic raw);
 
   @protected
   Curve25519PublicKey dco_decode_RustOpaque_Curve25519PublicKey(dynamic raw);
@@ -90,6 +99,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   RwLockSession dco_decode_RustOpaque_RwLockSession(dynamic raw);
+
+  @protected
+  PkSigning dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPkSigning(dynamic raw);
 
   @protected
   RwLockAccount dco_decode_RustOpaque_stdsyncRwLockAccount(dynamic raw);
@@ -224,6 +236,14 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   AnyhowException sse_decode_AnyhowException(SseDeserializer deserializer);
 
   @protected
+  PkSigning sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPkSigning(
+      SseDeserializer deserializer);
+
+  @protected
+  PkSigning sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPkSigning(
+      SseDeserializer deserializer);
+
+  @protected
   Curve25519PublicKey sse_decode_RustOpaque_Curve25519PublicKey(SseDeserializer deserializer);
 
   @protected
@@ -255,6 +275,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   RwLockSession sse_decode_RustOpaque_RwLockSession(SseDeserializer deserializer);
+
+  @protected
+  PkSigning sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPkSigning(
+      SseDeserializer deserializer);
 
   @protected
   RwLockAccount sse_decode_RustOpaque_stdsyncRwLockAccount(SseDeserializer deserializer);
@@ -750,6 +774,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPkSigning(PkSigning raw);
+
+  @protected
+  int cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPkSigning(PkSigning raw);
+
+  @protected
   int cst_encode_RustOpaque_Curve25519PublicKey(Curve25519PublicKey raw);
 
   @protected
@@ -783,6 +813,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   int cst_encode_RustOpaque_RwLockSession(RwLockSession raw);
 
   @protected
+  int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPkSigning(PkSigning raw);
+
+  @protected
   int cst_encode_RustOpaque_stdsyncRwLockAccount(RwLockAccount raw);
 
   @protected
@@ -799,6 +832,14 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   void sse_encode_AnyhowException(AnyhowException self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPkSigning(
+      PkSigning self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPkSigning(
+      PkSigning self, SseSerializer serializer);
 
   @protected
   void sse_encode_RustOpaque_Curve25519PublicKey(Curve25519PublicKey self, SseSerializer serializer);
@@ -832,6 +873,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   void sse_encode_RustOpaque_RwLockSession(RwLockSession self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPkSigning(
+      PkSigning self, SseSerializer serializer);
 
   @protected
   void sse_encode_RustOpaque_stdsyncRwLockAccount(RwLockAccount self, SseSerializer serializer);
@@ -1003,6 +1048,73 @@ class RustLibWire implements BaseWire {
   late final _store_dart_post_cobjectPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(DartPostCObjectFnType)>>('store_dart_post_cobject');
   late final _store_dart_post_cobject = _store_dart_post_cobjectPtr.asFunction<void Function(DartPostCObjectFnType)>();
+
+  WireSyncRust2DartDco wire__crate__bindings__PkSigning_from_secret_key(
+    ffi.Pointer<wire_cst_list_prim_u_8_strict> key,
+  ) {
+    return _wire__crate__bindings__PkSigning_from_secret_key(
+      key,
+    );
+  }
+
+  late final _wire__crate__bindings__PkSigning_from_secret_keyPtr =
+      _lookup<ffi.NativeFunction<WireSyncRust2DartDco Function(ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
+          'frbgen_vodozemac_wire__crate__bindings__PkSigning_from_secret_key');
+  late final _wire__crate__bindings__PkSigning_from_secret_key = _wire__crate__bindings__PkSigning_from_secret_keyPtr
+      .asFunction<WireSyncRust2DartDco Function(ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
+
+  WireSyncRust2DartDco wire__crate__bindings__PkSigning_new() {
+    return _wire__crate__bindings__PkSigning_new();
+  }
+
+  late final _wire__crate__bindings__PkSigning_newPtr = _lookup<ffi.NativeFunction<WireSyncRust2DartDco Function()>>(
+      'frbgen_vodozemac_wire__crate__bindings__PkSigning_new');
+  late final _wire__crate__bindings__PkSigning_new =
+      _wire__crate__bindings__PkSigning_newPtr.asFunction<WireSyncRust2DartDco Function()>();
+
+  WireSyncRust2DartDco wire__crate__bindings__PkSigning_public_key(
+    int that,
+  ) {
+    return _wire__crate__bindings__PkSigning_public_key(
+      that,
+    );
+  }
+
+  late final _wire__crate__bindings__PkSigning_public_keyPtr =
+      _lookup<ffi.NativeFunction<WireSyncRust2DartDco Function(ffi.UintPtr)>>(
+          'frbgen_vodozemac_wire__crate__bindings__PkSigning_public_key');
+  late final _wire__crate__bindings__PkSigning_public_key =
+      _wire__crate__bindings__PkSigning_public_keyPtr.asFunction<WireSyncRust2DartDco Function(int)>();
+
+  WireSyncRust2DartDco wire__crate__bindings__PkSigning_secret_key(
+    int that,
+  ) {
+    return _wire__crate__bindings__PkSigning_secret_key(
+      that,
+    );
+  }
+
+  late final _wire__crate__bindings__PkSigning_secret_keyPtr =
+      _lookup<ffi.NativeFunction<WireSyncRust2DartDco Function(ffi.UintPtr)>>(
+          'frbgen_vodozemac_wire__crate__bindings__PkSigning_secret_key');
+  late final _wire__crate__bindings__PkSigning_secret_key =
+      _wire__crate__bindings__PkSigning_secret_keyPtr.asFunction<WireSyncRust2DartDco Function(int)>();
+
+  WireSyncRust2DartDco wire__crate__bindings__PkSigning_sign(
+    int that,
+    ffi.Pointer<wire_cst_list_prim_u_8_strict> message,
+  ) {
+    return _wire__crate__bindings__PkSigning_sign(
+      that,
+      message,
+    );
+  }
+
+  late final _wire__crate__bindings__PkSigning_signPtr = _lookup<
+          ffi.NativeFunction<WireSyncRust2DartDco Function(ffi.UintPtr, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
+      'frbgen_vodozemac_wire__crate__bindings__PkSigning_sign');
+  late final _wire__crate__bindings__PkSigning_sign = _wire__crate__bindings__PkSigning_signPtr
+      .asFunction<WireSyncRust2DartDco Function(int, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
 
   void wire__crate__bindings__vodozemac_account_create_inbound_session(
     int port_,
@@ -2657,6 +2769,36 @@ class RustLibWire implements BaseWire {
   late final _rust_arc_decrement_strong_count_RustOpaque_RwLockSession =
       _rust_arc_decrement_strong_count_RustOpaque_RwLockSessionPtr.asFunction<void Function(ffi.Pointer<ffi.Void>)>();
 
+  void rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPkSigning(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPkSigning(
+      ptr,
+    );
+  }
+
+  late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPkSigningPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
+          'frbgen_vodozemac_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPkSigning');
+  late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPkSigning =
+      _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPkSigningPtr
+          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
+
+  void rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPkSigning(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPkSigning(
+      ptr,
+    );
+  }
+
+  late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPkSigningPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
+          'frbgen_vodozemac_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPkSigning');
+  late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPkSigning =
+      _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPkSigningPtr
+          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
+
   void rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockAccount(
     ffi.Pointer<ffi.Void> ptr,
   ) {
@@ -2877,6 +3019,13 @@ typedef DartPostCObjectFnTypeFunction = ffi.Bool Function(DartPort port_id, ffi.
 typedef DartDartPostCObjectFnTypeFunction = bool Function(DartDartPort port_id, ffi.Pointer<ffi.Void> message);
 typedef DartPostCObjectFnType = ffi.Pointer<ffi.NativeFunction<DartPostCObjectFnTypeFunction>>;
 
+final class wire_cst_list_prim_u_8_strict extends ffi.Struct {
+  external ffi.Pointer<ffi.Uint8> ptr;
+
+  @ffi.Int32()
+  external int len;
+}
+
 final class wire_cst_vodozemac_account extends ffi.Struct {
   @ffi.UintPtr()
   external int account;
@@ -2885,13 +3034,6 @@ final class wire_cst_vodozemac_account extends ffi.Struct {
 final class wire_cst_vodozemac_curve_25519_public_key extends ffi.Struct {
   @ffi.UintPtr()
   external int key;
-}
-
-final class wire_cst_list_prim_u_8_strict extends ffi.Struct {
-  external ffi.Pointer<ffi.Uint8> ptr;
-
-  @ffi.Int32()
-  external int len;
 }
 
 final class wire_cst_vodozemac_olm_session_config extends ffi.Struct {

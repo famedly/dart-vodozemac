@@ -3,7 +3,6 @@ use std::ops::Deref;
 pub use std::sync::RwLock;
 pub use std::vec::Vec;
 pub use vodozemac::{
-    base64_decode, base64_encode,
     megolm::{
         GroupSession, GroupSessionPickle, InboundGroupSession, InboundGroupSessionPickle,
         SessionConfig as MegolmSessionConfig,
@@ -13,7 +12,8 @@ pub use vodozemac::{
         SessionConfig as OlmSessionConfig, SessionPickle,
     },
     pk_encryption::{Message as PkMessage, PkDecryption, PkEncryption},
-    Curve25519PublicKey, Curve25519SecretKey, Ed25519PublicKey, Ed25519Signature,
+    Curve25519PublicKey, Curve25519SecretKey, Ed25519SecretKey, Ed25519PublicKey, Ed25519Signature,
+    base64_decode,
 };
 //#[frb(mirror(IdentityKeys))]
 //pub struct _IdentityKeys {
@@ -859,5 +859,49 @@ impl VodozemacPkDecryption {
                 &pickle_key,
             )?),
         })
+    }
+}
+
+pub struct PkSigning {
+    inner: Ed25519SecretKey,
+    public_key: Ed25519PublicKey,
+}
+
+impl PkSigning {
+    #[frb(sync)]
+    pub fn new() -> Self {
+        let secret_key = Ed25519SecretKey::new();
+        Self::new_helper(secret_key)
+    }
+
+    fn new_helper(secret_key: Ed25519SecretKey) -> Self {
+        let public_key = secret_key.public_key();
+
+        Self { inner: secret_key, public_key }
+    }
+
+    #[frb(sync)]
+    pub fn from_secret_key(key: &str) -> anyhow::Result<Self> {
+        let key = Ed25519SecretKey::from_base64(key)?;
+        Ok(Self::new_helper(key))
+    }
+
+    #[frb(sync)]
+    pub fn secret_key(&self) -> String {
+        self.inner.to_base64()
+    }
+
+    #[frb(sync)]
+    pub fn public_key(&self) -> VodozemacEd25519PublicKey {
+        VodozemacEd25519PublicKey {
+            key: RustOpaqueNom::new(self.public_key),
+        }
+    }
+
+    #[frb(sync)]
+    pub fn sign(&self, message: &str) -> VodozemacEd25519Signature {
+        VodozemacEd25519Signature {
+            signature: RustOpaqueNom::new(self.inner.sign(message.as_bytes())),
+        }
     }
 }

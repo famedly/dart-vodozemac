@@ -8,6 +8,7 @@ import 'lib.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
+// These functions are ignored because they are not marked as `pub`: `new_helper`
 // These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `from`, `from`, `from`, `from`, `from`, `from`, `from`, `from`, `from`, `from`, `from`, `into`
 
 // Rust type: RustOpaqueNom<PkDecryption>
@@ -15,6 +16,20 @@ abstract class PkDecryption implements RustOpaqueInterface {}
 
 // Rust type: RustOpaqueNom<PkEncryption>
 abstract class PkEncryption implements RustOpaqueInterface {}
+
+// Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<PkSigning>>
+abstract class PkSigning implements RustOpaqueInterface {
+  static PkSigning fromSecretKey({required String key}) =>
+      RustLib.instance.api.crateBindingsPkSigningFromSecretKey(key: key);
+
+  factory PkSigning() => RustLib.instance.api.crateBindingsPkSigningNew();
+
+  VodozemacEd25519PublicKey publicKey();
+
+  String secretKey();
+
+  VodozemacEd25519Signature sign({required String message});
+}
 
 // Rust type: RustOpaqueNom<std :: sync :: RwLock < Account >>
 abstract class RwLockAccount implements RustOpaqueInterface {}
