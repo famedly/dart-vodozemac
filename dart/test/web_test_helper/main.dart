@@ -71,6 +71,7 @@ Future<void> main(List<String> args) async {
   final browser = await puppeteer.launch(
     headless: true,
     timeout: const Duration(minutes: 5),
+    args: ['--no-sandbox'],
   );
 
   try {

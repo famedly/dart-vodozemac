@@ -41,10 +41,8 @@ cleanup() {
 trap cleanup EXIT
 
 export PORT=$PORT
-DART_TEST_HELPER="test/web_test_helper"
-cd "$DART_TEST_HELPER"
-dart pub get
-if ! dart run main.dart "$(readlink -f $JS_OUTPUT)"; then
+DART_TEST_HELPER="./test/web_test_helper/main.dart"
+if ! dart run "$DART_TEST_HELPER" "$(readlink -f $JS_OUTPUT)"; then
   echo_error "Tests failed"
   exit 1
 fi

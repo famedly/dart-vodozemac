@@ -9,20 +9,108 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  dart:
-    permissions:
-      contents: read
-    uses: famedly/frontend-ci-templates/.github/workflows/dart.yml@main
-    with:
-      env_file: ".github/workflows/versions.env"
-      directory: dart
+  dart_analyzer:
+    runs-on: ubuntu-latest
+    env:
+      env_file: ${{ inputs.env_file }}
+    steps:
+      - uses: actions/checkout@v4
+      - run: cat .github/workflows/versions.env >> $GITHUB_ENV
+      - uses: dart-lang/setup-dart@a57a6c04cf7d4840e88432aad6281d1e125f0d46
+        with:
+          sdk: ${{ env.dart_version }}
+      # - uses: subosito/flutter-action@48cafc24713cca54bbe03cdc3a423187d413aafa
+      #   with:
+      #     flutter-version: ${{ env.flutter_version }}
+      #     cache: true
+      - uses: actions/cache@v4
+        with:
+          path: ~/.pub-cache
+          key: ${{ runner.os }}-${{ hashFiles('**/pubspec.lock') }}
+      - name: Fetch dependencies
+        id: deps
+        working-directory: dart
+        run: dart pub get
+      - name: Fetch web test helper dependencies
+        working-directory: dart/test/web_test_helper
+        run: dart pub get
+      - name: Check formatting
+        working-directory: dart
+        run: |
+          mapfile -t unformatted_files < <(dart format --fix --show changed --summary none --output none lib test)
+          for file in "${unformatted_files[@]}";  do
+            file=${file#"Changed "}
+            # Warn about the unformatted file if it's not in the whitelist
+            if [[ ! "$file" = *"/generated/"* ]]; then
+              echo
+              echo "\"$file\" is not properly formatted"
+              echo "Please run the below command to format it:"
+              echo
+              echo "    dart format --fix $file"
+              echo
+              exit 1
+            fi
+          done
+      - name: Run analyzer
+        working-directory: dart
+        if: success() || (failure() && steps.deps.conclusion == 'success')
+        run: |
+          SCRIPT=$(cat << 'EOL'
+          import json,sys,os
 
-  test:
+          obj = json.load(sys.stdin)
+
+          diagnostics = obj["diagnostics"]
+
+          if diagnostics:
+              print('|severity|file|problem|suggestion|documentation|')
+              print('|:--|:--|:--|:--|:--|')
+          else:
+              exit(0)
+
+          sha = os.environ["GITHUB_SHA"]
+          server = os.environ["GITHUB_SERVER_URL"]
+          repo = os.environ["GITHUB_REPOSITORY"]
+          workspace = os.environ["GITHUB_WORKSPACE"]
+
+          for d in diagnostics:
+              l = d["location"]
+
+              file =l["file"].removeprefix(workspace + "/")
+              start = str(l["range"]["start"]["line"])
+              end = str(l["range"]["end"]["line"])
+
+              location = f'[{file}:{start}]({server}/{repo}/blob/{sha}/{file}#L{start}-L{end})'
+
+              print("", d["severity"], location, d.get("correctionMessage", "").replace("|", "\\|"), d.get("correctionMessage", "").replace("|", "\\|"), f'[{d["code"]}]({d["documentation"]})', "", sep="| ")
+          exit(1)
+          EOL
+          )
+
+          dart analyze --format=json | python3 -c "$SCRIPT" | tee -a "$GITHUB_STEP_SUMMARY"
+          test ${PIPESTATUS[0]} -eq 0 -a ${PIPESTATUS[1]} -eq 0 -a ${PIPESTATUS[2]} -eq 0
+      - name: Sort imports
+        working-directory: dart
+        if: success() || (failure() && steps.deps.conclusion == 'success')
+        run: |
+          if ! dart run import_sorter:main --no-comments --exit-if-changed
+          then
+            # run again, since exit-if-changed prevents formatting
+            dart run import_sorter:main --no-comments
+            echo '```diff' >> "$GITHUB_STEP_SUMMARY"
+            git diff >> "$GITHUB_STEP_SUMMARY"
+            echo '```' >> "$GITHUB_STEP_SUMMARY"
+            exit 1
+          fi
+
+  io-tests:
     runs-on: ubuntu-latest
     permissions:
       contents: read
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - run: cat .github/workflows/versions.env >> $GITHUB_ENV
       - uses: dart-lang/setup-dart@a57a6c04cf7d4840e88432aad6281d1e125f0d46
         with:
@@ -33,18 +121,59 @@ jobs:
           gitlab_pass: ${{ secrets.GITLAB_PASS }}
           gitlab_ssh: ${{ secrets.CI_SSH_PRIVATE_KEY}}
       - name: Caching
-        uses: Swatinem/rust-cache@b8a6852b4f997182bdea832df3f9e153038b5191
+        uses: Swatinem/rust-cache@68b3cb7503c78e67dae8373749990a220eb65352
         with:
           shared-key: "stable"
-      - name: Fetch dependencies
+      - name: Fetch dart dependencies
         working-directory: dart
         run: dart pub get
-      - name: Build Rust library
+      - name: Fetch rust dependencies
         working-directory: rust
-        run: cargo build
-      - name: Run Dart Tests
+        run: cargo fetch
+      - name: Run IO Tests
+        run: ./scripts/run_io_tests.sh
+
+  web-tests:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - run: cat .github/workflows/versions.env >> $GITHUB_ENV
+      - uses: dart-lang/setup-dart@a57a6c04cf7d4840e88432aad6281d1e125f0d46
+        with:
+          sdk: ${{ env.dart_version }}
+      - uses: famedly/backend-build-workflows/.github/actions/rust-prepare@main
+        with:
+          gitlab_user: ${{ secrets.GITLAB_USER }}
+          gitlab_pass: ${{ secrets.GITLAB_PASS }}
+          gitlab_ssh: ${{ secrets.CI_SSH_PRIVATE_KEY}}
+      - name: Caching
+        uses: Swatinem/rust-cache@68b3cb7503c78e67dae8373749990a220eb65352
+        with:
+          shared-key: "stable"
+      - name: Rust nightly setup
+        run: |
+          rustup toolchain install nightly
+          rustup +nightly component add rust-src
+          rustup +nightly target add wasm32-unknown-unknown
+      - name: Install wasm-pack
+        run: curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh
+      - name: Install flutter_rust_bridge_codegen
+        run: cargo install flutter_rust_bridge_codegen
+      - name: Fetch dart dependencies
         working-directory: dart
-        run: dart test
+        run: dart pub get
+      - name: Fetch web test helper dependencies
+        working-directory: dart/test/web_test_helper
+        run: dart pub get
+      - name: Fetch rust dependencies
+        working-directory: rust
+        run: cargo fetch
+      - name: Run Web Tests
+        run: ./scripts/run_web_tests.sh
 
   general:
     permissions:
