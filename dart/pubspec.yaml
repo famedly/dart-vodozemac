@@ -17,11 +17,7 @@ dev_dependencies:
   checks: ^0.3.0
   import_sorter: ^4.6.0
 
-flutter_rust_bridge:
-  rust_input: crate::bindings
-  rust_root: ../rust
-  dart_output: lib/src/generated
-  web: true
-  dart_format_line_length: 120
-  dart3: false
-  full_dep: true
+import_sorter:
+  comments: false
+  ignored_files: # ignore generated files
+    - \/lib\/src\/generated\/*
