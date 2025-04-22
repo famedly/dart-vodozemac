@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:io';
 import 'dart:typed_data';
 
 import 'package:checks/checks.dart';
@@ -71,10 +70,13 @@ class Utils {
   }
 }
 
-void main() {
-  loadVodozemac(
-      libraryPath: Platform.environment['librarypath'] ??
-          '../rust/target/debug/libvodozemac_bindings_dart.dylib');
+void main() async {
+  await loadVodozemac(
+    wasmPath:
+        './pkg/', // this is relative to the output file (compiled to js in `web/`)
+    libraryPath:
+        '../rust/target/debug/', // this is relative to the whole dart project
+  );
 
   test('vodozemac is loaded', () {
     check(isVodozemacLoaded).returnsNormally();

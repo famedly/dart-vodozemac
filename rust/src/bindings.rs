@@ -846,7 +846,9 @@ impl VodozemacPkDecryption {
     }
 
     pub fn to_libolm_pickle(&self, pickle_key: [u8; 32usize]) -> String {
-        self.pk_decryption.to_libolm_pickle(&pickle_key).unwrap()
+        self.pk_decryption
+            .to_libolm_pickle(&pickle_key)
+            .expect("Failed to pickle PkDecryption")
     }
 
     pub fn from_libolm_pickle(

@@ -1,7 +1,8 @@
 import 'package:vodozemac/vodozemac.dart';
 
 void main() async {
-  loadVodozemac();
+  await loadVodozemac(
+      wasmPath: '../web/pkg/', libraryPath: '../../../rust/target/debug/');
 
   final account = await Account.create();
   print(account.maxNumberOfOneTimeKeys());

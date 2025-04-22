@@ -5,15 +5,13 @@ import 'generated/bindings.dart' as vodozemac;
 
 /// Load the vodozemac backend. Only one backend can be loaded. You can provide the [wasmPath] and [libraryPath] to
 /// specify the location of the wasm and native library respectively.
-Future<void> loadVodozemac({
-  String wasmPath = 'pkg/vodozemac-bindings-dart',
-  String libraryPath = '../rust/target/debug/libvodozemac_bindings_dart.dylib',
-}) =>
+Future<void> loadVodozemac(
+        {required String wasmPath, required String libraryPath}) async =>
     vodozemac.RustLib.init(
-        externalLibrary: ExternalLibrary.open(
-            bool.fromEnvironment('dart.library.html')
-                ? wasmPath
-                : libraryPath));
+        externalLibrary: await loadExternalLibrary(ExternalLibraryLoaderConfig(
+            stem: 'vodozemac_bindings_dart',
+            ioDirectory: libraryPath,
+            webPrefix: wasmPath)));
 
 void isVodozemacLoaded() {
   if (!vodozemac.RustLib.instance.initialized) {
