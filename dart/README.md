@@ -75,5 +75,6 @@ Currently you have the choice of the generic interface or the vodozemac interfac
 might be added to ease migration.
 
 You can run the tests using `dart test`, but you might need to adapt the library path.
+ -> You can run `cargo build` in `../rust` directory to get the `.dylib` file to load
 
 You can also run the tests for web using `dart run flutter_rust_bridge:serve --crate ../rust --run-tests -d example/run_tests_web.dart --root .`

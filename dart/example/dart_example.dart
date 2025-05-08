@@ -1,4 +1,4 @@
-import 'package:generic_olm_bindings/generic.dart';
+import 'package:vodozemac/vodozemac.dart';
 
 void main() async {
   loadVodozemac();

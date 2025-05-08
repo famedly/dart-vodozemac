@@ -4,9 +4,9 @@ import 'package:checks/checks.dart';
 import 'package:checks/context.dart';
 import 'package:test/test.dart';
 
-import 'package:generic_olm_bindings/vodozemac.dart';
+import 'package:vodozemac/vodozemac.dart';
 
-extension PublicCurveChecks on Subject<VodozemacCurve25519PublicKey> {
+extension PublicCurveChecks on Subject<Curve25519PublicKey> {
   void isValid() {
     context.expect(() => ['meets this expectation'], (actual) {
       if ((actual.toBase64()).length == 43) return null;
@@ -52,7 +52,11 @@ extension AsyncIterableChecks<T> on Subject<Iterable<T>> {
 void main() {
   loadVodozemac(
       libraryPath: Platform.environment['librarypath'] ??
-          '../rust/target/debug/libvodozemac_bindings_dart.so');
+          '../rust/target/debug/libvodozemac_bindings_dart.dylib');
+
+  test('vodozemac is loaded', () {
+    check(isVodozemacLoaded).returnsNormally();
+  });
 
   group('Account', () {
     setUp(() {
@@ -60,41 +64,43 @@ void main() {
     });
 
     test('can be created', () async {
-      await check(VodozemacAccount.create()).completes();
+      await check(Account.create()).completes();
     });
 
     test('has sane max OTKs', () async {
-      final account = await VodozemacAccount.create();
+      final account = await Account.create();
 
       check(account.maxNumberOfOneTimeKeys()).isGreaterOrEqual(50);
     });
 
     test('can generate OTKs', () async {
-      final account = await VodozemacAccount.create();
+      final account = await Account.create();
 
       await check(account.generateOneTimeKeys(20)).completes();
 
       check(account.oneTimeKeys())
         ..length.equals(20)
-        ..entries.every(it()
-          ..has((val) => val.key, 'keyid').length.equals(11)
-          ..has((val) => val.value, 'key').isValid());
+        ..entries.every((subject) {
+          subject.has((val) => val.key, 'keyid').length.equals(11);
+          subject.has((val) => val.value, 'key').isValid();
+        });
     });
 
     test('can generate fallback key', () async {
-      final account = await VodozemacAccount.create();
+      final account = await Account.create();
 
       await check(account.generateFallbackKey()).completes();
 
       check(account.fallbackKey())
         ..length.equals(1)
-        ..entries.every(it()
-          ..has((val) => val.key, 'keyid').length.equals(11)
-          ..has((val) => val.value, 'key').isValid());
+        ..entries.every((subject) {
+          subject.has((val) => val.key, 'keyid').length.equals(11);
+          subject.has((val) => val.value, 'key').isValid();
+        });
     });
 
     test('can publish fallback key', () async {
-      final account = await VodozemacAccount.create();
+      final account = await Account.create();
 
       await check(account.generateFallbackKey()).completes();
 
@@ -112,8 +118,8 @@ void main() {
     });
 
     test('sending olm messages works properly', () async {
-      final account = await VodozemacAccount.create();
-      final account2 = await VodozemacAccount.create();
+      final account = await Account.create();
+      final account2 = await Account.create();
 
       await check(account.generateOneTimeKeys(1)).completes();
 
@@ -139,13 +145,13 @@ void main() {
       await check(outboundSession.decrypt(
               messageType: encrypted2.messageType,
               ciphertext: encrypted2.ciphertext))
-          .completes(it()..equals('Test2'));
+          .completes((subject) => subject.equals('Test2'));
       check(outboundSession.hasReceivedMessage()).isTrue();
     });
 
     test('sending olm messages works properly with fallback key', () async {
-      final account = await VodozemacAccount.create();
-      final account2 = await VodozemacAccount.create();
+      final account = await Account.create();
+      final account2 = await Account.create();
 
       await check(account.generateFallbackKey()).completes();
 
@@ -171,12 +177,12 @@ void main() {
       await check(outboundSession.decrypt(
               messageType: encrypted2.messageType,
               ciphertext: encrypted2.ciphertext))
-          .completes(it()..equals('Test2'));
+          .completes((subject) => subject.equals('Test2'));
       check(outboundSession.hasReceivedMessage()).isTrue();
     });
 
     test('can sign messages', () async {
-      final account = await VodozemacAccount.create();
+      final account = await Account.create();
 
       final signature = await account.sign('Abc');
 
@@ -190,18 +196,18 @@ void main() {
 
   group('Megolm session can', () {
     test('be created', () async {
-      await check(VodozemacGroupSession.create()).completes();
+      await check(GroupSession.create()).completes();
     });
 
     test('encrypt and decrypt', () async {
-      final groupSession = await VodozemacGroupSession.create();
+      final groupSession = await GroupSession.create();
       final inbound = groupSession.toInbound();
 
       final encrypted = await groupSession.encrypt('Test');
 
-      check(encrypted).not(it()..contains('Test'));
-      await check(inbound.decrypt(encrypted)).completes(
-          it()..has((res) => res.plaintext, 'plaintext').equals('Test'));
+      check(encrypted).not((subject) => subject.contains('Test'));
+      await check(inbound.decrypt(encrypted)).completes((subject) =>
+          subject.has((res) => res.plaintext, 'plaintext').equals('Test'));
 
       // ensure that a later exported session does not decrypt the message
       final inboundAfter = groupSession.toInbound();
@@ -209,31 +215,30 @@ void main() {
     });
 
     test('be imported and exported', () async {
-      final groupSession = await VodozemacGroupSession.create();
+      final groupSession = await GroupSession.create();
       final inbound = groupSession.toInbound();
-      final reimportedInbound = VodozemacInboundGroupSession.import(
-          inbound.exportAtFirstKnownIndex());
-      final laterInbound =
-          VodozemacInboundGroupSession.import(inbound.exportAt(1)!);
+      final reimportedInbound =
+          InboundGroupSession.import(inbound.exportAtFirstKnownIndex());
+      final laterInbound = InboundGroupSession.import(inbound.exportAt(1)!);
 
       final encrypted = await groupSession.encrypt('Test');
       final encrypted2 = await groupSession.encrypt('Test');
 
-      check(encrypted).not(it()..equals(encrypted2));
+      check(encrypted).not((subject) => subject.equals(encrypted2));
 
-      check(encrypted).not(it()..contains('Test'));
-      await check(reimportedInbound.decrypt(encrypted)).completes(
-          it()..has((res) => res.plaintext, 'plaintext').equals('Test'));
+      check(encrypted).not((subject) => subject.contains('Test'));
+      await check(reimportedInbound.decrypt(encrypted)).completes((subject) =>
+          subject.has((res) => res.plaintext, 'plaintext').equals('Test'));
 
       // ensure that a later exported session does not decrypt the message
       await check(laterInbound.decrypt(encrypted)).throws();
 
       // check if second index decryptes
-      await check(reimportedInbound.decrypt(encrypted2)).completes(
-          it()..has((res) => res.plaintext, 'plaintext').equals('Test'));
+      await check(reimportedInbound.decrypt(encrypted2)).completes((subject) =>
+          subject.has((res) => res.plaintext, 'plaintext').equals('Test'));
 
-      await check(laterInbound.decrypt(encrypted2)).completes(
-          it()..has((res) => res.plaintext, 'plaintext').equals('Test'));
+      await check(laterInbound.decrypt(encrypted2)).completes((subject) =>
+          subject.has((res) => res.plaintext, 'plaintext').equals('Test'));
     });
   });
 }
