@@ -39,6 +39,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_OlmSessionConfigPtr =>
       wire.rust_arc_decrement_strong_count_RustOpaque_OlmSessionConfig;
 
+  CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_PkDecryptionPtr =>
+      wire.rust_arc_decrement_strong_count_RustOpaque_PkDecryption;
+
+  CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_PkEncryptionPtr =>
+      wire.rust_arc_decrement_strong_count_RustOpaque_PkEncryption;
+
   CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_RwLockGroupSessionPtr =>
       wire.rust_arc_decrement_strong_count_RustOpaque_RwLockGroupSession;
 
@@ -48,11 +54,20 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_RwLockSessionPtr =>
       wire.rust_arc_decrement_strong_count_RustOpaque_RwLockSession;
 
+  CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_PkSigningPtr =>
+      wire.rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPkSigning;
+
   CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_RwLockAccountPtr =>
       wire.rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockAccount;
 
   @protected
   AnyhowException dco_decode_AnyhowException(dynamic raw);
+
+  @protected
+  PkSigning dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPkSigning(dynamic raw);
+
+  @protected
+  PkSigning dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPkSigning(dynamic raw);
 
   @protected
   Curve25519PublicKey dco_decode_RustOpaque_Curve25519PublicKey(dynamic raw);
@@ -73,6 +88,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   OlmSessionConfig dco_decode_RustOpaque_OlmSessionConfig(dynamic raw);
 
   @protected
+  PkDecryption dco_decode_RustOpaque_PkDecryption(dynamic raw);
+
+  @protected
+  PkEncryption dco_decode_RustOpaque_PkEncryption(dynamic raw);
+
+  @protected
   RwLockGroupSession dco_decode_RustOpaque_RwLockGroupSession(dynamic raw);
 
   @protected
@@ -80,6 +101,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   RwLockSession dco_decode_RustOpaque_RwLockSession(dynamic raw);
+
+  @protected
+  PkSigning dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPkSigning(dynamic raw);
 
   @protected
   RwLockAccount dco_decode_RustOpaque_stdsyncRwLockAccount(dynamic raw);
@@ -116,6 +140,15 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   VodozemacOlmSessionConfig dco_decode_box_autoadd_vodozemac_olm_session_config(dynamic raw);
+
+  @protected
+  VodozemacPkDecryption dco_decode_box_autoadd_vodozemac_pk_decryption(dynamic raw);
+
+  @protected
+  VodozemacPkEncryption dco_decode_box_autoadd_vodozemac_pk_encryption(dynamic raw);
+
+  @protected
+  VodozemacPkMessage dco_decode_box_autoadd_vodozemac_pk_message(dynamic raw);
 
   @protected
   VodozemacSession dco_decode_box_autoadd_vodozemac_session(dynamic raw);
@@ -190,10 +223,27 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   VodozemacOneTimeKey dco_decode_vodozemac_one_time_key(dynamic raw);
 
   @protected
+  VodozemacPkDecryption dco_decode_vodozemac_pk_decryption(dynamic raw);
+
+  @protected
+  VodozemacPkEncryption dco_decode_vodozemac_pk_encryption(dynamic raw);
+
+  @protected
+  VodozemacPkMessage dco_decode_vodozemac_pk_message(dynamic raw);
+
+  @protected
   VodozemacSession dco_decode_vodozemac_session(dynamic raw);
 
   @protected
   AnyhowException sse_decode_AnyhowException(SseDeserializer deserializer);
+
+  @protected
+  PkSigning sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPkSigning(
+      SseDeserializer deserializer);
+
+  @protected
+  PkSigning sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPkSigning(
+      SseDeserializer deserializer);
 
   @protected
   Curve25519PublicKey sse_decode_RustOpaque_Curve25519PublicKey(SseDeserializer deserializer);
@@ -214,6 +264,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   OlmSessionConfig sse_decode_RustOpaque_OlmSessionConfig(SseDeserializer deserializer);
 
   @protected
+  PkDecryption sse_decode_RustOpaque_PkDecryption(SseDeserializer deserializer);
+
+  @protected
+  PkEncryption sse_decode_RustOpaque_PkEncryption(SseDeserializer deserializer);
+
+  @protected
   RwLockGroupSession sse_decode_RustOpaque_RwLockGroupSession(SseDeserializer deserializer);
 
   @protected
@@ -221,6 +277,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   RwLockSession sse_decode_RustOpaque_RwLockSession(SseDeserializer deserializer);
+
+  @protected
+  PkSigning sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPkSigning(
+      SseDeserializer deserializer);
 
   @protected
   RwLockAccount sse_decode_RustOpaque_stdsyncRwLockAccount(SseDeserializer deserializer);
@@ -257,6 +317,15 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   VodozemacOlmSessionConfig sse_decode_box_autoadd_vodozemac_olm_session_config(SseDeserializer deserializer);
+
+  @protected
+  VodozemacPkDecryption sse_decode_box_autoadd_vodozemac_pk_decryption(SseDeserializer deserializer);
+
+  @protected
+  VodozemacPkEncryption sse_decode_box_autoadd_vodozemac_pk_encryption(SseDeserializer deserializer);
+
+  @protected
+  VodozemacPkMessage sse_decode_box_autoadd_vodozemac_pk_message(SseDeserializer deserializer);
 
   @protected
   VodozemacSession sse_decode_box_autoadd_vodozemac_session(SseDeserializer deserializer);
@@ -331,6 +400,15 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   VodozemacOneTimeKey sse_decode_vodozemac_one_time_key(SseDeserializer deserializer);
 
   @protected
+  VodozemacPkDecryption sse_decode_vodozemac_pk_decryption(SseDeserializer deserializer);
+
+  @protected
+  VodozemacPkEncryption sse_decode_vodozemac_pk_encryption(SseDeserializer deserializer);
+
+  @protected
+  VodozemacPkMessage sse_decode_vodozemac_pk_message(SseDeserializer deserializer);
+
+  @protected
   VodozemacSession sse_decode_vodozemac_session(SseDeserializer deserializer);
 
   @protected
@@ -400,6 +478,24 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   JSAny cst_encode_box_autoadd_vodozemac_olm_session_config(VodozemacOlmSessionConfig raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_vodozemac_olm_session_config(raw);
+  }
+
+  @protected
+  JSAny cst_encode_box_autoadd_vodozemac_pk_decryption(VodozemacPkDecryption raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return cst_encode_vodozemac_pk_decryption(raw);
+  }
+
+  @protected
+  JSAny cst_encode_box_autoadd_vodozemac_pk_encryption(VodozemacPkEncryption raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return cst_encode_vodozemac_pk_encryption(raw);
+  }
+
+  @protected
+  JSAny cst_encode_box_autoadd_vodozemac_pk_message(VodozemacPkMessage raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return cst_encode_vodozemac_pk_message(raw);
   }
 
   @protected
@@ -532,10 +628,38 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  JSAny cst_encode_vodozemac_pk_decryption(VodozemacPkDecryption raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return [cst_encode_RustOpaque_PkDecryption(raw.pkDecryption)].jsify()!;
+  }
+
+  @protected
+  JSAny cst_encode_vodozemac_pk_encryption(VodozemacPkEncryption raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return [cst_encode_RustOpaque_PkEncryption(raw.pkEncryption)].jsify()!;
+  }
+
+  @protected
+  JSAny cst_encode_vodozemac_pk_message(VodozemacPkMessage raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return [
+      cst_encode_list_prim_u_8_strict(raw.ciphertext),
+      cst_encode_list_prim_u_8_strict(raw.mac),
+      cst_encode_vodozemac_curve_25519_public_key(raw.ephemeralKey)
+    ].jsify()!;
+  }
+
+  @protected
   JSAny cst_encode_vodozemac_session(VodozemacSession raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return [cst_encode_RustOpaque_RwLockSession(raw.session)].jsify()!;
   }
+
+  @protected
+  int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPkSigning(PkSigning raw);
+
+  @protected
+  int cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPkSigning(PkSigning raw);
 
   @protected
   int cst_encode_RustOpaque_Curve25519PublicKey(Curve25519PublicKey raw);
@@ -556,6 +680,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   int cst_encode_RustOpaque_OlmSessionConfig(OlmSessionConfig raw);
 
   @protected
+  int cst_encode_RustOpaque_PkDecryption(PkDecryption raw);
+
+  @protected
+  int cst_encode_RustOpaque_PkEncryption(PkEncryption raw);
+
+  @protected
   int cst_encode_RustOpaque_RwLockGroupSession(RwLockGroupSession raw);
 
   @protected
@@ -563,6 +693,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   int cst_encode_RustOpaque_RwLockSession(RwLockSession raw);
+
+  @protected
+  int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPkSigning(PkSigning raw);
 
   @protected
   int cst_encode_RustOpaque_stdsyncRwLockAccount(RwLockAccount raw);
@@ -583,6 +716,14 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void sse_encode_AnyhowException(AnyhowException self, SseSerializer serializer);
 
   @protected
+  void sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPkSigning(
+      PkSigning self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPkSigning(
+      PkSigning self, SseSerializer serializer);
+
+  @protected
   void sse_encode_RustOpaque_Curve25519PublicKey(Curve25519PublicKey self, SseSerializer serializer);
 
   @protected
@@ -601,6 +742,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void sse_encode_RustOpaque_OlmSessionConfig(OlmSessionConfig self, SseSerializer serializer);
 
   @protected
+  void sse_encode_RustOpaque_PkDecryption(PkDecryption self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_RustOpaque_PkEncryption(PkEncryption self, SseSerializer serializer);
+
+  @protected
   void sse_encode_RustOpaque_RwLockGroupSession(RwLockGroupSession self, SseSerializer serializer);
 
   @protected
@@ -608,6 +755,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   void sse_encode_RustOpaque_RwLockSession(RwLockSession self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPkSigning(
+      PkSigning self, SseSerializer serializer);
 
   @protected
   void sse_encode_RustOpaque_stdsyncRwLockAccount(RwLockAccount self, SseSerializer serializer);
@@ -647,6 +798,15 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   void sse_encode_box_autoadd_vodozemac_olm_session_config(VodozemacOlmSessionConfig self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_vodozemac_pk_decryption(VodozemacPkDecryption self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_vodozemac_pk_encryption(VodozemacPkEncryption self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_vodozemac_pk_message(VodozemacPkMessage self, SseSerializer serializer);
 
   @protected
   void sse_encode_box_autoadd_vodozemac_session(VodozemacSession self, SseSerializer serializer);
@@ -722,6 +882,15 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void sse_encode_vodozemac_one_time_key(VodozemacOneTimeKey self, SseSerializer serializer);
 
   @protected
+  void sse_encode_vodozemac_pk_decryption(VodozemacPkDecryption self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_vodozemac_pk_encryption(VodozemacPkEncryption self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_vodozemac_pk_message(VodozemacPkMessage self, SseSerializer serializer);
+
+  @protected
   void sse_encode_vodozemac_session(VodozemacSession self, SseSerializer serializer);
 
   @protected
@@ -732,6 +901,25 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
 class RustLibWire implements BaseWire {
   RustLibWire.fromExternalLibrary(ExternalLibrary lib);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__bindings__PkSigning_from_secret_key(String key) =>
+          wasmModule.wire__crate__bindings__PkSigning_from_secret_key(key);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */ wire__crate__bindings__PkSigning_new() =>
+      wasmModule.wire__crate__bindings__PkSigning_new();
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */ wire__crate__bindings__PkSigning_public_key(
+          int that) =>
+      wasmModule.wire__crate__bindings__PkSigning_public_key(that);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */ wire__crate__bindings__PkSigning_secret_key(
+          int that) =>
+      wasmModule.wire__crate__bindings__PkSigning_secret_key(that);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */ wire__crate__bindings__PkSigning_sign(
+          int that, String message) =>
+      wasmModule.wire__crate__bindings__PkSigning_sign(that, message);
 
   void wire__crate__bindings__vodozemac_account_create_inbound_session(
           NativePortType port_, JSAny that, JSAny their_identity_key, String pre_key_message_base64) =>
@@ -946,7 +1134,7 @@ class RustLibWire implements BaseWire {
           wasmModule.wire__crate__bindings__vodozemac_megolm_session_config_version_2();
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__bindings__vodozemac_olm_message_from_parts(JSAny message_type, JSAny ciphertext) =>
+      wire__crate__bindings__vodozemac_olm_message_from_parts(JSAny message_type, String ciphertext) =>
           wasmModule.wire__crate__bindings__vodozemac_olm_message_from_parts(message_type, ciphertext);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
@@ -972,6 +1160,39 @@ class RustLibWire implements BaseWire {
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__bindings__vodozemac_olm_session_config_version_2() =>
           wasmModule.wire__crate__bindings__vodozemac_olm_session_config_version_2();
+
+  void wire__crate__bindings__vodozemac_pk_decryption_decrypt(NativePortType port_, JSAny that, JSAny message) =>
+      wasmModule.wire__crate__bindings__vodozemac_pk_decryption_decrypt(port_, that, message);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__bindings__vodozemac_pk_decryption_from_key(JSAny secret_key) =>
+          wasmModule.wire__crate__bindings__vodozemac_pk_decryption_from_key(secret_key);
+
+  void wire__crate__bindings__vodozemac_pk_decryption_from_libolm_pickle(
+          NativePortType port_, String pickle, JSAny pickle_key) =>
+      wasmModule.wire__crate__bindings__vodozemac_pk_decryption_from_libolm_pickle(port_, pickle, pickle_key);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__bindings__vodozemac_pk_decryption_new() =>
+          wasmModule.wire__crate__bindings__vodozemac_pk_decryption_new();
+
+  void wire__crate__bindings__vodozemac_pk_decryption_private_key(NativePortType port_, JSAny that) =>
+      wasmModule.wire__crate__bindings__vodozemac_pk_decryption_private_key(port_, that);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__bindings__vodozemac_pk_decryption_public_key(JSAny that) =>
+          wasmModule.wire__crate__bindings__vodozemac_pk_decryption_public_key(that);
+
+  void wire__crate__bindings__vodozemac_pk_decryption_to_libolm_pickle(
+          NativePortType port_, JSAny that, JSAny pickle_key) =>
+      wasmModule.wire__crate__bindings__vodozemac_pk_decryption_to_libolm_pickle(port_, that, pickle_key);
+
+  void wire__crate__bindings__vodozemac_pk_encryption_encrypt(NativePortType port_, JSAny that, String message) =>
+      wasmModule.wire__crate__bindings__vodozemac_pk_encryption_encrypt(port_, that, message);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__bindings__vodozemac_pk_encryption_from_key(JSAny public_key) =>
+          wasmModule.wire__crate__bindings__vodozemac_pk_encryption_from_key(public_key);
 
   void wire__crate__bindings__vodozemac_session_decrypt(NativePortType port_, JSAny that, JSAny message) =>
       wasmModule.wire__crate__bindings__vodozemac_session_decrypt(port_, that, message);
@@ -1037,6 +1258,18 @@ class RustLibWire implements BaseWire {
   void rust_arc_decrement_strong_count_RustOpaque_OlmSessionConfig(int ptr) =>
       wasmModule.rust_arc_decrement_strong_count_RustOpaque_OlmSessionConfig(ptr);
 
+  void rust_arc_increment_strong_count_RustOpaque_PkDecryption(int ptr) =>
+      wasmModule.rust_arc_increment_strong_count_RustOpaque_PkDecryption(ptr);
+
+  void rust_arc_decrement_strong_count_RustOpaque_PkDecryption(int ptr) =>
+      wasmModule.rust_arc_decrement_strong_count_RustOpaque_PkDecryption(ptr);
+
+  void rust_arc_increment_strong_count_RustOpaque_PkEncryption(int ptr) =>
+      wasmModule.rust_arc_increment_strong_count_RustOpaque_PkEncryption(ptr);
+
+  void rust_arc_decrement_strong_count_RustOpaque_PkEncryption(int ptr) =>
+      wasmModule.rust_arc_decrement_strong_count_RustOpaque_PkEncryption(ptr);
+
   void rust_arc_increment_strong_count_RustOpaque_RwLockGroupSession(int ptr) =>
       wasmModule.rust_arc_increment_strong_count_RustOpaque_RwLockGroupSession(ptr);
 
@@ -1055,6 +1288,16 @@ class RustLibWire implements BaseWire {
   void rust_arc_decrement_strong_count_RustOpaque_RwLockSession(int ptr) =>
       wasmModule.rust_arc_decrement_strong_count_RustOpaque_RwLockSession(ptr);
 
+  void rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPkSigning(
+          int ptr) =>
+      wasmModule
+          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPkSigning(ptr);
+
+  void rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPkSigning(
+          int ptr) =>
+      wasmModule
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPkSigning(ptr);
+
   void rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockAccount(int ptr) =>
       wasmModule.rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockAccount(ptr);
 
@@ -1068,6 +1311,20 @@ external RustLibWasmModule get wasmModule;
 @JS()
 @anonymous
 extension type RustLibWasmModule._(JSObject _) implements JSObject {
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__bindings__PkSigning_from_secret_key(String key);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */ wire__crate__bindings__PkSigning_new();
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__bindings__PkSigning_public_key(int that);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__bindings__PkSigning_secret_key(int that);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */ wire__crate__bindings__PkSigning_sign(
+      int that, String message);
+
   external void wire__crate__bindings__vodozemac_account_create_inbound_session(
       NativePortType port_, JSAny that, JSAny their_identity_key, String pre_key_message_base64);
 
@@ -1227,7 +1484,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
       wire__crate__bindings__vodozemac_megolm_session_config_version_2();
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__bindings__vodozemac_olm_message_from_parts(JSAny message_type, JSAny ciphertext);
+      wire__crate__bindings__vodozemac_olm_message_from_parts(JSAny message_type, String ciphertext);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__bindings__vodozemac_olm_message_message(JSAny that);
@@ -1246,6 +1503,31 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__bindings__vodozemac_olm_session_config_version_2();
+
+  external void wire__crate__bindings__vodozemac_pk_decryption_decrypt(NativePortType port_, JSAny that, JSAny message);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__bindings__vodozemac_pk_decryption_from_key(JSAny secret_key);
+
+  external void wire__crate__bindings__vodozemac_pk_decryption_from_libolm_pickle(
+      NativePortType port_, String pickle, JSAny pickle_key);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__bindings__vodozemac_pk_decryption_new();
+
+  external void wire__crate__bindings__vodozemac_pk_decryption_private_key(NativePortType port_, JSAny that);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__bindings__vodozemac_pk_decryption_public_key(JSAny that);
+
+  external void wire__crate__bindings__vodozemac_pk_decryption_to_libolm_pickle(
+      NativePortType port_, JSAny that, JSAny pickle_key);
+
+  external void wire__crate__bindings__vodozemac_pk_encryption_encrypt(
+      NativePortType port_, JSAny that, String message);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__bindings__vodozemac_pk_encryption_from_key(JSAny public_key);
 
   external void wire__crate__bindings__vodozemac_session_decrypt(NativePortType port_, JSAny that, JSAny message);
 
@@ -1292,6 +1574,14 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void rust_arc_decrement_strong_count_RustOpaque_OlmSessionConfig(int ptr);
 
+  external void rust_arc_increment_strong_count_RustOpaque_PkDecryption(int ptr);
+
+  external void rust_arc_decrement_strong_count_RustOpaque_PkDecryption(int ptr);
+
+  external void rust_arc_increment_strong_count_RustOpaque_PkEncryption(int ptr);
+
+  external void rust_arc_decrement_strong_count_RustOpaque_PkEncryption(int ptr);
+
   external void rust_arc_increment_strong_count_RustOpaque_RwLockGroupSession(int ptr);
 
   external void rust_arc_decrement_strong_count_RustOpaque_RwLockGroupSession(int ptr);
@@ -1303,6 +1593,12 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
   external void rust_arc_increment_strong_count_RustOpaque_RwLockSession(int ptr);
 
   external void rust_arc_decrement_strong_count_RustOpaque_RwLockSession(int ptr);
+
+  external void rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPkSigning(
+      int ptr);
+
+  external void rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPkSigning(
+      int ptr);
 
   external void rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockAccount(int ptr);
 

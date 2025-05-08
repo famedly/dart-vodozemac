@@ -63,7 +63,7 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
   String get codegenVersion => '2.9.0';
 
   @override
-  int get rustContentHash => -1825470410;
+  int get rustContentHash => 1382486312;
 
   static const kDefaultExternalLibraryLoaderConfig = ExternalLibraryLoaderConfig(
     stem: 'vodozemac_bindings_dart',
@@ -73,6 +73,16 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
 }
 
 abstract class RustLibApi extends BaseApi {
+  PkSigning crateBindingsPkSigningFromSecretKey({required String key});
+
+  PkSigning crateBindingsPkSigningNew();
+
+  VodozemacEd25519PublicKey crateBindingsPkSigningPublicKey({required PkSigning that});
+
+  String crateBindingsPkSigningSecretKey({required PkSigning that});
+
+  VodozemacEd25519Signature crateBindingsPkSigningSign({required PkSigning that, required String message});
+
   Future<VodozemacOlmSessionCreationResult> crateBindingsVodozemacAccountCreateInboundSession(
       {required VodozemacAccount that,
       required VodozemacCurve25519PublicKey theirIdentityKey,
@@ -207,7 +217,7 @@ abstract class RustLibApi extends BaseApi {
   VodozemacMegolmSessionConfig crateBindingsVodozemacMegolmSessionConfigVersion2();
 
   VodozemacOlmMessage crateBindingsVodozemacOlmMessageFromParts(
-      {required BigInt messageType, required List<int> ciphertext});
+      {required BigInt messageType, required String ciphertext});
 
   String crateBindingsVodozemacOlmMessageMessage({required VodozemacOlmMessage that});
 
@@ -220,6 +230,28 @@ abstract class RustLibApi extends BaseApi {
   VodozemacOlmSessionConfig crateBindingsVodozemacOlmSessionConfigVersion1();
 
   VodozemacOlmSessionConfig crateBindingsVodozemacOlmSessionConfigVersion2();
+
+  Future<String> crateBindingsVodozemacPkDecryptionDecrypt(
+      {required VodozemacPkDecryption that, required VodozemacPkMessage message});
+
+  VodozemacPkDecryption crateBindingsVodozemacPkDecryptionFromKey({required U8Array32 secretKey});
+
+  Future<VodozemacPkDecryption> crateBindingsVodozemacPkDecryptionFromLibolmPickle(
+      {required String pickle, required List<int> pickleKey});
+
+  VodozemacPkDecryption crateBindingsVodozemacPkDecryptionNew();
+
+  Future<Uint8List> crateBindingsVodozemacPkDecryptionPrivateKey({required VodozemacPkDecryption that});
+
+  String crateBindingsVodozemacPkDecryptionPublicKey({required VodozemacPkDecryption that});
+
+  Future<String> crateBindingsVodozemacPkDecryptionToLibolmPickle(
+      {required VodozemacPkDecryption that, required U8Array32 pickleKey});
+
+  Future<VodozemacPkMessage> crateBindingsVodozemacPkEncryptionEncrypt(
+      {required VodozemacPkEncryption that, required String message});
+
+  VodozemacPkEncryption crateBindingsVodozemacPkEncryptionFromKey({required VodozemacCurve25519PublicKey publicKey});
 
   Future<String> crateBindingsVodozemacSessionDecrypt(
       {required VodozemacSession that, required VodozemacOlmMessage message});
@@ -278,6 +310,18 @@ abstract class RustLibApi extends BaseApi {
 
   CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_OlmSessionConfigPtr;
 
+  RustArcIncrementStrongCountFnType get rust_arc_increment_strong_count_PkDecryption;
+
+  RustArcDecrementStrongCountFnType get rust_arc_decrement_strong_count_PkDecryption;
+
+  CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_PkDecryptionPtr;
+
+  RustArcIncrementStrongCountFnType get rust_arc_increment_strong_count_PkEncryption;
+
+  RustArcDecrementStrongCountFnType get rust_arc_decrement_strong_count_PkEncryption;
+
+  CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_PkEncryptionPtr;
+
   RustArcIncrementStrongCountFnType get rust_arc_increment_strong_count_RwLockGroupSession;
 
   RustArcDecrementStrongCountFnType get rust_arc_decrement_strong_count_RwLockGroupSession;
@@ -296,6 +340,12 @@ abstract class RustLibApi extends BaseApi {
 
   CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_RwLockSessionPtr;
 
+  RustArcIncrementStrongCountFnType get rust_arc_increment_strong_count_PkSigning;
+
+  RustArcDecrementStrongCountFnType get rust_arc_decrement_strong_count_PkSigning;
+
+  CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_PkSigningPtr;
+
   RustArcIncrementStrongCountFnType get rust_arc_increment_strong_count_RwLockAccount;
 
   RustArcDecrementStrongCountFnType get rust_arc_decrement_strong_count_RwLockAccount;
@@ -310,6 +360,118 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     required super.generalizedFrbRustBinding,
     required super.portManager,
   });
+
+  @override
+  PkSigning crateBindingsPkSigningFromSecretKey({required String key}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_String(key);
+        return wire.wire__crate__bindings__PkSigning_from_secret_key(arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData:
+            dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPkSigning,
+        decodeErrorData: dco_decode_AnyhowException,
+      ),
+      constMeta: kCrateBindingsPkSigningFromSecretKeyConstMeta,
+      argValues: [key],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta get kCrateBindingsPkSigningFromSecretKeyConstMeta => const TaskConstMeta(
+        debugName: "PkSigning_from_secret_key",
+        argNames: ["key"],
+      );
+
+  @override
+  PkSigning crateBindingsPkSigningNew() {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        return wire.wire__crate__bindings__PkSigning_new();
+      },
+      codec: DcoCodec(
+        decodeSuccessData:
+            dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPkSigning,
+        decodeErrorData: null,
+      ),
+      constMeta: kCrateBindingsPkSigningNewConstMeta,
+      argValues: [],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta get kCrateBindingsPkSigningNewConstMeta => const TaskConstMeta(
+        debugName: "PkSigning_new",
+        argNames: [],
+      );
+
+  @override
+  VodozemacEd25519PublicKey crateBindingsPkSigningPublicKey({required PkSigning that}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPkSigning(that);
+        return wire.wire__crate__bindings__PkSigning_public_key(arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_vodozemac_ed_25519_public_key,
+        decodeErrorData: null,
+      ),
+      constMeta: kCrateBindingsPkSigningPublicKeyConstMeta,
+      argValues: [that],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta get kCrateBindingsPkSigningPublicKeyConstMeta => const TaskConstMeta(
+        debugName: "PkSigning_public_key",
+        argNames: ["that"],
+      );
+
+  @override
+  String crateBindingsPkSigningSecretKey({required PkSigning that}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPkSigning(that);
+        return wire.wire__crate__bindings__PkSigning_secret_key(arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_String,
+        decodeErrorData: null,
+      ),
+      constMeta: kCrateBindingsPkSigningSecretKeyConstMeta,
+      argValues: [that],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta get kCrateBindingsPkSigningSecretKeyConstMeta => const TaskConstMeta(
+        debugName: "PkSigning_secret_key",
+        argNames: ["that"],
+      );
+
+  @override
+  VodozemacEd25519Signature crateBindingsPkSigningSign({required PkSigning that, required String message}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPkSigning(that);
+        var arg1 = cst_encode_String(message);
+        return wire.wire__crate__bindings__PkSigning_sign(arg0, arg1);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_vodozemac_ed_25519_signature,
+        decodeErrorData: null,
+      ),
+      constMeta: kCrateBindingsPkSigningSignConstMeta,
+      argValues: [that, message],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta get kCrateBindingsPkSigningSignConstMeta => const TaskConstMeta(
+        debugName: "PkSigning_sign",
+        argNames: ["that", "message"],
+      );
 
   @override
   Future<VodozemacOlmSessionCreationResult> crateBindingsVodozemacAccountCreateInboundSession(
@@ -1548,11 +1710,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   VodozemacOlmMessage crateBindingsVodozemacOlmMessageFromParts(
-      {required BigInt messageType, required List<int> ciphertext}) {
+      {required BigInt messageType, required String ciphertext}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         var arg0 = cst_encode_usize(messageType);
-        var arg1 = cst_encode_list_prim_u_8_loose(ciphertext);
+        var arg1 = cst_encode_String(ciphertext);
         return wire.wire__crate__bindings__vodozemac_olm_message_from_parts(arg0, arg1);
       },
       codec: DcoCodec(
@@ -1697,6 +1859,211 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   TaskConstMeta get kCrateBindingsVodozemacOlmSessionConfigVersion2ConstMeta => const TaskConstMeta(
         debugName: "vodozemac_olm_session_config_version_2",
         argNames: [],
+      );
+
+  @override
+  Future<String> crateBindingsVodozemacPkDecryptionDecrypt(
+      {required VodozemacPkDecryption that, required VodozemacPkMessage message}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_box_autoadd_vodozemac_pk_decryption(that);
+        var arg1 = cst_encode_box_autoadd_vodozemac_pk_message(message);
+        return wire.wire__crate__bindings__vodozemac_pk_decryption_decrypt(port_, arg0, arg1);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_String,
+        decodeErrorData: dco_decode_AnyhowException,
+      ),
+      constMeta: kCrateBindingsVodozemacPkDecryptionDecryptConstMeta,
+      argValues: [that, message],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta get kCrateBindingsVodozemacPkDecryptionDecryptConstMeta => const TaskConstMeta(
+        debugName: "vodozemac_pk_decryption_decrypt",
+        argNames: ["that", "message"],
+      );
+
+  @override
+  VodozemacPkDecryption crateBindingsVodozemacPkDecryptionFromKey({required U8Array32 secretKey}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_u_8_array_32(secretKey);
+        return wire.wire__crate__bindings__vodozemac_pk_decryption_from_key(arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_vodozemac_pk_decryption,
+        decodeErrorData: null,
+      ),
+      constMeta: kCrateBindingsVodozemacPkDecryptionFromKeyConstMeta,
+      argValues: [secretKey],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta get kCrateBindingsVodozemacPkDecryptionFromKeyConstMeta => const TaskConstMeta(
+        debugName: "vodozemac_pk_decryption_from_key",
+        argNames: ["secretKey"],
+      );
+
+  @override
+  Future<VodozemacPkDecryption> crateBindingsVodozemacPkDecryptionFromLibolmPickle(
+      {required String pickle, required List<int> pickleKey}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_String(pickle);
+        var arg1 = cst_encode_list_prim_u_8_loose(pickleKey);
+        return wire.wire__crate__bindings__vodozemac_pk_decryption_from_libolm_pickle(port_, arg0, arg1);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_vodozemac_pk_decryption,
+        decodeErrorData: dco_decode_AnyhowException,
+      ),
+      constMeta: kCrateBindingsVodozemacPkDecryptionFromLibolmPickleConstMeta,
+      argValues: [pickle, pickleKey],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta get kCrateBindingsVodozemacPkDecryptionFromLibolmPickleConstMeta => const TaskConstMeta(
+        debugName: "vodozemac_pk_decryption_from_libolm_pickle",
+        argNames: ["pickle", "pickleKey"],
+      );
+
+  @override
+  VodozemacPkDecryption crateBindingsVodozemacPkDecryptionNew() {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        return wire.wire__crate__bindings__vodozemac_pk_decryption_new();
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_vodozemac_pk_decryption,
+        decodeErrorData: null,
+      ),
+      constMeta: kCrateBindingsVodozemacPkDecryptionNewConstMeta,
+      argValues: [],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta get kCrateBindingsVodozemacPkDecryptionNewConstMeta => const TaskConstMeta(
+        debugName: "vodozemac_pk_decryption_new",
+        argNames: [],
+      );
+
+  @override
+  Future<Uint8List> crateBindingsVodozemacPkDecryptionPrivateKey({required VodozemacPkDecryption that}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_box_autoadd_vodozemac_pk_decryption(that);
+        return wire.wire__crate__bindings__vodozemac_pk_decryption_private_key(port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_list_prim_u_8_strict,
+        decodeErrorData: null,
+      ),
+      constMeta: kCrateBindingsVodozemacPkDecryptionPrivateKeyConstMeta,
+      argValues: [that],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta get kCrateBindingsVodozemacPkDecryptionPrivateKeyConstMeta => const TaskConstMeta(
+        debugName: "vodozemac_pk_decryption_private_key",
+        argNames: ["that"],
+      );
+
+  @override
+  String crateBindingsVodozemacPkDecryptionPublicKey({required VodozemacPkDecryption that}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_box_autoadd_vodozemac_pk_decryption(that);
+        return wire.wire__crate__bindings__vodozemac_pk_decryption_public_key(arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_String,
+        decodeErrorData: null,
+      ),
+      constMeta: kCrateBindingsVodozemacPkDecryptionPublicKeyConstMeta,
+      argValues: [that],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta get kCrateBindingsVodozemacPkDecryptionPublicKeyConstMeta => const TaskConstMeta(
+        debugName: "vodozemac_pk_decryption_public_key",
+        argNames: ["that"],
+      );
+
+  @override
+  Future<String> crateBindingsVodozemacPkDecryptionToLibolmPickle(
+      {required VodozemacPkDecryption that, required U8Array32 pickleKey}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_box_autoadd_vodozemac_pk_decryption(that);
+        var arg1 = cst_encode_u_8_array_32(pickleKey);
+        return wire.wire__crate__bindings__vodozemac_pk_decryption_to_libolm_pickle(port_, arg0, arg1);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_String,
+        decodeErrorData: null,
+      ),
+      constMeta: kCrateBindingsVodozemacPkDecryptionToLibolmPickleConstMeta,
+      argValues: [that, pickleKey],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta get kCrateBindingsVodozemacPkDecryptionToLibolmPickleConstMeta => const TaskConstMeta(
+        debugName: "vodozemac_pk_decryption_to_libolm_pickle",
+        argNames: ["that", "pickleKey"],
+      );
+
+  @override
+  Future<VodozemacPkMessage> crateBindingsVodozemacPkEncryptionEncrypt(
+      {required VodozemacPkEncryption that, required String message}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_box_autoadd_vodozemac_pk_encryption(that);
+        var arg1 = cst_encode_String(message);
+        return wire.wire__crate__bindings__vodozemac_pk_encryption_encrypt(port_, arg0, arg1);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_vodozemac_pk_message,
+        decodeErrorData: null,
+      ),
+      constMeta: kCrateBindingsVodozemacPkEncryptionEncryptConstMeta,
+      argValues: [that, message],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta get kCrateBindingsVodozemacPkEncryptionEncryptConstMeta => const TaskConstMeta(
+        debugName: "vodozemac_pk_encryption_encrypt",
+        argNames: ["that", "message"],
+      );
+
+  @override
+  VodozemacPkEncryption crateBindingsVodozemacPkEncryptionFromKey({required VodozemacCurve25519PublicKey publicKey}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_box_autoadd_vodozemac_curve_25519_public_key(publicKey);
+        return wire.wire__crate__bindings__vodozemac_pk_encryption_from_key(arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_vodozemac_pk_encryption,
+        decodeErrorData: null,
+      ),
+      constMeta: kCrateBindingsVodozemacPkEncryptionFromKeyConstMeta,
+      argValues: [publicKey],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta get kCrateBindingsVodozemacPkEncryptionFromKeyConstMeta => const TaskConstMeta(
+        debugName: "vodozemac_pk_encryption_from_key",
+        argNames: ["publicKey"],
       );
 
   @override
@@ -1921,6 +2288,18 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   RustArcDecrementStrongCountFnType get rust_arc_decrement_strong_count_OlmSessionConfig =>
       wire.rust_arc_decrement_strong_count_RustOpaque_OlmSessionConfig;
 
+  RustArcIncrementStrongCountFnType get rust_arc_increment_strong_count_PkDecryption =>
+      wire.rust_arc_increment_strong_count_RustOpaque_PkDecryption;
+
+  RustArcDecrementStrongCountFnType get rust_arc_decrement_strong_count_PkDecryption =>
+      wire.rust_arc_decrement_strong_count_RustOpaque_PkDecryption;
+
+  RustArcIncrementStrongCountFnType get rust_arc_increment_strong_count_PkEncryption =>
+      wire.rust_arc_increment_strong_count_RustOpaque_PkEncryption;
+
+  RustArcDecrementStrongCountFnType get rust_arc_decrement_strong_count_PkEncryption =>
+      wire.rust_arc_decrement_strong_count_RustOpaque_PkEncryption;
+
   RustArcIncrementStrongCountFnType get rust_arc_increment_strong_count_RwLockGroupSession =>
       wire.rust_arc_increment_strong_count_RustOpaque_RwLockGroupSession;
 
@@ -1939,6 +2318,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   RustArcDecrementStrongCountFnType get rust_arc_decrement_strong_count_RwLockSession =>
       wire.rust_arc_decrement_strong_count_RustOpaque_RwLockSession;
 
+  RustArcIncrementStrongCountFnType get rust_arc_increment_strong_count_PkSigning =>
+      wire.rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPkSigning;
+
+  RustArcDecrementStrongCountFnType get rust_arc_decrement_strong_count_PkSigning =>
+      wire.rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPkSigning;
+
   RustArcIncrementStrongCountFnType get rust_arc_increment_strong_count_RwLockAccount =>
       wire.rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockAccount;
 
@@ -1949,6 +2334,18 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   AnyhowException dco_decode_AnyhowException(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return AnyhowException(raw as String);
+  }
+
+  @protected
+  PkSigning dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPkSigning(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return PkSigningImpl.frbInternalDcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  PkSigning dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPkSigning(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return PkSigningImpl.frbInternalDcoDecode(raw as List<dynamic>);
   }
 
   @protected
@@ -1988,6 +2385,18 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  PkDecryption dco_decode_RustOpaque_PkDecryption(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return PkDecryptionImpl.frbInternalDcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  PkEncryption dco_decode_RustOpaque_PkEncryption(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return PkEncryptionImpl.frbInternalDcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
   RwLockGroupSession dco_decode_RustOpaque_RwLockGroupSession(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return RwLockGroupSessionImpl.frbInternalDcoDecode(raw as List<dynamic>);
@@ -2003,6 +2412,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   RwLockSession dco_decode_RustOpaque_RwLockSession(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return RwLockSessionImpl.frbInternalDcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  PkSigning dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPkSigning(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return PkSigningImpl.frbInternalDcoDecode(raw as List<dynamic>);
   }
 
   @protected
@@ -2075,6 +2490,24 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   VodozemacOlmSessionConfig dco_decode_box_autoadd_vodozemac_olm_session_config(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return dco_decode_vodozemac_olm_session_config(raw);
+  }
+
+  @protected
+  VodozemacPkDecryption dco_decode_box_autoadd_vodozemac_pk_decryption(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return dco_decode_vodozemac_pk_decryption(raw);
+  }
+
+  @protected
+  VodozemacPkEncryption dco_decode_box_autoadd_vodozemac_pk_encryption(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return dco_decode_vodozemac_pk_encryption(raw);
+  }
+
+  @protected
+  VodozemacPkMessage dco_decode_box_autoadd_vodozemac_pk_message(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return dco_decode_vodozemac_pk_message(raw);
   }
 
   @protected
@@ -2278,6 +2711,38 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  VodozemacPkDecryption dco_decode_vodozemac_pk_decryption(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1) throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return VodozemacPkDecryption.raw(
+      pkDecryption: dco_decode_RustOpaque_PkDecryption(arr[0]),
+    );
+  }
+
+  @protected
+  VodozemacPkEncryption dco_decode_vodozemac_pk_encryption(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1) throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return VodozemacPkEncryption(
+      pkEncryption: dco_decode_RustOpaque_PkEncryption(arr[0]),
+    );
+  }
+
+  @protected
+  VodozemacPkMessage dco_decode_vodozemac_pk_message(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    final arr = raw as List<dynamic>;
+    if (arr.length != 3) throw Exception('unexpected arr length: expect 3 but see ${arr.length}');
+    return VodozemacPkMessage(
+      ciphertext: dco_decode_list_prim_u_8_strict(arr[0]),
+      mac: dco_decode_list_prim_u_8_strict(arr[1]),
+      ephemeralKey: dco_decode_vodozemac_curve_25519_public_key(arr[2]),
+    );
+  }
+
+  @protected
   VodozemacSession dco_decode_vodozemac_session(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     final arr = raw as List<dynamic>;
@@ -2292,6 +2757,20 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     var inner = sse_decode_String(deserializer);
     return AnyhowException(inner);
+  }
+
+  @protected
+  PkSigning sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPkSigning(
+      SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    return PkSigningImpl.frbInternalSseDecode(sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  PkSigning sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPkSigning(
+      SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    return PkSigningImpl.frbInternalSseDecode(sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
   @protected
@@ -2331,6 +2810,18 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  PkDecryption sse_decode_RustOpaque_PkDecryption(SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    return PkDecryptionImpl.frbInternalSseDecode(sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  PkEncryption sse_decode_RustOpaque_PkEncryption(SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    return PkEncryptionImpl.frbInternalSseDecode(sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
   RwLockGroupSession sse_decode_RustOpaque_RwLockGroupSession(SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     return RwLockGroupSessionImpl.frbInternalSseDecode(sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
@@ -2347,6 +2838,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   RwLockSession sse_decode_RustOpaque_RwLockSession(SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     return RwLockSessionImpl.frbInternalSseDecode(sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  PkSigning sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPkSigning(
+      SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    return PkSigningImpl.frbInternalSseDecode(sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
   @protected
@@ -2420,6 +2918,24 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   VodozemacOlmSessionConfig sse_decode_box_autoadd_vodozemac_olm_session_config(SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     return (sse_decode_vodozemac_olm_session_config(deserializer));
+  }
+
+  @protected
+  VodozemacPkDecryption sse_decode_box_autoadd_vodozemac_pk_decryption(SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    return (sse_decode_vodozemac_pk_decryption(deserializer));
+  }
+
+  @protected
+  VodozemacPkEncryption sse_decode_box_autoadd_vodozemac_pk_encryption(SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    return (sse_decode_vodozemac_pk_encryption(deserializer));
+  }
+
+  @protected
+  VodozemacPkMessage sse_decode_box_autoadd_vodozemac_pk_message(SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    return (sse_decode_vodozemac_pk_message(deserializer));
   }
 
   @protected
@@ -2598,6 +3114,29 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  VodozemacPkDecryption sse_decode_vodozemac_pk_decryption(SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    var var_pkDecryption = sse_decode_RustOpaque_PkDecryption(deserializer);
+    return VodozemacPkDecryption.raw(pkDecryption: var_pkDecryption);
+  }
+
+  @protected
+  VodozemacPkEncryption sse_decode_vodozemac_pk_encryption(SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    var var_pkEncryption = sse_decode_RustOpaque_PkEncryption(deserializer);
+    return VodozemacPkEncryption(pkEncryption: var_pkEncryption);
+  }
+
+  @protected
+  VodozemacPkMessage sse_decode_vodozemac_pk_message(SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    var var_ciphertext = sse_decode_list_prim_u_8_strict(deserializer);
+    var var_mac = sse_decode_list_prim_u_8_strict(deserializer);
+    var var_ephemeralKey = sse_decode_vodozemac_curve_25519_public_key(deserializer);
+    return VodozemacPkMessage(ciphertext: var_ciphertext, mac: var_mac, ephemeralKey: var_ephemeralKey);
+  }
+
+  @protected
   VodozemacSession sse_decode_vodozemac_session(SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     var var_session = sse_decode_RustOpaque_RwLockSession(deserializer);
@@ -2608,6 +3147,20 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   int sse_decode_i_32(SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     return deserializer.buffer.getInt32();
+  }
+
+  @protected
+  int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPkSigning(PkSigning raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+// ignore: invalid_use_of_internal_member
+    return (raw as PkSigningImpl).frbInternalCstEncode(move: true);
+  }
+
+  @protected
+  int cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPkSigning(PkSigning raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+// ignore: invalid_use_of_internal_member
+    return (raw as PkSigningImpl).frbInternalCstEncode(move: false);
   }
 
   @protected
@@ -2653,6 +3206,20 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  int cst_encode_RustOpaque_PkDecryption(PkDecryption raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+// ignore: invalid_use_of_internal_member
+    return (raw as PkDecryptionImpl).frbInternalCstEncode();
+  }
+
+  @protected
+  int cst_encode_RustOpaque_PkEncryption(PkEncryption raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+// ignore: invalid_use_of_internal_member
+    return (raw as PkEncryptionImpl).frbInternalCstEncode();
+  }
+
+  @protected
   int cst_encode_RustOpaque_RwLockGroupSession(RwLockGroupSession raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
 // ignore: invalid_use_of_internal_member
@@ -2671,6 +3238,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Cst (C-struct based), see doc to use other codecs
 // ignore: invalid_use_of_internal_member
     return (raw as RwLockSessionImpl).frbInternalCstEncode();
+  }
+
+  @protected
+  int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPkSigning(PkSigning raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+// ignore: invalid_use_of_internal_member
+    return (raw as PkSigningImpl).frbInternalCstEncode();
   }
 
   @protected
@@ -2711,6 +3285,20 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  void sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPkSigning(
+      PkSigning self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_usize((self as PkSigningImpl).frbInternalSseEncode(move: true), serializer);
+  }
+
+  @protected
+  void sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPkSigning(
+      PkSigning self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_usize((self as PkSigningImpl).frbInternalSseEncode(move: false), serializer);
+  }
+
+  @protected
   void sse_encode_RustOpaque_Curve25519PublicKey(Curve25519PublicKey self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize((self as Curve25519PublicKeyImpl).frbInternalSseEncode(move: null), serializer);
@@ -2747,6 +3335,18 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  void sse_encode_RustOpaque_PkDecryption(PkDecryption self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_usize((self as PkDecryptionImpl).frbInternalSseEncode(move: null), serializer);
+  }
+
+  @protected
+  void sse_encode_RustOpaque_PkEncryption(PkEncryption self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_usize((self as PkEncryptionImpl).frbInternalSseEncode(move: null), serializer);
+  }
+
+  @protected
   void sse_encode_RustOpaque_RwLockGroupSession(RwLockGroupSession self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize((self as RwLockGroupSessionImpl).frbInternalSseEncode(move: null), serializer);
@@ -2762,6 +3362,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   void sse_encode_RustOpaque_RwLockSession(RwLockSession self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize((self as RwLockSessionImpl).frbInternalSseEncode(move: null), serializer);
+  }
+
+  @protected
+  void sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPkSigning(
+      PkSigning self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_usize((self as PkSigningImpl).frbInternalSseEncode(move: null), serializer);
   }
 
   @protected
@@ -2837,6 +3444,24 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   void sse_encode_box_autoadd_vodozemac_olm_session_config(VodozemacOlmSessionConfig self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_vodozemac_olm_session_config(self, serializer);
+  }
+
+  @protected
+  void sse_encode_box_autoadd_vodozemac_pk_decryption(VodozemacPkDecryption self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_vodozemac_pk_decryption(self, serializer);
+  }
+
+  @protected
+  void sse_encode_box_autoadd_vodozemac_pk_encryption(VodozemacPkEncryption self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_vodozemac_pk_encryption(self, serializer);
+  }
+
+  @protected
+  void sse_encode_box_autoadd_vodozemac_pk_message(VodozemacPkMessage self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_vodozemac_pk_message(self, serializer);
   }
 
   @protected
@@ -2997,6 +3622,26 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  void sse_encode_vodozemac_pk_decryption(VodozemacPkDecryption self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_RustOpaque_PkDecryption(self.pkDecryption, serializer);
+  }
+
+  @protected
+  void sse_encode_vodozemac_pk_encryption(VodozemacPkEncryption self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_RustOpaque_PkEncryption(self.pkEncryption, serializer);
+  }
+
+  @protected
+  void sse_encode_vodozemac_pk_message(VodozemacPkMessage self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_list_prim_u_8_strict(self.ciphertext, serializer);
+    sse_encode_list_prim_u_8_strict(self.mac, serializer);
+    sse_encode_vodozemac_curve_25519_public_key(self.ephemeralKey, serializer);
+  }
+
+  @protected
   void sse_encode_vodozemac_session(VodozemacSession self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_RustOpaque_RwLockSession(self.session, serializer);
@@ -3103,6 +3748,65 @@ class OlmSessionConfigImpl extends RustOpaque implements OlmSessionConfig {
     rustArcDecrementStrongCount: RustLib.instance.api.rust_arc_decrement_strong_count_OlmSessionConfig,
     rustArcDecrementStrongCountPtr: RustLib.instance.api.rust_arc_decrement_strong_count_OlmSessionConfigPtr,
   );
+}
+
+@sealed
+class PkDecryptionImpl extends RustOpaque implements PkDecryption {
+  // Not to be used by end users
+  PkDecryptionImpl.frbInternalDcoDecode(List<dynamic> wire) : super.frbInternalDcoDecode(wire, _kStaticData);
+
+  // Not to be used by end users
+  PkDecryptionImpl.frbInternalSseDecode(BigInt ptr, int externalSizeOnNative)
+      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount: RustLib.instance.api.rust_arc_increment_strong_count_PkDecryption,
+    rustArcDecrementStrongCount: RustLib.instance.api.rust_arc_decrement_strong_count_PkDecryption,
+    rustArcDecrementStrongCountPtr: RustLib.instance.api.rust_arc_decrement_strong_count_PkDecryptionPtr,
+  );
+}
+
+@sealed
+class PkEncryptionImpl extends RustOpaque implements PkEncryption {
+  // Not to be used by end users
+  PkEncryptionImpl.frbInternalDcoDecode(List<dynamic> wire) : super.frbInternalDcoDecode(wire, _kStaticData);
+
+  // Not to be used by end users
+  PkEncryptionImpl.frbInternalSseDecode(BigInt ptr, int externalSizeOnNative)
+      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount: RustLib.instance.api.rust_arc_increment_strong_count_PkEncryption,
+    rustArcDecrementStrongCount: RustLib.instance.api.rust_arc_decrement_strong_count_PkEncryption,
+    rustArcDecrementStrongCountPtr: RustLib.instance.api.rust_arc_decrement_strong_count_PkEncryptionPtr,
+  );
+}
+
+@sealed
+class PkSigningImpl extends RustOpaque implements PkSigning {
+  // Not to be used by end users
+  PkSigningImpl.frbInternalDcoDecode(List<dynamic> wire) : super.frbInternalDcoDecode(wire, _kStaticData);
+
+  // Not to be used by end users
+  PkSigningImpl.frbInternalSseDecode(BigInt ptr, int externalSizeOnNative)
+      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount: RustLib.instance.api.rust_arc_increment_strong_count_PkSigning,
+    rustArcDecrementStrongCount: RustLib.instance.api.rust_arc_decrement_strong_count_PkSigning,
+    rustArcDecrementStrongCountPtr: RustLib.instance.api.rust_arc_decrement_strong_count_PkSigningPtr,
+  );
+
+  VodozemacEd25519PublicKey publicKey() => RustLib.instance.api.crateBindingsPkSigningPublicKey(
+        that: this,
+      );
+
+  String secretKey() => RustLib.instance.api.crateBindingsPkSigningSecretKey(
+        that: this,
+      );
+
+  VodozemacEd25519Signature sign({required String message}) =>
+      RustLib.instance.api.crateBindingsPkSigningSign(that: this, message: message);
 }
 
 @sealed

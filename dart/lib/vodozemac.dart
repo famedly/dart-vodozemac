@@ -7,5 +7,9 @@ export 'src/api.dart'
         InboundGroupSession,
         Session,
         Account,
+        PkDecryption,
+        PkEncryption,
+        PkMessage,
+        PkSigning,
         loadVodozemac,
         isVodozemacLoaded;

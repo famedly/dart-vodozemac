@@ -1,5 +1,4 @@
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
-import 'package:vodozemac/src/utils.dart';
 
 import 'generated/frb_generated.dart' as vodozemac show RustLib;
 import 'generated/bindings.dart' as vodozemac;
@@ -182,8 +181,7 @@ final class Session {
           {required int messageType, required String ciphertext}) =>
       _session.decrypt(
           message: vodozemac.VodozemacOlmMessage.fromParts(
-              messageType: BigInt.from(messageType),
-              ciphertext: Utils.base64decodeUnpadded(ciphertext)));
+              messageType: BigInt.from(messageType), ciphertext: ciphertext));
 
   Future<String> toPickleEncrypted(Uint8List pickleKey) =>
       _session.pickleEncrypted(pickleKey: vodozemac.U8Array32(pickleKey));
@@ -284,4 +282,73 @@ final class Account {
   }) async =>
       Account._(await vodozemac.VodozemacAccount.fromOlmPickleEncrypted(
           pickle: pickle, pickleKey: pickleKey));
+}
+
+final class PkMessage {
+  final vodozemac.VodozemacPkMessage _message;
+
+  PkMessage._(this._message);
+
+  Uint8List ciphertext() => _message.ciphertext;
+  Uint8List mac() => _message.mac;
+  Curve25519PublicKey ephemeralKey() =>
+      Curve25519PublicKey._(_message.ephemeralKey);
+}
+
+final class PkEncryption {
+  final vodozemac.VodozemacPkEncryption _encryption;
+
+  PkEncryption._(this._encryption);
+
+  static PkEncryption fromPublicKey(Curve25519PublicKey key) => PkEncryption._(
+      vodozemac.VodozemacPkEncryption.fromKey(publicKey: key._key));
+
+  Future<PkMessage> encrypt(String message) async =>
+      PkMessage._(await _encryption.encrypt(message: message));
+}
+
+final class PkDecryption {
+  final vodozemac.VodozemacPkDecryption _decryption;
+
+  PkDecryption._(this._decryption);
+  PkDecryption() : _decryption = vodozemac.VodozemacPkDecryption();
+
+  static Future<PkDecryption> fromLibolmPickle({
+    required String pickle,
+    required Uint8List pickleKey,
+  }) async =>
+      PkDecryption._(await vodozemac.VodozemacPkDecryption.fromLibolmPickle(
+          pickle: pickle, pickleKey: pickleKey));
+
+  static PkDecryption fromSecretKey(Curve25519PublicKey key) =>
+      PkDecryption._(vodozemac.VodozemacPkDecryption.fromKey(
+          secretKey: vodozemac.U8Array32(key.toBytes())));
+
+  Future<String> toLibolmPickle(Uint8List pickleKey) async =>
+      _decryption.toLibolmPickle(pickleKey: vodozemac.U8Array32(pickleKey));
+
+  Future<String> decrypt(PkMessage message) async =>
+      await _decryption.decrypt(message: message._message);
+
+  String publicKey() => _decryption.publicKey();
+
+  Future<Uint8List> privateKey() async => _decryption.privateKey();
+}
+
+final class PkSigning {
+  final vodozemac.PkSigning _signing;
+
+  PkSigning._(this._signing);
+
+  PkSigning() : _signing = vodozemac.PkSigning();
+
+  static PkSigning fromSecretKey(String key) =>
+      PkSigning._(vodozemac.PkSigning.fromSecretKey(key: key));
+
+  String secretKey() => _signing.secretKey();
+
+  Ed25519PublicKey publicKey() => Ed25519PublicKey._(_signing.publicKey());
+
+  Ed25519Signature sign(String message) =>
+      Ed25519Signature._(_signing.sign(message: message));
 }

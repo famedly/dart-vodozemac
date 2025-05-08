@@ -8,7 +8,28 @@ import 'lib.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-// These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `from`, `from`, `from`, `from`, `from`, `from`, `from`, `from`, `from`, `from`
+// These functions are ignored because they are not marked as `pub`: `new_helper`
+// These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `from`, `from`, `from`, `from`, `from`, `from`, `from`, `from`, `from`, `from`, `from`, `into`
+
+// Rust type: RustOpaqueNom<PkDecryption>
+abstract class PkDecryption implements RustOpaqueInterface {}
+
+// Rust type: RustOpaqueNom<PkEncryption>
+abstract class PkEncryption implements RustOpaqueInterface {}
+
+// Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<PkSigning>>
+abstract class PkSigning implements RustOpaqueInterface {
+  static PkSigning fromSecretKey({required String key}) =>
+      RustLib.instance.api.crateBindingsPkSigningFromSecretKey(key: key);
+
+  factory PkSigning() => RustLib.instance.api.crateBindingsPkSigningNew();
+
+  VodozemacEd25519PublicKey publicKey();
+
+  String secretKey();
+
+  VodozemacEd25519Signature sign({required String message});
+}
 
 // Rust type: RustOpaqueNom<std :: sync :: RwLock < Account >>
 abstract class RwLockAccount implements RustOpaqueInterface {}
@@ -398,7 +419,7 @@ class VodozemacOlmMessage {
     required this.msg,
   });
 
-  static VodozemacOlmMessage fromParts({required BigInt messageType, required List<int> ciphertext}) =>
+  static VodozemacOlmMessage fromParts({required BigInt messageType, required String ciphertext}) =>
       RustLib.instance.api.crateBindingsVodozemacOlmMessageFromParts(messageType: messageType, ciphertext: ciphertext);
 
   String message() => RustLib.instance.api.crateBindingsVodozemacOlmMessageMessage(
@@ -480,6 +501,90 @@ class VodozemacOneTimeKey {
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is VodozemacOneTimeKey && runtimeType == other.runtimeType && keyid == other.keyid && key == other.key;
+}
+
+class VodozemacPkDecryption {
+  final PkDecryption pkDecryption;
+
+  const VodozemacPkDecryption.raw({
+    required this.pkDecryption,
+  });
+
+  Future<String> decrypt({required VodozemacPkMessage message}) =>
+      RustLib.instance.api.crateBindingsVodozemacPkDecryptionDecrypt(that: this, message: message);
+
+  static VodozemacPkDecryption fromKey({required U8Array32 secretKey}) =>
+      RustLib.instance.api.crateBindingsVodozemacPkDecryptionFromKey(secretKey: secretKey);
+
+  static Future<VodozemacPkDecryption> fromLibolmPickle({required String pickle, required List<int> pickleKey}) =>
+      RustLib.instance.api.crateBindingsVodozemacPkDecryptionFromLibolmPickle(pickle: pickle, pickleKey: pickleKey);
+
+  factory VodozemacPkDecryption() => RustLib.instance.api.crateBindingsVodozemacPkDecryptionNew();
+
+  Future<Uint8List> privateKey() => RustLib.instance.api.crateBindingsVodozemacPkDecryptionPrivateKey(
+        that: this,
+      );
+
+  String publicKey() => RustLib.instance.api.crateBindingsVodozemacPkDecryptionPublicKey(
+        that: this,
+      );
+
+  Future<String> toLibolmPickle({required U8Array32 pickleKey}) =>
+      RustLib.instance.api.crateBindingsVodozemacPkDecryptionToLibolmPickle(that: this, pickleKey: pickleKey);
+
+  @override
+  int get hashCode => pkDecryption.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is VodozemacPkDecryption && runtimeType == other.runtimeType && pkDecryption == other.pkDecryption;
+}
+
+class VodozemacPkEncryption {
+  final PkEncryption pkEncryption;
+
+  const VodozemacPkEncryption({
+    required this.pkEncryption,
+  });
+
+  Future<VodozemacPkMessage> encrypt({required String message}) =>
+      RustLib.instance.api.crateBindingsVodozemacPkEncryptionEncrypt(that: this, message: message);
+
+  static VodozemacPkEncryption fromKey({required VodozemacCurve25519PublicKey publicKey}) =>
+      RustLib.instance.api.crateBindingsVodozemacPkEncryptionFromKey(publicKey: publicKey);
+
+  @override
+  int get hashCode => pkEncryption.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is VodozemacPkEncryption && runtimeType == other.runtimeType && pkEncryption == other.pkEncryption;
+}
+
+class VodozemacPkMessage {
+  final Uint8List ciphertext;
+  final Uint8List mac;
+  final VodozemacCurve25519PublicKey ephemeralKey;
+
+  const VodozemacPkMessage({
+    required this.ciphertext,
+    required this.mac,
+    required this.ephemeralKey,
+  });
+
+  @override
+  int get hashCode => ciphertext.hashCode ^ mac.hashCode ^ ephemeralKey.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is VodozemacPkMessage &&
+          runtimeType == other.runtimeType &&
+          ciphertext == other.ciphertext &&
+          mac == other.mac &&
+          ephemeralKey == other.ephemeralKey;
 }
 
 class VodozemacSession {

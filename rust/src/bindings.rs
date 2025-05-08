@@ -11,9 +11,10 @@ pub use vodozemac::{
         Account, AccountPickle, IdentityKeys, OlmMessage, Session,
         SessionConfig as OlmSessionConfig, SessionPickle,
     },
-    Curve25519PublicKey, Ed25519PublicKey, Ed25519Signature,
+    pk_encryption::{Message as PkMessage, PkDecryption, PkEncryption},
+    Curve25519PublicKey, Curve25519SecretKey, Ed25519SecretKey, Ed25519PublicKey, Ed25519Signature,
+    base64_decode,
 };
-
 //#[frb(mirror(IdentityKeys))]
 //pub struct _IdentityKeys {
 //    /// The ed25519 key, used for signing.
@@ -481,9 +482,10 @@ impl VodozemacOlmMessage {
     #[frb(sync)]
     pub fn from_parts(
         message_type: usize,
-        ciphertext: Vec<u8>,
+        ciphertext: String,
     ) -> anyhow::Result<VodozemacOlmMessage> {
-        Ok(OlmMessage::from_parts(message_type, ciphertext.as_slice())?.into())
+        let ciphertext_vec = base64_decode(&ciphertext)?;
+        Ok(OlmMessage::from_parts(message_type, ciphertext_vec.as_slice())?.into())
     }
 }
 
@@ -761,5 +763,145 @@ impl VodozemacAccount {
                 &pickle_key,
             )?)),
         })
+    }
+}
+
+pub struct VodozemacPkMessage {
+    pub ciphertext: Vec<u8>,
+    pub mac: Vec<u8>,
+    pub ephemeral_key: VodozemacCurve25519PublicKey,
+}
+
+impl From<PkMessage> for VodozemacPkMessage {
+    fn from(message: PkMessage) -> Self {
+        VodozemacPkMessage {
+            ciphertext: message.ciphertext,
+            mac: message.mac,
+            ephemeral_key: message.ephemeral_key.into(),
+        }
+    }
+}
+
+impl Into<PkMessage> for VodozemacPkMessage {
+    fn into(self) -> PkMessage {
+        PkMessage {
+            ciphertext: self.ciphertext,
+            mac: self.mac,
+            ephemeral_key: *self.ephemeral_key.key,
+        }
+    }
+}
+
+pub struct VodozemacPkEncryption {
+    pub pk_encryption: RustOpaqueNom<PkEncryption>,
+}
+
+impl VodozemacPkEncryption {
+    #[frb(sync)]
+    pub fn from_key(public_key: VodozemacCurve25519PublicKey) -> VodozemacPkEncryption {
+        Self {
+            pk_encryption: RustOpaqueNom::new(PkEncryption::from_key(*public_key.key)),
+        }
+    }
+
+    pub fn encrypt(&self, message: String) -> VodozemacPkMessage {
+        self.pk_encryption.encrypt(message.as_ref()).into()
+    }
+}
+
+pub struct VodozemacPkDecryption {
+    pub pk_decryption: RustOpaqueNom<PkDecryption>,
+}
+
+impl VodozemacPkDecryption {
+    #[frb(sync)]
+    pub fn new() -> VodozemacPkDecryption {
+        Self {
+            pk_decryption: RustOpaqueNom::new(PkDecryption::new()),
+        }
+    }
+
+    #[frb(sync)]
+    pub fn from_key(secret_key: &[u8; 32]) -> VodozemacPkDecryption {
+        Self {
+            pk_decryption: RustOpaqueNom::new(PkDecryption::from_key(
+                Curve25519SecretKey::from_slice(secret_key),
+            )),
+        }
+    }
+
+    #[frb(sync)]
+    pub fn public_key(&self) -> String {
+        self.pk_decryption.public_key().to_base64()
+    }
+
+    pub fn private_key(&self) -> Vec<u8> {
+        self.pk_decryption.secret_key().to_bytes().to_vec()
+    }
+
+    pub fn decrypt(&self, message: VodozemacPkMessage) -> anyhow::Result<String> {
+        let msg: PkMessage = message.into();
+        let temp = self.pk_decryption.decrypt(&msg)?;
+        Ok(String::from_utf8(temp)?)
+    }
+
+    pub fn to_libolm_pickle(&self, pickle_key: [u8; 32usize]) -> String {
+        self.pk_decryption.to_libolm_pickle(&pickle_key).unwrap()
+    }
+
+    pub fn from_libolm_pickle(
+        pickle: String,
+        pickle_key: Vec<u8>,
+    ) -> anyhow::Result<VodozemacPkDecryption> {
+        Ok(VodozemacPkDecryption {
+            pk_decryption: RustOpaqueNom::new(PkDecryption::from_libolm_pickle(
+                &pickle,
+                &pickle_key,
+            )?),
+        })
+    }
+}
+
+pub struct PkSigning {
+    inner: Ed25519SecretKey,
+    public_key: Ed25519PublicKey,
+}
+
+impl PkSigning {
+    #[frb(sync)]
+    pub fn new() -> Self {
+        let secret_key = Ed25519SecretKey::new();
+        Self::new_helper(secret_key)
+    }
+
+    fn new_helper(secret_key: Ed25519SecretKey) -> Self {
+        let public_key = secret_key.public_key();
+
+        Self { inner: secret_key, public_key }
+    }
+
+    #[frb(sync)]
+    pub fn from_secret_key(key: &str) -> anyhow::Result<Self> {
+        let key = Ed25519SecretKey::from_base64(key)?;
+        Ok(Self::new_helper(key))
+    }
+
+    #[frb(sync)]
+    pub fn secret_key(&self) -> String {
+        self.inner.to_base64()
+    }
+
+    #[frb(sync)]
+    pub fn public_key(&self) -> VodozemacEd25519PublicKey {
+        VodozemacEd25519PublicKey {
+            key: RustOpaqueNom::new(self.public_key),
+        }
+    }
+
+    #[frb(sync)]
+    pub fn sign(&self, message: &str) -> VodozemacEd25519Signature {
+        VodozemacEd25519Signature {
+            signature: RustOpaqueNom::new(self.inner.sign(message.as_bytes())),
+        }
     }
 }

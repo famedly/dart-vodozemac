@@ -1,4 +1,6 @@
+import 'dart:convert';
 import 'dart:io';
+import 'dart:typed_data';
 
 import 'package:checks/checks.dart';
 import 'package:checks/context.dart';
@@ -46,6 +48,26 @@ extension AsyncIterableChecks<T> on Subject<Iterable<T>> {
       }
       return null;
     });
+  }
+}
+
+extension Uint8ListChecks on Subject<Uint8List> {
+  void isNotEmpty() {
+    context.expect(() => ['is not empty'], (actual) {
+      if (actual.isNotEmpty) return null;
+      return Rejection(which: ['is empty']);
+    });
+  }
+}
+
+class Utils {
+  static Uint8List base64decodeUnpadded(String s) {
+    final needEquals = (4 - (s.length % 4)) % 4;
+    return base64.decode(s + ('=' * needEquals));
+  }
+
+  static String encodeBase64Unpadded(List<int> s) {
+    return base64Encode(s).replaceAll(RegExp(r'=+$', multiLine: true), '');
   }
 }
 
@@ -239,6 +261,212 @@ void main() {
 
       await check(laterInbound.decrypt(encrypted2)).completes((subject) =>
           subject.has((res) => res.plaintext, 'plaintext').equals('Test'));
+    });
+  });
+
+  group('PkEncryption and PkDecryption', () {
+    test('encryption roundtrip works', () async {
+      final decryptor = PkDecryption();
+      final publicKey = decryptor.publicKey();
+      final encryptor =
+          PkEncryption.fromPublicKey(Curve25519PublicKey.fromBase64(publicKey));
+
+      final message = "It's a secret to everybody";
+      final encrypted = await encryptor.encrypt(message);
+
+      check(encrypted.ciphertext()).isNotEmpty();
+      check(encrypted.mac()).isNotEmpty();
+      check(encrypted.ephemeralKey()).isValid();
+
+      final decrypted = await decryptor.decrypt(encrypted);
+      check(decrypted).equals(message);
+    });
+
+    test('can create from secret key', () async {
+      final decryptor = PkDecryption();
+      final privateKeyBytes = await decryptor.privateKey();
+      final publicKey = decryptor.publicKey();
+
+      // Create new decryptor from secret key
+      final restoredDecryptor = PkDecryption.fromSecretKey(
+          Curve25519PublicKey.fromBytes(privateKeyBytes));
+
+      // Public keys should match
+      check(restoredDecryptor.publicKey()).equals(publicKey);
+
+      // Test encryption/decryption with restored key
+      final encryptor =
+          PkEncryption.fromPublicKey(Curve25519PublicKey.fromBase64(publicKey));
+      final message = "Test message";
+      final encrypted = await encryptor.encrypt(message);
+      final decrypted = await restoredDecryptor.decrypt(encrypted);
+      check(decrypted).equals(message);
+    });
+
+    test('can pickle and unpickle', () async {
+      final decryptor = PkDecryption();
+      final publicKey = decryptor.publicKey();
+      final pickleKey = Uint8List.fromList(List.generate(32, (i) => i));
+
+      // Create encrypted pickle
+      final pickle = await decryptor.toLibolmPickle(pickleKey);
+
+      // Restore from pickle
+      final restoredDecryptor = await PkDecryption.fromLibolmPickle(
+          pickle: pickle, pickleKey: pickleKey);
+
+      // Public keys should match
+      check(restoredDecryptor.publicKey()).equals(publicKey);
+
+      // Test encryption/decryption with restored key
+      final encryptor =
+          PkEncryption.fromPublicKey(Curve25519PublicKey.fromBase64(publicKey));
+      final message = "Test message";
+      final encrypted = await encryptor.encrypt(message);
+      final decrypted = await restoredDecryptor.decrypt(encrypted);
+      check(decrypted).equals(message);
+    });
+
+    test('different keys produce different ciphertexts', () async {
+      final decryptor1 = PkDecryption();
+      final decryptor2 = PkDecryption();
+      final encryptor1 = PkEncryption.fromPublicKey(
+          Curve25519PublicKey.fromBase64(decryptor1.publicKey()));
+      final encryptor2 = PkEncryption.fromPublicKey(
+          Curve25519PublicKey.fromBase64(decryptor2.publicKey()));
+
+      final message = "Test message";
+      final encrypted1 = await encryptor1.encrypt(message);
+      final encrypted2 = await encryptor2.encrypt(message);
+
+      // Ciphertexts should be different
+      check(encrypted1.ciphertext())
+          .not((subject) => subject.equals(encrypted2.ciphertext()));
+
+      // But both should decrypt correctly with their respective keys
+      final decrypted1 = await decryptor1.decrypt(encrypted1);
+      final decrypted2 = await decryptor2.decrypt(encrypted2);
+      check(decrypted1).equals(message);
+      check(decrypted2).equals(message);
+
+      // Cross-decryption should fail
+      await check(decryptor2.decrypt(encrypted1)).throws();
+      await check(decryptor1.decrypt(encrypted2)).throws();
+    });
+  });
+
+  group('PkSigning', () {
+    test('can sign and verify messages', () async {
+      final signing = PkSigning();
+      final message = "Hello, world!";
+      final signature = signing.sign(message);
+      check(signature.toBase64()).isNotEmpty();
+      check(signing.publicKey().verify(message: message, signature: signature))
+          .completes();
+    });
+
+    test('fails to verify modified messages', () async {
+      final signing = PkSigning();
+      final message = "Hello, world!";
+      final signature = signing.sign(message);
+
+      // Should fail for different message
+      await check(signing.publicKey().verify(
+              message: "Hello, World!", // Capital W
+              signature: signature))
+          .throws();
+
+      // Should fail for truncated message
+      await check(signing.publicKey().verify(
+              message: "Hello, world", // removed !
+              signature: signature))
+          .throws();
+    });
+
+    test('different keys produce different signatures', () async {
+      final signing1 = PkSigning();
+      final signing2 = PkSigning();
+      final message = "Hello, world!";
+
+      final signature1 = signing1.sign(message);
+      final signature2 = signing2.sign(message);
+
+      // Signatures should be different
+      check(signature1.toBase64())
+          .not((subject) => subject.equals(signature2.toBase64()));
+
+      // Each signature should verify with its own key
+      await check(signing1
+              .publicKey()
+              .verify(message: message, signature: signature1))
+          .completes();
+      await check(signing2
+              .publicKey()
+              .verify(message: message, signature: signature2))
+          .completes();
+
+      // Cross-verification should fail
+      await check(signing1
+              .publicKey()
+              .verify(message: message, signature: signature2))
+          .throws();
+      await check(signing2
+              .publicKey()
+              .verify(message: message, signature: signature1))
+          .throws();
+    });
+
+    test('can create from seed', () async {
+      final seed = Uint8List.fromList(List.generate(32, (i) => i));
+      final signing1 =
+          PkSigning.fromSecretKey(Utils.encodeBase64Unpadded(seed));
+      final signing2 =
+          PkSigning.fromSecretKey(Utils.encodeBase64Unpadded(seed));
+
+      // Same seed should produce same key pair
+      check(signing1.publicKey().toBase64())
+          .equals(signing2.publicKey().toBase64());
+
+      // Signatures from both instances should be verifiable by either public key
+      final message = "Test message";
+      final signature1 = signing1.sign(message);
+      final signature2 = signing2.sign(message);
+
+      await check(signing1
+              .publicKey()
+              .verify(message: message, signature: signature2))
+          .completes();
+      await check(signing2
+              .publicKey()
+              .verify(message: message, signature: signature1))
+          .completes();
+    });
+
+    test('handles empty and special messages', () async {
+      final signing = PkSigning();
+
+      // Empty message
+      final emptySignature = signing.sign("");
+      await check(signing
+              .publicKey()
+              .verify(message: "", signature: emptySignature))
+          .completes();
+
+      // Message with special characters
+      final specialMessage = "!@#\$%^&*()_+\n\t\r";
+      final specialSignature = signing.sign(specialMessage);
+      await check(signing
+              .publicKey()
+              .verify(message: specialMessage, signature: specialSignature))
+          .completes();
+
+      // Long message
+      final longMessage = "a" * 1000;
+      final longSignature = signing.sign(longMessage);
+      await check(signing
+              .publicKey()
+              .verify(message: longMessage, signature: longSignature))
+          .completes();
     });
   });
 }

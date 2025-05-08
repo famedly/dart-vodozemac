@@ -37,6 +37,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_OlmSessionConfigPtr =>
       wire._rust_arc_decrement_strong_count_RustOpaque_OlmSessionConfigPtr;
 
+  CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_PkDecryptionPtr =>
+      wire._rust_arc_decrement_strong_count_RustOpaque_PkDecryptionPtr;
+
+  CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_PkEncryptionPtr =>
+      wire._rust_arc_decrement_strong_count_RustOpaque_PkEncryptionPtr;
+
   CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_RwLockGroupSessionPtr =>
       wire._rust_arc_decrement_strong_count_RustOpaque_RwLockGroupSessionPtr;
 
@@ -46,11 +52,20 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_RwLockSessionPtr =>
       wire._rust_arc_decrement_strong_count_RustOpaque_RwLockSessionPtr;
 
+  CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_PkSigningPtr =>
+      wire._rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPkSigningPtr;
+
   CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_RwLockAccountPtr =>
       wire._rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockAccountPtr;
 
   @protected
   AnyhowException dco_decode_AnyhowException(dynamic raw);
+
+  @protected
+  PkSigning dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPkSigning(dynamic raw);
+
+  @protected
+  PkSigning dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPkSigning(dynamic raw);
 
   @protected
   Curve25519PublicKey dco_decode_RustOpaque_Curve25519PublicKey(dynamic raw);
@@ -71,6 +86,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   OlmSessionConfig dco_decode_RustOpaque_OlmSessionConfig(dynamic raw);
 
   @protected
+  PkDecryption dco_decode_RustOpaque_PkDecryption(dynamic raw);
+
+  @protected
+  PkEncryption dco_decode_RustOpaque_PkEncryption(dynamic raw);
+
+  @protected
   RwLockGroupSession dco_decode_RustOpaque_RwLockGroupSession(dynamic raw);
 
   @protected
@@ -78,6 +99,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   RwLockSession dco_decode_RustOpaque_RwLockSession(dynamic raw);
+
+  @protected
+  PkSigning dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPkSigning(dynamic raw);
 
   @protected
   RwLockAccount dco_decode_RustOpaque_stdsyncRwLockAccount(dynamic raw);
@@ -114,6 +138,15 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   VodozemacOlmSessionConfig dco_decode_box_autoadd_vodozemac_olm_session_config(dynamic raw);
+
+  @protected
+  VodozemacPkDecryption dco_decode_box_autoadd_vodozemac_pk_decryption(dynamic raw);
+
+  @protected
+  VodozemacPkEncryption dco_decode_box_autoadd_vodozemac_pk_encryption(dynamic raw);
+
+  @protected
+  VodozemacPkMessage dco_decode_box_autoadd_vodozemac_pk_message(dynamic raw);
 
   @protected
   VodozemacSession dco_decode_box_autoadd_vodozemac_session(dynamic raw);
@@ -188,10 +221,27 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   VodozemacOneTimeKey dco_decode_vodozemac_one_time_key(dynamic raw);
 
   @protected
+  VodozemacPkDecryption dco_decode_vodozemac_pk_decryption(dynamic raw);
+
+  @protected
+  VodozemacPkEncryption dco_decode_vodozemac_pk_encryption(dynamic raw);
+
+  @protected
+  VodozemacPkMessage dco_decode_vodozemac_pk_message(dynamic raw);
+
+  @protected
   VodozemacSession dco_decode_vodozemac_session(dynamic raw);
 
   @protected
   AnyhowException sse_decode_AnyhowException(SseDeserializer deserializer);
+
+  @protected
+  PkSigning sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPkSigning(
+      SseDeserializer deserializer);
+
+  @protected
+  PkSigning sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPkSigning(
+      SseDeserializer deserializer);
 
   @protected
   Curve25519PublicKey sse_decode_RustOpaque_Curve25519PublicKey(SseDeserializer deserializer);
@@ -212,6 +262,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   OlmSessionConfig sse_decode_RustOpaque_OlmSessionConfig(SseDeserializer deserializer);
 
   @protected
+  PkDecryption sse_decode_RustOpaque_PkDecryption(SseDeserializer deserializer);
+
+  @protected
+  PkEncryption sse_decode_RustOpaque_PkEncryption(SseDeserializer deserializer);
+
+  @protected
   RwLockGroupSession sse_decode_RustOpaque_RwLockGroupSession(SseDeserializer deserializer);
 
   @protected
@@ -219,6 +275,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   RwLockSession sse_decode_RustOpaque_RwLockSession(SseDeserializer deserializer);
+
+  @protected
+  PkSigning sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPkSigning(
+      SseDeserializer deserializer);
 
   @protected
   RwLockAccount sse_decode_RustOpaque_stdsyncRwLockAccount(SseDeserializer deserializer);
@@ -255,6 +315,15 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   VodozemacOlmSessionConfig sse_decode_box_autoadd_vodozemac_olm_session_config(SseDeserializer deserializer);
+
+  @protected
+  VodozemacPkDecryption sse_decode_box_autoadd_vodozemac_pk_decryption(SseDeserializer deserializer);
+
+  @protected
+  VodozemacPkEncryption sse_decode_box_autoadd_vodozemac_pk_encryption(SseDeserializer deserializer);
+
+  @protected
+  VodozemacPkMessage sse_decode_box_autoadd_vodozemac_pk_message(SseDeserializer deserializer);
 
   @protected
   VodozemacSession sse_decode_box_autoadd_vodozemac_session(SseDeserializer deserializer);
@@ -327,6 +396,15 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   VodozemacOneTimeKey sse_decode_vodozemac_one_time_key(SseDeserializer deserializer);
+
+  @protected
+  VodozemacPkDecryption sse_decode_vodozemac_pk_decryption(SseDeserializer deserializer);
+
+  @protected
+  VodozemacPkEncryption sse_decode_vodozemac_pk_encryption(SseDeserializer deserializer);
+
+  @protected
+  VodozemacPkMessage sse_decode_vodozemac_pk_message(SseDeserializer deserializer);
 
   @protected
   VodozemacSession sse_decode_vodozemac_session(SseDeserializer deserializer);
@@ -422,6 +500,32 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     // Codec=Cst (C-struct based), see doc to use other codecs
     final ptr = wire.cst_new_box_autoadd_vodozemac_olm_session_config();
     cst_api_fill_to_wire_vodozemac_olm_session_config(raw, ptr.ref);
+    return ptr;
+  }
+
+  @protected
+  ffi.Pointer<wire_cst_vodozemac_pk_decryption> cst_encode_box_autoadd_vodozemac_pk_decryption(
+      VodozemacPkDecryption raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    final ptr = wire.cst_new_box_autoadd_vodozemac_pk_decryption();
+    cst_api_fill_to_wire_vodozemac_pk_decryption(raw, ptr.ref);
+    return ptr;
+  }
+
+  @protected
+  ffi.Pointer<wire_cst_vodozemac_pk_encryption> cst_encode_box_autoadd_vodozemac_pk_encryption(
+      VodozemacPkEncryption raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    final ptr = wire.cst_new_box_autoadd_vodozemac_pk_encryption();
+    cst_api_fill_to_wire_vodozemac_pk_encryption(raw, ptr.ref);
+    return ptr;
+  }
+
+  @protected
+  ffi.Pointer<wire_cst_vodozemac_pk_message> cst_encode_box_autoadd_vodozemac_pk_message(VodozemacPkMessage raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    final ptr = wire.cst_new_box_autoadd_vodozemac_pk_message();
+    cst_api_fill_to_wire_vodozemac_pk_message(raw, ptr.ref);
     return ptr;
   }
 
@@ -543,6 +647,24 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  void cst_api_fill_to_wire_box_autoadd_vodozemac_pk_decryption(
+      VodozemacPkDecryption apiObj, ffi.Pointer<wire_cst_vodozemac_pk_decryption> wireObj) {
+    cst_api_fill_to_wire_vodozemac_pk_decryption(apiObj, wireObj.ref);
+  }
+
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_vodozemac_pk_encryption(
+      VodozemacPkEncryption apiObj, ffi.Pointer<wire_cst_vodozemac_pk_encryption> wireObj) {
+    cst_api_fill_to_wire_vodozemac_pk_encryption(apiObj, wireObj.ref);
+  }
+
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_vodozemac_pk_message(
+      VodozemacPkMessage apiObj, ffi.Pointer<wire_cst_vodozemac_pk_message> wireObj) {
+    cst_api_fill_to_wire_vodozemac_pk_message(apiObj, wireObj.ref);
+  }
+
+  @protected
   void cst_api_fill_to_wire_box_autoadd_vodozemac_session(
       VodozemacSession apiObj, ffi.Pointer<wire_cst_vodozemac_session> wireObj) {
     cst_api_fill_to_wire_vodozemac_session(apiObj, wireObj.ref);
@@ -628,9 +750,34 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  void cst_api_fill_to_wire_vodozemac_pk_decryption(
+      VodozemacPkDecryption apiObj, wire_cst_vodozemac_pk_decryption wireObj) {
+    wireObj.pk_decryption = cst_encode_RustOpaque_PkDecryption(apiObj.pkDecryption);
+  }
+
+  @protected
+  void cst_api_fill_to_wire_vodozemac_pk_encryption(
+      VodozemacPkEncryption apiObj, wire_cst_vodozemac_pk_encryption wireObj) {
+    wireObj.pk_encryption = cst_encode_RustOpaque_PkEncryption(apiObj.pkEncryption);
+  }
+
+  @protected
+  void cst_api_fill_to_wire_vodozemac_pk_message(VodozemacPkMessage apiObj, wire_cst_vodozemac_pk_message wireObj) {
+    wireObj.ciphertext = cst_encode_list_prim_u_8_strict(apiObj.ciphertext);
+    wireObj.mac = cst_encode_list_prim_u_8_strict(apiObj.mac);
+    cst_api_fill_to_wire_vodozemac_curve_25519_public_key(apiObj.ephemeralKey, wireObj.ephemeral_key);
+  }
+
+  @protected
   void cst_api_fill_to_wire_vodozemac_session(VodozemacSession apiObj, wire_cst_vodozemac_session wireObj) {
     wireObj.session = cst_encode_RustOpaque_RwLockSession(apiObj.session);
   }
+
+  @protected
+  int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPkSigning(PkSigning raw);
+
+  @protected
+  int cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPkSigning(PkSigning raw);
 
   @protected
   int cst_encode_RustOpaque_Curve25519PublicKey(Curve25519PublicKey raw);
@@ -651,6 +798,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   int cst_encode_RustOpaque_OlmSessionConfig(OlmSessionConfig raw);
 
   @protected
+  int cst_encode_RustOpaque_PkDecryption(PkDecryption raw);
+
+  @protected
+  int cst_encode_RustOpaque_PkEncryption(PkEncryption raw);
+
+  @protected
   int cst_encode_RustOpaque_RwLockGroupSession(RwLockGroupSession raw);
 
   @protected
@@ -658,6 +811,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   int cst_encode_RustOpaque_RwLockSession(RwLockSession raw);
+
+  @protected
+  int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPkSigning(PkSigning raw);
 
   @protected
   int cst_encode_RustOpaque_stdsyncRwLockAccount(RwLockAccount raw);
@@ -678,6 +834,14 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void sse_encode_AnyhowException(AnyhowException self, SseSerializer serializer);
 
   @protected
+  void sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPkSigning(
+      PkSigning self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPkSigning(
+      PkSigning self, SseSerializer serializer);
+
+  @protected
   void sse_encode_RustOpaque_Curve25519PublicKey(Curve25519PublicKey self, SseSerializer serializer);
 
   @protected
@@ -696,6 +860,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void sse_encode_RustOpaque_OlmSessionConfig(OlmSessionConfig self, SseSerializer serializer);
 
   @protected
+  void sse_encode_RustOpaque_PkDecryption(PkDecryption self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_RustOpaque_PkEncryption(PkEncryption self, SseSerializer serializer);
+
+  @protected
   void sse_encode_RustOpaque_RwLockGroupSession(RwLockGroupSession self, SseSerializer serializer);
 
   @protected
@@ -703,6 +873,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   void sse_encode_RustOpaque_RwLockSession(RwLockSession self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPkSigning(
+      PkSigning self, SseSerializer serializer);
 
   @protected
   void sse_encode_RustOpaque_stdsyncRwLockAccount(RwLockAccount self, SseSerializer serializer);
@@ -742,6 +916,15 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   void sse_encode_box_autoadd_vodozemac_olm_session_config(VodozemacOlmSessionConfig self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_vodozemac_pk_decryption(VodozemacPkDecryption self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_vodozemac_pk_encryption(VodozemacPkEncryption self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_vodozemac_pk_message(VodozemacPkMessage self, SseSerializer serializer);
 
   @protected
   void sse_encode_box_autoadd_vodozemac_session(VodozemacSession self, SseSerializer serializer);
@@ -817,6 +1000,15 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void sse_encode_vodozemac_one_time_key(VodozemacOneTimeKey self, SseSerializer serializer);
 
   @protected
+  void sse_encode_vodozemac_pk_decryption(VodozemacPkDecryption self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_vodozemac_pk_encryption(VodozemacPkEncryption self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_vodozemac_pk_message(VodozemacPkMessage self, SseSerializer serializer);
+
+  @protected
   void sse_encode_vodozemac_session(VodozemacSession self, SseSerializer serializer);
 
   @protected
@@ -856,6 +1048,73 @@ class RustLibWire implements BaseWire {
   late final _store_dart_post_cobjectPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(DartPostCObjectFnType)>>('store_dart_post_cobject');
   late final _store_dart_post_cobject = _store_dart_post_cobjectPtr.asFunction<void Function(DartPostCObjectFnType)>();
+
+  WireSyncRust2DartDco wire__crate__bindings__PkSigning_from_secret_key(
+    ffi.Pointer<wire_cst_list_prim_u_8_strict> key,
+  ) {
+    return _wire__crate__bindings__PkSigning_from_secret_key(
+      key,
+    );
+  }
+
+  late final _wire__crate__bindings__PkSigning_from_secret_keyPtr =
+      _lookup<ffi.NativeFunction<WireSyncRust2DartDco Function(ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
+          'frbgen_vodozemac_wire__crate__bindings__PkSigning_from_secret_key');
+  late final _wire__crate__bindings__PkSigning_from_secret_key = _wire__crate__bindings__PkSigning_from_secret_keyPtr
+      .asFunction<WireSyncRust2DartDco Function(ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
+
+  WireSyncRust2DartDco wire__crate__bindings__PkSigning_new() {
+    return _wire__crate__bindings__PkSigning_new();
+  }
+
+  late final _wire__crate__bindings__PkSigning_newPtr = _lookup<ffi.NativeFunction<WireSyncRust2DartDco Function()>>(
+      'frbgen_vodozemac_wire__crate__bindings__PkSigning_new');
+  late final _wire__crate__bindings__PkSigning_new =
+      _wire__crate__bindings__PkSigning_newPtr.asFunction<WireSyncRust2DartDco Function()>();
+
+  WireSyncRust2DartDco wire__crate__bindings__PkSigning_public_key(
+    int that,
+  ) {
+    return _wire__crate__bindings__PkSigning_public_key(
+      that,
+    );
+  }
+
+  late final _wire__crate__bindings__PkSigning_public_keyPtr =
+      _lookup<ffi.NativeFunction<WireSyncRust2DartDco Function(ffi.UintPtr)>>(
+          'frbgen_vodozemac_wire__crate__bindings__PkSigning_public_key');
+  late final _wire__crate__bindings__PkSigning_public_key =
+      _wire__crate__bindings__PkSigning_public_keyPtr.asFunction<WireSyncRust2DartDco Function(int)>();
+
+  WireSyncRust2DartDco wire__crate__bindings__PkSigning_secret_key(
+    int that,
+  ) {
+    return _wire__crate__bindings__PkSigning_secret_key(
+      that,
+    );
+  }
+
+  late final _wire__crate__bindings__PkSigning_secret_keyPtr =
+      _lookup<ffi.NativeFunction<WireSyncRust2DartDco Function(ffi.UintPtr)>>(
+          'frbgen_vodozemac_wire__crate__bindings__PkSigning_secret_key');
+  late final _wire__crate__bindings__PkSigning_secret_key =
+      _wire__crate__bindings__PkSigning_secret_keyPtr.asFunction<WireSyncRust2DartDco Function(int)>();
+
+  WireSyncRust2DartDco wire__crate__bindings__PkSigning_sign(
+    int that,
+    ffi.Pointer<wire_cst_list_prim_u_8_strict> message,
+  ) {
+    return _wire__crate__bindings__PkSigning_sign(
+      that,
+      message,
+    );
+  }
+
+  late final _wire__crate__bindings__PkSigning_signPtr = _lookup<
+          ffi.NativeFunction<WireSyncRust2DartDco Function(ffi.UintPtr, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
+      'frbgen_vodozemac_wire__crate__bindings__PkSigning_sign');
+  late final _wire__crate__bindings__PkSigning_sign = _wire__crate__bindings__PkSigning_signPtr
+      .asFunction<WireSyncRust2DartDco Function(int, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
 
   void wire__crate__bindings__vodozemac_account_create_inbound_session(
     int port_,
@@ -1787,7 +2046,7 @@ class RustLibWire implements BaseWire {
 
   WireSyncRust2DartDco wire__crate__bindings__vodozemac_olm_message_from_parts(
     int message_type,
-    ffi.Pointer<wire_cst_list_prim_u_8_loose> ciphertext,
+    ffi.Pointer<wire_cst_list_prim_u_8_strict> ciphertext,
   ) {
     return _wire__crate__bindings__vodozemac_olm_message_from_parts(
       message_type,
@@ -1796,11 +2055,11 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire__crate__bindings__vodozemac_olm_message_from_partsPtr = _lookup<
-          ffi.NativeFunction<WireSyncRust2DartDco Function(ffi.UintPtr, ffi.Pointer<wire_cst_list_prim_u_8_loose>)>>(
+          ffi.NativeFunction<WireSyncRust2DartDco Function(ffi.UintPtr, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
       'frbgen_vodozemac_wire__crate__bindings__vodozemac_olm_message_from_parts');
   late final _wire__crate__bindings__vodozemac_olm_message_from_parts =
       _wire__crate__bindings__vodozemac_olm_message_from_partsPtr
-          .asFunction<WireSyncRust2DartDco Function(int, ffi.Pointer<wire_cst_list_prim_u_8_loose>)>();
+          .asFunction<WireSyncRust2DartDco Function(int, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
 
   WireSyncRust2DartDco wire__crate__bindings__vodozemac_olm_message_message(
     ffi.Pointer<wire_cst_vodozemac_olm_message> that,
@@ -1876,6 +2135,165 @@ class RustLibWire implements BaseWire {
           'frbgen_vodozemac_wire__crate__bindings__vodozemac_olm_session_config_version_2');
   late final _wire__crate__bindings__vodozemac_olm_session_config_version_2 =
       _wire__crate__bindings__vodozemac_olm_session_config_version_2Ptr.asFunction<WireSyncRust2DartDco Function()>();
+
+  void wire__crate__bindings__vodozemac_pk_decryption_decrypt(
+    int port_,
+    ffi.Pointer<wire_cst_vodozemac_pk_decryption> that,
+    ffi.Pointer<wire_cst_vodozemac_pk_message> message,
+  ) {
+    return _wire__crate__bindings__vodozemac_pk_decryption_decrypt(
+      port_,
+      that,
+      message,
+    );
+  }
+
+  late final _wire__crate__bindings__vodozemac_pk_decryption_decryptPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(ffi.Int64, ffi.Pointer<wire_cst_vodozemac_pk_decryption>,
+                  ffi.Pointer<wire_cst_vodozemac_pk_message>)>>(
+      'frbgen_vodozemac_wire__crate__bindings__vodozemac_pk_decryption_decrypt');
+  late final _wire__crate__bindings__vodozemac_pk_decryption_decrypt =
+      _wire__crate__bindings__vodozemac_pk_decryption_decryptPtr.asFunction<
+          void Function(
+              int, ffi.Pointer<wire_cst_vodozemac_pk_decryption>, ffi.Pointer<wire_cst_vodozemac_pk_message>)>();
+
+  WireSyncRust2DartDco wire__crate__bindings__vodozemac_pk_decryption_from_key(
+    ffi.Pointer<wire_cst_list_prim_u_8_strict> secret_key,
+  ) {
+    return _wire__crate__bindings__vodozemac_pk_decryption_from_key(
+      secret_key,
+    );
+  }
+
+  late final _wire__crate__bindings__vodozemac_pk_decryption_from_keyPtr =
+      _lookup<ffi.NativeFunction<WireSyncRust2DartDco Function(ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
+          'frbgen_vodozemac_wire__crate__bindings__vodozemac_pk_decryption_from_key');
+  late final _wire__crate__bindings__vodozemac_pk_decryption_from_key =
+      _wire__crate__bindings__vodozemac_pk_decryption_from_keyPtr
+          .asFunction<WireSyncRust2DartDco Function(ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
+
+  void wire__crate__bindings__vodozemac_pk_decryption_from_libolm_pickle(
+    int port_,
+    ffi.Pointer<wire_cst_list_prim_u_8_strict> pickle,
+    ffi.Pointer<wire_cst_list_prim_u_8_loose> pickle_key,
+  ) {
+    return _wire__crate__bindings__vodozemac_pk_decryption_from_libolm_pickle(
+      port_,
+      pickle,
+      pickle_key,
+    );
+  }
+
+  late final _wire__crate__bindings__vodozemac_pk_decryption_from_libolm_picklePtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<wire_cst_list_prim_u_8_strict>, ffi.Pointer<wire_cst_list_prim_u_8_loose>)>>(
+      'frbgen_vodozemac_wire__crate__bindings__vodozemac_pk_decryption_from_libolm_pickle');
+  late final _wire__crate__bindings__vodozemac_pk_decryption_from_libolm_pickle =
+      _wire__crate__bindings__vodozemac_pk_decryption_from_libolm_picklePtr.asFunction<
+          void Function(int, ffi.Pointer<wire_cst_list_prim_u_8_strict>, ffi.Pointer<wire_cst_list_prim_u_8_loose>)>();
+
+  WireSyncRust2DartDco wire__crate__bindings__vodozemac_pk_decryption_new() {
+    return _wire__crate__bindings__vodozemac_pk_decryption_new();
+  }
+
+  late final _wire__crate__bindings__vodozemac_pk_decryption_newPtr =
+      _lookup<ffi.NativeFunction<WireSyncRust2DartDco Function()>>(
+          'frbgen_vodozemac_wire__crate__bindings__vodozemac_pk_decryption_new');
+  late final _wire__crate__bindings__vodozemac_pk_decryption_new =
+      _wire__crate__bindings__vodozemac_pk_decryption_newPtr.asFunction<WireSyncRust2DartDco Function()>();
+
+  void wire__crate__bindings__vodozemac_pk_decryption_private_key(
+    int port_,
+    ffi.Pointer<wire_cst_vodozemac_pk_decryption> that,
+  ) {
+    return _wire__crate__bindings__vodozemac_pk_decryption_private_key(
+      port_,
+      that,
+    );
+  }
+
+  late final _wire__crate__bindings__vodozemac_pk_decryption_private_keyPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_cst_vodozemac_pk_decryption>)>>(
+          'frbgen_vodozemac_wire__crate__bindings__vodozemac_pk_decryption_private_key');
+  late final _wire__crate__bindings__vodozemac_pk_decryption_private_key =
+      _wire__crate__bindings__vodozemac_pk_decryption_private_keyPtr
+          .asFunction<void Function(int, ffi.Pointer<wire_cst_vodozemac_pk_decryption>)>();
+
+  WireSyncRust2DartDco wire__crate__bindings__vodozemac_pk_decryption_public_key(
+    ffi.Pointer<wire_cst_vodozemac_pk_decryption> that,
+  ) {
+    return _wire__crate__bindings__vodozemac_pk_decryption_public_key(
+      that,
+    );
+  }
+
+  late final _wire__crate__bindings__vodozemac_pk_decryption_public_keyPtr =
+      _lookup<ffi.NativeFunction<WireSyncRust2DartDco Function(ffi.Pointer<wire_cst_vodozemac_pk_decryption>)>>(
+          'frbgen_vodozemac_wire__crate__bindings__vodozemac_pk_decryption_public_key');
+  late final _wire__crate__bindings__vodozemac_pk_decryption_public_key =
+      _wire__crate__bindings__vodozemac_pk_decryption_public_keyPtr
+          .asFunction<WireSyncRust2DartDco Function(ffi.Pointer<wire_cst_vodozemac_pk_decryption>)>();
+
+  void wire__crate__bindings__vodozemac_pk_decryption_to_libolm_pickle(
+    int port_,
+    ffi.Pointer<wire_cst_vodozemac_pk_decryption> that,
+    ffi.Pointer<wire_cst_list_prim_u_8_strict> pickle_key,
+  ) {
+    return _wire__crate__bindings__vodozemac_pk_decryption_to_libolm_pickle(
+      port_,
+      that,
+      pickle_key,
+    );
+  }
+
+  late final _wire__crate__bindings__vodozemac_pk_decryption_to_libolm_picklePtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(ffi.Int64, ffi.Pointer<wire_cst_vodozemac_pk_decryption>,
+                  ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
+      'frbgen_vodozemac_wire__crate__bindings__vodozemac_pk_decryption_to_libolm_pickle');
+  late final _wire__crate__bindings__vodozemac_pk_decryption_to_libolm_pickle =
+      _wire__crate__bindings__vodozemac_pk_decryption_to_libolm_picklePtr.asFunction<
+          void Function(
+              int, ffi.Pointer<wire_cst_vodozemac_pk_decryption>, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
+
+  void wire__crate__bindings__vodozemac_pk_encryption_encrypt(
+    int port_,
+    ffi.Pointer<wire_cst_vodozemac_pk_encryption> that,
+    ffi.Pointer<wire_cst_list_prim_u_8_strict> message,
+  ) {
+    return _wire__crate__bindings__vodozemac_pk_encryption_encrypt(
+      port_,
+      that,
+      message,
+    );
+  }
+
+  late final _wire__crate__bindings__vodozemac_pk_encryption_encryptPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(ffi.Int64, ffi.Pointer<wire_cst_vodozemac_pk_encryption>,
+                  ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
+      'frbgen_vodozemac_wire__crate__bindings__vodozemac_pk_encryption_encrypt');
+  late final _wire__crate__bindings__vodozemac_pk_encryption_encrypt =
+      _wire__crate__bindings__vodozemac_pk_encryption_encryptPtr.asFunction<
+          void Function(
+              int, ffi.Pointer<wire_cst_vodozemac_pk_encryption>, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
+
+  WireSyncRust2DartDco wire__crate__bindings__vodozemac_pk_encryption_from_key(
+    ffi.Pointer<wire_cst_vodozemac_curve_25519_public_key> public_key,
+  ) {
+    return _wire__crate__bindings__vodozemac_pk_encryption_from_key(
+      public_key,
+    );
+  }
+
+  late final _wire__crate__bindings__vodozemac_pk_encryption_from_keyPtr = _lookup<
+          ffi.NativeFunction<WireSyncRust2DartDco Function(ffi.Pointer<wire_cst_vodozemac_curve_25519_public_key>)>>(
+      'frbgen_vodozemac_wire__crate__bindings__vodozemac_pk_encryption_from_key');
+  late final _wire__crate__bindings__vodozemac_pk_encryption_from_key =
+      _wire__crate__bindings__vodozemac_pk_encryption_from_keyPtr
+          .asFunction<WireSyncRust2DartDco Function(ffi.Pointer<wire_cst_vodozemac_curve_25519_public_key>)>();
 
   void wire__crate__bindings__vodozemac_session_decrypt(
     int port_,
@@ -2207,6 +2625,62 @@ class RustLibWire implements BaseWire {
       _rust_arc_decrement_strong_count_RustOpaque_OlmSessionConfigPtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
 
+  void rust_arc_increment_strong_count_RustOpaque_PkDecryption(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _rust_arc_increment_strong_count_RustOpaque_PkDecryption(
+      ptr,
+    );
+  }
+
+  late final _rust_arc_increment_strong_count_RustOpaque_PkDecryptionPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
+          'frbgen_vodozemac_rust_arc_increment_strong_count_RustOpaque_PkDecryption');
+  late final _rust_arc_increment_strong_count_RustOpaque_PkDecryption =
+      _rust_arc_increment_strong_count_RustOpaque_PkDecryptionPtr.asFunction<void Function(ffi.Pointer<ffi.Void>)>();
+
+  void rust_arc_decrement_strong_count_RustOpaque_PkDecryption(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _rust_arc_decrement_strong_count_RustOpaque_PkDecryption(
+      ptr,
+    );
+  }
+
+  late final _rust_arc_decrement_strong_count_RustOpaque_PkDecryptionPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
+          'frbgen_vodozemac_rust_arc_decrement_strong_count_RustOpaque_PkDecryption');
+  late final _rust_arc_decrement_strong_count_RustOpaque_PkDecryption =
+      _rust_arc_decrement_strong_count_RustOpaque_PkDecryptionPtr.asFunction<void Function(ffi.Pointer<ffi.Void>)>();
+
+  void rust_arc_increment_strong_count_RustOpaque_PkEncryption(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _rust_arc_increment_strong_count_RustOpaque_PkEncryption(
+      ptr,
+    );
+  }
+
+  late final _rust_arc_increment_strong_count_RustOpaque_PkEncryptionPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
+          'frbgen_vodozemac_rust_arc_increment_strong_count_RustOpaque_PkEncryption');
+  late final _rust_arc_increment_strong_count_RustOpaque_PkEncryption =
+      _rust_arc_increment_strong_count_RustOpaque_PkEncryptionPtr.asFunction<void Function(ffi.Pointer<ffi.Void>)>();
+
+  void rust_arc_decrement_strong_count_RustOpaque_PkEncryption(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _rust_arc_decrement_strong_count_RustOpaque_PkEncryption(
+      ptr,
+    );
+  }
+
+  late final _rust_arc_decrement_strong_count_RustOpaque_PkEncryptionPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
+          'frbgen_vodozemac_rust_arc_decrement_strong_count_RustOpaque_PkEncryption');
+  late final _rust_arc_decrement_strong_count_RustOpaque_PkEncryption =
+      _rust_arc_decrement_strong_count_RustOpaque_PkEncryptionPtr.asFunction<void Function(ffi.Pointer<ffi.Void>)>();
+
   void rust_arc_increment_strong_count_RustOpaque_RwLockGroupSession(
     ffi.Pointer<ffi.Void> ptr,
   ) {
@@ -2294,6 +2768,36 @@ class RustLibWire implements BaseWire {
           'frbgen_vodozemac_rust_arc_decrement_strong_count_RustOpaque_RwLockSession');
   late final _rust_arc_decrement_strong_count_RustOpaque_RwLockSession =
       _rust_arc_decrement_strong_count_RustOpaque_RwLockSessionPtr.asFunction<void Function(ffi.Pointer<ffi.Void>)>();
+
+  void rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPkSigning(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPkSigning(
+      ptr,
+    );
+  }
+
+  late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPkSigningPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
+          'frbgen_vodozemac_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPkSigning');
+  late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPkSigning =
+      _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPkSigningPtr
+          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
+
+  void rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPkSigning(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPkSigning(
+      ptr,
+    );
+  }
+
+  late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPkSigningPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
+          'frbgen_vodozemac_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPkSigning');
+  late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPkSigning =
+      _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPkSigningPtr
+          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
 
   void rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockAccount(
     ffi.Pointer<ffi.Void> ptr,
@@ -2418,6 +2922,36 @@ class RustLibWire implements BaseWire {
   late final _cst_new_box_autoadd_vodozemac_olm_session_config = _cst_new_box_autoadd_vodozemac_olm_session_configPtr
       .asFunction<ffi.Pointer<wire_cst_vodozemac_olm_session_config> Function()>();
 
+  ffi.Pointer<wire_cst_vodozemac_pk_decryption> cst_new_box_autoadd_vodozemac_pk_decryption() {
+    return _cst_new_box_autoadd_vodozemac_pk_decryption();
+  }
+
+  late final _cst_new_box_autoadd_vodozemac_pk_decryptionPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_cst_vodozemac_pk_decryption> Function()>>(
+          'frbgen_vodozemac_cst_new_box_autoadd_vodozemac_pk_decryption');
+  late final _cst_new_box_autoadd_vodozemac_pk_decryption = _cst_new_box_autoadd_vodozemac_pk_decryptionPtr
+      .asFunction<ffi.Pointer<wire_cst_vodozemac_pk_decryption> Function()>();
+
+  ffi.Pointer<wire_cst_vodozemac_pk_encryption> cst_new_box_autoadd_vodozemac_pk_encryption() {
+    return _cst_new_box_autoadd_vodozemac_pk_encryption();
+  }
+
+  late final _cst_new_box_autoadd_vodozemac_pk_encryptionPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_cst_vodozemac_pk_encryption> Function()>>(
+          'frbgen_vodozemac_cst_new_box_autoadd_vodozemac_pk_encryption');
+  late final _cst_new_box_autoadd_vodozemac_pk_encryption = _cst_new_box_autoadd_vodozemac_pk_encryptionPtr
+      .asFunction<ffi.Pointer<wire_cst_vodozemac_pk_encryption> Function()>();
+
+  ffi.Pointer<wire_cst_vodozemac_pk_message> cst_new_box_autoadd_vodozemac_pk_message() {
+    return _cst_new_box_autoadd_vodozemac_pk_message();
+  }
+
+  late final _cst_new_box_autoadd_vodozemac_pk_messagePtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_cst_vodozemac_pk_message> Function()>>(
+          'frbgen_vodozemac_cst_new_box_autoadd_vodozemac_pk_message');
+  late final _cst_new_box_autoadd_vodozemac_pk_message =
+      _cst_new_box_autoadd_vodozemac_pk_messagePtr.asFunction<ffi.Pointer<wire_cst_vodozemac_pk_message> Function()>();
+
   ffi.Pointer<wire_cst_vodozemac_session> cst_new_box_autoadd_vodozemac_session() {
     return _cst_new_box_autoadd_vodozemac_session();
   }
@@ -2485,6 +3019,13 @@ typedef DartPostCObjectFnTypeFunction = ffi.Bool Function(DartPort port_id, ffi.
 typedef DartDartPostCObjectFnTypeFunction = bool Function(DartDartPort port_id, ffi.Pointer<ffi.Void> message);
 typedef DartPostCObjectFnType = ffi.Pointer<ffi.NativeFunction<DartPostCObjectFnTypeFunction>>;
 
+final class wire_cst_list_prim_u_8_strict extends ffi.Struct {
+  external ffi.Pointer<ffi.Uint8> ptr;
+
+  @ffi.Int32()
+  external int len;
+}
+
 final class wire_cst_vodozemac_account extends ffi.Struct {
   @ffi.UintPtr()
   external int account;
@@ -2493,13 +3034,6 @@ final class wire_cst_vodozemac_account extends ffi.Struct {
 final class wire_cst_vodozemac_curve_25519_public_key extends ffi.Struct {
   @ffi.UintPtr()
   external int key;
-}
-
-final class wire_cst_list_prim_u_8_strict extends ffi.Struct {
-  external ffi.Pointer<ffi.Uint8> ptr;
-
-  @ffi.Int32()
-  external int len;
 }
 
 final class wire_cst_vodozemac_olm_session_config extends ffi.Struct {
@@ -2542,6 +3076,24 @@ final class wire_cst_vodozemac_inbound_group_session extends ffi.Struct {
 final class wire_cst_vodozemac_olm_message extends ffi.Struct {
   @ffi.UintPtr()
   external int msg;
+}
+
+final class wire_cst_vodozemac_pk_decryption extends ffi.Struct {
+  @ffi.UintPtr()
+  external int pk_decryption;
+}
+
+final class wire_cst_vodozemac_pk_message extends ffi.Struct {
+  external ffi.Pointer<wire_cst_list_prim_u_8_strict> ciphertext;
+
+  external ffi.Pointer<wire_cst_list_prim_u_8_strict> mac;
+
+  external wire_cst_vodozemac_curve_25519_public_key ephemeral_key;
+}
+
+final class wire_cst_vodozemac_pk_encryption extends ffi.Struct {
+  @ffi.UintPtr()
+  external int pk_encryption;
 }
 
 final class wire_cst_vodozemac_session extends ffi.Struct {
