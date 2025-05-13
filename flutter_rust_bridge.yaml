@@ -1,0 +1,7 @@
+rust_input: crate::bindings
+rust_root: rust
+dart_output: dart/lib/src/generated
+web: true
+dart_format_line_length: 120
+dart3: false
+full_dep: true
