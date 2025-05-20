@@ -8,7 +8,7 @@ environment:
 
 dependencies:
   collection: ^1.19.0
-  flutter_rust_bridge: ^2.9.0
+  flutter_rust_bridge: 2.9.0
   test_core: ^0.6.8
 
 dev_dependencies:
@@ -16,6 +16,7 @@ dev_dependencies:
   test: ^1.21.0
   checks: ^0.3.0
   import_sorter: ^4.6.0
+  ffigen: ^18.1.0
 
 import_sorter:
   comments: false

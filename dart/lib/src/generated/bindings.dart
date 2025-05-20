@@ -11,6 +11,9 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 // These functions are ignored because they are not marked as `pub`: `new_helper`
 // These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `from`, `from`, `from`, `from`, `from`, `from`, `from`, `from`, `from`, `from`, `from`, `into`
 
+// Rust type: RustOpaqueNom<EstablishedSas>
+abstract class EstablishedSas implements RustOpaqueInterface {}
+
 // Rust type: RustOpaqueNom<PkDecryption>
 abstract class PkDecryption implements RustOpaqueInterface {}
 
@@ -29,6 +32,15 @@ abstract class PkSigning implements RustOpaqueInterface {
   String secretKey();
 
   VodozemacEd25519Signature sign({required String message});
+}
+
+// Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<VodozemacSas>>
+abstract class VodozemacSas implements RustOpaqueInterface {
+  Future<VodozemacEstablishedSas> establishSasSecret({required String otherPublicKey});
+
+  factory VodozemacSas() => RustLib.instance.api.crateBindingsVodozemacSasNew();
+
+  String publicKey();
 }
 
 // Rust type: RustOpaqueNom<std :: sync :: RwLock < Account >>
@@ -253,6 +265,34 @@ class VodozemacEd25519Signature {
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is VodozemacEd25519Signature && runtimeType == other.runtimeType && signature == other.signature;
+}
+
+class VodozemacEstablishedSas {
+  final EstablishedSas establishedSas;
+
+  const VodozemacEstablishedSas({
+    required this.establishedSas,
+  });
+
+  Future<String> calculateMac({required String input, required String info}) =>
+      RustLib.instance.api.crateBindingsVodozemacEstablishedSasCalculateMac(that: this, input: input, info: info);
+
+  Future<String> calculateMacDeprecated({required String input, required String info}) => RustLib.instance.api
+      .crateBindingsVodozemacEstablishedSasCalculateMacDeprecated(that: this, input: input, info: info);
+
+  Future<Uint8List> generateBytes({required String info, required int length}) =>
+      RustLib.instance.api.crateBindingsVodozemacEstablishedSasGenerateBytes(that: this, info: info, length: length);
+
+  Future<void> verifyMac({required String input, required String info, required String mac}) => RustLib.instance.api
+      .crateBindingsVodozemacEstablishedSasVerifyMac(that: this, input: input, info: info, mac: mac);
+
+  @override
+  int get hashCode => establishedSas.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is VodozemacEstablishedSas && runtimeType == other.runtimeType && establishedSas == other.establishedSas;
 }
 
 class VodozemacGroupSession {

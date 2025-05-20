@@ -63,7 +63,7 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
   String get codegenVersion => '2.9.0';
 
   @override
-  int get rustContentHash => 1382486312;
+  int get rustContentHash => 1183240719;
 
   static const kDefaultExternalLibraryLoaderConfig = ExternalLibraryLoaderConfig(
     stem: 'vodozemac_bindings_dart',
@@ -82,6 +82,13 @@ abstract class RustLibApi extends BaseApi {
   String crateBindingsPkSigningSecretKey({required PkSigning that});
 
   VodozemacEd25519Signature crateBindingsPkSigningSign({required PkSigning that, required String message});
+
+  Future<VodozemacEstablishedSas> crateBindingsVodozemacSasEstablishSasSecret(
+      {required VodozemacSas that, required String otherPublicKey});
+
+  VodozemacSas crateBindingsVodozemacSasNew();
+
+  String crateBindingsVodozemacSasPublicKey({required VodozemacSas that});
 
   Future<VodozemacOlmSessionCreationResult> crateBindingsVodozemacAccountCreateInboundSession(
       {required VodozemacAccount that,
@@ -155,6 +162,18 @@ abstract class RustLibApi extends BaseApi {
   String crateBindingsVodozemacEd25519SignatureToBase64({required VodozemacEd25519Signature that});
 
   U8Array64 crateBindingsVodozemacEd25519SignatureToBytes({required VodozemacEd25519Signature that});
+
+  Future<String> crateBindingsVodozemacEstablishedSasCalculateMac(
+      {required VodozemacEstablishedSas that, required String input, required String info});
+
+  Future<String> crateBindingsVodozemacEstablishedSasCalculateMacDeprecated(
+      {required VodozemacEstablishedSas that, required String input, required String info});
+
+  Future<Uint8List> crateBindingsVodozemacEstablishedSasGenerateBytes(
+      {required VodozemacEstablishedSas that, required String info, required int length});
+
+  Future<void> crateBindingsVodozemacEstablishedSasVerifyMac(
+      {required VodozemacEstablishedSas that, required String input, required String info, required String mac});
 
   Future<String> crateBindingsVodozemacGroupSessionEncrypt(
       {required VodozemacGroupSession that, required String plaintext});
@@ -292,6 +311,12 @@ abstract class RustLibApi extends BaseApi {
 
   CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_Ed25519SignaturePtr;
 
+  RustArcIncrementStrongCountFnType get rust_arc_increment_strong_count_EstablishedSas;
+
+  RustArcDecrementStrongCountFnType get rust_arc_decrement_strong_count_EstablishedSas;
+
+  CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_EstablishedSasPtr;
+
   RustArcIncrementStrongCountFnType get rust_arc_increment_strong_count_MegolmSessionConfig;
 
   RustArcDecrementStrongCountFnType get rust_arc_decrement_strong_count_MegolmSessionConfig;
@@ -345,6 +370,12 @@ abstract class RustLibApi extends BaseApi {
   RustArcDecrementStrongCountFnType get rust_arc_decrement_strong_count_PkSigning;
 
   CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_PkSigningPtr;
+
+  RustArcIncrementStrongCountFnType get rust_arc_increment_strong_count_VodozemacSas;
+
+  RustArcDecrementStrongCountFnType get rust_arc_decrement_strong_count_VodozemacSas;
+
+  CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_VodozemacSasPtr;
 
   RustArcIncrementStrongCountFnType get rust_arc_increment_strong_count_RwLockAccount;
 
@@ -471,6 +502,75 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   TaskConstMeta get kCrateBindingsPkSigningSignConstMeta => const TaskConstMeta(
         debugName: "PkSigning_sign",
         argNames: ["that", "message"],
+      );
+
+  @override
+  Future<VodozemacEstablishedSas> crateBindingsVodozemacSasEstablishSasSecret(
+      {required VodozemacSas that, required String otherPublicKey}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 =
+            cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerVodozemacSas(that);
+        var arg1 = cst_encode_String(otherPublicKey);
+        return wire.wire__crate__bindings__VodozemacSas_establish_sas_secret(port_, arg0, arg1);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_vodozemac_established_sas,
+        decodeErrorData: dco_decode_AnyhowException,
+      ),
+      constMeta: kCrateBindingsVodozemacSasEstablishSasSecretConstMeta,
+      argValues: [that, otherPublicKey],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta get kCrateBindingsVodozemacSasEstablishSasSecretConstMeta => const TaskConstMeta(
+        debugName: "VodozemacSas_establish_sas_secret",
+        argNames: ["that", "otherPublicKey"],
+      );
+
+  @override
+  VodozemacSas crateBindingsVodozemacSasNew() {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        return wire.wire__crate__bindings__VodozemacSas_new();
+      },
+      codec: DcoCodec(
+        decodeSuccessData:
+            dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerVodozemacSas,
+        decodeErrorData: null,
+      ),
+      constMeta: kCrateBindingsVodozemacSasNewConstMeta,
+      argValues: [],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta get kCrateBindingsVodozemacSasNewConstMeta => const TaskConstMeta(
+        debugName: "VodozemacSas_new",
+        argNames: [],
+      );
+
+  @override
+  String crateBindingsVodozemacSasPublicKey({required VodozemacSas that}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerVodozemacSas(that);
+        return wire.wire__crate__bindings__VodozemacSas_public_key(arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_String,
+        decodeErrorData: null,
+      ),
+      constMeta: kCrateBindingsVodozemacSasPublicKeyConstMeta,
+      argValues: [that],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta get kCrateBindingsVodozemacSasPublicKeyConstMeta => const TaskConstMeta(
+        debugName: "VodozemacSas_public_key",
+        argNames: ["that"],
       );
 
   @override
@@ -1157,6 +1257,107 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   TaskConstMeta get kCrateBindingsVodozemacEd25519SignatureToBytesConstMeta => const TaskConstMeta(
         debugName: "vodozemac_ed_25519_signature_to_bytes",
         argNames: ["that"],
+      );
+
+  @override
+  Future<String> crateBindingsVodozemacEstablishedSasCalculateMac(
+      {required VodozemacEstablishedSas that, required String input, required String info}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_box_autoadd_vodozemac_established_sas(that);
+        var arg1 = cst_encode_String(input);
+        var arg2 = cst_encode_String(info);
+        return wire.wire__crate__bindings__vodozemac_established_sas_calculate_mac(port_, arg0, arg1, arg2);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_String,
+        decodeErrorData: dco_decode_AnyhowException,
+      ),
+      constMeta: kCrateBindingsVodozemacEstablishedSasCalculateMacConstMeta,
+      argValues: [that, input, info],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta get kCrateBindingsVodozemacEstablishedSasCalculateMacConstMeta => const TaskConstMeta(
+        debugName: "vodozemac_established_sas_calculate_mac",
+        argNames: ["that", "input", "info"],
+      );
+
+  @override
+  Future<String> crateBindingsVodozemacEstablishedSasCalculateMacDeprecated(
+      {required VodozemacEstablishedSas that, required String input, required String info}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_box_autoadd_vodozemac_established_sas(that);
+        var arg1 = cst_encode_String(input);
+        var arg2 = cst_encode_String(info);
+        return wire.wire__crate__bindings__vodozemac_established_sas_calculate_mac_deprecated(port_, arg0, arg1, arg2);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_String,
+        decodeErrorData: dco_decode_AnyhowException,
+      ),
+      constMeta: kCrateBindingsVodozemacEstablishedSasCalculateMacDeprecatedConstMeta,
+      argValues: [that, input, info],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta get kCrateBindingsVodozemacEstablishedSasCalculateMacDeprecatedConstMeta => const TaskConstMeta(
+        debugName: "vodozemac_established_sas_calculate_mac_deprecated",
+        argNames: ["that", "input", "info"],
+      );
+
+  @override
+  Future<Uint8List> crateBindingsVodozemacEstablishedSasGenerateBytes(
+      {required VodozemacEstablishedSas that, required String info, required int length}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_box_autoadd_vodozemac_established_sas(that);
+        var arg1 = cst_encode_String(info);
+        var arg2 = cst_encode_u_32(length);
+        return wire.wire__crate__bindings__vodozemac_established_sas_generate_bytes(port_, arg0, arg1, arg2);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_list_prim_u_8_strict,
+        decodeErrorData: dco_decode_AnyhowException,
+      ),
+      constMeta: kCrateBindingsVodozemacEstablishedSasGenerateBytesConstMeta,
+      argValues: [that, info, length],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta get kCrateBindingsVodozemacEstablishedSasGenerateBytesConstMeta => const TaskConstMeta(
+        debugName: "vodozemac_established_sas_generate_bytes",
+        argNames: ["that", "info", "length"],
+      );
+
+  @override
+  Future<void> crateBindingsVodozemacEstablishedSasVerifyMac(
+      {required VodozemacEstablishedSas that, required String input, required String info, required String mac}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_box_autoadd_vodozemac_established_sas(that);
+        var arg1 = cst_encode_String(input);
+        var arg2 = cst_encode_String(info);
+        var arg3 = cst_encode_String(mac);
+        return wire.wire__crate__bindings__vodozemac_established_sas_verify_mac(port_, arg0, arg1, arg2, arg3);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_unit,
+        decodeErrorData: dco_decode_AnyhowException,
+      ),
+      constMeta: kCrateBindingsVodozemacEstablishedSasVerifyMacConstMeta,
+      argValues: [that, input, info, mac],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta get kCrateBindingsVodozemacEstablishedSasVerifyMacConstMeta => const TaskConstMeta(
+        debugName: "vodozemac_established_sas_verify_mac",
+        argNames: ["that", "input", "info", "mac"],
       );
 
   @override
@@ -2270,6 +2471,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   RustArcDecrementStrongCountFnType get rust_arc_decrement_strong_count_Ed25519Signature =>
       wire.rust_arc_decrement_strong_count_RustOpaque_Ed25519Signature;
 
+  RustArcIncrementStrongCountFnType get rust_arc_increment_strong_count_EstablishedSas =>
+      wire.rust_arc_increment_strong_count_RustOpaque_EstablishedSas;
+
+  RustArcDecrementStrongCountFnType get rust_arc_decrement_strong_count_EstablishedSas =>
+      wire.rust_arc_decrement_strong_count_RustOpaque_EstablishedSas;
+
   RustArcIncrementStrongCountFnType get rust_arc_increment_strong_count_MegolmSessionConfig =>
       wire.rust_arc_increment_strong_count_RustOpaque_MegolmSessionConfig;
 
@@ -2324,6 +2531,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   RustArcDecrementStrongCountFnType get rust_arc_decrement_strong_count_PkSigning =>
       wire.rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPkSigning;
 
+  RustArcIncrementStrongCountFnType get rust_arc_increment_strong_count_VodozemacSas =>
+      wire.rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerVodozemacSas;
+
+  RustArcDecrementStrongCountFnType get rust_arc_decrement_strong_count_VodozemacSas =>
+      wire.rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerVodozemacSas;
+
   RustArcIncrementStrongCountFnType get rust_arc_increment_strong_count_RwLockAccount =>
       wire.rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockAccount;
 
@@ -2343,9 +2556,23 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  VodozemacSas dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerVodozemacSas(
+      dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return VodozemacSasImpl.frbInternalDcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
   PkSigning dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPkSigning(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return PkSigningImpl.frbInternalDcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  VodozemacSas dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerVodozemacSas(
+      dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return VodozemacSasImpl.frbInternalDcoDecode(raw as List<dynamic>);
   }
 
   @protected
@@ -2364,6 +2591,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Ed25519Signature dco_decode_RustOpaque_Ed25519Signature(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return Ed25519SignatureImpl.frbInternalDcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  EstablishedSas dco_decode_RustOpaque_EstablishedSas(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return EstablishedSasImpl.frbInternalDcoDecode(raw as List<dynamic>);
   }
 
   @protected
@@ -2421,6 +2654,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  VodozemacSas dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerVodozemacSas(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return VodozemacSasImpl.frbInternalDcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
   RwLockAccount dco_decode_RustOpaque_stdsyncRwLockAccount(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return RwLockAccountImpl.frbInternalDcoDecode(raw as List<dynamic>);
@@ -2460,6 +2699,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   VodozemacEd25519Signature dco_decode_box_autoadd_vodozemac_ed_25519_signature(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return dco_decode_vodozemac_ed_25519_signature(raw);
+  }
+
+  @protected
+  VodozemacEstablishedSas dco_decode_box_autoadd_vodozemac_established_sas(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return dco_decode_vodozemac_established_sas(raw);
   }
 
   @protected
@@ -2628,6 +2873,16 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  VodozemacEstablishedSas dco_decode_vodozemac_established_sas(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1) throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return VodozemacEstablishedSas(
+      establishedSas: dco_decode_RustOpaque_EstablishedSas(arr[0]),
+    );
+  }
+
+  @protected
   VodozemacGroupSession dco_decode_vodozemac_group_session(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     final arr = raw as List<dynamic>;
@@ -2767,10 +3022,24 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  VodozemacSas sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerVodozemacSas(
+      SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    return VodozemacSasImpl.frbInternalSseDecode(sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
   PkSigning sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPkSigning(
       SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     return PkSigningImpl.frbInternalSseDecode(sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  VodozemacSas sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerVodozemacSas(
+      SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    return VodozemacSasImpl.frbInternalSseDecode(sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
   @protected
@@ -2789,6 +3058,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Ed25519Signature sse_decode_RustOpaque_Ed25519Signature(SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     return Ed25519SignatureImpl.frbInternalSseDecode(sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  EstablishedSas sse_decode_RustOpaque_EstablishedSas(SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    return EstablishedSasImpl.frbInternalSseDecode(sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
   @protected
@@ -2848,6 +3123,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  VodozemacSas sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerVodozemacSas(
+      SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    return VodozemacSasImpl.frbInternalSseDecode(sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
   RwLockAccount sse_decode_RustOpaque_stdsyncRwLockAccount(SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     return RwLockAccountImpl.frbInternalSseDecode(sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
@@ -2888,6 +3170,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   VodozemacEd25519Signature sse_decode_box_autoadd_vodozemac_ed_25519_signature(SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     return (sse_decode_vodozemac_ed_25519_signature(deserializer));
+  }
+
+  @protected
+  VodozemacEstablishedSas sse_decode_box_autoadd_vodozemac_established_sas(SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    return (sse_decode_vodozemac_established_sas(deserializer));
   }
 
   @protected
@@ -3055,6 +3343,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  VodozemacEstablishedSas sse_decode_vodozemac_established_sas(SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    var var_establishedSas = sse_decode_RustOpaque_EstablishedSas(deserializer);
+    return VodozemacEstablishedSas(establishedSas: var_establishedSas);
+  }
+
+  @protected
   VodozemacGroupSession sse_decode_vodozemac_group_session(SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     var var_session = sse_decode_RustOpaque_RwLockGroupSession(deserializer);
@@ -3157,10 +3452,25 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerVodozemacSas(
+      VodozemacSas raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+// ignore: invalid_use_of_internal_member
+    return (raw as VodozemacSasImpl).frbInternalCstEncode(move: true);
+  }
+
+  @protected
   int cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPkSigning(PkSigning raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
 // ignore: invalid_use_of_internal_member
     return (raw as PkSigningImpl).frbInternalCstEncode(move: false);
+  }
+
+  @protected
+  int cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerVodozemacSas(VodozemacSas raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+// ignore: invalid_use_of_internal_member
+    return (raw as VodozemacSasImpl).frbInternalCstEncode(move: false);
   }
 
   @protected
@@ -3182,6 +3492,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Cst (C-struct based), see doc to use other codecs
 // ignore: invalid_use_of_internal_member
     return (raw as Ed25519SignatureImpl).frbInternalCstEncode();
+  }
+
+  @protected
+  int cst_encode_RustOpaque_EstablishedSas(EstablishedSas raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+// ignore: invalid_use_of_internal_member
+    return (raw as EstablishedSasImpl).frbInternalCstEncode();
   }
 
   @protected
@@ -3248,6 +3565,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerVodozemacSas(VodozemacSas raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+// ignore: invalid_use_of_internal_member
+    return (raw as VodozemacSasImpl).frbInternalCstEncode();
+  }
+
+  @protected
   int cst_encode_RustOpaque_stdsyncRwLockAccount(RwLockAccount raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
 // ignore: invalid_use_of_internal_member
@@ -3292,10 +3616,24 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  void sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerVodozemacSas(
+      VodozemacSas self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_usize((self as VodozemacSasImpl).frbInternalSseEncode(move: true), serializer);
+  }
+
+  @protected
   void sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPkSigning(
       PkSigning self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize((self as PkSigningImpl).frbInternalSseEncode(move: false), serializer);
+  }
+
+  @protected
+  void sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerVodozemacSas(
+      VodozemacSas self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_usize((self as VodozemacSasImpl).frbInternalSseEncode(move: false), serializer);
   }
 
   @protected
@@ -3314,6 +3652,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   void sse_encode_RustOpaque_Ed25519Signature(Ed25519Signature self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize((self as Ed25519SignatureImpl).frbInternalSseEncode(move: null), serializer);
+  }
+
+  @protected
+  void sse_encode_RustOpaque_EstablishedSas(EstablishedSas self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_usize((self as EstablishedSasImpl).frbInternalSseEncode(move: null), serializer);
   }
 
   @protected
@@ -3372,6 +3716,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  void sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerVodozemacSas(
+      VodozemacSas self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_usize((self as VodozemacSasImpl).frbInternalSseEncode(move: null), serializer);
+  }
+
+  @protected
   void sse_encode_RustOpaque_stdsyncRwLockAccount(RwLockAccount self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize((self as RwLockAccountImpl).frbInternalSseEncode(move: null), serializer);
@@ -3412,6 +3763,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   void sse_encode_box_autoadd_vodozemac_ed_25519_signature(VodozemacEd25519Signature self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_vodozemac_ed_25519_signature(self, serializer);
+  }
+
+  @protected
+  void sse_encode_box_autoadd_vodozemac_established_sas(VodozemacEstablishedSas self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_vodozemac_established_sas(self, serializer);
   }
 
   @protected
@@ -3570,6 +3927,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  void sse_encode_vodozemac_established_sas(VodozemacEstablishedSas self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_RustOpaque_EstablishedSas(self.establishedSas, serializer);
+  }
+
+  @protected
   void sse_encode_vodozemac_group_session(VodozemacGroupSession self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_RustOpaque_RwLockGroupSession(self.session, serializer);
@@ -3699,6 +4062,22 @@ class Ed25519SignatureImpl extends RustOpaque implements Ed25519Signature {
     rustArcIncrementStrongCount: RustLib.instance.api.rust_arc_increment_strong_count_Ed25519Signature,
     rustArcDecrementStrongCount: RustLib.instance.api.rust_arc_decrement_strong_count_Ed25519Signature,
     rustArcDecrementStrongCountPtr: RustLib.instance.api.rust_arc_decrement_strong_count_Ed25519SignaturePtr,
+  );
+}
+
+@sealed
+class EstablishedSasImpl extends RustOpaque implements EstablishedSas {
+  // Not to be used by end users
+  EstablishedSasImpl.frbInternalDcoDecode(List<dynamic> wire) : super.frbInternalDcoDecode(wire, _kStaticData);
+
+  // Not to be used by end users
+  EstablishedSasImpl.frbInternalSseDecode(BigInt ptr, int externalSizeOnNative)
+      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount: RustLib.instance.api.rust_arc_increment_strong_count_EstablishedSas,
+    rustArcDecrementStrongCount: RustLib.instance.api.rust_arc_decrement_strong_count_EstablishedSas,
+    rustArcDecrementStrongCountPtr: RustLib.instance.api.rust_arc_decrement_strong_count_EstablishedSasPtr,
   );
 }
 
@@ -3872,4 +4251,27 @@ class RwLockSessionImpl extends RustOpaque implements RwLockSession {
     rustArcDecrementStrongCount: RustLib.instance.api.rust_arc_decrement_strong_count_RwLockSession,
     rustArcDecrementStrongCountPtr: RustLib.instance.api.rust_arc_decrement_strong_count_RwLockSessionPtr,
   );
+}
+
+@sealed
+class VodozemacSasImpl extends RustOpaque implements VodozemacSas {
+  // Not to be used by end users
+  VodozemacSasImpl.frbInternalDcoDecode(List<dynamic> wire) : super.frbInternalDcoDecode(wire, _kStaticData);
+
+  // Not to be used by end users
+  VodozemacSasImpl.frbInternalSseDecode(BigInt ptr, int externalSizeOnNative)
+      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount: RustLib.instance.api.rust_arc_increment_strong_count_VodozemacSas,
+    rustArcDecrementStrongCount: RustLib.instance.api.rust_arc_decrement_strong_count_VodozemacSas,
+    rustArcDecrementStrongCountPtr: RustLib.instance.api.rust_arc_decrement_strong_count_VodozemacSasPtr,
+  );
+
+  Future<VodozemacEstablishedSas> establishSasSecret({required String otherPublicKey}) =>
+      RustLib.instance.api.crateBindingsVodozemacSasEstablishSasSecret(that: this, otherPublicKey: otherPublicKey);
+
+  String publicKey() => RustLib.instance.api.crateBindingsVodozemacSasPublicKey(
+        that: this,
+      );
 }

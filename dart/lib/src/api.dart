@@ -282,6 +282,53 @@ final class Account {
           pickle: pickle, pickleKey: pickleKey));
 }
 
+final class Sas {
+  final vodozemac.VodozemacSas _sas;
+  final String _publicKey;
+  bool _disposed = false;
+
+  Sas._(this._sas) : _publicKey = _sas.publicKey();
+
+  static Sas create() => Sas._(vodozemac.VodozemacSas());
+
+  String get publicKey => _publicKey;
+
+  /// Once the `establishSasSecret` method is called, the Sas object is disposed
+  /// and cannot be used again to establish a new SAS secret.
+  /// Create a new Sas object instead.
+  Future<EstablishedSas> establishSasSecret(String otherPublicKey) async {
+    if (_disposed) {
+      throw Exception('Sas has been disposed');
+    }
+    _disposed = true;
+    return EstablishedSas._(
+      await _sas.establishSasSecret(otherPublicKey: otherPublicKey),
+    );
+  }
+}
+
+final class EstablishedSas {
+  final vodozemac.VodozemacEstablishedSas _sas;
+
+  EstablishedSas._(this._sas);
+
+  Future<Uint8List> generateBytes(String info, int length) async =>
+      _sas.generateBytes(info: info, length: length);
+
+  /// To be used with `hkdf-hmac-sha256.v2` which is the current recommended method
+  Future<String> calculateMac(String input, String info) async =>
+      _sas.calculateMac(input: input, info: info);
+
+  /// To be used with `hkdf-hmac-sha256` which is deprecated now due to a bug in
+  /// it's original implementation in libolm.
+  /// Refer to info section in https://spec.matrix.org/latest/client-server-api/#mac-calculation
+  Future<String> calculateMacDeprecated(String input, String info) async =>
+      _sas.calculateMacDeprecated(input: input, info: info);
+
+  Future<void> verifyMac(String input, String info, String mac) async =>
+      _sas.verifyMac(input: input, info: info, mac: mac);
+}
+
 final class PkMessage {
   final vodozemac.VodozemacPkMessage _message;
 

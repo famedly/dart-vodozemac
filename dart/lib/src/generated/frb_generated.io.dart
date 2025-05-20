@@ -28,6 +28,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_Ed25519SignaturePtr =>
       wire._rust_arc_decrement_strong_count_RustOpaque_Ed25519SignaturePtr;
 
+  CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_EstablishedSasPtr =>
+      wire._rust_arc_decrement_strong_count_RustOpaque_EstablishedSasPtr;
+
   CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_MegolmSessionConfigPtr =>
       wire._rust_arc_decrement_strong_count_RustOpaque_MegolmSessionConfigPtr;
 
@@ -55,6 +58,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_PkSigningPtr =>
       wire._rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPkSigningPtr;
 
+  CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_VodozemacSasPtr => wire
+      ._rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerVodozemacSasPtr;
+
   CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_RwLockAccountPtr =>
       wire._rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockAccountPtr;
 
@@ -65,7 +71,15 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   PkSigning dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPkSigning(dynamic raw);
 
   @protected
+  VodozemacSas dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerVodozemacSas(
+      dynamic raw);
+
+  @protected
   PkSigning dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPkSigning(dynamic raw);
+
+  @protected
+  VodozemacSas dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerVodozemacSas(
+      dynamic raw);
 
   @protected
   Curve25519PublicKey dco_decode_RustOpaque_Curve25519PublicKey(dynamic raw);
@@ -75,6 +89,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   Ed25519Signature dco_decode_RustOpaque_Ed25519Signature(dynamic raw);
+
+  @protected
+  EstablishedSas dco_decode_RustOpaque_EstablishedSas(dynamic raw);
 
   @protected
   MegolmSessionConfig dco_decode_RustOpaque_MegolmSessionConfig(dynamic raw);
@@ -104,6 +121,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   PkSigning dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPkSigning(dynamic raw);
 
   @protected
+  VodozemacSas dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerVodozemacSas(dynamic raw);
+
+  @protected
   RwLockAccount dco_decode_RustOpaque_stdsyncRwLockAccount(dynamic raw);
 
   @protected
@@ -123,6 +143,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   VodozemacEd25519Signature dco_decode_box_autoadd_vodozemac_ed_25519_signature(dynamic raw);
+
+  @protected
+  VodozemacEstablishedSas dco_decode_box_autoadd_vodozemac_established_sas(dynamic raw);
 
   @protected
   VodozemacGroupSession dco_decode_box_autoadd_vodozemac_group_session(dynamic raw);
@@ -197,6 +220,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   VodozemacEd25519Signature dco_decode_vodozemac_ed_25519_signature(dynamic raw);
 
   @protected
+  VodozemacEstablishedSas dco_decode_vodozemac_established_sas(dynamic raw);
+
+  @protected
   VodozemacGroupSession dco_decode_vodozemac_group_session(dynamic raw);
 
   @protected
@@ -240,7 +266,15 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       SseDeserializer deserializer);
 
   @protected
+  VodozemacSas sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerVodozemacSas(
+      SseDeserializer deserializer);
+
+  @protected
   PkSigning sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPkSigning(
+      SseDeserializer deserializer);
+
+  @protected
+  VodozemacSas sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerVodozemacSas(
       SseDeserializer deserializer);
 
   @protected
@@ -251,6 +285,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   Ed25519Signature sse_decode_RustOpaque_Ed25519Signature(SseDeserializer deserializer);
+
+  @protected
+  EstablishedSas sse_decode_RustOpaque_EstablishedSas(SseDeserializer deserializer);
 
   @protected
   MegolmSessionConfig sse_decode_RustOpaque_MegolmSessionConfig(SseDeserializer deserializer);
@@ -281,6 +318,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       SseDeserializer deserializer);
 
   @protected
+  VodozemacSas sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerVodozemacSas(
+      SseDeserializer deserializer);
+
+  @protected
   RwLockAccount sse_decode_RustOpaque_stdsyncRwLockAccount(SseDeserializer deserializer);
 
   @protected
@@ -300,6 +341,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   VodozemacEd25519Signature sse_decode_box_autoadd_vodozemac_ed_25519_signature(SseDeserializer deserializer);
+
+  @protected
+  VodozemacEstablishedSas sse_decode_box_autoadd_vodozemac_established_sas(SseDeserializer deserializer);
 
   @protected
   VodozemacGroupSession sse_decode_box_autoadd_vodozemac_group_session(SseDeserializer deserializer);
@@ -372,6 +416,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   VodozemacEd25519Signature sse_decode_vodozemac_ed_25519_signature(SseDeserializer deserializer);
+
+  @protected
+  VodozemacEstablishedSas sse_decode_vodozemac_established_sas(SseDeserializer deserializer);
 
   @protected
   VodozemacGroupSession sse_decode_vodozemac_group_session(SseDeserializer deserializer);
@@ -456,6 +503,15 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     // Codec=Cst (C-struct based), see doc to use other codecs
     final ptr = wire.cst_new_box_autoadd_vodozemac_ed_25519_signature();
     cst_api_fill_to_wire_vodozemac_ed_25519_signature(raw, ptr.ref);
+    return ptr;
+  }
+
+  @protected
+  ffi.Pointer<wire_cst_vodozemac_established_sas> cst_encode_box_autoadd_vodozemac_established_sas(
+      VodozemacEstablishedSas raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    final ptr = wire.cst_new_box_autoadd_vodozemac_established_sas();
+    cst_api_fill_to_wire_vodozemac_established_sas(raw, ptr.ref);
     return ptr;
   }
 
@@ -617,6 +673,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  void cst_api_fill_to_wire_box_autoadd_vodozemac_established_sas(
+      VodozemacEstablishedSas apiObj, ffi.Pointer<wire_cst_vodozemac_established_sas> wireObj) {
+    cst_api_fill_to_wire_vodozemac_established_sas(apiObj, wireObj.ref);
+  }
+
+  @protected
   void cst_api_fill_to_wire_box_autoadd_vodozemac_group_session(
       VodozemacGroupSession apiObj, ffi.Pointer<wire_cst_vodozemac_group_session> wireObj) {
     cst_api_fill_to_wire_vodozemac_group_session(apiObj, wireObj.ref);
@@ -700,6 +762,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  void cst_api_fill_to_wire_vodozemac_established_sas(
+      VodozemacEstablishedSas apiObj, wire_cst_vodozemac_established_sas wireObj) {
+    wireObj.established_sas = cst_encode_RustOpaque_EstablishedSas(apiObj.establishedSas);
+  }
+
+  @protected
   void cst_api_fill_to_wire_vodozemac_group_session(
       VodozemacGroupSession apiObj, wire_cst_vodozemac_group_session wireObj) {
     wireObj.session = cst_encode_RustOpaque_RwLockGroupSession(apiObj.session);
@@ -777,7 +845,14 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPkSigning(PkSigning raw);
 
   @protected
+  int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerVodozemacSas(
+      VodozemacSas raw);
+
+  @protected
   int cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPkSigning(PkSigning raw);
+
+  @protected
+  int cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerVodozemacSas(VodozemacSas raw);
 
   @protected
   int cst_encode_RustOpaque_Curve25519PublicKey(Curve25519PublicKey raw);
@@ -787,6 +862,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   int cst_encode_RustOpaque_Ed25519Signature(Ed25519Signature raw);
+
+  @protected
+  int cst_encode_RustOpaque_EstablishedSas(EstablishedSas raw);
 
   @protected
   int cst_encode_RustOpaque_MegolmSessionConfig(MegolmSessionConfig raw);
@@ -816,6 +894,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPkSigning(PkSigning raw);
 
   @protected
+  int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerVodozemacSas(VodozemacSas raw);
+
+  @protected
   int cst_encode_RustOpaque_stdsyncRwLockAccount(RwLockAccount raw);
 
   @protected
@@ -838,8 +919,16 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       PkSigning self, SseSerializer serializer);
 
   @protected
+  void sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerVodozemacSas(
+      VodozemacSas self, SseSerializer serializer);
+
+  @protected
   void sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPkSigning(
       PkSigning self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerVodozemacSas(
+      VodozemacSas self, SseSerializer serializer);
 
   @protected
   void sse_encode_RustOpaque_Curve25519PublicKey(Curve25519PublicKey self, SseSerializer serializer);
@@ -849,6 +938,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   void sse_encode_RustOpaque_Ed25519Signature(Ed25519Signature self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_RustOpaque_EstablishedSas(EstablishedSas self, SseSerializer serializer);
 
   @protected
   void sse_encode_RustOpaque_MegolmSessionConfig(MegolmSessionConfig self, SseSerializer serializer);
@@ -879,6 +971,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       PkSigning self, SseSerializer serializer);
 
   @protected
+  void sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerVodozemacSas(
+      VodozemacSas self, SseSerializer serializer);
+
+  @protected
   void sse_encode_RustOpaque_stdsyncRwLockAccount(RwLockAccount self, SseSerializer serializer);
 
   @protected
@@ -899,6 +995,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   void sse_encode_box_autoadd_vodozemac_ed_25519_signature(VodozemacEd25519Signature self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_vodozemac_established_sas(VodozemacEstablishedSas self, SseSerializer serializer);
 
   @protected
   void sse_encode_box_autoadd_vodozemac_group_session(VodozemacGroupSession self, SseSerializer serializer);
@@ -973,6 +1072,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   void sse_encode_vodozemac_ed_25519_signature(VodozemacEd25519Signature self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_vodozemac_established_sas(VodozemacEstablishedSas self, SseSerializer serializer);
 
   @protected
   void sse_encode_vodozemac_group_session(VodozemacGroupSession self, SseSerializer serializer);
@@ -1115,6 +1217,48 @@ class RustLibWire implements BaseWire {
       'frbgen_vodozemac_wire__crate__bindings__PkSigning_sign');
   late final _wire__crate__bindings__PkSigning_sign = _wire__crate__bindings__PkSigning_signPtr
       .asFunction<WireSyncRust2DartDco Function(int, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
+
+  void wire__crate__bindings__VodozemacSas_establish_sas_secret(
+    int port_,
+    int that,
+    ffi.Pointer<wire_cst_list_prim_u_8_strict> other_public_key,
+  ) {
+    return _wire__crate__bindings__VodozemacSas_establish_sas_secret(
+      port_,
+      that,
+      other_public_key,
+    );
+  }
+
+  late final _wire__crate__bindings__VodozemacSas_establish_sas_secretPtr = _lookup<
+          ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.UintPtr, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
+      'frbgen_vodozemac_wire__crate__bindings__VodozemacSas_establish_sas_secret');
+  late final _wire__crate__bindings__VodozemacSas_establish_sas_secret =
+      _wire__crate__bindings__VodozemacSas_establish_sas_secretPtr
+          .asFunction<void Function(int, int, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
+
+  WireSyncRust2DartDco wire__crate__bindings__VodozemacSas_new() {
+    return _wire__crate__bindings__VodozemacSas_new();
+  }
+
+  late final _wire__crate__bindings__VodozemacSas_newPtr = _lookup<ffi.NativeFunction<WireSyncRust2DartDco Function()>>(
+      'frbgen_vodozemac_wire__crate__bindings__VodozemacSas_new');
+  late final _wire__crate__bindings__VodozemacSas_new =
+      _wire__crate__bindings__VodozemacSas_newPtr.asFunction<WireSyncRust2DartDco Function()>();
+
+  WireSyncRust2DartDco wire__crate__bindings__VodozemacSas_public_key(
+    int that,
+  ) {
+    return _wire__crate__bindings__VodozemacSas_public_key(
+      that,
+    );
+  }
+
+  late final _wire__crate__bindings__VodozemacSas_public_keyPtr =
+      _lookup<ffi.NativeFunction<WireSyncRust2DartDco Function(ffi.UintPtr)>>(
+          'frbgen_vodozemac_wire__crate__bindings__VodozemacSas_public_key');
+  late final _wire__crate__bindings__VodozemacSas_public_key =
+      _wire__crate__bindings__VodozemacSas_public_keyPtr.asFunction<WireSyncRust2DartDco Function(int)>();
 
   void wire__crate__bindings__vodozemac_account_create_inbound_session(
     int port_,
@@ -1627,6 +1771,114 @@ class RustLibWire implements BaseWire {
   late final _wire__crate__bindings__vodozemac_ed_25519_signature_to_bytes =
       _wire__crate__bindings__vodozemac_ed_25519_signature_to_bytesPtr
           .asFunction<WireSyncRust2DartDco Function(ffi.Pointer<wire_cst_vodozemac_ed_25519_signature>)>();
+
+  void wire__crate__bindings__vodozemac_established_sas_calculate_mac(
+    int port_,
+    ffi.Pointer<wire_cst_vodozemac_established_sas> that,
+    ffi.Pointer<wire_cst_list_prim_u_8_strict> input,
+    ffi.Pointer<wire_cst_list_prim_u_8_strict> info,
+  ) {
+    return _wire__crate__bindings__vodozemac_established_sas_calculate_mac(
+      port_,
+      that,
+      input,
+      info,
+    );
+  }
+
+  late final _wire__crate__bindings__vodozemac_established_sas_calculate_macPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(ffi.Int64, ffi.Pointer<wire_cst_vodozemac_established_sas>,
+                  ffi.Pointer<wire_cst_list_prim_u_8_strict>, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
+      'frbgen_vodozemac_wire__crate__bindings__vodozemac_established_sas_calculate_mac');
+  late final _wire__crate__bindings__vodozemac_established_sas_calculate_mac =
+      _wire__crate__bindings__vodozemac_established_sas_calculate_macPtr.asFunction<
+          void Function(int, ffi.Pointer<wire_cst_vodozemac_established_sas>,
+              ffi.Pointer<wire_cst_list_prim_u_8_strict>, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
+
+  void wire__crate__bindings__vodozemac_established_sas_calculate_mac_deprecated(
+    int port_,
+    ffi.Pointer<wire_cst_vodozemac_established_sas> that,
+    ffi.Pointer<wire_cst_list_prim_u_8_strict> input,
+    ffi.Pointer<wire_cst_list_prim_u_8_strict> info,
+  ) {
+    return _wire__crate__bindings__vodozemac_established_sas_calculate_mac_deprecated(
+      port_,
+      that,
+      input,
+      info,
+    );
+  }
+
+  late final _wire__crate__bindings__vodozemac_established_sas_calculate_mac_deprecatedPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(ffi.Int64, ffi.Pointer<wire_cst_vodozemac_established_sas>,
+                  ffi.Pointer<wire_cst_list_prim_u_8_strict>, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
+      'frbgen_vodozemac_wire__crate__bindings__vodozemac_established_sas_calculate_mac_deprecated');
+  late final _wire__crate__bindings__vodozemac_established_sas_calculate_mac_deprecated =
+      _wire__crate__bindings__vodozemac_established_sas_calculate_mac_deprecatedPtr.asFunction<
+          void Function(int, ffi.Pointer<wire_cst_vodozemac_established_sas>,
+              ffi.Pointer<wire_cst_list_prim_u_8_strict>, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
+
+  void wire__crate__bindings__vodozemac_established_sas_generate_bytes(
+    int port_,
+    ffi.Pointer<wire_cst_vodozemac_established_sas> that,
+    ffi.Pointer<wire_cst_list_prim_u_8_strict> info,
+    int length,
+  ) {
+    return _wire__crate__bindings__vodozemac_established_sas_generate_bytes(
+      port_,
+      that,
+      info,
+      length,
+    );
+  }
+
+  late final _wire__crate__bindings__vodozemac_established_sas_generate_bytesPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(
+              ffi.Int64,
+              ffi.Pointer<wire_cst_vodozemac_established_sas>,
+              ffi.Pointer<wire_cst_list_prim_u_8_strict>,
+              ffi.Uint32)>>('frbgen_vodozemac_wire__crate__bindings__vodozemac_established_sas_generate_bytes');
+  late final _wire__crate__bindings__vodozemac_established_sas_generate_bytes =
+      _wire__crate__bindings__vodozemac_established_sas_generate_bytesPtr.asFunction<
+          void Function(
+              int, ffi.Pointer<wire_cst_vodozemac_established_sas>, ffi.Pointer<wire_cst_list_prim_u_8_strict>, int)>();
+
+  void wire__crate__bindings__vodozemac_established_sas_verify_mac(
+    int port_,
+    ffi.Pointer<wire_cst_vodozemac_established_sas> that,
+    ffi.Pointer<wire_cst_list_prim_u_8_strict> input,
+    ffi.Pointer<wire_cst_list_prim_u_8_strict> info,
+    ffi.Pointer<wire_cst_list_prim_u_8_strict> mac,
+  ) {
+    return _wire__crate__bindings__vodozemac_established_sas_verify_mac(
+      port_,
+      that,
+      input,
+      info,
+      mac,
+    );
+  }
+
+  late final _wire__crate__bindings__vodozemac_established_sas_verify_macPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64,
+                  ffi.Pointer<wire_cst_vodozemac_established_sas>,
+                  ffi.Pointer<wire_cst_list_prim_u_8_strict>,
+                  ffi.Pointer<wire_cst_list_prim_u_8_strict>,
+                  ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
+      'frbgen_vodozemac_wire__crate__bindings__vodozemac_established_sas_verify_mac');
+  late final _wire__crate__bindings__vodozemac_established_sas_verify_mac =
+      _wire__crate__bindings__vodozemac_established_sas_verify_macPtr.asFunction<
+          void Function(
+              int,
+              ffi.Pointer<wire_cst_vodozemac_established_sas>,
+              ffi.Pointer<wire_cst_list_prim_u_8_strict>,
+              ffi.Pointer<wire_cst_list_prim_u_8_strict>,
+              ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
 
   void wire__crate__bindings__vodozemac_group_session_encrypt(
     int port_,
@@ -2537,6 +2789,34 @@ class RustLibWire implements BaseWire {
       _rust_arc_decrement_strong_count_RustOpaque_Ed25519SignaturePtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
 
+  void rust_arc_increment_strong_count_RustOpaque_EstablishedSas(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _rust_arc_increment_strong_count_RustOpaque_EstablishedSas(
+      ptr,
+    );
+  }
+
+  late final _rust_arc_increment_strong_count_RustOpaque_EstablishedSasPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
+          'frbgen_vodozemac_rust_arc_increment_strong_count_RustOpaque_EstablishedSas');
+  late final _rust_arc_increment_strong_count_RustOpaque_EstablishedSas =
+      _rust_arc_increment_strong_count_RustOpaque_EstablishedSasPtr.asFunction<void Function(ffi.Pointer<ffi.Void>)>();
+
+  void rust_arc_decrement_strong_count_RustOpaque_EstablishedSas(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _rust_arc_decrement_strong_count_RustOpaque_EstablishedSas(
+      ptr,
+    );
+  }
+
+  late final _rust_arc_decrement_strong_count_RustOpaque_EstablishedSasPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
+          'frbgen_vodozemac_rust_arc_decrement_strong_count_RustOpaque_EstablishedSas');
+  late final _rust_arc_decrement_strong_count_RustOpaque_EstablishedSas =
+      _rust_arc_decrement_strong_count_RustOpaque_EstablishedSasPtr.asFunction<void Function(ffi.Pointer<ffi.Void>)>();
+
   void rust_arc_increment_strong_count_RustOpaque_MegolmSessionConfig(
     ffi.Pointer<ffi.Void> ptr,
   ) {
@@ -2799,6 +3079,36 @@ class RustLibWire implements BaseWire {
       _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPkSigningPtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
 
+  void rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerVodozemacSas(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerVodozemacSas(
+      ptr,
+    );
+  }
+
+  late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerVodozemacSasPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
+          'frbgen_vodozemac_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerVodozemacSas');
+  late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerVodozemacSas =
+      _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerVodozemacSasPtr
+          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
+
+  void rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerVodozemacSas(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerVodozemacSas(
+      ptr,
+    );
+  }
+
+  late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerVodozemacSasPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
+          'frbgen_vodozemac_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerVodozemacSas');
+  late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerVodozemacSas =
+      _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerVodozemacSasPtr
+          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
+
   void rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockAccount(
     ffi.Pointer<ffi.Void> ptr,
   ) {
@@ -2869,6 +3179,16 @@ class RustLibWire implements BaseWire {
           'frbgen_vodozemac_cst_new_box_autoadd_vodozemac_ed_25519_signature');
   late final _cst_new_box_autoadd_vodozemac_ed_25519_signature = _cst_new_box_autoadd_vodozemac_ed_25519_signaturePtr
       .asFunction<ffi.Pointer<wire_cst_vodozemac_ed_25519_signature> Function()>();
+
+  ffi.Pointer<wire_cst_vodozemac_established_sas> cst_new_box_autoadd_vodozemac_established_sas() {
+    return _cst_new_box_autoadd_vodozemac_established_sas();
+  }
+
+  late final _cst_new_box_autoadd_vodozemac_established_sasPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_cst_vodozemac_established_sas> Function()>>(
+          'frbgen_vodozemac_cst_new_box_autoadd_vodozemac_established_sas');
+  late final _cst_new_box_autoadd_vodozemac_established_sas = _cst_new_box_autoadd_vodozemac_established_sasPtr
+      .asFunction<ffi.Pointer<wire_cst_vodozemac_established_sas> Function()>();
 
   ffi.Pointer<wire_cst_vodozemac_group_session> cst_new_box_autoadd_vodozemac_group_session() {
     return _cst_new_box_autoadd_vodozemac_group_session();
@@ -3056,6 +3376,11 @@ final class wire_cst_vodozemac_ed_25519_public_key extends ffi.Struct {
 final class wire_cst_vodozemac_ed_25519_signature extends ffi.Struct {
   @ffi.UintPtr()
   external int signature;
+}
+
+final class wire_cst_vodozemac_established_sas extends ffi.Struct {
+  @ffi.UintPtr()
+  external int established_sas;
 }
 
 final class wire_cst_vodozemac_group_session extends ffi.Struct {

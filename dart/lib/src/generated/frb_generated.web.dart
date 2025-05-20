@@ -30,6 +30,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_Ed25519SignaturePtr =>
       wire.rust_arc_decrement_strong_count_RustOpaque_Ed25519Signature;
 
+  CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_EstablishedSasPtr =>
+      wire.rust_arc_decrement_strong_count_RustOpaque_EstablishedSas;
+
   CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_MegolmSessionConfigPtr =>
       wire.rust_arc_decrement_strong_count_RustOpaque_MegolmSessionConfig;
 
@@ -57,6 +60,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_PkSigningPtr =>
       wire.rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPkSigning;
 
+  CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_VodozemacSasPtr =>
+      wire.rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerVodozemacSas;
+
   CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_RwLockAccountPtr =>
       wire.rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockAccount;
 
@@ -67,7 +73,15 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   PkSigning dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPkSigning(dynamic raw);
 
   @protected
+  VodozemacSas dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerVodozemacSas(
+      dynamic raw);
+
+  @protected
   PkSigning dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPkSigning(dynamic raw);
+
+  @protected
+  VodozemacSas dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerVodozemacSas(
+      dynamic raw);
 
   @protected
   Curve25519PublicKey dco_decode_RustOpaque_Curve25519PublicKey(dynamic raw);
@@ -77,6 +91,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   Ed25519Signature dco_decode_RustOpaque_Ed25519Signature(dynamic raw);
+
+  @protected
+  EstablishedSas dco_decode_RustOpaque_EstablishedSas(dynamic raw);
 
   @protected
   MegolmSessionConfig dco_decode_RustOpaque_MegolmSessionConfig(dynamic raw);
@@ -106,6 +123,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   PkSigning dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPkSigning(dynamic raw);
 
   @protected
+  VodozemacSas dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerVodozemacSas(dynamic raw);
+
+  @protected
   RwLockAccount dco_decode_RustOpaque_stdsyncRwLockAccount(dynamic raw);
 
   @protected
@@ -125,6 +145,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   VodozemacEd25519Signature dco_decode_box_autoadd_vodozemac_ed_25519_signature(dynamic raw);
+
+  @protected
+  VodozemacEstablishedSas dco_decode_box_autoadd_vodozemac_established_sas(dynamic raw);
 
   @protected
   VodozemacGroupSession dco_decode_box_autoadd_vodozemac_group_session(dynamic raw);
@@ -199,6 +222,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   VodozemacEd25519Signature dco_decode_vodozemac_ed_25519_signature(dynamic raw);
 
   @protected
+  VodozemacEstablishedSas dco_decode_vodozemac_established_sas(dynamic raw);
+
+  @protected
   VodozemacGroupSession dco_decode_vodozemac_group_session(dynamic raw);
 
   @protected
@@ -242,7 +268,15 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       SseDeserializer deserializer);
 
   @protected
+  VodozemacSas sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerVodozemacSas(
+      SseDeserializer deserializer);
+
+  @protected
   PkSigning sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPkSigning(
+      SseDeserializer deserializer);
+
+  @protected
+  VodozemacSas sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerVodozemacSas(
       SseDeserializer deserializer);
 
   @protected
@@ -253,6 +287,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   Ed25519Signature sse_decode_RustOpaque_Ed25519Signature(SseDeserializer deserializer);
+
+  @protected
+  EstablishedSas sse_decode_RustOpaque_EstablishedSas(SseDeserializer deserializer);
 
   @protected
   MegolmSessionConfig sse_decode_RustOpaque_MegolmSessionConfig(SseDeserializer deserializer);
@@ -283,6 +320,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       SseDeserializer deserializer);
 
   @protected
+  VodozemacSas sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerVodozemacSas(
+      SseDeserializer deserializer);
+
+  @protected
   RwLockAccount sse_decode_RustOpaque_stdsyncRwLockAccount(SseDeserializer deserializer);
 
   @protected
@@ -302,6 +343,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   VodozemacEd25519Signature sse_decode_box_autoadd_vodozemac_ed_25519_signature(SseDeserializer deserializer);
+
+  @protected
+  VodozemacEstablishedSas sse_decode_box_autoadd_vodozemac_established_sas(SseDeserializer deserializer);
 
   @protected
   VodozemacGroupSession sse_decode_box_autoadd_vodozemac_group_session(SseDeserializer deserializer);
@@ -376,6 +420,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   VodozemacEd25519Signature sse_decode_vodozemac_ed_25519_signature(SseDeserializer deserializer);
 
   @protected
+  VodozemacEstablishedSas sse_decode_vodozemac_established_sas(SseDeserializer deserializer);
+
+  @protected
   VodozemacGroupSession sse_decode_vodozemac_group_session(SseDeserializer deserializer);
 
   @protected
@@ -448,6 +495,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   JSAny cst_encode_box_autoadd_vodozemac_ed_25519_signature(VodozemacEd25519Signature raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_vodozemac_ed_25519_signature(raw);
+  }
+
+  @protected
+  JSAny cst_encode_box_autoadd_vodozemac_established_sas(VodozemacEstablishedSas raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return cst_encode_vodozemac_established_sas(raw);
   }
 
   @protected
@@ -577,6 +630,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  JSAny cst_encode_vodozemac_established_sas(VodozemacEstablishedSas raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return [cst_encode_RustOpaque_EstablishedSas(raw.establishedSas)].jsify()!;
+  }
+
+  @protected
   JSAny cst_encode_vodozemac_group_session(VodozemacGroupSession raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return [cst_encode_RustOpaque_RwLockGroupSession(raw.session)].jsify()!;
@@ -659,7 +718,14 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPkSigning(PkSigning raw);
 
   @protected
+  int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerVodozemacSas(
+      VodozemacSas raw);
+
+  @protected
   int cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPkSigning(PkSigning raw);
+
+  @protected
+  int cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerVodozemacSas(VodozemacSas raw);
 
   @protected
   int cst_encode_RustOpaque_Curve25519PublicKey(Curve25519PublicKey raw);
@@ -669,6 +735,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   int cst_encode_RustOpaque_Ed25519Signature(Ed25519Signature raw);
+
+  @protected
+  int cst_encode_RustOpaque_EstablishedSas(EstablishedSas raw);
 
   @protected
   int cst_encode_RustOpaque_MegolmSessionConfig(MegolmSessionConfig raw);
@@ -698,6 +767,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPkSigning(PkSigning raw);
 
   @protected
+  int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerVodozemacSas(VodozemacSas raw);
+
+  @protected
   int cst_encode_RustOpaque_stdsyncRwLockAccount(RwLockAccount raw);
 
   @protected
@@ -720,8 +792,16 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       PkSigning self, SseSerializer serializer);
 
   @protected
+  void sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerVodozemacSas(
+      VodozemacSas self, SseSerializer serializer);
+
+  @protected
   void sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPkSigning(
       PkSigning self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerVodozemacSas(
+      VodozemacSas self, SseSerializer serializer);
 
   @protected
   void sse_encode_RustOpaque_Curve25519PublicKey(Curve25519PublicKey self, SseSerializer serializer);
@@ -731,6 +811,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   void sse_encode_RustOpaque_Ed25519Signature(Ed25519Signature self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_RustOpaque_EstablishedSas(EstablishedSas self, SseSerializer serializer);
 
   @protected
   void sse_encode_RustOpaque_MegolmSessionConfig(MegolmSessionConfig self, SseSerializer serializer);
@@ -761,6 +844,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       PkSigning self, SseSerializer serializer);
 
   @protected
+  void sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerVodozemacSas(
+      VodozemacSas self, SseSerializer serializer);
+
+  @protected
   void sse_encode_RustOpaque_stdsyncRwLockAccount(RwLockAccount self, SseSerializer serializer);
 
   @protected
@@ -781,6 +868,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   void sse_encode_box_autoadd_vodozemac_ed_25519_signature(VodozemacEd25519Signature self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_vodozemac_established_sas(VodozemacEstablishedSas self, SseSerializer serializer);
 
   @protected
   void sse_encode_box_autoadd_vodozemac_group_session(VodozemacGroupSession self, SseSerializer serializer);
@@ -857,6 +947,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void sse_encode_vodozemac_ed_25519_signature(VodozemacEd25519Signature self, SseSerializer serializer);
 
   @protected
+  void sse_encode_vodozemac_established_sas(VodozemacEstablishedSas self, SseSerializer serializer);
+
+  @protected
   void sse_encode_vodozemac_group_session(VodozemacGroupSession self, SseSerializer serializer);
 
   @protected
@@ -920,6 +1013,17 @@ class RustLibWire implements BaseWire {
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */ wire__crate__bindings__PkSigning_sign(
           int that, String message) =>
       wasmModule.wire__crate__bindings__PkSigning_sign(that, message);
+
+  void wire__crate__bindings__VodozemacSas_establish_sas_secret(
+          NativePortType port_, int that, String other_public_key) =>
+      wasmModule.wire__crate__bindings__VodozemacSas_establish_sas_secret(port_, that, other_public_key);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */ wire__crate__bindings__VodozemacSas_new() =>
+      wasmModule.wire__crate__bindings__VodozemacSas_new();
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */ wire__crate__bindings__VodozemacSas_public_key(
+          int that) =>
+      wasmModule.wire__crate__bindings__VodozemacSas_public_key(that);
 
   void wire__crate__bindings__vodozemac_account_create_inbound_session(
           NativePortType port_, JSAny that, JSAny their_identity_key, String pre_key_message_base64) =>
@@ -1037,6 +1141,22 @@ class RustLibWire implements BaseWire {
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__bindings__vodozemac_ed_25519_signature_to_bytes(JSAny that) =>
           wasmModule.wire__crate__bindings__vodozemac_ed_25519_signature_to_bytes(that);
+
+  void wire__crate__bindings__vodozemac_established_sas_calculate_mac(
+          NativePortType port_, JSAny that, String input, String info) =>
+      wasmModule.wire__crate__bindings__vodozemac_established_sas_calculate_mac(port_, that, input, info);
+
+  void wire__crate__bindings__vodozemac_established_sas_calculate_mac_deprecated(
+          NativePortType port_, JSAny that, String input, String info) =>
+      wasmModule.wire__crate__bindings__vodozemac_established_sas_calculate_mac_deprecated(port_, that, input, info);
+
+  void wire__crate__bindings__vodozemac_established_sas_generate_bytes(
+          NativePortType port_, JSAny that, String info, int length) =>
+      wasmModule.wire__crate__bindings__vodozemac_established_sas_generate_bytes(port_, that, info, length);
+
+  void wire__crate__bindings__vodozemac_established_sas_verify_mac(
+          NativePortType port_, JSAny that, String input, String info, String mac) =>
+      wasmModule.wire__crate__bindings__vodozemac_established_sas_verify_mac(port_, that, input, info, mac);
 
   void wire__crate__bindings__vodozemac_group_session_encrypt(NativePortType port_, JSAny that, String plaintext) =>
       wasmModule.wire__crate__bindings__vodozemac_group_session_encrypt(port_, that, plaintext);
@@ -1240,6 +1360,12 @@ class RustLibWire implements BaseWire {
   void rust_arc_decrement_strong_count_RustOpaque_Ed25519Signature(int ptr) =>
       wasmModule.rust_arc_decrement_strong_count_RustOpaque_Ed25519Signature(ptr);
 
+  void rust_arc_increment_strong_count_RustOpaque_EstablishedSas(int ptr) =>
+      wasmModule.rust_arc_increment_strong_count_RustOpaque_EstablishedSas(ptr);
+
+  void rust_arc_decrement_strong_count_RustOpaque_EstablishedSas(int ptr) =>
+      wasmModule.rust_arc_decrement_strong_count_RustOpaque_EstablishedSas(ptr);
+
   void rust_arc_increment_strong_count_RustOpaque_MegolmSessionConfig(int ptr) =>
       wasmModule.rust_arc_increment_strong_count_RustOpaque_MegolmSessionConfig(ptr);
 
@@ -1298,6 +1424,18 @@ class RustLibWire implements BaseWire {
       wasmModule
           .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPkSigning(ptr);
 
+  void rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerVodozemacSas(
+          int ptr) =>
+      wasmModule
+          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerVodozemacSas(
+              ptr);
+
+  void rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerVodozemacSas(
+          int ptr) =>
+      wasmModule
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerVodozemacSas(
+              ptr);
+
   void rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockAccount(int ptr) =>
       wasmModule.rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockAccount(ptr);
 
@@ -1324,6 +1462,15 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */ wire__crate__bindings__PkSigning_sign(
       int that, String message);
+
+  external void wire__crate__bindings__VodozemacSas_establish_sas_secret(
+      NativePortType port_, int that, String other_public_key);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__bindings__VodozemacSas_new();
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__bindings__VodozemacSas_public_key(int that);
 
   external void wire__crate__bindings__vodozemac_account_create_inbound_session(
       NativePortType port_, JSAny that, JSAny their_identity_key, String pre_key_message_base64);
@@ -1412,6 +1559,18 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__bindings__vodozemac_ed_25519_signature_to_bytes(JSAny that);
+
+  external void wire__crate__bindings__vodozemac_established_sas_calculate_mac(
+      NativePortType port_, JSAny that, String input, String info);
+
+  external void wire__crate__bindings__vodozemac_established_sas_calculate_mac_deprecated(
+      NativePortType port_, JSAny that, String input, String info);
+
+  external void wire__crate__bindings__vodozemac_established_sas_generate_bytes(
+      NativePortType port_, JSAny that, String info, int length);
+
+  external void wire__crate__bindings__vodozemac_established_sas_verify_mac(
+      NativePortType port_, JSAny that, String input, String info, String mac);
 
   external void wire__crate__bindings__vodozemac_group_session_encrypt(
       NativePortType port_, JSAny that, String plaintext);
@@ -1562,6 +1721,10 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void rust_arc_decrement_strong_count_RustOpaque_Ed25519Signature(int ptr);
 
+  external void rust_arc_increment_strong_count_RustOpaque_EstablishedSas(int ptr);
+
+  external void rust_arc_decrement_strong_count_RustOpaque_EstablishedSas(int ptr);
+
   external void rust_arc_increment_strong_count_RustOpaque_MegolmSessionConfig(int ptr);
 
   external void rust_arc_decrement_strong_count_RustOpaque_MegolmSessionConfig(int ptr);
@@ -1599,6 +1762,14 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPkSigning(
       int ptr);
+
+  external void
+      rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerVodozemacSas(
+          int ptr);
+
+  external void
+      rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerVodozemacSas(
+          int ptr);
 
   external void rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockAccount(int ptr);
 
