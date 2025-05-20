@@ -51,16 +51,8 @@ Future<void> main(List<String> args) async {
     }
   });
 
-  // Create pipeline with CORS headers
-  final handler = const Pipeline().addMiddleware((handler) {
-    return (req) async {
-      final res = await handler(req);
-      return res.change(headers: {
-        'Cross-Origin-Opener-Policy': 'same-origin',
-        'Cross-Origin-Embedder-Policy': 'credentialless',
-      });
-    };
-  }).addHandler(Cascade().add(wsHandler).add(staticHandler).handler);
+  final handler = const Pipeline()
+      .addHandler(Cascade().add(wsHandler).add(staticHandler).handler);
 
   // Start server
   final ip = InternetAddress.anyIPv4;

@@ -5,3 +5,4 @@ web: true
 dart_format_line_length: 120
 dart3: false
 full_dep: true
+default_dart_async: false

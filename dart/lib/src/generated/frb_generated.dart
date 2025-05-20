@@ -191,12 +191,11 @@ abstract class RustLibApi extends BaseApi {
   Future<String> crateBindingsVodozemacGroupSessionPickleEncrypted(
       {required VodozemacGroupSession that, required U8Array32 pickleKey});
 
-  Future<VodozemacMegolmSessionConfig> crateBindingsVodozemacGroupSessionSessionConfig(
-      {required VodozemacGroupSession that});
+  VodozemacMegolmSessionConfig crateBindingsVodozemacGroupSessionSessionConfig({required VodozemacGroupSession that});
 
   String crateBindingsVodozemacGroupSessionSessionId({required VodozemacGroupSession that});
 
-  Future<String> crateBindingsVodozemacGroupSessionSessionKey({required VodozemacGroupSession that});
+  String crateBindingsVodozemacGroupSessionSessionKey({required VodozemacGroupSession that});
 
   VodozemacInboundGroupSession crateBindingsVodozemacGroupSessionToInbound({required VodozemacGroupSession that});
 
@@ -260,7 +259,7 @@ abstract class RustLibApi extends BaseApi {
 
   VodozemacPkDecryption crateBindingsVodozemacPkDecryptionNew();
 
-  Future<Uint8List> crateBindingsVodozemacPkDecryptionPrivateKey({required VodozemacPkDecryption that});
+  Uint8List crateBindingsVodozemacPkDecryptionPrivateKey({required VodozemacPkDecryption that});
 
   String crateBindingsVodozemacPkDecryptionPublicKey({required VodozemacPkDecryption that});
 
@@ -289,7 +288,7 @@ abstract class RustLibApi extends BaseApi {
   Future<String> crateBindingsVodozemacSessionPickleEncrypted(
       {required VodozemacSession that, required U8Array32 pickleKey});
 
-  Future<VodozemacOlmSessionConfig> crateBindingsVodozemacSessionSessionConfig({required VodozemacSession that});
+  VodozemacOlmSessionConfig crateBindingsVodozemacSessionSessionConfig({required VodozemacSession that});
 
   String crateBindingsVodozemacSessionSessionId({required VodozemacSession that});
 
@@ -1501,12 +1500,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<VodozemacMegolmSessionConfig> crateBindingsVodozemacGroupSessionSessionConfig(
-      {required VodozemacGroupSession that}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
+  VodozemacMegolmSessionConfig crateBindingsVodozemacGroupSessionSessionConfig({required VodozemacGroupSession that}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
         var arg0 = cst_encode_box_autoadd_vodozemac_group_session(that);
-        return wire.wire__crate__bindings__vodozemac_group_session_session_config(port_, arg0);
+        return wire.wire__crate__bindings__vodozemac_group_session_session_config(arg0);
       },
       codec: DcoCodec(
         decodeSuccessData: dco_decode_vodozemac_megolm_session_config,
@@ -1546,11 +1544,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<String> crateBindingsVodozemacGroupSessionSessionKey({required VodozemacGroupSession that}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
+  String crateBindingsVodozemacGroupSessionSessionKey({required VodozemacGroupSession that}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
         var arg0 = cst_encode_box_autoadd_vodozemac_group_session(that);
-        return wire.wire__crate__bindings__vodozemac_group_session_session_key(port_, arg0);
+        return wire.wire__crate__bindings__vodozemac_group_session_session_key(arg0);
       },
       codec: DcoCodec(
         decodeSuccessData: dco_decode_String,
@@ -2154,11 +2152,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<Uint8List> crateBindingsVodozemacPkDecryptionPrivateKey({required VodozemacPkDecryption that}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
+  Uint8List crateBindingsVodozemacPkDecryptionPrivateKey({required VodozemacPkDecryption that}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
         var arg0 = cst_encode_box_autoadd_vodozemac_pk_decryption(that);
-        return wire.wire__crate__bindings__vodozemac_pk_decryption_private_key(port_, arg0);
+        return wire.wire__crate__bindings__vodozemac_pk_decryption_private_key(arg0);
       },
       codec: DcoCodec(
         decodeSuccessData: dco_decode_list_prim_u_8_strict,
@@ -2410,11 +2408,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<VodozemacOlmSessionConfig> crateBindingsVodozemacSessionSessionConfig({required VodozemacSession that}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
+  VodozemacOlmSessionConfig crateBindingsVodozemacSessionSessionConfig({required VodozemacSession that}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
         var arg0 = cst_encode_box_autoadd_vodozemac_session(that);
-        return wire.wire__crate__bindings__vodozemac_session_session_config(port_, arg0);
+        return wire.wire__crate__bindings__vodozemac_session_session_config(arg0);
       },
       codec: DcoCodec(
         decodeSuccessData: dco_decode_vodozemac_olm_session_config,

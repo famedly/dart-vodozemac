@@ -1996,22 +1996,20 @@ class RustLibWire implements BaseWire {
           void Function(
               int, ffi.Pointer<wire_cst_vodozemac_group_session>, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
 
-  void wire__crate__bindings__vodozemac_group_session_session_config(
-    int port_,
+  WireSyncRust2DartDco wire__crate__bindings__vodozemac_group_session_session_config(
     ffi.Pointer<wire_cst_vodozemac_group_session> that,
   ) {
     return _wire__crate__bindings__vodozemac_group_session_session_config(
-      port_,
       that,
     );
   }
 
   late final _wire__crate__bindings__vodozemac_group_session_session_configPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_cst_vodozemac_group_session>)>>(
+      _lookup<ffi.NativeFunction<WireSyncRust2DartDco Function(ffi.Pointer<wire_cst_vodozemac_group_session>)>>(
           'frbgen_vodozemac_wire__crate__bindings__vodozemac_group_session_session_config');
   late final _wire__crate__bindings__vodozemac_group_session_session_config =
       _wire__crate__bindings__vodozemac_group_session_session_configPtr
-          .asFunction<void Function(int, ffi.Pointer<wire_cst_vodozemac_group_session>)>();
+          .asFunction<WireSyncRust2DartDco Function(ffi.Pointer<wire_cst_vodozemac_group_session>)>();
 
   WireSyncRust2DartDco wire__crate__bindings__vodozemac_group_session_session_id(
     ffi.Pointer<wire_cst_vodozemac_group_session> that,
@@ -2028,22 +2026,20 @@ class RustLibWire implements BaseWire {
       _wire__crate__bindings__vodozemac_group_session_session_idPtr
           .asFunction<WireSyncRust2DartDco Function(ffi.Pointer<wire_cst_vodozemac_group_session>)>();
 
-  void wire__crate__bindings__vodozemac_group_session_session_key(
-    int port_,
+  WireSyncRust2DartDco wire__crate__bindings__vodozemac_group_session_session_key(
     ffi.Pointer<wire_cst_vodozemac_group_session> that,
   ) {
     return _wire__crate__bindings__vodozemac_group_session_session_key(
-      port_,
       that,
     );
   }
 
   late final _wire__crate__bindings__vodozemac_group_session_session_keyPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_cst_vodozemac_group_session>)>>(
+      _lookup<ffi.NativeFunction<WireSyncRust2DartDco Function(ffi.Pointer<wire_cst_vodozemac_group_session>)>>(
           'frbgen_vodozemac_wire__crate__bindings__vodozemac_group_session_session_key');
   late final _wire__crate__bindings__vodozemac_group_session_session_key =
       _wire__crate__bindings__vodozemac_group_session_session_keyPtr
-          .asFunction<void Function(int, ffi.Pointer<wire_cst_vodozemac_group_session>)>();
+          .asFunction<WireSyncRust2DartDco Function(ffi.Pointer<wire_cst_vodozemac_group_session>)>();
 
   WireSyncRust2DartDco wire__crate__bindings__vodozemac_group_session_to_inbound(
     ffi.Pointer<wire_cst_vodozemac_group_session> that,
@@ -2456,22 +2452,20 @@ class RustLibWire implements BaseWire {
   late final _wire__crate__bindings__vodozemac_pk_decryption_new =
       _wire__crate__bindings__vodozemac_pk_decryption_newPtr.asFunction<WireSyncRust2DartDco Function()>();
 
-  void wire__crate__bindings__vodozemac_pk_decryption_private_key(
-    int port_,
+  WireSyncRust2DartDco wire__crate__bindings__vodozemac_pk_decryption_private_key(
     ffi.Pointer<wire_cst_vodozemac_pk_decryption> that,
   ) {
     return _wire__crate__bindings__vodozemac_pk_decryption_private_key(
-      port_,
       that,
     );
   }
 
   late final _wire__crate__bindings__vodozemac_pk_decryption_private_keyPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_cst_vodozemac_pk_decryption>)>>(
+      _lookup<ffi.NativeFunction<WireSyncRust2DartDco Function(ffi.Pointer<wire_cst_vodozemac_pk_decryption>)>>(
           'frbgen_vodozemac_wire__crate__bindings__vodozemac_pk_decryption_private_key');
   late final _wire__crate__bindings__vodozemac_pk_decryption_private_key =
       _wire__crate__bindings__vodozemac_pk_decryption_private_keyPtr
-          .asFunction<void Function(int, ffi.Pointer<wire_cst_vodozemac_pk_decryption>)>();
+          .asFunction<WireSyncRust2DartDco Function(ffi.Pointer<wire_cst_vodozemac_pk_decryption>)>();
 
   WireSyncRust2DartDco wire__crate__bindings__vodozemac_pk_decryption_public_key(
     ffi.Pointer<wire_cst_vodozemac_pk_decryption> that,
@@ -2667,22 +2661,20 @@ class RustLibWire implements BaseWire {
       _wire__crate__bindings__vodozemac_session_pickle_encryptedPtr.asFunction<
           void Function(int, ffi.Pointer<wire_cst_vodozemac_session>, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
 
-  void wire__crate__bindings__vodozemac_session_session_config(
-    int port_,
+  WireSyncRust2DartDco wire__crate__bindings__vodozemac_session_session_config(
     ffi.Pointer<wire_cst_vodozemac_session> that,
   ) {
     return _wire__crate__bindings__vodozemac_session_session_config(
-      port_,
       that,
     );
   }
 
   late final _wire__crate__bindings__vodozemac_session_session_configPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_cst_vodozemac_session>)>>(
+      _lookup<ffi.NativeFunction<WireSyncRust2DartDco Function(ffi.Pointer<wire_cst_vodozemac_session>)>>(
           'frbgen_vodozemac_wire__crate__bindings__vodozemac_session_session_config');
   late final _wire__crate__bindings__vodozemac_session_session_config =
       _wire__crate__bindings__vodozemac_session_session_configPtr
-          .asFunction<void Function(int, ffi.Pointer<wire_cst_vodozemac_session>)>();
+          .asFunction<WireSyncRust2DartDco Function(ffi.Pointer<wire_cst_vodozemac_session>)>();
 
   WireSyncRust2DartDco wire__crate__bindings__vodozemac_session_session_id(
     ffi.Pointer<wire_cst_vodozemac_session> that,
