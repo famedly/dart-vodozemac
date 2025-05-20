@@ -7,6 +7,8 @@ export 'src/api.dart'
         InboundGroupSession,
         Session,
         Account,
+        Sas,
+        EstablishedSas,
         PkDecryption,
         PkEncryption,
         PkMessage,

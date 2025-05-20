@@ -11,6 +11,7 @@ pub use vodozemac::{
         Account, AccountPickle, IdentityKeys, OlmMessage, Session,
         SessionConfig as OlmSessionConfig, SessionPickle,
     },
+    sas::{Sas, EstablishedSas, Mac},
     pk_encryption::{Message as PkMessage, PkDecryption, PkEncryption},
     Curve25519PublicKey, Curve25519SecretKey, Ed25519SecretKey, Ed25519PublicKey, Ed25519Signature,
     base64_decode,
@@ -763,6 +764,53 @@ impl VodozemacAccount {
                 &pickle_key,
             )?)),
         })
+    }
+}
+
+pub struct VodozemacSas {
+    sas: Sas,
+}
+
+impl VodozemacSas {
+    #[frb(sync)]
+    pub fn new() -> VodozemacSas{
+        VodozemacSas {
+            sas: Sas::new(),
+        }
+    }
+
+    #[frb(sync)]
+    pub fn public_key(&self) -> String {
+        self.sas.public_key().to_base64()
+    }
+
+    pub fn establish_sas_secret(self, other_public_key: &str) -> anyhow::Result<VodozemacEstablishedSas> {
+        let result = self.sas.diffie_hellman_with_raw(other_public_key)?;
+        Ok(VodozemacEstablishedSas {
+            established_sas: RustOpaqueNom::new(result),
+        })
+    }
+}
+
+pub struct VodozemacEstablishedSas {
+    pub established_sas: RustOpaqueNom<EstablishedSas>,
+}
+
+impl VodozemacEstablishedSas {
+    pub fn generate_bytes(&self, info: &str, length: u32) -> anyhow::Result<Vec<u8>> {
+        Ok(self.established_sas.bytes_raw(info, length as usize)?)
+    }
+
+    pub fn calculate_mac(&self, input: &str, info: &str) -> anyhow::Result<String> {
+        Ok(self.established_sas.calculate_mac(input, info).to_base64())
+    }
+
+    pub fn calculate_mac_deprecated(&self, input: &str, info: &str) -> anyhow::Result<String> {
+        Ok(self.established_sas.calculate_mac_invalid_base64(input, info))
+    }
+
+    pub fn verify_mac(&self, input: &str, info: &str, mac: &str) -> anyhow::Result<()> {
+        Ok(self.established_sas.verify_mac(input, info, &Mac::from_base64(mac)?)?)
     }
 }
 

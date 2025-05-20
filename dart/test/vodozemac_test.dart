@@ -266,6 +266,112 @@ void main() async {
     });
   });
 
+  group('Sas', () {
+    test('can establish shared secret', () async {
+      final alice = Sas.create();
+      final bob = Sas.create();
+
+      check(alice.publicKey).isNotEmpty();
+      check(bob.publicKey).isNotEmpty();
+
+      final aliceEstablished = await alice.establishSasSecret(bob.publicKey);
+      final bobEstablished = await bob.establishSasSecret(alice.publicKey);
+
+      // Both should generate the same bytes for the same info string
+      final aliceBytes = await aliceEstablished.generateBytes("SAS", 6);
+      final bobBytes = await bobEstablished.generateBytes("SAS", 6);
+
+      check(aliceBytes).deepEquals(bobBytes);
+    });
+
+    test('can calculate and verify MACs', () async {
+      final alice = Sas.create();
+      final bob = Sas.create();
+
+      final aliceEstablished = await alice.establishSasSecret(bob.publicKey);
+      final bobEstablished = await bob.establishSasSecret(alice.publicKey);
+
+      final message = "test message";
+      final info = "MAC info";
+
+      final aliceMac = await aliceEstablished.calculateMac(message, info);
+      final bobMac = await bobEstablished.calculateMac(message, info);
+
+      // Both should calculate the same MAC
+      check(aliceMac).equals(bobMac);
+
+      // Verification should succeed
+      await check(aliceEstablished.verifyMac(message, info, bobMac))
+          .completes();
+      await check(bobEstablished.verifyMac(message, info, aliceMac))
+          .completes();
+
+      // Verification should fail with wrong message
+      await check(aliceEstablished.verifyMac("wrong message", info, bobMac))
+          .throws();
+      // Verification should fail with wrong info
+      await check(aliceEstablished.verifyMac(message, "wrong info", bobMac))
+          .throws();
+    });
+
+    test('can calculate deprecated MAC format', () async {
+      final alice = Sas.create();
+      final bob = Sas.create();
+
+      final aliceEstablished = await alice.establishSasSecret(bob.publicKey);
+      final bobEstablished = await bob.establishSasSecret(alice.publicKey);
+
+      final message = "test message";
+      final info = "MAC info";
+
+      final aliceMac =
+          await aliceEstablished.calculateMacDeprecated(message, info);
+      final bobMac = await bobEstablished.calculateMacDeprecated(message, info);
+
+      // Both should calculate the same MAC in deprecated format
+      check(aliceMac).equals(bobMac);
+    });
+
+    test('emoji generation', () async {
+      final alice = Sas.create();
+      final bob = Sas.create();
+
+      final aliceEstablished = await alice.establishSasSecret(bob.publicKey);
+      final bobEstablished = await bob.establishSasSecret(alice.publicKey);
+
+      // Generate bytes for emoji representation (should be 6 bytes)
+      final bytes = await aliceEstablished.generateBytes("EMOJI", 6);
+      check(bytes.length).equals(6);
+
+      // In a real application, these bytes would be converted to emoji indices
+      // Here we'll just verify both sides get the same bytes
+      final bobBytes = await bobEstablished.generateBytes("EMOJI", 6);
+      check(bytes).deepEquals(bobBytes);
+    });
+
+    test('handle errors properly', () async {
+      final alice = Sas.create();
+
+      // Should throw when establishing with invalid base64
+      await check(alice.establishSasSecret("invalid base64!!!")).throws();
+
+      // Create valid established SAS
+      final bob = Sas.create();
+
+      // Should throw now that alice has been disposed
+      await check(alice.establishSasSecret(bob.publicKey)).throws();
+
+      // Create a new Sas object for alice again
+      final aliceNew = Sas.create();
+      final aliceEstablished = await aliceNew.establishSasSecret(bob.publicKey);
+
+      // Should throw when verifying with invalid MAC
+      await check(
+              aliceEstablished.verifyMac("message", "info", "invalid mac!!!"))
+          .throws();
+    });
+  });
+
   group('PkEncryption and PkDecryption', () {
     test('encryption roundtrip works', () async {
       final decryptor = PkDecryption();

@@ -39,7 +39,7 @@ flutter_rust_bridge::frb_generated_boilerplate!(
     default_rust_auto_opaque = RustAutoOpaqueNom,
 );
 pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_VERSION: &str = "2.9.0";
-pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_CONTENT_HASH: i32 = 1382486312;
+pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_CONTENT_HASH: i32 = 1183240719;
 
 // Section: executor
 
@@ -186,6 +186,86 @@ fn wire__crate__bindings__PkSigning_sign_impl(
                 let output_ok = Result::<_, ()>::Ok(crate::bindings::PkSigning::sign(
                     &*api_that_guard,
                     &api_message,
+                ))?;
+                Ok(output_ok)
+            })())
+        },
+    )
+}
+fn wire__crate__bindings__VodozemacSas_establish_sas_secret_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    that: impl CstDecode<VodozemacSas>,
+    other_public_key: impl CstDecode<String>,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "VodozemacSas_establish_sas_secret",
+            port: Some(port_),
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
+        },
+        move || {
+            let api_that = that.cst_decode();
+            let api_other_public_key = other_public_key.cst_decode();
+            move |context| {
+                transform_result_dco::<_, _, flutter_rust_bridge::for_generated::anyhow::Error>(
+                    (move || {
+                        let output_ok = crate::bindings::VodozemacSas::establish_sas_secret(
+                            api_that,
+                            &api_other_public_key,
+                        )?;
+                        Ok(output_ok)
+                    })(),
+                )
+            }
+        },
+    )
+}
+fn wire__crate__bindings__VodozemacSas_new_impl(
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "VodozemacSas_new",
+            port: None,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
+        },
+        move || {
+            transform_result_dco::<_, _, ()>((move || {
+                let output_ok = Result::<_, ()>::Ok(crate::bindings::VodozemacSas::new())?;
+                Ok(output_ok)
+            })())
+        },
+    )
+}
+fn wire__crate__bindings__VodozemacSas_public_key_impl(
+    that: impl CstDecode<
+        RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<VodozemacSas>>,
+    >,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "VodozemacSas_public_key",
+            port: None,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
+        },
+        move || {
+            let api_that = that.cst_decode();
+            transform_result_dco::<_, _, ()>((move || {
+                let mut api_that_guard = None;
+                let decode_indices_ =
+                    flutter_rust_bridge::for_generated::lockable_compute_decode_order(vec![
+                        flutter_rust_bridge::for_generated::LockableOrderInfo::new(
+                            &api_that, 0, false,
+                        ),
+                    ]);
+                for i in decode_indices_ {
+                    match i {
+                        0 => api_that_guard = Some(api_that.lockable_decode_sync_ref()),
+                        _ => unreachable!(),
+                    }
+                }
+                let api_that_guard = api_that_guard.unwrap();
+                let output_ok = Result::<_, ()>::Ok(crate::bindings::VodozemacSas::public_key(
+                    &*api_that_guard,
                 ))?;
                 Ok(output_ok)
             })())
@@ -866,6 +946,125 @@ fn wire__crate__bindings__vodozemac_ed_25519_signature_to_bytes_impl(
                 )?;
                 Ok(output_ok)
             })())
+        },
+    )
+}
+fn wire__crate__bindings__vodozemac_established_sas_calculate_mac_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    that: impl CstDecode<crate::bindings::VodozemacEstablishedSas>,
+    input: impl CstDecode<String>,
+    info: impl CstDecode<String>,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "vodozemac_established_sas_calculate_mac",
+            port: Some(port_),
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
+        },
+        move || {
+            let api_that = that.cst_decode();
+            let api_input = input.cst_decode();
+            let api_info = info.cst_decode();
+            move |context| {
+                transform_result_dco::<_, _, flutter_rust_bridge::for_generated::anyhow::Error>(
+                    (move || {
+                        let output_ok = crate::bindings::VodozemacEstablishedSas::calculate_mac(
+                            &api_that, &api_input, &api_info,
+                        )?;
+                        Ok(output_ok)
+                    })(),
+                )
+            }
+        },
+    )
+}
+fn wire__crate__bindings__vodozemac_established_sas_calculate_mac_deprecated_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    that: impl CstDecode<crate::bindings::VodozemacEstablishedSas>,
+    input: impl CstDecode<String>,
+    info: impl CstDecode<String>,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "vodozemac_established_sas_calculate_mac_deprecated",
+            port: Some(port_),
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
+        },
+        move || {
+            let api_that = that.cst_decode();
+            let api_input = input.cst_decode();
+            let api_info = info.cst_decode();
+            move |context| {
+                transform_result_dco::<_, _, flutter_rust_bridge::for_generated::anyhow::Error>(
+                    (move || {
+                        let output_ok =
+                            crate::bindings::VodozemacEstablishedSas::calculate_mac_deprecated(
+                                &api_that, &api_input, &api_info,
+                            )?;
+                        Ok(output_ok)
+                    })(),
+                )
+            }
+        },
+    )
+}
+fn wire__crate__bindings__vodozemac_established_sas_generate_bytes_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    that: impl CstDecode<crate::bindings::VodozemacEstablishedSas>,
+    info: impl CstDecode<String>,
+    length: impl CstDecode<u32>,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "vodozemac_established_sas_generate_bytes",
+            port: Some(port_),
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
+        },
+        move || {
+            let api_that = that.cst_decode();
+            let api_info = info.cst_decode();
+            let api_length = length.cst_decode();
+            move |context| {
+                transform_result_dco::<_, _, flutter_rust_bridge::for_generated::anyhow::Error>(
+                    (move || {
+                        let output_ok = crate::bindings::VodozemacEstablishedSas::generate_bytes(
+                            &api_that, &api_info, api_length,
+                        )?;
+                        Ok(output_ok)
+                    })(),
+                )
+            }
+        },
+    )
+}
+fn wire__crate__bindings__vodozemac_established_sas_verify_mac_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    that: impl CstDecode<crate::bindings::VodozemacEstablishedSas>,
+    input: impl CstDecode<String>,
+    info: impl CstDecode<String>,
+    mac: impl CstDecode<String>,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "vodozemac_established_sas_verify_mac",
+            port: Some(port_),
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
+        },
+        move || {
+            let api_that = that.cst_decode();
+            let api_input = input.cst_decode();
+            let api_info = info.cst_decode();
+            let api_mac = mac.cst_decode();
+            move |context| {
+                transform_result_dco::<_, _, flutter_rust_bridge::for_generated::anyhow::Error>(
+                    (move || {
+                        let output_ok = crate::bindings::VodozemacEstablishedSas::verify_mac(
+                            &api_that, &api_input, &api_info, &api_mac,
+                        )?;
+                        Ok(output_ok)
+                    })(),
+                )
+            }
         },
     )
 }
@@ -1993,6 +2192,16 @@ impl SseDecode for PkSigning {
     }
 }
 
+impl SseDecode for VodozemacSas {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <RustOpaqueNom<
+            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<VodozemacSas>,
+        >>::sse_decode(deserializer);
+        return flutter_rust_bridge::for_generated::rust_auto_opaque_decode_owned(inner);
+    }
+}
+
 impl SseDecode for RustOpaqueNom<Curve25519PublicKey> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
@@ -2010,6 +2219,14 @@ impl SseDecode for RustOpaqueNom<Ed25519PublicKey> {
 }
 
 impl SseDecode for RustOpaqueNom<Ed25519Signature> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <usize>::sse_decode(deserializer);
+        return unsafe { decode_rust_opaque_nom(inner) };
+    }
+}
+
+impl SseDecode for RustOpaqueNom<EstablishedSas> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut inner = <usize>::sse_decode(deserializer);
@@ -2083,6 +2300,16 @@ impl SseDecode for RustOpaqueNom<RwLock<Session>> {
 
 impl SseDecode
     for RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<PkSigning>>
+{
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <usize>::sse_decode(deserializer);
+        return unsafe { decode_rust_opaque_nom(inner) };
+    }
+}
+
+impl SseDecode
+    for RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<VodozemacSas>>
 {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
@@ -2234,6 +2461,16 @@ impl SseDecode for crate::bindings::VodozemacEd25519Signature {
         let mut var_signature = <RustOpaqueNom<Ed25519Signature>>::sse_decode(deserializer);
         return crate::bindings::VodozemacEd25519Signature {
             signature: var_signature,
+        };
+    }
+}
+
+impl SseDecode for crate::bindings::VodozemacEstablishedSas {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut var_establishedSas = <RustOpaqueNom<EstablishedSas>>::sse_decode(deserializer);
+        return crate::bindings::VodozemacEstablishedSas {
+            established_sas: var_establishedSas,
         };
     }
 }
@@ -2416,6 +2653,21 @@ impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<PkSigning>> for PkSigning {
 }
 
 // Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for FrbWrapper<VodozemacSas> {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, StdArc<_>>(self.0)
+            .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for FrbWrapper<VodozemacSas> {}
+
+impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<VodozemacSas>> for VodozemacSas {
+    fn into_into_dart(self) -> FrbWrapper<VodozemacSas> {
+        self.into()
+    }
+}
+
+// Codec=Dco (DartCObject based), see doc to use other codecs
 impl flutter_rust_bridge::IntoDart for crate::bindings::DecryptResult {
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         [
@@ -2501,6 +2753,23 @@ impl flutter_rust_bridge::IntoIntoDart<crate::bindings::VodozemacEd25519Signatur
     for crate::bindings::VodozemacEd25519Signature
 {
     fn into_into_dart(self) -> crate::bindings::VodozemacEd25519Signature {
+        self
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for crate::bindings::VodozemacEstablishedSas {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        [self.established_sas.into_into_dart().into_dart()].into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for crate::bindings::VodozemacEstablishedSas
+{
+}
+impl flutter_rust_bridge::IntoIntoDart<crate::bindings::VodozemacEstablishedSas>
+    for crate::bindings::VodozemacEstablishedSas
+{
+    fn into_into_dart(self) -> crate::bindings::VodozemacEstablishedSas {
         self
     }
 }
@@ -2740,6 +3009,13 @@ impl SseEncode for PkSigning {
     }
 }
 
+impl SseEncode for VodozemacSas {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<VodozemacSas>>>::sse_encode(flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, StdArc<_>>(self), serializer);
+    }
+}
+
 impl SseEncode for RustOpaqueNom<Curve25519PublicKey> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
@@ -2759,6 +3035,15 @@ impl SseEncode for RustOpaqueNom<Ed25519PublicKey> {
 }
 
 impl SseEncode for RustOpaqueNom<Ed25519Signature> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        let (ptr, size) = self.sse_encode_raw();
+        <usize>::sse_encode(ptr, serializer);
+        <i32>::sse_encode(size, serializer);
+    }
+}
+
+impl SseEncode for RustOpaqueNom<EstablishedSas> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
         let (ptr, size) = self.sse_encode_raw();
@@ -2841,6 +3126,17 @@ impl SseEncode for RustOpaqueNom<RwLock<Session>> {
 
 impl SseEncode
     for RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<PkSigning>>
+{
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        let (ptr, size) = self.sse_encode_raw();
+        <usize>::sse_encode(ptr, serializer);
+        <i32>::sse_encode(size, serializer);
+    }
+}
+
+impl SseEncode
+    for RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<VodozemacSas>>
 {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
@@ -2994,6 +3290,13 @@ impl SseEncode for crate::bindings::VodozemacEd25519Signature {
     }
 }
 
+impl SseEncode for crate::bindings::VodozemacEstablishedSas {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <RustOpaqueNom<EstablishedSas>>::sse_encode(self.established_sas, serializer);
+    }
+}
+
 impl SseEncode for crate::bindings::VodozemacGroupSession {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
@@ -3130,6 +3433,18 @@ mod io {
             ))
         }
     }
+    impl CstDecode<VodozemacSas> for usize {
+        // Codec=Cst (C-struct based), see doc to use other codecs
+        fn cst_decode(self) -> VodozemacSas {
+            flutter_rust_bridge::for_generated::rust_auto_opaque_decode_owned(CstDecode::<
+                RustOpaqueNom<
+                    flutter_rust_bridge::for_generated::RustAutoOpaqueInner<VodozemacSas>,
+                >,
+            >::cst_decode(
+                self
+            ))
+        }
+    }
     impl CstDecode<RustOpaqueNom<Curve25519PublicKey>> for usize {
         // Codec=Cst (C-struct based), see doc to use other codecs
         fn cst_decode(self) -> RustOpaqueNom<Curve25519PublicKey> {
@@ -3145,6 +3460,12 @@ mod io {
     impl CstDecode<RustOpaqueNom<Ed25519Signature>> for usize {
         // Codec=Cst (C-struct based), see doc to use other codecs
         fn cst_decode(self) -> RustOpaqueNom<Ed25519Signature> {
+            unsafe { decode_rust_opaque_nom(self as _) }
+        }
+    }
+    impl CstDecode<RustOpaqueNom<EstablishedSas>> for usize {
+        // Codec=Cst (C-struct based), see doc to use other codecs
+        fn cst_decode(self) -> RustOpaqueNom<EstablishedSas> {
             unsafe { decode_rust_opaque_nom(self as _) }
         }
     }
@@ -3208,6 +3529,19 @@ mod io {
             unsafe { decode_rust_opaque_nom(self as _) }
         }
     }
+    impl
+        CstDecode<
+            RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<VodozemacSas>>,
+        > for usize
+    {
+        // Codec=Cst (C-struct based), see doc to use other codecs
+        fn cst_decode(
+            self,
+        ) -> RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<VodozemacSas>>
+        {
+            unsafe { decode_rust_opaque_nom(self as _) }
+        }
+    }
     impl CstDecode<RustOpaqueNom<std::sync::RwLock<Account>>> for usize {
         // Codec=Cst (C-struct based), see doc to use other codecs
         fn cst_decode(self) -> RustOpaqueNom<std::sync::RwLock<Account>> {
@@ -3253,6 +3587,15 @@ mod io {
         fn cst_decode(self) -> crate::bindings::VodozemacEd25519Signature {
             let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
             CstDecode::<crate::bindings::VodozemacEd25519Signature>::cst_decode(*wrap).into()
+        }
+    }
+    impl CstDecode<crate::bindings::VodozemacEstablishedSas>
+        for *mut wire_cst_vodozemac_established_sas
+    {
+        // Codec=Cst (C-struct based), see doc to use other codecs
+        fn cst_decode(self) -> crate::bindings::VodozemacEstablishedSas {
+            let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
+            CstDecode::<crate::bindings::VodozemacEstablishedSas>::cst_decode(*wrap).into()
         }
     }
     impl CstDecode<crate::bindings::VodozemacGroupSession> for *mut wire_cst_vodozemac_group_session {
@@ -3409,6 +3752,14 @@ mod io {
         fn cst_decode(self) -> crate::bindings::VodozemacEd25519Signature {
             crate::bindings::VodozemacEd25519Signature {
                 signature: self.signature.cst_decode(),
+            }
+        }
+    }
+    impl CstDecode<crate::bindings::VodozemacEstablishedSas> for wire_cst_vodozemac_established_sas {
+        // Codec=Cst (C-struct based), see doc to use other codecs
+        fn cst_decode(self) -> crate::bindings::VodozemacEstablishedSas {
+            crate::bindings::VodozemacEstablishedSas {
+                established_sas: self.established_sas.cst_decode(),
             }
         }
     }
@@ -3578,6 +3929,18 @@ mod io {
         }
     }
     impl Default for wire_cst_vodozemac_ed_25519_signature {
+        fn default() -> Self {
+            Self::new_with_null_ptr()
+        }
+    }
+    impl NewWithNullPtr for wire_cst_vodozemac_established_sas {
+        fn new_with_null_ptr() -> Self {
+            Self {
+                established_sas: Default::default(),
+            }
+        }
+    }
+    impl Default for wire_cst_vodozemac_established_sas {
         fn default() -> Self {
             Self::new_with_null_ptr()
         }
@@ -3765,6 +4128,28 @@ mod io {
         message: *mut wire_cst_list_prim_u_8_strict,
     ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
         wire__crate__bindings__PkSigning_sign_impl(that, message)
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_vodozemac_wire__crate__bindings__VodozemacSas_establish_sas_secret(
+        port_: i64,
+        that: usize,
+        other_public_key: *mut wire_cst_list_prim_u_8_strict,
+    ) {
+        wire__crate__bindings__VodozemacSas_establish_sas_secret_impl(port_, that, other_public_key)
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_vodozemac_wire__crate__bindings__VodozemacSas_new(
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__bindings__VodozemacSas_new_impl()
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_vodozemac_wire__crate__bindings__VodozemacSas_public_key(
+        that: usize,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__bindings__VodozemacSas_public_key_impl(that)
     }
 
     #[unsafe(no_mangle)]
@@ -4012,6 +4397,55 @@ mod io {
         that: *mut wire_cst_vodozemac_ed_25519_signature,
     ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
         wire__crate__bindings__vodozemac_ed_25519_signature_to_bytes_impl(that)
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_vodozemac_wire__crate__bindings__vodozemac_established_sas_calculate_mac(
+        port_: i64,
+        that: *mut wire_cst_vodozemac_established_sas,
+        input: *mut wire_cst_list_prim_u_8_strict,
+        info: *mut wire_cst_list_prim_u_8_strict,
+    ) {
+        wire__crate__bindings__vodozemac_established_sas_calculate_mac_impl(
+            port_, that, input, info,
+        )
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_vodozemac_wire__crate__bindings__vodozemac_established_sas_calculate_mac_deprecated(
+        port_: i64,
+        that: *mut wire_cst_vodozemac_established_sas,
+        input: *mut wire_cst_list_prim_u_8_strict,
+        info: *mut wire_cst_list_prim_u_8_strict,
+    ) {
+        wire__crate__bindings__vodozemac_established_sas_calculate_mac_deprecated_impl(
+            port_, that, input, info,
+        )
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_vodozemac_wire__crate__bindings__vodozemac_established_sas_generate_bytes(
+        port_: i64,
+        that: *mut wire_cst_vodozemac_established_sas,
+        info: *mut wire_cst_list_prim_u_8_strict,
+        length: u32,
+    ) {
+        wire__crate__bindings__vodozemac_established_sas_generate_bytes_impl(
+            port_, that, info, length,
+        )
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_vodozemac_wire__crate__bindings__vodozemac_established_sas_verify_mac(
+        port_: i64,
+        that: *mut wire_cst_vodozemac_established_sas,
+        input: *mut wire_cst_list_prim_u_8_strict,
+        info: *mut wire_cst_list_prim_u_8_strict,
+        mac: *mut wire_cst_list_prim_u_8_strict,
+    ) {
+        wire__crate__bindings__vodozemac_established_sas_verify_mac_impl(
+            port_, that, input, info, mac,
+        )
     }
 
     #[unsafe(no_mangle)]
@@ -4462,6 +4896,24 @@ mod io {
     }
 
     #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_vodozemac_rust_arc_increment_strong_count_RustOpaque_EstablishedSas(
+        ptr: *const std::ffi::c_void,
+    ) {
+        unsafe {
+            StdArc::<EstablishedSas>::increment_strong_count(ptr as _);
+        }
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_vodozemac_rust_arc_decrement_strong_count_RustOpaque_EstablishedSas(
+        ptr: *const std::ffi::c_void,
+    ) {
+        unsafe {
+            StdArc::<EstablishedSas>::decrement_strong_count(ptr as _);
+        }
+    }
+
+    #[unsafe(no_mangle)]
     pub extern "C" fn frbgen_vodozemac_rust_arc_increment_strong_count_RustOpaque_MegolmSessionConfig(
         ptr: *const std::ffi::c_void,
     ) {
@@ -4624,6 +5076,24 @@ mod io {
     }
 
     #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_vodozemac_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerVodozemacSas(
+        ptr: *const std::ffi::c_void,
+    ) {
+        unsafe {
+            StdArc::<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<VodozemacSas>>::increment_strong_count(ptr as _);
+        }
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_vodozemac_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerVodozemacSas(
+        ptr: *const std::ffi::c_void,
+    ) {
+        unsafe {
+            StdArc::<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<VodozemacSas>>::decrement_strong_count(ptr as _);
+        }
+    }
+
+    #[unsafe(no_mangle)]
     pub extern "C" fn frbgen_vodozemac_rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockAccount(
         ptr: *const std::ffi::c_void,
     ) {
@@ -4670,6 +5140,14 @@ mod io {
     ) -> *mut wire_cst_vodozemac_ed_25519_signature {
         flutter_rust_bridge::for_generated::new_leak_box_ptr(
             wire_cst_vodozemac_ed_25519_signature::new_with_null_ptr(),
+        )
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_vodozemac_cst_new_box_autoadd_vodozemac_established_sas(
+    ) -> *mut wire_cst_vodozemac_established_sas {
+        flutter_rust_bridge::for_generated::new_leak_box_ptr(
+            wire_cst_vodozemac_established_sas::new_with_null_ptr(),
         )
     }
 
@@ -4824,6 +5302,11 @@ mod io {
     #[derive(Clone, Copy)]
     pub struct wire_cst_vodozemac_ed_25519_signature {
         signature: usize,
+    }
+    #[repr(C)]
+    #[derive(Clone, Copy)]
+    pub struct wire_cst_vodozemac_established_sas {
+        established_sas: usize,
     }
     #[repr(C)]
     #[derive(Clone, Copy)]
@@ -5059,6 +5542,25 @@ mod web {
             );
             crate::bindings::VodozemacEd25519Signature {
                 signature: self_.get(0).cst_decode(),
+            }
+        }
+    }
+    impl CstDecode<crate::bindings::VodozemacEstablishedSas>
+        for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+    {
+        // Codec=Cst (C-struct based), see doc to use other codecs
+        fn cst_decode(self) -> crate::bindings::VodozemacEstablishedSas {
+            let self_ = self
+                .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+                .unwrap();
+            assert_eq!(
+                self_.length(),
+                1,
+                "Expected 1 elements, got {}",
+                self_.length()
+            );
+            crate::bindings::VodozemacEstablishedSas {
+                established_sas: self_.get(0).cst_decode(),
             }
         }
     }
@@ -5313,6 +5815,18 @@ mod web {
             ))
         }
     }
+    impl CstDecode<VodozemacSas> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+        // Codec=Cst (C-struct based), see doc to use other codecs
+        fn cst_decode(self) -> VodozemacSas {
+            flutter_rust_bridge::for_generated::rust_auto_opaque_decode_owned(CstDecode::<
+                RustOpaqueNom<
+                    flutter_rust_bridge::for_generated::RustAutoOpaqueInner<VodozemacSas>,
+                >,
+            >::cst_decode(
+                self
+            ))
+        }
+    }
     impl CstDecode<RustOpaqueNom<Curve25519PublicKey>>
         for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
     {
@@ -5342,6 +5856,18 @@ mod web {
     {
         // Codec=Cst (C-struct based), see doc to use other codecs
         fn cst_decode(self) -> RustOpaqueNom<Ed25519Signature> {
+            #[cfg(target_pointer_width = "64")]
+            {
+                compile_error!("64-bit pointers are not supported.");
+            }
+            unsafe { decode_rust_opaque_nom((self.as_f64().unwrap() as usize) as _) }
+        }
+    }
+    impl CstDecode<RustOpaqueNom<EstablishedSas>>
+        for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+    {
+        // Codec=Cst (C-struct based), see doc to use other codecs
+        fn cst_decode(self) -> RustOpaqueNom<EstablishedSas> {
             #[cfg(target_pointer_width = "64")]
             {
                 compile_error!("64-bit pointers are not supported.");
@@ -5461,6 +5987,23 @@ mod web {
             unsafe { decode_rust_opaque_nom((self.as_f64().unwrap() as usize) as _) }
         }
     }
+    impl
+        CstDecode<
+            RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<VodozemacSas>>,
+        > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+    {
+        // Codec=Cst (C-struct based), see doc to use other codecs
+        fn cst_decode(
+            self,
+        ) -> RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<VodozemacSas>>
+        {
+            #[cfg(target_pointer_width = "64")]
+            {
+                compile_error!("64-bit pointers are not supported.");
+            }
+            unsafe { decode_rust_opaque_nom((self.as_f64().unwrap() as usize) as _) }
+        }
+    }
     impl CstDecode<RustOpaqueNom<std::sync::RwLock<Account>>>
         for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
     {
@@ -5559,6 +6102,28 @@ mod web {
         message: String,
     ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
         wire__crate__bindings__PkSigning_sign_impl(that, message)
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__bindings__VodozemacSas_establish_sas_secret(
+        port_: flutter_rust_bridge::for_generated::MessagePort,
+        that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+        other_public_key: String,
+    ) {
+        wire__crate__bindings__VodozemacSas_establish_sas_secret_impl(port_, that, other_public_key)
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__bindings__VodozemacSas_new(
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__bindings__VodozemacSas_new_impl()
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__bindings__VodozemacSas_public_key(
+        that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__bindings__VodozemacSas_public_key_impl(that)
     }
 
     #[wasm_bindgen]
@@ -5806,6 +6371,55 @@ mod web {
         that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
         wire__crate__bindings__vodozemac_ed_25519_signature_to_bytes_impl(that)
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__bindings__vodozemac_established_sas_calculate_mac(
+        port_: flutter_rust_bridge::for_generated::MessagePort,
+        that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+        input: String,
+        info: String,
+    ) {
+        wire__crate__bindings__vodozemac_established_sas_calculate_mac_impl(
+            port_, that, input, info,
+        )
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__bindings__vodozemac_established_sas_calculate_mac_deprecated(
+        port_: flutter_rust_bridge::for_generated::MessagePort,
+        that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+        input: String,
+        info: String,
+    ) {
+        wire__crate__bindings__vodozemac_established_sas_calculate_mac_deprecated_impl(
+            port_, that, input, info,
+        )
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__bindings__vodozemac_established_sas_generate_bytes(
+        port_: flutter_rust_bridge::for_generated::MessagePort,
+        that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+        info: String,
+        length: u32,
+    ) {
+        wire__crate__bindings__vodozemac_established_sas_generate_bytes_impl(
+            port_, that, info, length,
+        )
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__bindings__vodozemac_established_sas_verify_mac(
+        port_: flutter_rust_bridge::for_generated::MessagePort,
+        that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+        input: String,
+        info: String,
+        mac: String,
+    ) {
+        wire__crate__bindings__vodozemac_established_sas_verify_mac_impl(
+            port_, that, input, info, mac,
+        )
     }
 
     #[wasm_bindgen]
@@ -6256,6 +6870,20 @@ mod web {
     }
 
     #[wasm_bindgen]
+    pub fn rust_arc_increment_strong_count_RustOpaque_EstablishedSas(ptr: *const std::ffi::c_void) {
+        unsafe {
+            StdArc::<EstablishedSas>::increment_strong_count(ptr as _);
+        }
+    }
+
+    #[wasm_bindgen]
+    pub fn rust_arc_decrement_strong_count_RustOpaque_EstablishedSas(ptr: *const std::ffi::c_void) {
+        unsafe {
+            StdArc::<EstablishedSas>::decrement_strong_count(ptr as _);
+        }
+    }
+
+    #[wasm_bindgen]
     pub fn rust_arc_increment_strong_count_RustOpaque_MegolmSessionConfig(
         ptr: *const std::ffi::c_void,
     ) {
@@ -6398,6 +7026,24 @@ mod web {
     ) {
         unsafe {
             StdArc::<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<PkSigning>>::decrement_strong_count(ptr as _);
+        }
+    }
+
+    #[wasm_bindgen]
+    pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerVodozemacSas(
+        ptr: *const std::ffi::c_void,
+    ) {
+        unsafe {
+            StdArc::<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<VodozemacSas>>::increment_strong_count(ptr as _);
+        }
+    }
+
+    #[wasm_bindgen]
+    pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerVodozemacSas(
+        ptr: *const std::ffi::c_void,
+    ) {
+        unsafe {
+            StdArc::<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<VodozemacSas>>::decrement_strong_count(ptr as _);
         }
     }
 
