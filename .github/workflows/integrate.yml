@@ -127,6 +127,7 @@ jobs:
       - name: Fetch dart dependencies
         working-directory: dart
         run: dart pub get
+      - run: sudo apt-get update && sudo apt-get install libolm3 -y
       - name: Fetch rust dependencies
         working-directory: rust
         run: cargo fetch
