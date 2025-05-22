@@ -87,7 +87,7 @@ final class GroupSession {
   Future<String> encrypt(String plaintext) =>
       _session.encrypt(plaintext: plaintext);
 
-  Future<String> sessionKey() => _session.sessionKey();
+  String get sessionKey => _session.sessionKey();
 
   Future<String> toPickleEncrypted(Uint8List pickleKey) =>
       _session.pickleEncrypted(pickleKey: vodozemac.U8Array32(pickleKey));

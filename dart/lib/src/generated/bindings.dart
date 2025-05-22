@@ -8,7 +8,6 @@ import 'lib.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-// These functions are ignored because they are not marked as `pub`: `new_helper`
 // These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `from`, `from`, `from`, `from`, `from`, `from`, `from`, `from`, `from`, `from`, `from`, `into`
 
 // Rust type: RustOpaqueNom<EstablishedSas>
@@ -322,8 +321,7 @@ class VodozemacGroupSession {
   Future<String> pickleEncrypted({required U8Array32 pickleKey}) =>
       RustLib.instance.api.crateBindingsVodozemacGroupSessionPickleEncrypted(that: this, pickleKey: pickleKey);
 
-  Future<VodozemacMegolmSessionConfig> sessionConfig() =>
-      RustLib.instance.api.crateBindingsVodozemacGroupSessionSessionConfig(
+  VodozemacMegolmSessionConfig sessionConfig() => RustLib.instance.api.crateBindingsVodozemacGroupSessionSessionConfig(
         that: this,
       );
 
@@ -331,7 +329,7 @@ class VodozemacGroupSession {
         that: this,
       );
 
-  Future<String> sessionKey() => RustLib.instance.api.crateBindingsVodozemacGroupSessionSessionKey(
+  String sessionKey() => RustLib.instance.api.crateBindingsVodozemacGroupSessionSessionKey(
         that: this,
       );
 
@@ -561,7 +559,7 @@ class VodozemacPkDecryption {
 
   factory VodozemacPkDecryption() => RustLib.instance.api.crateBindingsVodozemacPkDecryptionNew();
 
-  Future<Uint8List> privateKey() => RustLib.instance.api.crateBindingsVodozemacPkDecryptionPrivateKey(
+  Uint8List privateKey() => RustLib.instance.api.crateBindingsVodozemacPkDecryptionPrivateKey(
         that: this,
       );
 
@@ -653,7 +651,7 @@ class VodozemacSession {
   Future<String> pickleEncrypted({required U8Array32 pickleKey}) =>
       RustLib.instance.api.crateBindingsVodozemacSessionPickleEncrypted(that: this, pickleKey: pickleKey);
 
-  Future<VodozemacOlmSessionConfig> sessionConfig() => RustLib.instance.api.crateBindingsVodozemacSessionSessionConfig(
+  VodozemacOlmSessionConfig sessionConfig() => RustLib.instance.api.crateBindingsVodozemacSessionSessionConfig(
         that: this,
       );
 
