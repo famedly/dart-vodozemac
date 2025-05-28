@@ -16,15 +16,6 @@ extension PublicCurveChecks on Subject<Curve25519PublicKey> {
   }
 }
 
-extension Uint8ListChecks on Subject<Uint8List> {
-  void isNotEmpty() {
-    context.expect(() => ['is not empty'], (actual) {
-      if (actual.isNotEmpty) return null;
-      return Rejection(which: ['is empty']);
-    });
-  }
-}
-
 class Utils {
   static Uint8List base64decodeUnpadded(String s) {
     final needEquals = (4 - (s.length % 4)) % 4;
@@ -182,6 +173,45 @@ void main() async {
       expect(() => signKey.verify(message: 'Abcd', signature: signature),
           throwsA(anything));
     });
+
+    test('messageType indicates whether message is pre-key or normal',
+        () async {
+      final alice = Account();
+      final bob = Account();
+
+      alice.generateOneTimeKeys(1);
+      final oneTimeKey = alice.oneTimeKeys.values.first;
+
+      final bobSession = bob.createOutboundSession(
+          identityKey: alice.curve25519Key, oneTimeKey: oneTimeKey);
+
+      // First message should be a pre-key message (type 0)
+      final firstMsg = bobSession.encrypt('First message');
+      check(firstMsg.messageType).equals(0);
+
+      // Create Alice's session from Bob's pre-key message
+      final aliceSession = alice
+          .createInboundSession(
+              theirIdentityKey: bob.curve25519Key,
+              preKeyMessageBase64: firstMsg.ciphertext)
+          .session;
+
+      // Alice sends a message back to Bob
+      final aliceMsg = aliceSession.encrypt('Alice response');
+
+      // This should be a normal message (type 1)
+      check(aliceMsg.messageType).equals(1);
+
+      // Bob can decrypt it
+      check(bobSession.decrypt(
+              messageType: aliceMsg.messageType,
+              ciphertext: aliceMsg.ciphertext))
+          .equals('Alice response');
+
+      // Now Bob has received a message, so future messages from Bob should be normal
+      final bobSecondMsg = bobSession.encrypt('Bob second message');
+      check(bobSecondMsg.messageType).equals(1);
+    });
   });
 
   group('Megolm session can', () {
@@ -189,9 +219,19 @@ void main() async {
       check(GroupSession()).isNotNull();
     });
 
+    test('inbound can be created from a session key and also from an object',
+        () async {
+      final groupSession = GroupSession();
+      final inbound = InboundGroupSession(groupSession.sessionKey);
+      final inboundFromObj = groupSession.toInbound();
+      check(inbound).isNotNull();
+      check(inboundFromObj).isNotNull();
+      check(inbound.sessionId).equals(inboundFromObj.sessionId);
+    });
+
     test('encrypt and decrypt', () async {
       final groupSession = GroupSession();
-      final inbound = groupSession.toInbound();
+      final inbound = InboundGroupSession(groupSession.sessionKey);
 
       final encrypted = groupSession.encrypt('Test');
 
@@ -201,13 +241,13 @@ void main() async {
           .equals('Test');
 
       // ensure that a later exported session does not decrypt the message
-      final inboundAfter = groupSession.toInbound();
+      final inboundAfter = InboundGroupSession(groupSession.sessionKey);
       expect(() => inboundAfter.decrypt(encrypted), throwsA(anything));
     });
 
     test('be imported and exported', () async {
       final groupSession = GroupSession();
-      final inbound = groupSession.toInbound();
+      final inbound = InboundGroupSession(groupSession.sessionKey);
       final reimportedInbound =
           InboundGroupSession.import(inbound.exportAtFirstKnownIndex());
       final laterInbound = InboundGroupSession.import(inbound.exportAt(1)!);
@@ -233,6 +273,41 @@ void main() async {
       check(laterInbound.decrypt(encrypted2))
           .has((res) => res.plaintext, 'plaintext')
           .equals('Test');
+    });
+
+    test('handle multiple exports at different indices', () async {
+      final groupSession = GroupSession();
+      final inbound = InboundGroupSession(groupSession.sessionKey);
+
+      // Send multiple messages
+      final encrypted1 = groupSession.encrypt('Message 1');
+      final encrypted2 = groupSession.encrypt('Message 2');
+      final encrypted3 = groupSession.encrypt('Message 3');
+
+      // Export at each index
+      final export0 = inbound.exportAtFirstKnownIndex();
+      final export1 = inbound.exportAt(1)!;
+      final export2 = inbound.exportAt(2)!;
+
+      // Import at different indices
+      final importedAt0 = InboundGroupSession.import(export0);
+      final importedAt1 = InboundGroupSession.import(export1);
+      final importedAt2 = InboundGroupSession.import(export2);
+
+      // Verify imports at index 0 can decrypt all messages
+      check(importedAt0.decrypt(encrypted1).plaintext).equals('Message 1');
+      check(importedAt0.decrypt(encrypted2).plaintext).equals('Message 2');
+      check(importedAt0.decrypt(encrypted3).plaintext).equals('Message 3');
+
+      // Verify imports at index 1 can decrypt messages 2 and 3 but not 1
+      expect(() => importedAt1.decrypt(encrypted1), throwsA(anything));
+      check(importedAt1.decrypt(encrypted2).plaintext).equals('Message 2');
+      check(importedAt1.decrypt(encrypted3).plaintext).equals('Message 3');
+
+      // Verify imports at index 2 can decrypt only message 3
+      expect(() => importedAt2.decrypt(encrypted1), throwsA(anything));
+      expect(() => importedAt2.decrypt(encrypted2), throwsA(anything));
+      check(importedAt2.decrypt(encrypted3).plaintext).equals('Message 3');
     });
   });
 
@@ -340,6 +415,41 @@ void main() async {
           () => aliceEstablished.verifyMac("message", "info", "invalid mac!!!"),
           throwsA(anything));
     });
+
+    test('generates consistent decimal representation', () async {
+      final alice = Sas();
+      final bob = Sas();
+
+      final aliceEstablished = alice.establishSasSecret(bob.publicKey);
+      final bobEstablished = bob.establishSasSecret(alice.publicKey);
+
+      // Generate bytes for decimal representation
+      // In Matrix, this uses 5 bytes to create 3 pairs of digits (0-99)
+      // refer: https://spec.matrix.org/latest/client-server-api/#sas-method-decimal
+      final aliceBytes = aliceEstablished.generateBytes("DECIMAL", 5);
+      final bobBytes = bobEstablished.generateBytes("DECIMAL", 5);
+
+      check(aliceBytes).deepEquals(bobBytes);
+
+      // Simulate converting to decimal pairs as would be done in a real app
+      List<int> bytesToDecimals(Uint8List bytes) {
+        final result = <int>[];
+
+        // Use first 5 bytes to generate 3 pairs of decimal digits (0-99)
+        for (int i = 0; i < 3; i++) {
+          final decimal = (bytes[i] << 8) | bytes[i + 2];
+          result.add(decimal % 100);
+        }
+
+        return result;
+      }
+
+      final aliceDecimals = bytesToDecimals(aliceBytes);
+      final bobDecimals = bytesToDecimals(bobBytes);
+
+      // Both sides should generate the same decimal digits
+      check(aliceDecimals).deepEquals(bobDecimals);
+    });
   });
 
   group('PkEncryption and PkDecryption', () {
@@ -430,6 +540,23 @@ void main() async {
       // Cross-decryption should fail
       expect(() => decryptor2.decrypt(encrypted1), throwsA(anything));
       expect(() => decryptor1.decrypt(encrypted2), throwsA(anything));
+    });
+
+    test('can handle empty and large messages', () async {
+      final decryptor = PkDecryption();
+      final encryptor = PkEncryption.fromPublicKey(
+          Curve25519PublicKey.fromBase64(decryptor.publicKey));
+
+      // Test empty message
+      final emptyEncrypted = encryptor.encrypt("");
+      final emptyDecrypted = decryptor.decrypt(emptyEncrypted);
+      check(emptyDecrypted).equals("");
+
+      // Test large message
+      final largeMessage = "A" * 10000;
+      final largeEncrypted = encryptor.encrypt(largeMessage);
+      final largeDecrypted = decryptor.decrypt(largeEncrypted);
+      check(largeDecrypted).equals(largeMessage);
     });
   });
 
@@ -548,6 +675,67 @@ void main() async {
       expect(
           () => signing.publicKey
               .verify(message: longMessage, signature: longSignature),
+          returnsNormally);
+    });
+  });
+
+  group('Curve25519 and Ed25519 keys', () {
+    test('can convert Curve25519 keys between formats', () async {
+      final account = Account();
+      final originalKey = account.curve25519Key;
+
+      // Convert to base64 and back
+      final base64 = originalKey.toBase64();
+      final fromBase64 = Curve25519PublicKey.fromBase64(base64);
+      check(fromBase64.toBase64()).equals(base64);
+
+      // Convert to bytes and back
+      final bytes = originalKey.toBytes();
+      check(bytes.length).equals(32);
+      final fromBytes = Curve25519PublicKey.fromBytes(bytes);
+      check(fromBytes.toBase64()).equals(base64);
+    });
+
+    test('can convert Ed25519 keys between formats', () async {
+      final account = Account();
+      final originalKey = account.ed25519Key;
+
+      // Convert to base64 and back
+      final base64 = originalKey.toBase64();
+      final fromBase64 = Ed25519PublicKey.fromBase64(base64);
+      check(fromBase64.toBase64()).equals(base64);
+
+      // Convert to bytes and back
+      final bytes = originalKey.toBytes();
+      check(bytes.length).equals(32);
+      final fromBytes = Ed25519PublicKey.fromBytes(bytes);
+      check(fromBytes.toBase64()).equals(base64);
+    });
+
+    test('can convert Ed25519 signatures between formats', () async {
+      final account = Account();
+      final signature = account.sign('Test message');
+
+      // Convert to base64 and back
+      final base64 = signature.toBase64();
+      final fromBase64 = Ed25519Signature.fromBase64(base64);
+      check(fromBase64.toBase64()).equals(base64);
+
+      // Convert to bytes and back
+      final bytes = signature.toBytes();
+      check(bytes.length).equals(64);
+      final fromBytes = Ed25519Signature.fromBytes(bytes);
+      check(fromBytes.toBase64()).equals(base64);
+
+      // Verify both converted signatures
+      expect(
+          () => account.ed25519Key
+              .verify(message: 'Test message', signature: fromBase64),
+          returnsNormally);
+
+      expect(
+          () => account.ed25519Key
+              .verify(message: 'Test message', signature: fromBytes),
           returnsNormally);
     });
   });
