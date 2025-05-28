@@ -1014,9 +1014,9 @@ class RustLibWire implements BaseWire {
           int that, String message) =>
       wasmModule.wire__crate__bindings__PkSigning_sign(that, message);
 
-  void wire__crate__bindings__VodozemacSas_establish_sas_secret(
-          NativePortType port_, int that, String other_public_key) =>
-      wasmModule.wire__crate__bindings__VodozemacSas_establish_sas_secret(port_, that, other_public_key);
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__bindings__VodozemacSas_establish_sas_secret(int that, String other_public_key) =>
+          wasmModule.wire__crate__bindings__VodozemacSas_establish_sas_secret(that, other_public_key);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */ wire__crate__bindings__VodozemacSas_new() =>
       wasmModule.wire__crate__bindings__VodozemacSas_new();
@@ -1025,15 +1025,17 @@ class RustLibWire implements BaseWire {
           int that) =>
       wasmModule.wire__crate__bindings__VodozemacSas_public_key(that);
 
-  void wire__crate__bindings__vodozemac_account_create_inbound_session(
-          NativePortType port_, JSAny that, JSAny their_identity_key, String pre_key_message_base64) =>
-      wasmModule.wire__crate__bindings__vodozemac_account_create_inbound_session(
-          port_, that, their_identity_key, pre_key_message_base64);
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__bindings__vodozemac_account_create_inbound_session(
+              JSAny that, JSAny their_identity_key, String pre_key_message_base64) =>
+          wasmModule.wire__crate__bindings__vodozemac_account_create_inbound_session(
+              that, their_identity_key, pre_key_message_base64);
 
-  void wire__crate__bindings__vodozemac_account_create_outbound_session(
-          NativePortType port_, JSAny that, JSAny config, JSAny identity_key, JSAny one_time_key) =>
-      wasmModule.wire__crate__bindings__vodozemac_account_create_outbound_session(
-          port_, that, config, identity_key, one_time_key);
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__bindings__vodozemac_account_create_outbound_session(
+              JSAny that, JSAny config, JSAny identity_key, JSAny one_time_key) =>
+          wasmModule.wire__crate__bindings__vodozemac_account_create_outbound_session(
+              that, config, identity_key, one_time_key);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__bindings__vodozemac_account_curve25519_key(JSAny that) =>
@@ -1051,19 +1053,21 @@ class RustLibWire implements BaseWire {
       wire__crate__bindings__vodozemac_account_forget_fallback_key(JSAny that) =>
           wasmModule.wire__crate__bindings__vodozemac_account_forget_fallback_key(that);
 
-  void wire__crate__bindings__vodozemac_account_from_olm_pickle_encrypted(
-          NativePortType port_, String pickle, JSAny pickle_key) =>
-      wasmModule.wire__crate__bindings__vodozemac_account_from_olm_pickle_encrypted(port_, pickle, pickle_key);
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__bindings__vodozemac_account_from_olm_pickle_encrypted(String pickle, JSAny pickle_key) =>
+          wasmModule.wire__crate__bindings__vodozemac_account_from_olm_pickle_encrypted(pickle, pickle_key);
 
-  void wire__crate__bindings__vodozemac_account_from_pickle_encrypted(
-          NativePortType port_, String pickle, JSAny pickle_key) =>
-      wasmModule.wire__crate__bindings__vodozemac_account_from_pickle_encrypted(port_, pickle, pickle_key);
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__bindings__vodozemac_account_from_pickle_encrypted(String pickle, JSAny pickle_key) =>
+          wasmModule.wire__crate__bindings__vodozemac_account_from_pickle_encrypted(pickle, pickle_key);
 
-  void wire__crate__bindings__vodozemac_account_generate_fallback_key(NativePortType port_, JSAny that) =>
-      wasmModule.wire__crate__bindings__vodozemac_account_generate_fallback_key(port_, that);
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__bindings__vodozemac_account_generate_fallback_key(JSAny that) =>
+          wasmModule.wire__crate__bindings__vodozemac_account_generate_fallback_key(that);
 
-  void wire__crate__bindings__vodozemac_account_generate_one_time_keys(NativePortType port_, JSAny that, JSAny count) =>
-      wasmModule.wire__crate__bindings__vodozemac_account_generate_one_time_keys(port_, that, count);
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__bindings__vodozemac_account_generate_one_time_keys(JSAny that, JSAny count) =>
+          wasmModule.wire__crate__bindings__vodozemac_account_generate_one_time_keys(that, count);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__bindings__vodozemac_account_identity_keys(JSAny that) =>
@@ -1084,11 +1088,13 @@ class RustLibWire implements BaseWire {
       wire__crate__bindings__vodozemac_account_one_time_keys(JSAny that) =>
           wasmModule.wire__crate__bindings__vodozemac_account_one_time_keys(that);
 
-  void wire__crate__bindings__vodozemac_account_pickle_encrypted(NativePortType port_, JSAny that, JSAny pickle_key) =>
-      wasmModule.wire__crate__bindings__vodozemac_account_pickle_encrypted(port_, that, pickle_key);
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__bindings__vodozemac_account_pickle_encrypted(JSAny that, JSAny pickle_key) =>
+          wasmModule.wire__crate__bindings__vodozemac_account_pickle_encrypted(that, pickle_key);
 
-  void wire__crate__bindings__vodozemac_account_sign(NativePortType port_, JSAny that, String message) =>
-      wasmModule.wire__crate__bindings__vodozemac_account_sign(port_, that, message);
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */ wire__crate__bindings__vodozemac_account_sign(
+          JSAny that, String message) =>
+      wasmModule.wire__crate__bindings__vodozemac_account_sign(that, message);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__bindings__vodozemac_curve_25519_public_key_as_bytes(JSAny that) =>
@@ -1122,9 +1128,9 @@ class RustLibWire implements BaseWire {
       wire__crate__bindings__vodozemac_ed_25519_public_key_to_base64(JSAny that) =>
           wasmModule.wire__crate__bindings__vodozemac_ed_25519_public_key_to_base64(that);
 
-  void wire__crate__bindings__vodozemac_ed_25519_public_key_verify(
-          NativePortType port_, JSAny that, String message, JSAny signature) =>
-      wasmModule.wire__crate__bindings__vodozemac_ed_25519_public_key_verify(port_, that, message, signature);
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__bindings__vodozemac_ed_25519_public_key_verify(JSAny that, String message, JSAny signature) =>
+          wasmModule.wire__crate__bindings__vodozemac_ed_25519_public_key_verify(that, message, signature);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__bindings__vodozemac_ed_25519_signature_from_base64(String signature) =>
@@ -1142,32 +1148,34 @@ class RustLibWire implements BaseWire {
       wire__crate__bindings__vodozemac_ed_25519_signature_to_bytes(JSAny that) =>
           wasmModule.wire__crate__bindings__vodozemac_ed_25519_signature_to_bytes(that);
 
-  void wire__crate__bindings__vodozemac_established_sas_calculate_mac(
-          NativePortType port_, JSAny that, String input, String info) =>
-      wasmModule.wire__crate__bindings__vodozemac_established_sas_calculate_mac(port_, that, input, info);
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__bindings__vodozemac_established_sas_calculate_mac(JSAny that, String input, String info) =>
+          wasmModule.wire__crate__bindings__vodozemac_established_sas_calculate_mac(that, input, info);
 
-  void wire__crate__bindings__vodozemac_established_sas_calculate_mac_deprecated(
-          NativePortType port_, JSAny that, String input, String info) =>
-      wasmModule.wire__crate__bindings__vodozemac_established_sas_calculate_mac_deprecated(port_, that, input, info);
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__bindings__vodozemac_established_sas_calculate_mac_deprecated(
+              JSAny that, String input, String info) =>
+          wasmModule.wire__crate__bindings__vodozemac_established_sas_calculate_mac_deprecated(that, input, info);
 
-  void wire__crate__bindings__vodozemac_established_sas_generate_bytes(
-          NativePortType port_, JSAny that, String info, int length) =>
-      wasmModule.wire__crate__bindings__vodozemac_established_sas_generate_bytes(port_, that, info, length);
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__bindings__vodozemac_established_sas_generate_bytes(JSAny that, String info, int length) =>
+          wasmModule.wire__crate__bindings__vodozemac_established_sas_generate_bytes(that, info, length);
 
-  void wire__crate__bindings__vodozemac_established_sas_verify_mac(
-          NativePortType port_, JSAny that, String input, String info, String mac) =>
-      wasmModule.wire__crate__bindings__vodozemac_established_sas_verify_mac(port_, that, input, info, mac);
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__bindings__vodozemac_established_sas_verify_mac(JSAny that, String input, String info, String mac) =>
+          wasmModule.wire__crate__bindings__vodozemac_established_sas_verify_mac(that, input, info, mac);
 
-  void wire__crate__bindings__vodozemac_group_session_encrypt(NativePortType port_, JSAny that, String plaintext) =>
-      wasmModule.wire__crate__bindings__vodozemac_group_session_encrypt(port_, that, plaintext);
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__bindings__vodozemac_group_session_encrypt(JSAny that, String plaintext) =>
+          wasmModule.wire__crate__bindings__vodozemac_group_session_encrypt(that, plaintext);
 
-  void wire__crate__bindings__vodozemac_group_session_from_olm_pickle_encrypted(
-          NativePortType port_, String pickle, JSAny pickle_key) =>
-      wasmModule.wire__crate__bindings__vodozemac_group_session_from_olm_pickle_encrypted(port_, pickle, pickle_key);
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__bindings__vodozemac_group_session_from_olm_pickle_encrypted(String pickle, JSAny pickle_key) =>
+          wasmModule.wire__crate__bindings__vodozemac_group_session_from_olm_pickle_encrypted(pickle, pickle_key);
 
-  void wire__crate__bindings__vodozemac_group_session_from_pickle_encrypted(
-          NativePortType port_, String pickle, JSAny pickle_key) =>
-      wasmModule.wire__crate__bindings__vodozemac_group_session_from_pickle_encrypted(port_, pickle, pickle_key);
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__bindings__vodozemac_group_session_from_pickle_encrypted(String pickle, JSAny pickle_key) =>
+          wasmModule.wire__crate__bindings__vodozemac_group_session_from_pickle_encrypted(pickle, pickle_key);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__bindings__vodozemac_group_session_message_index(JSAny that) =>
@@ -1177,9 +1185,9 @@ class RustLibWire implements BaseWire {
       wire__crate__bindings__vodozemac_group_session_new(JSAny config) =>
           wasmModule.wire__crate__bindings__vodozemac_group_session_new(config);
 
-  void wire__crate__bindings__vodozemac_group_session_pickle_encrypted(
-          NativePortType port_, JSAny that, JSAny pickle_key) =>
-      wasmModule.wire__crate__bindings__vodozemac_group_session_pickle_encrypted(port_, that, pickle_key);
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__bindings__vodozemac_group_session_pickle_encrypted(JSAny that, JSAny pickle_key) =>
+          wasmModule.wire__crate__bindings__vodozemac_group_session_pickle_encrypted(that, pickle_key);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__bindings__vodozemac_group_session_session_config(JSAny that) =>
@@ -1197,9 +1205,9 @@ class RustLibWire implements BaseWire {
       wire__crate__bindings__vodozemac_group_session_to_inbound(JSAny that) =>
           wasmModule.wire__crate__bindings__vodozemac_group_session_to_inbound(that);
 
-  void wire__crate__bindings__vodozemac_inbound_group_session_decrypt(
-          NativePortType port_, JSAny that, String encrypted) =>
-      wasmModule.wire__crate__bindings__vodozemac_inbound_group_session_decrypt(port_, that, encrypted);
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__bindings__vodozemac_inbound_group_session_decrypt(JSAny that, String encrypted) =>
+          wasmModule.wire__crate__bindings__vodozemac_inbound_group_session_decrypt(that, encrypted);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__bindings__vodozemac_inbound_group_session_export_at(JSAny that, int index) =>
@@ -1213,27 +1221,27 @@ class RustLibWire implements BaseWire {
       wire__crate__bindings__vodozemac_inbound_group_session_first_known_index(JSAny that) =>
           wasmModule.wire__crate__bindings__vodozemac_inbound_group_session_first_known_index(that);
 
-  void wire__crate__bindings__vodozemac_inbound_group_session_from_olm_pickle_encrypted(
-          NativePortType port_, String pickle, JSAny pickle_key) =>
-      wasmModule.wire__crate__bindings__vodozemac_inbound_group_session_from_olm_pickle_encrypted(
-          port_, pickle, pickle_key);
-
-  void wire__crate__bindings__vodozemac_inbound_group_session_from_pickle_encrypted(
-          NativePortType port_, String pickle, JSAny pickle_key) =>
-      wasmModule.wire__crate__bindings__vodozemac_inbound_group_session_from_pickle_encrypted(
-          port_, pickle, pickle_key);
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__bindings__vodozemac_inbound_group_session_from_olm_pickle_encrypted(
+              String pickle, JSAny pickle_key) =>
+          wasmModule.wire__crate__bindings__vodozemac_inbound_group_session_from_olm_pickle_encrypted(
+              pickle, pickle_key);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__bindings__vodozemac_inbound_group_session_import(String session_key, JSAny config) =>
-          wasmModule.wire__crate__bindings__vodozemac_inbound_group_session_import(session_key, config);
+      wire__crate__bindings__vodozemac_inbound_group_session_from_pickle_encrypted(String pickle, JSAny pickle_key) =>
+          wasmModule.wire__crate__bindings__vodozemac_inbound_group_session_from_pickle_encrypted(pickle, pickle_key);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__bindings__vodozemac_inbound_group_session_import(String exported_session_key, JSAny config) =>
+          wasmModule.wire__crate__bindings__vodozemac_inbound_group_session_import(exported_session_key, config);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__bindings__vodozemac_inbound_group_session_new(String session_key, JSAny config) =>
           wasmModule.wire__crate__bindings__vodozemac_inbound_group_session_new(session_key, config);
 
-  void wire__crate__bindings__vodozemac_inbound_group_session_pickle_encrypted(
-          NativePortType port_, JSAny that, JSAny pickle_key) =>
-      wasmModule.wire__crate__bindings__vodozemac_inbound_group_session_pickle_encrypted(port_, that, pickle_key);
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__bindings__vodozemac_inbound_group_session_pickle_encrypted(JSAny that, JSAny pickle_key) =>
+          wasmModule.wire__crate__bindings__vodozemac_inbound_group_session_pickle_encrypted(that, pickle_key);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__bindings__vodozemac_inbound_group_session_session_id(JSAny that) =>
@@ -1283,16 +1291,17 @@ class RustLibWire implements BaseWire {
       wire__crate__bindings__vodozemac_olm_session_config_version_2() =>
           wasmModule.wire__crate__bindings__vodozemac_olm_session_config_version_2();
 
-  void wire__crate__bindings__vodozemac_pk_decryption_decrypt(NativePortType port_, JSAny that, JSAny message) =>
-      wasmModule.wire__crate__bindings__vodozemac_pk_decryption_decrypt(port_, that, message);
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__bindings__vodozemac_pk_decryption_decrypt(JSAny that, JSAny message) =>
+          wasmModule.wire__crate__bindings__vodozemac_pk_decryption_decrypt(that, message);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__bindings__vodozemac_pk_decryption_from_key(JSAny secret_key) =>
           wasmModule.wire__crate__bindings__vodozemac_pk_decryption_from_key(secret_key);
 
-  void wire__crate__bindings__vodozemac_pk_decryption_from_libolm_pickle(
-          NativePortType port_, String pickle, JSAny pickle_key) =>
-      wasmModule.wire__crate__bindings__vodozemac_pk_decryption_from_libolm_pickle(port_, pickle, pickle_key);
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__bindings__vodozemac_pk_decryption_from_libolm_pickle(String pickle, JSAny pickle_key) =>
+          wasmModule.wire__crate__bindings__vodozemac_pk_decryption_from_libolm_pickle(pickle, pickle_key);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__bindings__vodozemac_pk_decryption_new() =>
@@ -1306,37 +1315,41 @@ class RustLibWire implements BaseWire {
       wire__crate__bindings__vodozemac_pk_decryption_public_key(JSAny that) =>
           wasmModule.wire__crate__bindings__vodozemac_pk_decryption_public_key(that);
 
-  void wire__crate__bindings__vodozemac_pk_decryption_to_libolm_pickle(
-          NativePortType port_, JSAny that, JSAny pickle_key) =>
-      wasmModule.wire__crate__bindings__vodozemac_pk_decryption_to_libolm_pickle(port_, that, pickle_key);
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__bindings__vodozemac_pk_decryption_to_libolm_pickle(JSAny that, JSAny pickle_key) =>
+          wasmModule.wire__crate__bindings__vodozemac_pk_decryption_to_libolm_pickle(that, pickle_key);
 
-  void wire__crate__bindings__vodozemac_pk_encryption_encrypt(NativePortType port_, JSAny that, String message) =>
-      wasmModule.wire__crate__bindings__vodozemac_pk_encryption_encrypt(port_, that, message);
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__bindings__vodozemac_pk_encryption_encrypt(JSAny that, String message) =>
+          wasmModule.wire__crate__bindings__vodozemac_pk_encryption_encrypt(that, message);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__bindings__vodozemac_pk_encryption_from_key(JSAny public_key) =>
           wasmModule.wire__crate__bindings__vodozemac_pk_encryption_from_key(public_key);
 
-  void wire__crate__bindings__vodozemac_session_decrypt(NativePortType port_, JSAny that, JSAny message) =>
-      wasmModule.wire__crate__bindings__vodozemac_session_decrypt(port_, that, message);
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__bindings__vodozemac_session_decrypt(JSAny that, JSAny message) =>
+          wasmModule.wire__crate__bindings__vodozemac_session_decrypt(that, message);
 
-  void wire__crate__bindings__vodozemac_session_encrypt(NativePortType port_, JSAny that, String plaintext) =>
-      wasmModule.wire__crate__bindings__vodozemac_session_encrypt(port_, that, plaintext);
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__bindings__vodozemac_session_encrypt(JSAny that, String plaintext) =>
+          wasmModule.wire__crate__bindings__vodozemac_session_encrypt(that, plaintext);
 
-  void wire__crate__bindings__vodozemac_session_from_olm_pickle_encrypted(
-          NativePortType port_, String pickle, JSAny pickle_key) =>
-      wasmModule.wire__crate__bindings__vodozemac_session_from_olm_pickle_encrypted(port_, pickle, pickle_key);
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__bindings__vodozemac_session_from_olm_pickle_encrypted(String pickle, JSAny pickle_key) =>
+          wasmModule.wire__crate__bindings__vodozemac_session_from_olm_pickle_encrypted(pickle, pickle_key);
 
-  void wire__crate__bindings__vodozemac_session_from_pickle_encrypted(
-          NativePortType port_, String pickle, JSAny pickle_key) =>
-      wasmModule.wire__crate__bindings__vodozemac_session_from_pickle_encrypted(port_, pickle, pickle_key);
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__bindings__vodozemac_session_from_pickle_encrypted(String pickle, JSAny pickle_key) =>
+          wasmModule.wire__crate__bindings__vodozemac_session_from_pickle_encrypted(pickle, pickle_key);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__bindings__vodozemac_session_has_received_message(JSAny that) =>
           wasmModule.wire__crate__bindings__vodozemac_session_has_received_message(that);
 
-  void wire__crate__bindings__vodozemac_session_pickle_encrypted(NativePortType port_, JSAny that, JSAny pickle_key) =>
-      wasmModule.wire__crate__bindings__vodozemac_session_pickle_encrypted(port_, that, pickle_key);
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__bindings__vodozemac_session_pickle_encrypted(JSAny that, JSAny pickle_key) =>
+          wasmModule.wire__crate__bindings__vodozemac_session_pickle_encrypted(that, pickle_key);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__bindings__vodozemac_session_session_config(JSAny that) =>
@@ -1467,8 +1480,8 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */ wire__crate__bindings__PkSigning_sign(
       int that, String message);
 
-  external void wire__crate__bindings__VodozemacSas_establish_sas_secret(
-      NativePortType port_, int that, String other_public_key);
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__bindings__VodozemacSas_establish_sas_secret(int that, String other_public_key);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__bindings__VodozemacSas_new();
@@ -1476,11 +1489,13 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__bindings__VodozemacSas_public_key(int that);
 
-  external void wire__crate__bindings__vodozemac_account_create_inbound_session(
-      NativePortType port_, JSAny that, JSAny their_identity_key, String pre_key_message_base64);
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__bindings__vodozemac_account_create_inbound_session(
+          JSAny that, JSAny their_identity_key, String pre_key_message_base64);
 
-  external void wire__crate__bindings__vodozemac_account_create_outbound_session(
-      NativePortType port_, JSAny that, JSAny config, JSAny identity_key, JSAny one_time_key);
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__bindings__vodozemac_account_create_outbound_session(
+          JSAny that, JSAny config, JSAny identity_key, JSAny one_time_key);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__bindings__vodozemac_account_curve25519_key(JSAny that);
@@ -1494,16 +1509,17 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__bindings__vodozemac_account_forget_fallback_key(JSAny that);
 
-  external void wire__crate__bindings__vodozemac_account_from_olm_pickle_encrypted(
-      NativePortType port_, String pickle, JSAny pickle_key);
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__bindings__vodozemac_account_from_olm_pickle_encrypted(String pickle, JSAny pickle_key);
 
-  external void wire__crate__bindings__vodozemac_account_from_pickle_encrypted(
-      NativePortType port_, String pickle, JSAny pickle_key);
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__bindings__vodozemac_account_from_pickle_encrypted(String pickle, JSAny pickle_key);
 
-  external void wire__crate__bindings__vodozemac_account_generate_fallback_key(NativePortType port_, JSAny that);
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__bindings__vodozemac_account_generate_fallback_key(JSAny that);
 
-  external void wire__crate__bindings__vodozemac_account_generate_one_time_keys(
-      NativePortType port_, JSAny that, JSAny count);
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__bindings__vodozemac_account_generate_one_time_keys(JSAny that, JSAny count);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__bindings__vodozemac_account_identity_keys(JSAny that);
@@ -1520,10 +1536,11 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__bindings__vodozemac_account_one_time_keys(JSAny that);
 
-  external void wire__crate__bindings__vodozemac_account_pickle_encrypted(
-      NativePortType port_, JSAny that, JSAny pickle_key);
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__bindings__vodozemac_account_pickle_encrypted(JSAny that, JSAny pickle_key);
 
-  external void wire__crate__bindings__vodozemac_account_sign(NativePortType port_, JSAny that, String message);
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__bindings__vodozemac_account_sign(JSAny that, String message);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__bindings__vodozemac_curve_25519_public_key_as_bytes(JSAny that);
@@ -1549,8 +1566,8 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__bindings__vodozemac_ed_25519_public_key_to_base64(JSAny that);
 
-  external void wire__crate__bindings__vodozemac_ed_25519_public_key_verify(
-      NativePortType port_, JSAny that, String message, JSAny signature);
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__bindings__vodozemac_ed_25519_public_key_verify(JSAny that, String message, JSAny signature);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__bindings__vodozemac_ed_25519_signature_from_base64(String signature);
@@ -1564,26 +1581,26 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__bindings__vodozemac_ed_25519_signature_to_bytes(JSAny that);
 
-  external void wire__crate__bindings__vodozemac_established_sas_calculate_mac(
-      NativePortType port_, JSAny that, String input, String info);
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__bindings__vodozemac_established_sas_calculate_mac(JSAny that, String input, String info);
 
-  external void wire__crate__bindings__vodozemac_established_sas_calculate_mac_deprecated(
-      NativePortType port_, JSAny that, String input, String info);
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__bindings__vodozemac_established_sas_calculate_mac_deprecated(JSAny that, String input, String info);
 
-  external void wire__crate__bindings__vodozemac_established_sas_generate_bytes(
-      NativePortType port_, JSAny that, String info, int length);
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__bindings__vodozemac_established_sas_generate_bytes(JSAny that, String info, int length);
 
-  external void wire__crate__bindings__vodozemac_established_sas_verify_mac(
-      NativePortType port_, JSAny that, String input, String info, String mac);
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__bindings__vodozemac_established_sas_verify_mac(JSAny that, String input, String info, String mac);
 
-  external void wire__crate__bindings__vodozemac_group_session_encrypt(
-      NativePortType port_, JSAny that, String plaintext);
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__bindings__vodozemac_group_session_encrypt(JSAny that, String plaintext);
 
-  external void wire__crate__bindings__vodozemac_group_session_from_olm_pickle_encrypted(
-      NativePortType port_, String pickle, JSAny pickle_key);
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__bindings__vodozemac_group_session_from_olm_pickle_encrypted(String pickle, JSAny pickle_key);
 
-  external void wire__crate__bindings__vodozemac_group_session_from_pickle_encrypted(
-      NativePortType port_, String pickle, JSAny pickle_key);
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__bindings__vodozemac_group_session_from_pickle_encrypted(String pickle, JSAny pickle_key);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__bindings__vodozemac_group_session_message_index(JSAny that);
@@ -1591,8 +1608,8 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__bindings__vodozemac_group_session_new(JSAny config);
 
-  external void wire__crate__bindings__vodozemac_group_session_pickle_encrypted(
-      NativePortType port_, JSAny that, JSAny pickle_key);
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__bindings__vodozemac_group_session_pickle_encrypted(JSAny that, JSAny pickle_key);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__bindings__vodozemac_group_session_session_config(JSAny that);
@@ -1606,8 +1623,8 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__bindings__vodozemac_group_session_to_inbound(JSAny that);
 
-  external void wire__crate__bindings__vodozemac_inbound_group_session_decrypt(
-      NativePortType port_, JSAny that, String encrypted);
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__bindings__vodozemac_inbound_group_session_decrypt(JSAny that, String encrypted);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__bindings__vodozemac_inbound_group_session_export_at(JSAny that, int index);
@@ -1618,20 +1635,20 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__bindings__vodozemac_inbound_group_session_first_known_index(JSAny that);
 
-  external void wire__crate__bindings__vodozemac_inbound_group_session_from_olm_pickle_encrypted(
-      NativePortType port_, String pickle, JSAny pickle_key);
-
-  external void wire__crate__bindings__vodozemac_inbound_group_session_from_pickle_encrypted(
-      NativePortType port_, String pickle, JSAny pickle_key);
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__bindings__vodozemac_inbound_group_session_from_olm_pickle_encrypted(String pickle, JSAny pickle_key);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__bindings__vodozemac_inbound_group_session_import(String session_key, JSAny config);
+      wire__crate__bindings__vodozemac_inbound_group_session_from_pickle_encrypted(String pickle, JSAny pickle_key);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__bindings__vodozemac_inbound_group_session_import(String exported_session_key, JSAny config);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__bindings__vodozemac_inbound_group_session_new(String session_key, JSAny config);
 
-  external void wire__crate__bindings__vodozemac_inbound_group_session_pickle_encrypted(
-      NativePortType port_, JSAny that, JSAny pickle_key);
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__bindings__vodozemac_inbound_group_session_pickle_encrypted(JSAny that, JSAny pickle_key);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__bindings__vodozemac_inbound_group_session_session_id(JSAny that);
@@ -1669,13 +1686,14 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__bindings__vodozemac_olm_session_config_version_2();
 
-  external void wire__crate__bindings__vodozemac_pk_decryption_decrypt(NativePortType port_, JSAny that, JSAny message);
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__bindings__vodozemac_pk_decryption_decrypt(JSAny that, JSAny message);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__bindings__vodozemac_pk_decryption_from_key(JSAny secret_key);
 
-  external void wire__crate__bindings__vodozemac_pk_decryption_from_libolm_pickle(
-      NativePortType port_, String pickle, JSAny pickle_key);
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__bindings__vodozemac_pk_decryption_from_libolm_pickle(String pickle, JSAny pickle_key);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__bindings__vodozemac_pk_decryption_new();
@@ -1686,30 +1704,32 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__bindings__vodozemac_pk_decryption_public_key(JSAny that);
 
-  external void wire__crate__bindings__vodozemac_pk_decryption_to_libolm_pickle(
-      NativePortType port_, JSAny that, JSAny pickle_key);
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__bindings__vodozemac_pk_decryption_to_libolm_pickle(JSAny that, JSAny pickle_key);
 
-  external void wire__crate__bindings__vodozemac_pk_encryption_encrypt(
-      NativePortType port_, JSAny that, String message);
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__bindings__vodozemac_pk_encryption_encrypt(JSAny that, String message);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__bindings__vodozemac_pk_encryption_from_key(JSAny public_key);
 
-  external void wire__crate__bindings__vodozemac_session_decrypt(NativePortType port_, JSAny that, JSAny message);
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__bindings__vodozemac_session_decrypt(JSAny that, JSAny message);
 
-  external void wire__crate__bindings__vodozemac_session_encrypt(NativePortType port_, JSAny that, String plaintext);
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__bindings__vodozemac_session_encrypt(JSAny that, String plaintext);
 
-  external void wire__crate__bindings__vodozemac_session_from_olm_pickle_encrypted(
-      NativePortType port_, String pickle, JSAny pickle_key);
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__bindings__vodozemac_session_from_olm_pickle_encrypted(String pickle, JSAny pickle_key);
 
-  external void wire__crate__bindings__vodozemac_session_from_pickle_encrypted(
-      NativePortType port_, String pickle, JSAny pickle_key);
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__bindings__vodozemac_session_from_pickle_encrypted(String pickle, JSAny pickle_key);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__bindings__vodozemac_session_has_received_message(JSAny that);
 
-  external void wire__crate__bindings__vodozemac_session_pickle_encrypted(
-      NativePortType port_, JSAny that, JSAny pickle_key);
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__bindings__vodozemac_session_pickle_encrypted(JSAny that, JSAny pickle_key);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__bindings__vodozemac_session_session_config(JSAny that);

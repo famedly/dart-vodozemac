@@ -1218,24 +1218,22 @@ class RustLibWire implements BaseWire {
   late final _wire__crate__bindings__PkSigning_sign = _wire__crate__bindings__PkSigning_signPtr
       .asFunction<WireSyncRust2DartDco Function(int, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
 
-  void wire__crate__bindings__VodozemacSas_establish_sas_secret(
-    int port_,
+  WireSyncRust2DartDco wire__crate__bindings__VodozemacSas_establish_sas_secret(
     int that,
     ffi.Pointer<wire_cst_list_prim_u_8_strict> other_public_key,
   ) {
     return _wire__crate__bindings__VodozemacSas_establish_sas_secret(
-      port_,
       that,
       other_public_key,
     );
   }
 
   late final _wire__crate__bindings__VodozemacSas_establish_sas_secretPtr = _lookup<
-          ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.UintPtr, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
+          ffi.NativeFunction<WireSyncRust2DartDco Function(ffi.UintPtr, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
       'frbgen_vodozemac_wire__crate__bindings__VodozemacSas_establish_sas_secret');
   late final _wire__crate__bindings__VodozemacSas_establish_sas_secret =
       _wire__crate__bindings__VodozemacSas_establish_sas_secretPtr
-          .asFunction<void Function(int, int, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
+          .asFunction<WireSyncRust2DartDco Function(int, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
 
   WireSyncRust2DartDco wire__crate__bindings__VodozemacSas_new() {
     return _wire__crate__bindings__VodozemacSas_new();
@@ -1260,14 +1258,12 @@ class RustLibWire implements BaseWire {
   late final _wire__crate__bindings__VodozemacSas_public_key =
       _wire__crate__bindings__VodozemacSas_public_keyPtr.asFunction<WireSyncRust2DartDco Function(int)>();
 
-  void wire__crate__bindings__vodozemac_account_create_inbound_session(
-    int port_,
+  WireSyncRust2DartDco wire__crate__bindings__vodozemac_account_create_inbound_session(
     ffi.Pointer<wire_cst_vodozemac_account> that,
     ffi.Pointer<wire_cst_vodozemac_curve_25519_public_key> their_identity_key,
     ffi.Pointer<wire_cst_list_prim_u_8_strict> pre_key_message_base64,
   ) {
     return _wire__crate__bindings__vodozemac_account_create_inbound_session(
-      port_,
       that,
       their_identity_key,
       pre_key_message_base64,
@@ -1276,23 +1272,21 @@ class RustLibWire implements BaseWire {
 
   late final _wire__crate__bindings__vodozemac_account_create_inbound_sessionPtr = _lookup<
           ffi.NativeFunction<
-              ffi.Void Function(ffi.Int64, ffi.Pointer<wire_cst_vodozemac_account>,
+              WireSyncRust2DartDco Function(ffi.Pointer<wire_cst_vodozemac_account>,
                   ffi.Pointer<wire_cst_vodozemac_curve_25519_public_key>, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
       'frbgen_vodozemac_wire__crate__bindings__vodozemac_account_create_inbound_session');
   late final _wire__crate__bindings__vodozemac_account_create_inbound_session =
       _wire__crate__bindings__vodozemac_account_create_inbound_sessionPtr.asFunction<
-          void Function(int, ffi.Pointer<wire_cst_vodozemac_account>,
+          WireSyncRust2DartDco Function(ffi.Pointer<wire_cst_vodozemac_account>,
               ffi.Pointer<wire_cst_vodozemac_curve_25519_public_key>, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
 
-  void wire__crate__bindings__vodozemac_account_create_outbound_session(
-    int port_,
+  WireSyncRust2DartDco wire__crate__bindings__vodozemac_account_create_outbound_session(
     ffi.Pointer<wire_cst_vodozemac_account> that,
     ffi.Pointer<wire_cst_vodozemac_olm_session_config> config,
     ffi.Pointer<wire_cst_vodozemac_curve_25519_public_key> identity_key,
     ffi.Pointer<wire_cst_vodozemac_curve_25519_public_key> one_time_key,
   ) {
     return _wire__crate__bindings__vodozemac_account_create_outbound_session(
-      port_,
       that,
       config,
       identity_key,
@@ -1302,8 +1296,7 @@ class RustLibWire implements BaseWire {
 
   late final _wire__crate__bindings__vodozemac_account_create_outbound_sessionPtr = _lookup<
           ffi.NativeFunction<
-              ffi.Void Function(
-                  ffi.Int64,
+              WireSyncRust2DartDco Function(
                   ffi.Pointer<wire_cst_vodozemac_account>,
                   ffi.Pointer<wire_cst_vodozemac_olm_session_config>,
                   ffi.Pointer<wire_cst_vodozemac_curve_25519_public_key>,
@@ -1311,8 +1304,7 @@ class RustLibWire implements BaseWire {
       'frbgen_vodozemac_wire__crate__bindings__vodozemac_account_create_outbound_session');
   late final _wire__crate__bindings__vodozemac_account_create_outbound_session =
       _wire__crate__bindings__vodozemac_account_create_outbound_sessionPtr.asFunction<
-          void Function(
-              int,
+          WireSyncRust2DartDco Function(
               ffi.Pointer<wire_cst_vodozemac_account>,
               ffi.Pointer<wire_cst_vodozemac_olm_session_config>,
               ffi.Pointer<wire_cst_vodozemac_curve_25519_public_key>,
@@ -1378,13 +1370,11 @@ class RustLibWire implements BaseWire {
       _wire__crate__bindings__vodozemac_account_forget_fallback_keyPtr
           .asFunction<WireSyncRust2DartDco Function(ffi.Pointer<wire_cst_vodozemac_account>)>();
 
-  void wire__crate__bindings__vodozemac_account_from_olm_pickle_encrypted(
-    int port_,
+  WireSyncRust2DartDco wire__crate__bindings__vodozemac_account_from_olm_pickle_encrypted(
     ffi.Pointer<wire_cst_list_prim_u_8_strict> pickle,
     ffi.Pointer<wire_cst_list_prim_u_8_loose> pickle_key,
   ) {
     return _wire__crate__bindings__vodozemac_account_from_olm_pickle_encrypted(
-      port_,
       pickle,
       pickle_key,
     );
@@ -1392,20 +1382,19 @@ class RustLibWire implements BaseWire {
 
   late final _wire__crate__bindings__vodozemac_account_from_olm_pickle_encryptedPtr = _lookup<
           ffi.NativeFunction<
-              ffi.Void Function(
-                  ffi.Int64, ffi.Pointer<wire_cst_list_prim_u_8_strict>, ffi.Pointer<wire_cst_list_prim_u_8_loose>)>>(
+              WireSyncRust2DartDco Function(
+                  ffi.Pointer<wire_cst_list_prim_u_8_strict>, ffi.Pointer<wire_cst_list_prim_u_8_loose>)>>(
       'frbgen_vodozemac_wire__crate__bindings__vodozemac_account_from_olm_pickle_encrypted');
   late final _wire__crate__bindings__vodozemac_account_from_olm_pickle_encrypted =
       _wire__crate__bindings__vodozemac_account_from_olm_pickle_encryptedPtr.asFunction<
-          void Function(int, ffi.Pointer<wire_cst_list_prim_u_8_strict>, ffi.Pointer<wire_cst_list_prim_u_8_loose>)>();
+          WireSyncRust2DartDco Function(
+              ffi.Pointer<wire_cst_list_prim_u_8_strict>, ffi.Pointer<wire_cst_list_prim_u_8_loose>)>();
 
-  void wire__crate__bindings__vodozemac_account_from_pickle_encrypted(
-    int port_,
+  WireSyncRust2DartDco wire__crate__bindings__vodozemac_account_from_pickle_encrypted(
     ffi.Pointer<wire_cst_list_prim_u_8_strict> pickle,
     ffi.Pointer<wire_cst_list_prim_u_8_strict> pickle_key,
   ) {
     return _wire__crate__bindings__vodozemac_account_from_pickle_encrypted(
-      port_,
       pickle,
       pickle_key,
     );
@@ -1413,48 +1402,45 @@ class RustLibWire implements BaseWire {
 
   late final _wire__crate__bindings__vodozemac_account_from_pickle_encryptedPtr = _lookup<
           ffi.NativeFunction<
-              ffi.Void Function(
-                  ffi.Int64, ffi.Pointer<wire_cst_list_prim_u_8_strict>, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
+              WireSyncRust2DartDco Function(
+                  ffi.Pointer<wire_cst_list_prim_u_8_strict>, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
       'frbgen_vodozemac_wire__crate__bindings__vodozemac_account_from_pickle_encrypted');
   late final _wire__crate__bindings__vodozemac_account_from_pickle_encrypted =
       _wire__crate__bindings__vodozemac_account_from_pickle_encryptedPtr.asFunction<
-          void Function(int, ffi.Pointer<wire_cst_list_prim_u_8_strict>, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
+          WireSyncRust2DartDco Function(
+              ffi.Pointer<wire_cst_list_prim_u_8_strict>, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
 
-  void wire__crate__bindings__vodozemac_account_generate_fallback_key(
-    int port_,
+  WireSyncRust2DartDco wire__crate__bindings__vodozemac_account_generate_fallback_key(
     ffi.Pointer<wire_cst_vodozemac_account> that,
   ) {
     return _wire__crate__bindings__vodozemac_account_generate_fallback_key(
-      port_,
       that,
     );
   }
 
   late final _wire__crate__bindings__vodozemac_account_generate_fallback_keyPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_cst_vodozemac_account>)>>(
+      _lookup<ffi.NativeFunction<WireSyncRust2DartDco Function(ffi.Pointer<wire_cst_vodozemac_account>)>>(
           'frbgen_vodozemac_wire__crate__bindings__vodozemac_account_generate_fallback_key');
   late final _wire__crate__bindings__vodozemac_account_generate_fallback_key =
       _wire__crate__bindings__vodozemac_account_generate_fallback_keyPtr
-          .asFunction<void Function(int, ffi.Pointer<wire_cst_vodozemac_account>)>();
+          .asFunction<WireSyncRust2DartDco Function(ffi.Pointer<wire_cst_vodozemac_account>)>();
 
-  void wire__crate__bindings__vodozemac_account_generate_one_time_keys(
-    int port_,
+  WireSyncRust2DartDco wire__crate__bindings__vodozemac_account_generate_one_time_keys(
     ffi.Pointer<wire_cst_vodozemac_account> that,
     int count,
   ) {
     return _wire__crate__bindings__vodozemac_account_generate_one_time_keys(
-      port_,
       that,
       count,
     );
   }
 
   late final _wire__crate__bindings__vodozemac_account_generate_one_time_keysPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_cst_vodozemac_account>, ffi.UintPtr)>>(
+      _lookup<ffi.NativeFunction<WireSyncRust2DartDco Function(ffi.Pointer<wire_cst_vodozemac_account>, ffi.UintPtr)>>(
           'frbgen_vodozemac_wire__crate__bindings__vodozemac_account_generate_one_time_keys');
   late final _wire__crate__bindings__vodozemac_account_generate_one_time_keys =
       _wire__crate__bindings__vodozemac_account_generate_one_time_keysPtr
-          .asFunction<void Function(int, ffi.Pointer<wire_cst_vodozemac_account>, int)>();
+          .asFunction<WireSyncRust2DartDco Function(ffi.Pointer<wire_cst_vodozemac_account>, int)>();
 
   WireSyncRust2DartDco wire__crate__bindings__vodozemac_account_identity_keys(
     ffi.Pointer<wire_cst_vodozemac_account> that,
@@ -1526,13 +1512,11 @@ class RustLibWire implements BaseWire {
       _wire__crate__bindings__vodozemac_account_one_time_keysPtr
           .asFunction<WireSyncRust2DartDco Function(ffi.Pointer<wire_cst_vodozemac_account>)>();
 
-  void wire__crate__bindings__vodozemac_account_pickle_encrypted(
-    int port_,
+  WireSyncRust2DartDco wire__crate__bindings__vodozemac_account_pickle_encrypted(
     ffi.Pointer<wire_cst_vodozemac_account> that,
     ffi.Pointer<wire_cst_list_prim_u_8_strict> pickle_key,
   ) {
     return _wire__crate__bindings__vodozemac_account_pickle_encrypted(
-      port_,
       that,
       pickle_key,
     );
@@ -1540,20 +1524,19 @@ class RustLibWire implements BaseWire {
 
   late final _wire__crate__bindings__vodozemac_account_pickle_encryptedPtr = _lookup<
           ffi.NativeFunction<
-              ffi.Void Function(
-                  ffi.Int64, ffi.Pointer<wire_cst_vodozemac_account>, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
+              WireSyncRust2DartDco Function(
+                  ffi.Pointer<wire_cst_vodozemac_account>, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
       'frbgen_vodozemac_wire__crate__bindings__vodozemac_account_pickle_encrypted');
   late final _wire__crate__bindings__vodozemac_account_pickle_encrypted =
       _wire__crate__bindings__vodozemac_account_pickle_encryptedPtr.asFunction<
-          void Function(int, ffi.Pointer<wire_cst_vodozemac_account>, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
+          WireSyncRust2DartDco Function(
+              ffi.Pointer<wire_cst_vodozemac_account>, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
 
-  void wire__crate__bindings__vodozemac_account_sign(
-    int port_,
+  WireSyncRust2DartDco wire__crate__bindings__vodozemac_account_sign(
     ffi.Pointer<wire_cst_vodozemac_account> that,
     ffi.Pointer<wire_cst_list_prim_u_8_strict> message,
   ) {
     return _wire__crate__bindings__vodozemac_account_sign(
-      port_,
       that,
       message,
     );
@@ -1561,12 +1544,13 @@ class RustLibWire implements BaseWire {
 
   late final _wire__crate__bindings__vodozemac_account_signPtr = _lookup<
           ffi.NativeFunction<
-              ffi.Void Function(
-                  ffi.Int64, ffi.Pointer<wire_cst_vodozemac_account>, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
+              WireSyncRust2DartDco Function(
+                  ffi.Pointer<wire_cst_vodozemac_account>, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
       'frbgen_vodozemac_wire__crate__bindings__vodozemac_account_sign');
   late final _wire__crate__bindings__vodozemac_account_sign =
       _wire__crate__bindings__vodozemac_account_signPtr.asFunction<
-          void Function(int, ffi.Pointer<wire_cst_vodozemac_account>, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
+          WireSyncRust2DartDco Function(
+              ffi.Pointer<wire_cst_vodozemac_account>, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
 
   WireSyncRust2DartDco wire__crate__bindings__vodozemac_curve_25519_public_key_as_bytes(
     ffi.Pointer<wire_cst_vodozemac_curve_25519_public_key> that,
@@ -1688,14 +1672,12 @@ class RustLibWire implements BaseWire {
       _wire__crate__bindings__vodozemac_ed_25519_public_key_to_base64Ptr
           .asFunction<WireSyncRust2DartDco Function(ffi.Pointer<wire_cst_vodozemac_ed_25519_public_key>)>();
 
-  void wire__crate__bindings__vodozemac_ed_25519_public_key_verify(
-    int port_,
+  WireSyncRust2DartDco wire__crate__bindings__vodozemac_ed_25519_public_key_verify(
     ffi.Pointer<wire_cst_vodozemac_ed_25519_public_key> that,
     ffi.Pointer<wire_cst_list_prim_u_8_strict> message,
     ffi.Pointer<wire_cst_vodozemac_ed_25519_signature> signature,
   ) {
     return _wire__crate__bindings__vodozemac_ed_25519_public_key_verify(
-      port_,
       that,
       message,
       signature,
@@ -1704,12 +1686,12 @@ class RustLibWire implements BaseWire {
 
   late final _wire__crate__bindings__vodozemac_ed_25519_public_key_verifyPtr = _lookup<
           ffi.NativeFunction<
-              ffi.Void Function(ffi.Int64, ffi.Pointer<wire_cst_vodozemac_ed_25519_public_key>,
+              WireSyncRust2DartDco Function(ffi.Pointer<wire_cst_vodozemac_ed_25519_public_key>,
                   ffi.Pointer<wire_cst_list_prim_u_8_strict>, ffi.Pointer<wire_cst_vodozemac_ed_25519_signature>)>>(
       'frbgen_vodozemac_wire__crate__bindings__vodozemac_ed_25519_public_key_verify');
   late final _wire__crate__bindings__vodozemac_ed_25519_public_key_verify =
       _wire__crate__bindings__vodozemac_ed_25519_public_key_verifyPtr.asFunction<
-          void Function(int, ffi.Pointer<wire_cst_vodozemac_ed_25519_public_key>,
+          WireSyncRust2DartDco Function(ffi.Pointer<wire_cst_vodozemac_ed_25519_public_key>,
               ffi.Pointer<wire_cst_list_prim_u_8_strict>, ffi.Pointer<wire_cst_vodozemac_ed_25519_signature>)>();
 
   WireSyncRust2DartDco wire__crate__bindings__vodozemac_ed_25519_signature_from_base64(
@@ -1772,14 +1754,12 @@ class RustLibWire implements BaseWire {
       _wire__crate__bindings__vodozemac_ed_25519_signature_to_bytesPtr
           .asFunction<WireSyncRust2DartDco Function(ffi.Pointer<wire_cst_vodozemac_ed_25519_signature>)>();
 
-  void wire__crate__bindings__vodozemac_established_sas_calculate_mac(
-    int port_,
+  WireSyncRust2DartDco wire__crate__bindings__vodozemac_established_sas_calculate_mac(
     ffi.Pointer<wire_cst_vodozemac_established_sas> that,
     ffi.Pointer<wire_cst_list_prim_u_8_strict> input,
     ffi.Pointer<wire_cst_list_prim_u_8_strict> info,
   ) {
     return _wire__crate__bindings__vodozemac_established_sas_calculate_mac(
-      port_,
       that,
       input,
       info,
@@ -1788,22 +1768,20 @@ class RustLibWire implements BaseWire {
 
   late final _wire__crate__bindings__vodozemac_established_sas_calculate_macPtr = _lookup<
           ffi.NativeFunction<
-              ffi.Void Function(ffi.Int64, ffi.Pointer<wire_cst_vodozemac_established_sas>,
+              WireSyncRust2DartDco Function(ffi.Pointer<wire_cst_vodozemac_established_sas>,
                   ffi.Pointer<wire_cst_list_prim_u_8_strict>, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
       'frbgen_vodozemac_wire__crate__bindings__vodozemac_established_sas_calculate_mac');
   late final _wire__crate__bindings__vodozemac_established_sas_calculate_mac =
       _wire__crate__bindings__vodozemac_established_sas_calculate_macPtr.asFunction<
-          void Function(int, ffi.Pointer<wire_cst_vodozemac_established_sas>,
+          WireSyncRust2DartDco Function(ffi.Pointer<wire_cst_vodozemac_established_sas>,
               ffi.Pointer<wire_cst_list_prim_u_8_strict>, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
 
-  void wire__crate__bindings__vodozemac_established_sas_calculate_mac_deprecated(
-    int port_,
+  WireSyncRust2DartDco wire__crate__bindings__vodozemac_established_sas_calculate_mac_deprecated(
     ffi.Pointer<wire_cst_vodozemac_established_sas> that,
     ffi.Pointer<wire_cst_list_prim_u_8_strict> input,
     ffi.Pointer<wire_cst_list_prim_u_8_strict> info,
   ) {
     return _wire__crate__bindings__vodozemac_established_sas_calculate_mac_deprecated(
-      port_,
       that,
       input,
       info,
@@ -1812,22 +1790,20 @@ class RustLibWire implements BaseWire {
 
   late final _wire__crate__bindings__vodozemac_established_sas_calculate_mac_deprecatedPtr = _lookup<
           ffi.NativeFunction<
-              ffi.Void Function(ffi.Int64, ffi.Pointer<wire_cst_vodozemac_established_sas>,
+              WireSyncRust2DartDco Function(ffi.Pointer<wire_cst_vodozemac_established_sas>,
                   ffi.Pointer<wire_cst_list_prim_u_8_strict>, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
       'frbgen_vodozemac_wire__crate__bindings__vodozemac_established_sas_calculate_mac_deprecated');
   late final _wire__crate__bindings__vodozemac_established_sas_calculate_mac_deprecated =
       _wire__crate__bindings__vodozemac_established_sas_calculate_mac_deprecatedPtr.asFunction<
-          void Function(int, ffi.Pointer<wire_cst_vodozemac_established_sas>,
+          WireSyncRust2DartDco Function(ffi.Pointer<wire_cst_vodozemac_established_sas>,
               ffi.Pointer<wire_cst_list_prim_u_8_strict>, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
 
-  void wire__crate__bindings__vodozemac_established_sas_generate_bytes(
-    int port_,
+  WireSyncRust2DartDco wire__crate__bindings__vodozemac_established_sas_generate_bytes(
     ffi.Pointer<wire_cst_vodozemac_established_sas> that,
     ffi.Pointer<wire_cst_list_prim_u_8_strict> info,
     int length,
   ) {
     return _wire__crate__bindings__vodozemac_established_sas_generate_bytes(
-      port_,
       that,
       info,
       length,
@@ -1836,25 +1812,22 @@ class RustLibWire implements BaseWire {
 
   late final _wire__crate__bindings__vodozemac_established_sas_generate_bytesPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Void Function(
-              ffi.Int64,
+          WireSyncRust2DartDco Function(
               ffi.Pointer<wire_cst_vodozemac_established_sas>,
               ffi.Pointer<wire_cst_list_prim_u_8_strict>,
               ffi.Uint32)>>('frbgen_vodozemac_wire__crate__bindings__vodozemac_established_sas_generate_bytes');
   late final _wire__crate__bindings__vodozemac_established_sas_generate_bytes =
       _wire__crate__bindings__vodozemac_established_sas_generate_bytesPtr.asFunction<
-          void Function(
-              int, ffi.Pointer<wire_cst_vodozemac_established_sas>, ffi.Pointer<wire_cst_list_prim_u_8_strict>, int)>();
+          WireSyncRust2DartDco Function(
+              ffi.Pointer<wire_cst_vodozemac_established_sas>, ffi.Pointer<wire_cst_list_prim_u_8_strict>, int)>();
 
-  void wire__crate__bindings__vodozemac_established_sas_verify_mac(
-    int port_,
+  WireSyncRust2DartDco wire__crate__bindings__vodozemac_established_sas_verify_mac(
     ffi.Pointer<wire_cst_vodozemac_established_sas> that,
     ffi.Pointer<wire_cst_list_prim_u_8_strict> input,
     ffi.Pointer<wire_cst_list_prim_u_8_strict> info,
     ffi.Pointer<wire_cst_list_prim_u_8_strict> mac,
   ) {
     return _wire__crate__bindings__vodozemac_established_sas_verify_mac(
-      port_,
       that,
       input,
       info,
@@ -1864,8 +1837,7 @@ class RustLibWire implements BaseWire {
 
   late final _wire__crate__bindings__vodozemac_established_sas_verify_macPtr = _lookup<
           ffi.NativeFunction<
-              ffi.Void Function(
-                  ffi.Int64,
+              WireSyncRust2DartDco Function(
                   ffi.Pointer<wire_cst_vodozemac_established_sas>,
                   ffi.Pointer<wire_cst_list_prim_u_8_strict>,
                   ffi.Pointer<wire_cst_list_prim_u_8_strict>,
@@ -1873,20 +1845,17 @@ class RustLibWire implements BaseWire {
       'frbgen_vodozemac_wire__crate__bindings__vodozemac_established_sas_verify_mac');
   late final _wire__crate__bindings__vodozemac_established_sas_verify_mac =
       _wire__crate__bindings__vodozemac_established_sas_verify_macPtr.asFunction<
-          void Function(
-              int,
+          WireSyncRust2DartDco Function(
               ffi.Pointer<wire_cst_vodozemac_established_sas>,
               ffi.Pointer<wire_cst_list_prim_u_8_strict>,
               ffi.Pointer<wire_cst_list_prim_u_8_strict>,
               ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
 
-  void wire__crate__bindings__vodozemac_group_session_encrypt(
-    int port_,
+  WireSyncRust2DartDco wire__crate__bindings__vodozemac_group_session_encrypt(
     ffi.Pointer<wire_cst_vodozemac_group_session> that,
     ffi.Pointer<wire_cst_list_prim_u_8_strict> plaintext,
   ) {
     return _wire__crate__bindings__vodozemac_group_session_encrypt(
-      port_,
       that,
       plaintext,
     );
@@ -1894,21 +1863,19 @@ class RustLibWire implements BaseWire {
 
   late final _wire__crate__bindings__vodozemac_group_session_encryptPtr = _lookup<
           ffi.NativeFunction<
-              ffi.Void Function(ffi.Int64, ffi.Pointer<wire_cst_vodozemac_group_session>,
-                  ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
+              WireSyncRust2DartDco Function(
+                  ffi.Pointer<wire_cst_vodozemac_group_session>, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
       'frbgen_vodozemac_wire__crate__bindings__vodozemac_group_session_encrypt');
   late final _wire__crate__bindings__vodozemac_group_session_encrypt =
       _wire__crate__bindings__vodozemac_group_session_encryptPtr.asFunction<
-          void Function(
-              int, ffi.Pointer<wire_cst_vodozemac_group_session>, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
+          WireSyncRust2DartDco Function(
+              ffi.Pointer<wire_cst_vodozemac_group_session>, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
 
-  void wire__crate__bindings__vodozemac_group_session_from_olm_pickle_encrypted(
-    int port_,
+  WireSyncRust2DartDco wire__crate__bindings__vodozemac_group_session_from_olm_pickle_encrypted(
     ffi.Pointer<wire_cst_list_prim_u_8_strict> pickle,
     ffi.Pointer<wire_cst_list_prim_u_8_loose> pickle_key,
   ) {
     return _wire__crate__bindings__vodozemac_group_session_from_olm_pickle_encrypted(
-      port_,
       pickle,
       pickle_key,
     );
@@ -1916,20 +1883,19 @@ class RustLibWire implements BaseWire {
 
   late final _wire__crate__bindings__vodozemac_group_session_from_olm_pickle_encryptedPtr = _lookup<
           ffi.NativeFunction<
-              ffi.Void Function(
-                  ffi.Int64, ffi.Pointer<wire_cst_list_prim_u_8_strict>, ffi.Pointer<wire_cst_list_prim_u_8_loose>)>>(
+              WireSyncRust2DartDco Function(
+                  ffi.Pointer<wire_cst_list_prim_u_8_strict>, ffi.Pointer<wire_cst_list_prim_u_8_loose>)>>(
       'frbgen_vodozemac_wire__crate__bindings__vodozemac_group_session_from_olm_pickle_encrypted');
   late final _wire__crate__bindings__vodozemac_group_session_from_olm_pickle_encrypted =
       _wire__crate__bindings__vodozemac_group_session_from_olm_pickle_encryptedPtr.asFunction<
-          void Function(int, ffi.Pointer<wire_cst_list_prim_u_8_strict>, ffi.Pointer<wire_cst_list_prim_u_8_loose>)>();
+          WireSyncRust2DartDco Function(
+              ffi.Pointer<wire_cst_list_prim_u_8_strict>, ffi.Pointer<wire_cst_list_prim_u_8_loose>)>();
 
-  void wire__crate__bindings__vodozemac_group_session_from_pickle_encrypted(
-    int port_,
+  WireSyncRust2DartDco wire__crate__bindings__vodozemac_group_session_from_pickle_encrypted(
     ffi.Pointer<wire_cst_list_prim_u_8_strict> pickle,
     ffi.Pointer<wire_cst_list_prim_u_8_strict> pickle_key,
   ) {
     return _wire__crate__bindings__vodozemac_group_session_from_pickle_encrypted(
-      port_,
       pickle,
       pickle_key,
     );
@@ -1937,12 +1903,13 @@ class RustLibWire implements BaseWire {
 
   late final _wire__crate__bindings__vodozemac_group_session_from_pickle_encryptedPtr = _lookup<
           ffi.NativeFunction<
-              ffi.Void Function(
-                  ffi.Int64, ffi.Pointer<wire_cst_list_prim_u_8_strict>, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
+              WireSyncRust2DartDco Function(
+                  ffi.Pointer<wire_cst_list_prim_u_8_strict>, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
       'frbgen_vodozemac_wire__crate__bindings__vodozemac_group_session_from_pickle_encrypted');
   late final _wire__crate__bindings__vodozemac_group_session_from_pickle_encrypted =
       _wire__crate__bindings__vodozemac_group_session_from_pickle_encryptedPtr.asFunction<
-          void Function(int, ffi.Pointer<wire_cst_list_prim_u_8_strict>, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
+          WireSyncRust2DartDco Function(
+              ffi.Pointer<wire_cst_list_prim_u_8_strict>, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
 
   WireSyncRust2DartDco wire__crate__bindings__vodozemac_group_session_message_index(
     ffi.Pointer<wire_cst_vodozemac_group_session> that,
@@ -1974,13 +1941,11 @@ class RustLibWire implements BaseWire {
       _wire__crate__bindings__vodozemac_group_session_newPtr
           .asFunction<WireSyncRust2DartDco Function(ffi.Pointer<wire_cst_vodozemac_megolm_session_config>)>();
 
-  void wire__crate__bindings__vodozemac_group_session_pickle_encrypted(
-    int port_,
+  WireSyncRust2DartDco wire__crate__bindings__vodozemac_group_session_pickle_encrypted(
     ffi.Pointer<wire_cst_vodozemac_group_session> that,
     ffi.Pointer<wire_cst_list_prim_u_8_strict> pickle_key,
   ) {
     return _wire__crate__bindings__vodozemac_group_session_pickle_encrypted(
-      port_,
       that,
       pickle_key,
     );
@@ -1988,13 +1953,13 @@ class RustLibWire implements BaseWire {
 
   late final _wire__crate__bindings__vodozemac_group_session_pickle_encryptedPtr = _lookup<
           ffi.NativeFunction<
-              ffi.Void Function(ffi.Int64, ffi.Pointer<wire_cst_vodozemac_group_session>,
-                  ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
+              WireSyncRust2DartDco Function(
+                  ffi.Pointer<wire_cst_vodozemac_group_session>, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
       'frbgen_vodozemac_wire__crate__bindings__vodozemac_group_session_pickle_encrypted');
   late final _wire__crate__bindings__vodozemac_group_session_pickle_encrypted =
       _wire__crate__bindings__vodozemac_group_session_pickle_encryptedPtr.asFunction<
-          void Function(
-              int, ffi.Pointer<wire_cst_vodozemac_group_session>, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
+          WireSyncRust2DartDco Function(
+              ffi.Pointer<wire_cst_vodozemac_group_session>, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
 
   WireSyncRust2DartDco wire__crate__bindings__vodozemac_group_session_session_config(
     ffi.Pointer<wire_cst_vodozemac_group_session> that,
@@ -2056,13 +2021,11 @@ class RustLibWire implements BaseWire {
       _wire__crate__bindings__vodozemac_group_session_to_inboundPtr
           .asFunction<WireSyncRust2DartDco Function(ffi.Pointer<wire_cst_vodozemac_group_session>)>();
 
-  void wire__crate__bindings__vodozemac_inbound_group_session_decrypt(
-    int port_,
+  WireSyncRust2DartDco wire__crate__bindings__vodozemac_inbound_group_session_decrypt(
     ffi.Pointer<wire_cst_vodozemac_inbound_group_session> that,
     ffi.Pointer<wire_cst_list_prim_u_8_strict> encrypted,
   ) {
     return _wire__crate__bindings__vodozemac_inbound_group_session_decrypt(
-      port_,
       that,
       encrypted,
     );
@@ -2070,13 +2033,13 @@ class RustLibWire implements BaseWire {
 
   late final _wire__crate__bindings__vodozemac_inbound_group_session_decryptPtr = _lookup<
           ffi.NativeFunction<
-              ffi.Void Function(ffi.Int64, ffi.Pointer<wire_cst_vodozemac_inbound_group_session>,
-                  ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
+              WireSyncRust2DartDco Function(
+                  ffi.Pointer<wire_cst_vodozemac_inbound_group_session>, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
       'frbgen_vodozemac_wire__crate__bindings__vodozemac_inbound_group_session_decrypt');
   late final _wire__crate__bindings__vodozemac_inbound_group_session_decrypt =
       _wire__crate__bindings__vodozemac_inbound_group_session_decryptPtr.asFunction<
-          void Function(int, ffi.Pointer<wire_cst_vodozemac_inbound_group_session>,
-              ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
+          WireSyncRust2DartDco Function(
+              ffi.Pointer<wire_cst_vodozemac_inbound_group_session>, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
 
   WireSyncRust2DartDco wire__crate__bindings__vodozemac_inbound_group_session_export_at(
     ffi.Pointer<wire_cst_vodozemac_inbound_group_session> that,
@@ -2126,13 +2089,11 @@ class RustLibWire implements BaseWire {
       _wire__crate__bindings__vodozemac_inbound_group_session_first_known_indexPtr
           .asFunction<WireSyncRust2DartDco Function(ffi.Pointer<wire_cst_vodozemac_inbound_group_session>)>();
 
-  void wire__crate__bindings__vodozemac_inbound_group_session_from_olm_pickle_encrypted(
-    int port_,
+  WireSyncRust2DartDco wire__crate__bindings__vodozemac_inbound_group_session_from_olm_pickle_encrypted(
     ffi.Pointer<wire_cst_list_prim_u_8_strict> pickle,
     ffi.Pointer<wire_cst_list_prim_u_8_loose> pickle_key,
   ) {
     return _wire__crate__bindings__vodozemac_inbound_group_session_from_olm_pickle_encrypted(
-      port_,
       pickle,
       pickle_key,
     );
@@ -2140,20 +2101,19 @@ class RustLibWire implements BaseWire {
 
   late final _wire__crate__bindings__vodozemac_inbound_group_session_from_olm_pickle_encryptedPtr = _lookup<
           ffi.NativeFunction<
-              ffi.Void Function(
-                  ffi.Int64, ffi.Pointer<wire_cst_list_prim_u_8_strict>, ffi.Pointer<wire_cst_list_prim_u_8_loose>)>>(
+              WireSyncRust2DartDco Function(
+                  ffi.Pointer<wire_cst_list_prim_u_8_strict>, ffi.Pointer<wire_cst_list_prim_u_8_loose>)>>(
       'frbgen_vodozemac_wire__crate__bindings__vodozemac_inbound_group_session_from_olm_pickle_encrypted');
   late final _wire__crate__bindings__vodozemac_inbound_group_session_from_olm_pickle_encrypted =
       _wire__crate__bindings__vodozemac_inbound_group_session_from_olm_pickle_encryptedPtr.asFunction<
-          void Function(int, ffi.Pointer<wire_cst_list_prim_u_8_strict>, ffi.Pointer<wire_cst_list_prim_u_8_loose>)>();
+          WireSyncRust2DartDco Function(
+              ffi.Pointer<wire_cst_list_prim_u_8_strict>, ffi.Pointer<wire_cst_list_prim_u_8_loose>)>();
 
-  void wire__crate__bindings__vodozemac_inbound_group_session_from_pickle_encrypted(
-    int port_,
+  WireSyncRust2DartDco wire__crate__bindings__vodozemac_inbound_group_session_from_pickle_encrypted(
     ffi.Pointer<wire_cst_list_prim_u_8_strict> pickle,
     ffi.Pointer<wire_cst_list_prim_u_8_strict> pickle_key,
   ) {
     return _wire__crate__bindings__vodozemac_inbound_group_session_from_pickle_encrypted(
-      port_,
       pickle,
       pickle_key,
     );
@@ -2161,19 +2121,20 @@ class RustLibWire implements BaseWire {
 
   late final _wire__crate__bindings__vodozemac_inbound_group_session_from_pickle_encryptedPtr = _lookup<
           ffi.NativeFunction<
-              ffi.Void Function(
-                  ffi.Int64, ffi.Pointer<wire_cst_list_prim_u_8_strict>, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
+              WireSyncRust2DartDco Function(
+                  ffi.Pointer<wire_cst_list_prim_u_8_strict>, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
       'frbgen_vodozemac_wire__crate__bindings__vodozemac_inbound_group_session_from_pickle_encrypted');
   late final _wire__crate__bindings__vodozemac_inbound_group_session_from_pickle_encrypted =
       _wire__crate__bindings__vodozemac_inbound_group_session_from_pickle_encryptedPtr.asFunction<
-          void Function(int, ffi.Pointer<wire_cst_list_prim_u_8_strict>, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
+          WireSyncRust2DartDco Function(
+              ffi.Pointer<wire_cst_list_prim_u_8_strict>, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
 
   WireSyncRust2DartDco wire__crate__bindings__vodozemac_inbound_group_session_import(
-    ffi.Pointer<wire_cst_list_prim_u_8_strict> session_key,
+    ffi.Pointer<wire_cst_list_prim_u_8_strict> exported_session_key,
     ffi.Pointer<wire_cst_vodozemac_megolm_session_config> config,
   ) {
     return _wire__crate__bindings__vodozemac_inbound_group_session_import(
-      session_key,
+      exported_session_key,
       config,
     );
   }
@@ -2208,13 +2169,11 @@ class RustLibWire implements BaseWire {
           WireSyncRust2DartDco Function(
               ffi.Pointer<wire_cst_list_prim_u_8_strict>, ffi.Pointer<wire_cst_vodozemac_megolm_session_config>)>();
 
-  void wire__crate__bindings__vodozemac_inbound_group_session_pickle_encrypted(
-    int port_,
+  WireSyncRust2DartDco wire__crate__bindings__vodozemac_inbound_group_session_pickle_encrypted(
     ffi.Pointer<wire_cst_vodozemac_inbound_group_session> that,
     ffi.Pointer<wire_cst_list_prim_u_8_strict> pickle_key,
   ) {
     return _wire__crate__bindings__vodozemac_inbound_group_session_pickle_encrypted(
-      port_,
       that,
       pickle_key,
     );
@@ -2222,13 +2181,13 @@ class RustLibWire implements BaseWire {
 
   late final _wire__crate__bindings__vodozemac_inbound_group_session_pickle_encryptedPtr = _lookup<
           ffi.NativeFunction<
-              ffi.Void Function(ffi.Int64, ffi.Pointer<wire_cst_vodozemac_inbound_group_session>,
-                  ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
+              WireSyncRust2DartDco Function(
+                  ffi.Pointer<wire_cst_vodozemac_inbound_group_session>, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
       'frbgen_vodozemac_wire__crate__bindings__vodozemac_inbound_group_session_pickle_encrypted');
   late final _wire__crate__bindings__vodozemac_inbound_group_session_pickle_encrypted =
       _wire__crate__bindings__vodozemac_inbound_group_session_pickle_encryptedPtr.asFunction<
-          void Function(int, ffi.Pointer<wire_cst_vodozemac_inbound_group_session>,
-              ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
+          WireSyncRust2DartDco Function(
+              ffi.Pointer<wire_cst_vodozemac_inbound_group_session>, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
 
   WireSyncRust2DartDco wire__crate__bindings__vodozemac_inbound_group_session_session_id(
     ffi.Pointer<wire_cst_vodozemac_inbound_group_session> that,
@@ -2384,13 +2343,11 @@ class RustLibWire implements BaseWire {
   late final _wire__crate__bindings__vodozemac_olm_session_config_version_2 =
       _wire__crate__bindings__vodozemac_olm_session_config_version_2Ptr.asFunction<WireSyncRust2DartDco Function()>();
 
-  void wire__crate__bindings__vodozemac_pk_decryption_decrypt(
-    int port_,
+  WireSyncRust2DartDco wire__crate__bindings__vodozemac_pk_decryption_decrypt(
     ffi.Pointer<wire_cst_vodozemac_pk_decryption> that,
     ffi.Pointer<wire_cst_vodozemac_pk_message> message,
   ) {
     return _wire__crate__bindings__vodozemac_pk_decryption_decrypt(
-      port_,
       that,
       message,
     );
@@ -2398,13 +2355,13 @@ class RustLibWire implements BaseWire {
 
   late final _wire__crate__bindings__vodozemac_pk_decryption_decryptPtr = _lookup<
           ffi.NativeFunction<
-              ffi.Void Function(ffi.Int64, ffi.Pointer<wire_cst_vodozemac_pk_decryption>,
-                  ffi.Pointer<wire_cst_vodozemac_pk_message>)>>(
+              WireSyncRust2DartDco Function(
+                  ffi.Pointer<wire_cst_vodozemac_pk_decryption>, ffi.Pointer<wire_cst_vodozemac_pk_message>)>>(
       'frbgen_vodozemac_wire__crate__bindings__vodozemac_pk_decryption_decrypt');
   late final _wire__crate__bindings__vodozemac_pk_decryption_decrypt =
       _wire__crate__bindings__vodozemac_pk_decryption_decryptPtr.asFunction<
-          void Function(
-              int, ffi.Pointer<wire_cst_vodozemac_pk_decryption>, ffi.Pointer<wire_cst_vodozemac_pk_message>)>();
+          WireSyncRust2DartDco Function(
+              ffi.Pointer<wire_cst_vodozemac_pk_decryption>, ffi.Pointer<wire_cst_vodozemac_pk_message>)>();
 
   WireSyncRust2DartDco wire__crate__bindings__vodozemac_pk_decryption_from_key(
     ffi.Pointer<wire_cst_list_prim_u_8_strict> secret_key,
@@ -2421,13 +2378,11 @@ class RustLibWire implements BaseWire {
       _wire__crate__bindings__vodozemac_pk_decryption_from_keyPtr
           .asFunction<WireSyncRust2DartDco Function(ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
 
-  void wire__crate__bindings__vodozemac_pk_decryption_from_libolm_pickle(
-    int port_,
+  WireSyncRust2DartDco wire__crate__bindings__vodozemac_pk_decryption_from_libolm_pickle(
     ffi.Pointer<wire_cst_list_prim_u_8_strict> pickle,
     ffi.Pointer<wire_cst_list_prim_u_8_loose> pickle_key,
   ) {
     return _wire__crate__bindings__vodozemac_pk_decryption_from_libolm_pickle(
-      port_,
       pickle,
       pickle_key,
     );
@@ -2435,12 +2390,13 @@ class RustLibWire implements BaseWire {
 
   late final _wire__crate__bindings__vodozemac_pk_decryption_from_libolm_picklePtr = _lookup<
           ffi.NativeFunction<
-              ffi.Void Function(
-                  ffi.Int64, ffi.Pointer<wire_cst_list_prim_u_8_strict>, ffi.Pointer<wire_cst_list_prim_u_8_loose>)>>(
+              WireSyncRust2DartDco Function(
+                  ffi.Pointer<wire_cst_list_prim_u_8_strict>, ffi.Pointer<wire_cst_list_prim_u_8_loose>)>>(
       'frbgen_vodozemac_wire__crate__bindings__vodozemac_pk_decryption_from_libolm_pickle');
   late final _wire__crate__bindings__vodozemac_pk_decryption_from_libolm_pickle =
       _wire__crate__bindings__vodozemac_pk_decryption_from_libolm_picklePtr.asFunction<
-          void Function(int, ffi.Pointer<wire_cst_list_prim_u_8_strict>, ffi.Pointer<wire_cst_list_prim_u_8_loose>)>();
+          WireSyncRust2DartDco Function(
+              ffi.Pointer<wire_cst_list_prim_u_8_strict>, ffi.Pointer<wire_cst_list_prim_u_8_loose>)>();
 
   WireSyncRust2DartDco wire__crate__bindings__vodozemac_pk_decryption_new() {
     return _wire__crate__bindings__vodozemac_pk_decryption_new();
@@ -2482,13 +2438,11 @@ class RustLibWire implements BaseWire {
       _wire__crate__bindings__vodozemac_pk_decryption_public_keyPtr
           .asFunction<WireSyncRust2DartDco Function(ffi.Pointer<wire_cst_vodozemac_pk_decryption>)>();
 
-  void wire__crate__bindings__vodozemac_pk_decryption_to_libolm_pickle(
-    int port_,
+  WireSyncRust2DartDco wire__crate__bindings__vodozemac_pk_decryption_to_libolm_pickle(
     ffi.Pointer<wire_cst_vodozemac_pk_decryption> that,
     ffi.Pointer<wire_cst_list_prim_u_8_strict> pickle_key,
   ) {
     return _wire__crate__bindings__vodozemac_pk_decryption_to_libolm_pickle(
-      port_,
       that,
       pickle_key,
     );
@@ -2496,21 +2450,19 @@ class RustLibWire implements BaseWire {
 
   late final _wire__crate__bindings__vodozemac_pk_decryption_to_libolm_picklePtr = _lookup<
           ffi.NativeFunction<
-              ffi.Void Function(ffi.Int64, ffi.Pointer<wire_cst_vodozemac_pk_decryption>,
-                  ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
+              WireSyncRust2DartDco Function(
+                  ffi.Pointer<wire_cst_vodozemac_pk_decryption>, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
       'frbgen_vodozemac_wire__crate__bindings__vodozemac_pk_decryption_to_libolm_pickle');
   late final _wire__crate__bindings__vodozemac_pk_decryption_to_libolm_pickle =
       _wire__crate__bindings__vodozemac_pk_decryption_to_libolm_picklePtr.asFunction<
-          void Function(
-              int, ffi.Pointer<wire_cst_vodozemac_pk_decryption>, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
+          WireSyncRust2DartDco Function(
+              ffi.Pointer<wire_cst_vodozemac_pk_decryption>, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
 
-  void wire__crate__bindings__vodozemac_pk_encryption_encrypt(
-    int port_,
+  WireSyncRust2DartDco wire__crate__bindings__vodozemac_pk_encryption_encrypt(
     ffi.Pointer<wire_cst_vodozemac_pk_encryption> that,
     ffi.Pointer<wire_cst_list_prim_u_8_strict> message,
   ) {
     return _wire__crate__bindings__vodozemac_pk_encryption_encrypt(
-      port_,
       that,
       message,
     );
@@ -2518,13 +2470,13 @@ class RustLibWire implements BaseWire {
 
   late final _wire__crate__bindings__vodozemac_pk_encryption_encryptPtr = _lookup<
           ffi.NativeFunction<
-              ffi.Void Function(ffi.Int64, ffi.Pointer<wire_cst_vodozemac_pk_encryption>,
-                  ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
+              WireSyncRust2DartDco Function(
+                  ffi.Pointer<wire_cst_vodozemac_pk_encryption>, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
       'frbgen_vodozemac_wire__crate__bindings__vodozemac_pk_encryption_encrypt');
   late final _wire__crate__bindings__vodozemac_pk_encryption_encrypt =
       _wire__crate__bindings__vodozemac_pk_encryption_encryptPtr.asFunction<
-          void Function(
-              int, ffi.Pointer<wire_cst_vodozemac_pk_encryption>, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
+          WireSyncRust2DartDco Function(
+              ffi.Pointer<wire_cst_vodozemac_pk_encryption>, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
 
   WireSyncRust2DartDco wire__crate__bindings__vodozemac_pk_encryption_from_key(
     ffi.Pointer<wire_cst_vodozemac_curve_25519_public_key> public_key,
@@ -2541,13 +2493,11 @@ class RustLibWire implements BaseWire {
       _wire__crate__bindings__vodozemac_pk_encryption_from_keyPtr
           .asFunction<WireSyncRust2DartDco Function(ffi.Pointer<wire_cst_vodozemac_curve_25519_public_key>)>();
 
-  void wire__crate__bindings__vodozemac_session_decrypt(
-    int port_,
+  WireSyncRust2DartDco wire__crate__bindings__vodozemac_session_decrypt(
     ffi.Pointer<wire_cst_vodozemac_session> that,
     ffi.Pointer<wire_cst_vodozemac_olm_message> message,
   ) {
     return _wire__crate__bindings__vodozemac_session_decrypt(
-      port_,
       that,
       message,
     );
@@ -2555,20 +2505,19 @@ class RustLibWire implements BaseWire {
 
   late final _wire__crate__bindings__vodozemac_session_decryptPtr = _lookup<
           ffi.NativeFunction<
-              ffi.Void Function(
-                  ffi.Int64, ffi.Pointer<wire_cst_vodozemac_session>, ffi.Pointer<wire_cst_vodozemac_olm_message>)>>(
+              WireSyncRust2DartDco Function(
+                  ffi.Pointer<wire_cst_vodozemac_session>, ffi.Pointer<wire_cst_vodozemac_olm_message>)>>(
       'frbgen_vodozemac_wire__crate__bindings__vodozemac_session_decrypt');
   late final _wire__crate__bindings__vodozemac_session_decrypt =
       _wire__crate__bindings__vodozemac_session_decryptPtr.asFunction<
-          void Function(int, ffi.Pointer<wire_cst_vodozemac_session>, ffi.Pointer<wire_cst_vodozemac_olm_message>)>();
+          WireSyncRust2DartDco Function(
+              ffi.Pointer<wire_cst_vodozemac_session>, ffi.Pointer<wire_cst_vodozemac_olm_message>)>();
 
-  void wire__crate__bindings__vodozemac_session_encrypt(
-    int port_,
+  WireSyncRust2DartDco wire__crate__bindings__vodozemac_session_encrypt(
     ffi.Pointer<wire_cst_vodozemac_session> that,
     ffi.Pointer<wire_cst_list_prim_u_8_strict> plaintext,
   ) {
     return _wire__crate__bindings__vodozemac_session_encrypt(
-      port_,
       that,
       plaintext,
     );
@@ -2576,20 +2525,19 @@ class RustLibWire implements BaseWire {
 
   late final _wire__crate__bindings__vodozemac_session_encryptPtr = _lookup<
           ffi.NativeFunction<
-              ffi.Void Function(
-                  ffi.Int64, ffi.Pointer<wire_cst_vodozemac_session>, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
+              WireSyncRust2DartDco Function(
+                  ffi.Pointer<wire_cst_vodozemac_session>, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
       'frbgen_vodozemac_wire__crate__bindings__vodozemac_session_encrypt');
   late final _wire__crate__bindings__vodozemac_session_encrypt =
       _wire__crate__bindings__vodozemac_session_encryptPtr.asFunction<
-          void Function(int, ffi.Pointer<wire_cst_vodozemac_session>, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
+          WireSyncRust2DartDco Function(
+              ffi.Pointer<wire_cst_vodozemac_session>, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
 
-  void wire__crate__bindings__vodozemac_session_from_olm_pickle_encrypted(
-    int port_,
+  WireSyncRust2DartDco wire__crate__bindings__vodozemac_session_from_olm_pickle_encrypted(
     ffi.Pointer<wire_cst_list_prim_u_8_strict> pickle,
     ffi.Pointer<wire_cst_list_prim_u_8_loose> pickle_key,
   ) {
     return _wire__crate__bindings__vodozemac_session_from_olm_pickle_encrypted(
-      port_,
       pickle,
       pickle_key,
     );
@@ -2597,20 +2545,19 @@ class RustLibWire implements BaseWire {
 
   late final _wire__crate__bindings__vodozemac_session_from_olm_pickle_encryptedPtr = _lookup<
           ffi.NativeFunction<
-              ffi.Void Function(
-                  ffi.Int64, ffi.Pointer<wire_cst_list_prim_u_8_strict>, ffi.Pointer<wire_cst_list_prim_u_8_loose>)>>(
+              WireSyncRust2DartDco Function(
+                  ffi.Pointer<wire_cst_list_prim_u_8_strict>, ffi.Pointer<wire_cst_list_prim_u_8_loose>)>>(
       'frbgen_vodozemac_wire__crate__bindings__vodozemac_session_from_olm_pickle_encrypted');
   late final _wire__crate__bindings__vodozemac_session_from_olm_pickle_encrypted =
       _wire__crate__bindings__vodozemac_session_from_olm_pickle_encryptedPtr.asFunction<
-          void Function(int, ffi.Pointer<wire_cst_list_prim_u_8_strict>, ffi.Pointer<wire_cst_list_prim_u_8_loose>)>();
+          WireSyncRust2DartDco Function(
+              ffi.Pointer<wire_cst_list_prim_u_8_strict>, ffi.Pointer<wire_cst_list_prim_u_8_loose>)>();
 
-  void wire__crate__bindings__vodozemac_session_from_pickle_encrypted(
-    int port_,
+  WireSyncRust2DartDco wire__crate__bindings__vodozemac_session_from_pickle_encrypted(
     ffi.Pointer<wire_cst_list_prim_u_8_strict> pickle,
     ffi.Pointer<wire_cst_list_prim_u_8_strict> pickle_key,
   ) {
     return _wire__crate__bindings__vodozemac_session_from_pickle_encrypted(
-      port_,
       pickle,
       pickle_key,
     );
@@ -2618,12 +2565,13 @@ class RustLibWire implements BaseWire {
 
   late final _wire__crate__bindings__vodozemac_session_from_pickle_encryptedPtr = _lookup<
           ffi.NativeFunction<
-              ffi.Void Function(
-                  ffi.Int64, ffi.Pointer<wire_cst_list_prim_u_8_strict>, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
+              WireSyncRust2DartDco Function(
+                  ffi.Pointer<wire_cst_list_prim_u_8_strict>, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
       'frbgen_vodozemac_wire__crate__bindings__vodozemac_session_from_pickle_encrypted');
   late final _wire__crate__bindings__vodozemac_session_from_pickle_encrypted =
       _wire__crate__bindings__vodozemac_session_from_pickle_encryptedPtr.asFunction<
-          void Function(int, ffi.Pointer<wire_cst_list_prim_u_8_strict>, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
+          WireSyncRust2DartDco Function(
+              ffi.Pointer<wire_cst_list_prim_u_8_strict>, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
 
   WireSyncRust2DartDco wire__crate__bindings__vodozemac_session_has_received_message(
     ffi.Pointer<wire_cst_vodozemac_session> that,
@@ -2640,13 +2588,11 @@ class RustLibWire implements BaseWire {
       _wire__crate__bindings__vodozemac_session_has_received_messagePtr
           .asFunction<WireSyncRust2DartDco Function(ffi.Pointer<wire_cst_vodozemac_session>)>();
 
-  void wire__crate__bindings__vodozemac_session_pickle_encrypted(
-    int port_,
+  WireSyncRust2DartDco wire__crate__bindings__vodozemac_session_pickle_encrypted(
     ffi.Pointer<wire_cst_vodozemac_session> that,
     ffi.Pointer<wire_cst_list_prim_u_8_strict> pickle_key,
   ) {
     return _wire__crate__bindings__vodozemac_session_pickle_encrypted(
-      port_,
       that,
       pickle_key,
     );
@@ -2654,12 +2600,13 @@ class RustLibWire implements BaseWire {
 
   late final _wire__crate__bindings__vodozemac_session_pickle_encryptedPtr = _lookup<
           ffi.NativeFunction<
-              ffi.Void Function(
-                  ffi.Int64, ffi.Pointer<wire_cst_vodozemac_session>, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
+              WireSyncRust2DartDco Function(
+                  ffi.Pointer<wire_cst_vodozemac_session>, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
       'frbgen_vodozemac_wire__crate__bindings__vodozemac_session_pickle_encrypted');
   late final _wire__crate__bindings__vodozemac_session_pickle_encrypted =
       _wire__crate__bindings__vodozemac_session_pickle_encryptedPtr.asFunction<
-          void Function(int, ffi.Pointer<wire_cst_vodozemac_session>, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
+          WireSyncRust2DartDco Function(
+              ffi.Pointer<wire_cst_vodozemac_session>, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
 
   WireSyncRust2DartDco wire__crate__bindings__vodozemac_session_session_config(
     ffi.Pointer<wire_cst_vodozemac_session> that,
