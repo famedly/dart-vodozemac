@@ -35,7 +35,7 @@ abstract class PkSigning implements RustOpaqueInterface {
 
 // Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<VodozemacSas>>
 abstract class VodozemacSas implements RustOpaqueInterface {
-  Future<VodozemacEstablishedSas> establishSasSecret({required String otherPublicKey});
+  VodozemacEstablishedSas establishSasSecret({required String otherPublicKey});
 
   factory VodozemacSas() => RustLib.instance.api.crateBindingsVodozemacSasNew();
 
@@ -98,12 +98,12 @@ class VodozemacAccount {
     required this.account,
   });
 
-  Future<VodozemacOlmSessionCreationResult> createInboundSession(
+  VodozemacOlmSessionCreationResult createInboundSession(
           {required VodozemacCurve25519PublicKey theirIdentityKey, required String preKeyMessageBase64}) =>
       RustLib.instance.api.crateBindingsVodozemacAccountCreateInboundSession(
           that: this, theirIdentityKey: theirIdentityKey, preKeyMessageBase64: preKeyMessageBase64);
 
-  Future<VodozemacSession> createOutboundSession(
+  VodozemacSession createOutboundSession(
           {required VodozemacOlmSessionConfig config,
           required VodozemacCurve25519PublicKey identityKey,
           required VodozemacCurve25519PublicKey oneTimeKey}) =>
@@ -126,17 +126,17 @@ class VodozemacAccount {
         that: this,
       );
 
-  static Future<VodozemacAccount> fromOlmPickleEncrypted({required String pickle, required List<int> pickleKey}) =>
+  static VodozemacAccount fromOlmPickleEncrypted({required String pickle, required List<int> pickleKey}) =>
       RustLib.instance.api.crateBindingsVodozemacAccountFromOlmPickleEncrypted(pickle: pickle, pickleKey: pickleKey);
 
-  static Future<VodozemacAccount> fromPickleEncrypted({required String pickle, required U8Array32 pickleKey}) =>
+  static VodozemacAccount fromPickleEncrypted({required String pickle, required U8Array32 pickleKey}) =>
       RustLib.instance.api.crateBindingsVodozemacAccountFromPickleEncrypted(pickle: pickle, pickleKey: pickleKey);
 
-  Future<String?> generateFallbackKey() => RustLib.instance.api.crateBindingsVodozemacAccountGenerateFallbackKey(
+  String? generateFallbackKey() => RustLib.instance.api.crateBindingsVodozemacAccountGenerateFallbackKey(
         that: this,
       );
 
-  Future<void> generateOneTimeKeys({required BigInt count}) =>
+  void generateOneTimeKeys({required BigInt count}) =>
       RustLib.instance.api.crateBindingsVodozemacAccountGenerateOneTimeKeys(that: this, count: count);
 
   VodozemacIdentityKeys identityKeys() => RustLib.instance.api.crateBindingsVodozemacAccountIdentityKeys(
@@ -157,10 +157,10 @@ class VodozemacAccount {
         that: this,
       );
 
-  Future<String> pickleEncrypted({required U8Array32 pickleKey}) =>
+  String pickleEncrypted({required U8Array32 pickleKey}) =>
       RustLib.instance.api.crateBindingsVodozemacAccountPickleEncrypted(that: this, pickleKey: pickleKey);
 
-  Future<VodozemacEd25519Signature> sign({required String message}) =>
+  VodozemacEd25519Signature sign({required String message}) =>
       RustLib.instance.api.crateBindingsVodozemacAccountSign(that: this, message: message);
 
   @override
@@ -224,7 +224,7 @@ class VodozemacEd25519PublicKey {
       );
 
   /// Throws on mismatched signatures
-  Future<void> verify({required String message, required VodozemacEd25519Signature signature}) => RustLib.instance.api
+  void verify({required String message, required VodozemacEd25519Signature signature}) => RustLib.instance.api
       .crateBindingsVodozemacEd25519PublicKeyVerify(that: this, message: message, signature: signature);
 
   @override
@@ -273,16 +273,16 @@ class VodozemacEstablishedSas {
     required this.establishedSas,
   });
 
-  Future<String> calculateMac({required String input, required String info}) =>
+  String calculateMac({required String input, required String info}) =>
       RustLib.instance.api.crateBindingsVodozemacEstablishedSasCalculateMac(that: this, input: input, info: info);
 
-  Future<String> calculateMacDeprecated({required String input, required String info}) => RustLib.instance.api
+  String calculateMacDeprecated({required String input, required String info}) => RustLib.instance.api
       .crateBindingsVodozemacEstablishedSasCalculateMacDeprecated(that: this, input: input, info: info);
 
-  Future<Uint8List> generateBytes({required String info, required int length}) =>
+  Uint8List generateBytes({required String info, required int length}) =>
       RustLib.instance.api.crateBindingsVodozemacEstablishedSasGenerateBytes(that: this, info: info, length: length);
 
-  Future<void> verifyMac({required String input, required String info, required String mac}) => RustLib.instance.api
+  void verifyMac({required String input, required String info, required String mac}) => RustLib.instance.api
       .crateBindingsVodozemacEstablishedSasVerifyMac(that: this, input: input, info: info, mac: mac);
 
   @override
@@ -301,14 +301,14 @@ class VodozemacGroupSession {
     required this.session,
   });
 
-  Future<String> encrypt({required String plaintext}) =>
+  String encrypt({required String plaintext}) =>
       RustLib.instance.api.crateBindingsVodozemacGroupSessionEncrypt(that: this, plaintext: plaintext);
 
-  static Future<VodozemacGroupSession> fromOlmPickleEncrypted({required String pickle, required List<int> pickleKey}) =>
+  static VodozemacGroupSession fromOlmPickleEncrypted({required String pickle, required List<int> pickleKey}) =>
       RustLib.instance.api
           .crateBindingsVodozemacGroupSessionFromOlmPickleEncrypted(pickle: pickle, pickleKey: pickleKey);
 
-  static Future<VodozemacGroupSession> fromPickleEncrypted({required String pickle, required U8Array32 pickleKey}) =>
+  static VodozemacGroupSession fromPickleEncrypted({required String pickle, required U8Array32 pickleKey}) =>
       RustLib.instance.api.crateBindingsVodozemacGroupSessionFromPickleEncrypted(pickle: pickle, pickleKey: pickleKey);
 
   int messageIndex() => RustLib.instance.api.crateBindingsVodozemacGroupSessionMessageIndex(
@@ -318,7 +318,7 @@ class VodozemacGroupSession {
   factory VodozemacGroupSession({required VodozemacMegolmSessionConfig config}) =>
       RustLib.instance.api.crateBindingsVodozemacGroupSessionNew(config: config);
 
-  Future<String> pickleEncrypted({required U8Array32 pickleKey}) =>
+  String pickleEncrypted({required U8Array32 pickleKey}) =>
       RustLib.instance.api.crateBindingsVodozemacGroupSessionPickleEncrypted(that: this, pickleKey: pickleKey);
 
   VodozemacMegolmSessionConfig sessionConfig() => RustLib.instance.api.crateBindingsVodozemacGroupSessionSessionConfig(
@@ -374,7 +374,7 @@ class VodozemacInboundGroupSession {
     required this.session,
   });
 
-  Future<DecryptResult> decrypt({required String encrypted}) =>
+  DecryptResult decrypt({required String encrypted}) =>
       RustLib.instance.api.crateBindingsVodozemacInboundGroupSessionDecrypt(that: this, encrypted: encrypted);
 
   String? exportAt({required int index}) =>
@@ -389,24 +389,23 @@ class VodozemacInboundGroupSession {
         that: this,
       );
 
-  static Future<VodozemacInboundGroupSession> fromOlmPickleEncrypted(
-          {required String pickle, required List<int> pickleKey}) =>
+  static VodozemacInboundGroupSession fromOlmPickleEncrypted({required String pickle, required List<int> pickleKey}) =>
       RustLib.instance.api
           .crateBindingsVodozemacInboundGroupSessionFromOlmPickleEncrypted(pickle: pickle, pickleKey: pickleKey);
 
-  static Future<VodozemacInboundGroupSession> fromPickleEncrypted(
-          {required String pickle, required U8Array32 pickleKey}) =>
+  static VodozemacInboundGroupSession fromPickleEncrypted({required String pickle, required U8Array32 pickleKey}) =>
       RustLib.instance.api
           .crateBindingsVodozemacInboundGroupSessionFromPickleEncrypted(pickle: pickle, pickleKey: pickleKey);
 
   static VodozemacInboundGroupSession import_(
-          {required String sessionKey, required VodozemacMegolmSessionConfig config}) =>
-      RustLib.instance.api.crateBindingsVodozemacInboundGroupSessionImport(sessionKey: sessionKey, config: config);
+          {required String exportedSessionKey, required VodozemacMegolmSessionConfig config}) =>
+      RustLib.instance.api
+          .crateBindingsVodozemacInboundGroupSessionImport(exportedSessionKey: exportedSessionKey, config: config);
 
   factory VodozemacInboundGroupSession({required String sessionKey, required VodozemacMegolmSessionConfig config}) =>
       RustLib.instance.api.crateBindingsVodozemacInboundGroupSessionNew(sessionKey: sessionKey, config: config);
 
-  Future<String> pickleEncrypted({required U8Array32 pickleKey}) =>
+  String pickleEncrypted({required U8Array32 pickleKey}) =>
       RustLib.instance.api.crateBindingsVodozemacInboundGroupSessionPickleEncrypted(that: this, pickleKey: pickleKey);
 
   String sessionId() => RustLib.instance.api.crateBindingsVodozemacInboundGroupSessionSessionId(
@@ -548,13 +547,13 @@ class VodozemacPkDecryption {
     required this.pkDecryption,
   });
 
-  Future<String> decrypt({required VodozemacPkMessage message}) =>
+  String decrypt({required VodozemacPkMessage message}) =>
       RustLib.instance.api.crateBindingsVodozemacPkDecryptionDecrypt(that: this, message: message);
 
   static VodozemacPkDecryption fromKey({required U8Array32 secretKey}) =>
       RustLib.instance.api.crateBindingsVodozemacPkDecryptionFromKey(secretKey: secretKey);
 
-  static Future<VodozemacPkDecryption> fromLibolmPickle({required String pickle, required List<int> pickleKey}) =>
+  static VodozemacPkDecryption fromLibolmPickle({required String pickle, required List<int> pickleKey}) =>
       RustLib.instance.api.crateBindingsVodozemacPkDecryptionFromLibolmPickle(pickle: pickle, pickleKey: pickleKey);
 
   factory VodozemacPkDecryption() => RustLib.instance.api.crateBindingsVodozemacPkDecryptionNew();
@@ -567,7 +566,7 @@ class VodozemacPkDecryption {
         that: this,
       );
 
-  Future<String> toLibolmPickle({required U8Array32 pickleKey}) =>
+  String toLibolmPickle({required U8Array32 pickleKey}) =>
       RustLib.instance.api.crateBindingsVodozemacPkDecryptionToLibolmPickle(that: this, pickleKey: pickleKey);
 
   @override
@@ -586,7 +585,7 @@ class VodozemacPkEncryption {
     required this.pkEncryption,
   });
 
-  Future<VodozemacPkMessage> encrypt({required String message}) =>
+  VodozemacPkMessage encrypt({required String message}) =>
       RustLib.instance.api.crateBindingsVodozemacPkEncryptionEncrypt(that: this, message: message);
 
   static VodozemacPkEncryption fromKey({required VodozemacCurve25519PublicKey publicKey}) =>
@@ -632,23 +631,23 @@ class VodozemacSession {
     required this.session,
   });
 
-  Future<String> decrypt({required VodozemacOlmMessage message}) =>
+  String decrypt({required VodozemacOlmMessage message}) =>
       RustLib.instance.api.crateBindingsVodozemacSessionDecrypt(that: this, message: message);
 
-  Future<VodozemacOlmMessage> encrypt({required String plaintext}) =>
+  VodozemacOlmMessage encrypt({required String plaintext}) =>
       RustLib.instance.api.crateBindingsVodozemacSessionEncrypt(that: this, plaintext: plaintext);
 
-  static Future<VodozemacSession> fromOlmPickleEncrypted({required String pickle, required List<int> pickleKey}) =>
+  static VodozemacSession fromOlmPickleEncrypted({required String pickle, required List<int> pickleKey}) =>
       RustLib.instance.api.crateBindingsVodozemacSessionFromOlmPickleEncrypted(pickle: pickle, pickleKey: pickleKey);
 
-  static Future<VodozemacSession> fromPickleEncrypted({required String pickle, required U8Array32 pickleKey}) =>
+  static VodozemacSession fromPickleEncrypted({required String pickle, required U8Array32 pickleKey}) =>
       RustLib.instance.api.crateBindingsVodozemacSessionFromPickleEncrypted(pickle: pickle, pickleKey: pickleKey);
 
   bool hasReceivedMessage() => RustLib.instance.api.crateBindingsVodozemacSessionHasReceivedMessage(
         that: this,
       );
 
-  Future<String> pickleEncrypted({required U8Array32 pickleKey}) =>
+  String pickleEncrypted({required U8Array32 pickleKey}) =>
       RustLib.instance.api.crateBindingsVodozemacSessionPickleEncrypted(that: this, pickleKey: pickleKey);
 
   VodozemacOlmSessionConfig sessionConfig() => RustLib.instance.api.crateBindingsVodozemacSessionSessionConfig(

@@ -13,5 +13,5 @@ export 'src/api.dart'
         PkEncryption,
         PkMessage,
         PkSigning,
-        loadVodozemac,
-        isVodozemacLoaded;
+        init,
+        isInitialized;

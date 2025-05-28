@@ -96,7 +96,7 @@ impl VodozemacGroupSession {
 
     // In theory we could return more info, but the old olm API does not and currently we don't
     // need it.
-    pub async fn encrypt(&self, plaintext: String) -> String {
+    pub fn encrypt(&self, plaintext: String) -> String {
         self.session
             .write()
             .expect("Failed to write session")
@@ -112,7 +112,7 @@ impl VodozemacGroupSession {
             .to_base64()
     }
 
-    pub async fn pickle_encrypted(&self, pickle_key: [u8; 32usize]) -> String {
+    pub fn pickle_encrypted(&self, pickle_key: [u8; 32usize]) -> String {
         self.session
             .read()
             .expect("Failed to read session")
@@ -120,7 +120,7 @@ impl VodozemacGroupSession {
             .encrypt(&pickle_key)
     }
 
-    pub async fn from_pickle_encrypted(
+    pub fn from_pickle_encrypted(
         pickle: String,
         pickle_key: [u8; 32usize],
     ) -> anyhow::Result<VodozemacGroupSession> {
@@ -131,7 +131,7 @@ impl VodozemacGroupSession {
         })
     }
 
-    pub async fn from_olm_pickle_encrypted(
+    pub fn from_olm_pickle_encrypted(
         pickle: String,
         pickle_key: Vec<u8>,
     ) -> anyhow::Result<VodozemacGroupSession> {
@@ -191,7 +191,7 @@ impl VodozemacInboundGroupSession {
 
     // In theory we could return more info, but the old olm API does not and currently we don't
     // need it.
-    pub async fn decrypt(&self, encrypted: String) -> anyhow::Result<DecryptResult> {
+    pub fn decrypt(&self, encrypted: String) -> anyhow::Result<DecryptResult> {
         let temp = self
             .session
             .write()
@@ -203,7 +203,7 @@ impl VodozemacInboundGroupSession {
         ))
     }
 
-    pub async fn pickle_encrypted(&self, pickle_key: [u8; 32usize]) -> String {
+    pub fn pickle_encrypted(&self, pickle_key: [u8; 32usize]) -> String {
         self.session
             .read()
             .expect("Failed to read session")
@@ -211,7 +211,7 @@ impl VodozemacInboundGroupSession {
             .encrypt(&pickle_key)
     }
 
-    pub async fn from_pickle_encrypted(
+    pub fn from_pickle_encrypted(
         pickle: String,
         pickle_key: [u8; 32usize],
     ) -> anyhow::Result<VodozemacInboundGroupSession> {
@@ -222,7 +222,7 @@ impl VodozemacInboundGroupSession {
         })
     }
 
-    pub async fn from_olm_pickle_encrypted(
+    pub fn from_olm_pickle_encrypted(
         pickle: String,
         pickle_key: Vec<u8>,
     ) -> anyhow::Result<VodozemacInboundGroupSession> {
@@ -234,13 +234,12 @@ impl VodozemacInboundGroupSession {
         })
     }
 
-    // TODO(Nico): Reconsider if ExportedSessionKey isn't the better type for the API boundary
     pub fn import(
-        session_key: String,
+        exported_session_key: String,
         config: VodozemacMegolmSessionConfig,
     ) -> anyhow::Result<VodozemacInboundGroupSession> {
         Ok(InboundGroupSession::import(
-            &vodozemac::megolm::ExportedSessionKey::from_base64(&session_key)?,
+            &vodozemac::megolm::ExportedSessionKey::from_base64(&exported_session_key)?,
             *config.config,
         )
         .into())
@@ -355,7 +354,7 @@ impl VodozemacEd25519PublicKey {
     }
 
     /// Throws on mismatched signatures
-    pub async fn verify(
+    pub fn verify(
         &self,
         message: String,
         signature: VodozemacEd25519Signature,
@@ -480,7 +479,7 @@ impl VodozemacSession {
             .has_received_message()
     }
 
-    pub async fn encrypt(&self, plaintext: String) -> VodozemacOlmMessage {
+    pub fn encrypt(&self, plaintext: String) -> VodozemacOlmMessage {
         self.session
             .write()
             .expect("Failed to write session")
@@ -488,7 +487,7 @@ impl VodozemacSession {
             .into()
     }
 
-    pub async fn decrypt(&self, message: VodozemacOlmMessage) -> anyhow::Result<String> {
+    pub fn decrypt(&self, message: VodozemacOlmMessage) -> anyhow::Result<String> {
         Ok(String::from_utf8(
             self.session
                 .write()
@@ -497,7 +496,7 @@ impl VodozemacSession {
         )?)
     }
 
-    pub async fn pickle_encrypted(&self, pickle_key: [u8; 32usize]) -> String {
+    pub fn pickle_encrypted(&self, pickle_key: [u8; 32usize]) -> String {
         self.session
             .read()
             .expect("Failed to read session")
@@ -505,7 +504,7 @@ impl VodozemacSession {
             .encrypt(&pickle_key)
     }
 
-    pub async fn from_pickle_encrypted(
+    pub fn from_pickle_encrypted(
         pickle: String,
         pickle_key: [u8; 32usize],
     ) -> anyhow::Result<VodozemacSession> {
@@ -517,7 +516,7 @@ impl VodozemacSession {
         })
     }
 
-    pub async fn from_olm_pickle_encrypted(
+    pub fn from_olm_pickle_encrypted(
         pickle: String,
         pickle_key: Vec<u8>,
     ) -> anyhow::Result<VodozemacSession> {
@@ -567,7 +566,7 @@ impl VodozemacAccount {
             .max_number_of_one_time_keys()
     }
 
-    pub async  fn generate_fallback_key(&self) -> Option<String> {
+    pub fn generate_fallback_key(&self) -> Option<String> {
         self.account
             .write()
             .expect("Failed to write account")
@@ -582,7 +581,7 @@ impl VodozemacAccount {
             .forget_fallback_key()
     }
 
-    pub async fn generate_one_time_keys(&self, count: usize) {
+    pub fn generate_one_time_keys(&self, count: usize) {
         self.account
             .write()
             .expect("Failed to write account")
@@ -646,7 +645,7 @@ impl VodozemacAccount {
             .collect::<Vec<VodozemacOneTimeKey>>()
     }
 
-    pub async fn sign(&self, message: String) -> VodozemacEd25519Signature {
+    pub fn sign(&self, message: String) -> VodozemacEd25519Signature {
         self.account
             .read()
             .expect("Failed to read account")
@@ -654,7 +653,7 @@ impl VodozemacAccount {
             .into()
     }
 
-    pub async fn create_outbound_session(
+    pub fn create_outbound_session(
         &self,
         config: VodozemacOlmSessionConfig,
         identity_key: VodozemacCurve25519PublicKey,
@@ -667,7 +666,7 @@ impl VodozemacAccount {
             .into()
     }
 
-    pub async fn create_inbound_session(
+    pub fn create_inbound_session(
         &self,
         their_identity_key: VodozemacCurve25519PublicKey,
         pre_key_message_base64: String,
@@ -686,7 +685,7 @@ impl VodozemacAccount {
         })
     }
 
-    pub async fn pickle_encrypted(&self, pickle_key: [u8; 32usize]) -> String {
+    pub fn pickle_encrypted(&self, pickle_key: [u8; 32usize]) -> String {
         self.account
             .read()
             .expect("Failed to read account")
@@ -694,7 +693,7 @@ impl VodozemacAccount {
             .encrypt(&pickle_key)
     }
 
-    pub async fn from_pickle_encrypted(
+    pub fn from_pickle_encrypted(
         pickle: String,
         pickle_key: [u8; 32usize],
     ) -> anyhow::Result<VodozemacAccount> {
@@ -706,7 +705,7 @@ impl VodozemacAccount {
         })
     }
 
-    pub async fn from_olm_pickle_encrypted(
+    pub fn from_olm_pickle_encrypted(
         pickle: String,
         pickle_key: Vec<u8>,
     ) -> anyhow::Result<VodozemacAccount> {
@@ -734,7 +733,7 @@ impl VodozemacSas {
         self.sas.public_key().to_base64()
     }
 
-    pub async fn establish_sas_secret(self, other_public_key: &str) -> anyhow::Result<VodozemacEstablishedSas> {
+    pub fn establish_sas_secret(self, other_public_key: &str) -> anyhow::Result<VodozemacEstablishedSas> {
         let result = self.sas.diffie_hellman_with_raw(other_public_key)?;
         Ok(VodozemacEstablishedSas {
             established_sas: RustOpaqueNom::new(result),
@@ -747,19 +746,19 @@ pub struct VodozemacEstablishedSas {
 }
 
 impl VodozemacEstablishedSas {
-    pub async fn generate_bytes(&self, info: &str, length: u32) -> anyhow::Result<Vec<u8>> {
+    pub fn generate_bytes(&self, info: &str, length: u32) -> anyhow::Result<Vec<u8>> {
         Ok(self.established_sas.bytes_raw(info, length as usize)?)
     }
 
-    pub async fn calculate_mac(&self, input: &str, info: &str) -> anyhow::Result<String> {
+    pub fn calculate_mac(&self, input: &str, info: &str) -> anyhow::Result<String> {
         Ok(self.established_sas.calculate_mac(input, info).to_base64())
     }
 
-    pub async fn calculate_mac_deprecated(&self, input: &str, info: &str) -> anyhow::Result<String> {
+    pub fn calculate_mac_deprecated(&self, input: &str, info: &str) -> anyhow::Result<String> {
         Ok(self.established_sas.calculate_mac_invalid_base64(input, info))
     }
 
-    pub async fn verify_mac(&self, input: &str, info: &str, mac: &str) -> anyhow::Result<()> {
+    pub fn verify_mac(&self, input: &str, info: &str, mac: &str) -> anyhow::Result<()> {
         Ok(self.established_sas.verify_mac(input, info, &Mac::from_base64(mac)?)?)
     }
 }
@@ -801,7 +800,7 @@ impl VodozemacPkEncryption {
         }
     }
 
-    pub async fn encrypt(&self, message: String) -> VodozemacPkMessage {
+    pub fn encrypt(&self, message: String) -> VodozemacPkMessage {
         self.pk_encryption.encrypt(message.as_ref()).into()
     }
 }
@@ -833,19 +832,19 @@ impl VodozemacPkDecryption {
         self.pk_decryption.secret_key().to_bytes().to_vec()
     }
 
-    pub async fn decrypt(&self, message: VodozemacPkMessage) -> anyhow::Result<String> {
+    pub fn decrypt(&self, message: VodozemacPkMessage) -> anyhow::Result<String> {
         let msg: PkMessage = message.into();
         let temp = self.pk_decryption.decrypt(&msg)?;
         Ok(String::from_utf8(temp)?)
     }
 
-    pub async fn to_libolm_pickle(&self, pickle_key: [u8; 32usize]) -> String {
+    pub fn to_libolm_pickle(&self, pickle_key: [u8; 32usize]) -> String {
         self.pk_decryption
             .to_libolm_pickle(&pickle_key)
             .expect("Failed to pickle PkDecryption")
     }
 
-    pub async fn from_libolm_pickle(
+    pub fn from_libolm_pickle(
         pickle: String,
         pickle_key: Vec<u8>,
     ) -> anyhow::Result<VodozemacPkDecryption> {

@@ -83,19 +83,19 @@ abstract class RustLibApi extends BaseApi {
 
   VodozemacEd25519Signature crateBindingsPkSigningSign({required PkSigning that, required String message});
 
-  Future<VodozemacEstablishedSas> crateBindingsVodozemacSasEstablishSasSecret(
+  VodozemacEstablishedSas crateBindingsVodozemacSasEstablishSasSecret(
       {required VodozemacSas that, required String otherPublicKey});
 
   VodozemacSas crateBindingsVodozemacSasNew();
 
   String crateBindingsVodozemacSasPublicKey({required VodozemacSas that});
 
-  Future<VodozemacOlmSessionCreationResult> crateBindingsVodozemacAccountCreateInboundSession(
+  VodozemacOlmSessionCreationResult crateBindingsVodozemacAccountCreateInboundSession(
       {required VodozemacAccount that,
       required VodozemacCurve25519PublicKey theirIdentityKey,
       required String preKeyMessageBase64});
 
-  Future<VodozemacSession> crateBindingsVodozemacAccountCreateOutboundSession(
+  VodozemacSession crateBindingsVodozemacAccountCreateOutboundSession(
       {required VodozemacAccount that,
       required VodozemacOlmSessionConfig config,
       required VodozemacCurve25519PublicKey identityKey,
@@ -109,16 +109,15 @@ abstract class RustLibApi extends BaseApi {
 
   bool crateBindingsVodozemacAccountForgetFallbackKey({required VodozemacAccount that});
 
-  Future<VodozemacAccount> crateBindingsVodozemacAccountFromOlmPickleEncrypted(
+  VodozemacAccount crateBindingsVodozemacAccountFromOlmPickleEncrypted(
       {required String pickle, required List<int> pickleKey});
 
-  Future<VodozemacAccount> crateBindingsVodozemacAccountFromPickleEncrypted(
+  VodozemacAccount crateBindingsVodozemacAccountFromPickleEncrypted(
       {required String pickle, required U8Array32 pickleKey});
 
-  Future<String?> crateBindingsVodozemacAccountGenerateFallbackKey({required VodozemacAccount that});
+  String? crateBindingsVodozemacAccountGenerateFallbackKey({required VodozemacAccount that});
 
-  Future<void> crateBindingsVodozemacAccountGenerateOneTimeKeys(
-      {required VodozemacAccount that, required BigInt count});
+  void crateBindingsVodozemacAccountGenerateOneTimeKeys({required VodozemacAccount that, required BigInt count});
 
   VodozemacIdentityKeys crateBindingsVodozemacAccountIdentityKeys({required VodozemacAccount that});
 
@@ -130,10 +129,9 @@ abstract class RustLibApi extends BaseApi {
 
   List<VodozemacOneTimeKey> crateBindingsVodozemacAccountOneTimeKeys({required VodozemacAccount that});
 
-  Future<String> crateBindingsVodozemacAccountPickleEncrypted(
-      {required VodozemacAccount that, required U8Array32 pickleKey});
+  String crateBindingsVodozemacAccountPickleEncrypted({required VodozemacAccount that, required U8Array32 pickleKey});
 
-  Future<VodozemacEd25519Signature> crateBindingsVodozemacAccountSign(
+  VodozemacEd25519Signature crateBindingsVodozemacAccountSign(
       {required VodozemacAccount that, required String message});
 
   U8Array32 crateBindingsVodozemacCurve25519PublicKeyAsBytes({required VodozemacCurve25519PublicKey that});
@@ -152,7 +150,7 @@ abstract class RustLibApi extends BaseApi {
 
   String crateBindingsVodozemacEd25519PublicKeyToBase64({required VodozemacEd25519PublicKey that});
 
-  Future<void> crateBindingsVodozemacEd25519PublicKeyVerify(
+  void crateBindingsVodozemacEd25519PublicKeyVerify(
       {required VodozemacEd25519PublicKey that, required String message, required VodozemacEd25519Signature signature});
 
   VodozemacEd25519Signature crateBindingsVodozemacEd25519SignatureFromBase64({required String signature});
@@ -163,32 +161,31 @@ abstract class RustLibApi extends BaseApi {
 
   U8Array64 crateBindingsVodozemacEd25519SignatureToBytes({required VodozemacEd25519Signature that});
 
-  Future<String> crateBindingsVodozemacEstablishedSasCalculateMac(
+  String crateBindingsVodozemacEstablishedSasCalculateMac(
       {required VodozemacEstablishedSas that, required String input, required String info});
 
-  Future<String> crateBindingsVodozemacEstablishedSasCalculateMacDeprecated(
+  String crateBindingsVodozemacEstablishedSasCalculateMacDeprecated(
       {required VodozemacEstablishedSas that, required String input, required String info});
 
-  Future<Uint8List> crateBindingsVodozemacEstablishedSasGenerateBytes(
+  Uint8List crateBindingsVodozemacEstablishedSasGenerateBytes(
       {required VodozemacEstablishedSas that, required String info, required int length});
 
-  Future<void> crateBindingsVodozemacEstablishedSasVerifyMac(
+  void crateBindingsVodozemacEstablishedSasVerifyMac(
       {required VodozemacEstablishedSas that, required String input, required String info, required String mac});
 
-  Future<String> crateBindingsVodozemacGroupSessionEncrypt(
-      {required VodozemacGroupSession that, required String plaintext});
+  String crateBindingsVodozemacGroupSessionEncrypt({required VodozemacGroupSession that, required String plaintext});
 
-  Future<VodozemacGroupSession> crateBindingsVodozemacGroupSessionFromOlmPickleEncrypted(
+  VodozemacGroupSession crateBindingsVodozemacGroupSessionFromOlmPickleEncrypted(
       {required String pickle, required List<int> pickleKey});
 
-  Future<VodozemacGroupSession> crateBindingsVodozemacGroupSessionFromPickleEncrypted(
+  VodozemacGroupSession crateBindingsVodozemacGroupSessionFromPickleEncrypted(
       {required String pickle, required U8Array32 pickleKey});
 
   int crateBindingsVodozemacGroupSessionMessageIndex({required VodozemacGroupSession that});
 
   VodozemacGroupSession crateBindingsVodozemacGroupSessionNew({required VodozemacMegolmSessionConfig config});
 
-  Future<String> crateBindingsVodozemacGroupSessionPickleEncrypted(
+  String crateBindingsVodozemacGroupSessionPickleEncrypted(
       {required VodozemacGroupSession that, required U8Array32 pickleKey});
 
   VodozemacMegolmSessionConfig crateBindingsVodozemacGroupSessionSessionConfig({required VodozemacGroupSession that});
@@ -199,7 +196,7 @@ abstract class RustLibApi extends BaseApi {
 
   VodozemacInboundGroupSession crateBindingsVodozemacGroupSessionToInbound({required VodozemacGroupSession that});
 
-  Future<DecryptResult> crateBindingsVodozemacInboundGroupSessionDecrypt(
+  DecryptResult crateBindingsVodozemacInboundGroupSessionDecrypt(
       {required VodozemacInboundGroupSession that, required String encrypted});
 
   String? crateBindingsVodozemacInboundGroupSessionExportAt(
@@ -209,19 +206,19 @@ abstract class RustLibApi extends BaseApi {
 
   int crateBindingsVodozemacInboundGroupSessionFirstKnownIndex({required VodozemacInboundGroupSession that});
 
-  Future<VodozemacInboundGroupSession> crateBindingsVodozemacInboundGroupSessionFromOlmPickleEncrypted(
+  VodozemacInboundGroupSession crateBindingsVodozemacInboundGroupSessionFromOlmPickleEncrypted(
       {required String pickle, required List<int> pickleKey});
 
-  Future<VodozemacInboundGroupSession> crateBindingsVodozemacInboundGroupSessionFromPickleEncrypted(
+  VodozemacInboundGroupSession crateBindingsVodozemacInboundGroupSessionFromPickleEncrypted(
       {required String pickle, required U8Array32 pickleKey});
 
   VodozemacInboundGroupSession crateBindingsVodozemacInboundGroupSessionImport(
-      {required String sessionKey, required VodozemacMegolmSessionConfig config});
+      {required String exportedSessionKey, required VodozemacMegolmSessionConfig config});
 
   VodozemacInboundGroupSession crateBindingsVodozemacInboundGroupSessionNew(
       {required String sessionKey, required VodozemacMegolmSessionConfig config});
 
-  Future<String> crateBindingsVodozemacInboundGroupSessionPickleEncrypted(
+  String crateBindingsVodozemacInboundGroupSessionPickleEncrypted(
       {required VodozemacInboundGroupSession that, required U8Array32 pickleKey});
 
   String crateBindingsVodozemacInboundGroupSessionSessionId({required VodozemacInboundGroupSession that});
@@ -249,12 +246,12 @@ abstract class RustLibApi extends BaseApi {
 
   VodozemacOlmSessionConfig crateBindingsVodozemacOlmSessionConfigVersion2();
 
-  Future<String> crateBindingsVodozemacPkDecryptionDecrypt(
+  String crateBindingsVodozemacPkDecryptionDecrypt(
       {required VodozemacPkDecryption that, required VodozemacPkMessage message});
 
   VodozemacPkDecryption crateBindingsVodozemacPkDecryptionFromKey({required U8Array32 secretKey});
 
-  Future<VodozemacPkDecryption> crateBindingsVodozemacPkDecryptionFromLibolmPickle(
+  VodozemacPkDecryption crateBindingsVodozemacPkDecryptionFromLibolmPickle(
       {required String pickle, required List<int> pickleKey});
 
   VodozemacPkDecryption crateBindingsVodozemacPkDecryptionNew();
@@ -263,30 +260,27 @@ abstract class RustLibApi extends BaseApi {
 
   String crateBindingsVodozemacPkDecryptionPublicKey({required VodozemacPkDecryption that});
 
-  Future<String> crateBindingsVodozemacPkDecryptionToLibolmPickle(
+  String crateBindingsVodozemacPkDecryptionToLibolmPickle(
       {required VodozemacPkDecryption that, required U8Array32 pickleKey});
 
-  Future<VodozemacPkMessage> crateBindingsVodozemacPkEncryptionEncrypt(
+  VodozemacPkMessage crateBindingsVodozemacPkEncryptionEncrypt(
       {required VodozemacPkEncryption that, required String message});
 
   VodozemacPkEncryption crateBindingsVodozemacPkEncryptionFromKey({required VodozemacCurve25519PublicKey publicKey});
 
-  Future<String> crateBindingsVodozemacSessionDecrypt(
-      {required VodozemacSession that, required VodozemacOlmMessage message});
+  String crateBindingsVodozemacSessionDecrypt({required VodozemacSession that, required VodozemacOlmMessage message});
 
-  Future<VodozemacOlmMessage> crateBindingsVodozemacSessionEncrypt(
-      {required VodozemacSession that, required String plaintext});
+  VodozemacOlmMessage crateBindingsVodozemacSessionEncrypt({required VodozemacSession that, required String plaintext});
 
-  Future<VodozemacSession> crateBindingsVodozemacSessionFromOlmPickleEncrypted(
+  VodozemacSession crateBindingsVodozemacSessionFromOlmPickleEncrypted(
       {required String pickle, required List<int> pickleKey});
 
-  Future<VodozemacSession> crateBindingsVodozemacSessionFromPickleEncrypted(
+  VodozemacSession crateBindingsVodozemacSessionFromPickleEncrypted(
       {required String pickle, required U8Array32 pickleKey});
 
   bool crateBindingsVodozemacSessionHasReceivedMessage({required VodozemacSession that});
 
-  Future<String> crateBindingsVodozemacSessionPickleEncrypted(
-      {required VodozemacSession that, required U8Array32 pickleKey});
+  String crateBindingsVodozemacSessionPickleEncrypted({required VodozemacSession that, required U8Array32 pickleKey});
 
   VodozemacOlmSessionConfig crateBindingsVodozemacSessionSessionConfig({required VodozemacSession that});
 
@@ -504,14 +498,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<VodozemacEstablishedSas> crateBindingsVodozemacSasEstablishSasSecret(
+  VodozemacEstablishedSas crateBindingsVodozemacSasEstablishSasSecret(
       {required VodozemacSas that, required String otherPublicKey}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
         var arg0 =
             cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerVodozemacSas(that);
         var arg1 = cst_encode_String(otherPublicKey);
-        return wire.wire__crate__bindings__VodozemacSas_establish_sas_secret(port_, arg0, arg1);
+        return wire.wire__crate__bindings__VodozemacSas_establish_sas_secret(arg0, arg1);
       },
       codec: DcoCodec(
         decodeSuccessData: dco_decode_vodozemac_established_sas,
@@ -573,16 +567,16 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<VodozemacOlmSessionCreationResult> crateBindingsVodozemacAccountCreateInboundSession(
+  VodozemacOlmSessionCreationResult crateBindingsVodozemacAccountCreateInboundSession(
       {required VodozemacAccount that,
       required VodozemacCurve25519PublicKey theirIdentityKey,
       required String preKeyMessageBase64}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
         var arg0 = cst_encode_box_autoadd_vodozemac_account(that);
         var arg1 = cst_encode_box_autoadd_vodozemac_curve_25519_public_key(theirIdentityKey);
         var arg2 = cst_encode_String(preKeyMessageBase64);
-        return wire.wire__crate__bindings__vodozemac_account_create_inbound_session(port_, arg0, arg1, arg2);
+        return wire.wire__crate__bindings__vodozemac_account_create_inbound_session(arg0, arg1, arg2);
       },
       codec: DcoCodec(
         decodeSuccessData: dco_decode_vodozemac_olm_session_creation_result,
@@ -600,18 +594,18 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<VodozemacSession> crateBindingsVodozemacAccountCreateOutboundSession(
+  VodozemacSession crateBindingsVodozemacAccountCreateOutboundSession(
       {required VodozemacAccount that,
       required VodozemacOlmSessionConfig config,
       required VodozemacCurve25519PublicKey identityKey,
       required VodozemacCurve25519PublicKey oneTimeKey}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
         var arg0 = cst_encode_box_autoadd_vodozemac_account(that);
         var arg1 = cst_encode_box_autoadd_vodozemac_olm_session_config(config);
         var arg2 = cst_encode_box_autoadd_vodozemac_curve_25519_public_key(identityKey);
         var arg3 = cst_encode_box_autoadd_vodozemac_curve_25519_public_key(oneTimeKey);
-        return wire.wire__crate__bindings__vodozemac_account_create_outbound_session(port_, arg0, arg1, arg2, arg3);
+        return wire.wire__crate__bindings__vodozemac_account_create_outbound_session(arg0, arg1, arg2, arg3);
       },
       codec: DcoCodec(
         decodeSuccessData: dco_decode_vodozemac_session,
@@ -717,13 +711,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<VodozemacAccount> crateBindingsVodozemacAccountFromOlmPickleEncrypted(
+  VodozemacAccount crateBindingsVodozemacAccountFromOlmPickleEncrypted(
       {required String pickle, required List<int> pickleKey}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
         var arg0 = cst_encode_String(pickle);
         var arg1 = cst_encode_list_prim_u_8_loose(pickleKey);
-        return wire.wire__crate__bindings__vodozemac_account_from_olm_pickle_encrypted(port_, arg0, arg1);
+        return wire.wire__crate__bindings__vodozemac_account_from_olm_pickle_encrypted(arg0, arg1);
       },
       codec: DcoCodec(
         decodeSuccessData: dco_decode_vodozemac_account,
@@ -741,13 +735,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<VodozemacAccount> crateBindingsVodozemacAccountFromPickleEncrypted(
+  VodozemacAccount crateBindingsVodozemacAccountFromPickleEncrypted(
       {required String pickle, required U8Array32 pickleKey}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
         var arg0 = cst_encode_String(pickle);
         var arg1 = cst_encode_u_8_array_32(pickleKey);
-        return wire.wire__crate__bindings__vodozemac_account_from_pickle_encrypted(port_, arg0, arg1);
+        return wire.wire__crate__bindings__vodozemac_account_from_pickle_encrypted(arg0, arg1);
       },
       codec: DcoCodec(
         decodeSuccessData: dco_decode_vodozemac_account,
@@ -765,11 +759,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<String?> crateBindingsVodozemacAccountGenerateFallbackKey({required VodozemacAccount that}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
+  String? crateBindingsVodozemacAccountGenerateFallbackKey({required VodozemacAccount that}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
         var arg0 = cst_encode_box_autoadd_vodozemac_account(that);
-        return wire.wire__crate__bindings__vodozemac_account_generate_fallback_key(port_, arg0);
+        return wire.wire__crate__bindings__vodozemac_account_generate_fallback_key(arg0);
       },
       codec: DcoCodec(
         decodeSuccessData: dco_decode_opt_String,
@@ -787,13 +781,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<void> crateBindingsVodozemacAccountGenerateOneTimeKeys(
-      {required VodozemacAccount that, required BigInt count}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
+  void crateBindingsVodozemacAccountGenerateOneTimeKeys({required VodozemacAccount that, required BigInt count}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
         var arg0 = cst_encode_box_autoadd_vodozemac_account(that);
         var arg1 = cst_encode_usize(count);
-        return wire.wire__crate__bindings__vodozemac_account_generate_one_time_keys(port_, arg0, arg1);
+        return wire.wire__crate__bindings__vodozemac_account_generate_one_time_keys(arg0, arg1);
       },
       codec: DcoCodec(
         decodeSuccessData: dco_decode_unit,
@@ -920,13 +913,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<String> crateBindingsVodozemacAccountPickleEncrypted(
-      {required VodozemacAccount that, required U8Array32 pickleKey}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
+  String crateBindingsVodozemacAccountPickleEncrypted({required VodozemacAccount that, required U8Array32 pickleKey}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
         var arg0 = cst_encode_box_autoadd_vodozemac_account(that);
         var arg1 = cst_encode_u_8_array_32(pickleKey);
-        return wire.wire__crate__bindings__vodozemac_account_pickle_encrypted(port_, arg0, arg1);
+        return wire.wire__crate__bindings__vodozemac_account_pickle_encrypted(arg0, arg1);
       },
       codec: DcoCodec(
         decodeSuccessData: dco_decode_String,
@@ -944,13 +936,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<VodozemacEd25519Signature> crateBindingsVodozemacAccountSign(
+  VodozemacEd25519Signature crateBindingsVodozemacAccountSign(
       {required VodozemacAccount that, required String message}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
         var arg0 = cst_encode_box_autoadd_vodozemac_account(that);
         var arg1 = cst_encode_String(message);
-        return wire.wire__crate__bindings__vodozemac_account_sign(port_, arg0, arg1);
+        return wire.wire__crate__bindings__vodozemac_account_sign(arg0, arg1);
       },
       codec: DcoCodec(
         decodeSuccessData: dco_decode_vodozemac_ed_25519_signature,
@@ -1144,16 +1136,16 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<void> crateBindingsVodozemacEd25519PublicKeyVerify(
+  void crateBindingsVodozemacEd25519PublicKeyVerify(
       {required VodozemacEd25519PublicKey that,
       required String message,
       required VodozemacEd25519Signature signature}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
         var arg0 = cst_encode_box_autoadd_vodozemac_ed_25519_public_key(that);
         var arg1 = cst_encode_String(message);
         var arg2 = cst_encode_box_autoadd_vodozemac_ed_25519_signature(signature);
-        return wire.wire__crate__bindings__vodozemac_ed_25519_public_key_verify(port_, arg0, arg1, arg2);
+        return wire.wire__crate__bindings__vodozemac_ed_25519_public_key_verify(arg0, arg1, arg2);
       },
       codec: DcoCodec(
         decodeSuccessData: dco_decode_unit,
@@ -1259,14 +1251,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<String> crateBindingsVodozemacEstablishedSasCalculateMac(
+  String crateBindingsVodozemacEstablishedSasCalculateMac(
       {required VodozemacEstablishedSas that, required String input, required String info}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
         var arg0 = cst_encode_box_autoadd_vodozemac_established_sas(that);
         var arg1 = cst_encode_String(input);
         var arg2 = cst_encode_String(info);
-        return wire.wire__crate__bindings__vodozemac_established_sas_calculate_mac(port_, arg0, arg1, arg2);
+        return wire.wire__crate__bindings__vodozemac_established_sas_calculate_mac(arg0, arg1, arg2);
       },
       codec: DcoCodec(
         decodeSuccessData: dco_decode_String,
@@ -1284,14 +1276,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<String> crateBindingsVodozemacEstablishedSasCalculateMacDeprecated(
+  String crateBindingsVodozemacEstablishedSasCalculateMacDeprecated(
       {required VodozemacEstablishedSas that, required String input, required String info}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
         var arg0 = cst_encode_box_autoadd_vodozemac_established_sas(that);
         var arg1 = cst_encode_String(input);
         var arg2 = cst_encode_String(info);
-        return wire.wire__crate__bindings__vodozemac_established_sas_calculate_mac_deprecated(port_, arg0, arg1, arg2);
+        return wire.wire__crate__bindings__vodozemac_established_sas_calculate_mac_deprecated(arg0, arg1, arg2);
       },
       codec: DcoCodec(
         decodeSuccessData: dco_decode_String,
@@ -1309,14 +1301,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<Uint8List> crateBindingsVodozemacEstablishedSasGenerateBytes(
+  Uint8List crateBindingsVodozemacEstablishedSasGenerateBytes(
       {required VodozemacEstablishedSas that, required String info, required int length}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
         var arg0 = cst_encode_box_autoadd_vodozemac_established_sas(that);
         var arg1 = cst_encode_String(info);
         var arg2 = cst_encode_u_32(length);
-        return wire.wire__crate__bindings__vodozemac_established_sas_generate_bytes(port_, arg0, arg1, arg2);
+        return wire.wire__crate__bindings__vodozemac_established_sas_generate_bytes(arg0, arg1, arg2);
       },
       codec: DcoCodec(
         decodeSuccessData: dco_decode_list_prim_u_8_strict,
@@ -1334,15 +1326,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<void> crateBindingsVodozemacEstablishedSasVerifyMac(
+  void crateBindingsVodozemacEstablishedSasVerifyMac(
       {required VodozemacEstablishedSas that, required String input, required String info, required String mac}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
         var arg0 = cst_encode_box_autoadd_vodozemac_established_sas(that);
         var arg1 = cst_encode_String(input);
         var arg2 = cst_encode_String(info);
         var arg3 = cst_encode_String(mac);
-        return wire.wire__crate__bindings__vodozemac_established_sas_verify_mac(port_, arg0, arg1, arg2, arg3);
+        return wire.wire__crate__bindings__vodozemac_established_sas_verify_mac(arg0, arg1, arg2, arg3);
       },
       codec: DcoCodec(
         decodeSuccessData: dco_decode_unit,
@@ -1360,13 +1352,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<String> crateBindingsVodozemacGroupSessionEncrypt(
-      {required VodozemacGroupSession that, required String plaintext}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
+  String crateBindingsVodozemacGroupSessionEncrypt({required VodozemacGroupSession that, required String plaintext}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
         var arg0 = cst_encode_box_autoadd_vodozemac_group_session(that);
         var arg1 = cst_encode_String(plaintext);
-        return wire.wire__crate__bindings__vodozemac_group_session_encrypt(port_, arg0, arg1);
+        return wire.wire__crate__bindings__vodozemac_group_session_encrypt(arg0, arg1);
       },
       codec: DcoCodec(
         decodeSuccessData: dco_decode_String,
@@ -1384,13 +1375,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<VodozemacGroupSession> crateBindingsVodozemacGroupSessionFromOlmPickleEncrypted(
+  VodozemacGroupSession crateBindingsVodozemacGroupSessionFromOlmPickleEncrypted(
       {required String pickle, required List<int> pickleKey}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
         var arg0 = cst_encode_String(pickle);
         var arg1 = cst_encode_list_prim_u_8_loose(pickleKey);
-        return wire.wire__crate__bindings__vodozemac_group_session_from_olm_pickle_encrypted(port_, arg0, arg1);
+        return wire.wire__crate__bindings__vodozemac_group_session_from_olm_pickle_encrypted(arg0, arg1);
       },
       codec: DcoCodec(
         decodeSuccessData: dco_decode_vodozemac_group_session,
@@ -1408,13 +1399,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<VodozemacGroupSession> crateBindingsVodozemacGroupSessionFromPickleEncrypted(
+  VodozemacGroupSession crateBindingsVodozemacGroupSessionFromPickleEncrypted(
       {required String pickle, required U8Array32 pickleKey}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
         var arg0 = cst_encode_String(pickle);
         var arg1 = cst_encode_u_8_array_32(pickleKey);
-        return wire.wire__crate__bindings__vodozemac_group_session_from_pickle_encrypted(port_, arg0, arg1);
+        return wire.wire__crate__bindings__vodozemac_group_session_from_pickle_encrypted(arg0, arg1);
       },
       codec: DcoCodec(
         decodeSuccessData: dco_decode_vodozemac_group_session,
@@ -1476,13 +1467,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<String> crateBindingsVodozemacGroupSessionPickleEncrypted(
+  String crateBindingsVodozemacGroupSessionPickleEncrypted(
       {required VodozemacGroupSession that, required U8Array32 pickleKey}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
         var arg0 = cst_encode_box_autoadd_vodozemac_group_session(that);
         var arg1 = cst_encode_u_8_array_32(pickleKey);
-        return wire.wire__crate__bindings__vodozemac_group_session_pickle_encrypted(port_, arg0, arg1);
+        return wire.wire__crate__bindings__vodozemac_group_session_pickle_encrypted(arg0, arg1);
       },
       codec: DcoCodec(
         decodeSuccessData: dco_decode_String,
@@ -1588,13 +1579,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<DecryptResult> crateBindingsVodozemacInboundGroupSessionDecrypt(
+  DecryptResult crateBindingsVodozemacInboundGroupSessionDecrypt(
       {required VodozemacInboundGroupSession that, required String encrypted}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
         var arg0 = cst_encode_box_autoadd_vodozemac_inbound_group_session(that);
         var arg1 = cst_encode_String(encrypted);
-        return wire.wire__crate__bindings__vodozemac_inbound_group_session_decrypt(port_, arg0, arg1);
+        return wire.wire__crate__bindings__vodozemac_inbound_group_session_decrypt(arg0, arg1);
       },
       codec: DcoCodec(
         decodeSuccessData: dco_decode_decrypt_result,
@@ -1681,13 +1672,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<VodozemacInboundGroupSession> crateBindingsVodozemacInboundGroupSessionFromOlmPickleEncrypted(
+  VodozemacInboundGroupSession crateBindingsVodozemacInboundGroupSessionFromOlmPickleEncrypted(
       {required String pickle, required List<int> pickleKey}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
         var arg0 = cst_encode_String(pickle);
         var arg1 = cst_encode_list_prim_u_8_loose(pickleKey);
-        return wire.wire__crate__bindings__vodozemac_inbound_group_session_from_olm_pickle_encrypted(port_, arg0, arg1);
+        return wire.wire__crate__bindings__vodozemac_inbound_group_session_from_olm_pickle_encrypted(arg0, arg1);
       },
       codec: DcoCodec(
         decodeSuccessData: dco_decode_vodozemac_inbound_group_session,
@@ -1705,13 +1696,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<VodozemacInboundGroupSession> crateBindingsVodozemacInboundGroupSessionFromPickleEncrypted(
+  VodozemacInboundGroupSession crateBindingsVodozemacInboundGroupSessionFromPickleEncrypted(
       {required String pickle, required U8Array32 pickleKey}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
         var arg0 = cst_encode_String(pickle);
         var arg1 = cst_encode_u_8_array_32(pickleKey);
-        return wire.wire__crate__bindings__vodozemac_inbound_group_session_from_pickle_encrypted(port_, arg0, arg1);
+        return wire.wire__crate__bindings__vodozemac_inbound_group_session_from_pickle_encrypted(arg0, arg1);
       },
       codec: DcoCodec(
         decodeSuccessData: dco_decode_vodozemac_inbound_group_session,
@@ -1730,10 +1721,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   VodozemacInboundGroupSession crateBindingsVodozemacInboundGroupSessionImport(
-      {required String sessionKey, required VodozemacMegolmSessionConfig config}) {
+      {required String exportedSessionKey, required VodozemacMegolmSessionConfig config}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
-        var arg0 = cst_encode_String(sessionKey);
+        var arg0 = cst_encode_String(exportedSessionKey);
         var arg1 = cst_encode_box_autoadd_vodozemac_megolm_session_config(config);
         return wire.wire__crate__bindings__vodozemac_inbound_group_session_import(arg0, arg1);
       },
@@ -1742,14 +1733,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         decodeErrorData: dco_decode_AnyhowException,
       ),
       constMeta: kCrateBindingsVodozemacInboundGroupSessionImportConstMeta,
-      argValues: [sessionKey, config],
+      argValues: [exportedSessionKey, config],
       apiImpl: this,
     ));
   }
 
   TaskConstMeta get kCrateBindingsVodozemacInboundGroupSessionImportConstMeta => const TaskConstMeta(
         debugName: "vodozemac_inbound_group_session_import",
-        argNames: ["sessionKey", "config"],
+        argNames: ["exportedSessionKey", "config"],
       );
 
   @override
@@ -1777,13 +1768,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<String> crateBindingsVodozemacInboundGroupSessionPickleEncrypted(
+  String crateBindingsVodozemacInboundGroupSessionPickleEncrypted(
       {required VodozemacInboundGroupSession that, required U8Array32 pickleKey}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
         var arg0 = cst_encode_box_autoadd_vodozemac_inbound_group_session(that);
         var arg1 = cst_encode_u_8_array_32(pickleKey);
-        return wire.wire__crate__bindings__vodozemac_inbound_group_session_pickle_encrypted(port_, arg0, arg1);
+        return wire.wire__crate__bindings__vodozemac_inbound_group_session_pickle_encrypted(arg0, arg1);
       },
       codec: DcoCodec(
         decodeSuccessData: dco_decode_String,
@@ -2061,13 +2052,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<String> crateBindingsVodozemacPkDecryptionDecrypt(
+  String crateBindingsVodozemacPkDecryptionDecrypt(
       {required VodozemacPkDecryption that, required VodozemacPkMessage message}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
         var arg0 = cst_encode_box_autoadd_vodozemac_pk_decryption(that);
         var arg1 = cst_encode_box_autoadd_vodozemac_pk_message(message);
-        return wire.wire__crate__bindings__vodozemac_pk_decryption_decrypt(port_, arg0, arg1);
+        return wire.wire__crate__bindings__vodozemac_pk_decryption_decrypt(arg0, arg1);
       },
       codec: DcoCodec(
         decodeSuccessData: dco_decode_String,
@@ -2107,13 +2098,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<VodozemacPkDecryption> crateBindingsVodozemacPkDecryptionFromLibolmPickle(
+  VodozemacPkDecryption crateBindingsVodozemacPkDecryptionFromLibolmPickle(
       {required String pickle, required List<int> pickleKey}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
         var arg0 = cst_encode_String(pickle);
         var arg1 = cst_encode_list_prim_u_8_loose(pickleKey);
-        return wire.wire__crate__bindings__vodozemac_pk_decryption_from_libolm_pickle(port_, arg0, arg1);
+        return wire.wire__crate__bindings__vodozemac_pk_decryption_from_libolm_pickle(arg0, arg1);
       },
       codec: DcoCodec(
         decodeSuccessData: dco_decode_vodozemac_pk_decryption,
@@ -2196,13 +2187,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<String> crateBindingsVodozemacPkDecryptionToLibolmPickle(
+  String crateBindingsVodozemacPkDecryptionToLibolmPickle(
       {required VodozemacPkDecryption that, required U8Array32 pickleKey}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
         var arg0 = cst_encode_box_autoadd_vodozemac_pk_decryption(that);
         var arg1 = cst_encode_u_8_array_32(pickleKey);
-        return wire.wire__crate__bindings__vodozemac_pk_decryption_to_libolm_pickle(port_, arg0, arg1);
+        return wire.wire__crate__bindings__vodozemac_pk_decryption_to_libolm_pickle(arg0, arg1);
       },
       codec: DcoCodec(
         decodeSuccessData: dco_decode_String,
@@ -2220,13 +2211,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<VodozemacPkMessage> crateBindingsVodozemacPkEncryptionEncrypt(
+  VodozemacPkMessage crateBindingsVodozemacPkEncryptionEncrypt(
       {required VodozemacPkEncryption that, required String message}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
         var arg0 = cst_encode_box_autoadd_vodozemac_pk_encryption(that);
         var arg1 = cst_encode_String(message);
-        return wire.wire__crate__bindings__vodozemac_pk_encryption_encrypt(port_, arg0, arg1);
+        return wire.wire__crate__bindings__vodozemac_pk_encryption_encrypt(arg0, arg1);
       },
       codec: DcoCodec(
         decodeSuccessData: dco_decode_vodozemac_pk_message,
@@ -2266,13 +2257,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<String> crateBindingsVodozemacSessionDecrypt(
-      {required VodozemacSession that, required VodozemacOlmMessage message}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
+  String crateBindingsVodozemacSessionDecrypt({required VodozemacSession that, required VodozemacOlmMessage message}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
         var arg0 = cst_encode_box_autoadd_vodozemac_session(that);
         var arg1 = cst_encode_box_autoadd_vodozemac_olm_message(message);
-        return wire.wire__crate__bindings__vodozemac_session_decrypt(port_, arg0, arg1);
+        return wire.wire__crate__bindings__vodozemac_session_decrypt(arg0, arg1);
       },
       codec: DcoCodec(
         decodeSuccessData: dco_decode_String,
@@ -2290,13 +2280,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<VodozemacOlmMessage> crateBindingsVodozemacSessionEncrypt(
+  VodozemacOlmMessage crateBindingsVodozemacSessionEncrypt(
       {required VodozemacSession that, required String plaintext}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
         var arg0 = cst_encode_box_autoadd_vodozemac_session(that);
         var arg1 = cst_encode_String(plaintext);
-        return wire.wire__crate__bindings__vodozemac_session_encrypt(port_, arg0, arg1);
+        return wire.wire__crate__bindings__vodozemac_session_encrypt(arg0, arg1);
       },
       codec: DcoCodec(
         decodeSuccessData: dco_decode_vodozemac_olm_message,
@@ -2314,13 +2304,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<VodozemacSession> crateBindingsVodozemacSessionFromOlmPickleEncrypted(
+  VodozemacSession crateBindingsVodozemacSessionFromOlmPickleEncrypted(
       {required String pickle, required List<int> pickleKey}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
         var arg0 = cst_encode_String(pickle);
         var arg1 = cst_encode_list_prim_u_8_loose(pickleKey);
-        return wire.wire__crate__bindings__vodozemac_session_from_olm_pickle_encrypted(port_, arg0, arg1);
+        return wire.wire__crate__bindings__vodozemac_session_from_olm_pickle_encrypted(arg0, arg1);
       },
       codec: DcoCodec(
         decodeSuccessData: dco_decode_vodozemac_session,
@@ -2338,13 +2328,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<VodozemacSession> crateBindingsVodozemacSessionFromPickleEncrypted(
+  VodozemacSession crateBindingsVodozemacSessionFromPickleEncrypted(
       {required String pickle, required U8Array32 pickleKey}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
         var arg0 = cst_encode_String(pickle);
         var arg1 = cst_encode_u_8_array_32(pickleKey);
-        return wire.wire__crate__bindings__vodozemac_session_from_pickle_encrypted(port_, arg0, arg1);
+        return wire.wire__crate__bindings__vodozemac_session_from_pickle_encrypted(arg0, arg1);
       },
       codec: DcoCodec(
         decodeSuccessData: dco_decode_vodozemac_session,
@@ -2384,13 +2374,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<String> crateBindingsVodozemacSessionPickleEncrypted(
-      {required VodozemacSession that, required U8Array32 pickleKey}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
+  String crateBindingsVodozemacSessionPickleEncrypted({required VodozemacSession that, required U8Array32 pickleKey}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
         var arg0 = cst_encode_box_autoadd_vodozemac_session(that);
         var arg1 = cst_encode_u_8_array_32(pickleKey);
-        return wire.wire__crate__bindings__vodozemac_session_pickle_encrypted(port_, arg0, arg1);
+        return wire.wire__crate__bindings__vodozemac_session_pickle_encrypted(arg0, arg1);
       },
       codec: DcoCodec(
         decodeSuccessData: dco_decode_String,
@@ -4266,7 +4255,7 @@ class VodozemacSasImpl extends RustOpaque implements VodozemacSas {
     rustArcDecrementStrongCountPtr: RustLib.instance.api.rust_arc_decrement_strong_count_VodozemacSasPtr,
   );
 
-  Future<VodozemacEstablishedSas> establishSasSecret({required String otherPublicKey}) =>
+  VodozemacEstablishedSas establishSasSecret({required String otherPublicKey}) =>
       RustLib.instance.api.crateBindingsVodozemacSasEstablishSasSecret(that: this, otherPublicKey: otherPublicKey);
 
   String publicKey() => RustLib.instance.api.crateBindingsVodozemacSasPublicKey(

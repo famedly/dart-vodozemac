@@ -12,7 +12,7 @@ void main() {
     late vodozemac.Account vodozemacAccount;
 
     setUpAll(() async {
-      await vodozemac.loadVodozemac(
+      await vodozemac.init(
         wasmPath:
             './pkg/', // this is relative to the output file (compiled to js in `web/`)
         libraryPath:
@@ -24,20 +24,20 @@ void main() {
       olmAccount.create();
       final olmAccountPickle = olmAccount.pickle('key');
 
-      vodozemacAccount = await vodozemac.Account.fromOlmPickleEncrypted(
+      vodozemacAccount = vodozemac.Account.fromOlmPickleEncrypted(
         pickle: olmAccountPickle,
         pickleKey: Uint8List.fromList('key'.codeUnits),
       );
     });
-    test('Export import identity keys', () async {
+    test('Export import identity keys', () {
       final olmKeys = jsonDecode(olmAccount.identity_keys());
       final vodozemacKeys = {
-        'curve25519': vodozemacAccount.curve25519Key().toBase64(),
-        'ed25519': vodozemacAccount.ed25519Key().toBase64(),
+        'curve25519': vodozemacAccount.curve25519Key.toBase64(),
+        'ed25519': vodozemacAccount.ed25519Key.toBase64(),
       };
       expect(olmKeys, vodozemacKeys);
     });
-    test('Export import Olm Session', () async {
+    test('Export import Olm Session', () {
       final other = olm.Account();
       other.create();
       other.generate_one_time_keys(1);
@@ -53,17 +53,17 @@ void main() {
 
       final pickle = olmSession.pickle('key');
 
-      final vodozemacSession = await vodozemac.Session.fromOlmPickleEncrypted(
+      final vodozemacSession = vodozemac.Session.fromOlmPickleEncrypted(
         pickle: pickle,
         pickleKey: Uint8List.fromList('key'.codeUnits),
       );
 
-      expect(olmSession.session_id(), vodozemacSession.sessionId());
+      expect(olmSession.session_id(), vodozemacSession.sessionId);
 
       other.free();
       olmSession.free();
     });
-    test('Export import Outbound Group Session', () async {
+    test('Export import Outbound Group Session', () {
       final other = olm.Account();
       other.create();
 
@@ -72,18 +72,17 @@ void main() {
 
       final pickle = olmSession.pickle('key');
 
-      final vodozemacSession =
-          await vodozemac.GroupSession.fromOlmPickleEncrypted(
+      final vodozemacSession = vodozemac.GroupSession.fromOlmPickleEncrypted(
         pickle: pickle,
         pickleKey: Uint8List.fromList('key'.codeUnits),
       );
 
-      expect(olmSession.session_id(), vodozemacSession.sessionId());
+      expect(olmSession.session_id(), vodozemacSession.sessionId);
 
       other.free();
       olmSession.free();
     });
-    test('Export import Group Session', () async {
+    test('Export import Group Session', () {
       final other = olm.Account();
       other.create();
 
@@ -95,22 +94,21 @@ void main() {
       final pickle = olmSession.pickle('key');
       final inboundPickle = inboundOlmSession.pickle('key');
 
-      final vodozemacSession =
-          await vodozemac.GroupSession.fromOlmPickleEncrypted(
+      final vodozemacSession = vodozemac.GroupSession.fromOlmPickleEncrypted(
         pickle: pickle,
         pickleKey: Uint8List.fromList('key'.codeUnits),
       );
 
       final vodozemacInboundSession =
-          await vodozemac.InboundGroupSession.fromOlmPickleEncrypted(
+          vodozemac.InboundGroupSession.fromOlmPickleEncrypted(
         pickle: inboundPickle,
         pickleKey: Uint8List.fromList('key'.codeUnits),
       );
 
-      expect(olmSession.session_id(), vodozemacSession.sessionId());
+      expect(olmSession.session_id(), vodozemacSession.sessionId);
       expect(
         inboundOlmSession.session_id(),
-        vodozemacInboundSession.sessionId(),
+        vodozemacInboundSession.sessionId,
       );
 
       other.free();

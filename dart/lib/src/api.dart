@@ -3,9 +3,10 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'generated/bindings.dart' as vodozemac;
 import 'generated/frb_generated.dart' as vodozemac show RustLib;
 
-/// Load the vodozemac backend. Only one backend can be loaded. You can provide the [wasmPath] and [libraryPath] to
-/// specify the location of the wasm and native library respectively.
-Future<void> loadVodozemac(
+/// Initialize by loading the vodozemac library. You can provide the [wasmPath]
+/// and [libraryPath] to specify the location of the wasm and native library
+/// respectively.
+Future<void> init(
         {required String wasmPath, required String libraryPath}) async =>
     vodozemac.RustLib.init(
         externalLibrary: await loadExternalLibrary(ExternalLibraryLoaderConfig(
@@ -13,11 +14,8 @@ Future<void> loadVodozemac(
             ioDirectory: libraryPath,
             webPrefix: wasmPath)));
 
-void isVodozemacLoaded() {
-  if (!vodozemac.RustLib.instance.initialized) {
-    throw Exception('Vodozemac library not loaded!');
-  }
-}
+/// If the vodozemac library has been loaded and initialized.
+bool isInitialized() => vodozemac.RustLib.instance.initialized;
 
 final class Curve25519PublicKey {
   final vodozemac.VodozemacCurve25519PublicKey _key;
@@ -65,8 +63,9 @@ final class Ed25519PublicKey {
 
   String toBase64() => _key.toBase64();
   Uint8List toBytes() => Uint8List.fromList(_key.asBytes());
-  Future<void> verify(
-          {required String message, required Ed25519Signature signature}) =>
+
+  /// Verify an Ed25519 signature.
+  void verify({required String message, required Ed25519Signature signature}) =>
       _key.verify(message: message, signature: signature._key);
 }
 
@@ -75,40 +74,38 @@ final class GroupSession {
 
   GroupSession._(this._session);
 
-  static Future<GroupSession> create() async =>
-      GroupSession._(vodozemac.VodozemacGroupSession(
-        config: vodozemac.VodozemacMegolmSessionConfig.def(),
-      ));
+  GroupSession()
+      : _session = vodozemac.VodozemacGroupSession(
+          config: vodozemac.VodozemacMegolmSessionConfig.def(),
+        );
 
-  String sessionId() => _session.sessionId();
-
-  int messageIndex() => _session.messageIndex();
-
-  Future<String> encrypt(String plaintext) =>
-      _session.encrypt(plaintext: plaintext);
-
+  String get sessionId => _session.sessionId();
   String get sessionKey => _session.sessionKey();
+  int get messageIndex => _session.messageIndex();
 
-  Future<String> toPickleEncrypted(Uint8List pickleKey) =>
-      _session.pickleEncrypted(pickleKey: vodozemac.U8Array32(pickleKey));
+  /// Encrypt a message.
+  String encrypt(String plaintext) => _session.encrypt(plaintext: plaintext);
 
-  static Future<GroupSession> fromPickleEncrypted({
-    required String pickle,
-    required Uint8List pickleKey,
-  }) async =>
-      GroupSession._(await vodozemac.VodozemacGroupSession.fromPickleEncrypted(
-          pickle: pickle, pickleKey: vodozemac.U8Array32(pickleKey)));
-
-  static Future<GroupSession> fromOlmPickleEncrypted({
-    required String pickle,
-    required Uint8List pickleKey,
-  }) async =>
-      GroupSession._(
-          await vodozemac.VodozemacGroupSession.fromOlmPickleEncrypted(
-              pickle: pickle, pickleKey: pickleKey));
-
+  /// Convert to an inbound group session.
   InboundGroupSession toInbound() =>
       InboundGroupSession._(_session.toInbound());
+
+  String toPickleEncrypted(Uint8List pickleKey) =>
+      _session.pickleEncrypted(pickleKey: vodozemac.U8Array32(pickleKey));
+
+  static GroupSession fromPickleEncrypted({
+    required String pickle,
+    required Uint8List pickleKey,
+  }) =>
+      GroupSession._(vodozemac.VodozemacGroupSession.fromPickleEncrypted(
+          pickle: pickle, pickleKey: vodozemac.U8Array32(pickleKey)));
+
+  static GroupSession fromOlmPickleEncrypted({
+    required String pickle,
+    required Uint8List pickleKey,
+  }) =>
+      GroupSession._(vodozemac.VodozemacGroupSession.fromOlmPickleEncrypted(
+          pickle: pickle, pickleKey: pickleKey));
 }
 
 final class InboundGroupSession {
@@ -121,41 +118,46 @@ final class InboundGroupSession {
             sessionKey: sessionKey,
             config: vodozemac.VodozemacMegolmSessionConfig.def());
 
-  InboundGroupSession.import(String sessionKey)
+  InboundGroupSession.import(String exportedSessionKey)
       : _session = vodozemac.VodozemacInboundGroupSession.import_(
-            sessionKey: sessionKey,
+            exportedSessionKey: exportedSessionKey,
             config: vodozemac.VodozemacMegolmSessionConfig.def());
 
-  String sessionId() => _session.sessionId();
-  int firstKnownIndex() => _session.firstKnownIndex();
+  String get sessionId => _session.sessionId();
+  int get firstKnownIndex => _session.firstKnownIndex();
 
-  Future<({String plaintext, int messageIndex})> decrypt(
-      String encrypted) async {
-    final result = await _session.decrypt(encrypted: encrypted);
+  /// Decrypt a message.
+  ({String plaintext, int messageIndex}) decrypt(String encrypted) {
+    final result = _session.decrypt(encrypted: encrypted);
     return (plaintext: result.field0, messageIndex: result.field1);
   }
 
-  Future<String> toPickleEncrypted(Uint8List pickleKey) =>
+  /// Export a session at a specific message index. Returns `exportedSessionKey`
+  /// which can be used to import the session again.
+  String? exportAt(int messageIndex) => _session.exportAt(index: messageIndex);
+
+  /// Export a session at the first known message index. Returns `exportedSessionKey`
+  /// which can be used to import the session again.
+  String exportAtFirstKnownIndex() => _session.exportAtFirstKnownIndex();
+
+  String toPickleEncrypted(Uint8List pickleKey) =>
       _session.pickleEncrypted(pickleKey: vodozemac.U8Array32(pickleKey));
 
-  static Future<InboundGroupSession> fromPickleEncrypted({
+  static InboundGroupSession fromPickleEncrypted({
     required String pickle,
     required Uint8List pickleKey,
-  }) async =>
+  }) =>
       InboundGroupSession._(
-          await vodozemac.VodozemacInboundGroupSession.fromPickleEncrypted(
+          vodozemac.VodozemacInboundGroupSession.fromPickleEncrypted(
               pickle: pickle, pickleKey: vodozemac.U8Array32(pickleKey)));
 
-  static Future<InboundGroupSession> fromOlmPickleEncrypted({
+  static InboundGroupSession fromOlmPickleEncrypted({
     required String pickle,
     required Uint8List pickleKey,
-  }) async =>
+  }) =>
       InboundGroupSession._(
-          await vodozemac.VodozemacInboundGroupSession.fromOlmPickleEncrypted(
+          vodozemac.VodozemacInboundGroupSession.fromOlmPickleEncrypted(
               pickle: pickle, pickleKey: pickleKey));
-
-  String? exportAt(int messageIndex) => _session.exportAt(index: messageIndex);
-  String exportAtFirstKnownIndex() => _session.exportAtFirstKnownIndex();
 }
 
 final class Session {
@@ -163,39 +165,39 @@ final class Session {
 
   Session._(this._session);
 
-  String sessionId() => _session.sessionId();
-  bool hasReceivedMessage() => _session.hasReceivedMessage();
+  String get sessionId => _session.sessionId();
+  bool get hasReceivedMessage => _session.hasReceivedMessage();
 
-  Future<({int messageType, String ciphertext})> encrypt(
-      String plaintext) async {
-    final encrypted = await _session.encrypt(plaintext: plaintext);
+  /// Encrypt a message.
+  ({int messageType, String ciphertext}) encrypt(String plaintext) {
+    final encrypted = _session.encrypt(plaintext: plaintext);
     return (
       messageType: encrypted.messageType().toInt(),
       ciphertext: encrypted.message(),
     );
   }
 
-  Future<String> decrypt(
-          {required int messageType, required String ciphertext}) =>
+  /// Decrypt a message.
+  String decrypt({required int messageType, required String ciphertext}) =>
       _session.decrypt(
           message: vodozemac.VodozemacOlmMessage.fromParts(
               messageType: BigInt.from(messageType), ciphertext: ciphertext));
 
-  Future<String> toPickleEncrypted(Uint8List pickleKey) =>
+  String toPickleEncrypted(Uint8List pickleKey) =>
       _session.pickleEncrypted(pickleKey: vodozemac.U8Array32(pickleKey));
 
-  static Future<Session> fromPickleEncrypted({
+  static Session fromPickleEncrypted({
     required String pickle,
     required Uint8List pickleKey,
-  }) async =>
-      Session._(await vodozemac.VodozemacSession.fromPickleEncrypted(
+  }) =>
+      Session._(vodozemac.VodozemacSession.fromPickleEncrypted(
           pickle: pickle, pickleKey: vodozemac.U8Array32(pickleKey)));
 
-  static Future<Session> fromOlmPickleEncrypted({
+  static Session fromOlmPickleEncrypted({
     required String pickle,
     required Uint8List pickleKey,
-  }) async =>
-      Session._(await vodozemac.VodozemacSession.fromOlmPickleEncrypted(
+  }) =>
+      Session._(vodozemac.VodozemacSession.fromOlmPickleEncrypted(
           pickle: pickle, pickleKey: pickleKey));
 }
 
@@ -203,27 +205,17 @@ final class Account {
   final vodozemac.VodozemacAccount _account;
 
   Account._(this._account);
+  factory Account() => Account._(vodozemac.VodozemacAccount());
 
-  static Future<Account> create() async =>
-      Account._(vodozemac.VodozemacAccount());
+  int get maxNumberOfOneTimeKeys => _account.maxNumberOfOneTimeKeys().toInt();
 
-  int maxNumberOfOneTimeKeys() => _account.maxNumberOfOneTimeKeys().toInt();
+  Ed25519PublicKey get ed25519Key => Ed25519PublicKey._(_account.ed25519Key());
 
-  Future<void> generateFallbackKey() => _account.generateFallbackKey();
-
-  bool forgetFallbackKey() => _account.forgetFallbackKey();
-
-  Future<void> generateOneTimeKeys(int count) =>
-      _account.generateOneTimeKeys(count: BigInt.from(count));
-
-  void markKeysAsPublished() => _account.markKeysAsPublished();
-
-  Ed25519PublicKey ed25519Key() => Ed25519PublicKey._(_account.ed25519Key());
-
-  Curve25519PublicKey curve25519Key() =>
+  Curve25519PublicKey get curve25519Key =>
       Curve25519PublicKey._(_account.curve25519Key());
 
-  ({Ed25519PublicKey ed25519, Curve25519PublicKey curve25519}) identityKeys() {
+  ({Ed25519PublicKey ed25519, Curve25519PublicKey curve25519})
+      get identityKeys {
     final keys = _account.identityKeys();
     return (
       ed25519: Ed25519PublicKey._(keys.ed25519),
@@ -231,54 +223,70 @@ final class Account {
     );
   }
 
-  Map<String, Curve25519PublicKey> oneTimeKeys() =>
+  Map<String, Curve25519PublicKey> get oneTimeKeys =>
       Map<String, Curve25519PublicKey>.fromEntries(_account
           .oneTimeKeys()
           .map((e) => MapEntry(e.keyid, Curve25519PublicKey._(e.key))));
 
-  Map<String, Curve25519PublicKey> fallbackKey() =>
+  Map<String, Curve25519PublicKey> get fallbackKey =>
       Map<String, Curve25519PublicKey>.fromEntries(_account
           .fallbackKey()
           .map((e) => MapEntry(e.keyid, Curve25519PublicKey._(e.key))));
 
-  Future<Ed25519Signature> sign(String message) async =>
-      Ed25519Signature._(await _account.sign(message: message));
+  /// Generate a fallback key.
+  void generateFallbackKey() => _account.generateFallbackKey();
 
-  Future<Session> createOutboundSession({
-    required covariant Curve25519PublicKey identityKey,
-    required covariant Curve25519PublicKey oneTimeKey,
-  }) async =>
-      Session._(await _account.createOutboundSession(
+  /// Forget the fallback key.
+  bool forgetFallbackKey() => _account.forgetFallbackKey();
+
+  /// Generate one-time keys.
+  void generateOneTimeKeys(int count) =>
+      _account.generateOneTimeKeys(count: BigInt.from(count));
+
+  /// Mark keys as published.
+  void markKeysAsPublished() => _account.markKeysAsPublished();
+
+  /// Sign a message.
+  Ed25519Signature sign(String message) =>
+      Ed25519Signature._(_account.sign(message: message));
+
+  /// Create an outbound session.
+  Session createOutboundSession({
+    required Curve25519PublicKey identityKey,
+    required Curve25519PublicKey oneTimeKey,
+  }) =>
+      Session._(_account.createOutboundSession(
           config: vodozemac.VodozemacOlmSessionConfig.def(),
           identityKey: identityKey._key,
           oneTimeKey: oneTimeKey._key));
 
-  Future<({Session session, String plaintext})> createInboundSession({
-    required covariant Curve25519PublicKey theirIdentityKey,
+  /// Create an inbound session.
+  ({Session session, String plaintext}) createInboundSession({
+    required Curve25519PublicKey theirIdentityKey,
     required String preKeyMessageBase64,
-  }) async {
-    final inb = await _account.createInboundSession(
+  }) {
+    final inb = _account.createInboundSession(
         theirIdentityKey: theirIdentityKey._key,
         preKeyMessageBase64: preKeyMessageBase64);
 
     return (session: Session._(inb.session), plaintext: inb.plaintext);
   }
 
-  Future<String> toPickleEncrypted(Uint8List pickleKey) =>
+  String toPickleEncrypted(Uint8List pickleKey) =>
       _account.pickleEncrypted(pickleKey: vodozemac.U8Array32(pickleKey));
 
-  static Future<Account> fromPickleEncrypted({
+  static Account fromPickleEncrypted({
     required String pickle,
     required Uint8List pickleKey,
-  }) async =>
-      Account._(await vodozemac.VodozemacAccount.fromPickleEncrypted(
+  }) =>
+      Account._(vodozemac.VodozemacAccount.fromPickleEncrypted(
           pickle: pickle, pickleKey: vodozemac.U8Array32(pickleKey)));
 
-  static Future<Account> fromOlmPickleEncrypted({
+  static Account fromOlmPickleEncrypted({
     required String pickle,
     required Uint8List pickleKey,
-  }) async =>
-      Account._(await vodozemac.VodozemacAccount.fromOlmPickleEncrypted(
+  }) =>
+      Account._(vodozemac.VodozemacAccount.fromOlmPickleEncrypted(
           pickle: pickle, pickleKey: pickleKey));
 }
 
@@ -288,22 +296,20 @@ final class Sas {
   bool _disposed = false;
 
   Sas._(this._sas) : _publicKey = _sas.publicKey();
-
-  static Sas create() => Sas._(vodozemac.VodozemacSas());
+  factory Sas() => Sas._(vodozemac.VodozemacSas());
 
   String get publicKey => _publicKey;
 
   /// Once the `establishSasSecret` method is called, the Sas object is disposed
   /// and cannot be used again to establish a new SAS secret.
   /// Create a new Sas object instead.
-  Future<EstablishedSas> establishSasSecret(String otherPublicKey) async {
+  EstablishedSas establishSasSecret(String otherPublicKey) {
     if (_disposed) {
       throw Exception('Sas has been disposed');
     }
     _disposed = true;
     return EstablishedSas._(
-      await _sas.establishSasSecret(otherPublicKey: otherPublicKey),
-    );
+        _sas.establishSasSecret(otherPublicKey: otherPublicKey));
   }
 }
 
@@ -312,20 +318,24 @@ final class EstablishedSas {
 
   EstablishedSas._(this._sas);
 
-  Future<Uint8List> generateBytes(String info, int length) async =>
+  /// Generate SAS secret bytes.
+  Uint8List generateBytes(String info, int length) =>
       _sas.generateBytes(info: info, length: length);
 
+  /// Calculate a MAC.
   /// To be used with `hkdf-hmac-sha256.v2` which is the current recommended method
-  Future<String> calculateMac(String input, String info) async =>
+  String calculateMac(String input, String info) =>
       _sas.calculateMac(input: input, info: info);
 
+  /// Calculate a MAC.
   /// To be used with `hkdf-hmac-sha256` which is deprecated now due to a bug in
   /// it's original implementation in libolm.
   /// Refer to info section in https://spec.matrix.org/latest/client-server-api/#mac-calculation
-  Future<String> calculateMacDeprecated(String input, String info) async =>
+  String calculateMacDeprecated(String input, String info) =>
       _sas.calculateMacDeprecated(input: input, info: info);
 
-  Future<void> verifyMac(String input, String info, String mac) async =>
+  /// Verify a MAC.
+  void verifyMac(String input, String info, String mac) =>
       _sas.verifyMac(input: input, info: info, mac: mac);
 }
 
@@ -334,9 +344,9 @@ final class PkMessage {
 
   PkMessage._(this._message);
 
-  Uint8List ciphertext() => _message.ciphertext;
-  Uint8List mac() => _message.mac;
-  Curve25519PublicKey ephemeralKey() =>
+  Uint8List get ciphertext => _message.ciphertext;
+  Uint8List get mac => _message.mac;
+  Curve25519PublicKey get ephemeralKey =>
       Curve25519PublicKey._(_message.ephemeralKey);
 }
 
@@ -345,55 +355,57 @@ final class PkEncryption {
 
   PkEncryption._(this._encryption);
 
-  static PkEncryption fromPublicKey(Curve25519PublicKey key) => PkEncryption._(
+  factory PkEncryption.fromPublicKey(Curve25519PublicKey key) => PkEncryption._(
       vodozemac.VodozemacPkEncryption.fromKey(publicKey: key._key));
 
-  Future<PkMessage> encrypt(String message) async =>
-      PkMessage._(await _encryption.encrypt(message: message));
+  /// Encrypt a message.
+  PkMessage encrypt(String message) =>
+      PkMessage._(_encryption.encrypt(message: message));
 }
 
 final class PkDecryption {
   final vodozemac.VodozemacPkDecryption _decryption;
 
   PkDecryption._(this._decryption);
-  PkDecryption() : _decryption = vodozemac.VodozemacPkDecryption();
+  factory PkDecryption() => PkDecryption._(vodozemac.VodozemacPkDecryption());
 
-  static Future<PkDecryption> fromLibolmPickle({
-    required String pickle,
-    required Uint8List pickleKey,
-  }) async =>
-      PkDecryption._(await vodozemac.VodozemacPkDecryption.fromLibolmPickle(
-          pickle: pickle, pickleKey: pickleKey));
-
-  static PkDecryption fromSecretKey(Curve25519PublicKey key) =>
+  factory PkDecryption.fromSecretKey(Curve25519PublicKey key) =>
       PkDecryption._(vodozemac.VodozemacPkDecryption.fromKey(
           secretKey: vodozemac.U8Array32(key.toBytes())));
 
-  Future<String> toLibolmPickle(Uint8List pickleKey) async =>
+  String get publicKey => _decryption.publicKey();
+
+  Uint8List get privateKey => _decryption.privateKey();
+
+  /// Decrypt a message.
+  String decrypt(PkMessage message) =>
+      _decryption.decrypt(message: message._message);
+
+  static PkDecryption fromLibolmPickle({
+    required String pickle,
+    required Uint8List pickleKey,
+  }) =>
+      PkDecryption._(vodozemac.VodozemacPkDecryption.fromLibolmPickle(
+          pickle: pickle, pickleKey: pickleKey));
+
+  String toLibolmPickle(Uint8List pickleKey) =>
       _decryption.toLibolmPickle(pickleKey: vodozemac.U8Array32(pickleKey));
-
-  Future<String> decrypt(PkMessage message) async =>
-      await _decryption.decrypt(message: message._message);
-
-  String publicKey() => _decryption.publicKey();
-
-  Future<Uint8List> privateKey() async => _decryption.privateKey();
 }
 
 final class PkSigning {
   final vodozemac.PkSigning _signing;
 
   PkSigning._(this._signing);
+  factory PkSigning() => PkSigning._(vodozemac.PkSigning());
 
-  PkSigning() : _signing = vodozemac.PkSigning();
-
-  static PkSigning fromSecretKey(String key) =>
+  factory PkSigning.fromSecretKey(String key) =>
       PkSigning._(vodozemac.PkSigning.fromSecretKey(key: key));
 
-  String secretKey() => _signing.secretKey();
+  String get secretKey => _signing.secretKey();
 
-  Ed25519PublicKey publicKey() => Ed25519PublicKey._(_signing.publicKey());
+  Ed25519PublicKey get publicKey => Ed25519PublicKey._(_signing.publicKey());
 
+  /// Sign a message.
   Ed25519Signature sign(String message) =>
       Ed25519Signature._(_signing.sign(message: message));
 }
