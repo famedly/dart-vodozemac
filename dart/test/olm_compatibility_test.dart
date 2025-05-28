@@ -115,6 +115,46 @@ void main() {
       olmSession.free();
     });
 
+    test('PK Export import pickle', () {
+      final pkSigning = olm.PkSigning();
+      final key = pkSigning.init_with_seed(pkSigning.generate_seed());
+
+      final decryption = olm.PkDecryption();
+      final encryption = olm.PkEncryption();
+
+      final recipientKey =
+          decryption.init_with_private_key(Uint8List.fromList(key.codeUnits));
+      encryption.set_recipient_key(recipientKey);
+
+      final encrypted = encryption.encrypt('plaintext');
+
+      final plaintext = decryption.decrypt(
+        encrypted.ephemeral,
+        encrypted.mac,
+        encrypted.ciphertext,
+      );
+
+      expect(plaintext, 'plaintext');
+
+      final vodDecryption = vodozemac.PkDecryption.fromLibolmPickle(
+        pickle: decryption.pickle('pickleKey'),
+        pickleKey: Uint8List.fromList('pickleKey'.codeUnits),
+      );
+
+      expect(
+        vodDecryption.decrypt(vodozemac.PkMessage.fromBase64(
+          ciphertext: encrypted.ciphertext,
+          mac: encrypted.mac,
+          ephemeralKey: encrypted.ephemeral,
+        )),
+        'plaintext',
+      );
+
+      decryption.free();
+      encryption.free();
+      pkSigning.free();
+    });
+
     tearDownAll(() {
       olmAccount.free();
     });
