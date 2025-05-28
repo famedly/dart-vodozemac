@@ -605,11 +605,27 @@ class VodozemacPkMessage {
   final Uint8List mac;
   final VodozemacCurve25519PublicKey ephemeralKey;
 
-  const VodozemacPkMessage({
+  const VodozemacPkMessage.raw({
     required this.ciphertext,
     required this.mac,
     required this.ephemeralKey,
   });
+
+  static VodozemacPkMessage fromBase64(
+          {required String ciphertext, required String mac, required String ephemeralKey}) =>
+      RustLib.instance.api
+          .crateBindingsVodozemacPkMessageFromBase64(ciphertext: ciphertext, mac: mac, ephemeralKey: ephemeralKey);
+
+  factory VodozemacPkMessage(
+          {required List<int> ciphertext,
+          required List<int> mac,
+          required VodozemacCurve25519PublicKey ephemeralKey}) =>
+      RustLib.instance.api
+          .crateBindingsVodozemacPkMessageNew(ciphertext: ciphertext, mac: mac, ephemeralKey: ephemeralKey);
+
+  (String, String, String) toBase64() => RustLib.instance.api.crateBindingsVodozemacPkMessageToBase64(
+        that: this,
+      );
 
   @override
   int get hashCode => ciphertext.hashCode ^ mac.hashCode ^ ephemeralKey.hashCode;

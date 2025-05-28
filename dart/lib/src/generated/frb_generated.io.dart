@@ -190,6 +190,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   String? dco_decode_opt_String(dynamic raw);
 
   @protected
+  (String, String, String) dco_decode_record_string_string_string(dynamic raw);
+
+  @protected
   int dco_decode_u_32(dynamic raw);
 
   @protected
@@ -386,6 +389,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   String? sse_decode_opt_String(SseDeserializer deserializer);
+
+  @protected
+  (String, String, String) sse_decode_record_string_string_string(SseDeserializer deserializer);
 
   @protected
   int sse_decode_u_32(SseDeserializer deserializer);
@@ -739,6 +745,14 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  void cst_api_fill_to_wire_record_string_string_string(
+      (String, String, String) apiObj, wire_cst_record_string_string_string wireObj) {
+    wireObj.field0 = cst_encode_String(apiObj.$1);
+    wireObj.field1 = cst_encode_String(apiObj.$2);
+    wireObj.field2 = cst_encode_String(apiObj.$3);
+  }
+
+  @protected
   void cst_api_fill_to_wire_vodozemac_account(VodozemacAccount apiObj, wire_cst_vodozemac_account wireObj) {
     wireObj.account = cst_encode_RustOpaque_stdsyncRwLockAccount(apiObj.account);
   }
@@ -1042,6 +1056,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   void sse_encode_opt_String(String? self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_record_string_string_string((String, String, String) self, SseSerializer serializer);
 
   @protected
   void sse_encode_u_32(int self, SseSerializer serializer);
@@ -2493,6 +2510,65 @@ class RustLibWire implements BaseWire {
       _wire__crate__bindings__vodozemac_pk_encryption_from_keyPtr
           .asFunction<WireSyncRust2DartDco Function(ffi.Pointer<wire_cst_vodozemac_curve_25519_public_key>)>();
 
+  WireSyncRust2DartDco wire__crate__bindings__vodozemac_pk_message_from_base64(
+    ffi.Pointer<wire_cst_list_prim_u_8_strict> ciphertext,
+    ffi.Pointer<wire_cst_list_prim_u_8_strict> mac,
+    ffi.Pointer<wire_cst_list_prim_u_8_strict> ephemeral_key,
+  ) {
+    return _wire__crate__bindings__vodozemac_pk_message_from_base64(
+      ciphertext,
+      mac,
+      ephemeral_key,
+    );
+  }
+
+  late final _wire__crate__bindings__vodozemac_pk_message_from_base64Ptr = _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(ffi.Pointer<wire_cst_list_prim_u_8_strict>,
+                  ffi.Pointer<wire_cst_list_prim_u_8_strict>, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
+      'frbgen_vodozemac_wire__crate__bindings__vodozemac_pk_message_from_base64');
+  late final _wire__crate__bindings__vodozemac_pk_message_from_base64 =
+      _wire__crate__bindings__vodozemac_pk_message_from_base64Ptr.asFunction<
+          WireSyncRust2DartDco Function(ffi.Pointer<wire_cst_list_prim_u_8_strict>,
+              ffi.Pointer<wire_cst_list_prim_u_8_strict>, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
+
+  WireSyncRust2DartDco wire__crate__bindings__vodozemac_pk_message_new(
+    ffi.Pointer<wire_cst_list_prim_u_8_loose> ciphertext,
+    ffi.Pointer<wire_cst_list_prim_u_8_loose> mac,
+    ffi.Pointer<wire_cst_vodozemac_curve_25519_public_key> ephemeral_key,
+  ) {
+    return _wire__crate__bindings__vodozemac_pk_message_new(
+      ciphertext,
+      mac,
+      ephemeral_key,
+    );
+  }
+
+  late final _wire__crate__bindings__vodozemac_pk_message_newPtr = _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(ffi.Pointer<wire_cst_list_prim_u_8_loose>,
+                  ffi.Pointer<wire_cst_list_prim_u_8_loose>, ffi.Pointer<wire_cst_vodozemac_curve_25519_public_key>)>>(
+      'frbgen_vodozemac_wire__crate__bindings__vodozemac_pk_message_new');
+  late final _wire__crate__bindings__vodozemac_pk_message_new =
+      _wire__crate__bindings__vodozemac_pk_message_newPtr.asFunction<
+          WireSyncRust2DartDco Function(ffi.Pointer<wire_cst_list_prim_u_8_loose>,
+              ffi.Pointer<wire_cst_list_prim_u_8_loose>, ffi.Pointer<wire_cst_vodozemac_curve_25519_public_key>)>();
+
+  WireSyncRust2DartDco wire__crate__bindings__vodozemac_pk_message_to_base64(
+    ffi.Pointer<wire_cst_vodozemac_pk_message> that,
+  ) {
+    return _wire__crate__bindings__vodozemac_pk_message_to_base64(
+      that,
+    );
+  }
+
+  late final _wire__crate__bindings__vodozemac_pk_message_to_base64Ptr =
+      _lookup<ffi.NativeFunction<WireSyncRust2DartDco Function(ffi.Pointer<wire_cst_vodozemac_pk_message>)>>(
+          'frbgen_vodozemac_wire__crate__bindings__vodozemac_pk_message_to_base64');
+  late final _wire__crate__bindings__vodozemac_pk_message_to_base64 =
+      _wire__crate__bindings__vodozemac_pk_message_to_base64Ptr
+          .asFunction<WireSyncRust2DartDco Function(ffi.Pointer<wire_cst_vodozemac_pk_message>)>();
+
   WireSyncRust2DartDco wire__crate__bindings__vodozemac_session_decrypt(
     ffi.Pointer<wire_cst_vodozemac_session> that,
     ffi.Pointer<wire_cst_vodozemac_olm_message> message,
@@ -3383,6 +3459,14 @@ final class wire_cst_decrypt_result extends ffi.Struct {
 
   @ffi.Uint32()
   external int field1;
+}
+
+final class wire_cst_record_string_string_string extends ffi.Struct {
+  external ffi.Pointer<wire_cst_list_prim_u_8_strict> field0;
+
+  external ffi.Pointer<wire_cst_list_prim_u_8_strict> field1;
+
+  external ffi.Pointer<wire_cst_list_prim_u_8_strict> field2;
 }
 
 final class wire_cst_vodozemac_identity_keys extends ffi.Struct {

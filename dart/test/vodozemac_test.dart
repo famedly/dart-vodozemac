@@ -558,6 +558,32 @@ void main() async {
       final largeDecrypted = decryptor.decrypt(largeEncrypted);
       check(largeDecrypted).equals(largeMessage);
     });
+
+    test('PkMessage supports direct construction and Base64 conversion',
+        () async {
+      // Create a PkMessage directly
+      final ciphertext = Uint8List.fromList([1, 2, 3]);
+      final mac = Uint8List.fromList([4, 5, 6]);
+      final decryptor = PkDecryption();
+      final ephemeralKey = Curve25519PublicKey.fromBase64(decryptor.publicKey);
+
+      final message = PkMessage(ciphertext, mac, ephemeralKey);
+
+      // Convert to Base64
+      final base64Data = message.toBase64();
+
+      // Convert back from Base64
+      final recreated = PkMessage.fromBase64(
+        ciphertext: base64Data.$1,
+        mac: base64Data.$2,
+        ephemeralKey: base64Data.$3,
+      );
+
+      // Verify values match
+      check(recreated.ciphertext).deepEquals(ciphertext);
+      check(recreated.mac).deepEquals(mac);
+      check(recreated.ephemeralKey.toBase64()).equals(ephemeralKey.toBase64());
+    });
   });
 
   group('PkSigning', () {

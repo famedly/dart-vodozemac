@@ -2,7 +2,9 @@ use flutter_rust_bridge::*;
 use std::ops::Deref;
 pub use std::sync::RwLock;
 pub use std::vec::Vec;
+use vodozemac::base64_encode;
 pub use vodozemac::{
+    base64_decode,
     megolm::{
         GroupSession, GroupSessionPickle, InboundGroupSession, InboundGroupSessionPickle,
         SessionConfig as MegolmSessionConfig,
@@ -11,10 +13,9 @@ pub use vodozemac::{
         Account, AccountPickle, IdentityKeys, OlmMessage, Session,
         SessionConfig as OlmSessionConfig, SessionPickle,
     },
-    sas::{Sas, EstablishedSas, Mac},
     pk_encryption::{Message as PkMessage, PkDecryption, PkEncryption},
-    Curve25519PublicKey, Curve25519SecretKey, Ed25519SecretKey, Ed25519PublicKey, Ed25519Signature,
-    base64_decode,
+    sas::{EstablishedSas, Mac, Sas},
+    Curve25519PublicKey, Curve25519SecretKey, Ed25519PublicKey, Ed25519SecretKey, Ed25519Signature,
 };
 //#[frb(mirror(IdentityKeys))]
 //pub struct _IdentityKeys {
@@ -29,7 +30,7 @@ pub struct VodozemacMegolmSessionConfig {
 
 impl From<MegolmSessionConfig> for VodozemacMegolmSessionConfig {
     fn from(config: MegolmSessionConfig) -> Self {
-        VodozemacMegolmSessionConfig {
+        Self {
             config: RustOpaqueNom::new(config),
         }
     }
@@ -40,17 +41,17 @@ impl VodozemacMegolmSessionConfig {
         self.config.version()
     }
 
-    pub fn version_1() -> VodozemacMegolmSessionConfig {
+    pub fn version_1() -> Self {
         MegolmSessionConfig::version_1().into()
     }
 
-    pub fn version_2() -> VodozemacMegolmSessionConfig {
+    pub fn version_2() -> Self {
         MegolmSessionConfig::version_2().into()
     }
 
     // can't name this default, because that is a dart keyword and the generator also strips my
     // suffixes!
-    pub fn def() -> VodozemacMegolmSessionConfig {
+    pub fn def() -> Self {
         MegolmSessionConfig::default().into()
     }
 }
@@ -61,14 +62,14 @@ pub struct VodozemacGroupSession {
 
 impl From<GroupSession> for VodozemacGroupSession {
     fn from(session: GroupSession) -> Self {
-        VodozemacGroupSession {
+        Self {
             session: RustOpaqueNom::new(RwLock::new(session)),
         }
     }
 }
 
 impl VodozemacGroupSession {
-    pub fn new(config: VodozemacMegolmSessionConfig) -> VodozemacGroupSession {
+    pub fn new(config: VodozemacMegolmSessionConfig) -> Self {
         GroupSession::new(*config.config).into()
     }
 
@@ -123,19 +124,16 @@ impl VodozemacGroupSession {
     pub fn from_pickle_encrypted(
         pickle: String,
         pickle_key: [u8; 32usize],
-    ) -> anyhow::Result<VodozemacGroupSession> {
-        Ok(VodozemacGroupSession {
+    ) -> anyhow::Result<Self> {
+        Ok(Self {
             session: RustOpaqueNom::new(RwLock::new(GroupSession::from(
                 GroupSessionPickle::from_encrypted(&pickle, &pickle_key)?,
             ))),
         })
     }
 
-    pub fn from_olm_pickle_encrypted(
-        pickle: String,
-        pickle_key: Vec<u8>,
-    ) -> anyhow::Result<VodozemacGroupSession> {
-        Ok(VodozemacGroupSession {
+    pub fn from_olm_pickle_encrypted(pickle: String, pickle_key: Vec<u8>) -> anyhow::Result<Self> {
+        Ok(Self {
             session: RustOpaqueNom::new(RwLock::new(GroupSession::from_libolm_pickle(
                 &pickle,
                 &pickle_key,
@@ -155,7 +153,7 @@ pub struct VodozemacInboundGroupSession {
 
 impl From<InboundGroupSession> for VodozemacInboundGroupSession {
     fn from(session: InboundGroupSession) -> Self {
-        VodozemacInboundGroupSession {
+        Self {
             session: RustOpaqueNom::new(RwLock::new(session)),
         }
     }
@@ -164,10 +162,7 @@ impl From<InboundGroupSession> for VodozemacInboundGroupSession {
 pub struct DecryptResult(pub String, pub u32);
 
 impl VodozemacInboundGroupSession {
-    pub fn new(
-        session_key: String,
-        config: VodozemacMegolmSessionConfig,
-    ) -> anyhow::Result<VodozemacInboundGroupSession> {
+    pub fn new(session_key: String, config: VodozemacMegolmSessionConfig) -> anyhow::Result<Self> {
         Ok(InboundGroupSession::new(
             &vodozemac::megolm::SessionKey::from_base64(&session_key)?,
             *config.config,
@@ -214,19 +209,16 @@ impl VodozemacInboundGroupSession {
     pub fn from_pickle_encrypted(
         pickle: String,
         pickle_key: [u8; 32usize],
-    ) -> anyhow::Result<VodozemacInboundGroupSession> {
-        Ok(VodozemacInboundGroupSession {
+    ) -> anyhow::Result<Self> {
+        Ok(Self {
             session: RustOpaqueNom::new(RwLock::new(InboundGroupSession::from(
                 InboundGroupSessionPickle::from_encrypted(&pickle, &pickle_key)?,
             ))),
         })
     }
 
-    pub fn from_olm_pickle_encrypted(
-        pickle: String,
-        pickle_key: Vec<u8>,
-    ) -> anyhow::Result<VodozemacInboundGroupSession> {
-        Ok(VodozemacInboundGroupSession {
+    pub fn from_olm_pickle_encrypted(pickle: String, pickle_key: Vec<u8>) -> anyhow::Result<Self> {
+        Ok(Self {
             session: RustOpaqueNom::new(RwLock::new(InboundGroupSession::from_libolm_pickle(
                 &pickle,
                 &pickle_key,
@@ -237,12 +229,13 @@ impl VodozemacInboundGroupSession {
     pub fn import(
         exported_session_key: String,
         config: VodozemacMegolmSessionConfig,
-    ) -> anyhow::Result<VodozemacInboundGroupSession> {
-        Ok(InboundGroupSession::import(
-            &vodozemac::megolm::ExportedSessionKey::from_base64(&exported_session_key)?,
-            *config.config,
-        )
-        .into())
+    ) -> anyhow::Result<Self> {
+        Ok(Self {
+            session: RustOpaqueNom::new(RwLock::new(InboundGroupSession::import(
+                &vodozemac::megolm::ExportedSessionKey::from_base64(&exported_session_key)?,
+                *config.config,
+            ))),
+        })
     }
 
     pub fn export_at_first_known_index(&self) -> String {
@@ -268,7 +261,7 @@ pub struct VodozemacOlmSessionConfig {
 
 impl From<OlmSessionConfig> for VodozemacOlmSessionConfig {
     fn from(config: OlmSessionConfig) -> Self {
-        VodozemacOlmSessionConfig {
+        Self {
             config: RustOpaqueNom::new(config),
         }
     }
@@ -279,17 +272,17 @@ impl VodozemacOlmSessionConfig {
         self.config.version()
     }
 
-    pub fn version_1() -> VodozemacOlmSessionConfig {
+    pub fn version_1() -> Self {
         OlmSessionConfig::version_1().into()
     }
 
-    pub fn version_2() -> VodozemacOlmSessionConfig {
+    pub fn version_2() -> Self {
         OlmSessionConfig::version_2().into()
     }
 
     // can't name this default, because that is a dart keyword and the generator also strips my
     // suffixes!
-    pub fn def() -> VodozemacOlmSessionConfig {
+    pub fn def() -> Self {
         OlmSessionConfig::default().into()
     }
 }
@@ -300,7 +293,7 @@ pub struct VodozemacEd25519Signature {
 
 impl From<Ed25519Signature> for VodozemacEd25519Signature {
     fn from(signature: Ed25519Signature) -> Self {
-        VodozemacEd25519Signature {
+        Self {
             signature: RustOpaqueNom::new(signature),
         }
     }
@@ -309,12 +302,12 @@ impl From<Ed25519Signature> for VodozemacEd25519Signature {
 impl VodozemacEd25519Signature {
     pub const LENGTH: usize = 64usize;
 
-    pub fn from_slice(bytes: [u8; 64usize]) -> anyhow::Result<VodozemacEd25519Signature> {
+    pub fn from_slice(bytes: [u8; 64usize]) -> anyhow::Result<Self> {
         let key = Ed25519Signature::from_slice(&bytes)?;
         Ok(key.into())
     }
 
-    pub fn from_base64(signature: String) -> anyhow::Result<VodozemacEd25519Signature> {
+    pub fn from_base64(signature: String) -> anyhow::Result<Self> {
         let key = Ed25519Signature::from_base64(&signature)?;
         Ok(key.into())
     }
@@ -335,7 +328,7 @@ pub struct VodozemacEd25519PublicKey {
 impl VodozemacEd25519PublicKey {
     pub const LENGTH: usize = 32usize;
 
-    pub fn from_slice(bytes: [u8; 32usize]) -> anyhow::Result<VodozemacEd25519PublicKey> {
+    pub fn from_slice(bytes: [u8; 32usize]) -> anyhow::Result<Self> {
         let key = Ed25519PublicKey::from_slice(&bytes)?;
         Ok(key.into())
     }
@@ -344,7 +337,7 @@ impl VodozemacEd25519PublicKey {
         self.key.as_bytes().clone()
     }
 
-    pub fn from_base64(base64_key: String) -> anyhow::Result<VodozemacEd25519PublicKey> {
+    pub fn from_base64(base64_key: String) -> anyhow::Result<Self> {
         let key = Ed25519PublicKey::from_base64(&base64_key)?;
         Ok(key.into())
     }
@@ -387,7 +380,7 @@ impl From<Curve25519PublicKey> for VodozemacCurve25519PublicKey {
 impl VodozemacCurve25519PublicKey {
     pub const LENGTH: usize = 32usize;
 
-    pub fn from_slice(bytes: [u8; 32usize]) -> anyhow::Result<VodozemacCurve25519PublicKey> {
+    pub fn from_slice(bytes: [u8; 32usize]) -> anyhow::Result<Self> {
         let key = Curve25519PublicKey::from_slice(&bytes)?;
         Ok(key.into())
     }
@@ -396,7 +389,7 @@ impl VodozemacCurve25519PublicKey {
         self.key.to_bytes()
     }
 
-    pub fn from_base64(base64_key: String) -> anyhow::Result<VodozemacCurve25519PublicKey> {
+    pub fn from_base64(base64_key: String) -> anyhow::Result<Self> {
         let key = Curve25519PublicKey::from_base64(&base64_key)?;
         Ok(key.into())
     }
@@ -443,10 +436,7 @@ impl VodozemacOlmMessage {
         }
     }
 
-    pub fn from_parts(
-        message_type: usize,
-        ciphertext: String,
-    ) -> anyhow::Result<VodozemacOlmMessage> {
+    pub fn from_parts(message_type: usize, ciphertext: String) -> anyhow::Result<Self> {
         let ciphertext_vec = base64_decode(&ciphertext)?;
         Ok(OlmMessage::from_parts(message_type, ciphertext_vec.as_slice())?.into())
     }
@@ -507,8 +497,8 @@ impl VodozemacSession {
     pub fn from_pickle_encrypted(
         pickle: String,
         pickle_key: [u8; 32usize],
-    ) -> anyhow::Result<VodozemacSession> {
-        Ok(VodozemacSession {
+    ) -> anyhow::Result<Self> {
+        Ok(Self {
             session: RustOpaqueNom::new(RwLock::new(Session::from(SessionPickle::from_encrypted(
                 &pickle,
                 &pickle_key,
@@ -516,11 +506,8 @@ impl VodozemacSession {
         })
     }
 
-    pub fn from_olm_pickle_encrypted(
-        pickle: String,
-        pickle_key: Vec<u8>,
-    ) -> anyhow::Result<VodozemacSession> {
-        Ok(VodozemacSession {
+    pub fn from_olm_pickle_encrypted(pickle: String, pickle_key: Vec<u8>) -> anyhow::Result<Self> {
+        Ok(Self {
             session: RustOpaqueNom::new(RwLock::new(Session::from_libolm_pickle(
                 &pickle,
                 &pickle_key,
@@ -553,7 +540,7 @@ pub struct VodozemacAccount {
 }
 
 impl VodozemacAccount {
-    pub fn new() -> VodozemacAccount {
+    pub fn new() -> Self {
         Self {
             account: RustOpaqueNom::new(RwLock::new(Account::new())),
         }
@@ -696,8 +683,8 @@ impl VodozemacAccount {
     pub fn from_pickle_encrypted(
         pickle: String,
         pickle_key: [u8; 32usize],
-    ) -> anyhow::Result<VodozemacAccount> {
-        Ok(VodozemacAccount {
+    ) -> anyhow::Result<Self> {
+        Ok(Self {
             account: RustOpaqueNom::new(RwLock::new(Account::from(AccountPickle::from_encrypted(
                 &pickle,
                 &pickle_key,
@@ -705,11 +692,8 @@ impl VodozemacAccount {
         })
     }
 
-    pub fn from_olm_pickle_encrypted(
-        pickle: String,
-        pickle_key: Vec<u8>,
-    ) -> anyhow::Result<VodozemacAccount> {
-        Ok(VodozemacAccount {
+    pub fn from_olm_pickle_encrypted(pickle: String, pickle_key: Vec<u8>) -> anyhow::Result<Self> {
+        Ok(Self {
             account: RustOpaqueNom::new(RwLock::new(Account::from_libolm_pickle(
                 &pickle,
                 &pickle_key,
@@ -723,17 +707,18 @@ pub struct VodozemacSas {
 }
 
 impl VodozemacSas {
-    pub fn new() -> VodozemacSas{
-        VodozemacSas {
-            sas: Sas::new(),
-        }
+    pub fn new() -> Self {
+        Self { sas: Sas::new() }
     }
 
     pub fn public_key(&self) -> String {
         self.sas.public_key().to_base64()
     }
 
-    pub fn establish_sas_secret(self, other_public_key: &str) -> anyhow::Result<VodozemacEstablishedSas> {
+    pub fn establish_sas_secret(
+        self,
+        other_public_key: &str,
+    ) -> anyhow::Result<VodozemacEstablishedSas> {
         let result = self.sas.diffie_hellman_with_raw(other_public_key)?;
         Ok(VodozemacEstablishedSas {
             established_sas: RustOpaqueNom::new(result),
@@ -755,11 +740,15 @@ impl VodozemacEstablishedSas {
     }
 
     pub fn calculate_mac_deprecated(&self, input: &str, info: &str) -> anyhow::Result<String> {
-        Ok(self.established_sas.calculate_mac_invalid_base64(input, info))
+        Ok(self
+            .established_sas
+            .calculate_mac_invalid_base64(input, info))
     }
 
     pub fn verify_mac(&self, input: &str, info: &str, mac: &str) -> anyhow::Result<()> {
-        Ok(self.established_sas.verify_mac(input, info, &Mac::from_base64(mac)?)?)
+        Ok(self
+            .established_sas
+            .verify_mac(input, info, &Mac::from_base64(mac)?)?)
     }
 }
 
@@ -771,7 +760,7 @@ pub struct VodozemacPkMessage {
 
 impl From<PkMessage> for VodozemacPkMessage {
     fn from(message: PkMessage) -> Self {
-        VodozemacPkMessage {
+        Self {
             ciphertext: message.ciphertext,
             mac: message.mac,
             ephemeral_key: message.ephemeral_key.into(),
@@ -789,12 +778,42 @@ impl Into<PkMessage> for VodozemacPkMessage {
     }
 }
 
+impl VodozemacPkMessage {
+    pub fn new(
+        ciphertext: Vec<u8>,
+        mac: Vec<u8>,
+        ephemeral_key: VodozemacCurve25519PublicKey,
+    ) -> Self {
+        Self {
+            ciphertext,
+            mac,
+            ephemeral_key,
+        }
+    }
+
+    pub fn from_base64(ciphertext: &str, mac: &str, ephemeral_key: &str) -> anyhow::Result<Self> {
+        Ok(Self {
+            ciphertext: base64_decode(ciphertext)?,
+            mac: base64_decode(mac)?,
+            ephemeral_key: Curve25519PublicKey::from_base64(ephemeral_key)?.into(),
+        })
+    }
+
+    pub fn to_base64(&self) -> anyhow::Result<(String, String, String)> {
+        Ok((
+            base64_encode(&self.ciphertext),
+            base64_encode(&self.mac),
+            self.ephemeral_key.to_base64(),
+        ))
+    }
+}
+
 pub struct VodozemacPkEncryption {
     pub pk_encryption: RustOpaqueNom<PkEncryption>,
 }
 
 impl VodozemacPkEncryption {
-    pub fn from_key(public_key: VodozemacCurve25519PublicKey) -> VodozemacPkEncryption {
+    pub fn from_key(public_key: VodozemacCurve25519PublicKey) -> Self {
         Self {
             pk_encryption: RustOpaqueNom::new(PkEncryption::from_key(*public_key.key)),
         }
@@ -810,13 +829,13 @@ pub struct VodozemacPkDecryption {
 }
 
 impl VodozemacPkDecryption {
-    pub fn new() -> VodozemacPkDecryption {
+    pub fn new() -> Self {
         Self {
             pk_decryption: RustOpaqueNom::new(PkDecryption::new()),
         }
     }
 
-    pub fn from_key(secret_key: &[u8; 32]) -> VodozemacPkDecryption {
+    pub fn from_key(secret_key: &[u8; 32]) -> Self {
         Self {
             pk_decryption: RustOpaqueNom::new(PkDecryption::from_key(
                 Curve25519SecretKey::from_slice(secret_key),
@@ -844,11 +863,8 @@ impl VodozemacPkDecryption {
             .expect("Failed to pickle PkDecryption")
     }
 
-    pub fn from_libolm_pickle(
-        pickle: String,
-        pickle_key: Vec<u8>,
-    ) -> anyhow::Result<VodozemacPkDecryption> {
-        Ok(VodozemacPkDecryption {
+    pub fn from_libolm_pickle(pickle: String, pickle_key: Vec<u8>) -> anyhow::Result<Self> {
+        Ok(Self {
             pk_decryption: RustOpaqueNom::new(PkDecryption::from_libolm_pickle(
                 &pickle,
                 &pickle_key,
@@ -866,13 +882,19 @@ impl PkSigning {
     pub fn new() -> Self {
         let secret_key = Ed25519SecretKey::new();
         let public_key = secret_key.public_key();
-        Self { inner: secret_key, public_key }
+        Self {
+            inner: secret_key,
+            public_key,
+        }
     }
 
     pub fn from_secret_key(key: &str) -> anyhow::Result<Self> {
         let key = Ed25519SecretKey::from_base64(key)?;
         let public_key = key.public_key();
-        Ok(Self { inner: key, public_key })
+        Ok(Self {
+            inner: key,
+            public_key,
+        })
     }
 
     pub fn secret_key(&self) -> String {

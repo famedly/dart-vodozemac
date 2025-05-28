@@ -492,6 +492,27 @@ final class PkMessage {
 
   PkMessage._(this._message);
 
+  PkMessage(
+      Uint8List ciphertext, Uint8List mac, Curve25519PublicKey ephemeralKey)
+      : _message = vodozemac.VodozemacPkMessage(
+          ciphertext: ciphertext,
+          mac: mac,
+          ephemeralKey: ephemeralKey._key,
+        );
+
+  /// Create a new PkMessage from a Base64-encoded triplet of ciphertext, MAC, and ephemeral key.
+  factory PkMessage.fromBase64({
+    required String ciphertext,
+    required String mac,
+    required String ephemeralKey,
+  }) =>
+      PkMessage._(vodozemac.VodozemacPkMessage.fromBase64(
+          ciphertext: ciphertext, mac: mac, ephemeralKey: ephemeralKey));
+
+  /// Encode the PkMessage as a Base64-encoded triplet of ciphertext, MAC, and ephemeral key.
+  (String ciphertext, String mac, String ephemeralKey) toBase64() =>
+      _message.toBase64();
+
   /// The encrypted ciphertext.
   Uint8List get ciphertext => _message.ciphertext;
 

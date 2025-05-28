@@ -192,6 +192,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   String? dco_decode_opt_String(dynamic raw);
 
   @protected
+  (String, String, String) dco_decode_record_string_string_string(dynamic raw);
+
+  @protected
   int dco_decode_u_32(dynamic raw);
 
   @protected
@@ -390,6 +393,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   String? sse_decode_opt_String(SseDeserializer deserializer);
 
   @protected
+  (String, String, String) sse_decode_record_string_string_string(SseDeserializer deserializer);
+
+  @protected
   int sse_decode_u_32(SseDeserializer deserializer);
 
   @protected
@@ -585,6 +591,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   String? cst_encode_opt_String(String? raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return raw == null ? null : cst_encode_String(raw);
+  }
+
+  @protected
+  JSAny cst_encode_record_string_string_string((String, String, String) raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return [cst_encode_String(raw.$1), cst_encode_String(raw.$2), cst_encode_String(raw.$3)].jsify()!;
   }
 
   @protected
@@ -915,6 +927,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   void sse_encode_opt_String(String? self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_record_string_string_string((String, String, String) self, SseSerializer serializer);
 
   @protected
   void sse_encode_u_32(int self, SseSerializer serializer);
@@ -1328,6 +1343,18 @@ class RustLibWire implements BaseWire {
           wasmModule.wire__crate__bindings__vodozemac_pk_encryption_from_key(public_key);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__bindings__vodozemac_pk_message_from_base64(String ciphertext, String mac, String ephemeral_key) =>
+          wasmModule.wire__crate__bindings__vodozemac_pk_message_from_base64(ciphertext, mac, ephemeral_key);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */ wire__crate__bindings__vodozemac_pk_message_new(
+          JSAny ciphertext, JSAny mac, JSAny ephemeral_key) =>
+      wasmModule.wire__crate__bindings__vodozemac_pk_message_new(ciphertext, mac, ephemeral_key);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__bindings__vodozemac_pk_message_to_base64(JSAny that) =>
+          wasmModule.wire__crate__bindings__vodozemac_pk_message_to_base64(that);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__bindings__vodozemac_session_decrypt(JSAny that, JSAny message) =>
           wasmModule.wire__crate__bindings__vodozemac_session_decrypt(that, message);
 
@@ -1712,6 +1739,15 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__bindings__vodozemac_pk_encryption_from_key(JSAny public_key);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__bindings__vodozemac_pk_message_from_base64(String ciphertext, String mac, String ephemeral_key);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__bindings__vodozemac_pk_message_new(JSAny ciphertext, JSAny mac, JSAny ephemeral_key);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__bindings__vodozemac_pk_message_to_base64(JSAny that);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__bindings__vodozemac_session_decrypt(JSAny that, JSAny message);
