@@ -63,7 +63,7 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
   String get codegenVersion => '2.9.0';
 
   @override
-  int get rustContentHash => 1183240719;
+  int get rustContentHash => 1117765086;
 
   static const kDefaultExternalLibraryLoaderConfig = ExternalLibraryLoaderConfig(
     stem: 'vodozemac_bindings_dart',
@@ -267,6 +267,14 @@ abstract class RustLibApi extends BaseApi {
       {required VodozemacPkEncryption that, required String message});
 
   VodozemacPkEncryption crateBindingsVodozemacPkEncryptionFromKey({required VodozemacCurve25519PublicKey publicKey});
+
+  VodozemacPkMessage crateBindingsVodozemacPkMessageFromBase64(
+      {required String ciphertext, required String mac, required String ephemeralKey});
+
+  VodozemacPkMessage crateBindingsVodozemacPkMessageNew(
+      {required List<int> ciphertext, required List<int> mac, required VodozemacCurve25519PublicKey ephemeralKey});
+
+  (String, String, String) crateBindingsVodozemacPkMessageToBase64({required VodozemacPkMessage that});
 
   String crateBindingsVodozemacSessionDecrypt({required VodozemacSession that, required VodozemacOlmMessage message});
 
@@ -2257,6 +2265,78 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
+  VodozemacPkMessage crateBindingsVodozemacPkMessageFromBase64(
+      {required String ciphertext, required String mac, required String ephemeralKey}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_String(ciphertext);
+        var arg1 = cst_encode_String(mac);
+        var arg2 = cst_encode_String(ephemeralKey);
+        return wire.wire__crate__bindings__vodozemac_pk_message_from_base64(arg0, arg1, arg2);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_vodozemac_pk_message,
+        decodeErrorData: dco_decode_AnyhowException,
+      ),
+      constMeta: kCrateBindingsVodozemacPkMessageFromBase64ConstMeta,
+      argValues: [ciphertext, mac, ephemeralKey],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta get kCrateBindingsVodozemacPkMessageFromBase64ConstMeta => const TaskConstMeta(
+        debugName: "vodozemac_pk_message_from_base64",
+        argNames: ["ciphertext", "mac", "ephemeralKey"],
+      );
+
+  @override
+  VodozemacPkMessage crateBindingsVodozemacPkMessageNew(
+      {required List<int> ciphertext, required List<int> mac, required VodozemacCurve25519PublicKey ephemeralKey}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_list_prim_u_8_loose(ciphertext);
+        var arg1 = cst_encode_list_prim_u_8_loose(mac);
+        var arg2 = cst_encode_box_autoadd_vodozemac_curve_25519_public_key(ephemeralKey);
+        return wire.wire__crate__bindings__vodozemac_pk_message_new(arg0, arg1, arg2);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_vodozemac_pk_message,
+        decodeErrorData: null,
+      ),
+      constMeta: kCrateBindingsVodozemacPkMessageNewConstMeta,
+      argValues: [ciphertext, mac, ephemeralKey],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta get kCrateBindingsVodozemacPkMessageNewConstMeta => const TaskConstMeta(
+        debugName: "vodozemac_pk_message_new",
+        argNames: ["ciphertext", "mac", "ephemeralKey"],
+      );
+
+  @override
+  (String, String, String) crateBindingsVodozemacPkMessageToBase64({required VodozemacPkMessage that}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_box_autoadd_vodozemac_pk_message(that);
+        return wire.wire__crate__bindings__vodozemac_pk_message_to_base64(arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_record_string_string_string,
+        decodeErrorData: dco_decode_AnyhowException,
+      ),
+      constMeta: kCrateBindingsVodozemacPkMessageToBase64ConstMeta,
+      argValues: [that],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta get kCrateBindingsVodozemacPkMessageToBase64ConstMeta => const TaskConstMeta(
+        debugName: "vodozemac_pk_message_to_base64",
+        argNames: ["that"],
+      );
+
+  @override
   String crateBindingsVodozemacSessionDecrypt({required VodozemacSession that, required VodozemacOlmMessage message}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
@@ -2784,6 +2864,20 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  (String, String, String) dco_decode_record_string_string_string(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    final arr = raw as List<dynamic>;
+    if (arr.length != 3) {
+      throw Exception('Expected 3 elements, got ${arr.length}');
+    }
+    return (
+      dco_decode_String(arr[0]),
+      dco_decode_String(arr[1]),
+      dco_decode_String(arr[2]),
+    );
+  }
+
+  @protected
   int dco_decode_u_32(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return raw as int;
@@ -2977,7 +3071,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     final arr = raw as List<dynamic>;
     if (arr.length != 3) throw Exception('unexpected arr length: expect 3 but see ${arr.length}');
-    return VodozemacPkMessage(
+    return VodozemacPkMessage.raw(
       ciphertext: dco_decode_list_prim_u_8_strict(arr[0]),
       mac: dco_decode_list_prim_u_8_strict(arr[1]),
       ephemeralKey: dco_decode_vodozemac_curve_25519_public_key(arr[2]),
@@ -3265,6 +3359,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  (String, String, String) sse_decode_record_string_string_string(SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    var var_field0 = sse_decode_String(deserializer);
+    var var_field1 = sse_decode_String(deserializer);
+    var var_field2 = sse_decode_String(deserializer);
+    return (var_field0, var_field1, var_field2);
+  }
+
+  @protected
   int sse_decode_u_32(SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     return deserializer.buffer.getUint32();
@@ -3415,7 +3518,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     var var_ciphertext = sse_decode_list_prim_u_8_strict(deserializer);
     var var_mac = sse_decode_list_prim_u_8_strict(deserializer);
     var var_ephemeralKey = sse_decode_vodozemac_curve_25519_public_key(deserializer);
-    return VodozemacPkMessage(ciphertext: var_ciphertext, mac: var_mac, ephemeralKey: var_ephemeralKey);
+    return VodozemacPkMessage.raw(ciphertext: var_ciphertext, mac: var_mac, ephemeralKey: var_ephemeralKey);
   }
 
   @protected
@@ -3852,6 +3955,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     if (self != null) {
       sse_encode_String(self, serializer);
     }
+  }
+
+  @protected
+  void sse_encode_record_string_string_string((String, String, String) self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_String(self.$1, serializer);
+    sse_encode_String(self.$2, serializer);
+    sse_encode_String(self.$3, serializer);
   }
 
   @protected

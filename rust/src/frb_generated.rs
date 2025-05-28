@@ -39,7 +39,7 @@ flutter_rust_bridge::frb_generated_boilerplate!(
     default_rust_auto_opaque = RustAutoOpaqueNom,
 );
 pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_VERSION: &str = "2.9.0";
-pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_CONTENT_HASH: i32 = 1183240719;
+pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_CONTENT_HASH: i32 = 1117765086;
 
 // Section: executor
 
@@ -1871,6 +1871,80 @@ fn wire__crate__bindings__vodozemac_pk_encryption_from_key_impl(
         },
     )
 }
+fn wire__crate__bindings__vodozemac_pk_message_from_base64_impl(
+    ciphertext: impl CstDecode<String>,
+    mac: impl CstDecode<String>,
+    ephemeral_key: impl CstDecode<String>,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "vodozemac_pk_message_from_base64",
+            port: None,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
+        },
+        move || {
+            let api_ciphertext = ciphertext.cst_decode();
+            let api_mac = mac.cst_decode();
+            let api_ephemeral_key = ephemeral_key.cst_decode();
+            transform_result_dco::<_, _, flutter_rust_bridge::for_generated::anyhow::Error>(
+                (move || {
+                    let output_ok = crate::bindings::VodozemacPkMessage::from_base64(
+                        &api_ciphertext,
+                        &api_mac,
+                        &api_ephemeral_key,
+                    )?;
+                    Ok(output_ok)
+                })(),
+            )
+        },
+    )
+}
+fn wire__crate__bindings__vodozemac_pk_message_new_impl(
+    ciphertext: impl CstDecode<Vec<u8>>,
+    mac: impl CstDecode<Vec<u8>>,
+    ephemeral_key: impl CstDecode<crate::bindings::VodozemacCurve25519PublicKey>,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "vodozemac_pk_message_new",
+            port: None,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
+        },
+        move || {
+            let api_ciphertext = ciphertext.cst_decode();
+            let api_mac = mac.cst_decode();
+            let api_ephemeral_key = ephemeral_key.cst_decode();
+            transform_result_dco::<_, _, ()>((move || {
+                let output_ok = Result::<_, ()>::Ok(crate::bindings::VodozemacPkMessage::new(
+                    api_ciphertext,
+                    api_mac,
+                    api_ephemeral_key,
+                ))?;
+                Ok(output_ok)
+            })())
+        },
+    )
+}
+fn wire__crate__bindings__vodozemac_pk_message_to_base64_impl(
+    that: impl CstDecode<crate::bindings::VodozemacPkMessage>,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "vodozemac_pk_message_to_base64",
+            port: None,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
+        },
+        move || {
+            let api_that = that.cst_decode();
+            transform_result_dco::<_, _, flutter_rust_bridge::for_generated::anyhow::Error>(
+                (move || {
+                    let output_ok = crate::bindings::VodozemacPkMessage::to_base64(&api_that)?;
+                    Ok(output_ok)
+                })(),
+            )
+        },
+    )
+}
 fn wire__crate__bindings__vodozemac_session_decrypt_impl(
     that: impl CstDecode<crate::bindings::VodozemacSession>,
     message: impl CstDecode<crate::bindings::VodozemacOlmMessage>,
@@ -2285,6 +2359,16 @@ impl SseDecode for Option<String> {
         } else {
             return None;
         }
+    }
+}
+
+impl SseDecode for (String, String, String) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut var_field0 = <String>::sse_decode(deserializer);
+        let mut var_field1 = <String>::sse_decode(deserializer);
+        let mut var_field2 = <String>::sse_decode(deserializer);
+        return (var_field0, var_field1, var_field2);
     }
 }
 
@@ -3108,6 +3192,15 @@ impl SseEncode for Option<String> {
     }
 }
 
+impl SseEncode for (String, String, String) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <String>::sse_encode(self.0, serializer);
+        <String>::sse_encode(self.1, serializer);
+        <String>::sse_encode(self.2, serializer);
+    }
+}
+
 impl SseEncode for u32 {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
@@ -3604,6 +3697,16 @@ mod io {
             vec.into_iter().map(CstDecode::cst_decode).collect()
         }
     }
+    impl CstDecode<(String, String, String)> for wire_cst_record_string_string_string {
+        // Codec=Cst (C-struct based), see doc to use other codecs
+        fn cst_decode(self) -> (String, String, String) {
+            (
+                self.field0.cst_decode(),
+                self.field1.cst_decode(),
+                self.field2.cst_decode(),
+            )
+        }
+    }
     impl CstDecode<[u8; 32]> for *mut wire_cst_list_prim_u_8_strict {
         // Codec=Cst (C-struct based), see doc to use other codecs
         fn cst_decode(self) -> [u8; 32] {
@@ -3782,6 +3885,20 @@ mod io {
         }
     }
     impl Default for wire_cst_decrypt_result {
+        fn default() -> Self {
+            Self::new_with_null_ptr()
+        }
+    }
+    impl NewWithNullPtr for wire_cst_record_string_string_string {
+        fn new_with_null_ptr() -> Self {
+            Self {
+                field0: core::ptr::null_mut(),
+                field1: core::ptr::null_mut(),
+                field2: core::ptr::null_mut(),
+            }
+        }
+    }
+    impl Default for wire_cst_record_string_string_string {
         fn default() -> Self {
             Self::new_with_null_ptr()
         }
@@ -4626,6 +4743,31 @@ mod io {
     }
 
     #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_vodozemac_wire__crate__bindings__vodozemac_pk_message_from_base64(
+        ciphertext: *mut wire_cst_list_prim_u_8_strict,
+        mac: *mut wire_cst_list_prim_u_8_strict,
+        ephemeral_key: *mut wire_cst_list_prim_u_8_strict,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__bindings__vodozemac_pk_message_from_base64_impl(ciphertext, mac, ephemeral_key)
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_vodozemac_wire__crate__bindings__vodozemac_pk_message_new(
+        ciphertext: *mut wire_cst_list_prim_u_8_loose,
+        mac: *mut wire_cst_list_prim_u_8_loose,
+        ephemeral_key: *mut wire_cst_vodozemac_curve_25519_public_key,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__bindings__vodozemac_pk_message_new_impl(ciphertext, mac, ephemeral_key)
+    }
+
+    #[unsafe(no_mangle)]
+    pub extern "C" fn frbgen_vodozemac_wire__crate__bindings__vodozemac_pk_message_to_base64(
+        that: *mut wire_cst_vodozemac_pk_message,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__bindings__vodozemac_pk_message_to_base64_impl(that)
+    }
+
+    #[unsafe(no_mangle)]
     pub extern "C" fn frbgen_vodozemac_wire__crate__bindings__vodozemac_session_decrypt(
         that: *mut wire_cst_vodozemac_session,
         message: *mut wire_cst_vodozemac_olm_message,
@@ -5130,6 +5272,13 @@ mod io {
     }
     #[repr(C)]
     #[derive(Clone, Copy)]
+    pub struct wire_cst_record_string_string_string {
+        field0: *mut wire_cst_list_prim_u_8_strict,
+        field1: *mut wire_cst_list_prim_u_8_strict,
+        field2: *mut wire_cst_list_prim_u_8_strict,
+    }
+    #[repr(C)]
+    #[derive(Clone, Copy)]
     pub struct wire_cst_vodozemac_account {
         account: usize,
     }
@@ -5298,6 +5447,27 @@ mod web {
         // Codec=Cst (C-struct based), see doc to use other codecs
         fn cst_decode(self) -> Option<String> {
             self.map(CstDecode::cst_decode)
+        }
+    }
+    impl CstDecode<(String, String, String)>
+        for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+    {
+        // Codec=Cst (C-struct based), see doc to use other codecs
+        fn cst_decode(self) -> (String, String, String) {
+            let self_ = self
+                .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+                .unwrap();
+            assert_eq!(
+                self_.length(),
+                3,
+                "Expected 3 elements, got {}",
+                self_.length()
+            );
+            (
+                self_.get(0).cst_decode(),
+                self_.get(1).cst_decode(),
+                self_.get(2).cst_decode(),
+            )
         }
     }
     impl CstDecode<[u8; 32]> for Box<[u8]> {
@@ -6541,6 +6711,31 @@ mod web {
         public_key: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
         wire__crate__bindings__vodozemac_pk_encryption_from_key_impl(public_key)
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__bindings__vodozemac_pk_message_from_base64(
+        ciphertext: String,
+        mac: String,
+        ephemeral_key: String,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__bindings__vodozemac_pk_message_from_base64_impl(ciphertext, mac, ephemeral_key)
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__bindings__vodozemac_pk_message_new(
+        ciphertext: Box<[u8]>,
+        mac: Box<[u8]>,
+        ephemeral_key: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__bindings__vodozemac_pk_message_new_impl(ciphertext, mac, ephemeral_key)
+    }
+
+    #[wasm_bindgen]
+    pub fn wire__crate__bindings__vodozemac_pk_message_to_base64(
+        that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+        wire__crate__bindings__vodozemac_pk_message_to_base64_impl(that)
     }
 
     #[wasm_bindgen]
