@@ -63,6 +63,20 @@ void main() {
       other.free();
       olmSession.free();
     });
+
+    test('Decrypt message from libolm', () async {
+      final outboundSession = olm.OutboundGroupSession();
+      outboundSession.create();
+      final sessionKey = outboundSession.session_key();
+      final encrypted = outboundSession.encrypt('hello');
+
+      final inboundSession = vodozemac.InboundGroupSession(sessionKey);
+      final decrypted = inboundSession.decrypt(encrypted);
+      expect(decrypted.plaintext, 'hello');
+      expect(decrypted.messageIndex, 0);
+
+      outboundSession.free();
+    });
     test('Export import Outbound Group Session', () {
       final other = olm.Account();
       other.create();
