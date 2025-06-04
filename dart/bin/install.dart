@@ -93,6 +93,10 @@ void main(List<String> args) async {
         break;
       case SupportedPlatforms.ios:
       case SupportedPlatforms.iosSimulators:
+        const frameworkDirName = 'vodozemac_bindings_dart.framework';
+        await Directory(
+                path.join(Directory.current.path, 'ios', frameworkDirName))
+            .create();
         for (final target in platform.targets) {
           await sh(
             'cargo',
@@ -107,9 +111,9 @@ void main(List<String> args) async {
           [
             '-create',
             ...platform.targets.map((target) =>
-                'target/$target/release/libvodozemac_bindings_dart.a'),
+                'target/$target/release/libvodozemac_bindings_dart.dylib'),
             '-output',
-            '../../ios/Runner/libvodozemac_bindings_dart.a',
+            '../../ios/$frameworkDirName/vodozemac_bindings_dart',
           ],
           workingDirectory: path.join(vodozemacDir.path, 'rust'),
         );
