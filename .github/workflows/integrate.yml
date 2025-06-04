@@ -180,3 +180,43 @@ jobs:
     permissions:
       contents: read
     uses: famedly/frontend-ci-templates/.github/workflows/general.yml@main
+
+  coverage:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - run: cat .github/workflows/versions.env >> $GITHUB_ENV
+      - uses: dart-lang/setup-dart@a57a6c04cf7d4840e88432aad6281d1e125f0d46
+        with:
+          sdk: ${{ env.dart_version }}
+      - uses: famedly/backend-build-workflows/.github/actions/rust-prepare@main
+        with:
+          gitlab_user: ${{ secrets.GITLAB_USER }}
+          gitlab_pass: ${{ secrets.GITLAB_PASS }}
+          gitlab_ssh: ${{ secrets.CI_SSH_PRIVATE_KEY}}
+      - name: Install dependencies
+        run: |
+          sudo apt-get update && sudo apt-get install --no-install-recommends --no-install-suggests -y lcov libolm3
+          cd dart && dart pub get
+      - name: Build Rust bindings
+        working-directory: rust
+        run: cargo build
+      - name: Run tests with coverage
+        working-directory: dart
+        run: dart test --coverage=coverage
+      - name: Generate coverage report
+        working-directory: dart
+        run: |
+          dart pub global activate coverage
+          dart pub global run coverage:format_coverage --lcov --in=coverage --out=coverage/lcov.info --packages=.dart_tool/package_config.json --report-on=lib
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v4
+        with:
+          files: dart/coverage/lcov.info
+          flags: dart-tests
+          name: codecov-dart
+          fail_ci_if_error: true
+          token: ${{ secrets.CODECOV_TOKEN }}

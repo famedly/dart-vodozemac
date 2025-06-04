@@ -1,10 +1,10 @@
 import 'dart:convert';
-import 'dart:html';
 import 'dart:js_interop';
 
 import 'package:test_core/src/direct_run.dart';
 import 'package:test_core/src/runner/reporter/expanded.dart';
 import 'package:test_core/src/util/print_sink.dart';
+import 'package:web/web.dart';
 
 import 'vodozemac_test.dart' as generic_test;
 
@@ -28,7 +28,7 @@ void main() async {
 void _close(bool result) {
   final socket = WebSocket(Uri.base.replace(scheme: 'ws').toString());
   socket.onOpen.first.then((_) {
-    socket.send(jsonEncode({'__result__': result}));
+    socket.send(jsonEncode({'__result__': result}).toJS);
     close();
   });
 }
