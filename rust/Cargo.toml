@@ -1,5 +1,5 @@
 [package]
-name = "vodozemac-bindings-dart"
+name = "vodozemac_bindings_dart"
 version = "0.1.0"
 edition = "2021"
 

@@ -19,7 +19,41 @@ Unfinished:
 
 ## Getting started
 
-You need to build vodozemac first, either the wasm or the native library.
+Vodozemac needs Rust to be installed locally. [Install Rust](https://www.rust-lang.org/tools/install)
+
+Add the package to your Dart/Flutter project:
+
+```sh
+flutter pub add vodozemac
+```
+
+You need to build vodozemac first, either the wasm or the native library. For flutter you can use the `flutter_vodozemac` package:
+
+```sh
+flutter pub add flutter_vodozemac
+```
+
+Then you can initialize vodozemac for native platforms like this:
+
+```dart
+import 'package:flutter_vodozemac/flutter_vodozemac.cart` as vodozemac;
+
+await vodozemac.initFlutter();
+```
+
+### Build for web
+
+For web you need to build the package by yourself. You can use the script below to do so:
+
+```sh
+git clone https://github.com/famedly/dart-vodozemac.git .vodozemac
+cd .vodozemac
+cargo install flutter_rust_bridge_codegen
+flutter_rust_bridge_codegen build-web --dart-root dart --rust-root $(readlink -f rust) --release
+cd ..
+mv .vodozemac/dart/web/pkg ./web/
+rm -rf .vodozemac
+```
 
 ## Usage
 
@@ -28,7 +62,7 @@ it is this:
 
 ```dart
 // load the library, possibly provide the path to the wasm or native library
-loadVodozemac();
+init(); // or initFlutter(); when using `flutter_vodozemac`
 
 // Create an olm account. Alternatively import it.
 final account = await Account.create();
