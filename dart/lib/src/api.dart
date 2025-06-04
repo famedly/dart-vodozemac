@@ -9,7 +9,7 @@ import 'generated/frb_generated.dart' as vodozemac show RustLib;
 ///
 /// This is required before using any of the cryptographic functions in this library.
 Future<void> init(
-        {required String wasmPath, required String libraryPath}) async =>
+        {String wasmPath = './pkg/', String libraryPath = './'}) async =>
     vodozemac.RustLib.init(
         externalLibrary: await loadExternalLibrary(ExternalLibraryLoaderConfig(
             stem: 'vodozemac_bindings_dart',
