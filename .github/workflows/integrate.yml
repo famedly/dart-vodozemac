@@ -120,10 +120,6 @@ jobs:
           gitlab_user: ${{ secrets.GITLAB_USER }}
           gitlab_pass: ${{ secrets.GITLAB_PASS }}
           gitlab_ssh: ${{ secrets.CI_SSH_PRIVATE_KEY}}
-      - name: Caching
-        uses: Swatinem/rust-cache@68b3cb7503c78e67dae8373749990a220eb65352
-        with:
-          shared-key: "stable"
       - name: Fetch dart dependencies
         working-directory: dart
         run: dart pub get
@@ -151,10 +147,6 @@ jobs:
           gitlab_user: ${{ secrets.GITLAB_USER }}
           gitlab_pass: ${{ secrets.GITLAB_PASS }}
           gitlab_ssh: ${{ secrets.CI_SSH_PRIVATE_KEY}}
-      - name: Caching
-        uses: Swatinem/rust-cache@68b3cb7503c78e67dae8373749990a220eb65352
-        with:
-          shared-key: "stable"
       - name: Rust nightly setup
         run: |
           rustup toolchain install nightly
