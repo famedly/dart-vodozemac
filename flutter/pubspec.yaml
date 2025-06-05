@@ -1,7 +1,7 @@
 publish_to: none
 name: flutter_vodozemac
-description: "A new Flutter FFI plugin project."
-version: 0.0.1
+description: "Flutter bindings for the Rust Vodozemac library"
+version: 0.1.0
 homepage:
 
 environment:
