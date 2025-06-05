@@ -8,13 +8,18 @@ import 'generated/frb_generated.dart' as vodozemac show RustLib;
 /// respectively.
 ///
 /// This is required before using any of the cryptographic functions in this library.
-Future<void> init(
-        {required String wasmPath, required String libraryPath}) async =>
+/// stem refers to the name of the library. This may depend on the platform.
+Future<void> init({
+  String wasmPath = './pkg/',
+  String libraryPath = './',
+  String stem = 'vodozemac_bindings_dart',
+}) async =>
     vodozemac.RustLib.init(
         externalLibrary: await loadExternalLibrary(ExternalLibraryLoaderConfig(
-            stem: 'vodozemac_bindings_dart',
-            ioDirectory: libraryPath,
-            webPrefix: wasmPath)));
+      stem: stem,
+      ioDirectory: libraryPath,
+      webPrefix: wasmPath,
+    )));
 
 /// If the vodozemac library has been loaded and initialized.
 bool isInitialized() => vodozemac.RustLib.instance.initialized;

@@ -1,0 +1,44 @@
+publish_to: none
+name: flutter_vodozemac
+description: "A new Flutter FFI plugin project."
+version: 0.0.1
+homepage:
+
+environment:
+  sdk: ^3.6.2
+  flutter: '>=3.3.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_rust_bridge: any
+  plugin_platform_interface: ^2.0.2
+  vodozemac:
+    git:
+      url: https://github.com/famedly/dart-vodozemac.git
+      path: dart
+      ref: main
+
+dev_dependencies:
+  ffi: ^2.1.3
+  ffigen: ^13.0.0
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+  integration_test:
+    sdk: flutter
+
+flutter:
+  plugin:
+    platforms:
+      android:
+        ffiPlugin: true
+      ios:
+        ffiPlugin: true
+      linux:
+        ffiPlugin: true
+      macos:
+        ffiPlugin: true
+      windows:
+        ffiPlugin: true
+        
