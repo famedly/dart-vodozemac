@@ -404,6 +404,7 @@ void main() async {
       final bob = Sas();
 
       // Should throw now that alice has been disposed
+      expect(alice.disposed, isTrue);
       expect(() => alice.establishSasSecret(bob.publicKey), throwsA(anything));
 
       // Create a new Sas object for alice again
