@@ -337,7 +337,7 @@ final class Account {
           .oneTimeKeys()
           .map((e) => MapEntry(e.keyid, Curve25519PublicKey._(e.key))));
 
-  /// The current fallback key.
+  /// Get the current unpublished fallback key.
   ///
   /// This is used when no one-time keys are available.
   Map<String, Curve25519PublicKey> get fallbackKey =>
@@ -433,6 +433,12 @@ final class Sas {
   /// Creates a new SAS verification process.
   factory Sas() => Sas._(vodozemac.VodozemacSas());
 
+  /// Whether this Sas object has been disposed.
+  ///
+  /// Once disposed, this Sas object cannot be used again.
+  /// Create a new Sas object for a new verification process.
+  bool get disposed => _disposed;
+
   /// The public key for this SAS verification.
   ///
   /// This should be sent to the other party.
@@ -441,7 +447,6 @@ final class Sas {
   /// Establish a shared secret using the other party's public key.
   ///
   /// Once called, this Sas object is disposed and cannot be used again.
-  /// Create a new Sas object for a new verification process.
   EstablishedSas establishSasSecret(String otherPublicKey) {
     if (_disposed) {
       throw Exception('Sas has been disposed');
