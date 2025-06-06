@@ -10,8 +10,8 @@ crate-type = ["staticlib", "cdylib"]
 
 [dependencies]
 anyhow = "1.0.69"
-flutter_rust_bridge = "=2.9.0"
-vodozemac = { version = "0.9.0", features = ["libolm-compat", "js", "insecure-pk-encryption"] }
+flutter_rust_bridge = "=2.10.0"
+vodozemac = { version = "0.9.0", features = ["libolm-compat", "js", "insecure-pk-encryption", "low-level-api"] }
 
 [build-dependencies]
 flutter_rust_bridge_codegen = "2.9.0"

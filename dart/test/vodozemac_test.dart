@@ -765,5 +765,14 @@ void main() async {
               .verify(message: 'Test message', signature: fromBytes),
           returnsNormally);
     });
+
+    test('Remove OTK', () async {
+      final account = Account();
+      account.generateOneTimeKeys(1);
+      final otk = account.oneTimeKeys.values.single;
+      final publicKey = otk.toBase64();
+      account.removeOneTimeKey(publicKey);
+      expect(account.oneTimeKeys.isEmpty, true);
+    });
   });
 }
