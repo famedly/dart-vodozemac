@@ -1,6 +1,6 @@
 name: flutter_vodozemac
 description: "Flutter bindings for the Rust Vodozemac library"
-version: 0.1.0
+version: 0.2.0
 homepage: https://famedly.com
 repository: https://github.com/famedly/dart-vodozemac
 issue_tracker: https://github.com/famedly/dart-vodozemac/issues
@@ -14,7 +14,7 @@ dependencies:
     sdk: flutter
   flutter_rust_bridge: any
   plugin_platform_interface: ^2.0.2
-  vodozemac: ^0.1.0
+  vodozemac: ^0.2.0
 
 dev_dependencies:
   ffi: ^2.1.3
