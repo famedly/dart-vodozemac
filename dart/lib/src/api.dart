@@ -312,6 +312,9 @@ final class Account {
   /// The maximum number of one-time keys that can be stored.
   int get maxNumberOfOneTimeKeys => _account.maxNumberOfOneTimeKeys().toInt();
 
+  Uint8List removeOneTimeKey(String publicKey) =>
+      _account.removeOneTimeKey(publicKey: publicKey);
+
   /// The Ed25519 identity key used for signing.
   Ed25519PublicKey get ed25519Key => Ed25519PublicKey._(_account.ed25519Key());
 

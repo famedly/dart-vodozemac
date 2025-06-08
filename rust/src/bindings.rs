@@ -575,6 +575,16 @@ impl VodozemacAccount {
             .generate_one_time_keys(count);
     }
 
+    pub fn remove_one_time_key(&self, public_key: String) -> Vec<u8> {
+        self.account
+            .write()
+            .expect("Failed to write account")
+            .remove_one_time_key(Curve25519PublicKey::from_base64(&public_key).unwrap())
+            .unwrap()
+            .to_bytes()
+            .to_vec()
+    }
+
     pub fn mark_keys_as_published(&self) {
         self.account
             .write()
