@@ -1,3 +1,7 @@
+## 0.2.2
+
+- fix: Pass thorugh wasmPath for init()
+
 ## 0.2.1
 
 - fix: Wrong plugin name in cmakeslists for Linux and Windows
