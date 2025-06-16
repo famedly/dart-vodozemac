@@ -36,7 +36,7 @@ flutter pub add flutter_vodozemac
 Then you can initialize vodozemac for native platforms like this:
 
 ```dart
-import 'package:flutter_vodozemac/flutter_vodozemac.cart' as vod;
+import 'package:flutter_vodozemac/flutter_vodozemac.dart' as vod;
 
 await vod.init();
 ```
@@ -63,7 +63,6 @@ it is this:
 ```dart
 // load the library, possibly provide the path to the wasm or native library
 init();
-
 // Create an olm account. Alternatively import it.
 final account = await Account.create();
 
