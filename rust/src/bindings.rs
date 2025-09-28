@@ -1,4 +1,8 @@
+use aes::cipher::{KeyIvInit, StreamCipher};
 use flutter_rust_bridge::*;
+use hmac::Mac as hmacmac;
+use pbkdf2::pbkdf2_array;
+use sha2::{Digest, Sha256, Sha512};
 use std::ops::Deref;
 pub use std::sync::RwLock;
 pub use std::vec::Vec;
@@ -922,4 +926,41 @@ impl PkSigning {
             signature: RustOpaqueNom::new(self.inner.sign(message.as_bytes())),
         }
     }
+}
+
+pub fn sha256(input: Vec<u8>) -> Vec<u8> {
+    Sha256::digest(input).to_vec()
+}
+
+pub fn sha512(input: Vec<u8>) -> Vec<u8> {
+    Sha512::digest(input).to_vec()
+}
+
+/// Calculate HMAC with sha256.
+pub fn hmac(key: &[u8], input: &[u8]) -> anyhow::Result<Vec<u8>> {
+    type HmacSha256 = hmac::Hmac<Sha256>;
+    let mut mac = HmacSha256::new_from_slice(key)?;
+    mac.update(input);
+    let result = mac.finalize();
+    Ok(result.into_bytes().to_vec())
+}
+
+/// For sending encrypted attachments.
+/// https://spec.matrix.org/v1.16/client-server-api/#sending-encrypted-attachments
+/// In order to achieve this, a client should generate a single-use 256-bit AES key,
+/// and encrypt the file using AES-CTR.
+/// The counter should be 64-bit long, starting at 0 and prefixed by a random 64-bit
+/// Initialization Vector (IV), which together form a 128-bit unique counter block.
+pub fn aes_ctr(input: &[u8], key: &[u8], iv: &[u8]) -> Vec<u8> {
+    type Aes256Ctr64BE = ctr::Ctr64BE<aes::Aes256>;
+    let mut cipher = Aes256Ctr64BE::new(key.into(), iv.into());
+    let mut buf = input.to_vec();
+    cipher.apply_keystream(&mut buf);
+    return buf;
+}
+
+/// Calculate pbkdf2 with fixes length of 256:
+pub fn pbkdf2(passphrase: &[u8], salt: &[u8], iterations: u32) -> anyhow::Result<Vec<u8>> {
+    let result = pbkdf2_array::<hmac::Hmac<Sha512>, 32>(passphrase, salt, iterations)?.to_vec();
+    Ok(result)
 }

@@ -14,4 +14,5 @@ export 'src/api.dart'
         PkMessage,
         PkSigning,
         init,
-        isInitialized;
+        isInitialized,
+        CryptoUtils;

@@ -621,3 +621,38 @@ final class PkSigning {
   Ed25519Signature sign(String message) =>
       Ed25519Signature._(_signing.sign(message: message));
 }
+
+abstract class CryptoUtils {
+  static Uint8List sha256({required List<int> input}) =>
+      vodozemac.sha256(input: input);
+
+  static Uint8List sha512({required List<int> input}) =>
+      vodozemac.sha512(input: input);
+
+  /// Calculate HMAC with sha256.
+  static Uint8List hmac({required List<int> key, required List<int> input}) =>
+      vodozemac.hmac(key: key, input: input);
+
+  /// For sending encrypted attachments.
+  /// https://spec.matrix.org/v1.16/client-server-api/#sending-encrypted-attachments
+  /// In order to achieve this, a client should generate a single-use 256-bit AES key,
+  /// and encrypt the file using AES-CTR.
+  /// The counter should be 64-bit long, starting at 0 and prefixed by a random 64-bit
+  /// Initialization Vector (IV), which together form a 128-bit unique counter block.
+  static Uint8List aesCtr(
+          {required List<int> input,
+          required List<int> key,
+          required List<int> iv}) =>
+      vodozemac.aesCtr(input: input, key: key, iv: iv);
+
+  static Uint8List pbkdf2({
+    required List<int> passphrase,
+    required List<int> salt,
+    required int iterations,
+  }) =>
+      vodozemac.pbkdf2(
+        passphrase: passphrase,
+        salt: salt,
+        iterations: iterations,
+      );
+}

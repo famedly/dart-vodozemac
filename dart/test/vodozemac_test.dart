@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:math';
 import 'dart:typed_data';
 
 import 'package:checks/checks.dart';
@@ -773,6 +774,64 @@ void main() async {
       final publicKey = otk.toBase64();
       account.removeOneTimeKey(publicKey);
       expect(account.oneTimeKeys.isEmpty, true);
+    });
+  });
+
+  group('CryptoUtils', () {
+    test('Sha', () {
+      expect(
+        base64Encode(CryptoUtils.sha256(input: 'test'.codeUnits)),
+        'n4bQgYhMfWWaL+qgxVrQFaO/TxsrC4Is0V1sFbDwCgg=',
+      );
+      expect(
+        base64Encode(CryptoUtils.sha512(input: 'test'.codeUnits)),
+        '7iaw3Ur350mqGo7jwQrpkj9hiYB3Lkc/iBml1JQODbJ6wYX4oOHV+E+IvIh/1nsUNzLDBMxfqa2Ob1f1ACio/w==',
+      );
+    });
+    test('hmac', () {
+      expect(
+        base64Encode(CryptoUtils.hmac(
+            key: 'password'.codeUnits, input: 'test'.codeUnits)),
+        '2EAr02WjS000cpw/pCCBiykT3oVTOunosiQ0vvese7o=',
+      );
+    });
+    test('AES-CTR', () {
+      Uint8List secureRandomBytes(int len) {
+        final rng = Random.secure();
+        final list = Uint8List(len);
+        list.setAll(0, Iterable.generate(list.length, (i) => rng.nextInt(256)));
+        return list;
+      }
+
+      final iv = Uint8List.fromList(secureRandomBytes(16));
+      iv[8] &= 0x7f;
+      final key = Uint8List.fromList(secureRandomBytes(32));
+
+      final encrypted = CryptoUtils.aesCtr(
+        input: 'test'.codeUnits,
+        key: key,
+        iv: iv,
+      );
+
+      final decrypted = CryptoUtils.aesCtr(
+        input: encrypted,
+        key: key,
+        iv: iv,
+      );
+
+      expect(decrypted, Uint8List.fromList('test'.codeUnits));
+    });
+
+    test('pbkdf2', () {
+      final derivedKey = base64Encode(CryptoUtils.pbkdf2(
+        passphrase: 'Password'.codeUnits,
+        salt: 'salt'.codeUnits,
+        iterations: 50000,
+      ));
+      expect(
+        derivedKey,
+        'lZtsDrDdlnt/XH95wCjDn/yXU1EPaAx/Zy+VeEXPuat2JdpHU1RTbWC7y3zFPzcFBj89UshZmFTc3p6LUl4pbFk2Kt4u2OqeUSY0VTjS/abbtWAEzL9bnWsP3aeCFfHLstuw9z62i+qW126mR3ujtmKu5r5epdsud9jKCO0k4nW89KvCfPEcYh75zJrFzdvf7b7htIowKgLd9xqCZagpvf25mC4jSnnA5QJBRv9cskoEW6NJ0GQYZEU3q1w0LoScFLe8CF8h6+gLHi9WJynTts921T1JApJIk/jAO9suvDhqHbr3Mky5b+AC++NR05zoRMSmWtfx5B5ygVZxsgohdQ==',
+      );
     });
   });
 }
