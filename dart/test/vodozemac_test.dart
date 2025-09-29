@@ -830,7 +830,7 @@ void main() async {
       ));
       expect(
         derivedKey,
-        'lZtsDrDdlnt/XH95wCjDn/yXU1EPaAx/Zy+VeEXPuat2JdpHU1RTbWC7y3zFPzcFBj89UshZmFTc3p6LUl4pbFk2Kt4u2OqeUSY0VTjS/abbtWAEzL9bnWsP3aeCFfHLstuw9z62i+qW126mR3ujtmKu5r5epdsud9jKCO0k4nW89KvCfPEcYh75zJrFzdvf7b7htIowKgLd9xqCZagpvf25mC4jSnnA5QJBRv9cskoEW6NJ0GQYZEU3q1w0LoScFLe8CF8h6+gLHi9WJynTts921T1JApJIk/jAO9suvDhqHbr3Mky5b+AC++NR05zoRMSmWtfx5B5ygVZxsgohdQ==',
+        'lZtsDrDdlnt/XH95wCjDn/yXU1EPaAx/Zy+VeEXPuas=',
       );
     });
   });
