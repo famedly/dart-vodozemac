@@ -1,4 +1,10 @@
+## 0.4.0
+
+Update to Vodozemac 0.4.0 with:
+- feat: add ios ffi bindings for decryption in notification extension
+
 ## 0.3.0
+
 Update to Vodozemac 0.3.0 with:
 - feat: Add CryptoUtils to forward algorithms for SSSS and file encryption
 - build: Update flutter_rust_bridge to 2.11.1
