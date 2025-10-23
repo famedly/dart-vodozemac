@@ -14,7 +14,7 @@ dependencies:
     sdk: flutter
   flutter_rust_bridge: any
   plugin_platform_interface: ^2.0.2
-  vodozemac: ^0.3.0
+  vodozemac: ^0.4.0
 
 dev_dependencies:
   ffi: ^2.1.3
