@@ -3449,6 +3449,50 @@ class RustLibWire implements BaseWire {
   late final _cst_new_list_vodozemac_one_time_key = _cst_new_list_vodozemac_one_time_keyPtr
       .asFunction<ffi.Pointer<wire_cst_list_vodozemac_one_time_key> Function(int)>();
 
+  IOSDecryptResult ios_decrypt_event(
+    ffi.Pointer<ffi.Char> pickled_session,
+    ffi.Pointer<ffi.Uint8> pickle_key,
+    int pickle_key_len,
+    ffi.Pointer<ffi.Char> ciphertext,
+  ) {
+    return _ios_decrypt_event(
+      pickled_session,
+      pickle_key,
+      pickle_key_len,
+      ciphertext,
+    );
+  }
+
+  late final _ios_decrypt_eventPtr = _lookup<
+      ffi.NativeFunction<
+          IOSDecryptResult Function(
+              ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Uint8>, ffi.UintPtr, ffi.Pointer<ffi.Char>)>>('ios_decrypt_event');
+  late final _ios_decrypt_event = _ios_decrypt_eventPtr.asFunction<
+      IOSDecryptResult Function(ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Uint8>, int, ffi.Pointer<ffi.Char>)>();
+
+  void ios_free_string(
+    ffi.Pointer<ffi.Char> s,
+  ) {
+    return _ios_free_string(
+      s,
+    );
+  }
+
+  late final _ios_free_stringPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Char>)>>('ios_free_string');
+  late final _ios_free_string = _ios_free_stringPtr.asFunction<void Function(ffi.Pointer<ffi.Char>)>();
+
+  void ios_free_result(
+    IOSDecryptResult result,
+  ) {
+    return _ios_free_result(
+      result,
+    );
+  }
+
+  late final _ios_free_resultPtr = _lookup<ffi.NativeFunction<ffi.Void Function(IOSDecryptResult)>>('ios_free_result');
+  late final _ios_free_result = _ios_free_resultPtr.asFunction<void Function(IOSDecryptResult)>();
+
   int dummy_method_to_enforce_bundling() {
     return _dummy_method_to_enforce_bundling();
   }
@@ -3562,6 +3606,12 @@ final class wire_cst_list_vodozemac_one_time_key extends ffi.Struct {
 
   @ffi.Int32()
   external int len;
+}
+
+final class IOSDecryptResult extends ffi.Struct {
+  external ffi.Pointer<ffi.Char> plaintext;
+
+  external ffi.Pointer<ffi.Char> error;
 }
 
 final class wire_cst_decrypt_result extends ffi.Struct {

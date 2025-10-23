@@ -39,3 +39,6 @@ flutter:
       windows:
         ffiPlugin: true
         
+dependency_overrides:
+  vodozemac: 
+    path: ../dart
