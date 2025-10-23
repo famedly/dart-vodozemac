@@ -10,12 +10,8 @@ Currently supported functionality:
 - Megolm encryption and decryption
 - Export to the vodozemac pickle format (encrypted)
 - Import from the vodozemac pickle format and the libolm pickle format
-
-Unfinished:
-
-- SAS Api
-- libolm pickle export
-- libolm backend
+- SAS verification
+- Public key cryptography (Pk algorithms)
 
 ## Getting started
 
