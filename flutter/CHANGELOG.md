@@ -1,3 +1,10 @@
+## Fork
+
+- Rename FlutterPlugin class name to fix gradle build
+- Use precompiled binaries
+- Support 16kb page sizes for Android binaries
+- Bump Android minSdk to 21 (for ndk 26+)
+
 ## 0.4.1
 
 Fix broken release of 0.4.1 which doesn't actually include the changes of 0.4.0.

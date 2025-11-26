@@ -3,6 +3,20 @@
 This library provides bindings to Olm and Megolm libraries from Dart. Currently only vodozemac is implemented as a
 backend. Both web and native are supported. You need to provide the path to the built rust library yourself.
 
+### Prebuild libraries
+
+Make sure rust and android ndk are installed (last used version is defined in the script).
+
+Export env vars:
+
+```
+export PRIVATE_KEY="[take existing key from 1pass]"
+export GITHUB_TOKEN="[use github token with code write access to repo]"
+```
+
+Run [prebuild_libs.sh](scripts/prebuild_libs.sh) script from scripts folder. 
+It will push the new libs to releases that will be used during build later.
+
 ### Contribution guide
 
 1. Make necessary changes in `rust/src/bindings.rs`
