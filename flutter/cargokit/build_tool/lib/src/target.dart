@@ -22,7 +22,7 @@ class Target {
       rust: 'armv7-linux-androideabi',
       flutter: 'android-arm',
       android: 'armeabi-v7a',
-      androidMinSdkVersion: 16,
+      androidMinSdkVersion: 21,
     ),
     Target(
       rust: 'aarch64-linux-android',
@@ -34,7 +34,7 @@ class Target {
       rust: 'i686-linux-android',
       flutter: 'android-x86',
       android: 'x86',
-      androidMinSdkVersion: 16,
+      androidMinSdkVersion: 21,
     ),
     Target(
       rust: 'x86_64-linux-android',
