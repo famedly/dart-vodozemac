@@ -8,6 +8,9 @@ import 'package:test/test.dart';
 
 import 'package:vodozemac/vodozemac.dart';
 
+import 'package:vodozemac/src/generated/bindings.dart'
+    show VodozemacOlmSessionConfig;
+
 extension PublicCurveChecks on Subject<Curve25519PublicKey> {
   void isValid() {
     context.expect(() => ['meets this expectation'], (actual) {
@@ -100,35 +103,44 @@ void main() async {
     });
 
     test('sending olm messages works properly', () async {
-      final account = Account();
-      final account2 = Account();
+      Future<void> sendOlmMessage(
+          VodozemacOlmSessionConfig? config, int expectedVersion) async {
+        final account = Account();
+        final account2 = Account();
 
-      expect(() => account.generateOneTimeKeys(1), returnsNormally);
+        expect(() => account.generateOneTimeKeys(1), returnsNormally);
 
-      final onetimeKey = account.oneTimeKeys.values.first;
+        final onetimeKey = account.oneTimeKeys.values.first;
 
-      check(account.markKeysAsPublished).returnsNormally();
+        check(account.markKeysAsPublished).returnsNormally();
 
-      final outboundSession = account2.createOutboundSession(
-          identityKey: account.curve25519Key, oneTimeKey: onetimeKey);
-      check(outboundSession.hasReceivedMessage).isFalse();
+        final outboundSession = account2.createOutboundSession(
+            identityKey: account.curve25519Key,
+            oneTimeKey: onetimeKey,
+            config: config);
+        check(outboundSession.hasReceivedMessage).isFalse();
+        expect(outboundSession.sessionConfig.version(), expectedVersion);
 
-      final encrypted = outboundSession.encrypt('Test');
-      final inbound = account.createInboundSession(
-          theirIdentityKey: account2.curve25519Key,
-          preKeyMessageBase64: encrypted.ciphertext);
+        final encrypted = outboundSession.encrypt('Test');
+        final inbound = account.createInboundSession(
+            theirIdentityKey: account2.curve25519Key,
+            preKeyMessageBase64: encrypted.ciphertext);
 
-      check(inbound.plaintext).equals('Test');
-      check(inbound.session.hasReceivedMessage).isTrue();
+        check(inbound.plaintext).equals('Test');
+        check(inbound.session.hasReceivedMessage).isTrue();
 
-      final encrypted2 = inbound.session.encrypt('Test2');
+        final encrypted2 = inbound.session.encrypt('Test2');
 
-      check(outboundSession.hasReceivedMessage).isFalse();
-      check(outboundSession.decrypt(
-              messageType: encrypted2.messageType,
-              ciphertext: encrypted2.ciphertext))
-          .equals('Test2');
-      check(outboundSession.hasReceivedMessage).isTrue();
+        check(outboundSession.hasReceivedMessage).isFalse();
+        check(outboundSession.decrypt(
+                messageType: encrypted2.messageType,
+                ciphertext: encrypted2.ciphertext))
+            .equals('Test2');
+        check(outboundSession.hasReceivedMessage).isTrue();
+      }
+
+      await sendOlmMessage(null, 1);
+      await sendOlmMessage(VodozemacOlmSessionConfig.version2(), 2);
     });
 
     test('sending olm messages works properly with fallback key', () async {

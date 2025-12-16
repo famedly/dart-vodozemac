@@ -244,6 +244,9 @@ final class Session {
 
   Session._(this._session);
 
+  vodozemac.VodozemacOlmSessionConfig get sessionConfig =>
+      _session.sessionConfig();
+
   /// The unique identifier for this session.
   String get sessionId => _session.sessionId();
 
@@ -379,9 +382,11 @@ final class Account {
   Session createOutboundSession({
     required Curve25519PublicKey identityKey,
     required Curve25519PublicKey oneTimeKey,
+    vodozemac.VodozemacOlmSessionConfig? config,
   }) =>
       Session._(_account.createOutboundSession(
-          config: vodozemac.VodozemacOlmSessionConfig.def(),
+          // Workaround for https://github.com/matrix-org/vodozemac/issues/280
+          config: config ?? vodozemac.VodozemacOlmSessionConfig.version1(),
           identityKey: identityKey._key,
           oneTimeKey: oneTimeKey._key));
 
