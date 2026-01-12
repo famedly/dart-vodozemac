@@ -1,4 +1,4 @@
-name: vodozemac
+name: dart_vodozemac
 description: Provides bindings to the vodozemac library that has Olm and Megolm implementation from Dart.
 version: 0.4.0
 homepage: https://famedly.com
