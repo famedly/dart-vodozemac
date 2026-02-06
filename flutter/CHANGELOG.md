@@ -1,3 +1,6 @@
+## 0.5.0
+- fix: Use the specced olm session config v1 by default (Christian Kußowski)
+
 ## 0.4.1
 
 Fix broken release of 0.4.1 which doesn't actually include the changes of 0.4.0.
