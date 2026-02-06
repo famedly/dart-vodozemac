@@ -1,3 +1,6 @@
+## 0.5.0
+- fix: Use the specced olm session config v1 by default (Christian Kußowski)
+
 ## 0.4.0
 
 - feat: add ios ffi bindings for decryption in notification extension
