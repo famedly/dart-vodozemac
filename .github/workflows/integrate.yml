@@ -171,7 +171,7 @@ jobs:
   general:
     permissions:
       contents: read
-    uses: famedly/frontend-ci-templates/.github/workflows/general.yml@main
+    uses: famedly/frontend-ci-templates/.github/workflows/general.yml@e8167567258899ed2a5bcc7fe04c79ad78f87967
 
   coverage:
     runs-on: ubuntu-latest
