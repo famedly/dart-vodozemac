@@ -51,6 +51,8 @@ android {
 
 apply from: "../cargokit/gradle/plugin.gradle"
 cargokit {
-    manifestDir = "../rust"
+    // Use "../../rust" (not "../rust") — flutter/rust is a git symlink which
+    // doesn't resolve on Windows. The real Rust source is at the repo root /rust/.
+    manifestDir = "../../rust"
     libname = "flutter_vodozemac"
 }
