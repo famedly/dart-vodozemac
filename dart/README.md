@@ -104,3 +104,11 @@ print("Decrypted: $decrypted");
 
 You can run the tests using `dart test`, but you might need to adapt the library path.
  -> You can run `cargo build` in `../rust` directory to get the `.dylib` file to load
+
+The olm compatibility tests additionally need libolm. On Linux install
+`libolm3`; on macOS install it with `brew install libolm` and place a
+(gitignored) symlink where `dlopen` can find it:
+
+```sh
+ln -s /opt/homebrew/lib/libolm.3.dylib dart/libolm.3.dylib   # from the repo root
+```

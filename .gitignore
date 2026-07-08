@@ -1,1 +1,9 @@
 dart/libolm.3.dylib
+
+# scripts/build_xcframework.sh scratch output; the XCFramework itself is
+# committed under flutter/ios and flutter/macos.
+build/
+
+# Local test app (create one with: flutter create example, path dependency
+# on flutter/); intentionally not part of the repo or the pub package.
+flutter/example/
