@@ -46,18 +46,45 @@ If your app follows the
 CocoaPods setup declares `pod 'flutter_vodozemac'` for the extension target.
 Keeping that pod line while building with SPM makes the build fail with
 `Multiple commands produce .../Runner.app/Frameworks/flutter_vodozemac.framework`
-(the pod and the SPM binary target both embed the framework). To migrate the
-extension to SPM:
+(the pod and the SPM binary target both embed the framework).
 
-1. Remove the `pod 'flutter_vodozemac', :path => ...` line from the extension
-   target in your Podfile (then `pod install`).
-2. In Xcode, add the `flutter-vodozemac` package product to the extension
-   target under *General → Frameworks and Libraries*. The plugin's package is
-   already in the workspace via `FlutterGeneratedPluginSwiftPackage`.
-3. Replace the bridging-header import with `import flutter_vodozemac` in
-   Swift. The framework ships `vodozemac_ios_ffi_bindings.h` and a module map,
-   so `ios_decrypt_event` & co. are directly callable — a bridging header (and
-   the pod's header search paths) are no longer needed.
+#### Migration guide
+
+If your extension predates this plugin's SPM support, you have three things to
+remove and one to add.
+
+**1. Podfile** — drop the pod line from the extension target, then run
+`pod install`:
+
+```diff
+   target 'YourExtensionTarget' do
+     inherit! :search_paths
+-    pod 'flutter_vodozemac', :path => '.symlinks/plugins/flutter_vodozemac/ios'
+   end
+```
+
+**2. Bridging header** — remove the vodozemac import. If that was the only
+line, delete the header file entirely:
+
+```diff
+-// Import the vodozemac C header
+-#import "vodozemac_ios_ffi_bindings.h"
+```
+
+**3. Xcode build settings** — for the extension target, clear
+*Build Settings → Swift Compiler - General → Objective-C Bridging Header*
+(a path pointing at a deleted file fails the build).
+
+**4. Swift code** — the bridging header's symbols are now provided by a normal
+import instead:
+
+```diff
++import flutter_vodozemac
+```
+
+`ios_decrypt_event` & co. are directly callable after that — the framework
+ships `vodozemac_ios_ffi_bindings.h` and a module map, so no other code
+changes are needed.
 
 If you'd rather not migrate the extension yet, opt the whole app out of SPM in
 its `pubspec.yaml` and everything keeps working exactly as before:
