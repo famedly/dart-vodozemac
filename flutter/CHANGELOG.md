@@ -1,3 +1,12 @@
+## 0.6.0
+- feat: Support Swift Package Manager on iOS and macOS via a prebuilt
+  XCFramework binary target. CocoaPods keeps building the Rust library from
+  source via cargokit and is unaffected. (Emre Yurtseven)
+- fix: Android builds with Gradle 9, which removed the Project.exec API the
+  vendored cargokit relied on. (Emre Yurtseven)
+- fix: Compile the Android plugin against SDK 36; the AndroidX libraries
+  pulled in by current Flutter embeddings require 34 or later. (Emre Yurtseven)
+
 ## 0.5.0
 - fix: Use the specced olm session config v1 by default (Christian Kußowski)
 

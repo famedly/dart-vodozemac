@@ -1,6 +1,8 @@
 /// This is copied from Cargokit (which is the official way to use it currently)
 /// Details: https://fzyzcjy.github.io/flutter_rust_bridge/manual/integrate/builtin
 
+### This is copied from https://github.com/fzyzcjy/flutter_rust_bridge/tree/master/frb_example/flutter_package/cargokit
+
 Experimental repository to provide glue for seamlessly integrating cargo build
 with flutter plugins and packages.
 
