@@ -1,3 +1,5 @@
+// ignore_for_file: unused-files, unused-code - nothing in package imports the public entry point only consumers do
+
 import 'dart:io';
 
 import 'package:flutter/foundation.dart';
