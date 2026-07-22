@@ -28,3 +28,31 @@ include: package:lints/recommended.yaml
 
 # For additional information about configuring this file, see
 # https://dart.dev/guides/language/analysis-options
+
+analyzer:
+  plugins:
+    - dart_code_linter
+
+dart_code_linter:
+  metrics-exclude:
+    - lib/src/generated/**
+  rules:
+    # TODO: Refactor one after another and enable:
+    - prefer-match-file-name: false
+    - member-ordering: false
+    - prefer-extracting-callbacks: false
+    - prefer-single-widget-per-file: false
+    - avoid-redundant-async: false
+    - avoid-global-state: false
+    - avoid-returning-widgets: false
+    - avoid-unnecessary-conditionals: false
+    - prefer-immediate-return: false
+    - avoid-unrelated-type-assertions: false
+    - avoid-wrapping-in-padding: false
+    - no-equal-then-else: false
+    - avoid-dynamic: false
+    - prefer-first: false
+    - prefer-enums-by-name: false
+    - prefer-media-query-direct-access: false
+    - prefer-correct-edge-insets-constructor: false
+    - avoid-unnecessary-type-assertions: false
