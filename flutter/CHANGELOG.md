@@ -1,3 +1,6 @@
+## 0.7.0
+- build: update to dart vodozemac 0.7.0
+
 ## 0.6.0
 - feat: Support Swift Package Manager on iOS and macOS via a prebuilt
   XCFramework binary target. CocoaPods keeps building the Rust library from
