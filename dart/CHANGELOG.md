@@ -1,3 +1,6 @@
+## 0.6.0
+- build: update FRB to 2.12.0
+
 ## 0.5.0
 - fix: Use the specced olm session config v1 by default (Christian Kußowski)
 
