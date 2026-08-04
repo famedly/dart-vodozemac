@@ -378,6 +378,7 @@ fn wire__crate__bindings__sha512_impl(
 }
 fn wire__crate__bindings__vodozemac_account_create_inbound_session_impl(
     that: impl CstDecode<crate::bindings::VodozemacAccount>,
+    config: impl CstDecode<crate::bindings::VodozemacOlmSessionConfig>,
     their_identity_key: impl CstDecode<crate::bindings::VodozemacCurve25519PublicKey>,
     pre_key_message_base64: impl CstDecode<String>,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
@@ -389,12 +390,14 @@ fn wire__crate__bindings__vodozemac_account_create_inbound_session_impl(
         },
         move || {
             let api_that = that.cst_decode();
+            let api_config = config.cst_decode();
             let api_their_identity_key = their_identity_key.cst_decode();
             let api_pre_key_message_base64 = pre_key_message_base64.cst_decode();
             transform_result_dco::<_, _, flutter_rust_bridge::for_generated::anyhow::Error>(
                 (move || {
                     let output_ok = crate::bindings::VodozemacAccount::create_inbound_session(
                         &api_that,
+                        api_config,
                         api_their_identity_key,
                         api_pre_key_message_base64,
                     )?;
@@ -4343,11 +4346,13 @@ mod io {
     #[unsafe(no_mangle)]
     pub extern "C" fn frbgen_vodozemac_wire__crate__bindings__vodozemac_account_create_inbound_session(
         that: *mut wire_cst_vodozemac_account,
+        config: *mut wire_cst_vodozemac_olm_session_config,
         their_identity_key: *mut wire_cst_vodozemac_curve_25519_public_key,
         pre_key_message_base64: *mut wire_cst_list_prim_u_8_strict,
     ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
         wire__crate__bindings__vodozemac_account_create_inbound_session_impl(
             that,
+            config,
             their_identity_key,
             pre_key_message_base64,
         )
@@ -6362,11 +6367,13 @@ mod web {
     #[wasm_bindgen]
     pub fn wire__crate__bindings__vodozemac_account_create_inbound_session(
         that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+        config: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
         their_identity_key: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
         pre_key_message_base64: String,
     ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
         wire__crate__bindings__vodozemac_account_create_inbound_session_impl(
             that,
+            config,
             their_identity_key,
             pre_key_message_base64,
         )

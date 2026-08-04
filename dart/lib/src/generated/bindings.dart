@@ -120,9 +120,11 @@ class VodozemacAccount {
   });
 
   VodozemacOlmSessionCreationResult createInboundSession(
-          {required VodozemacCurve25519PublicKey theirIdentityKey, required String preKeyMessageBase64}) =>
+          {required VodozemacOlmSessionConfig config,
+          required VodozemacCurve25519PublicKey theirIdentityKey,
+          required String preKeyMessageBase64}) =>
       RustLib.instance.api.crateBindingsVodozemacAccountCreateInboundSession(
-          that: this, theirIdentityKey: theirIdentityKey, preKeyMessageBase64: preKeyMessageBase64);
+          that: this, config: config, theirIdentityKey: theirIdentityKey, preKeyMessageBase64: preKeyMessageBase64);
 
   VodozemacSession createOutboundSession(
           {required VodozemacOlmSessionConfig config,

@@ -105,6 +105,7 @@ abstract class RustLibApi extends BaseApi {
 
   VodozemacOlmSessionCreationResult crateBindingsVodozemacAccountCreateInboundSession(
       {required VodozemacAccount that,
+      required VodozemacOlmSessionConfig config,
       required VodozemacCurve25519PublicKey theirIdentityKey,
       required String preKeyMessageBase64});
 
@@ -707,28 +708,30 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   VodozemacOlmSessionCreationResult crateBindingsVodozemacAccountCreateInboundSession(
       {required VodozemacAccount that,
+      required VodozemacOlmSessionConfig config,
       required VodozemacCurve25519PublicKey theirIdentityKey,
       required String preKeyMessageBase64}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         var arg0 = cst_encode_box_autoadd_vodozemac_account(that);
-        var arg1 = cst_encode_box_autoadd_vodozemac_curve_25519_public_key(theirIdentityKey);
-        var arg2 = cst_encode_String(preKeyMessageBase64);
-        return wire.wire__crate__bindings__vodozemac_account_create_inbound_session(arg0, arg1, arg2);
+        var arg1 = cst_encode_box_autoadd_vodozemac_olm_session_config(config);
+        var arg2 = cst_encode_box_autoadd_vodozemac_curve_25519_public_key(theirIdentityKey);
+        var arg3 = cst_encode_String(preKeyMessageBase64);
+        return wire.wire__crate__bindings__vodozemac_account_create_inbound_session(arg0, arg1, arg2, arg3);
       },
       codec: DcoCodec(
         decodeSuccessData: dco_decode_vodozemac_olm_session_creation_result,
         decodeErrorData: dco_decode_AnyhowException,
       ),
       constMeta: kCrateBindingsVodozemacAccountCreateInboundSessionConstMeta,
-      argValues: [that, theirIdentityKey, preKeyMessageBase64],
+      argValues: [that, config, theirIdentityKey, preKeyMessageBase64],
       apiImpl: this,
     ));
   }
 
   TaskConstMeta get kCrateBindingsVodozemacAccountCreateInboundSessionConstMeta => const TaskConstMeta(
         debugName: "vodozemac_account_create_inbound_session",
-        argNames: ["that", "theirIdentityKey", "preKeyMessageBase64"],
+        argNames: ["that", "config", "theirIdentityKey", "preKeyMessageBase64"],
       );
 
   @override

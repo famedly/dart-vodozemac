@@ -385,8 +385,7 @@ final class Account {
     vodozemac.VodozemacOlmSessionConfig? config,
   }) =>
       Session._(_account.createOutboundSession(
-          // Workaround for https://github.com/matrix-org/vodozemac/issues/280
-          config: config ?? vodozemac.VodozemacOlmSessionConfig.version1(),
+          config: config ?? vodozemac.VodozemacOlmSessionConfig.def(),
           identityKey: identityKey._key,
           oneTimeKey: oneTimeKey._key));
 
@@ -396,8 +395,10 @@ final class Account {
   ({Session session, String plaintext}) createInboundSession({
     required Curve25519PublicKey theirIdentityKey,
     required String preKeyMessageBase64,
+    vodozemac.VodozemacOlmSessionConfig? config,
   }) {
     final inb = _account.createInboundSession(
+        config: config ?? vodozemac.VodozemacOlmSessionConfig.def(),
         theirIdentityKey: theirIdentityKey._key,
         preKeyMessageBase64: preKeyMessageBase64);
 

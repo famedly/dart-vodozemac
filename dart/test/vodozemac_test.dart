@@ -123,6 +123,7 @@ void main() async {
 
         final encrypted = outboundSession.encrypt('Test');
         final inbound = account.createInboundSession(
+            config: config,
             theirIdentityKey: account2.curve25519Key,
             preKeyMessageBase64: encrypted.ciphertext);
 

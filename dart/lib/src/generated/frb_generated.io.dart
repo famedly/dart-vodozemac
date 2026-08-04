@@ -1367,11 +1367,13 @@ class RustLibWire implements BaseWire {
 
   WireSyncRust2DartDco wire__crate__bindings__vodozemac_account_create_inbound_session(
     ffi.Pointer<wire_cst_vodozemac_account> that,
+    ffi.Pointer<wire_cst_vodozemac_olm_session_config> config,
     ffi.Pointer<wire_cst_vodozemac_curve_25519_public_key> their_identity_key,
     ffi.Pointer<wire_cst_list_prim_u_8_strict> pre_key_message_base64,
   ) {
     return _wire__crate__bindings__vodozemac_account_create_inbound_session(
       that,
+      config,
       their_identity_key,
       pre_key_message_base64,
     );
@@ -1379,13 +1381,19 @@ class RustLibWire implements BaseWire {
 
   late final _wire__crate__bindings__vodozemac_account_create_inbound_sessionPtr = _lookup<
           ffi.NativeFunction<
-              WireSyncRust2DartDco Function(ffi.Pointer<wire_cst_vodozemac_account>,
-                  ffi.Pointer<wire_cst_vodozemac_curve_25519_public_key>, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
+              WireSyncRust2DartDco Function(
+                  ffi.Pointer<wire_cst_vodozemac_account>,
+                  ffi.Pointer<wire_cst_vodozemac_olm_session_config>,
+                  ffi.Pointer<wire_cst_vodozemac_curve_25519_public_key>,
+                  ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
       'frbgen_vodozemac_wire__crate__bindings__vodozemac_account_create_inbound_session');
   late final _wire__crate__bindings__vodozemac_account_create_inbound_session =
       _wire__crate__bindings__vodozemac_account_create_inbound_sessionPtr.asFunction<
-          WireSyncRust2DartDco Function(ffi.Pointer<wire_cst_vodozemac_account>,
-              ffi.Pointer<wire_cst_vodozemac_curve_25519_public_key>, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
+          WireSyncRust2DartDco Function(
+              ffi.Pointer<wire_cst_vodozemac_account>,
+              ffi.Pointer<wire_cst_vodozemac_olm_session_config>,
+              ffi.Pointer<wire_cst_vodozemac_curve_25519_public_key>,
+              ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
 
   WireSyncRust2DartDco wire__crate__bindings__vodozemac_account_create_outbound_session(
     ffi.Pointer<wire_cst_vodozemac_account> that,
@@ -3525,14 +3533,14 @@ final class wire_cst_vodozemac_account extends ffi.Struct {
   external int account;
 }
 
-final class wire_cst_vodozemac_curve_25519_public_key extends ffi.Struct {
-  @ffi.UintPtr()
-  external int key;
-}
-
 final class wire_cst_vodozemac_olm_session_config extends ffi.Struct {
   @ffi.UintPtr()
   external int config;
+}
+
+final class wire_cst_vodozemac_curve_25519_public_key extends ffi.Struct {
+  @ffi.UintPtr()
+  external int key;
 }
 
 final class wire_cst_vodozemac_ed_25519_public_key extends ffi.Struct {
@@ -3638,5 +3646,3 @@ final class wire_cst_vodozemac_olm_session_creation_result extends ffi.Struct {
 
   external ffi.Pointer<wire_cst_list_prim_u_8_strict> plaintext;
 }
-
-const int VodozemacEd25519Signature_LENGTH = 64;

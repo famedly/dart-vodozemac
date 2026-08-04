@@ -1060,9 +1060,9 @@ class RustLibWire implements BaseWire {
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__bindings__vodozemac_account_create_inbound_session(
-              JSAny that, JSAny their_identity_key, String pre_key_message_base64) =>
+              JSAny that, JSAny config, JSAny their_identity_key, String pre_key_message_base64) =>
           wasmModule.wire__crate__bindings__vodozemac_account_create_inbound_session(
-              that, their_identity_key, pre_key_message_base64);
+              that, config, their_identity_key, pre_key_message_base64);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__bindings__vodozemac_account_create_outbound_session(
@@ -1555,7 +1555,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__bindings__vodozemac_account_create_inbound_session(
-          JSAny that, JSAny their_identity_key, String pre_key_message_base64);
+          JSAny that, JSAny config, JSAny their_identity_key, String pre_key_message_base64);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__bindings__vodozemac_account_create_outbound_session(
