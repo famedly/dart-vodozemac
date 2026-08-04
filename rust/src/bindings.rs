@@ -304,8 +304,6 @@ impl From<Ed25519Signature> for VodozemacEd25519Signature {
 }
 
 impl VodozemacEd25519Signature {
-    pub const LENGTH: usize = 64usize;
-
     pub fn from_slice(bytes: [u8; 64usize]) -> anyhow::Result<Self> {
         let key = Ed25519Signature::from_slice(&bytes)?;
         Ok(key.into())
@@ -330,8 +328,6 @@ pub struct VodozemacEd25519PublicKey {
 }
 
 impl VodozemacEd25519PublicKey {
-    pub const LENGTH: usize = 32usize;
-
     pub fn from_slice(bytes: [u8; 32usize]) -> anyhow::Result<Self> {
         let key = Ed25519PublicKey::from_slice(&bytes)?;
         Ok(key.into())
@@ -382,8 +378,6 @@ impl From<Curve25519PublicKey> for VodozemacCurve25519PublicKey {
 }
 
 impl VodozemacCurve25519PublicKey {
-    pub const LENGTH: usize = 32usize;
-
     pub fn from_slice(bytes: [u8; 32usize]) -> anyhow::Result<Self> {
         let key = Curve25519PublicKey::from_slice(&bytes)?;
         Ok(key.into())
@@ -478,6 +472,7 @@ impl VodozemacSession {
             .write()
             .expect("Failed to write session")
             .encrypt(plaintext)
+            .expect("Failed to encrypt message")
             .into()
     }
 
@@ -664,11 +659,13 @@ impl VodozemacAccount {
             .read()
             .expect("Failed to read account")
             .create_outbound_session(*config.config, *identity_key.key, *one_time_key.key)
+            .expect("Failed to create outbound session")
             .into()
     }
 
     pub fn create_inbound_session(
         &self,
+        config: VodozemacOlmSessionConfig,
         their_identity_key: VodozemacCurve25519PublicKey,
         pre_key_message_base64: String,
     ) -> anyhow::Result<VodozemacOlmSessionCreationResult> {
@@ -677,6 +674,7 @@ impl VodozemacAccount {
             .write()
             .expect("Failed to write account")
             .create_inbound_session(
+                *config.config,
                 *their_identity_key.key,
                 &vodozemac::olm::PreKeyMessage::from_base64(&pre_key_message_base64)?,
             )?;
@@ -834,7 +832,10 @@ impl VodozemacPkEncryption {
     }
 
     pub fn encrypt(&self, message: String) -> VodozemacPkMessage {
-        self.pk_encryption.encrypt(message.as_ref()).into()
+        self.pk_encryption
+            .encrypt(message.as_ref())
+            .expect("Failed to pk encrypt")
+            .into()
     }
 }
 

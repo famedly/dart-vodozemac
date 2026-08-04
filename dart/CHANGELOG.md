@@ -1,3 +1,8 @@
+## 0.6.0
+- build: update FRB to 2.12.0
+- build: update vodozemac to 0.10.0 and remove default version workaround
+- chore: session config is now configurable for inbound group session as well
+
 ## 0.5.0
 - fix: Use the specced olm session config v1 by default (Christian Kußowski)
 
