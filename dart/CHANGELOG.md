@@ -1,3 +1,6 @@
+## 0.7.0
+- chore: version bump to get back on sync with flutter_vodozemac
+
 ## 0.6.0
 - build: update FRB to 2.12.0
 - build: update vodozemac to 0.10.0 and remove default version workaround
