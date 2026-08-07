@@ -1,3 +1,6 @@
+## 0.7.1
+- build: update XCFramework for SPM
+
 ## 0.7.0
 - build: update to dart vodozemac 0.7.0
 
