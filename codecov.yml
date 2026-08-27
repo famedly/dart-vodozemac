@@ -1,0 +1,4 @@
+ignore:
+  # Generated flutter_rust_bridge bindings; regenerated on every FRB update
+  # and not meaningfully covered by handwritten tests.
+  - "dart/lib/src/generated/**"
