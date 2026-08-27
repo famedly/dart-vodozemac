@@ -1,3 +1,7 @@
+## 0.8.0
+- build: update flutter_rust_bridge to 2.13.0 and rebuild the XCFramework
+- build: require Flutter 3.38+ / Dart 3.10+ (in preparation for the native assets integration backend)
+
 ## 0.7.1
 - build: update XCFramework for SPM
 
