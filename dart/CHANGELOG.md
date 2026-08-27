@@ -1,3 +1,7 @@
+## 0.8.0
+- build: update flutter_rust_bridge to 2.13.0 (includes web worker WASM initialization fix)
+- build: require Dart 3.10+ (in preparation for the native assets integration backend)
+
 ## 0.7.0
 - chore: version bump to get back on sync with flutter_vodozemac
 
