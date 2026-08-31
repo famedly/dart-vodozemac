@@ -6,11 +6,13 @@
 	<array>
 		<dict>
 			<key>BinaryPath</key>
-			<string>flutter_vodozemac.framework/Versions/A/flutter_vodozemac</string>
+			<string>libflutter_vodozemac.dylib</string>
+			<key>HeadersPath</key>
+			<string>Headers</string>
 			<key>LibraryIdentifier</key>
 			<string>macos-arm64_x86_64</string>
 			<key>LibraryPath</key>
-			<string>flutter_vodozemac.framework</string>
+			<string>libflutter_vodozemac.dylib</string>
 			<key>SupportedArchitectures</key>
 			<array>
 				<string>arm64</string>

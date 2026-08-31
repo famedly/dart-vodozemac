@@ -1,14 +1,23 @@
+## 0.8.1
+
+- fix: macOS support
+- feat: `init` takes an optional `libraryPath`
+
 ## 0.8.0
+
 - build: update flutter_rust_bridge to 2.13.0 and rebuild the XCFramework
 - build: require Flutter 3.38+ / Dart 3.10+ (in preparation for the native assets integration backend)
 
 ## 0.7.1
+
 - build: update XCFramework for SPM
 
 ## 0.7.0
+
 - build: update to dart vodozemac 0.7.0
 
 ## 0.6.0
+
 - feat: Support Swift Package Manager on iOS and macOS via a prebuilt
   XCFramework binary target. CocoaPods keeps building the Rust library from
   source via cargokit and is unaffected. (Emre Yurtseven)
@@ -18,6 +27,7 @@
   pulled in by current Flutter embeddings require 34 or later. (Emre Yurtseven)
 
 ## 0.5.0
+
 - fix: Use the specced olm session config v1 by default (Christian Kußowski)
 
 ## 0.4.1
@@ -27,11 +37,13 @@ Fix broken release of 0.4.1 which doesn't actually include the changes of 0.4.0.
 ## 0.4.0
 
 Update to Vodozemac 0.4.0 with:
+
 - feat: add ios ffi bindings for decryption in notification extension
 
 ## 0.3.0
 
 Update to Vodozemac 0.3.0 with:
+
 - feat: Add CryptoUtils to forward algorithms for SSSS and file encryption
 - build: Update flutter_rust_bridge to 2.11.1
 

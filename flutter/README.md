@@ -17,7 +17,9 @@ SwiftPM cannot run cargo during the build (build tool plugins are sandboxed),
 so your app uses a **prebuilt** `flutter_vodozemac.xcframework` that we build
 and commit to this repo (under `ios/flutter_vodozemac/` and
 `macos/flutter_vodozemac/`, referenced as a local-path `binaryTarget` in the
-`Package.swift` there).
+`Package.swift` there). iOS ships it as a framework; macOS ships a plain
+`libflutter_vodozemac.dylib`, because a macOS framework needs symlinks and
+`pub publish` does not preserve them.
 
 - No Rust toolchain needed on your machine; nothing is compiled during your
   build, which makes clean/CI builds noticeably faster.
