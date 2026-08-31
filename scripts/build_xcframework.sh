@@ -6,10 +6,6 @@
 # there). CocoaPods consumers are unaffected: they still build from source via
 # cargokit.
 #
-# The framework/binary is named flutter_vodozemac because flutter_rust_bridge's
-# darwin loader opens "flutter_vodozemac.framework/flutter_vodozemac" (see
-# flutter/lib/flutter_vodozemac.dart).
-#
 # Run this after any change to flutter/rust and commit the result alongside
 # the change.
 set -euo pipefail
@@ -105,34 +101,17 @@ make_ios_framework() { # <slice-dir> <fat-binary>
   write_module_files "$fw"
 }
 
-make_macos_framework() { # <slice-dir> <fat-binary>
-  local fw="$1/$FRAMEWORK_NAME.framework"
-  mkdir -p "$fw/Versions/A/Resources"
-  cp "$2" "$fw/Versions/A/$FRAMEWORK_NAME"
-  install_name_tool -id "@rpath/$FRAMEWORK_NAME.framework/Versions/A/$FRAMEWORK_NAME" "$fw/Versions/A/$FRAMEWORK_NAME"
-  cat >"$fw/Versions/A/Resources/Info.plist" <<EOF
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<plist version="1.0">
-<dict>
-  <key>CFBundleDevelopmentRegion</key><string>en</string>
-  <key>CFBundleExecutable</key><string>$FRAMEWORK_NAME</string>
-  <key>CFBundleIdentifier</key><string>com.famedly.flutter-vodozemac</string>
-  <key>CFBundleInfoDictionaryVersion</key><string>6.0</string>
-  <key>CFBundleName</key><string>$FRAMEWORK_NAME</string>
-  <key>CFBundlePackageType</key><string>FMWK</string>
-  <key>CFBundleShortVersionString</key><string>1.0</string>
-  <key>CFBundleVersion</key><string>1</string>
-  <key>LSMinimumSystemVersion</key><string>$MACOS_MIN_VERSION</string>
-</dict>
-</plist>
+make_macos_dylib() { # <out-dir> <fat-binary>
+  mkdir -p "$1/Headers"
+  cp "$2" "$1/lib$FRAMEWORK_NAME.dylib"
+  install_name_tool -id "@rpath/lib$FRAMEWORK_NAME.dylib" "$1/lib$FRAMEWORK_NAME.dylib"
+  cp "$FFI_HEADER" "$1/Headers/"
+  cat >"$1/Headers/module.modulemap" <<EOF
+module $FRAMEWORK_NAME {
+    header "$(basename "$FFI_HEADER")"
+    export *
+}
 EOF
-  write_module_files "$fw/Versions/A"
-  ln -s A "$fw/Versions/Current"
-  ln -s "Versions/Current/$FRAMEWORK_NAME" "$fw/$FRAMEWORK_NAME"
-  ln -s Versions/Current/Resources "$fw/Resources"
-  ln -s Versions/Current/Headers "$fw/Headers"
-  ln -s Versions/Current/Modules "$fw/Modules"
 }
 
 echo "==> Creating fat binaries"
@@ -144,7 +123,7 @@ echo "==> Assembling frameworks"
 mkdir -p "$OUT_DIR/slices/ios-device" "$OUT_DIR/slices/ios-simulator" "$OUT_DIR/slices/macos"
 make_ios_framework "$OUT_DIR/slices/ios-device" "$OUT_DIR/lipo/ios-device"
 make_ios_framework "$OUT_DIR/slices/ios-simulator" "$OUT_DIR/lipo/ios-simulator"
-make_macos_framework "$OUT_DIR/slices/macos" "$OUT_DIR/lipo/macos"
+make_macos_dylib "$OUT_DIR/slices/macos" "$OUT_DIR/lipo/macos"
 
 echo "==> Creating XCFrameworks"
 # Two separate XCFrameworks, each with only the slices its platform needs,
@@ -155,7 +134,8 @@ xcodebuild -create-xcframework \
   -framework "$OUT_DIR/slices/ios-simulator/$FRAMEWORK_NAME.framework" \
   -output "$OUT_DIR/ios.xcframework"
 xcodebuild -create-xcframework \
-  -framework "$OUT_DIR/slices/macos/$FRAMEWORK_NAME.framework" \
+  -library "$OUT_DIR/slices/macos/lib$FRAMEWORK_NAME.dylib" \
+  -headers "$OUT_DIR/slices/macos/Headers" \
   -output "$OUT_DIR/macos.xcframework"
 
 echo "==> Installing into flutter/ios and flutter/macos"
