@@ -21,6 +21,8 @@ Future<void> init({
       webPrefix: wasmPath,
     )));
 
+void dispose() => vodozemac.RustLib.dispose();
+
 /// If the vodozemac library has been loaded and initialized.
 bool isInitialized() => vodozemac.RustLib.instance.initialized;
 
