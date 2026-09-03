@@ -1,3 +1,11 @@
+## 0.8.2
+- **Important:** Update to this version and rebuild all native and Web
+  artifacts. Older Dart bindings can select experimental Megolm v2 when they
+  are paired with a stale Rust vodozemac 0.9 runtime.
+- fix: always use the Matrix-specified Megolm v1 configuration for new
+  outbound, inbound, and imported group sessions
+- fix: refuse to encrypt with a restored outbound Megolm v2 session
+
 ## 0.8.0
 - build: update flutter_rust_bridge to 2.13.0 (includes web worker WASM initialization fix)
 - build: require Dart 3.10+ (in preparation for the native assets integration backend)

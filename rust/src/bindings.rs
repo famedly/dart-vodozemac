@@ -56,7 +56,7 @@ impl VodozemacMegolmSessionConfig {
     // can't name this default, because that is a dart keyword and the generator also strips my
     // suffixes!
     pub fn def() -> Self {
-        MegolmSessionConfig::default().into()
+        MegolmSessionConfig::version_1().into()
     }
 }
 

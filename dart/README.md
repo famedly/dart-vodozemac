@@ -1,5 +1,11 @@
 # Generic Olm Bindings
 
+> [!IMPORTANT]
+> Update to `vodozemac 0.8.2` and rebuild all native and Web artifacts.
+> Earlier bindings can select experimental Megolm v2 when paired with a stale
+> Rust vodozemac 0.9 runtime, producing messages that standard v1 sessions
+> cannot decrypt.
+
 ## Features
 
 Currently supported functionality:

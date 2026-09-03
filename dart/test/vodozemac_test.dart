@@ -9,7 +9,11 @@ import 'package:test/test.dart';
 import 'package:vodozemac/vodozemac.dart';
 
 import 'package:vodozemac/src/generated/bindings.dart'
-    show VodozemacOlmSessionConfig;
+    show
+        U8Array32,
+        VodozemacGroupSession,
+        VodozemacMegolmSessionConfig,
+        VodozemacOlmSessionConfig;
 
 extension PublicCurveChecks on Subject<Curve25519PublicKey> {
   void isValid() {
@@ -233,6 +237,36 @@ void main() async {
   });
 
   group('Megolm session can', () {
+    test('use the Matrix-specified v1 configuration by default', () {
+      check(VodozemacMegolmSessionConfig.def().version()).equals(1);
+
+      final groupSession = GroupSession();
+      check(groupSession.sessionConfigVersion).equals(1);
+
+      final encrypted = groupSession.encrypt('Test');
+      check(Utils.base64decodeUnpadded(encrypted).first).equals(3);
+    });
+
+    test('refuse to encrypt with a restored v2 outbound session', () {
+      final pickleKey = Uint8List(32);
+      final v2Session = VodozemacGroupSession(
+        config: VodozemacMegolmSessionConfig.version2(),
+      );
+      final pickle = v2Session.pickleEncrypted(
+        pickleKey: U8Array32(pickleKey),
+      );
+      final restoredSession = GroupSession.fromPickleEncrypted(
+        pickle: pickle,
+        pickleKey: pickleKey,
+      );
+
+      check(restoredSession.sessionConfigVersion).equals(2);
+      expect(
+        () => restoredSession.encrypt('Test'),
+        throwsA(isA<StateError>()),
+      );
+    });
+
     test('be created', () async {
       check(GroupSession()).isNotNull();
     });
