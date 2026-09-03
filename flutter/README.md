@@ -1,5 +1,10 @@
 # Flutter Vodozemac
 
+> [!IMPORTANT]
+> Update to `flutter_vodozemac 0.8.2` and rebuild all native and Web artifacts.
+> Version 0.7.0 shipped stale Apple XCFrameworks, and mixed Dart/Rust artifacts
+> can create incompatible Megolm v2 sessions.
+
 This package contains bindings to build Vodozemac in Flutter applications. Please refer to [vodozemac](https://pub.dev/packages/vodozemac) for documentation.
 
 Read this guide on [decrypting ciphertext in iOS directly with C-compatible ffi bindings, for displaying encrypted messages in push notifications](./ios/README_NOTIFICATION_DECRYPT.md).

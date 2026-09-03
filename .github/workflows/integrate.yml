@@ -9,6 +9,12 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  package_versions:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: ./scripts/check_package_versions.sh
+
   dart_analyzer:
     runs-on: ubuntu-latest
     env:
@@ -167,6 +173,27 @@ jobs:
         run: cargo fetch
       - name: Run Web Tests
         run: ./scripts/run_web_tests.sh
+
+  macos-artifact-tests:
+    runs-on: macos-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - run: cat .github/workflows/versions.env >> $GITHUB_ENV
+      - uses: dart-lang/setup-dart@a57a6c04cf7d4840e88432aad6281d1e125f0d46
+        with:
+          sdk: ${{ env.dart_version }}
+      - name: Fetch Dart dependencies
+        working-directory: dart
+        run: dart pub get --no-example
+      - name: Verify packaged Megolm configuration
+        working-directory: flutter/macos/flutter_vodozemac/flutter_vodozemac.xcframework/macos-arm64_x86_64
+        run: >-
+          dart
+          --packages=../../../../../dart/.dart_tool/package_config.json
+          ../../../../../dart/tool/verify_megolm_v1.dart
+          .
 
   general:
     permissions:

@@ -108,13 +108,15 @@ final class Ed25519PublicKey {
 /// Reference: https://spec.matrix.org/latest/client-server-api/#messaging-algorithms
 final class GroupSession {
   final vodozemac.VodozemacGroupSession _session;
+  bool _configurationValidated = false;
 
   GroupSession._(this._session);
 
-  /// Creates a new outbound group session with default configuration.
+  /// Creates a new outbound group session with the Matrix-specified v1
+  /// configuration.
   GroupSession()
       : _session = vodozemac.VodozemacGroupSession(
-          config: vodozemac.VodozemacMegolmSessionConfig.def(),
+          config: vodozemac.VodozemacMegolmSessionConfig.version1(),
         );
 
   /// The unique identifier for this session.
@@ -127,10 +129,24 @@ final class GroupSession {
   /// The current message index of the session.
   int get messageIndex => _session.messageIndex();
 
+  /// The Megolm session configuration version used by this session.
+  int get sessionConfigVersion => _session.sessionConfig().version();
+
   /// Encrypt a message using this session.
   ///
   /// Returns the encrypted message as a base64 encoded string.
-  String encrypt(String plaintext) => _session.encrypt(plaintext: plaintext);
+  String encrypt(String plaintext) {
+    if (!_configurationValidated) {
+      final version = sessionConfigVersion;
+      if (version != 1) {
+        throw StateError(
+          'Refusing to encrypt with unsupported Megolm session config v$version',
+        );
+      }
+      _configurationValidated = true;
+    }
+    return _session.encrypt(plaintext: plaintext);
+  }
 
   /// Convert this outbound session to an inbound session.
   ///
@@ -170,20 +186,21 @@ final class InboundGroupSession {
 
   InboundGroupSession._(this._session);
 
-  /// Creates a new inbound group session from a session key.
+  /// Creates a new inbound group session from a session key using the
+  /// Matrix-specified v1 configuration.
   InboundGroupSession(String sessionKey)
       : _session = vodozemac.VodozemacInboundGroupSession(
             sessionKey: sessionKey,
-            config: vodozemac.VodozemacMegolmSessionConfig.def());
+            config: vodozemac.VodozemacMegolmSessionConfig.version1());
 
-  /// Creates a new inbound group session from an exported session key using the
-  /// [exportAt] method.
+  /// Creates a new inbound group session from an exported session key using
+  /// the Matrix-specified v1 configuration and the [exportAt] method.
   ///
   /// This allows importing a session that was exported at a specific message index.
   InboundGroupSession.import(String exportedSessionKey)
       : _session = vodozemac.VodozemacInboundGroupSession.import_(
             exportedSessionKey: exportedSessionKey,
-            config: vodozemac.VodozemacMegolmSessionConfig.def());
+            config: vodozemac.VodozemacMegolmSessionConfig.version1());
 
   /// The unique identifier for this session.
   String get sessionId => _session.sessionId();

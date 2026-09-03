@@ -1,3 +1,13 @@
+## 0.8.2
+- **Important:** Update to this version and rebuild all native and Web
+  artifacts. `flutter_vodozemac 0.7.0` shipped stale Apple XCFrameworks, and
+  mixed Dart/Rust artifacts can create incompatible Megolm v2 sessions.
+- fix: update to `vodozemac 0.8.2`, which explicitly enforces the
+  Matrix-specified Megolm v1 configuration
+- build: keep the Dart and Flutter package versions in lockstep and pin the
+  matching Dart bindings
+- build: rebuild the iOS and macOS XCFrameworks
+
 ## 0.8.1
 
 - fix: macOS support

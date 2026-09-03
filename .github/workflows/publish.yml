@@ -5,24 +5,65 @@ on:
     tags:
     - v[0-9]+.[0-9]+.[0-9]+
 
-defaults:
-  run:
-    shell: bash
-    working-directory: ./dart
-
 jobs:
-  publish:
+  package_versions:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: ./scripts/check_package_versions.sh
+
+  publish_dart:
+    needs: [package_versions]
+    environment: pub.dev
     permissions:
       contents: read
       id-token: write
-    uses: famedly/frontend-ci-templates/.github/workflows/publish-pub.yml@main
-    with:
-      env_file: ".github/workflows/versions.env"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: cat .github/workflows/versions.env >> $GITHUB_ENV
+      - uses: dart-lang/setup-dart@a57a6c04cf7d4840e88432aad6281d1e125f0d46
+        with:
+          sdk: ${{ env.dart_version }}
+      - name: Validate Dart package
+        working-directory: dart
+        run: |
+          dart pub get --no-example
+          dart pub publish --dry-run --ignore-warnings
+      - name: Publish Dart package
+        working-directory: dart
+        run: dart pub publish --force --ignore-warnings
+
+  publish_flutter:
+    needs: [publish_dart]
+    environment: pub.dev
+    permissions:
+      contents: read
+      id-token: write
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: cat .github/workflows/versions.env >> $GITHUB_ENV
+      - uses: dart-lang/setup-dart@a57a6c04cf7d4840e88432aad6281d1e125f0d46
+        with:
+          sdk: ${{ env.dart_version }}
+      - uses: subosito/flutter-action@1a449444c387b1966244ae4d4f8c696479add0b2
+        with:
+          flutter-version: ${{ env.flutter_version }}
+          cache: true
+      - name: Validate Flutter package
+        working-directory: flutter
+        run: |
+          flutter pub get
+          dart pub publish --dry-run --ignore-warnings
+      - name: Publish Flutter package
+        working-directory: flutter
+        run: dart pub publish --force --ignore-warnings
 
   create_gh_release:
     env:
       GH_TOKEN: ${{ github.token }}
-    needs: [publish]
+    needs: [publish_flutter]
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
