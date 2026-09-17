@@ -25,3 +25,5 @@ Future<void> init({String wasmPath = './pkg/', String? libraryPath}) =>
           ? 'flutter_vodozemac'
           : 'vodozemac_bindings_dart',
     );
+
+bool isInitialized() => vod.isInitialized();
