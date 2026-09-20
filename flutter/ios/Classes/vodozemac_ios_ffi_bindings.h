@@ -20,7 +20,8 @@ typedef struct {
 } IOSDecryptResult;
 
 /**
- * Result from decrypting one m.megolm_backup.v1.curve25519-aes-sha2 payload.
+ * Result from recovering one m.megolm_backup.v1 session and decrypting one
+ * Megolm event entirely inside vodozemac.
  * `plaintext` is NULL and `success` is zero for every failure class. No error
  * details cross the boundary.
  */
@@ -28,29 +29,38 @@ typedef struct {
     uint8_t* plaintext;
     size_t plaintext_len;
     uint8_t success;
-} IOSBackupDecryptResult;
+} IOSBackupEventDecryptResult;
 
 /**
- * Decrypt one Matrix v1 key-backup payload with a raw 32-byte backup private
- * key. The ephemeral key, MAC, and ciphertext are bounded base64 byte slices.
+ * Recover one Matrix v1 key-backup session with a raw 32-byte backup private
+ * key, then decrypt one event with that in-memory session. backup_type must be
+ * exactly "m.megolm_backup.v1". All remaining string inputs are bounded UTF-8
+ * byte slices; the backup and event ciphertexts are base64. Only bounded event
+ * plaintext crosses the ABI. The recovered session key never does.
+ *
  * The function performs no persistence, network, logging, or rendering.
  *
  * The caller owns and clears private_key after this call. On success it must
- * call ios_backup_decrypt_result_free exactly once after parsing plaintext.
+ * call ios_backup_event_decrypt_result_free exactly once after parsing
+ * plaintext.
  */
-IOSBackupDecryptResult ios_decrypt_backup_v1(
+IOSBackupEventDecryptResult ios_decrypt_backup_event_v1(
+    const uint8_t* backup_type,
+    size_t backup_type_len,
     const uint8_t* private_key,
     size_t private_key_len,
     const uint8_t* ephemeral_key_base64,
     size_t ephemeral_key_base64_len,
     const uint8_t* mac_base64,
     size_t mac_base64_len,
-    const uint8_t* ciphertext_base64,
-    size_t ciphertext_base64_len
+    const uint8_t* backup_ciphertext_base64,
+    size_t backup_ciphertext_base64_len,
+    const uint8_t* event_ciphertext_base64,
+    size_t event_ciphertext_base64_len
 );
 
-/** Wipe and release a successful ios_decrypt_backup_v1 result exactly once. */
-void ios_backup_decrypt_result_free(IOSBackupDecryptResult result);
+/** Wipe and release a successful result exactly once. */
+void ios_backup_event_decrypt_result_free(IOSBackupEventDecryptResult result);
 
 /**
  * Decrypt an encrypted message using a pickled session.
