@@ -61,7 +61,7 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
   String get codegenVersion => '2.13.0';
 
   @override
-  int get rustContentHash => 949409271;
+  int get rustContentHash => 2021285812;
 
   static const kDefaultExternalLibraryLoaderConfig = ExternalLibraryLoaderConfig(
     stem: 'vodozemac_bindings_dart',
@@ -281,8 +281,6 @@ abstract class RustLibApi extends BaseApi {
 
   String crateBindingsVodozemacInboundGroupSessionSessionId({required VodozemacInboundGroupSession that});
 
-  VodozemacMegolmSessionConfig crateBindingsVodozemacMegolmSessionConfigDef();
-
   int crateBindingsVodozemacMegolmSessionConfigVersion({required VodozemacMegolmSessionConfig that});
 
   VodozemacMegolmSessionConfig crateBindingsVodozemacMegolmSessionConfigVersion1();
@@ -297,8 +295,6 @@ abstract class RustLibApi extends BaseApi {
   String crateBindingsVodozemacOlmMessageMessage({required VodozemacOlmMessage that});
 
   BigInt crateBindingsVodozemacOlmMessageMessageType({required VodozemacOlmMessage that});
-
-  VodozemacOlmSessionConfig crateBindingsVodozemacOlmSessionConfigDef();
 
   int crateBindingsVodozemacOlmSessionConfigVersion({required VodozemacOlmSessionConfig that});
 
@@ -1963,24 +1959,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       const TaskConstMeta(debugName: "vodozemac_inbound_group_session_session_id", argNames: ["that"]);
 
   @override
-  VodozemacMegolmSessionConfig crateBindingsVodozemacMegolmSessionConfigDef() {
-    return handler.executeSync(
-      SyncTask(
-        callFfi: () {
-          return wire.wire__crate__bindings__vodozemac_megolm_session_config_def();
-        },
-        codec: DcoCodec(decodeSuccessData: dco_decode_vodozemac_megolm_session_config, decodeErrorData: null),
-        constMeta: kCrateBindingsVodozemacMegolmSessionConfigDefConstMeta,
-        argValues: [],
-        apiImpl: this,
-      ),
-    );
-  }
-
-  TaskConstMeta get kCrateBindingsVodozemacMegolmSessionConfigDefConstMeta =>
-      const TaskConstMeta(debugName: "vodozemac_megolm_session_config_def", argNames: []);
-
-  @override
   int crateBindingsVodozemacMegolmSessionConfigVersion({required VodozemacMegolmSessionConfig that}) {
     return handler.executeSync(
       SyncTask(
@@ -2098,24 +2076,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   TaskConstMeta get kCrateBindingsVodozemacOlmMessageMessageTypeConstMeta =>
       const TaskConstMeta(debugName: "vodozemac_olm_message_message_type", argNames: ["that"]);
-
-  @override
-  VodozemacOlmSessionConfig crateBindingsVodozemacOlmSessionConfigDef() {
-    return handler.executeSync(
-      SyncTask(
-        callFfi: () {
-          return wire.wire__crate__bindings__vodozemac_olm_session_config_def();
-        },
-        codec: DcoCodec(decodeSuccessData: dco_decode_vodozemac_olm_session_config, decodeErrorData: null),
-        constMeta: kCrateBindingsVodozemacOlmSessionConfigDefConstMeta,
-        argValues: [],
-        apiImpl: this,
-      ),
-    );
-  }
-
-  TaskConstMeta get kCrateBindingsVodozemacOlmSessionConfigDefConstMeta =>
-      const TaskConstMeta(debugName: "vodozemac_olm_session_config_def", argNames: []);
 
   @override
   int crateBindingsVodozemacOlmSessionConfigVersion({required VodozemacOlmSessionConfig that}) {

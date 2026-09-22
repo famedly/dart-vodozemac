@@ -111,10 +111,10 @@ final class GroupSession {
 
   GroupSession._(this._session);
 
-  /// Creates a new outbound group session with default configuration.
+  /// Creates a new outbound group session with version 1 configuration.
   GroupSession()
       : _session = vodozemac.VodozemacGroupSession(
-          config: vodozemac.VodozemacMegolmSessionConfig.def(),
+          config: vodozemac.VodozemacMegolmSessionConfig.version1(),
         );
 
   /// The unique identifier for this session.
@@ -174,7 +174,7 @@ final class InboundGroupSession {
   InboundGroupSession(String sessionKey)
       : _session = vodozemac.VodozemacInboundGroupSession(
             sessionKey: sessionKey,
-            config: vodozemac.VodozemacMegolmSessionConfig.def());
+            config: vodozemac.VodozemacMegolmSessionConfig.version1());
 
   /// Creates a new inbound group session from an exported session key using the
   /// [exportAt] method.
@@ -183,7 +183,7 @@ final class InboundGroupSession {
   InboundGroupSession.import(String exportedSessionKey)
       : _session = vodozemac.VodozemacInboundGroupSession.import_(
             exportedSessionKey: exportedSessionKey,
-            config: vodozemac.VodozemacMegolmSessionConfig.def());
+            config: vodozemac.VodozemacMegolmSessionConfig.version1());
 
   /// The unique identifier for this session.
   String get sessionId => _session.sessionId();
@@ -385,7 +385,7 @@ final class Account {
     vodozemac.VodozemacOlmSessionConfig? config,
   }) =>
       Session._(_account.createOutboundSession(
-          config: config ?? vodozemac.VodozemacOlmSessionConfig.def(),
+          config: config ?? vodozemac.VodozemacOlmSessionConfig.version1(),
           identityKey: identityKey._key,
           oneTimeKey: oneTimeKey._key));
 
@@ -398,7 +398,7 @@ final class Account {
     vodozemac.VodozemacOlmSessionConfig? config,
   }) {
     final inb = _account.createInboundSession(
-        config: config ?? vodozemac.VodozemacOlmSessionConfig.def(),
+        config: config ?? vodozemac.VodozemacOlmSessionConfig.version1(),
         theirIdentityKey: theirIdentityKey._key,
         preKeyMessageBase64: preKeyMessageBase64);
 

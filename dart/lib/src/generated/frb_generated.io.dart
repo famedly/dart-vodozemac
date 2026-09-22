@@ -3103,17 +3103,6 @@ class RustLibWire implements BaseWire {
       _wire__crate__bindings__vodozemac_inbound_group_session_session_idPtr
           .asFunction<WireSyncRust2DartDco Function(ffi.Pointer<wire_cst_vodozemac_inbound_group_session>)>();
 
-  WireSyncRust2DartDco wire__crate__bindings__vodozemac_megolm_session_config_def() {
-    return _wire__crate__bindings__vodozemac_megolm_session_config_def();
-  }
-
-  late final _wire__crate__bindings__vodozemac_megolm_session_config_defPtr =
-      _lookup<ffi.NativeFunction<WireSyncRust2DartDco Function()>>(
-        'frbgen_vodozemac_wire__crate__bindings__vodozemac_megolm_session_config_def',
-      );
-  late final _wire__crate__bindings__vodozemac_megolm_session_config_def =
-      _wire__crate__bindings__vodozemac_megolm_session_config_defPtr.asFunction<WireSyncRust2DartDco Function()>();
-
   WireSyncRust2DartDco wire__crate__bindings__vodozemac_megolm_session_config_version(
     ffi.Pointer<wire_cst_vodozemac_megolm_session_config> that,
   ) {
@@ -3194,17 +3183,6 @@ class RustLibWire implements BaseWire {
   late final _wire__crate__bindings__vodozemac_olm_message_message_type =
       _wire__crate__bindings__vodozemac_olm_message_message_typePtr
           .asFunction<WireSyncRust2DartDco Function(ffi.Pointer<wire_cst_vodozemac_olm_message>)>();
-
-  WireSyncRust2DartDco wire__crate__bindings__vodozemac_olm_session_config_def() {
-    return _wire__crate__bindings__vodozemac_olm_session_config_def();
-  }
-
-  late final _wire__crate__bindings__vodozemac_olm_session_config_defPtr =
-      _lookup<ffi.NativeFunction<WireSyncRust2DartDco Function()>>(
-        'frbgen_vodozemac_wire__crate__bindings__vodozemac_olm_session_config_def',
-      );
-  late final _wire__crate__bindings__vodozemac_olm_session_config_def =
-      _wire__crate__bindings__vodozemac_olm_session_config_defPtr.asFunction<WireSyncRust2DartDco Function()>();
 
   WireSyncRust2DartDco wire__crate__bindings__vodozemac_olm_session_config_version(
     ffi.Pointer<wire_cst_vodozemac_olm_session_config> that,
