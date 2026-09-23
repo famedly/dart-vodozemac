@@ -402,8 +402,6 @@ class VodozemacMegolmSessionConfig {
 
   const VodozemacMegolmSessionConfig({required this.config});
 
-  static VodozemacMegolmSessionConfig def() => RustLib.instance.api.crateBindingsVodozemacMegolmSessionConfigDef();
-
   int version() => RustLib.instance.api.crateBindingsVodozemacMegolmSessionConfigVersion(that: this);
 
   static VodozemacMegolmSessionConfig version1() =>
@@ -445,8 +443,6 @@ class VodozemacOlmSessionConfig {
   final OlmSessionConfig config;
 
   const VodozemacOlmSessionConfig({required this.config});
-
-  static VodozemacOlmSessionConfig def() => RustLib.instance.api.crateBindingsVodozemacOlmSessionConfigDef();
 
   int version() => RustLib.instance.api.crateBindingsVodozemacOlmSessionConfigVersion(that: this);
 

@@ -41,7 +41,7 @@ flutter_rust_bridge::frb_generated_boilerplate!(
     default_rust_auto_opaque = RustAutoOpaqueNom,
 );
 pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_VERSION: &str = "2.13.0";
-pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_CONTENT_HASH: i32 = 949409271;
+pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_CONTENT_HASH: i32 = 2021285812;
 
 // Section: executor
 
@@ -1604,22 +1604,6 @@ fn wire__crate__bindings__vodozemac_inbound_group_session_session_id_impl(
         },
     )
 }
-fn wire__crate__bindings__vodozemac_megolm_session_config_def_impl(
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
-        flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "vodozemac_megolm_session_config_def",
-            port: None,
-            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
-        },
-        move || {
-            transform_result_dco::<_, _, ()>((move || {
-                let output_ok = Ok::<_, ()>(crate::bindings::VodozemacMegolmSessionConfig::def())?;
-                std::result::Result::Ok(output_ok)
-            })())
-        },
-    )
-}
 fn wire__crate__bindings__vodozemac_megolm_session_config_version_impl(
     that: impl CstDecode<crate::bindings::VodozemacMegolmSessionConfig>,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
@@ -1733,22 +1717,6 @@ fn wire__crate__bindings__vodozemac_olm_message_message_type_impl(
                 let output_ok = Ok::<_, ()>(crate::bindings::VodozemacOlmMessage::message_type(
                     &api_that,
                 ))?;
-                std::result::Result::Ok(output_ok)
-            })())
-        },
-    )
-}
-fn wire__crate__bindings__vodozemac_olm_session_config_def_impl(
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
-        flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "vodozemac_olm_session_config_def",
-            port: None,
-            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
-        },
-        move || {
-            transform_result_dco::<_, _, ()>((move || {
-                let output_ok = Ok::<_, ()>(crate::bindings::VodozemacOlmSessionConfig::def())?;
                 std::result::Result::Ok(output_ok)
             })())
         },
@@ -4783,12 +4751,6 @@ mod io {
     }
 
     #[unsafe(no_mangle)]
-    pub extern "C" fn frbgen_vodozemac_wire__crate__bindings__vodozemac_megolm_session_config_def(
-    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-        wire__crate__bindings__vodozemac_megolm_session_config_def_impl()
-    }
-
-    #[unsafe(no_mangle)]
     pub extern "C" fn frbgen_vodozemac_wire__crate__bindings__vodozemac_megolm_session_config_version(
         that: *mut wire_cst_vodozemac_megolm_session_config,
     ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
@@ -4827,12 +4789,6 @@ mod io {
         that: *mut wire_cst_vodozemac_olm_message,
     ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
         wire__crate__bindings__vodozemac_olm_message_message_type_impl(that)
-    }
-
-    #[unsafe(no_mangle)]
-    pub extern "C" fn frbgen_vodozemac_wire__crate__bindings__vodozemac_olm_session_config_def(
-    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-        wire__crate__bindings__vodozemac_olm_session_config_def_impl()
     }
 
     #[unsafe(no_mangle)]
@@ -6804,12 +6760,6 @@ mod web {
     }
 
     #[wasm_bindgen]
-    pub fn wire__crate__bindings__vodozemac_megolm_session_config_def(
-    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-        wire__crate__bindings__vodozemac_megolm_session_config_def_impl()
-    }
-
-    #[wasm_bindgen]
     pub fn wire__crate__bindings__vodozemac_megolm_session_config_version(
         that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
@@ -6848,12 +6798,6 @@ mod web {
         that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
         wire__crate__bindings__vodozemac_olm_message_message_type_impl(that)
-    }
-
-    #[wasm_bindgen]
-    pub fn wire__crate__bindings__vodozemac_olm_session_config_def(
-    ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-        wire__crate__bindings__vodozemac_olm_session_config_def_impl()
     }
 
     #[wasm_bindgen]

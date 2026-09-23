@@ -102,8 +102,8 @@ void main() async {
       check(account.forgetFallbackKey()).isTrue();
     });
 
-    test('Correct version for def()', () {
-      expect(VodozemacOlmSessionConfig.def().version(), 1);
+    test('Correct version for version1()', () {
+      expect(VodozemacOlmSessionConfig.version1().version(), 1);
     });
 
     test('sending olm messages works properly', () async {
