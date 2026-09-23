@@ -52,12 +52,6 @@ impl VodozemacMegolmSessionConfig {
     pub fn version_2() -> Self {
         MegolmSessionConfig::version_2().into()
     }
-
-    // can't name this default, because that is a dart keyword and the generator also strips my
-    // suffixes!
-    pub fn def() -> Self {
-        MegolmSessionConfig::default().into()
-    }
 }
 
 pub struct VodozemacGroupSession {
@@ -282,12 +276,6 @@ impl VodozemacOlmSessionConfig {
 
     pub fn version_2() -> Self {
         OlmSessionConfig::version_2().into()
-    }
-
-    // can't name this default, because that is a dart keyword and the generator also strips my
-    // suffixes!
-    pub fn def() -> Self {
-        OlmSessionConfig::default().into()
     }
 }
 

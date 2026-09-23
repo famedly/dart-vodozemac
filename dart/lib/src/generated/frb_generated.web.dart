@@ -1332,10 +1332,6 @@ class RustLibWire implements BaseWire {
       wasmModule.wire__crate__bindings__vodozemac_inbound_group_session_session_id(that);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-  wire__crate__bindings__vodozemac_megolm_session_config_def() =>
-      wasmModule.wire__crate__bindings__vodozemac_megolm_session_config_def();
-
-  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
   wire__crate__bindings__vodozemac_megolm_session_config_version(JSAny that) =>
       wasmModule.wire__crate__bindings__vodozemac_megolm_session_config_version(that);
 
@@ -1358,10 +1354,6 @@ class RustLibWire implements BaseWire {
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
   wire__crate__bindings__vodozemac_olm_message_message_type(JSAny that) =>
       wasmModule.wire__crate__bindings__vodozemac_olm_message_message_type(that);
-
-  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-  wire__crate__bindings__vodozemac_olm_session_config_def() =>
-      wasmModule.wire__crate__bindings__vodozemac_olm_session_config_def();
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
   wire__crate__bindings__vodozemac_olm_session_config_version(JSAny that) =>
@@ -1788,9 +1780,6 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
   wire__crate__bindings__vodozemac_inbound_group_session_session_id(JSAny that);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-  wire__crate__bindings__vodozemac_megolm_session_config_def();
-
-  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
   wire__crate__bindings__vodozemac_megolm_session_config_version(JSAny that);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
@@ -1807,9 +1796,6 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
   wire__crate__bindings__vodozemac_olm_message_message_type(JSAny that);
-
-  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-  wire__crate__bindings__vodozemac_olm_session_config_def();
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
   wire__crate__bindings__vodozemac_olm_session_config_version(JSAny that);
