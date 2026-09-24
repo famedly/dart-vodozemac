@@ -2172,6 +2172,7 @@ dependencies = [
  "flutter_rust_bridge_codegen",
  "hmac",
  "pbkdf2",
+ "serde_json",
  "sha2",
  "vodozemac",
 ]
