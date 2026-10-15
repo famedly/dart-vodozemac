@@ -36,9 +36,6 @@ abstract class CargoKitBuildTask extends DefaultTask {
     String sdkDirectory
 
     @Input
-    int compileSdkVersion;
-
-    @Input
     int minSdkVersion;
 
     @Input
@@ -81,7 +78,6 @@ abstract class CargoKitBuildTask extends DefaultTask {
             environment "CARGOKIT_OUTPUT_DIR", outputDir
             environment "CARGOKIT_NDK_VERSION", ndkVersion
             environment "CARGOKIT_SDK_DIR", sdkDirectory
-            environment "CARGOKIT_COMPILE_SDK_VERSION", compileSdkVersion
             environment "CARGOKIT_MIN_SDK_VERSION", minSdkVersion
             environment "CARGOKIT_TARGET_PLATFORMS", targetPlatforms.join(",")
             environment "CARGOKIT_JAVA_HOME", System.properties['java.home']
@@ -170,7 +166,6 @@ class CargoKitPlugin implements Plugin<Project> {
                     ndkVersion = plugin.project.android.ndkVersion
                     sdkDirectory = plugin.project.android.sdkDirectory
                     minSdkVersion = plugin.project.android.defaultConfig.minSdkVersion.apiLevel as int
-                    compileSdkVersion = plugin.project.android.compileSdkVersion.substring(8) as int
                     targetPlatforms = platforms
                     pluginFile = CargoKitPlugin.file
                 }
