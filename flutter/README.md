@@ -74,7 +74,7 @@ line, delete the header file entirely:
 ```
 
 **3. Xcode build settings** — for the extension target, clear
-*Build Settings → Swift Compiler - General → Objective-C Bridging Header*
+_Build Settings → Swift Compiler - General → Objective-C Bridging Header_
 (a path pointing at a deleted file fails the build).
 
 **4. Swift code** — the bridging header's symbols are now provided by a normal
@@ -124,3 +124,7 @@ To try both iOS/macOS integration paths, toggle
 `flutter config --enable-swift-package-manager` /
 `--no-enable-swift-package-manager` between runs: SwiftPM uses the committed
 XCFramework, CocoaPods compiles the Rust crate from source via cargokit.
+
+## Cargokit patch:
+
+Removed the `compileSdkVersion` variable and all occurences in `dart-vodozemac/flutter/cargokit/gradle/plugin.gradle` as it's unneeded. The old way was breaking as `Android 37` is now called `Android 37.0` in the SDK.
