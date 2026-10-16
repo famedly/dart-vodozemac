@@ -1,3 +1,7 @@
+## 0.9.0
+
+- fix: remove unneeded compileSdkVersion from cargokit plugin.gradle (yurtemre7)
+
 ## 0.8.1
 
 - fix: macOS support

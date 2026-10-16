@@ -1,16 +1,24 @@
+## 0.9.0
+
+- fix: (BREAKING CHANGE) explicitly set megolm and olm sessions to v1 (td)
+
 ## 0.8.0
+
 - build: update flutter_rust_bridge to 2.13.0 (includes web worker WASM initialization fix)
 - build: require Dart 3.10+ (in preparation for the native assets integration backend)
 
 ## 0.7.0
+
 - chore: version bump to get back on sync with flutter_vodozemac
 
 ## 0.6.0
+
 - build: update FRB to 2.12.0
 - build: update vodozemac to 0.10.0 and remove default version workaround
 - chore: session config is now configurable for inbound group session as well
 
 ## 0.5.0
+
 - fix: Use the specced olm session config v1 by default (Christian Kußowski)
 
 ## 0.4.0
