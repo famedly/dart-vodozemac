@@ -4,8 +4,7 @@ import 'dart:typed_data';
 
 import 'package:checks/checks.dart';
 import 'package:checks/context.dart';
-import 'package:flutter_rust_bridge/flutter_rust_bridge.dart'
-    show AnyhowException;
+import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
 import 'package:test/test.dart';
 
 import 'package:vodozemac/vodozemac.dart';
