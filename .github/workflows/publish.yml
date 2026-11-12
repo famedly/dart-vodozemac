@@ -32,10 +32,37 @@ jobs:
       - name: Publish to pub.dev
         run: dart pub publish -f
 
+  publish_flutter:
+    needs: [publish]
+    environment: "pub.dev"
+    permissions:
+      contents: read
+      id-token: write # Required for authentication using OIDC
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./flutter
+    steps:
+      - uses: actions/checkout@v4
+      - name: Read env file
+        run: cat ../.github/workflows/versions.env >> $GITHUB_ENV
+      - uses: subosito/flutter-action@1a449444c387b1966244ae4d4f8c696479add0b2 # v2.23.0
+        with:
+          flutter-version: ${{ env.flutter_version }}
+      - name: Install dependencies
+        run: flutter pub get
+      # Only for the pub.dev OIDC token (flutter's pub reads the same token config); set up last so the token is fresh.
+      - uses: dart-lang/setup-dart@a57a6c04cf7d4840e88432aad6281d1e125f0d46
+        with:
+          sdk: ${{ env.dart_version }}
+      # -f publishes despite warnings (no flutter_rust_bridge constraint) but still refuses on errors.
+      - name: Publish to pub.dev
+        run: flutter pub publish -f
+
   create_gh_release:
     env:
       GH_TOKEN: ${{ github.token }}
-    needs: [publish]
+    needs: [publish, publish_flutter]
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
