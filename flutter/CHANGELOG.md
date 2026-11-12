@@ -1,3 +1,7 @@
+## 0.9.1
+
+- fix(security): update vodozemac to 0.11.2, fixing a panic when decoding malformed Ed25519 keys ([GHSA-pqp6-f7wc-6498](https://github.com/matrix-org/vodozemac/security/advisories/GHSA-pqp6-f7wc-6498)) and unzeroized Olm root key ratchet output ([GHSA-v27v-f96q-qhjq](https://github.com/matrix-org/vodozemac/security/advisories/GHSA-v27v-f96q-qhjq))
+
 ## 0.9.0
 
 - fix: remove unneeded compileSdkVersion from cargokit plugin.gradle (yurtemre7)

@@ -4,6 +4,7 @@ import 'dart:typed_data';
 
 import 'package:checks/checks.dart';
 import 'package:checks/context.dart';
+import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
 import 'package:test/test.dart';
 
 import 'package:vodozemac/vodozemac.dart';
@@ -755,6 +756,14 @@ void main() async {
       check(bytes.length).equals(32);
       final fromBytes = Ed25519PublicKey.fromBytes(bytes);
       check(fromBytes.toBase64()).equals(base64);
+    });
+
+    test('rejects wrong-length Ed25519 keys without panicking', () {
+      // GHSA-pqp6-f7wc-6498: panicked on 31 or 33 bytes before vodozemac 0.11.2
+      for (final length in [31, 33]) {
+        final key = base64Encode(List.filled(length, 1)).replaceAll('=', '');
+        check(() => Ed25519PublicKey.fromBase64(key)).throws<AnyhowException>();
+      }
     });
 
     test('can convert Ed25519 signatures between formats', () async {
