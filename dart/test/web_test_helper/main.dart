@@ -27,7 +27,7 @@ Future<void> main(List<String> args) async {
   );
 
   // Create WebSocket handler for test communication
-  final wsHandler = webSocketHandler((WebSocketChannel channel) async {
+  final wsHandler = webSocketHandler((WebSocketChannel channel, _) async {
     await for (final message in channel.stream) {
       try {
         final data = jsonDecode(message);
