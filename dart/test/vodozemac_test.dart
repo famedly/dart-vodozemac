@@ -848,6 +848,29 @@ void main() async {
       expect(decrypted, Uint8List.fromList('test'.codeUnits));
     });
 
+    test('AES-CTR known answers', () {
+      final key = base64Decode('YD3rEBXKcb4rc67whX13gR81LAc7YQjXLZgQowkU3/Q=');
+      // NIST SP 800-38A F.5.5 CTR-AES256.Encrypt
+      expect(
+        base64Encode(CryptoUtils.aesCtr(
+          input: base64Decode(
+              'a8G+4i5An5bpPX4Rc5MXKq4tilceA6ycnrdvrEWvjlEwyBxGo1zkEeX7wRkaClLv9p8kRd9PmxetK0F75mw3EA=='),
+          key: key,
+          iv: base64Decode('8PHy8/T19vf4+fr7/P3+/w=='),
+        )),
+        'YB7DE3dXiaW3p/UEu/PSKPRD48pNYrWayoTpkMrK9cUrCTDaoj3pTOhwF7othJiN38nFjbZ6raYTwt0IRXlBpg==',
+      );
+      // The 64-bit counter wraps without carrying into the IV half (Matrix attachments).
+      expect(
+        base64Encode(CryptoUtils.aesCtr(
+          input: Uint8List(32),
+          key: key,
+          iv: base64Decode('AAAAAAAAAAD//////////w=='),
+        )),
+        'KJ4j4T7Iw0KR8nxMzz6qKeVo9oGUz3bWF01MwEMQqFQ=',
+      );
+    });
+
     test('pbkdf2', () {
       final derivedKey = base64Encode(CryptoUtils.pbkdf2(
         passphrase: 'Password'.codeUnits,
