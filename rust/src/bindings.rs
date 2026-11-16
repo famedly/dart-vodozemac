@@ -1,6 +1,6 @@
 use aes::cipher::{KeyIvInit, StreamCipher};
 use flutter_rust_bridge::*;
-use hmac::Mac as hmacmac;
+use hmac::{KeyInit, Mac as hmacmac};
 use pbkdf2::pbkdf2_array;
 use sha2::{Digest, Sha256, Sha512};
 use std::ops::Deref;
@@ -942,7 +942,9 @@ pub fn hmac(key: &[u8], input: &[u8]) -> anyhow::Result<Vec<u8>> {
 /// Initialization Vector (IV), which together form a 128-bit unique counter block.
 pub fn aes_ctr(input: &[u8], key: &[u8], iv: &[u8]) -> Vec<u8> {
     type Aes256Ctr64BE = ctr::Ctr64BE<aes::Aes256>;
-    let mut cipher = Aes256Ctr64BE::new(key.into(), iv.into());
+    // Panics on a wrong key/IV length, as the pre-hybrid-array `.into()` did.
+    let mut cipher = Aes256Ctr64BE::new_from_slices(key, iv)
+        .expect("AES-CTR needs a 32-byte key and a 16-byte IV");
     let mut buf = input.to_vec();
     cipher.apply_keystream(&mut buf);
     return buf;
