@@ -47,7 +47,12 @@ jobs:
         run: |
           (cd ../assets && sha256sum * > SHA256SUMS)
           if gh release view "$TAG" >/dev/null 2>&1; then
-            gh release upload "$TAG" ../assets/* --clobber
+            # Only add missing assets, never replace one: a published
+            # Package.swift pins the checksum of the XCFramework zips.
+            existing=$(gh release view "$TAG" --json assets --jq '.assets[].name')
+            for f in ../assets/*; do
+              grep -qxF "$(basename "$f")" <<<"$existing" || gh release upload "$TAG" "$f"
+            done
           else
             notes=$(../scripts/extract_changelog.sh "${TAG#v}")
             if [ -n "$notes" ]; then

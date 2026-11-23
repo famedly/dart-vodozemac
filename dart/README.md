@@ -59,7 +59,8 @@ rm -rf web/pkg && unzip -q vodozemac-web.zip -d web/pkg && rm vodozemac-web.zip
 ```
 
 Rename a native library to `libvodozemac_bindings_dart.so` (or `.dylib`) and
-pass its directory as `libraryPath` to `init`. To build them yourself instead,
+pass its directory, with a trailing `/` (e.g. `libs/`), as `libraryPath` to
+`init`. To build them yourself instead,
 see `.github/workflows/build_assets.yml`.
 
 ## Usage

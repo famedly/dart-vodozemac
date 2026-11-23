@@ -27,10 +27,11 @@ a framework; macOS ships a plain `libflutter_vodozemac.dylib`.
 - You are running a binary built by our CI from the tagged source
   (`.github/workflows/build_assets.yml`), so it can be audited or reproduced.
   If you prefer to compile from source, use CocoaPods.
-- Depending on this package by git or path instead of from pub.dev? The
-  `Package.swift` files in git use a local path instead; run
-  `./scripts/build_xcframework.sh` once (needs macOS, Xcode and Rust), or use
-  CocoaPods.
+- Not using the pub.dev release? The `Package.swift` files in git point at a
+  local, gitignored XCFramework instead. For a git dependency, use CocoaPods.
+  For a path dependency on a local checkout, run
+  `./scripts/build_xcframework.sh` there (needs macOS, Xcode and Rust), and
+  again after every change under `rust/`, or use CocoaPods.
 
 ### CocoaPods (built from source)
 
