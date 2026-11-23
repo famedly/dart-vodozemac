@@ -41,7 +41,7 @@ void main() async {
   );
 
   test('vodozemac is loaded', () {
-    check(isInitialized()).isTrue();
+    check(isInitialized()).isTrue;
   });
 
   group('Account', () {
@@ -66,10 +66,9 @@ void main() async {
 
       check(account.oneTimeKeys)
         ..length.equals(20)
-        ..entries.every((subject) {
-          subject.has((val) => val.key, 'keyid').length.equals(11);
-          subject.has((val) => val.value, 'key').isValid();
-        });
+        ..entries.every(.it()
+          ..has('keyid', (val) => val.key).length.equals(11)
+          ..has('key', (val) => val.value).isValid());
     });
 
     test('can generate fallback key', () async {
@@ -79,10 +78,9 @@ void main() async {
 
       check(account.fallbackKey)
         ..length.equals(1)
-        ..entries.every((subject) {
-          subject.has((val) => val.key, 'keyid').length.equals(11);
-          subject.has((val) => val.value, 'key').isValid();
-        });
+        ..entries.every(.it()
+          ..has('keyid', (val) => val.key).length.equals(11)
+          ..has('key', (val) => val.value).isValid());
     });
 
     test('can publish fallback key', () async {
@@ -95,12 +93,12 @@ void main() async {
       check(account.markKeysAsPublished).returnsNormally();
 
       // forgetting returns false, because it was unused.
-      check(account.forgetFallbackKey()).isFalse();
+      check(account.forgetFallbackKey()).isFalse;
 
       check(account.fallbackKey).length.equals(0);
 
       expect(() => account.generateFallbackKey(), returnsNormally);
-      check(account.forgetFallbackKey()).isTrue();
+      check(account.forgetFallbackKey()).isTrue;
     });
 
     test('Correct version for version1()', () {
@@ -123,7 +121,7 @@ void main() async {
             identityKey: account.curve25519Key,
             oneTimeKey: onetimeKey,
             config: config);
-        check(outboundSession.hasReceivedMessage).isFalse();
+        check(outboundSession.hasReceivedMessage).isFalse;
         expect(outboundSession.sessionConfig.version(), expectedVersion);
 
         final encrypted = outboundSession.encrypt('Test');
@@ -133,16 +131,16 @@ void main() async {
             preKeyMessageBase64: encrypted.ciphertext);
 
         check(inbound.plaintext).equals('Test');
-        check(inbound.session.hasReceivedMessage).isTrue();
+        check(inbound.session.hasReceivedMessage).isTrue;
 
         final encrypted2 = inbound.session.encrypt('Test2');
 
-        check(outboundSession.hasReceivedMessage).isFalse();
+        check(outboundSession.hasReceivedMessage).isFalse;
         check(outboundSession.decrypt(
                 messageType: encrypted2.messageType,
                 ciphertext: encrypted2.ciphertext))
             .equals('Test2');
-        check(outboundSession.hasReceivedMessage).isTrue();
+        check(outboundSession.hasReceivedMessage).isTrue;
       }
 
       await sendOlmMessage(null, 1);
@@ -161,7 +159,7 @@ void main() async {
 
       final outboundSession = account2.createOutboundSession(
           identityKey: account.curve25519Key, oneTimeKey: onetimeKey);
-      check(outboundSession.hasReceivedMessage).isFalse();
+      check(outboundSession.hasReceivedMessage).isFalse;
 
       final encrypted = outboundSession.encrypt('Test');
       final inbound = account.createInboundSession(
@@ -169,16 +167,16 @@ void main() async {
           preKeyMessageBase64: encrypted.ciphertext);
 
       check(inbound.plaintext).equals('Test');
-      check(inbound.session.hasReceivedMessage).isTrue();
+      check(inbound.session.hasReceivedMessage).isTrue;
 
       final encrypted2 = inbound.session.encrypt('Test2');
 
-      check(outboundSession.hasReceivedMessage).isFalse();
+      check(outboundSession.hasReceivedMessage).isFalse;
       check(outboundSession.decrypt(
               messageType: encrypted2.messageType,
               ciphertext: encrypted2.ciphertext))
           .equals('Test2');
-      check(outboundSession.hasReceivedMessage).isTrue();
+      check(outboundSession.hasReceivedMessage).isTrue;
     });
 
     test('can sign messages', () async {
@@ -254,9 +252,9 @@ void main() async {
 
       final encrypted = groupSession.encrypt('Test');
 
-      check(encrypted).not((subject) => subject.contains('Test'));
+      check(encrypted).not(.it()..contains('Test'));
       check(inbound.decrypt(encrypted))
-          .has((res) => res.plaintext, 'plaintext')
+          .has('plaintext', (res) => res.plaintext)
           .equals('Test');
 
       // ensure that a later exported session does not decrypt the message
@@ -274,11 +272,11 @@ void main() async {
       final encrypted = groupSession.encrypt('Test');
       final encrypted2 = groupSession.encrypt('Test');
 
-      check(encrypted).not((subject) => subject.equals(encrypted2));
+      check(encrypted).not(.it()..equals(encrypted2));
 
-      check(encrypted).not((subject) => subject.contains('Test'));
+      check(encrypted).not(.it()..contains('Test'));
       check(reimportedInbound.decrypt(encrypted))
-          .has((res) => res.plaintext, 'plaintext')
+          .has('plaintext', (res) => res.plaintext)
           .equals('Test');
 
       // ensure that a later exported session does not decrypt the message
@@ -286,11 +284,11 @@ void main() async {
 
       // check if second index decryptes
       check(reimportedInbound.decrypt(encrypted2))
-          .has((res) => res.plaintext, 'plaintext')
+          .has('plaintext', (res) => res.plaintext)
           .equals('Test');
 
       check(laterInbound.decrypt(encrypted2))
-          .has((res) => res.plaintext, 'plaintext')
+          .has('plaintext', (res) => res.plaintext)
           .equals('Test');
     });
 
@@ -335,8 +333,8 @@ void main() async {
       final alice = Sas();
       final bob = Sas();
 
-      check(alice.publicKey).isNotEmpty();
-      check(bob.publicKey).isNotEmpty();
+      check(alice.publicKey).isNotEmpty;
+      check(bob.publicKey).isNotEmpty;
 
       final aliceEstablished = alice.establishSasSecret(bob.publicKey);
       final bobEstablished = bob.establishSasSecret(alice.publicKey);
@@ -482,8 +480,8 @@ void main() async {
       final message = "It's a secret to everybody";
       final encrypted = encryptor.encrypt(message);
 
-      check(encrypted.ciphertext).isNotEmpty();
-      check(encrypted.mac).isNotEmpty();
+      check(encrypted.ciphertext).isNotEmpty;
+      check(encrypted.mac).isNotEmpty;
       check(encrypted.ephemeralKey).isValid();
 
       final decrypted = decryptor.decrypt(encrypted);
@@ -549,7 +547,7 @@ void main() async {
 
       // Ciphertexts should be different
       check(encrypted1.ciphertext)
-          .not((subject) => subject.equals(encrypted2.ciphertext));
+          .not(.it()..equals(encrypted2.ciphertext));
 
       // But both should decrypt correctly with their respective keys
       final decrypted1 = decryptor1.decrypt(encrypted1);
@@ -611,7 +609,7 @@ void main() async {
       final signing = PkSigning();
       final message = "Hello, world!";
       final signature = signing.sign(message);
-      check(signature.toBase64()).isNotEmpty();
+      check(signature.toBase64()).isNotEmpty;
       expect(
           () =>
               signing.publicKey.verify(message: message, signature: signature),
@@ -648,7 +646,7 @@ void main() async {
 
       // Signatures should be different
       check(signature1.toBase64())
-          .not((subject) => subject.equals(signature2.toBase64()));
+          .not(.it()..equals(signature2.toBase64()));
 
       // Each signature should verify with its own key
       expect(
