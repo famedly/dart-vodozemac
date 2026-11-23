@@ -1,0 +1,135 @@
+name: Build release assets
+
+# Builds the native libraries that consumers download from the GitHub release
+# instead of compiling vodozemac themselves. publish.yml calls this for every
+# release. On pull requests it runs when the crate or the build changes, so a
+# broken Apple, Linux or web build shows up before the release.
+on:
+  pull_request:
+    paths:
+      - rust/**
+      - flutter/ios/**
+      - flutter/macos/**
+      - scripts/build_xcframework.sh
+      - .github/workflows/build_assets.yml
+  workflow_call:
+    inputs:
+      ref:
+        description: Git ref (the release tag) to build.
+        type: string
+        required: true
+
+permissions:
+  contents: read
+
+jobs:
+  apple:
+    runs-on: macos-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.ref }}
+      - run: cat .github/workflows/versions.env >> $GITHUB_ENV
+      - name: Build XCFrameworks
+        run: ./scripts/build_xcframework.sh
+      - name: Package
+        working-directory: build/xcframework
+        run: |
+          mkdir -p ../../assets
+          # SwiftPM expects <target name>.xcframework at the root of the zip.
+          for platform in ios macos; do
+            rm -rf flutter_vodozemac.xcframework
+            mv "$platform.xcframework" flutter_vodozemac.xcframework
+            ditto -c -k --sequesterRsrc --keepParent flutter_vodozemac.xcframework \
+              "../../assets/flutter_vodozemac-$platform.xcframework.zip"
+          done
+          # Universal arm64/x86_64 macOS library, for Dart (non-Flutter) consumers.
+          cp lipo/macos ../../assets/libvodozemac_bindings_dart-macos.dylib
+      # build_xcframework.sh also copied the XCFrameworks into flutter/, so this
+      # builds an app against them the way an SPM consumer does.
+      - uses: subosito/flutter-action@1a449444c387b1966244ae4d4f8c696479add0b2 # v2.23.0
+        with:
+          flutter-version: ${{ env.flutter_version }}
+      - name: Build an app against the XCFrameworks with SwiftPM
+        working-directory: flutter
+        run: |
+          flutter config --enable-swift-package-manager
+          flutter create --platforms ios,macos example
+          cd example
+          flutter pub add flutter_vodozemac --path ..
+          flutter build ios --simulator --debug
+          flutter build macos --debug
+      - uses: actions/upload-artifact@v4
+        with:
+          name: assets-apple
+          path: assets/
+          if-no-files-found: error
+
+  linux:
+    strategy:
+      matrix:
+        include:
+          - arch: x64
+            runner: ubuntu-22.04
+          - arch: arm64
+            runner: ubuntu-22.04-arm
+    # Ubuntu 22.04 for its old glibc (2.35), so the library also loads on
+    # Debian bookworm and newer.
+    runs-on: ${{ matrix.runner }}
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.ref }}
+      - name: Install Rust
+        run: command -v cargo || { curl https://sh.rustup.rs -sSf | sh -s -- -y --profile minimal && echo "$HOME/.cargo/bin" >> "$GITHUB_PATH"; }
+      - name: Build
+        run: cargo build --release --locked --manifest-path rust/Cargo.toml
+      - name: Package
+        run: |
+          lib=rust/target/release/libvodozemac_bindings_dart.so
+          echo "Needs $(objdump -T "$lib" | grep -o 'GLIBC_[0-9.]*' | sort -uV | tail -1)"
+          mkdir assets
+          cp "$lib" "assets/libvodozemac_bindings_dart-linux-${{ matrix.arch }}.so"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: assets-linux-${{ matrix.arch }}
+          path: assets/
+          if-no-files-found: error
+
+  web:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.ref }}
+      - run: cat .github/workflows/versions.env >> $GITHUB_ENV
+      - uses: dart-lang/setup-dart@a57a6c04cf7d4840e88432aad6281d1e125f0d46
+        with:
+          sdk: ${{ env.dart_version }}
+      - name: Rust nightly setup
+        run: |
+          rustup toolchain install nightly
+          rustup +nightly component add rust-src
+          rustup +nightly target add wasm32-unknown-unknown
+      - name: Install wasm-pack
+        run: curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh
+      - name: Install flutter_rust_bridge_codegen
+        run: cargo install flutter_rust_bridge_codegen
+      - name: Build
+        run: flutter_rust_bridge_codegen build-web --dart-root dart --rust-root "$(readlink -f rust)" --release
+      - name: Package
+        working-directory: dart/web/pkg
+        run: |
+          # wasm-pack's catch-all .gitignore would keep `flutter build web` from
+          # copying the runtime into an app's bundle.
+          rm -f .gitignore
+          mkdir -p ../../../assets
+          zip -r ../../../assets/vodozemac-web.zip .
+      - uses: actions/upload-artifact@v4
+        with:
+          name: assets-web
+          path: assets/
+          if-no-files-found: error

@@ -14,19 +14,23 @@ Flutter versions). The difference is **where the Rust library gets built**:
 ### Swift Package Manager (prebuilt binary)
 
 SwiftPM cannot run cargo during the build (build tool plugins are sandboxed),
-so your app uses a **prebuilt** `flutter_vodozemac.xcframework` that we build
-and commit to this repo (under `ios/flutter_vodozemac/` and
-`macos/flutter_vodozemac/`, referenced as a local-path `binaryTarget` in the
-`Package.swift` there). iOS ships it as a framework; macOS ships a plain
-`libflutter_vodozemac.dylib`, because a macOS framework needs symlinks and
-`pub publish` does not preserve them.
+so your app uses a **prebuilt** `flutter_vodozemac.xcframework`. Our release
+workflow builds it on a GitHub macOS runner and attaches it to the
+[GitHub release](https://github.com/famedly/dart-vodozemac/releases) of that
+version; the `Package.swift` files under `ios/flutter_vodozemac/` and
+`macos/flutter_vodozemac/` in the published package point at that asset by URL
+and checksum, and Xcode downloads it when it resolves packages. iOS ships it as
+a framework; macOS ships a plain `libflutter_vodozemac.dylib`.
 
 - No Rust toolchain needed on your machine; nothing is compiled during your
   build, which makes clean/CI builds noticeably faster.
-- You are running a binary built by the maintainers. It is always committed
-  in the same change as the Rust source it was built from
-  (`scripts/build_xcframework.sh`), so it can be audited or reproduced. If
-  you prefer to compile from source, use CocoaPods.
+- You are running a binary built by our CI from the tagged source
+  (`.github/workflows/build_assets.yml`), so it can be audited or reproduced.
+  If you prefer to compile from source, use CocoaPods.
+- Depending on this package by git or path instead of from pub.dev? The
+  `Package.swift` files in git use a local path instead; run
+  `./scripts/build_xcframework.sh` once (needs macOS, Xcode and Rust), or use
+  CocoaPods.
 
 ### CocoaPods (built from source)
 
@@ -96,19 +100,13 @@ flutter:
   disable-swift-package-manager: true
 ```
 
-### Updating the prebuilt XCFramework (maintainers)
+### Releasing the prebuilt XCFramework (maintainers)
 
-Whenever `flutter/rust` changes, rebuild it and commit the result together
-with that change:
-
-```sh
-./scripts/build_xcframework.sh   # from the repo root
-```
-
-This overwrites `flutter_vodozemac.xcframework` in both `ios/flutter_vodozemac/`
-and `macos/flutter_vodozemac/`. No separate release step is needed — publishing
-the flutter package to pub.dev ships whatever XCFramework is committed at that
-point.
+Nothing to do by hand. Pushing a `v*` tag runs `.github/workflows/publish.yml`,
+which builds the XCFrameworks (and the other native and web assets), attaches
+them to the GitHub release, rewrites both `Package.swift` files to the release
+asset's URL and checksum and then publishes to pub.dev. Pull requests that
+touch `rust/` build them too, including an example app with SwiftPM.
 
 ## Testing the plugin locally
 
@@ -122,8 +120,10 @@ flutter run
 
 To try both iOS/macOS integration paths, toggle
 `flutter config --enable-swift-package-manager` /
-`--no-enable-swift-package-manager` between runs: SwiftPM uses the committed
-XCFramework, CocoaPods compiles the Rust crate from source via cargokit.
+`--no-enable-swift-package-manager` between runs: SwiftPM uses the
+XCFramework that `./scripts/build_xcframework.sh` builds into `ios/` and
+`macos/` (run it first), CocoaPods compiles the Rust crate from source via
+cargokit.
 
 ## Cargokit patch:
 

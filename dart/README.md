@@ -15,7 +15,7 @@ Currently supported functionality:
 
 ## Getting started
 
-Vodozemac needs Rust to be installed locally. [Install Rust](https://www.rust-lang.org/tools/install)
+Vodozemac needs Rust to be installed locally, unless you use the prebuilt libraries below. [Install Rust](https://www.rust-lang.org/tools/install)
 
 Add the package to your Dart/Flutter project:
 
@@ -37,21 +37,30 @@ import 'package:flutter_vodozemac/flutter_vodozemac.dart' as vod;
 await vod.init();
 ```
 
-### Build for web
+### Prebuilt libraries
 
-For web you need to build the package by yourself. You can use the script below to do so:
+[Releases](https://github.com/famedly/dart-vodozemac/releases) ship prebuilt
+libraries, so you don't need Rust to use them:
+
+| Asset | For |
+|---|---|
+| `vodozemac-web.zip` | Web: unzip into `web/pkg/` |
+| `libvodozemac_bindings_dart-linux-x64.so`, `-linux-arm64.so` | Dart on Linux (glibc 2.35+), e.g. servers and tests |
+| `libvodozemac_bindings_dart-macos.dylib` | Dart on macOS (arm64 and x86_64) |
+| `flutter_vodozemac-{ios,macos}.xcframework.zip` | Used by `flutter_vodozemac` with Swift Package Manager |
+
+`SHA256SUMS` lists their checksums. Use the release whose tag matches your
+`vodozemac` version, since the Dart bindings and the library must match:
 
 ```sh
-version=$(yq ".dependencies.flutter_vodozemac" < pubspec.yaml)
-version=$(expr "$version" : '\^*\(.*\)')
-git clone https://github.com/famedly/dart-vodozemac.git -b ${version} .vodozemac
-cd .vodozemac
-cargo install flutter_rust_bridge_codegen
-flutter_rust_bridge_codegen build-web --dart-root dart --rust-root $(readlink -f rust) --release
-cd ..
-mv .vodozemac/dart/web/pkg ./web/
-rm -rf .vodozemac
+version=$(yq ".packages.vodozemac.version" < pubspec.lock)
+curl -fsSLO "https://github.com/famedly/dart-vodozemac/releases/download/v${version}/vodozemac-web.zip"
+rm -rf web/pkg && unzip -q vodozemac-web.zip -d web/pkg && rm vodozemac-web.zip
 ```
+
+Rename a native library to `libvodozemac_bindings_dart.so` (or `.dylib`) and
+pass its directory as `libraryPath` to `init`. To build them yourself instead,
+see `.github/workflows/build_assets.yml`.
 
 ## Usage
 

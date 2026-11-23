@@ -4,6 +4,13 @@ on:
   push:
     tags:
     - v[0-9]+.[0-9]+.[0-9]+
+  # Builds the release assets for an existing tag and attaches them to its
+  # release, without publishing (e.g. to backfill a release from before assets).
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Existing release tag, e.g. v0.9.1
+        required: true
 
 defaults:
   run:
@@ -11,8 +18,49 @@ defaults:
     working-directory: ./dart
 
 jobs:
+  build_assets:
+    uses: ./.github/workflows/build_assets.yml
+    with:
+      ref: ${{ inputs.tag || github.ref_name }}
+
+  # Runs before publishing: the published flutter_vodozemac points SwiftPM at
+  # this release's XCFrameworks.
+  release:
+    needs: [build_assets]
+    permissions:
+      contents: write
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      GH_TOKEN: ${{ github.token }}
+      TAG: ${{ inputs.tag || github.ref_name }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ env.TAG }}
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: assets-*
+          merge-multiple: true
+          path: assets
+      - name: Create release or attach assets
+        run: |
+          (cd ../assets && sha256sum * > SHA256SUMS)
+          if gh release view "$TAG" >/dev/null 2>&1; then
+            gh release upload "$TAG" ../assets/* --clobber
+          else
+            notes=$(../scripts/extract_changelog.sh "${TAG#v}")
+            if [ -n "$notes" ]; then
+              gh release create "$TAG" ../assets/* --verify-tag -t "$TAG" --notes "$notes"
+            else
+              gh release create "$TAG" ../assets/* --verify-tag -t "$TAG" --generate-notes
+            fi
+          fi
+
   # Inlined from famedly/frontend-ci-templates publish-pub.yml: the template runs at the repo root, but the package is in dart/.
   publish:
+    needs: [release]
+    if: github.event_name == 'push'
     environment: "pub.dev"
     permissions:
       contents: read
@@ -38,7 +86,8 @@ jobs:
     permissions:
       contents: read
       id-token: write # Required for authentication using OIDC
-    runs-on: ubuntu-latest
+    # macOS for `swift package`, which checks the rewritten manifests.
+    runs-on: macos-latest
     defaults:
       run:
         working-directory: ./flutter
@@ -46,6 +95,22 @@ jobs:
       - uses: actions/checkout@v4
       - name: Read env file
         run: cat ../.github/workflows/versions.env >> $GITHUB_ENV
+      - name: Point SwiftPM at the release's XCFrameworks
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          for platform in ios macos; do
+            asset="flutter_vodozemac-$platform.xcframework.zip"
+            gh release download "$GITHUB_REF_NAME" --pattern "$asset" --dir "$RUNNER_TEMP"
+            checksum=$(swift package compute-checksum "$RUNNER_TEMP/$asset")
+            url="$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/releases/download/$GITHUB_REF_NAME/$asset"
+            manifest="$platform/flutter_vodozemac/Package.swift"
+            sed -i '' "s|path: \"flutter_vodozemac.xcframework\"|url: \"$url\", checksum: \"$checksum\"|" "$manifest"
+            grep -q "checksum: \"$checksum\"" "$manifest"
+            # Downloads the asset from the public URL and verifies the checksum.
+            (cd "$platform/flutter_vodozemac" && swift package resolve && find .build/artifacts -name '*.xcframework' | grep -q . && rm -rf .build Package.resolved)
+          done
+          git diff
       - uses: subosito/flutter-action@1a449444c387b1966244ae4d4f8c696479add0b2 # v2.23.0
         with:
           flutter-version: ${{ env.flutter_version }}
@@ -55,35 +120,7 @@ jobs:
       - uses: dart-lang/setup-dart@a57a6c04cf7d4840e88432aad6281d1e125f0d46
         with:
           sdk: ${{ env.dart_version }}
-      # -f publishes despite warnings (no flutter_rust_bridge constraint) but still refuses on errors.
+      # -f publishes despite warnings (no flutter_rust_bridge constraint, the
+      # Package.swift files modified above) but still refuses on errors.
       - name: Publish to pub.dev
         run: flutter pub publish -f
-
-  create_gh_release:
-    env:
-      GH_TOKEN: ${{ github.token }}
-    needs: [publish, publish_flutter]
-    runs-on: ubuntu-latest
-    timeout-minutes: 10
-    steps:
-      - uses: actions/checkout@v4
-      - name: Create release
-        run: |
-          version=$(echo ${{ github.ref_name }} | sed 's/^v//')
-          releaseRegex="^v[0-9]+\.[0-9]+\.[0-9]+$"
-          releaseCandidateRegex="^v[0-9]+\.[0-9]+\.[0-9]+rc[0-9]+$"
-          notes=$(../scripts/extract_changelog.sh $version)
-          if [ -n "$notes" ]; then
-            if [[ ${{ github.ref_name }} =~ $releaseRegex ]]; then
-              gh release create ${{ github.ref_name }} --notes "$notes" -t ${{ github.ref_name }} --verify-tag
-            elif [[ ${{ github.ref_name }} =~ $releaseCandidateRegex ]]; then
-              gh release create ${{ github.ref_name }} --notes "$notes" --prerelease -t ${{ github.ref_name }} --verify-tag
-            fi
-          else
-            if [[ ${{ github.ref_name }} =~ $releaseRegex ]]; then
-              gh release create ${{ github.ref_name }} --generate-notes -t ${{ github.ref_name }} --verify-tag
-            elif [[ ${{ github.ref_name }} =~ $releaseCandidateRegex ]]; then
-              gh release create ${{ github.ref_name }} --generate-notes --prerelease -t ${{ github.ref_name }} --verify-tag
-            fi
-          fi
-          echo "Release created for version $version"
