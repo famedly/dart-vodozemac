@@ -1,3 +1,8 @@
+## 0.9.2
+
+- build: the SwiftPM XCFramework is no longer part of the package or the git repository. CI builds it for every release and attaches it to the GitHub release, and `Package.swift` downloads it from there by URL and checksum. CocoaPods and Android still build from source
+- chore(deps): update Rust dependencies
+
 ## 0.9.1
 
 - fix(security): update vodozemac to 0.11.2, fixing a panic when decoding malformed Ed25519 keys ([GHSA-pqp6-f7wc-6498](https://github.com/matrix-org/vodozemac/security/advisories/GHSA-pqp6-f7wc-6498)) and unzeroized Olm root key ratchet output ([GHSA-v27v-f96q-qhjq](https://github.com/matrix-org/vodozemac/security/advisories/GHSA-v27v-f96q-qhjq))

@@ -9,11 +9,11 @@ backend. Both web and native are supported. You need to provide the path to the 
 2. Then run `flutter_rust_bridge_codegen generate` to generate the rust bindings
 3. Now use those code generated in `dart/lib/generated/` to write/modify documented wrapper code in `dart/lib/api.dart`
 4. Then, cd into `dart` directory and run `dart run import_sorter:main` to sort imports
-5. If the change also lands in `flutter/rust`, run `./scripts/build_xcframework.sh`
-   and commit the updated `flutter_vodozemac.xcframework` bundles it writes under
-   `flutter/ios` and `flutter/macos` — Swift Package Manager consumers use that
-   prebuilt binary, so it must stay in sync with the Rust source
-   (see `flutter/README.md`)
+5. Nothing to commit for the native binaries: releases build them in CI
+   (`.github/workflows/build_assets.yml`, which also runs on pull requests that
+   touch `rust/`) and attach them to the GitHub release. To try the SPM
+   XCFramework locally, run `./scripts/build_xcframework.sh` (see
+   `flutter/README.md`)
 6. Run tests locally and then open a PR
 
 ### Running tests

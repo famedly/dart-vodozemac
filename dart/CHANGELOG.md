@@ -1,3 +1,9 @@
+## 0.9.2
+
+- build: releases ship prebuilt libraries as GitHub release assets (Linux x64/arm64 `.so`, macOS `.dylib`, web `vodozemac-web.zip`), so Dart consumers no longer need Rust to get them; see the README
+- chore(deps): `CryptoUtils` uses the RustCrypto releases vodozemac uses (aes 0.9, ctr 0.10, hmac 0.13, pbkdf2 0.13, sha2 0.11), dropping the duplicate older crypto stack from the library
+- chore(deps): update Rust dependencies
+
 ## 0.9.1
 
 - fix(security): update vodozemac to 0.11.2, fixing a panic when decoding malformed Ed25519 keys ([GHSA-pqp6-f7wc-6498](https://github.com/matrix-org/vodozemac/security/advisories/GHSA-pqp6-f7wc-6498)) and unzeroized Olm root key ratchet output ([GHSA-v27v-f96q-qhjq](https://github.com/matrix-org/vodozemac/security/advisories/GHSA-v27v-f96q-qhjq))

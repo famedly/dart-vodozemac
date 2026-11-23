@@ -1,4 +1,0 @@
-module flutter_vodozemac {
-    header "vodozemac_ios_ffi_bindings.h"
-    export *
-}

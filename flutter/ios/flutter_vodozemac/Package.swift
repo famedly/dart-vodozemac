@@ -3,10 +3,12 @@
 //
 // flutter_vodozemac ships its Rust code as a prebuilt XCFramework because
 // SwiftPM cannot run cargo during the build (build tool plugins are
-// sandboxed). The XCFramework is committed to this repo (built by
-// scripts/build_xcframework.sh) rather than fetched from a release, so it's
-// versioned alongside the Rust source that produced it. CocoaPods consumers
-// still build from source via cargokit; see ../flutter_vodozemac.podspec.
+// sandboxed). CI builds it on a macOS runner for every release and attaches it
+// to the GitHub release; publish.yml rewrites the binaryTarget below to that
+// release asset's url and checksum before publishing to pub.dev. In git it is a
+// local path, filled by scripts/build_xcframework.sh for local testing.
+// CocoaPods consumers still build from source via cargokit; see
+// ../flutter_vodozemac.podspec.
 import PackageDescription
 
 let binaryTarget = Target.binaryTarget(

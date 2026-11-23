@@ -1,13 +1,12 @@
 #!/usr/bin/env bash
-# Builds flutter_vodozemac.xcframework from the Rust crate in flutter/rust and
-# writes it directly into flutter/ios/flutter_vodozemac and
-# flutter/macos/flutter_vodozemac, where it is committed to the repo and
-# referenced by a local-path SwiftPM binaryTarget (see the Package.swift files
-# there). CocoaPods consumers are unaffected: they still build from source via
-# cargokit.
-#
-# Run this after any change to flutter/rust and commit the result alongside
-# the change.
+# Builds flutter_vodozemac.xcframework from the Rust crate in flutter/rust into
+# build/xcframework/{ios,macos}.xcframework and copies them into
+# flutter/ios/flutter_vodozemac and flutter/macos/flutter_vodozemac, where the
+# local-path SwiftPM binaryTarget picks them up (see the Package.swift files
+# there). Those copies are gitignored and only serve local testing: releases
+# ship the XCFrameworks as GitHub release assets, built by
+# .github/workflows/build_assets.yml with this script. CocoaPods consumers are
+# unaffected: they still build from source via cargokit.
 set -euo pipefail
 
 REPO_ROOT="$(cd "$(dirname "$0")/.." && pwd)"
@@ -147,4 +146,4 @@ echo
 echo "Updated:"
 echo "  $DEST_IOS"
 echo "  $DEST_MACOS"
-echo "Commit these together with your flutter/rust change."
+echo "These are for local testing only; releases build their own in CI."
