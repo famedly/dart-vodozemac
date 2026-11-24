@@ -3,7 +3,7 @@ name: Build release assets
 # Builds the native libraries that consumers download from the GitHub release
 # instead of compiling vodozemac themselves. publish.yml calls this for every
 # release. On pull requests it runs when the crate or the build changes, so a
-# broken Apple, Linux or web build shows up before the release.
+# broken Apple, Linux, Windows or web build shows up before the release.
 on:
   pull_request:
     paths:
@@ -57,7 +57,9 @@ jobs:
           flutter config --enable-swift-package-manager
           flutter create --platforms ios,macos example
           cd example
-          flutter pub add flutter_vodozemac --path ..
+          # Overrides vodozemac with the repo's Dart bindings, which may be a
+          # version not yet on pub.dev.
+          flutter pub add 'flutter_vodozemac:{"path":".."}' 'override:vodozemac:{"path":"../../dart"}'
           flutter build ios --simulator --debug
           flutter build macos --debug
       - uses: actions/upload-artifact@v4
@@ -95,6 +97,51 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           name: assets-linux-${{ matrix.arch }}
+          path: assets/
+          if-no-files-found: error
+
+  windows:
+    strategy:
+      matrix:
+        arch: [x64, arm64]
+    runs-on: windows-latest
+    timeout-minutes: 30
+    defaults:
+      run:
+        shell: bash
+    env:
+      # Link the C runtime statically, so the DLL doesn't need the VC++ redistributable.
+      RUSTFLAGS: -C target-feature=+crt-static
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.ref }}
+      - run: cat .github/workflows/versions.env >> $GITHUB_ENV
+      - name: Build
+        run: |
+          target=${{ matrix.arch == 'x64' && 'x86_64' || 'aarch64' }}-pc-windows-msvc
+          rustup target add "$target"
+          cargo build --release --locked --manifest-path rust/Cargo.toml --target "$target"
+          mkdir assets
+          cp "rust/target/$target/release/vodozemac_bindings_dart.dll" \
+            "assets/vodozemac_bindings_dart-windows-${{ matrix.arch }}.dll"
+      # shortcut: arm64 is cross-compiled and only built, not run; test it on a windows-11-arm runner if it ever breaks.
+      - uses: dart-lang/setup-dart@a57a6c04cf7d4840e88432aad6281d1e125f0d46
+        if: matrix.arch == 'x64'
+        with:
+          sdk: ${{ env.dart_version }}
+      - name: Run the Dart tests against the DLL
+        if: matrix.arch == 'x64'
+        working-directory: dart
+        run: |
+          # vodozemac_test.dart loads the library from ../rust/target/debug/.
+          mkdir -p ../rust/target/debug
+          cp ../assets/vodozemac_bindings_dart-windows-x64.dll ../rust/target/debug/vodozemac_bindings_dart.dll
+          dart pub get
+          dart test test/vodozemac_test.dart
+      - uses: actions/upload-artifact@v4
+        with:
+          name: assets-windows-${{ matrix.arch }}
           path: assets/
           if-no-files-found: error
 
