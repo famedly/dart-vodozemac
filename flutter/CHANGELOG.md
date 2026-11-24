@@ -1,3 +1,10 @@
+## 0.10.0
+
+- build: (BREAKING CHANGE) republishes 0.9.2 as a minor release, because 0.9.2 broke some builds:
+  - Swift Package Manager builds download the XCFramework from the GitHub release, so they need network access to github.com
+  - git and path dependencies no longer contain the XCFramework; build it with `scripts/build_xcframework.sh` (see the README) or use CocoaPods
+- build: requires `vodozemac` ^0.10.0
+
 ## 0.9.2
 
 - build: the SwiftPM XCFramework is no longer part of the package or the git repository. CI builds it for every release and attaches it to the GitHub release, and `Package.swift` downloads it from there by URL and checksum. CocoaPods and Android still build from source
