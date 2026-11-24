@@ -47,6 +47,7 @@ libraries, so you don't need Rust to use them:
 | `vodozemac-web.zip` | Web: unzip into `web/pkg/` |
 | `libvodozemac_bindings_dart-linux-x64.so`, `-linux-arm64.so` | Dart on Linux (glibc 2.35+), e.g. servers and tests |
 | `libvodozemac_bindings_dart-macos.dylib` | Dart on macOS (arm64 and x86_64) |
+| `vodozemac_bindings_dart-windows-x64.dll`, `-windows-arm64.dll` | Dart on Windows |
 | `flutter_vodozemac-{ios,macos}.xcframework.zip` | Used by `flutter_vodozemac` with Swift Package Manager |
 
 `SHA256SUMS` lists their checksums. Use the release whose tag matches your
@@ -58,7 +59,8 @@ curl -fsSLO "https://github.com/famedly/dart-vodozemac/releases/download/v${vers
 rm -rf web/pkg && unzip -q vodozemac-web.zip -d web/pkg && rm vodozemac-web.zip
 ```
 
-Rename a native library to `libvodozemac_bindings_dart.so` (or `.dylib`) and
+Rename a native library to `libvodozemac_bindings_dart.so` (or `.dylib`, or
+`vodozemac_bindings_dart.dll` on Windows) and
 pass its directory, with a trailing `/` (e.g. `libs/`), as `libraryPath` to
 `init`. To build them yourself instead,
 see `.github/workflows/build_assets.yml`.

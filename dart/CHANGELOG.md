@@ -1,3 +1,8 @@
+## 0.10.0
+
+- build: (BREAKING CHANGE) republishes 0.9.2 as a minor release, because 0.9.2 changed how flutter_vodozemac ships its XCFrameworks (see the flutter_vodozemac changelog). There are no API changes; `vodozemac` and `flutter_vodozemac` share version numbers because the release assets are tagged with them
+- build: releases also ship Windows x64 and arm64 libraries (`vodozemac_bindings_dart-windows-{x64,arm64}.dll`)
+
 ## 0.9.2
 
 - build: releases ship prebuilt libraries as GitHub release assets (Linux x64/arm64 `.so`, macOS `.dylib`, web `vodozemac-web.zip`), so Dart consumers no longer need Rust to get them; see the README
